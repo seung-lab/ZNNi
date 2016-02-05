@@ -10,7 +10,7 @@ private:
     long_t n_full_      ;
     long_t partial_size_;
 
-    long_t in_stride_    ;
+    long_t out_stride_   ;
     long_t kernel_stride_;
     long_t bias_stride_  ;
 
@@ -35,7 +35,7 @@ public:
         {
             full_->forward(in, out, kernels, biases, workspace_d);
 
-            in      += in_stride_    ;
+            out     += out_stride_;
             kernels += kernel_stride_;
             biases  += bias_stride_  ;
         }
@@ -61,7 +61,8 @@ public:
         : n_full_(fout/fout_chunk)
         , partial_size_(fout%fout_chunk)
     {
-        in_stride_     = is[0] * is[1] * is[2] * fin * fout_chunk;
+        vec3i os = is - fs + vec3i::one;
+        out_stride_    = os[0] * os[1] * us[2] * fout_chunk;
         kernel_stride_ = fs[0] * fs[1] * fs[2] * fin * fout_chunk;
         bias_stride_   = fout_chunk;
 

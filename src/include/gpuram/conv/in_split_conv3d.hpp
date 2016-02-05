@@ -117,7 +117,7 @@ public:
         , n_full_(fin/fin_chunk)
         , partial_size_(fin%fin_chunk)
     {
-        in_stride_ = is[0] * is[1] * is[2] * fin;
+        in_stride_ = is[0] * is[1] * is[2] * fin_chunk;
 
         hkernel_stride_ = fs[0] * fs[1] * fs[2] * fin;
         dkernel_stride_ = fs[0] * fs[1] * fs[2] * fin_chunk;

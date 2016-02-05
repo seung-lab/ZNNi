@@ -92,7 +92,7 @@ public:
 
         STRONG_ASSERT( (is+vec3i::one) % fs == vec3i::zero );
 
-        vec3i os = is / fs;
+        vec3i os  = is / fs;
         vec3i eis = os * fs;
 
         in_memory_  = n     * c * is[0] * is[1] * is[2] * sizeof(float);
@@ -178,7 +178,7 @@ public:
 
     void forward( float * in, float * out ) override
     {
-        void * workspace;
+        void * workspace = NULL;
 
         if ( workspace_size_ )
         {

@@ -43,12 +43,12 @@ public:
 
     long_t in_memory() const override
     {
-        return 0;
+        return in_memory_;
     }
 
     long_t out_memory() const override
     {
-        return 0;
+        return out_memory_;
     }
 
     conv_layer( cudnnHandle_t& handle,
@@ -73,6 +73,9 @@ public:
         long_t n_input_elements  = is[0] * is[1] * is[2] * fin  * n;
         long_t n_output_elements = os[0] * os[1] * os[2] * fout * n;
 
+        in_memory_  = n_input_elements  * sizeof(float);
+        out_memory_ = n_output_elements * sizeof(float);
+
         long_t n_elements = n_input_elements + n_output_elements;
 
         if ( n_elements <= _MAX_ELEMENTS )
@@ -82,15 +85,19 @@ public:
         }
         else if ( elements <= _MAX_ELEMENTS )
         {
-            long_t n_batch = n_elements / _MAX_ELEMENTS;
+            long_t n_batch = _MAX_ELEMENTS / elements;
             std::cout << "WILL USE BATCH_SPLIT_CONV3D: "
                       << n_batch << std::endl;
             impl_ = new batch_split_conv3d( handle, n, n_batch,
                                             fin, fout, is, fs );
         } else
         {
-            long_t fin_chunk  = std::max(1LL, input_elements/_MAX_ELEMENTS/2 );
-            long_t fout_chunk = std::max(1LL, output_elements/_MAX_ELEMENTS/2);
+            long_t fin_chunk  = std::max(static_cast<long_t>(1),
+                                         _MAX_ELEMENTS/2/(input_elements/fin) );
+            long_t fout_chunk = std::max(static_cast<long_t>(1),
+                                         _MAX_ELEMENTS/2/(output_elements/foutn));
+            fin_chunk = std::min(fin_chunk,fin);
+            fout_chunk = std::min(fout_chunk,fout);
             std::cout << "WILL USE FULL_SPLIT_CONV3D: "
                       << fin_chunk << ' ' << fout_chunk << std::endl;
             impl_ = new full_split_conv3d( handle, n,
