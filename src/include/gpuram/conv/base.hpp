@@ -5,7 +5,7 @@ namespace znn { namespace fwd { namespace gpu3dram {
 class base_conv3d
 {
 public:
-    ~base_conv3d() {}
+    virtual ~base_conv3d() {}
     virtual void forward( float *, float *, float *, float * ) const = 0;
 };
 

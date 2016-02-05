@@ -15,8 +15,8 @@ public:
     virtual ~cpu_layer() {}
 
     virtual real * forward( real * ) = 0;
-    virtual int  in_memory()  const = 0;
-    virtual int  out_memory() const = 0;
+    virtual long_t in_memory()  const = 0;
+    virtual long_t out_memory() const = 0;
 };
 
 
@@ -31,8 +31,8 @@ private:
     vec3i  is_   ;
     vec3i  fs_   ;
 
-    int in_memory_ ;
-    int out_memory_;
+    long_t in_memory_ ;
+    long_t out_memory_;
 
     real * kernel_data_ ;
     real * bias_data_   ;
@@ -53,12 +53,12 @@ public:
         return bias_data_;
     }
 
-    int in_memory() const override
+    long_t in_memory() const override
     {
         return in_memory_;
     }
 
-    int out_memory() const override
+    long_t out_memory() const override
     {
         return out_memory_;
     }
@@ -71,7 +71,7 @@ public:
 
 public:
     conv_layer( task_package& handle,
-                int n, int fin, int fout,
+                long_t n, long_t fin, long_t fout,
                 vec3i const & is,
                 vec3i const & fs )
         : handle_(handle)
@@ -286,16 +286,16 @@ private:
     vec3i  is_   ;
     vec3i  fs_   ;
 
-    int in_memory_ ;
-    int out_memory_;
+    long_t in_memory_ ;
+    long_t out_memory_;
 
 public:
-    int in_memory() const override
+    long_t in_memory() const override
     {
         return in_memory_;
     }
 
-    int out_memory() const override
+    long_t out_memory() const override
     {
         return out_memory_;
     }
@@ -306,7 +306,7 @@ public:
 
 public:
     pooling_layer( task_package& handle,
-                int n, int fin,
+                long_t n, long_t fin,
                 vec3i const & is,
                 vec3i const & fs )
         : handle_(handle)

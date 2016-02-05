@@ -2,6 +2,7 @@
 
 #include "conv/full_conv3d.hpp"
 #include "conv/batch_split_conv3d.hpp"
+#include "conv/full_split_conv3d.hpp"
 #include "../cpu/cpu3d.hpp"
 
 #define _MAX_ELEMENTS 500000000
@@ -15,6 +16,9 @@ private:
 
     real * kernel_data_ ;
     real * bias_data_   ;
+
+    long_t in_memory_ ;
+    long_t out_memory_;
 
     long_t total_out_elements;
 
@@ -61,27 +65,38 @@ public:
 
         total_out_elements = os[0] * os[1] * os[2] * n * fout;
 
-        long_t input_elements  = is[0] * is[1] * is[2];
-        long_t output_elements = os[0] * os[1] * os[2];
+        long_t input_elements  = is[0] * is[1] * is[2] * fin;
+        long_t output_elements = os[0] * os[1] * os[2] * fout;
 
         long_t elements = input_elements + output_elements;
 
-        long_t n_input_elements  = is[0] * is[1] * is[2] * n;
-        long_t n_output_elements = os[0] * os[1] * os[2] * n;
+        long_t n_input_elements  = is[0] * is[1] * is[2] * fin  * n;
+        long_t n_output_elements = os[0] * os[1] * os[2] * fout * n;
 
         long_t n_elements = n_input_elements + n_output_elements;
 
         if ( n_elements <= _MAX_ELEMENTS )
         {
+            std::cout << "WILL USE FULL_CONV3D" << std::endl;
             impl_ = new full_conv3d(handle, n, fin, fout, is, fs);
         }
         else if ( elements <= _MAX_ELEMENTS )
         {
             long_t n_batch = n_elements / _MAX_ELEMENTS;
+            std::cout << "WILL USE BATCH_SPLIT_CONV3D: "
+                      << n_batch << std::endl;
             impl_ = new batch_split_conv3d( handle, n, n_batch,
                                             fin, fout, is, fs );
         } else
-            DIE("Not supported");
+        {
+            long_t fin_chunk  = std::max(1, input_elements/_MAX_ELEMENTS/2 );
+            long_t fout_chunk = std::max(1, output_elements/_MAX_ELEMENTS/2);
+            std::cout << "WILL USE FULL_SPLIT_CONV3D: "
+                      << fin_chunk << ' ' << fout_chunk << std::endl;
+            impl_ = new full_split_conv3d( handle, n,
+                                           fin, fin_chunk,
+                                           fout, fout_chunk,
+                                           is, fs );
         }
     }
 

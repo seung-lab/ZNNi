@@ -3,7 +3,6 @@
 #include "base.hpp"
 #include "native_conv3d.hpp"
 
-
 namespace znn { namespace fwd { namespace gpu3dram {
 
 class batch_split_conv3d: public base_conv3d
@@ -14,18 +13,22 @@ private:
 
     long_t workspace_memory_ = 0;
 
-    native_conv3d full_   ;
-    native_conv3d partial_;
+    native_conv3d* full_    = nullptr;
+    native_conv3d* partial_ = nullptr;
 
 public:
-    ~batch_split_conv3d() {}
+    ~batch_split_conv3d()
+    {
+        delete full_;
+        if ( partial_size_ ) delete partial_;
+    }
 
     void forward( float * in,
                   float * out,
                   float * kernels,
                   float * biases ) const override
     {
-        float * workspace ;
+        float * workspace = NULL;
         float * in_d      ;
         float * out_d     ;
         float * kernels_d ;
@@ -46,7 +49,7 @@ public:
         checkCudaErrors( cudaMemcpy(biases_d, biases, full_->bias_memory(),
                                     cudaMemcpyHostToDevice));
 
-        for ( long_t i = 0; i < n_full_, ++i )
+        for ( long_t i = 0; i < n_full_; ++i )
         {
             checkCudaErrors( cudaMemcpy(in_d, in, full_->in_memory(),
                                         cudaMemcpyHostToDevice) );
@@ -111,7 +114,7 @@ public:
 
         if ( partial_size_ )
         {
-            partial_ = new native_conv3d(cudnn_handle, has_partial_,
+            partial_ = new native_conv3d(cudnn_handle, partial_size_,
                                          fin, fout, is, fs);
             workspace_memory_ = std::max(workspace_memory_,
                                          partial_->workspace_memory());

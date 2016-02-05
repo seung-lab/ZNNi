@@ -3,7 +3,6 @@
 #include "base.hpp"
 #include "native_conv3d.hpp"
 
-
 namespace znn { namespace fwd { namespace gpu3dram {
 
 class full_conv3d: public base_conv3d
@@ -19,7 +18,7 @@ public:
                   float * kernels,
                   float * biases ) const override
     {
-        float * workspace ;
+        float * workspace = NULL ;
         float * in_d      ;
         float * out_d     ;
         float * kernels_d ;
@@ -64,13 +63,13 @@ public:
 
 
 public:
-    full_conv3d( cudnnHandle_t& cudnn_handle,
+    full_conv3d( cudnnHandle_t& handle,
                  long_t n,
                  long_t fin,
                  long_t fout,
                  vec3i const & is,
                  vec3i const & fs )
-        : native_(n,fin,fout,is,fs)
+        : native_(handle, n,fin,fout,is,fs)
     {}
 
 
