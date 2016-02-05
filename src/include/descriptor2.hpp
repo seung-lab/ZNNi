@@ -4,7 +4,7 @@
 #include "assert.hpp"
 #include "gpu/gpu3d.hpp"
 #include "cpu/cpu3d.hpp"
-#include "gpuram/conv_layer.hpp"
+#include "gpuram/conv3d.hpp"
 
 namespace znn { namespace fwd {
 

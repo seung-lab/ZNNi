@@ -197,7 +197,11 @@ public:
                 in_desc, in,
                 filter_desc, filter_data_,
                 conv_desc,
+#if defined(ZNN_NO_PRECOMP_GEMM)
                 CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_GEMM,
+#else
+                CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
+#endif
                 workspace, workspace_size_,
                 &beta,
                 out_desc, out) );
@@ -313,20 +317,22 @@ public:
         in_memory_  = n * fin * is[0] * is[1] * is[2] * sizeof(float);
         out_memory_ = n * fout * os[0] * os[1] * os[2] * sizeof(float);
 
+#if !defined(ZNN_NO_PRECOMP_GEMM)
         {
-           //  size_t what_size;
-        //     checkCUDNN(
-        //         cudnnGetConvolutionForwardWorkspaceSize(
-        //             cudnn_handle,
-        //             in_desc,
-        //             filter_desc,
-        //             conv_desc,
-        //             out_desc,
-        //             CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_GEMM,
-        //             &what_size));
+            size_t what_size;
+            checkCUDNN(
+                cudnnGetConvolutionForwardWorkspaceSize(
+                    cudnn_handle,
+                    in_desc,
+                    filter_desc,
+                    conv_desc,
+                    out_desc,
+                    CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_GEMM,
+                    &what_size));
 
-        //     workspace_size_ = std::max(workspace_size_, what_size);
+            workspace_size_ = std::max(workspace_size_, what_size);
         }
+#endif
     }
 };
 
