@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cudnn.h>
-#include <zi/time.hpp>
 
 #include "cuda_utils.hpp"
 #include "../types.hpp"
@@ -9,7 +8,7 @@
 #include "../init.hpp"
 
 
-namespace znn { namespace fwd { namespace gpu3dRAM {
+namespace znn { namespace fwd { namespace gpu3dram {
 
 class partial_conv_layer
 {
@@ -28,15 +27,9 @@ private:
     cudnnHandle_t& cudnn_handle_;
 
 public:
-    void forward( float * in, float * out, float * kernels, float beta )
+    void forward( float * in, float * out, float * kernels,
+                  float beta, void * workspace ) const
     {
-        void * workspace;
-
-        if ( workspace_size_ )
-        {
-            checkCudaErrors( cudaMalloc(&workspace, workspace_size_ ));
-        }
-
         float alpha = 1;
 
         checkCUDNN(
@@ -50,14 +43,9 @@ public:
                 workspace, workspace_size_,
                 &beta,
                 out_desc, out) );
-
-        if ( workspace_size_ )
-        {
-            checkCudaErrors( cudaFree(workspace) );
-        }
     }
 
-    void nonlinearity( float * in, float * out, float * biases )
+    void nonlinearity( float * out, float * biases ) const
     {
 
         float alpha = 1; float beta = 1;
@@ -195,20 +183,9 @@ public:
     }
 };
 
-class single_input_conv_layer
-{
-public:
-    void forward( float * in, float * out, float * kernels, float * biases )
-    {}
 
-    single_input_conv_layer( cudnnHandle_t& cudnn_handle,
-                             long_t fin, long_t fout,
-                             vec3i const & is,
-                             vec3i const & fs )
-    {}
 
 };
 
 
-
-}}} // namespace znn::fwd::gpu3dRAM
+}}} // namespace znn::fwd::gpu3dram
