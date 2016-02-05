@@ -8,7 +8,7 @@
 namespace znn { namespace fwd { namespace gpu3dram {
 
 
-class conv_layer: public cpu_layer
+class conv_layer: public cpu3d::cpu_layer
 {
 private:
     simple_conv_layer*                simple_ = nullptr;
@@ -18,6 +18,10 @@ private:
     real * kernel_data_ ;
     real * bias_data_   ;
 
+    long_t kernel_elements;
+    long_t bias_elements;
+
+    long_t total_in_elements;
     long_t total_out_elements;
 
 public:
@@ -63,6 +67,12 @@ public:
         long_t input_elements  = is[0] * is[1] * is[2];
         long_t output_elements = os[0] * os[1] * os[2];
 
+	total_in_elements = input_elements * n * fin;
+	total_out_elements = output_elements * n * fout;
+
+	kernel_elements = fs[0] * fs[1] * fs[2] * fin * fout;
+	bias_elements = fout;
+
         total_out_elements = output_elements * fout * n;
 
         if ( input_elements * (fin+fout) * n < 500000000 )
@@ -99,18 +109,40 @@ public:
         if ( simple_ )
         {
             float * workspace;
+	    float * din;
+	    float * dout;
+	    float * dkernels;
+	    float * dbiases;
+	    
+	    checkCudaErrors( cudaMalloc(&din,      total_in_elements * sizeof(float)     ));
+	    checkCudaErrors( cudaMalloc(&dout,     total_out_elements * sizeof(float)    ));
+	    checkCudaErrors( cudaMalloc(&dkernels, kernel_elements * sizeof(float) ));
+	    checkCudaErrors( cudaMalloc(&dbiases,  bias_elements * sizeof(float)   ));
 
+	    checkCudaErrors( cudaMemcpy(din, in, total_in_elements * sizeof(float), cudaMemcpyHostToDevice));
+	    checkCudaErrors( cudaMemcpy(dkernels, kernel_data_, kernel_elements * sizeof(float), cudaMemcpyHostToDevice));
+	    checkCudaErrors( cudaMemcpy(dbiases, bias_data_, bias_elements * sizeof(float), cudaMemcpyHostToDevice));
+	    
             if ( simple_->workspace_memory() )
             {
                 checkCudaErrors( cudaMalloc(&workspace, simple_->workspace_memory()));
             }
 
-            simple_->forward(in, out, kernel_data_, bias_data_, workspace);
+            simple_->forward(din, dout, dkernels, 0, workspace);
+	    simple_->nonlinearity(dout, dbiases);
 
+	    checkCudaErrors( cudaMemcpy(out, dout, total_out_elements * sizeof(float), cudaMemcpyDeviceToHost));
+	    
             if ( simple_->workspace_memory() )
-            {
+	      {
                 checkCudaErrors( cudaFree(workspace) );
             }
+
+	    checkCudaErrors( cudaFree(din));
+	    checkCudaErrors( cudaFree(dout));
+	    checkCudaErrors( cudaFree(dkernels));
+	    checkCudaErrors( cudaFree(dbiases));
+
         }
         else
         {

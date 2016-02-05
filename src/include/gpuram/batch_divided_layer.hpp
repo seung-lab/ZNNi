@@ -2,7 +2,6 @@
 
 #include <cudnn.h>
 
-#include "cuda_utils.hpp"
 #include "../types.hpp"
 #include "../assert.hpp"
 #include "../init.hpp"
@@ -11,7 +10,7 @@
 
 namespace znn { namespace fwd { namespace gpu3dram {
 
-class bach_divided_layer
+class batch_divided_layer
 {
 private:
     long_t n_;
@@ -24,13 +23,13 @@ private:
     simple_conv_layer* rest_ = nullptr;
 
 public:
-    long_t workspace_memory() const override { workspace_memory_; }
-    long_t memory() const override { memory_; }
+    long_t workspace_memory() const { workspace_memory_; }
+    long_t memory() const { memory_; }
 
     void forward(float* in,
                  float* out,
                  float* kernels,
-                 float* biases ) const override
+                 float* biases ) const
     {
         float * workspace;
         float * din;
@@ -68,7 +67,7 @@ public:
             out += full_->out_memory() / sizeof(float);
         }
 
-        if ( (n_ % d_) != 0 )
+        if ( (n_ % b_) != 0 )
         {
             checkCudaErrors( cudaMemcpy(din, in, rest_->in_memory(),
                                         cudaMemcpyHostToDevice) );

@@ -2,7 +2,6 @@
 
 #include <cudnn.h>
 
-#include "cuda_utils.hpp"
 #include "../types.hpp"
 #include "../assert.hpp"
 #include "../init.hpp"
@@ -23,18 +22,21 @@ private:
     long_t workspace_memory_ = 0;
     long_t memory_;
 
+    long_t in_memory_;
+
     simple_conv_layer* full_ = nullptr;
     simple_conv_layer* rest_ = nullptr;
 
 public:
-    long_t workspace_memory() const override { workspace_memory_; }
-    long_t memory() const override { memory_; }
+    long_t workspace_memory() const { return workspace_memory_; }
+    long_t memory() const { return memory_; }
+    long_t in_memory() const { return in_memory_; }
 
     void forward(float* in,
                  float* out,
                  float* kernels,
                  float* biases,
-                 float* dworkspace) const override
+                 float* dworkspace) const
     {
         float * din;
         float * dout;
@@ -78,7 +80,7 @@ public:
             kernels += bin_ * per_kernel_memory_ / sizeof(float);
         }
 
-        if ( (fin_ % din_) != 0 )
+        if ( (fin_ % bin_) != 0 )
         {
             long_t dkernel_stride = (fin_%bin_) * per_kernel_memory_;
 
@@ -129,6 +131,7 @@ public:
         , bin_(bin)
         , fout_(fout)
     {
+      in_memory_ = fin * is[0] * is[1] * is[2] * sizeof(float);
         per_kernel_memory_ = fs[0] * fs[1] * fs[2] * sizeof(float);
 
         full_ = new simple_conv_layer(cudnn_handle, 1, bin, fout, is, fs);
@@ -165,14 +168,14 @@ private:
     input_divided_layer* rest_ = nullptr;
 
 public:
-    long_t workspace_memory() const override { workspace_memory_; }
-    long_t memory() const override { memory_; }
+    long_t workspace_memory() const { return workspace_memory_; }
+    long_t memory() const { return memory_; }
 
     void forward(float* in,
                  float* out,
                  float* kernels,
                  float* biases,
-                 float* dworkspace) const override
+                 float* dworkspace) const 
     {
         long_t kernel_stride = kernel_elements_ * fin_ * bout_;
 
@@ -208,7 +211,7 @@ public:
                                 vec3i const & fs )
         : fin_(fin)
         , fout_(fout)
-        , bout_(out)
+        , bout_(bout)
     {
         kernel_elements_ = fs[0] * fs[1] * fs[2];
 
@@ -219,7 +222,7 @@ public:
         if ( (fout % bout) != 0 )
         {
             rest_ = new input_divided_layer(cudnn_handle,
-                                            fin, fout%bout,
+                                            fin, bin, fout%bout,
                                             is, fs);
 
             workspace_memory_ = std::max(workspace_memory_,
@@ -241,13 +244,11 @@ private:
     input_output_divided_layer* impl_ = nullptr;
 
 public:
-    long_t workspace_memory() const override { workspace_memory_; }
-    long_t memory() const override { memory_; }
 
     void forward( float* in,
                   float* out,
                   float* kernels,
-                  float* biases) const override
+                  float* biases) const 
     {
         float * workspace;
 
@@ -283,7 +284,7 @@ public:
                                       vec3i const & fs )
         : n_(n)
     {
-        full_ = new input_output_divided_layer(cudnn_handle,
+        impl_ = new input_output_divided_layer(cudnn_handle,
                                                fin, bin,
                                                fout, bout,
                                                is, fs);

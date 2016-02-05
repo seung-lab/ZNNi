@@ -150,7 +150,7 @@ public:
                     ( gpu_handle, d.batch_size,
                       d.fin, d.fout, d.image_size, d.filter_size );
 
-                cpu3d::conv_layer* cc = new gpuram::conv_layer
+                gpu3dram::conv_layer* cc = new gpu3dram::conv_layer
                     ( gpu_handle, d.batch_size,
                       d.fin, d.fout, d.image_size, d.filter_size );
 
