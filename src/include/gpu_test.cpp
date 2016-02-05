@@ -1,7 +1,7 @@
 
 #include "gpu/gpu2d.hpp"
 #include "gpu/gpu3d.hpp"
-#include "descriptor.hpp"
+#include "descriptor2.hpp"
 
 using znn::fwd::vec2i;
 using znn::fwd::vec3i;

@@ -44,17 +44,17 @@ public:
     }
 
 public:
-    ~full_split_conv3d.hpp()
+    ~full_split_conv3d()
     {
         delete impl_;
     }
 
-    full_split_conv3d.hpp( cudnnHandle_t& handle,
-                           long_t n,
-                           long_t fin, long_t fin_chunk,
-                           long_t fout, long_t fout_chunk,
-                           vec3i const & is,
-                           vec3i const & fs )
+    full_split_conv3d( cudnnHandle_t& handle,
+                       long_t n,
+                       long_t fin, long_t fin_chunk,
+                       long_t fout, long_t fout_chunk,
+                       vec3i const & is,
+                       vec3i const & fs )
         : n_(n)
     {
         impl_ = new in_out_split_conv3d( handle,

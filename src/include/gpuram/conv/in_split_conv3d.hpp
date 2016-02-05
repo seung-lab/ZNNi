@@ -57,8 +57,8 @@ public:
                 for ( long_t k = 0; k < fout_; ++k )
                 {
                     checkCudaErrors(
-                        cudaMemcpy(dkernels + k * dkernel_stride_,
-                                   kernels  + k * hkernel_stride_,
+                        cudaMemcpy(kernels_d + k * dkernel_stride_,
+                                   kernels   + k * hkernel_stride_,
                                    dkernel_stride_ * sizeof(float),
                                    cudaMemcpyHostToDevice) );
                 }
@@ -67,7 +67,7 @@ public:
             full_->forward(in_d, out_d, kernels_d, (i==0)?0:1, workspace_d);
 
             in      += in_stride_;
-            kernels += kernel_stride_;
+            kernels += dkernel_stride_;
         }
 
         if ( partial_size_ )
@@ -81,8 +81,8 @@ public:
                 for ( long_t k = 0; k < fout_; ++k )
                 {
                     checkCudaErrors(
-                        cudaMemcpy(dkernels + k * partial_kernel_stride_,
-                                   kernels  + k * hkernel_stride_,
+                        cudaMemcpy(kernels_d + k * partial_kernel_stride_,
+                                   kernels   + k * hkernel_stride_,
                                    partial_kernel_stride_ * sizeof(float),
                                    cudaMemcpyHostToDevice) );
                 }
@@ -131,7 +131,7 @@ public:
             partial_ = new native_conv3d(handle, 1, partial_size_,
                                          fout, is, fs);
             workspace_memory_ = std::max(workspace_memory_,
-                                         rest_->workspace_memory());
+                                         partial_->workspace_memory());
         }
     }
 };

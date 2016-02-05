@@ -41,20 +41,20 @@ public:
         if (impl_ ) delete impl_ ;
     }
 
-    int in_memory() const override
+    long_t in_memory() const override
     {
         return 0;
     }
 
-    int out_memory() const override
+    long_t out_memory() const override
     {
         return 0;
     }
 
     conv_layer( cudnnHandle_t& handle,
-                int n,
-                int fin,
-                int fout,
+                long_t n,
+                long_t fin,
+                long_t fout,
                 vec3i const & is,
                 vec3i const & fs )
     {
@@ -89,8 +89,8 @@ public:
                                             fin, fout, is, fs );
         } else
         {
-            long_t fin_chunk  = std::max(1, input_elements/_MAX_ELEMENTS/2 );
-            long_t fout_chunk = std::max(1, output_elements/_MAX_ELEMENTS/2);
+            long_t fin_chunk  = std::max(1LL, input_elements/_MAX_ELEMENTS/2 );
+            long_t fout_chunk = std::max(1LL, output_elements/_MAX_ELEMENTS/2);
             std::cout << "WILL USE FULL_SPLIT_CONV3D: "
                       << fin_chunk << ' ' << fout_chunk << std::endl;
             impl_ = new full_split_conv3d( handle, n,

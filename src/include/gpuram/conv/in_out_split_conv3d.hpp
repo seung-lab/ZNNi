@@ -67,7 +67,6 @@ public:
 
         full_ = new in_split_conv3d(handle, fin, fin_chunk, fout_chunk, is, fs);
         workspace_memory_ = full_->workspace_memory();
-        memory_ = full_->memory();
 
         if ( partial_size_ )
         {
