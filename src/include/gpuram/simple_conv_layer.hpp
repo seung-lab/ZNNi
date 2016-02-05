@@ -10,9 +10,11 @@
 
 namespace znn { namespace fwd { namespace gpu3dram {
 
-class partial_conv_layer
+class simple_conv_layer
 {
 private:
+    cudnnHandle_t& cudnn_handle_;
+
     cudnnTensorDescriptor_t      in_desc, out_desc, bias_desc;
     cudnnFilterDescriptor_t      filter_desc;
     cudnnConvolutionDescriptor_t conv_desc;
@@ -24,11 +26,13 @@ private:
 
     size_t workspace_size_ = 0;
 
-    cudnnHandle_t& cudnn_handle_;
 
 public:
-    void forward( float * in, float * out, float * kernels,
-                  float beta, void * workspace ) const
+    void forward( float * in,
+                  float * out,
+                  float * kernels,
+                  float   beta,
+                  void  * workspace ) const
     {
         float alpha = 1;
 
@@ -45,7 +49,8 @@ public:
                 out_desc, out) );
     }
 
-    void nonlinearity( float * out, float * biases ) const
+    void nonlinearity( float * out,
+                       float * biases ) const
     {
 
         float alpha = 1; float beta = 1;
@@ -98,7 +103,7 @@ public:
     }
 
 
-    ~partial_conv_layer()
+    ~simple_conv_layer()
     {
         checkCUDNN( cudnnDestroyTensorDescriptor(in_desc) );
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc) );
@@ -124,10 +129,10 @@ private:
     }
 
 public:
-    partial_conv_layer( cudnnHandle_t& cudnn_handle,
-                        long_t n, long_t fin, long_t fout,
-                        vec3i const & is,
-                        vec3i const & fs )
+    simple_conv_layer( cudnnHandle_t& cudnn_handle,
+                       long_t n, long_t fin, long_t fout,
+                       vec3i const & is,
+                       vec3i const & fs )
         : cudnn_handle_(cudnn_handle)
     {
         kernel_memory_ = fin * fout * fs[0] * fs[1] * fs[2] * sizeof(float);
@@ -163,7 +168,7 @@ public:
 
         }
 
-        in_memory_  = n * fin * is[0] * is[1] * is[2] * sizeof(float);
+        in_memory_  = n * fin  * is[0] * is[1] * is[2] * sizeof(float);
         out_memory_ = n * fout * os[0] * os[1] * os[2] * sizeof(float);
 
         {
@@ -181,10 +186,6 @@ public:
             workspace_size_ = std::max(workspace_size_, what_size);
         }
     }
-};
-
-
-
 };
 
 

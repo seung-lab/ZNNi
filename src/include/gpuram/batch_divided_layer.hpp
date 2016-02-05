@@ -7,43 +7,41 @@
 #include "../assert.hpp"
 #include "../init.hpp"
 
-#include "conv_base.hpp"
-#include "partial_conv_layer.hpp"
+#include "simple_conv_layer.hpp"
 
 namespace znn { namespace fwd { namespace gpu3dram {
 
-class bach_divided_layer: public conv_base
+class bach_divided_layer
 {
 private:
-
-    cudnnHandle_t& cudnn_handle_;
     long_t n_;
     long_t b_;
 
     long_t workspace_memory_ = 0;
     long_t memory_;
 
-    partial_conv_layer* full_ = nullptr;
-    partial_conv_layer* rest_ = nullptr;
+    simple_conv_layer* full_ = nullptr;
+    simple_conv_layer* rest_ = nullptr;
 
 public:
-    ~batch_divided_layer() {}
-
     long_t workspace_memory() const override { workspace_memory_; }
     long_t memory() const override { memory_; }
 
-    void forward(float* in, float* out, float* kernels, float * biases) const override
+    void forward(float* in,
+                 float* out,
+                 float* kernels,
+                 float* biases ) const override
     {
-        void * workspace;
+        float * workspace;
         float * din;
         float * dout;
         float * dkernels;
         float * dbiases;
 
-        checkCudaErrors( cudaMalloc(&din, full_->in_memory() ));
-        checkCudaErrors( cudaMalloc(&dout, full_->out_memory() ));
+        checkCudaErrors( cudaMalloc(&din,      full_->in_memory()     ));
+        checkCudaErrors( cudaMalloc(&dout,     full_->out_memory()    ));
         checkCudaErrors( cudaMalloc(&dkernels, full_->kernel_memory() ));
-        checkCudaErrors( cudaMalloc(&dbiases, full_->bias_memory() ));
+        checkCudaErrors( cudaMalloc(&dbiases,  full_->bias_memory()   ));
 
         checkCudaErrors( cudaMemcpy(dkernels, kernels, full_->kernel_memory(),
                                     cudaMemcpyHostToDevice) );
@@ -110,23 +108,21 @@ public:
                          long_t n, long_t b, long_t fin, long_t fout,
                          vec3i const & is,
                          vec3i const & fs )
-        : cudnn_handle_(cudnn_handle)
-        , n_(n)
+        : n_(n)
         , b_(b)
     {
-        full_ = new partial_conv_layer(cudnn_handle, b, fin, fout, is, fs);
+        full_ = new simple_conv_layer(cudnn_handle, b, fin, fout, is, fs);
         workspace_memory_ = full_->workspace_memory();
         memory_ = full_->memory();
 
         if ( (n % b) != 0 )
         {
-            rest_ = new partial_conv_layer(cudnn_handle, n%b, fin, fout, is, fs);
-            workspace_memory_ = std::max(workspace_memory_, rest_->workspace_memory());
+            rest_ = new simple_conv_layer(cudnn_handle, n%b, fin, fout, is, fs);
+            workspace_memory_ = std::max(workspace_memory_,
+                                         rest_->workspace_memory());
             memory_ = std::max(memory_, rest_->memory());
         }
     }
-
-
 
 };
 
