@@ -65,6 +65,9 @@ public:
 
         total_out_elements = os[0] * os[1] * os[2] * n * fout;
 
+        long_t input_size  = is[0] * is[1] * is[2];
+        long_t output_size = os[0] * os[1] * os[2];
+
         long_t input_elements  = is[0] * is[1] * is[2] * fin;
         long_t output_elements = os[0] * os[1] * os[2] * fout;
 
@@ -92,14 +95,32 @@ public:
                                             fin, fout, is, fs );
         } else
         {
-            long_t fin_chunk  = std::max(static_cast<long_t>(1),
-                                         _MAX_ELEMENTS/2/(input_elements/fin) );
-            long_t fout_chunk = std::max(static_cast<long_t>(1),
-                                         _MAX_ELEMENTS/2/(output_elements/foutn));
-            fin_chunk = std::min(fin_chunk,fin);
-            fout_chunk = std::min(fout_chunk,fout);
+            // Each output will have exactly one Device->Host copy,
+            // which is done by maximizing the number of output nodes
+            // in a single convolution done on the GPU.
+
+            // Max number of elements in the output per stage, as we
+            // need memory for at least one input.
+            long_t max_out_memory = _MAX_ELEMENTS - input_size;
+
+            // Max number of chunks of the output
+            long_t fout_chunk     = max_out_memory / output_size;
+            fout_chunk            = std::min(fout_chunk, fout);
+
+            STRONG_ASSERT(fout_chunk > 0);
+
+            // Max elements left for tne input
+            long_t max_in_memory  = _MAX_ELEMENTS - fout_chunk * output_size;
+
+            // Number of chunks of the input
+            long_t fin_chunk      = max_in_memory / input_size;
+            fin_chunk             = std::min(fin_chunk, fin);
+
+            STRONG_ASSERT(fin_chunk > 0);
+
             std::cout << "WILL USE FULL_SPLIT_CONV3D: "
                       << fin_chunk << ' ' << fout_chunk << std::endl;
+
             impl_ = new full_split_conv3d( handle, n,
                                            fin, fin_chunk,
                                            fout, fout_chunk,
