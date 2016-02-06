@@ -1,0 +1,255 @@
+%\documentclass[10pt, conference, compsocconf]{IEEEtran}
+\documentclass{article}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{eqnarray}
+\usepackage[]{algorithm}
+\usepackage{clrscode3e}
+\usepackage[pdftex]{graphicx}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% TITLE
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{ZNN\emph{i} -- Maximizing the Inference Throughput of 3D
+  Convolutional Networks on Multi-Core and Many-Core Shared Memory
+  Machines}
+
+\author{
+Aleksandar Zlateski$^{1}$, Kisuk Lee$^{2}$\\
+$^1$EECS Dept.\\
+$^2$BCS Dept.\\
+MIT\\ Cambridge, MA\\
+{\tt\small \{$^1$zlateski,$^2$kisuklee\}@mit.edu}
+\and
+H. Sebastian Seung\\
+Neuroscience Institute and\\
+Computer Science Dept.\\
+Princeton University\\ Princeton, NJ 08544\\
+{\tt\small sseung@princeton.edu}
+}
+
+
+
+\maketitle
+%\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% ABSTRACT
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{abstract}
+Abstract
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% INTRODUCTION
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+We care about throughput -- not latency in this case.  This is because
+we assume that we need to do inference on a large amount of data.
+
+Hence, self-tuning time and latency are negligible.  Self-tuning
+because it only has to be done once; latency because the data is huge.
+Examples -- videos, EM data, tons of images (FB?).
+
+Relate to ZNN for training as training has to be optimized for
+latency.
+
+\section{How do we do it}
+
+We reduce the number of operations per output sample by:
+\begin{enumerate}
+\item Using sliding window inference by kernel rarefication.
+\item Choosing optimal size for the output image as well as the batch
+  size.
+\item Using \emph{pruned FFTs} for computing the FFTs of the kernels.
+\end{enumerate}
+
+We improve the throughput by parallelizing the algorithm over multiple
+available cores, while using little memory overhead per running
+thread.
+
+
+\section{Pruned FFT}
+
+When computing the FFTs of the trainable kernels we need to zero-pad
+the kernels of size $k^3$ to the same size as the image the kernel is
+being convolved with ($n^3$).  Naively, we can create a new kernel of
+size $n^3$ where only $k^3$ elements are non-zero.  The forward FFT of
+the new kernel will take $C n\log n^3$ operations.  As a 3D FFT
+transform is computed by performing a series of 1D transforms, many of
+the 1D transforms will be performed on arrays with all the elements
+equal to $0$.
+
+Pruned FFTs can be computed from the same zero-padded kernel, however
+we first perform $k^2$ 1D FFTs along $x$-direction, then $k \cdot n$
+1D FFTs along $y$-direction, and finally $n^2$ FFTs along the
+$z$-direction.  The total complexity is then reduced from $3C n\log n$
+to $C n\log n[k^2 + k \cdot n + n^2]$.
+
+As the value of $k$ will typically be much lower than the value of
+$n$, the majority of the 1D FFTs will be performed in the
+$z$-direction.  When the image is stored in the row-major order (as it
+is in C and C++), most of the 1D FFTs will have the array as a
+continuous chunk of memory, thus increasing the cache hits.
+Additionally, we can easily store the image in memory such that each
+of the 1D arrays in $z$-direction is properly aligned for optimally
+leveraging the available SIMD instructions.
+
+\section{Serial}
+
+Tables for serial execution.
+
+\begin{table}
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Method    &FLOPs
+    \\ \hline
+    Direct & $b \cdot f' \cdot f \cdot n'^3 \cdot k^3$
+    \\
+    Na\"{\i}ve FFTs & $3Cn^3 \log n[bf'+bf+f' \cdot f] + 4bf' \cdot f \cdot n^3$
+    \\
+    Memoized FFTs & $3bCn^3 \log n[f'+f] + 4bf' \cdot f \cdot n^3$
+    \\
+    Pruned FFTs & $3bCn^3 \log n[f'+f] + C n\log n[k^2 + k \cdot n + n^2] \cdot f' \cdot f + 4bf' \cdot f \cdot n^3$
+    \\ \hline
+  \end{tabular}
+  \caption{Computational complexity of a fully connected convolutional
+    layer, which maps $f$ input images to $f'$ output images using
+    $ff'$ kernels. FFT complexity for an array of $n$ elements is
+    assumed to be $Cn\log n$.  Complexity is measured in number of
+    floating point operations.}
+  \label{table:conv_complexity}
+\end{table}
+
+
+\begin{table}
+  \centering
+  \begin{tabular}{llll}
+    \hline
+    Method    &Images   &Stack   &Memoized
+    \\ \hline
+    Direct & $f \cdot b \cdot n^3 + f' \cdot b \cdot n'^3$ & - & -
+    \\
+    Na\"{\i}ve FFTs & $[f + f'] \cdot b \cdot  n^3$ & $2n^3$ & -
+    \\
+    Memoized FFTs & $[f + f'] \cdot b \cdot  n^3$ & - & $f' \cdot f \cdot n^3$
+    \\
+    Pruned FFTs & $[f + f'] \cdot b \cdot  n^3$ & $k^2n + n^3$ & -
+    \\ \hline
+  \end{tabular}
+  \caption{Memory usage in number of floating point numbers. $b$ is
+    the batch size.}
+  \label{table:conv_memory}
+\end{table}
+
+
+\section{Parallel}
+
+Tables for parallel execution.  Explain the parallelization strategies
+-- they are different then ZNN training.
+
+ZNN training parallelization strategy:
+
+\begin{itemize}
+\item GOOD -- possible better parallelization on large number of cores.
+\item BAD -- MUCH more stack memory required -- limits image size
+\item BAD -- more instructions (mul to spare memory then add to the sum)
+\end{itemize}
+
+Generally, the lock-free summation might not be the best choice here.
+
+\begin{table}
+  \centering
+  \begin{tabular}{ll}
+    \hline
+    Method    &FLOPs
+    \\ \hline
+    Direct & $bf \cdot n'^3 \cdot k^3$
+    \\
+    Na\"{\i}ve FFTs & $3Cn^3 \log n[2b + f] + 4b f \cdot n^3$
+    \\
+    Memoized FFTs & $6bCn^3 \log n + 4b f \cdot n^3$
+    \\
+    Pruned FFTs & $6bCn^3 \log n + C n\log n[k^2 + k \cdot n + n^2] \cdot f + 4b f \cdot n^3$
+    \\ \hline
+  \end{tabular}
+  \caption{Computational complexity of a fully connected convolutional
+    layer, which maps $f$ input images to $f'$ output images using
+    $ff'$ kernels. FFT complexity for an array of $n$ elements is
+    assumed to be $Cn\log n$.  Complexity is measured in number of
+    floating point operations.}
+  \label{table:conv_complexity}
+\end{table}
+
+
+\begin{table}
+  \centering
+  \begin{tabular}{llll}
+    \hline
+    Method    &Images   &Stack   &Memoized
+    \\ \hline
+    Direct & $f \cdot b \cdot n^3 + f' \cdot b \cdot n'^3$ & - & -
+    \\
+    Na\"{\i}ve FFTs & $[f + f'] \cdot b \cdot  n^3$ & $T \cdot 2n^3$ & -
+    \\
+    Memoized FFTs & $[f + f'] \cdot b \cdot  n^3$ & - & $f' \cdot f \cdot n^3$
+    \\
+    Pruned FFTs & $[f + f'] \cdot b \cdot  n^3$ & $T \cdot [k^2n + n^3]$ & -
+    \\ \hline
+  \end{tabular}
+  \caption{Memory usage in number of floating point numbers. $b$ is
+    the batch size.  $T$ is the number of threads.}
+  \label{table:conv_memory}
+\end{table}
+
+\section{Sliding window inference}
+
+We describe how sliding window works.  Reference ZNN paper and other
+papers.  Explain a bit about our implementation.
+
+Also explain how sparse inference works, as we will use that on the
+GPU -- only available implementation in 3D.
+
+Explain how the FLOPs per output voxels are computed.
+
+Figures -- chars of FLOPS vs Memory for different algorithms.
+
+Note -- The tables in the previous section are correct even when
+rarefied kernels are used, the only thing that changes is the size of
+the output image that now equals $n' = n - (k-1)*r$, where $r$ is the
+sparseness of the kernel.
+
+{\small
+\bibliographystyle{ieeetr}
+\bibliography{./ref/bib}
+}
+
+\end{document}
