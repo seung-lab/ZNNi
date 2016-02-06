@@ -1,13 +1,16 @@
-function [ cost, memory, stack ] = ...
-    direct_conv_layer_cost( n, fin, fout, is, fs )
+function [ cost ] = direct_conv_layer_cost( n, fin, fout, is, fs )
 
-stack = 0;
+cost = struct;
+
+cost.memoized = 0 * is;
+
+cost.stack = 0 * is;
 os = is - fs + 1;
 
-memory = n * fin * is .* is .* is + n * fout * os .* os .* os;
-memory = memory + fs .* fs .* fs * fin * fout;
+cost.memory = n * fin * is .* is .* is + n * fout * os .* os .* os;
+cost.memory = cost.memory + fs .* fs .* fs * fin * fout;
 
-cost = n * fin * fout * os .* os .* os .* fs .* fs .*fs * 2;
+cost.cost = n * fin * fout * os .* os .* os .* fs .* fs .*fs * 2;
 
 end
 

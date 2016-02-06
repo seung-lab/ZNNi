@@ -1,16 +1,15 @@
 function [ fov, bs ] = get_fov( net )
 
-if numel(net) == 1
-    fov = abs(net(1));
-    bs  = 1;
-else
-    [rest, rbs] = get_fov(net(2:numel(net)));
-    if ( net(1) > 0 )
-        fov = rest + net(1) - 1;
-        bs = rbs;
+bs  = 1;
+fov = 1;
+
+if isstruct(net)
+    [fov, bs] = get_fov(net.next);
+    if net.filter > 0
+        fov = fov + net.filter - 1;
     else
-        fov = rest * abs(net(1));
-        bs = rbs * net(1);
+        fov = fov * abs(net.filter);
+        bs = bs * abs(net.filter);
     end
 end
 
