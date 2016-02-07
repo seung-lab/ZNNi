@@ -4,6 +4,7 @@
 
 #include "malloc.hpp"
 #include <vector>
+#include <thread>
 #include <algorithm>
 #include <utility>
 #include <functional>
@@ -58,7 +59,8 @@ private:
     }
 
 public:
-    task_package( std::size_t n, std::size_t t = 8 )
+    task_package( std::size_t n,
+                  std::size_t t = std::thread::hardware_concurrency() )
         : tasks_(n)
         , size_(0)
         , running_threads_(0)

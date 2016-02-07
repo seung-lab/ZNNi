@@ -62,7 +62,7 @@ public:
         , partial_size_(fout%fout_chunk)
     {
         vec3i os = is - fs + vec3i::one;
-        out_stride_    = os[0] * os[1] * us[2] * fout_chunk;
+        out_stride_    = os[0] * os[1] * os[2] * fout_chunk;
         kernel_stride_ = fs[0] * fs[1] * fs[2] * fin * fout_chunk;
         bias_stride_   = fout_chunk;
 

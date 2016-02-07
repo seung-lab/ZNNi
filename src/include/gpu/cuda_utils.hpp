@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cudnn.h>
+#include <cufft.h>
 #include <sstream>
 #include <iostream>
 #include <cstddef>
@@ -192,3 +193,54 @@ inline void print_free_memory()
 #define DEBUG_DESCRIPTOR( descriptor )                  \
     std::cout << "Descriptor: " << #descriptor << "\n"; \
     print_descriptor(descriptor)
+
+
+static const char *_cufftGetErrorEnum(cufftResult error)
+{
+    switch (error)
+    {
+        case CUFFT_SUCCESS:
+            return "CUFFT_SUCCESS";
+
+        case CUFFT_INVALID_PLAN:
+            return "CUFFT_INVALID_PLAN";
+
+        case CUFFT_ALLOC_FAILED:
+            return "CUFFT_ALLOC_FAILED";
+
+        case CUFFT_INVALID_TYPE:
+            return "CUFFT_INVALID_TYPE";
+
+        case CUFFT_INVALID_VALUE:
+            return "CUFFT_INVALID_VALUE";
+
+        case CUFFT_INTERNAL_ERROR:
+            return "CUFFT_INTERNAL_ERROR";
+
+        case CUFFT_EXEC_FAILED:
+            return "CUFFT_EXEC_FAILED";
+
+        case CUFFT_SETUP_FAILED:
+            return "CUFFT_SETUP_FAILED";
+
+        case CUFFT_INVALID_SIZE:
+            return "CUFFT_INVALID_SIZE";
+
+        case CUFFT_UNALIGNED_DATA:
+            return "CUFFT_UNALIGNED_DATA";
+    }
+
+    return "<unknown>";
+}
+
+#define checkCUFFT(status)                                              \
+    {                                                                   \
+        std::stringstream _error;                                       \
+        if (status != CUFFT_SUCCESS)                                    \
+        {                                                               \
+            _error << "Line: " << __LINE__ << "\n";                     \
+            _error << "CUDNN failure\nError: ";                         \
+            _error << _cufftGetErrorEnum(status);                       \
+            FATAL_ERROR(_error.str());                                  \
+        }                                                               \
+    }

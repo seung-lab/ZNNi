@@ -1,10 +1,8 @@
 function [ r ] = append_cost( a, b )
 
-r = struct;
-r.memory = max(a.memory, b.memory);
-r.cost   = a.cost + b.cost;
-r.stack  = max(a.stack, b.stack);
-r.memoized = a.memoized + b.memoized;
+    r = struct( 'flops' , a.flops + b.flops, ...
+                'memory', max(a.memory, b.memory), ...
+                'stack' , max(a.stack, b.stack), ...
+                'stored', a.stored + b.stored);
 
 end
-
