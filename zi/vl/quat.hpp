@@ -365,6 +365,7 @@ public:
     {
         d[ 0 ] = d[ 1 ] = d[ 2 ] = static_cast< T >( 0 );
         d[ 3 ] = rhs;
+        return *this;
     }
 
     void fill( const T& val )

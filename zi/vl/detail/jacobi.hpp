@@ -179,7 +179,7 @@ public:
             std::size_t rowi = heap_.top().row();
             std::size_t coli = heap_.top().column();
 
-            if ( rowi < 0 || rowi >= N || coli < 0 || coli >= N )
+            if ( rowi <= 0 || rowi >= N || coli <= 0 || coli >= N )
                  return ;
 
             T y = 0.5 * ( e.at( coli ) - e.at( rowi ) );

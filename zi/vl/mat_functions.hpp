@@ -330,7 +330,7 @@ pow( const mat< T, N >& m, typename detail::promote< T >::type )
         x_to_n *= x;
     }
 
-    return x;
+    //return x;
 
 }
 
