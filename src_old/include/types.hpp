@@ -7,6 +7,7 @@
 #include <memory>
 #include <functional>
 #include <zi/vl/vl.hpp>
+//#include <boost/multi_array.hpp>
 
 #include <map>
 #include <list>
@@ -37,6 +38,19 @@ typedef std::size_t size_t;
 typedef std::lock_guard<std::mutex> guard;
 
 typedef int64_t long_t;
+
+
+template<typename T>
+T* byte_offset( void* p, size_t b )
+{
+    return reinterpret_cast<T*>(reinterpret_cast<char*>(p)+b);
+}
+
+template<typename T>
+T* element_offset( void* p, size_t b )
+{
+    return reinterpret_cast<T*>(p)+b;
+}
 
 
 }} // namespace znn::fwd

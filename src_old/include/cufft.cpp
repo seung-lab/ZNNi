@@ -1,10 +1,75 @@
 #include <cufft.h>
 #include <fftw3.h>
+#include <cublas_v2.h>
 #include "gpu/gpu2d.hpp"
 #include "gpu/gpu3d.hpp"
 #include "descriptor2.hpp"
+#include <boost/multi_array.hpp>
 
 using namespace znn::fwd;
+
+
+void gemv(cublasHandle_t cublasHandle, int m, int n, float alpha,
+          const float *A, const float *x,
+          float beta, float *y)
+{
+#ifdef DISABLE_GEMV
+    checkCublasErrors( cublasSgemm (cublasHandle,
+                      CUBLAS_OP_N,
+                      CUBLAS_OP_N,
+                      n,
+                      1,
+                      m,
+                      &alpha,
+                      A,
+                      m,
+                      x,
+                      m,
+                      &beta,
+                      y,
+                      m) );
+#else
+    checkCublasErrors( cublasSgemv(cublasHandle, CUBLAS_OP_N,
+                                  m, n,
+                                  &alpha,
+                                  A, m,
+                                  x, 1,
+                                  &beta,
+                                  y, 1) );
+#endif
+};
+
+
+template<typename T>
+inline void examine(T* p, size_t len, size_t len2)
+{
+    T x[len*len2];
+
+    cudaMemcpy( x, p, len*len2 * sizeof(T), cudaMemcpyDeviceToHost);
+
+    for ( size_t i  = 0; i < len*len2; ++i )
+    {
+        if ( i % len == 0 )
+            std::cout << "\n";
+        std::cout << x[i] << ' ';
+    }
+
+    std::cout << "\n\n";
+}
+
+template<typename T>
+inline void examineh(T* p, size_t len, size_t len2)
+{
+    for ( size_t i  = 0; i < len*len2; ++i )
+    {
+        if ( i % len == 0 )
+            std::cout << "\n";
+        std::cout << p[i] << ' ';
+    }
+
+    std::cout << "\n\n";
+}
+
 
 int main()
 {
@@ -25,7 +90,37 @@ int main()
 
     std::cout << "Memory: " << globalMem << std::endl;
 
+    cublasHandle_t cublasHandle;
+    cublasCreate(&cublasHandle);
+
+    boost::multi_array<float, 2> mat(boost::extents[5][6]);
+    for ( int i = 0; i < 5*6; ++i ) mat.data()[i] = i;
+
+    examineh(mat.data(), 5, 6);
+
+    boost::multi_array<float, 2> vec(boost::extents[1][6]);
+    for ( int i = 0; i < 6; ++i ) vec.data()[i] = 1;
+
+    examineh(vec.data(), 1, 6);
+
+    float* matd; cudaMalloc(&matd, 30*sizeof(float));
+    float* vecd; cudaMalloc(&vecd, 6*sizeof(float));
+    float* res; cudaMalloc(&res, 5*sizeof(float));
+
+    cudaMemcpy(matd, mat.data(), 30*sizeof(float), cudaMemcpyHostToDevice);
+    cudaMemcpy(vecd, vec.data(), 6*sizeof(float), cudaMemcpyHostToDevice);
+
+    examine(matd, 5, 6);
+    examine(vecd, 1, 6);
+
+
+    gemv(cublasHandle, 5, 6, 1, matd, vecd, 0, res);
+
+    examine(res, 1, 5);
+
     cudaDeviceReset();
+
+    return 0;
 
 
 #define NX 34
