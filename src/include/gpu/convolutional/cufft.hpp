@@ -2,12 +2,15 @@
 
 #include <cudnn.h>
 #include <cublas_v2.h>
+#include "../handle.hpp"
 #include "../utils.hpp"
 #include "../memory.hpp"
+#include "../device_layer.hpp"
 #include "../../types.hpp"
 #include "../../assert.hpp"
 #include "../../layer.hpp"
 #include "cufft/utils.hpp"
+#include "cufft/transformer.hpp"
 
 namespace znn { namespace fwd { namespace gpu {
 
@@ -25,22 +28,23 @@ namespace znn { namespace fwd { namespace gpu {
 //     std::cout << "\n\n";
 // }
 
-class cufft_convolutional_layer: public convolutional_layer_base
+class cufft_convolutional_layer
+    : public convolutional_layer_base
+    , public device_layer
 {
 private:
-    cudnnHandle_t& handle_;
-    cublasHandle_t cublas_handle_;
+    handle_t& handle_;
 
     device_array<float> kernels  ;
     device_array<float> biases   ;
 
     cudnnTensorDescriptor_t   out_desc, bias_desc;
 
-    cufftHandle full_fwd_plan;
-    cufftHandle full_bwd_plan;
-    cufftHandle single_fwd_plan;
+    std::unique_ptr<cufft_forward_transformer>  input_transformer;
+    std::unique_ptr<cufft_forward_transformer>  kernel_transformer;
+    std::unique_ptr<cufft_backward_transformer> output_transformer;
 
-    size_t workspace_size_ = 0;
+    //size_t workspace_size_ = 0;
 
     vec3i cs;
 
@@ -51,21 +55,20 @@ private:
                const float *A, const float *x,
                float beta, float *y ) const
     {
-        checkCublasErrors( cublasSgemv(cublas_handle_, CUBLAS_OP_N, m, n,
+        checkCublasErrors( cublasSgemv(handle_.cublas_handle, CUBLAS_OP_N, m, n,
                                        &alpha, A, m, x, 1, &beta, y, 1) );
     }
 
 public:
-    device_array<float> forward( device_array<float> in )
+    device_array<float> forward( device_array<float> in ) const override
     {
         long_t transform_elements = cs[0] * cs[1] * cs[2];
-        long_t transform_bytes = transform_elements * sizeof(cuComplex);
 
         // Transform all the inputs
         auto in_t = get_device_array<cuComplex>
             (transform_elements * batch_size * num_inputs);
 
-        checkCUFFT( cufftExecR2C(full_fwd_plan, in.get(), in_t.get()) );
+        input_transformer->forward(in.get(), in_t.get());
 
         // We don't need the inputs anymore - save GPU memory
         in.reset();
@@ -103,10 +106,8 @@ public:
                                    reinterpret_cast<float*>(scratch1.get()) );
 
                 // fft of the kernels
-                checkCUFFT( cufftExecR2C(single_fwd_plan,
-                                         reinterpret_cast<float*>
-                                         (scratch1.get()),
-                                         scratch2.get()) );
+                kernel_transformer->forward
+                    (reinterpret_cast<float*>(scratch1.get()),scratch2.get());
 
 
                 // Use the FFT(kernels for all the batches)
@@ -142,7 +143,7 @@ public:
         auto padded_out = get_device_array<float>
             ( batch_size * num_outputs * in_image_len );
 
-        checkCUFFT( cufftExecC2R( full_bwd_plan, out_t.get(), padded_out.get()));
+        output_transformer->backward(out_t.get(), padded_out.get());
 
         // free some memory
 
@@ -165,7 +166,7 @@ public:
         float alpha = 1; float beta = 1;
 
         checkCUDNN(
-            cudnnAddTensor( handle_,
+            cudnnAddTensor( handle_.cudnn_handle,
                             &alpha,
                             bias_desc, biases.get(),
                             &beta,
@@ -184,15 +185,8 @@ public:
 
     ~cufft_convolutional_layer()
     {
-        checkCublasErrors( cublasDestroy(cublas_handle_) );
-
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc) );
         checkCUDNN( cudnnDestroyTensorDescriptor(bias_desc) );
-
-        cufftDestroy(full_fwd_plan);
-        cufftDestroy(full_bwd_plan);
-        cufftDestroy(single_fwd_plan);
-
         checkCudaErrors( cudaFree( ones ));
     }
 
@@ -211,12 +205,12 @@ private:
     }
 
 public:
-    cufft_convolutional_layer( cudnnHandle_t& cudnn_handle,
+    cufft_convolutional_layer( handle_t& handle,
                                long_t n, long_t fin, long_t fout,
                                vec3i const & is, vec3i const & ks,
                                float* km = nullptr, float* bs = nullptr )
         : convolutional_layer_base(n,fin,fout,is,ks)
-        , handle_(cudnn_handle)
+        , handle_(handle)
         , kernels(get_device_array<float>(kernels_len))
         , biases(get_device_array<float>(fout))
     {
@@ -229,8 +223,6 @@ public:
                                          cudaMemcpyHostToDevice ) );
             delete onesh;
         }
-
-        checkCublasErrors( cublasCreate(&cublas_handle_) );
 
         if ( km )
         {
@@ -249,32 +241,14 @@ public:
         cs = is;
         cs[2] /= 2; cs[2] += 1;
 
-        // fft plans
-        {
-            int dims[3] = { static_cast<int>(is[0]),
-                            static_cast<int>(is[1]),
-                            static_cast<int>(is[2]) };
+        input_transformer = std::unique_ptr<cufft_forward_transformer>
+            ( new cufft_forward_transformer(is,fin*n));
 
-            int howmany = static_cast<int>(fin*fout*n);
-            int rdist   = static_cast<int>(is[0]*is[1]*is[2]);
-            int cdist   = static_cast<int>(is[0]*is[1]*(is[2]/2+1));
+        kernel_transformer = std::unique_ptr<cufft_forward_transformer>
+            ( new cufft_forward_transformer(is,fin));
 
-            checkCUFFT( cufftPlanMany(&full_fwd_plan, 3, dims, NULL, 0,
-                                      rdist, NULL, 0,
-                                      cdist, CUFFT_R2C,
-                                      static_cast<int>(fin*n)) );
-
-            checkCUFFT( cufftPlanMany(&full_bwd_plan, 3, dims, NULL, 0,
-                                      cdist, NULL, 0,
-                                      rdist, CUFFT_C2R,
-                                      static_cast<int>(fout*n)) );
-
-            checkCUFFT( cufftPlanMany(&single_fwd_plan, 3, dims, NULL, 0,
-                                      rdist, NULL, 0,
-                                      cdist, CUFFT_R2C,
-                                      static_cast<int>(fin)) );
-
-        }
+        output_transformer = std::unique_ptr<cufft_backward_transformer>
+            ( new cufft_backward_transformer(is,fout*n));
     }
 };
 

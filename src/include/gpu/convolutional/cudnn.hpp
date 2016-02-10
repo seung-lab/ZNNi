@@ -2,7 +2,9 @@
 
 #include <cudnn.h>
 #include "../utils.hpp"
+#include "../handle.hpp"
 #include "../memory.hpp"
+#include "../device_layer.hpp"
 #include "../../types.hpp"
 #include "../../assert.hpp"
 #include "../../layer.hpp"
@@ -10,10 +12,12 @@
 namespace znn { namespace fwd { namespace gpu {
 
 
-class cudnn_convolutional_layer: public convolutional_layer_base
+class cudnn_convolutional_layer
+    : public convolutional_layer_base
+    , public device_layer
 {
 private:
-    cudnnHandle_t& handle_;
+    handle_t& handle_;
 
     device_array<float> kernels  ;
     device_array<float> biases   ;
@@ -26,7 +30,7 @@ private:
 
 
 public:
-    device_array<float> forward( device_array<float> in )
+    device_array<float> forward( device_array<float> in ) const override
     {
         auto out = get_device_array<float>(total_output_len);
 
@@ -41,7 +45,7 @@ public:
 
         checkCUDNN(
             cudnnConvolutionForward(
-                handle_,
+                handle_.cudnn_handle,
                 &alpha,
                 in_desc, in.get(),
                 kernel_desc, kernels.get(),
@@ -63,7 +67,7 @@ public:
         beta = 1;
 
         checkCUDNN(
-            cudnnAddTensor( handle_,
+            cudnnAddTensor( handle_.cudnn_handle,
                             &alpha,
                             bias_desc, biases.get(),
                             &beta,
@@ -107,12 +111,12 @@ private:
     }
 
 public:
-    cudnn_convolutional_layer( cudnnHandle_t& cudnn_handle,
+    cudnn_convolutional_layer( handle_t& handle,
                                long_t n, long_t fin, long_t fout,
                                vec3i const & is, vec3i const & ks,
                                float* km = nullptr, float* bs = nullptr )
         : convolutional_layer_base(n,fin,fout,is,ks)
-        , handle_(cudnn_handle)
+        , handle_(handle)
         , kernels(get_device_array<float>(kernels_len))
         , biases(get_device_array<float>(fout))
     {
@@ -164,7 +168,7 @@ public:
             size_t what_size;
             checkCUDNN(
                 cudnnGetConvolutionForwardWorkspaceSize(
-                    cudnn_handle,
+                    handle.cudnn_handle,
                     in_desc,
                     kernel_desc,
                     conv_desc,

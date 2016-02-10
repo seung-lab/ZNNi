@@ -2,6 +2,7 @@
 
 #include <cudnn.h>
 #include <cufft.h>
+#include <cublas_v2.h>
 #include <sstream>
 #include <iostream>
 #include <cstddef>

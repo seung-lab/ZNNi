@@ -6,6 +6,7 @@
 #include "../../assert.hpp"
 #include "../../memory.hpp"
 #include "../../layer.hpp"
+#include "../host_layer.hpp"
 #include "../utils/task_package.hpp"
 
 namespace znn { namespace fwd { namespace cpu {

@@ -6,13 +6,6 @@
 
 namespace znn { namespace fwd {
 
-class host_layer
-{
-public:
-    virtual ~host_layer() {}
-    virtual host_array<real> forward( host_array<real> ) const = 0;
-};
-
 class convolutional_layer_base
 {
 public:

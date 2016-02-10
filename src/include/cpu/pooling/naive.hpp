@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../layer.hpp"
+#include "../host_layer.hpp"
 #include <boost/multi_array.hpp>
 
 #include <limits>

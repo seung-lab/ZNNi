@@ -4,6 +4,7 @@
 #include "../../assert.hpp"
 #include "../../memory.hpp"
 #include "../../layer.hpp"
+#include "../host_layer.hpp"
 #include "../utils/task_package.hpp"
 #include "conv/convolver.hpp"
 #include "base.hpp"

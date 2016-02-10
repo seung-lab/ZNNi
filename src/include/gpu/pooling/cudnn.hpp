@@ -1,25 +1,29 @@
 #pragma once
 
 #include <cudnn.h>
+#include "../handle.hpp"
 #include "../utils.hpp"
 #include "../memory.hpp"
+#include "../device_layer.hpp"
 #include "../../types.hpp"
 #include "../../assert.hpp"
 #include "../../layer.hpp"
 
 namespace znn { namespace fwd { namespace gpu {
 
-class cudnn_pooling_layer: public pooling_layer_base
+class cudnn_pooling_layer
+    : public pooling_layer_base
+    , public device_layer
 {
 private:
-    cudnnHandle_t&           handle_  ;
+    handle_t&           handle_  ;
     cudnnTensorDescriptor_t  in_desc_ ;
     cudnnTensorDescriptor_t  out_desc_;
 
     cudnnPoolingDescriptor_t pooling_desc_;
 
 public:
-    device_array<float> forward( device_array<float> in ) const
+    device_array<float> forward( device_array<float> in ) const override
     {
         auto out = get_device_array<float>(total_output_len);
 
@@ -37,7 +41,7 @@ public:
                 for ( long_t z = 0; z < window_size[2]; ++z )
                 {
                     checkCUDNN( cudnnPoolingForward(
-                                    handle_,
+                                    handle_.cudnn_handle,
                                     pooling_desc_,
                                     &alpha, in_desc_,
                                     in.get() + x*is[1]*is[2] + y*is[2] + z,
@@ -56,7 +60,7 @@ public:
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc_) );
     }
 
-    cudnn_pooling_layer( cudnnHandle_t & handle,
+    cudnn_pooling_layer( handle_t & handle,
                          long_t n, long_t c,
                          vec3i const & is,
                          vec3i const & ws )
