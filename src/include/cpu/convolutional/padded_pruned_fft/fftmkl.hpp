@@ -12,6 +12,7 @@
 #include "../../../assert.hpp"
 #include "../../../types.hpp"
 #include "../../../memory.hpp"
+#include "../../utils/task_package.hpp"
 #include "base.hpp"
 
 namespace znn { namespace fwd { namespace cpu {
@@ -37,6 +38,7 @@ private:
     fft_plan kfwd1;
     fft_plan bwd1;
     fft_plan t2, t3;
+    fft_plan pt3;
 
 public:
     ~padded_pruned_fft_transformer()
@@ -46,6 +48,7 @@ public:
         DftiFreeDescriptor(&bwd1);
         DftiFreeDescriptor(&t2);
         DftiFreeDescriptor(&t3);
+        DftiFreeDescriptor(&pt3);
     }
 
     padded_pruned_fft_transformer( vec3i const & _im,
@@ -148,6 +151,20 @@ public:
             status = DftiSetValue( t3, DFTI_OUTPUT_DISTANCE, csize[2] );
 
             status = DftiCommitDescriptor(t3);
+
+            status = DftiCreateDescriptor( &pt3, ZNN_DFTI_TYPE,
+                                           DFTI_COMPLEX, 1, csize[2] );
+
+            status = DftiSetValue( pt3, DFTI_COMPLEX_STORAGE, DFTI_COMPLEX_COMPLEX );
+            status = DftiSetValue( pt3, DFTI_PLACEMENT, DFTI_INPLACE );
+            status = DftiSetValue( pt3, DFTI_NUMBER_OF_TRANSFORMS, csize[1] );
+            status = DftiSetValue( pt3, DFTI_INPUT_STRIDES, strides );
+            status = DftiSetValue( pt3, DFTI_OUTPUT_STRIDES, strides );
+            status = DftiSetValue( pt3, DFTI_INPUT_DISTANCE, csize[2] );
+            status = DftiSetValue( pt3, DFTI_OUTPUT_DISTANCE, csize[2] );
+
+            status = DftiCommitDescriptor(pt3);
+
         }
     }
 
@@ -229,6 +246,148 @@ public:
                                           rp + rsize[2] * i );
         }
     }
+
+
+    void parallel_forward_kernel( task_package & handle, real* rp, void* cpv )
+    {
+        real* cp = reinterpret_cast<real*>(cpv);
+        std::memset(cp, 0, csize[0]*csize[1]*csize[2]*sizeof(real)*2);
+
+        // Out-of-place real to complex along x-direction
+        for ( long_t i = 0; i < ksize[1]; ++i )
+        {
+            handle.add_task( [rp, cp, i, this](void*) {
+                    MKL_LONG status
+                        = DftiComputeForward(this->kfwd1,
+                                             rp + this->ksize[2] * i,
+                                             cp + this->csize[2] * i * 2 );
+                });
+        }
+
+        handle.execute();
+
+
+        // In-place complex to complex along y-direction
+        for ( long_t i = 0; i < ksize[2]; ++i )
+        {
+            handle.add_task( [cp, i, this](void*) {
+                    MKL_LONG status
+                        = DftiComputeForward( this->t2,
+                                              cp + i * 2,
+                                              cp + i * 2 );
+                });
+        }
+
+        handle.execute();
+
+        // In-place complex to complex along z-direction
+        for ( long_t i = 0; i < csize[0]; ++i )
+        {
+            handle.add_task( [cp, i, this](void*) {
+                    MKL_INT status
+                        = DftiComputeForward( this->t3,
+                                              cp + i * this->csize[2]*this->csize[1],
+                                              cp + i * this->csize[2]*this->csize[1] );
+                });
+        }
+
+        handle.execute();
+    }
+
+    void parallel_forward_image( task_package & handle, real* rp, void* cpv )
+    {
+        real* cp = reinterpret_cast<real*>(cpv);
+        std::memset(cp, 0, csize[0]*csize[1]*csize[2]*sizeof(real)*2);
+
+        // Out-of-place real to complex along x-direction
+        for ( long_t i = 0; i < isize[1]; ++i )
+        {
+            handle.add_task( [rp, cp, i, this](void*) {
+                    MKL_LONG status
+                        = DftiComputeForward(this->ifwd1,
+                                             rp + this->isize[2] * i,
+                                             cp + this->csize[2] * i * 2 );
+                });
+        }
+
+        handle.execute();
+
+        // In-place complex to complex along y-direction
+        for ( long_t i = 0; i < isize[2]; ++i )
+        {
+            handle.add_task( [cp, i, this](void*) {
+                    MKL_LONG status
+                        = DftiComputeForward( this->t2,
+                                              cp + i * 2,
+                                              cp + i * 2 );
+                });
+        }
+
+        handle.execute();
+
+        // In-place complex to complex along z-direction
+        for ( long_t i = 0; i < csize[0]; ++i )
+        {
+            handle.add_task( [cp, i, this](void*) {
+                    MKL_INT status
+                        = DftiComputeForward( this->t3,
+                                              cp + i * this->csize[2]*this->csize[1],
+                                              cp + i * this->csize[2]*this->csize[1] );
+                });
+        }
+
+        handle.execute();
+    }
+
+    void parallel_backward( task_package & handle, void* cpv, real* rp )
+    {
+        real* cp = reinterpret_cast<real*>(cpv);
+
+        // In-place complex to complex along z-direction
+        for ( long_t i = 0; i < csize[0]; ++i )
+        {
+            handle.add_task( [cp, i, this](void*) {
+                    MKL_LONG status =
+                        DftiComputeBackward( this->t3,
+                                             cp + i * this->csize[2]*this->csize[1],
+                                             cp + i * this->csize[2]*this->csize[1] );
+                });
+        }
+
+        handle.execute();
+
+        // In-place complex to complex along y-direction
+        // Care only about last rsize[2]
+        long_t zOff = ksize[2] - 1;
+        for ( long_t i = 0; i < rsize[2]; ++i )
+        {
+            handle.add_task( [zOff, cp, i, this](void*) {
+                    MKL_LONG status
+                        = DftiComputeBackward( this->t2,
+                                               cp + (i + zOff) * 2,
+                                               cp + (i + zOff) * 2 );
+                });
+        }
+
+        handle.execute();
+
+        // Out-of-place complex to real along x-direction
+        // Care only about last rsize[1] and rsize[2]
+        long_t yOff = ksize[1] - 1;
+        for ( long_t i = 0; i < rsize[1]; ++i )
+        {
+            handle.add_task( [zOff, yOff, rp, cp, i, this](void*) {
+                    MKL_LONG status
+                        = DftiComputeBackward( this->bwd1,
+                                               cp + (this->csize[2] * ( i + yOff ) + zOff) * 2,
+                                               rp + this->rsize[2] * i );
+                });
+        }
+
+        handle.execute();
+
+    }
+
 };
 
 }}} // namespace znn::fwd::cpu

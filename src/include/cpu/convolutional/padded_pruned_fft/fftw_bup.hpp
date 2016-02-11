@@ -16,7 +16,6 @@
 #include "../../../assert.hpp"
 #include "../../../types.hpp"
 #include "../../../memory.hpp"
-#include "../../utils/task_package.hpp"
 #include "base.hpp"
 
 #ifndef ZNN_FFTW_PLANNING_MODE
@@ -90,9 +89,6 @@ private:
 
     fft_plan bwd1, bwd2, bwd3;
 
-    // for parallel execution
-    fft_plan pbwd1, pfwd3;
-
 public:
     ~padded_pruned_fft_transformer()
     {
@@ -103,8 +99,6 @@ public:
         FFT_DESTROY_PLAN(bwd1);
         FFT_DESTROY_PLAN(bwd2);
         FFT_DESTROY_PLAN(bwd3);
-        FFT_DESTROY_PLAN(pbwd1);
-        FFT_DESTROY_PLAN(pfwd3);
     }
 
     padded_pruned_fft_transformer( vec3i const & _im,
@@ -200,20 +194,6 @@ public:
                                       cp.get(), NULL, stride, dist,
                                       FFTW_BACKWARD, ZNN_FFTW_PLANNING_MODE );
 
-            // each thread does it along y direction
-            // separate threads for separate x coordinate
-
-            howmany = static_cast<int>(csize[1]);
-
-            pfwd3 = FFT_PLAN_MANY_DFT( 1, n, howmany,
-                                       cp.get(), NULL, stride, dist,
-                                       cp.get(), NULL, stride, dist,
-                                       FFTW_FORWARD, ZNN_FFTW_PLANNING_MODE );
-
-            pbwd1 = FFT_PLAN_MANY_DFT( 1, n, howmany,
-                                       cp.get(), NULL, stride, dist,
-                                       cp.get(), NULL, stride, dist,
-                                       FFTW_BACKWARD, ZNN_FFTW_PLANNING_MODE );
         }
 
     }
@@ -237,13 +217,6 @@ public:
 
         // In-place complex to complex along z-direction
         FFT_EXECUTE_DFT( fwd3, cp, cp );
-        // for ( long_t i = 0; i < csize[0]; ++i )
-        // {
-        //     FFT_EXECUTE_DFT( pfwd3,
-        //                      cp + i * csize[2]*csize[1],
-        //                      cp + i * csize[2]*csize[1] );
-
-        // }
     }
 
     void forward_image( real* rp, void* cpv )
@@ -265,14 +238,6 @@ public:
 
         // In-place complex to complex along z-direction
         FFT_EXECUTE_DFT( fwd3, cp, cp );
-        // for ( long_t i = 0; i < csize[0]; ++i )
-        // {
-        //     FFT_EXECUTE_DFT( pfwd3,
-        //                      cp + i * csize[2]*csize[1],
-        //                      cp + i * csize[2]*csize[1] );
-
-        // }
-
     }
 
     void backward( void* cpv, real* rp )
@@ -280,14 +245,6 @@ public:
         fft_complex* cp = reinterpret_cast<fft_complex*>(cpv);
         // In-place complex to complex along z-direction
         FFT_EXECUTE_DFT( bwd1, cp, cp );
-        // for ( long_t i = 0; i < csize[0]; ++i )
-        // {
-        //     FFT_EXECUTE_DFT( pbwd1,
-        //                      cp + i * csize[2]*csize[1],
-        //                      cp + i * csize[2]*csize[1] );
-
-        // }
-
 
         // In-place complex to complex along y-direction
         // Care only about last rsize[2]
@@ -307,132 +264,6 @@ public:
                                  rp + rsize[2] * i );
         }
     }
-
-    void parallel_forward_kernel( task_package & handle, real* rp, void* cpv )
-    {
-        fft_complex* cp = reinterpret_cast<fft_complex*>(cpv);
-        std::memset(cp, 0, csize[0]*csize[1]*csize[2]*sizeof(fft_complex));
-
-        // Out-of-place real to complex along x-direction
-        for ( long_t i = 0; i < ksize[1]; ++i )
-        {
-            handle.add_task( [rp, cp, i, this](void*) {
-                    FFT_EXECUTE_DFT_R2C( this->kfwd1,
-                                         rp + this->ksize[2] * i,
-                                         cp + this->csize[2] * i );
-                });
-        }
-
-        handle.execute();
-
-        // In-place complex to complex along y-direction
-        for ( long_t i = 0; i < ksize[2]; ++i )
-        {
-            handle.add_task( [cp, i, this](void*) {
-                    FFT_EXECUTE_DFT( this->fwd2, cp + i, cp + i );
-                });
-        }
-
-        handle.execute();
-
-        // In-place complex to complex along z-direction
-        for ( long_t i = 0; i < csize[0]; ++i )
-        {
-            handle.add_task( [cp, i, this](void*) {
-                    FFT_EXECUTE_DFT( this->pfwd3,
-                                     cp + i * this->csize[2]*this->csize[1],
-                                     cp + i * this->csize[2]*this->csize[1] );
-                });
-
-        }
-
-        handle.execute();
-
-    }
-
-    void parallel_forward_image( task_package & handle, real* rp, void* cpv )
-    {
-        fft_complex* cp = reinterpret_cast<fft_complex*>(cpv);
-        std::memset(cp, 0, csize[0]*csize[1]*csize[2]*sizeof(fft_complex));
-
-        // Out-of-place real to complex along x-direction
-        for ( long_t i = 0; i < isize[1]; ++i )
-        {
-            handle.add_task( [rp, cp, i, this](void*) {
-                    FFT_EXECUTE_DFT_R2C( this->ifwd1,
-                                         rp + this->isize[2] * i,
-                                         cp + this->csize[2] * i );
-                });
-        }
-
-        handle.execute();
-
-        // In-place complex to complex along y-direction
-        for ( long_t i = 0; i < isize[2]; ++i )
-        {
-            handle.add_task( [cp, i, this](void*) {
-                    FFT_EXECUTE_DFT( this->fwd2, cp + i, cp + i );
-                });
-        }
-
-        handle.execute();
-
-        // In-place complex to complex along z-direction
-        for ( long_t i = 0; i < csize[0]; ++i )
-        {
-            handle.add_task( [cp, i, this](void*) {
-                    FFT_EXECUTE_DFT( this->pfwd3,
-                                     cp + i * this->csize[2]*this->csize[1],
-                                     cp + i * this->csize[2]*this->csize[1] );
-                });
-
-        }
-
-        handle.execute();
-    }
-
-    void parallel_backward( task_package & handle, void* cpv, real* rp )
-    {
-        fft_complex* cp = reinterpret_cast<fft_complex*>(cpv);
-        // In-place complex to complex along z-direction
-        for ( long_t i = 0; i < csize[0]; ++i )
-        {
-            handle.add_task( [cp, i, this](void*) {
-                    FFT_EXECUTE_DFT( this->pbwd1,
-                                     cp + i * this->csize[2]*this->csize[1],
-                                     cp + i * this->csize[2]*this->csize[1] );
-                });
-        }
-
-        handle.execute();
-
-        // In-place complex to complex along y-direction
-        // Care only about last rsize[2]
-        long_t zOff = ksize[2] - 1;
-        for ( long_t i = 0; i < rsize[2]; ++i )
-        {
-            handle.add_task( [zOff, cp, i, this](void*) {
-                    FFT_EXECUTE_DFT( this->bwd2, cp + i + zOff, cp + i + zOff );
-                });
-        }
-
-        handle.execute();
-
-        // Out-of-place complex to real along x-direction
-        // Care only about last rsize[1] and rsize[2]
-        long_t yOff = ksize[1] - 1;
-        for ( long_t i = 0; i < rsize[1]; ++i )
-        {
-            handle.add_task( [zOff, yOff, rp, cp, i, this](void*) {
-                    FFT_EXECUTE_DFT_C2R( this->bwd3,
-                                         cp + this->csize[2] * ( i + yOff ) + zOff,
-                                         rp + this->rsize[2] * i );
-                });
-        }
-
-        handle.execute();
-    }
-
 
 };
 
