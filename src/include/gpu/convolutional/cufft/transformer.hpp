@@ -83,18 +83,19 @@ public:
 
         if ( num_full > 1 )
         {
+            float* oin = in;
+
             in  += full_in_stride;
             out += full_out_stride;
 
-            auto in_mem  = get_device_array<float>(full_in_stride);
             auto out_mem = get_device_array<cuComplex>(full_out_stride);
 
             for ( long_t i = 1; i < num_full; ++i )
             {
-                cudaMemcpy(in_mem.get(), in, full_in_stride*sizeof(float),
+                cudaMemcpy(oin, in, full_in_stride*sizeof(float),
                            cudaMemcpyDeviceToDevice);
 
-                checkCUFFT(cufftExecR2C(full_handle,in_mem.get(),out_mem.get()));
+                checkCUFFT(cufftExecR2C(full_handle,oin,out_mem.get()));
 
                 cudaMemcpy(out, out_mem.get(), full_out_stride*sizeof(cuComplex),
                            cudaMemcpyDeviceToDevice);
@@ -105,10 +106,10 @@ public:
 
             if ( has_partial )
             {
-                cudaMemcpy(in_mem.get(), in, partial_in_stride*sizeof(float),
+                cudaMemcpy(oin, in, partial_in_stride*sizeof(float),
                            cudaMemcpyDeviceToDevice);
 
-                checkCUFFT(cufftExecR2C(partial_handle,in_mem.get(),out_mem.get()));
+                checkCUFFT(cufftExecR2C(partial_handle,oin,out_mem.get()));
 
                 cudaMemcpy(out, out_mem.get(), partial_out_stride*sizeof(cuComplex),
                            cudaMemcpyDeviceToDevice);
@@ -194,18 +195,19 @@ public:
 
         if ( num_full > 1 )
         {
+            cuComplex* oin = in;
+
             in  += full_in_stride;
             out += full_out_stride;
 
-            auto in_mem  = get_device_array<cuComplex>(full_in_stride);
             auto out_mem = get_device_array<float>(full_out_stride);
 
             for ( long_t i = 1; i < num_full; ++i )
             {
-                cudaMemcpy(in_mem.get(), in, full_in_stride*sizeof(cuComplex),
+                cudaMemcpy(oin, in, full_in_stride*sizeof(cuComplex),
                            cudaMemcpyDeviceToDevice);
 
-                checkCUFFT(cufftExecC2R(full_handle,in_mem.get(),out_mem.get()));
+                checkCUFFT(cufftExecC2R(full_handle,oin,out_mem.get()));
 
                 cudaMemcpy(out, out_mem.get(), full_out_stride*sizeof(float),
                            cudaMemcpyDeviceToDevice);
@@ -216,10 +218,10 @@ public:
 
             if ( has_partial )
             {
-                cudaMemcpy(in_mem.get(), in, partial_in_stride*sizeof(cuComplex),
+                cudaMemcpy(oin, in, partial_in_stride*sizeof(cuComplex),
                            cudaMemcpyDeviceToDevice);
 
-                checkCUFFT(cufftExecC2R(partial_handle,in_mem.get(),out_mem.get()));
+                checkCUFFT(cufftExecC2R(partial_handle,oin,out_mem.get()));
 
                 cudaMemcpy(out, out_mem.get(), partial_out_stride*sizeof(float),
                            cudaMemcpyDeviceToDevice);

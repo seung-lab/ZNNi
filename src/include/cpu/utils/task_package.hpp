@@ -78,6 +78,11 @@ public:
                                     std::placeholders::_1);
     }
 
+    long_t concurrency() const
+    {
+        return static_cast<long_t>(threads_);
+    }
+
     void execute( std::size_t stack_size = 0 )
     {
         std::size_t n_workers = size_.load();
@@ -98,11 +103,17 @@ public:
 
             running_threads_ = static_cast<int>(n_workers);
 
-            for ( std::size_t i = 0; i < n_workers; ++i )
+            for ( std::size_t i = 1; i < n_workers; ++i )
             {
                 global_task_manager.schedule(&task_package::loop, this,
                                              stack.get() + i * stack_size );
             }
+
+            // use this thread as well, that guarantees execution
+            // completion as there will always be at least one
+            // resource [thread] available to complete the tasks on
+            // the queue
+            loop(stack.get());
 
             {
                 std::unique_lock<std::mutex> g(m_);

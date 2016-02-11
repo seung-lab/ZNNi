@@ -173,7 +173,7 @@ public:
                     kernel_desc,
                     conv_desc,
                     out_desc,
-                    CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_GEMM,
+                    CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
                     &what_size));
 
             workspace_size_ = std::max(workspace_size_, what_size);

@@ -187,7 +187,7 @@ public:
         , in_size_(os + nd.fov() - vec3i::one)
         , out_size_(os)
         , init_(0.1)
-        , in_len_(in_size_[0]*in_size_[1]*in_size_[2]*b)
+        , in_len_(in_size_[0]*in_size_[1]*in_size_[2]*b*nd.layers().front().num_inputs)
     {
         vec3i is = os + nd.fov() - vec3i::one;
 
