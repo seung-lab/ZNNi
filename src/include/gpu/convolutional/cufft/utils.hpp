@@ -10,6 +10,12 @@ void div_all_by( float*, float*, float ) noexcept;
 void add_to( cuComplex*, cuComplex*, cuComplex*, float) noexcept;
 void mul_add( cuComplex*, cuComplex*, cuComplex*, cuComplex* ) noexcept;
 
+void stage_1_scatter( int, int, float*, float*, long_t ) noexcept;
+void stage_1_gather( int, int, float*, float*, long_t ) noexcept;
+
+void stage_2_scatter( int, int, int, cuComplex*, cuComplex*, long_t ) noexcept;
+void stage_2_gather( int, int, int, cuComplex*, cuComplex*, long_t ) noexcept;
+
 class kernel_exploder
 {
 private:

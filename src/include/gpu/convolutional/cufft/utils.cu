@@ -189,5 +189,109 @@ void image_gather::gather( float* in, float* out )
 }
 
 
+/////////////////////////////////////////
+//
+// This is for doing 1D FFTs
+
+
+
+template <typename T>
+struct stage_1_functor : public thrust::unary_function<T,T>
+{
+    T i_l, o_l;
+
+    __host__ __device__
+    stage_1_functor(T a, T b): i_l(a), o_l(b) {}
+
+    __host__ __device__
+    T operator()(T i) const
+    {
+        return (i / i_l) * o_l + (i % i_l);
+    }
+};
+
+
+//           i_x                   o_x
+//     /------------\       /----------------\
+//     |123..       |       |1ax             |
+// i_y |abc..       |       |2by             |
+//     |xyz..       |   i_x |3cz
+//     \------------/       |...
+//                          |...
+//                          .
+
+template<typename T>
+struct stage_2_functor : public thrust::unary_function<T,T>
+{
+    T i_x, i_y, o_x, i_s, o_s;
+
+    __host__ __device__
+    stage_2_functor( T ix, T iy, T ox )
+        : i_x(ix), i_y(iy), o_x(ox), i_s(ix*iy), o_s(ix*ox) {}
+
+    __host__ __device__
+    T operator()(T i) const
+    {
+        return
+            ((i / i_s) * o_s) +
+            ((i % i_x) * o_x) +
+            ((i / i_x) % i_y);
+    }
+};
+
+
+void stage_2_scatter( int i_x, int i_y, int o_x,
+                      cuComplex* in, cuComplex* out, long_t n ) noexcept
+{
+    checkCudaErrors( cudaMemset( out, 0, (n/i_y) * o_x * sizeof(cuComplex) ));
+    thrust::scatter(
+        thrust::device,
+        in, in + n,
+        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
+                                        stage_2_functor<int>(i_x,i_y,o_x)),
+        out);
+}
+
+
+void stage_2_gather( int i_x, int i_y, int o_x,
+                     cuComplex* in, cuComplex* out, long_t n ) noexcept
+{
+    thrust::gather(
+        thrust::device,
+        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
+                                        stage_2_functor<int>(i_x,i_y,o_x)),
+        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
+                                        stage_2_functor<int>(i_x,i_y,o_x)) + n,
+        out, in);
+}
+
+
+void stage_1_scatter( int i_x, int o_x,
+                      float* in, float* out, long_t n ) noexcept
+{
+    checkCudaErrors( cudaMemset( out, 0, (n/i_x) * o_x * sizeof(float) ));
+    thrust::scatter(
+        thrust::device,
+        in, in + n,
+        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
+                                        stage_1_functor<int>(i_x,o_x)),
+        out);
+}
+
+
+
+void stage_1_gather( int i_x, int o_x,
+                     float* in, float* out, long_t n ) noexcept
+{
+    thrust::gather(
+        thrust::device,
+        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
+                                        stage_1_functor<int>(i_x,o_x)),
+        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
+                                        stage_1_functor<int>(i_x,o_x))+n,
+        out, in);
+}
+
+
 
 }} // namespace znn::fwd
