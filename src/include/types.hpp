@@ -28,15 +28,15 @@ typedef float real;
 typedef std::complex<real>   cplx;
 typedef std::complex<real>   complex;
 
-typedef zi::vl::vec<int,2> vec2i;
-typedef zi::vl::vec<int,3> vec3i;
-typedef zi::vl::vec<int,4> vec4i;
+typedef int64_t long_t;
+
+typedef zi::vl::vec<long_t,2> vec2i;
+typedef zi::vl::vec<long_t,3> vec3i;
+typedef zi::vl::vec<long_t,4> vec4i;
 
 typedef std::size_t size_t;
 
 typedef std::lock_guard<std::mutex> guard;
-
-typedef int64_t long_t;
 
 
 }} // namespace znn::fwd
