@@ -193,8 +193,6 @@ void image_gather::gather( float* in, float* out )
 //
 // This is for doing 1D FFTs
 
-
-
 template <typename T>
 struct stage_1_functor : public thrust::unary_function<T,T>
 {
@@ -240,6 +238,104 @@ struct stage_2_functor : public thrust::unary_function<T,T>
 };
 
 
+// Find log2(x) and optionally round up to the next integer logarithm.
+int find_log2( int x, bool round_up = false )
+{
+    int a = 31 - __builtin_clz(x);
+    if (round_up) a += !(0 == (x & (x - 1)));
+    return a;
+}
+
+__host__ __device__  __forceinline__ uint umulhi(uint x, uint y)
+{
+#if __CUDA_ARCH__ >= 100
+    return __umulhi(x, y);
+#else
+    uint64_t product = static_cast<uint64_t>(x) * y;
+    return static_cast<uint>(product>> 32);
+#endif
+}
+
+
+// Fast division for 31-bit integers.
+// Uses the method in Hacker's Delight (2nd edition) page 228.
+// Evaluates for denom > 1 and x < 2^31.
+struct fast_divide
+{
+    uint coef;
+    uint shift;
+
+    __host__ __device__ __forceinline__ uint divide(uint x) const
+    {
+        return umulhi(x, coef)>> shift;
+    }
+    explicit fast_divide( uint d )
+    {
+        uint p = 31 + find_log2(d, true);
+        coef = static_cast<uint>(((1ull<< p) + d - 1) / d);
+        shift = p - 32;
+    }
+};
+
+/////////////////////////////////////////
+//
+// This is for doing 1D FFTs
+
+struct fast_stage_1_functor : public thrust::unary_function<uint,uint>
+{
+    uint i_l, o_l;
+    fast_divide div_i_l;
+
+    fast_stage_1_functor(uint a, uint b): i_l(a), o_l(b), div_i_l(a) {}
+
+    __host__ __device__ __forceinline__
+    uint operator()(uint i) const
+    {
+        uint r = div_i_l.divide(i);   //  r = i / i_l;
+        i -= r * i_l;                 //  i = i % i_l;
+        return r * o_l + i;
+        //return (i / i_l) * o_l + (i % i_l);
+    }
+};
+
+
+//           i_x                   o_x
+//     /------------\       /----------------\
+//     |123..       |       |1ax             |
+// i_y |abc..       |       |2by             |
+//     |xyz..       |   i_x |3cz
+//     \------------/       |...
+//                          |...
+//                          .
+
+struct fast_stage_2_functor : public thrust::unary_function<uint,uint>
+{
+    uint i_x, i_y, o_x;
+    fast_divide div_i_x;
+    fast_divide div_i_y;
+
+    fast_stage_2_functor( uint ix, uint iy, uint ox )
+        : i_x(ix), i_y(iy), o_x(ox), div_i_x(ix), div_i_y(iy) {}
+
+    __host__ __device__ __forceinline__
+    uint operator()(uint i) const
+    {
+        uint b = div_i_x.divide(i);   // b = i / i_x;
+        i -= b * i_x;                 // i = i % i_x;
+
+        uint r = div_i_y.divide(b);   // r = (i / i_x) / i_y;
+        b -= r * i_y;                 // b = (i / i_x) % i_y;
+
+        return ( r * i_x + i ) * o_x + b;
+
+        //return
+        //    (((i / i_x) / i_y)) * o_y * o_x) +
+        //    ((i % i_x) * o_x) +
+        //    ((i / i_x) % i_y);
+    }
+};
+
+
 void stage_2_scatter( int i_x, int i_y, int o_x,
                       cuComplex* in, cuComplex* out, long_t n ) noexcept
 {
@@ -247,8 +343,8 @@ void stage_2_scatter( int i_x, int i_y, int o_x,
     thrust::scatter(
         thrust::device,
         in, in + n,
-        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
-                                        stage_2_functor<int>(i_x,i_y,o_x)),
+        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                        fast_stage_2_functor(i_x,i_y,o_x)),
         out);
 }
 
@@ -258,10 +354,10 @@ void stage_2_gather( int i_x, int i_y, int o_x,
 {
     thrust::gather(
         thrust::device,
-        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
-                                        stage_2_functor<int>(i_x,i_y,o_x)),
-        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
-                                        stage_2_functor<int>(i_x,i_y,o_x)) + n,
+        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                        fast_stage_2_functor(i_x,i_y,o_x)),
+        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                        fast_stage_2_functor(i_x,i_y,o_x)) + n,
         out, in);
 }
 
@@ -273,8 +369,8 @@ void stage_1_scatter( int i_x, int o_x,
     thrust::scatter(
         thrust::device,
         in, in + n,
-        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
-                                        stage_1_functor<int>(i_x,o_x)),
+        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                        fast_stage_1_functor(i_x,o_x)),
         out);
 }
 
@@ -285,10 +381,10 @@ void stage_1_gather( int i_x, int o_x,
 {
     thrust::gather(
         thrust::device,
-        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
-                                        stage_1_functor<int>(i_x,o_x)),
-        thrust::make_transform_iterator(thrust::counting_iterator<int>(0),
-                                        stage_1_functor<int>(i_x,o_x))+n,
+        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                        fast_stage_1_functor(i_x,o_x)),
+        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                        fast_stage_1_functor(i_x,o_x))+n,
         out, in);
 }
 
