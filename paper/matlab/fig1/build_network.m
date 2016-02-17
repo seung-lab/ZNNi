@@ -31,14 +31,6 @@ function [ net ] = build_network( net_fin, filters, widths )
 
 end
 
-function [ costs ] = layer_costs( l, n, is )
-
-    if l.fs > 0
-        costs = conv_layer_costs(n, l.fin, l.fout, is, l.fs);
-    else
-        costs = pooling_layer_costs(n, l.fin, l.fout, is, -l.fs);
-    end
-end
 
 function [ cost ] = zero_cost( )
     cost = struct('flops', 0, 'memory', 0, 'stack', 0, 'stored', 0);

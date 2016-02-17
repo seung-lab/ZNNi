@@ -1,25 +1,19 @@
 \tolerance=10000
 \documentclass[conference]{IEEEtran}
+%\documentclass[10pt, conference, compsocconf]{IEEEtran}
+%\documentclass{article}
+\usepackage{times}
 \usepackage{xcolor}
 \usepackage{mathtools}
 \usepackage{enumerate}
 \usepackage{hyperref}
 \usepackage{amssymb}
+\usepackage{subfig}
 \usepackage{amsmath}
 \usepackage{eqnarray}
 \usepackage[]{algorithm}
 \usepackage{clrscode3e}
 \usepackage[pdftex]{graphicx}
-
-%\usepackage{etoolbox}
-%\AtBeginEnvironment{algorithmic}{\small}
-%\usepackage{subfig}
-% tricks for saving space
-\usepackage[font={small}]{caption,subfig}  % small fonts in captions
-\setlength{\abovecaptionskip}{1ex}
-\setlength{\belowcaptionskip}{1ex}
-\setlength{\floatsep}{1ex}
-\setlength{\textfloatsep}{1ex}
 
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
@@ -37,17 +31,19 @@
   Convolutional Networks on Multi-Core and Many-Core Shared Memory
   Machines}
 
-\author{\IEEEauthorblockN{Aleksandar Zlateski\IEEEauthorrefmark{1},
-    Kisuk Lee\IEEEauthorrefmark{2}}
-  \IEEEauthorblockA{\IEEEauthorrefmark{1}Electrical Engineering and
-    Computer Science Dept.\\ \IEEEauthorrefmark{2}Brain and
-    Cognitive Sciences Dept.\\ Massachusetts Institute of
-    Technology\\ Cambridge, MA 02139 USA\\ \IEEEauthorrefmark{1}{\tt
-      zlateski@mit.edu}, \IEEEauthorrefmark{2}{\tt kisuklee@mit.edu}}
-  \and \IEEEauthorblockN{H. Sebastian Seung}
-  \IEEEauthorblockA{Princeton Neuroscience Institute\\ and Computer
-    Science Dept.\\ Princeton University\\ Princeton, NJ 08540
-    USA\\ {\tt sseung@princeton.edu} }}
+\author{\IEEEauthorblockN{Aleksandar Zlateski}
+\IEEEauthorblockA{Electrical Engineering and\\Computer Science Department\\
+Massachusetts Institute of Technology\\
+Cambridge, Massachusetts 02139\\
+Email: zlateski@mit.edu}
+\and
+\IEEEauthorblockN{H. Sebastian Seung}
+\IEEEauthorblockA{Neuroscience Institute and\\Computer Science Department\\
+Princeton University\\
+Princeton, New Jersey\\
+Email: seung@princeton.edu}}
+
+
 
 
 \maketitle
@@ -63,7 +59,7 @@
 
 
 \begin{abstract}
-
+Abstract
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,10 +69,6 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Introduction}
-
-cuDNN is described here~\cite{chetlur2014cudnn}
 
 \section{Introduction}
 
@@ -92,7 +84,6 @@ latency.
 
 \section{How do we do it}
 
-
 We reduce the number of operations per output sample by:
 \begin{enumerate}
 \item Using sliding window inference by kernel rarefication.
@@ -107,15 +98,6 @@ thread.
 
 
 \section{Pruned FFT}
-
-\begin{figure}
-  \begin{center}
-  \includegraphics[width=0.8\columnwidth]{fig/pruned_ffts.pdf}
-  \end{center}
-  \caption{Pruned FFTs.}
-  \label{fig:pruned_ffts}
-\end{figure}
-
 
 When computing the FFTs of the trainable kernels we need to zero-pad
 the kernels of size $k^3$ to the same size as the image the kernel is
@@ -344,28 +326,17 @@ Finally we compute the inverse transform of the output images, scale
 them appropriately, add the bias and apply the transfer function.
 
 We carefully design the steps in order to minimize the extra memory
-utilization.
+utilization.~\cite{srivastava2014dropout}
 
 
 \section{Experiments}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% REFERENCES
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\IEEEtriggeratref{25}
+
 
 {\small
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,./ref/bib}
 }
+}
 
 \end{document}
-
-%% ZNN - A Fast and Furious Technique for Training ConvNets on
-%% Multi-Core and Many-Core Shared Memory Machines
-
-%% C = 5 (or 2.5) should be mentioned somewhere?
