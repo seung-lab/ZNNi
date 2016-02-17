@@ -5,7 +5,7 @@
 #include "../assert.hpp"
 #include "utils/task_package.hpp"
 
-namespace znn { namespace fwd {
+namespace znn { namespace fwd { namespace cpu {
 
 class host_layer
 {
@@ -19,4 +19,4 @@ public:
 };
 
 
-}} // namespace znn::fwd
+}}} // namespace znn::fwd::cpu

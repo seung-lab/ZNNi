@@ -28,7 +28,6 @@ public:
         }
         else
         {
-            std::cout << "HERE: " << std::endl;
             layer_ = std::unique_ptr<host_layer>
                 ( new padded_pruned_fft_convolutional_layer
                   ( handle, n, fin, fout, is, ks, km, bs));

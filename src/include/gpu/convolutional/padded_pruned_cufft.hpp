@@ -56,21 +56,38 @@ public:
         long_t transform_elements = cs[0] * cs[1] * cs[2];
 
         // Transform all the inputs
-        auto in_t = get_device_array<cuComplex>
-            (transform_elements * batch_size * num_inputs);
+        //auto in_t = get_device_array<cuComplex>
+        //(transform_elements * batch_size * num_inputs);
+
+        std::vector<device_array<cuComplex>> in_t(batch_size);
 
         {
             auto tmp = get_device_array<cuComplex>
-                (transform_elements * batch_size * num_inputs);
+                (transform_elements * num_inputs);
 
-            input_transformer->forward(in.get(), in_t.get(), tmp.get());
+            for ( long_t i = 0; i < batch_size; ++i )
+            {
+                in_t[i] = get_device_array<cuComplex>
+                    (transform_elements * num_inputs);
+
+                input_transformer->forward(in.get() + i * input_len,
+                                           in_t[i].get(), tmp.get());
+            }
         }
 
         in.reset();
 
         // We will store all the transforms here
-        auto out_t = get_device_array<cuComplex>
-            (transform_elements * batch_size * num_outputs);
+        //auto out_t = get_device_array<cuComplex>
+        //(transform_elements * batch_size * num_outputs);
+
+        std::vector<device_array<cuComplex>> out_t(batch_size);
+
+        for ( long_t i = 0; i < batch_size; ++i )
+        {
+            out_t[i] = get_device_array<cuComplex>
+                (transform_elements * num_outputs);
+        }
 
         {
             auto scratch1 = get_device_array<cuComplex>
@@ -93,30 +110,35 @@ public:
                     long_t onumel = transform_elements * num_outputs;
 
                     mul_add( scratch2.get(), scratch2.get() + inumel,
-                             in_t.get() + j * inumel, scratch1.get() );
+                             in_t[j].get(), scratch1.get() );
 
                     gemv(transform_elements * 2, num_inputs,
                          1, reinterpret_cast<float*>(scratch1.get()),
                          ones,
                          0, reinterpret_cast<float*>
-                         (out_t.get() + j*onumel + i*transform_elements));
+                         (out_t[j].get() + i*transform_elements));
 
                 }
             }
         }
 
-        in_t.reset();
+        in_t.clear();
 
         auto out = get_device_array<float>(total_output_len);
 
         {
             auto tmp = get_device_array<cuComplex>
-                (transform_elements * batch_size * num_outputs);
+                (transform_elements * num_outputs);
 
-            output_transformer->backward(out_t.get(), out.get(), tmp.get());
+            for ( long_t i = 0; i < batch_size; ++i )
+            {
+                output_transformer->backward(out_t[i].get(),
+                                             out.get() + i * output_len,
+                                             tmp.get());
+            }
         }
 
-        out_t.reset();
+        out_t.clear();
 
         float alpha = 1; float beta = 1;
 
@@ -201,7 +223,7 @@ public:
 
         input_transformer
             = std::unique_ptr<cufft_padded_pruned_forward_transformer>
-            ( new cufft_padded_pruned_forward_transformer(is,as,fin*n));
+            ( new cufft_padded_pruned_forward_transformer(is,as,fin));
 
         kernel_transformer
             = std::unique_ptr<cufft_padded_pruned_forward_transformer>
@@ -210,7 +232,7 @@ public:
         output_transformer
             = std::unique_ptr<cufft_padded_pruned_backward_transformer>
             ( new cufft_padded_pruned_backward_transformer
-              (os, ks - vec3i::one, as, fout*n));
+              (os, ks - vec3i::one, as, fout));
 
     }
 };
