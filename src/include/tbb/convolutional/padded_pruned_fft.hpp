@@ -112,30 +112,67 @@ private:
         complex* input  = inputs  + in_no  * n_elements;
         complex* output = outputs + out_no * n_elements;
 
-        ::tbb::task_group tg;
+        // figure out an optimal way to saturate the cores
 
-        for ( long_t k = 1; k < batch_size; ++k )
+        long_t n_cores = std::thread::hardware_concurrency();
+
+        // simple strategy.. all batches on the same core
+        if ( (n_cores <= num_outputs) || (batch_size == 1) )
         {
-            complex* a = input  + k * input_stride ;
-            complex* r = output + k * output_stride;
+            for ( long_t k = 0; k < batch_size; ++k )
+            {
+                complex* a = input  + k * input_stride ;
+                complex* r = output + k * output_stride;
 
-            tg.run( [=]()
+                if ( in_no == 0 )
+                    mul_to(a, oscratch, r, n_elements);
+                else
+                    mul_add_to(a, oscratch, r, n_elements);
+
+            }
+        }
+        else
+        {
+            long_t tasks_per_core   = (n_cores + num_outputs - 1) / num_outputs;
+            long_t batches_per_core = batch_size / tasks_per_core;
+
+            batches_per_core
+                = std::max(batches_per_core, static_cast<long_t>(1));
+
+            tasks_per_core
+                = ( batch_size + batches_per_core - 1 ) / batches_per_core;
+
+            ::tbb::task_group tg;
+
+            for ( long_t t = 0; t < tasks_per_core; ++t )
+            {
+                auto fn = [=]()
+                {
+                    for ( long_t k = t * batches_per_core;
+                          k < std::min( (t+1) * batches_per_core, batch_size );
+                          ++k )
                     {
+                        complex* a = input  + k * input_stride ;
+                        complex* r = output + k * output_stride;
+
                         if ( in_no == 0 )
                             this->mul_to(a, oscratch, r, n_elements);
                         else
                             this->mul_add_to(a, oscratch, r, n_elements);
-                    });
+                    }
+                };
+
+                if ( t < tasks_per_core - 1 )
+                {
+                    tg.run(fn);
+                }
+                else
+                {
+                    tg.run_and_wait(fn);
+                }
+            }
         }
 
-        tg.run_and_wait
-            ( [=]()
-              {
-                  if ( in_no == 0 )
-                      this->mul_to(input, oscratch, output, n_elements);
-                  else
-                      this->mul_add_to(input, oscratch, output, n_elements);
-              });
 
     }
 
