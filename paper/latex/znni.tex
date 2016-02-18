@@ -141,11 +141,82 @@ Additionally, we can easily store the image in memory such that each
 of the 1D arrays in $z$-direction is properly aligned for optimally
 leveraging the available SIMD instructions.
 
+On the gpu.  For index calculation we use~\cite{warren2013hacker}
+
+\subsection{GPU implementation}
+
+Assume that we want to compute the FFT transforms of $b$ 3D images
+each of size $x_i \times y_i \times z_i$.  We first compute the
+optimal size for the transform independently in each of the three
+dimensions.  Let it be $x_o \times y_o \times z_o$.  The images are
+stored in a row major form in memory as a 4D row major matrix of real
+numbers with the dimension of $b \times x_i \times y_i \times z_i$.
+
+We first perform in--place real to complex 1D transforms along the $z$
+direction. We prepare the input by extending the 4D matrix along the
+$z$ direction to fit the result.  The transform will need to contain
+$z_o' = z_o / 2 + 1$ complex numbers, and we need twice as many reals.
+A matrix of size $b \times x_i \times y_i \times 2z_o')$ is first
+initialized to zero, and appropriate elements from the input are
+filled in.  After batched in--place real to complex 1D transforms are
+performed the result represents a 4D matrix of complex numbers of size
+$b \times x_i \times y_i \times z_o'$.  Note that all the 1D
+transforms are done on contiguous memory chunks (along the last
+dimension).
+
+In the next step we perform in-place complex to complex transforms
+along the $y$ direction.  To do that we will flip the dimensions and
+zero pad the previous matrix.  First we initialize a matrix of complex
+numbers with the size of $b \times x_i \times z_o' \times y_o$.  The
+matrix is first initialized to zero.  Each element $i,j,k,l$ of the
+input matrix is mapped to $i,j,l,k$.  Then $b \times x_i \times z_o'$
+1D transforms are performed along the last dimension (with all
+elements contiguous in memory).
+
+Finally we perform the last in-place complex to complex transform
+along the $x$ direction.  For that we initialize $b \times z_o' \times
+y_o \times x_o$ matrix to all zeros.  An element $i,j,k,l$ from the
+previous result gets mapped to an element $i,k,l,j$.  Once again we
+perform $b \times z_o' \times y_o$ 1D in--place transforms, once again
+on contiguous chunks.
+
+We keep this as the output shape, as we only care about being able to
+perform point--wise operations on the image transform.  The backward
+transform is done in a similar fashion just taking the steps in the
+reverse.
+
+4D matrix reshaping requires a lot of index to index calculation,
+which can involve a lot expensive division and modulus operations.
+Sometimes these operations are more expensive than the actual 1D
+transforms performed.  We improve the performances by only using
+multiplications by a pre--computed magic numbers and shift operations
+as described in ~\cite{warren2013hacker}.  Image reshaping is easily
+implemented using the Thrust CUDA library~\cite{bell2011thrust}.
+
+
+\begin{algorithm}
+  {\small
+  \begin{codebox}
+    \Procname{$\proc{Linear-index-map}(i,x_i,y_i,y_o)$}
+    \li $b \gets i / y_i$
+    \li $i \gets i - b \times y_i$
+    \li $r \gets b / x_i$
+    \li $b \gets b - r \times x_i$
+    \li \Return $(r \times y_i + i) \times y_o + b$
+  \end{codebox}
+  }
+
+  \caption{Index mapping between two 3D matrices.  The input matrix
+  had dimensions $b \times x_i \times y_i$, and the output $b \times
+  y_i \times y_o$} \label{alg:index_map}
+\end{algorithm}
+
+
 \section{Serial}
 
 Tables for serial execution.
 
-\begin{table}
+\begin{table*}
   \centering
   \begin{tabular}{ll}
     \hline
@@ -166,7 +237,7 @@ Tables for serial execution.
     assumed to be $Cn\log n$.  Complexity is measured in number of
     floating point operations.}
   \label{table:conv_complexity}
-\end{table}
+\end{table*}
 
 
 \begin{table}
