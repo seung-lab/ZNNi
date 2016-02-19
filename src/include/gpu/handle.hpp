@@ -24,7 +24,7 @@ struct handle_t
         cudnn_version = static_cast<int>(cudnnGetVersion());
         printf("cudnnGetVersion() : %d , CUDNN_VERSION from cudnn.h"
                " : %d (%s)\n",
-               version, CUDNN_VERSION, CUDNN_VERSION_STR);
+               cudnn_version, CUDNN_VERSION, CUDNN_VERSION_STR);
 
         printf("Host compiler version : %s %s\r", COMPILER_NAME,
                COMPILER_VER);
