@@ -545,5 +545,4 @@ void stage_1_gather( int i_x, int o_x,
 }
 
 
-
 }} // namespace znn::fwd
