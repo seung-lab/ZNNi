@@ -18,7 +18,7 @@ private:
     long_t workspace_size_ = 0;
 
 public:
-    long_t workspace_size() const override
+    long_t workspace_size() const
     {
         return workspace_size_;
     }
@@ -27,7 +27,7 @@ public:
                  float* out,
                  float* kernels,
                  float* biases,
-                 float* workspace_d) const override
+                 float* workspace_d) const
     {
         auto in_d      = get_device_array<float>(full_->input_len);
         auto out_d     = get_device_array<float>(full_->output_len);

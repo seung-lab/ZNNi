@@ -16,7 +16,7 @@ private:
     long_t workspace_size_ = 0;
 
 public:
-    long_t workspace_size() const override
+    long_t workspace_size() const
     {
         return workspace_size_;
     }
@@ -25,7 +25,7 @@ public:
                  float* out,
                  float* kernels,
                  float* biases,
-                 float* workspace_d) const override
+                 float* workspace_d) const
     {
         for ( long_t i = 0; i < n_full_; ++i )
         {
