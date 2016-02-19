@@ -35,7 +35,7 @@ public:
         auto biases_d  = get_device_array<float>(full_->num_outputs);
 
         // copy the biases
-        device_copy_n( biases.get(), full_->num_outputs, biases_d );
+        device_copy_n( biases, full_->num_outputs, biases_d );
 
         long_t hkernel_stride = kernel_len * num_inputs;
         long_t dkernel_stride = kernel_len * full_->num_inputs;
