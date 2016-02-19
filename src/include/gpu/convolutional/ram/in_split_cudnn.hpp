@@ -7,7 +7,7 @@
 namespace znn { namespace fwd { namespace gpu {
 
 class in_split_cudnn_convolutional_layer
-    : public gpuram_layer_base
+    : public convolutional_layer_base
 {
 private:
     std::unique_ptr<native_cudnn_convolutional_layer> full_   ;
@@ -106,7 +106,7 @@ public:
                                         long_t fout,
                                         vec3i const & is,
                                         vec3i const & ks )
-        : gpuram_layer_base(1, fin, fout, is, ks)
+        : convolutional_layer_base(1, fin, fout, is, ks)
     {
         n_full_ = fin / fin_chunk;
 
