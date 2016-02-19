@@ -527,9 +527,9 @@ void stage_1_gather( int i_x, int o_x,
         thrust::gather(
             thrust::device,
             thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                            fast_stage_1_functor(i_x,o_x)),
+                                            fast_stage_1_functor_1(o_x)),
             thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                            fast_stage_1_functor(i_x,o_x))+n,
+                                            fast_stage_1_functor_1(o_x))+n,
             out, in);
     }
     else
@@ -537,9 +537,9 @@ void stage_1_gather( int i_x, int o_x,
         thrust::gather(
             thrust::device,
             thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                            fast_stage_1_functor_1(o_x)),
+                                            fast_stage_1_functor(i_x,o_x)),
             thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                            fast_stage_1_functor_1(o_x))+n,
+                                            fast_stage_1_functor(i_x,o_x))+n,
             out, in);
     }
 }
