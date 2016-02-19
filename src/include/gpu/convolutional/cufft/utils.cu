@@ -306,7 +306,7 @@ struct fast_stage_1_functor_1 : public thrust::unary_function<uint,uint>
     __host__ __device__ __forceinline__
     uint operator()(uint i) const
     {
-        return r * o_l;
+        return i * o_l;
     }
 };
 
