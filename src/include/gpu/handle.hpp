@@ -60,7 +60,7 @@ struct handle_t
 };
 
 namespace {
-task_package& handle =
+handle_t& handle =
     zi::singleton<handle_t>::instance();
 }
 
