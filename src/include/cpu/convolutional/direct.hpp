@@ -5,6 +5,7 @@
 #include "../../memory.hpp"
 #include "../../layer.hpp"
 #include "../host_layer.hpp"
+#include "../handle.hpp"
 #include "../utils/task_package.hpp"
 #include "conv/convolver.hpp"
 #include "base.hpp"
@@ -16,16 +17,13 @@ class direct_convolutional_layer
     , public host_layer
 {
 private:
-    task_package &             handle_   ;
     std::unique_ptr<convolver> convolver_;
 
 public:
-    direct_convolutional_layer( task_package& handle,
-                                long_t n, long_t fin, long_t fout,
+    direct_convolutional_layer( long_t n, long_t fin, long_t fout,
                                 vec3i const & is, vec3i const & ks,
                                 real * km = nullptr, real* bs = nullptr )
         : cpu_convolutional_layer_base( n, fin, fout, is, ks, km, bs )
-        , handle_(handle)
         , convolver_(new convolver(is,ks))
     { }
 
@@ -97,20 +95,20 @@ public:
                 real* first_kernel
                     = kernels.get() + i * kernel_len * num_inputs;
 
-                handle_.add_task( &direct_convolutional_layer::do_single_output,
-                                  this,
-                                  in.get() + n * input_len,
-                                  first_kernel,
-                                  out.get() + n * output_len + i * out_image_len,
-                                  biases.get()[i] );
+                handle.add_task( &direct_convolutional_layer::do_single_output,
+                                 this,
+                                 in.get() + n * input_len,
+                                 first_kernel,
+                                 out.get() + n * output_len + i * out_image_len,
+                                 biases.get()[i] );
 
             }
         }
 
 #if defined(ZNN_USE_MKL_CONVOLUTION)
-        handle_.execute(out_image_len*sizeof(real));
+        handle.execute(out_image_len*sizeof(real));
 #else
-        handle_.execute();
+        handle.execute();
 #endif
 
         return out;

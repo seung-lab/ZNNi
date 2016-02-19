@@ -22,8 +22,7 @@ private:
 public:
 
     padded_pruned_parallel_fft_convolutional_layer
-    ( void*,
-      long_t n, long_t fin, long_t fout,
+    ( long_t n, long_t fin, long_t fout,
       vec3i const & is, vec3i const & ks,
       real * km = nullptr,
       real* bs = nullptr )

@@ -21,8 +21,7 @@ private:
 
 public:
 
-    padded_pruned_fft_convolutional_layer( void*,
-                                           long_t n, long_t fin, long_t fout,
+    padded_pruned_fft_convolutional_layer( long_t n, long_t fin, long_t fout,
                                            vec3i const & is, vec3i const & ks,
                                            real * km = nullptr,
                                            real* bs = nullptr )
@@ -252,7 +251,7 @@ private:
         auto otransforms
             = get_array<complex>(batch_size * num_outputs * celements);
 
-        std::vector<::tbb::concurrent_queue<long_t>> queues(num_inputs);
+        std::vector< ::tbb::concurrent_queue<long_t>> queues(num_inputs);
 
         for ( long_t i = 0; i < num_outputs; ++i )
         {

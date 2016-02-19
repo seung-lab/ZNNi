@@ -32,6 +32,8 @@ public:
     long_t const output_memory;
     long_t const kernel_memory;
 
+    long_t const bias_memory;
+
 public:
     convolutional_layer_base( long_t n, long_t fin, long_t fout,
                               vec3i const & is, vec3i const & ks ) noexcept
@@ -52,6 +54,7 @@ public:
         , input_memory(total_input_len*sizeof(real))
         , output_memory(total_output_len*sizeof(real))
         , kernel_memory(kernels_len*sizeof(real))
+        , bias_memory(fout*sizeof(real))
     { }
 };
 

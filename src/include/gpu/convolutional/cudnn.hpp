@@ -17,8 +17,6 @@ class cudnn_convolutional_layer
     , public device_layer
 {
 private:
-    handle_t& handle_;
-
     device_array<float> kernels  ;
     device_array<float> biases   ;
 
@@ -45,7 +43,7 @@ public:
 
         checkCUDNN(
             cudnnConvolutionForward(
-                handle_.cudnn_handle,
+                handle.cudnn_handle,
                 &alpha,
                 in_desc, in.get(),
                 kernel_desc, kernels.get(),
@@ -67,7 +65,7 @@ public:
         beta = 1;
 
         checkCUDNN(
-            cudnnAddTensor( handle_.cudnn_handle,
+            cudnnAddTensor( handle.cudnn_handle,
                             &alpha,
                             bias_desc, biases.get(),
                             &beta,
@@ -111,12 +109,10 @@ private:
     }
 
 public:
-    cudnn_convolutional_layer( handle_t& handle,
-                               long_t n, long_t fin, long_t fout,
+    cudnn_convolutional_layer( long_t n, long_t fin, long_t fout,
                                vec3i const & is, vec3i const & ks,
                                float* km = nullptr, float* bs = nullptr )
         : convolutional_layer_base(n,fin,fout,is,ks)
-        , handle_(handle)
         , kernels(get_device_array<float>(kernels_len))
         , biases(get_device_array<float>(fout))
     {

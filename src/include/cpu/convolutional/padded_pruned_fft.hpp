@@ -5,6 +5,7 @@
 #include "../../memory.hpp"
 #include "../../layer.hpp"
 #include "../host_layer.hpp"
+#include "../handle.hpp"
 #include "../utils/task_package.hpp"
 #include "padded_pruned_fft/fft.hpp"
 
@@ -16,18 +17,15 @@ class padded_pruned_fft_convolutional_layer
     , public host_layer
 {
 private:
-    task_package &                 handle_;
     padded_pruned_fft_transformer* fft_;
 
 public:
 
-    padded_pruned_fft_convolutional_layer( task_package& handle,
-                                           long_t n, long_t fin, long_t fout,
+    padded_pruned_fft_convolutional_layer( long_t n, long_t fin, long_t fout,
                                            vec3i const & is, vec3i const & ks,
                                            real * km = nullptr,
                                            real* bs = nullptr )
         : cpu_convolutional_layer_base( n, fin, fout, is, ks, km, bs )
-        , handle_(handle)
         , fft_(padded_pruned_fft_plans.get(is,ks))
     { }
 
@@ -159,13 +157,13 @@ private:
         for ( long_t i = 0, off = 0; i < batch_size; ++i )
             for ( long_t j = 0; j < num_inputs; ++j, ++off )
             {
-                handle_.add_task( fn, this,
-                                  in.get() + relements * off,
-                                  itransforms.get() + celements * off );
+                handle.add_task( fn, this,
+                                 in.get() + relements * off,
+                                 itransforms.get() + celements * off );
             }
 
-        handle_.execute( fft_->needs_padding() ?
-                         fft_->image_scratch_memory() : 0);
+        handle.execute( fft_->needs_padding() ?
+                        fft_->image_scratch_memory() : 0);
 
         return itransforms;
     }
@@ -181,10 +179,10 @@ private:
 
         for ( long_t i = 0; i < num_outputs; ++i )
         {
-            handle_.add_task(fn, this, i, itransforms.get(), otransforms.get());
+            handle.add_task(fn, this, i, itransforms.get(), otransforms.get());
         }
 
-        handle_.execute();
+        handle.execute();
         return otransforms;
     }
 
@@ -200,14 +198,14 @@ private:
         {
             for ( long_t j = 0; j < num_outputs; ++j, ++off )
             {
-                handle_.add_task( fn, this,
-                                  otransforms.get() + celements * off,
-                                  result.get() + out_image_len * off,
-                                  biases.get()[j] );
+                handle.add_task( fn, this,
+                                 otransforms.get() + celements * off,
+                                 result.get() + out_image_len * off,
+                                 biases.get()[j] );
             }
         }
 
-        handle_.execute( fft_->result_scratch_memory() );
+        handle.execute( fft_->result_scratch_memory() );
 
         return result;
     }

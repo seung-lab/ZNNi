@@ -21,8 +21,7 @@ public:
     }
 
 public:
-    cudnn_auto_convolutional_layer( handle_t& handle,
-                                    long_t n, long_t fin, long_t fout,
+    cudnn_auto_convolutional_layer( long_t n, long_t fin, long_t fout,
                                     vec3i const & is, vec3i const & ks,
                                     float* km = nullptr, float* bs = nullptr )
         : convolutional_layer_base(n,fin,fout,is,ks)
@@ -31,20 +30,18 @@ public:
         {
             layer_ = std::unique_ptr<device_layer>
                 ( new cudnn_single_output_convolutional_layer
-                  (handle, n, fin, fout,
-                   is, ks, km, bs));
+                  (n, fin, fout, is, ks, km, bs));
         }
         else if ( fin * fout * n * out_image_len > 250000000 )
         {
             layer_ = std::unique_ptr<device_layer>
                 ( new cudnn_single_batch_convolutional_layer
-                  (handle, n, fin, fout,
-                   is, ks, km, bs));
+                  (n, fin, fout, is, ks, km, bs));
         }
         else
         {
             layer_ = std::unique_ptr<device_layer>
-                ( new cudnn_convolutional_layer(handle, n, fin, fout,
+                ( new cudnn_convolutional_layer(n, fin, fout,
                                                 is, ks, km, bs));
         }
     }

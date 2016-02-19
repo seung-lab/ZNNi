@@ -17,8 +17,7 @@ class pooling_layer
     , public host_layer
 {
 public:
-    pooling_layer( void*,
-                   long_t n, long_t fin,
+    pooling_layer( long_t n, long_t fin,
                    vec3i const & is,
                    vec3i const & ks )
         : pooling_layer_base( n, fin, is, ks )

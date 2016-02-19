@@ -4,6 +4,7 @@
 #include "../../assert.hpp"
 #include "../../memory.hpp"
 #include "../../layer.hpp"
+#include "../handle.hpp"
 #include "../host_layer.hpp"
 #include "../utils/task_package.hpp"
 #include "padded_pruned_fft/fft.hpp"
@@ -16,19 +17,16 @@ class padded_pruned_parallel_fft_convolutional_layer
     , public host_layer
 {
 private:
-    task_package &                 handle_;
     padded_pruned_fft_transformer* fft_;
 
 public:
 
     padded_pruned_parallel_fft_convolutional_layer
-    ( task_package& handle,
-      long_t n, long_t fin, long_t fout,
+    ( long_t n, long_t fin, long_t fout,
       vec3i const & is, vec3i const & ks,
       real * km = nullptr,
       real* bs = nullptr )
         : cpu_convolutional_layer_base( n, fin, fout, is, ks, km, bs )
-        , handle_(handle)
         , fft_(padded_pruned_fft_plans.get(is,ks))
     {
         STRONG_ASSERT(n==1);
@@ -40,7 +38,7 @@ private:
                         real scale, real bias,
                         long_t len ) const
     {
-        long_t chunk_len = 3 * len / handle_.concurrency() / 2;
+        long_t chunk_len = 3 * len / handle.concurrency() / 2;
 
         chunk_len = std::max(chunk_len, static_cast<long_t>(1));
         chunk_len = std::min(chunk_len, len);
@@ -53,7 +51,7 @@ private:
             long_t first = i * chunk_len;
             long_t last  = first + chunk_len;
 
-            handle_.add_task([in,out,scale,bias,first,last](void*){
+            handle.add_task([in,out,scale,bias,first,last](void*){
                     for ( long_t j = first; j < last; ++j )
                         out[j] = in[j] / scale + bias;
                 });
@@ -64,19 +62,19 @@ private:
             long_t first = n_chunks * chunk_len;
             long_t last  = first + left_len;
 
-            handle_.add_task([in,out,scale,bias,first,last](void*){
+            handle.add_task([in,out,scale,bias,first,last](void*){
                     for ( long_t j = first; j < last; ++j )
                         out[j] = in[j] / scale + bias;
                 });
         }
 
-        handle_.execute();
+        handle.execute();
     }
 
     void parallel_mad( complex* in1, complex* in2,
                        complex* out, long_t len ) const
     {
-        long_t chunk_len = 3 * len / handle_.concurrency() / 2;
+        long_t chunk_len = 3 * len / handle.concurrency() / 2;
 
         chunk_len = std::max(chunk_len, static_cast<long_t>(1));
         chunk_len = std::min(chunk_len, len);
@@ -89,7 +87,7 @@ private:
             long_t first = i * chunk_len;
             long_t last  = first + chunk_len;
 
-            handle_.add_task([in1,in2,out,first,last](void*){
+            handle.add_task([in1,in2,out,first,last](void*){
                     for ( long_t j = first; j < last; ++j )
                         out[j] += in1[j] * in2[j];
                 });
@@ -100,19 +98,19 @@ private:
             long_t first = n_chunks * chunk_len;
             long_t last  = first + left_len;
 
-            handle_.add_task([in1,in2,out,first,last](void*){
+            handle.add_task([in1,in2,out,first,last](void*){
                     for ( long_t j = first; j < last; ++j )
                         out[j] += in1[j] * in2[j];
                 });
         }
 
-        handle_.execute();
+        handle.execute();
     }
 
     void parallel_mset( complex* in1, complex* in2,
                         complex* out, long_t len ) const
     {
-        long_t chunk_len = 3 * len / handle_.concurrency() / 2;
+        long_t chunk_len = 3 * len / handle.concurrency() / 2;
 
         chunk_len = std::max(chunk_len, static_cast<long_t>(1));
         chunk_len = std::min(chunk_len, len);
@@ -125,7 +123,7 @@ private:
             long_t first = i * chunk_len;
             long_t last  = first + chunk_len;
 
-            handle_.add_task([in1,in2,out,first,last](void*){
+            handle.add_task([in1,in2,out,first,last](void*){
                     for ( long_t j = first; j < last; ++j )
                         out[j] = in1[j] * in2[j];
                 });
@@ -136,18 +134,18 @@ private:
             long_t first = n_chunks * chunk_len;
             long_t last  = first + left_len;
 
-            handle_.add_task([in1,in2,out,first,last](void*){
+            handle.add_task([in1,in2,out,first,last](void*){
                     for ( long_t j = first; j < last; ++j )
                         out[j] = in1[j] * in2[j];
                 });
         }
 
-        handle_.execute();
+        handle.execute();
     }
 
     void do_input_fft( real* in, complex* out ) const noexcept
     {
-        fft_->parallel_forward_image(handle_, in, out);
+        fft_->parallel_forward_image(handle, in, out);
     }
 
     void do_input_fft_padded( real* in,
@@ -163,7 +161,7 @@ private:
 
         std::memset( scratch + fft_->image_elements(), 0, zero_bytes );
 
-        fft_->parallel_forward_image(handle_, scratch, out);
+        fft_->parallel_forward_image(handle, scratch, out);
     }
 
     void do_output_ifft( complex* in,
@@ -171,7 +169,7 @@ private:
                          real     bias,
                          real*    rscratch ) const
     {
-        fft_->parallel_backward( handle_, in, rscratch );
+        fft_->parallel_backward( handle, in, rscratch );
 
         real scale = fft_->get_scale();
         long_t off = fft_->result_offset();
@@ -204,7 +202,7 @@ private:
         std::memset( rscratch + fft_->kernel_elements(), 0, zero_bytes );
 
         // transform the kernel
-        fft_->parallel_forward_kernel( handle_, rscratch, cscratch );
+        fft_->parallel_forward_kernel( handle, rscratch, cscratch );
 
         // loop over the batch
         long_t n_elements = fft_->transform_elements();

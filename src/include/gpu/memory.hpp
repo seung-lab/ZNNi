@@ -42,4 +42,22 @@ inline void device_copy_n( T const * s, size_t n, device_array<T>& d)
                                  cudaMemcpyHostToDevice ) );
 }
 
+
+template<typename T>
+inline void device_copy_n( host_array<T>& s, size_t n, device_array<T>& d)
+{
+    checkCudaErrors( cudaMemcpy( d.get(), s.get(), n * sizeof(T),
+                                 cudaMemcpyHostToDevice ) );
+}
+
+
+template<typename T>
+inline void device_copy_n( device_array<T>& s, size_t n, host_array<T>& d)
+{
+    checkCudaErrors( cudaMemcpy( d.get(), s.get(), n * sizeof(T),
+                                 cudaMemcpyDeviceToHost ) );
+}
+
+
+
 }} // namespace znn::fwd

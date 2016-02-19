@@ -16,10 +16,8 @@ class cudnn_pooling_layer
     , public device_layer
 {
 private:
-    handle_t&           handle_  ;
-    cudnnTensorDescriptor_t  in_desc_ ;
-    cudnnTensorDescriptor_t  out_desc_;
-
+    cudnnTensorDescriptor_t  in_desc_     ;
+    cudnnTensorDescriptor_t  out_desc_    ;
     cudnnPoolingDescriptor_t pooling_desc_;
 
 public:
@@ -41,7 +39,7 @@ public:
                 for ( long_t z = 0; z < window_size[2]; ++z )
                 {
                     checkCUDNN( cudnnPoolingForward(
-                                    handle_.cudnn_handle,
+                                    handle.cudnn_handle,
                                     pooling_desc_,
                                     &alpha, in_desc_,
                                     in.get() + x*is[1]*is[2] + y*is[2] + z,
@@ -60,12 +58,9 @@ public:
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc_) );
     }
 
-    cudnn_pooling_layer( handle_t & handle,
-                         long_t n, long_t c,
-                         vec3i const & is,
-                         vec3i const & ws )
+    cudnn_pooling_layer( long_t n, long_t c,
+                         vec3i const & is, vec3i const & ws )
         : pooling_layer_base( n, c, is, ws )
-        , handle_(handle)
     {
         checkCUDNN( cudnnCreateTensorDescriptor(&in_desc_ ) );
         checkCUDNN( cudnnCreateTensorDescriptor(&out_desc_) );

@@ -14,8 +14,7 @@ private:
 
 public:
 
-    padded_pruned_fft_auto_convolutional_layer( task_package& handle,
-                                                long_t n, long_t fin, long_t fout,
+    padded_pruned_fft_auto_convolutional_layer( long_t n, long_t fin, long_t fout,
                                                 vec3i const & is, vec3i const & ks,
                                                 real * km = nullptr,
                                                 real* bs = nullptr )
@@ -24,13 +23,13 @@ public:
         {
             layer_ = std::unique_ptr<host_layer>
                 ( new padded_pruned_parallel_fft_convolutional_layer
-                  ( handle, n, fin, fout, is, ks, km, bs));
+                  ( n, fin, fout, is, ks, km, bs));
         }
         else
         {
             layer_ = std::unique_ptr<host_layer>
                 ( new padded_pruned_fft_convolutional_layer
-                  ( handle, n, fin, fout, is, ks, km, bs));
+                  ( n, fin, fout, is, ks, km, bs));
         }
     }
 

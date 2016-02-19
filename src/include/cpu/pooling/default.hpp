@@ -6,6 +6,7 @@
 #include "../../assert.hpp"
 #include "../../memory.hpp"
 #include "../../layer.hpp"
+#include "../handle.hpp"
 #include "../host_layer.hpp"
 #include "../utils/task_package.hpp"
 
@@ -15,16 +16,11 @@ class pooling_layer
     : public pooling_layer_base
     , public host_layer
 {
-private:
-    task_package & handle_;
-
 public:
-    pooling_layer( task_package& handle,
-                   long_t n, long_t fin,
+    pooling_layer( long_t n, long_t fin,
                    vec3i const & is,
                    vec3i const & ks )
         : pooling_layer_base( n, fin, is, ks )
-        , handle_(handle)
     { }
 
 private:
@@ -76,19 +72,18 @@ public:
         for ( long_t i = 0; i < in_batch_size; ++i )
             for ( long_t j = 0; j < num_inputs; ++j )
             {
-                handle_.add_task( &pooling_layer::single_image_pool,
-                                  this,
+                handle.add_task( &pooling_layer::single_image_pool,
+                                 this,
                                   m.get() + i * input_len + in_image_len * j,
-                                  ret.get() + i * output_len * window_len
-                                  + out_image_len * j,
-                                  output_len );
+                                 ret.get() + i * output_len * window_len
+                                 + out_image_len * j,
+                                 output_len );
             }
 
-        handle_.execute();
+        handle.execute();
 
         return ret;
     }
-
 
 };
 
