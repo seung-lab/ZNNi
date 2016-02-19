@@ -301,7 +301,7 @@ struct fast_stage_1_functor_1 : public thrust::unary_function<uint,uint>
 {
     uint o_l;
 
-    fast_stage_1_functor(uint b): o_l(b) {}
+    fast_stage_1_functor_1(uint b): o_l(b) {}
 
     __host__ __device__ __forceinline__
     uint operator()(uint i) const
@@ -348,7 +348,7 @@ struct fast_stage_2_functor_1_N : public thrust::unary_function<uint,uint>
     uint i_y, o_x;
     fast_divide div_i_y;
 
-    fast_stage_2_functor( uint iy, uint ox )
+    fast_stage_2_functor_1_N( uint iy, uint ox )
         : i_y(iy), o_x(ox), div_i_y(iy) {}
 
     __host__ __device__ __forceinline__
@@ -367,7 +367,7 @@ struct fast_stage_2_functor_N_1 : public thrust::unary_function<uint,uint>
     uint i_x, o_x;
     fast_divide div_i_x;
 
-    fast_stage_2_functor( uint ix, uint ox )
+    fast_stage_2_functor_N_1( uint ix, uint ox )
         : i_x(ix), o_x(ox), div_i_x(ix) {}
 
     __host__ __device__ __forceinline__
@@ -384,7 +384,7 @@ struct fast_stage_2_functor_1_1 : public thrust::unary_function<uint,uint>
 {
     uint o_x;
 
-    fast_stage_2_functor( uint ox )
+    fast_stage_2_functor_1_1( uint ox )
         : o_x(ox) {}
 
     __host__ __device__ __forceinline__
