@@ -16,8 +16,6 @@ class native_cudnn_convolutional_layer
     : public convolutional_layer_base
 {
 private:
-    handle_t& handle_;
-
     cudnnTensorDescriptor_t      in_desc, out_desc, bias_desc;
     cudnnFilterDescriptor_t      kernel_desc;
     cudnnConvolutionDescriptor_t conv_desc;
@@ -33,15 +31,14 @@ public:
     void forward( float* in,
                   float* out,
                   float* kernels,
-                  float* biases,
                   float  beta,
-                  float* workspace ) const noexcept
+                  void* workspace ) const noexcept
     {
         float alpha = 1;
 
         checkCUDNN(
             cudnnConvolutionForward(
-                handle_.cudnn_handle,
+                handle.cudnn_handle,
                 &alpha,
                 in_desc, in,
                 kernel_desc, kernels,
@@ -63,7 +60,7 @@ public:
         float beta  = 1;
 
         checkCUDNN(
-            cudnnAddTensor( handle_.cudnn_handle,
+            cudnnAddTensor( handle.cudnn_handle,
                             &alpha,
                             bias_desc, biases,
                             &beta,
@@ -105,11 +102,9 @@ private:
     }
 
 public:
-    native_cudnn_convolutional_layer( handle_t& handle,
-                                      long_t n, long_t fin, long_t fout,
+    native_cudnn_convolutional_layer( long_t n, long_t fin, long_t fout,
                                       vec3i const & is, vec3i const & ks )
         : convolutional_layer_base(n,fin,fout,is,ks)
-        , handle_(handle)
     {
         vec3i os = out_image_size;
 

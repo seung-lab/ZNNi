@@ -25,7 +25,7 @@ public:
                  float* out,
                  float* kernels,
                  float* biases,
-                 float* workspace_d) const
+                 void* workspace_d) const
     {
         for ( long_t i = 0; i < n_full_; ++i )
         {
@@ -43,20 +43,19 @@ public:
     }
 
 public:
-    in_split_cudnn_convolutional_layer( handle_t& handle,
-                                        long_t fin,
-                                        long_t fin_chunk,
-                                        long_t fout,
-                                        long_t fout_chunk,
-                                        vec3i const & is,
-                                        vec3i const & ks )
+    in_out_split_cudnn_convolutional_layer( long_t fin,
+                                            long_t fin_chunk,
+                                            long_t fout,
+                                            long_t fout_chunk,
+                                            vec3i const & is,
+                                            vec3i const & ks )
         : convolutional_layer_base(1, fin, fout, is, ks)
     {
         n_full_ = fout / fout_chunk;
 
         full_ = std::unique_ptr<in_split_cudnn_convolutional_layer>
             ( new in_split_cudnn_convolutional_layer
-              (handle, fin, fin_chunk, fout_chunk, is, ks));
+              (fin, fin_chunk, fout_chunk, is, ks));
 
         workspace_size_ = full_->workspace_size();
 
@@ -64,7 +63,7 @@ public:
         {
             partial_ = std::unique_ptr<in_split_cudnn_convolutional_layer>
                 ( new in_split_cudnn_convolutional_layer
-                  (handle, fin, fin_chunk, fout%fout_chunk, is, ks));
+                  (fin, fin_chunk, fout%fout_chunk, is, ks));
 
             workspace_size_ = std::max(workspace_size_,
                                        partial_->workspace_size());
