@@ -79,7 +79,7 @@ public:
     }
 
 
-    ~cudnn_convolutional_layer()
+    ~native_cudnn_convolutional_layer()
     {
         checkCUDNN( cudnnDestroyTensorDescriptor(in_desc) );
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc) );
