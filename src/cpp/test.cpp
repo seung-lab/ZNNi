@@ -1,5 +1,7 @@
 #include "utils/network_descriptor.hpp"
 #include "cpu/layers.hpp"
+#include "cpu/convolutional/padded_pruned_fft_auto.hpp"
+#include "gpu/convolutional/ram/ram_cudnn.hpp"
 #include "gpu/layers.hpp"
 
 #include <zi/time.hpp>
@@ -48,11 +50,9 @@ struct benchmark
 
     typedef typename conv_t::layer_type  layer_t;
     typedef typename conv_t::array_type  array_t;
-    typedef typename conv_t::handle_type handle_t;
 
     void operator()( znni_network & net ) const
     {
-        handle_t  handle;
         sampler_t sampler;
 
         std::vector<std::unique_ptr<layer_t>> layers;
@@ -63,8 +63,7 @@ struct benchmark
             {
                 layers.push_back(std::unique_ptr<layer_t>
                                  (new conv_t
-                                  (handle,
-                                   l.batch_size,
+                                  (l.batch_size,
                                    l.descriptor.num_inputs,
                                    l.descriptor.num_outputs,
                                    l.in_size,
@@ -76,8 +75,7 @@ struct benchmark
             {
                 layers.push_back(std::unique_ptr<layer_t>
                                  (new pool_t
-                                  (handle,
-                                   l.batch_size,
+                                  (l.batch_size,
                                    l.descriptor.num_outputs,
                                    l.in_size,
                                    l.descriptor.k_or_w_size)));
@@ -132,12 +130,22 @@ int main(int argc, char *argv[])
     if ( argc > 4 ) os[2] = atoi(argv[4]);
 
     network_descriptor nd(f);
-    znni_network       net(nd, 1, vec3i(32,32,32));
+    znni_network       net(nd, 1, os);
 
-    benchmark<cpu_sample,
-              cpu::padded_pruned_fft_convolutional_layer,
-              cpu::pooling_layer> b;
+    {
+        benchmark<cpu_sample,
+                  gpu::ram_cudnn_convolutional_layer,
+                  cpu::pooling_layer> b;
 
-    b(net);
+        b(net);
+    }
+
+    {
+        benchmark<cpu_sample,
+                  cpu::padded_pruned_fft_convolutional_layer,
+                  cpu::pooling_layer> b;
+
+        b(net);
+    }
 
 }

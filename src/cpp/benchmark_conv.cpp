@@ -3,54 +3,113 @@
 #include "cpu/convolutional/direct.hpp"
 #include "cpu/convolutional/naive.hpp"
 #include "cpu/convolutional/padded_pruned_fft.hpp"
+#include "gpu/convolutional/cudnn.hpp"
+#include "gpu/convolutional/cufft.hpp"
+#include "gpu/convolutional/ram/ram_cudnn.hpp"
+#include "gpu/convolutional/padded_cufft.hpp"
+#include "gpu/convolutional/padded_pruned_cufft.hpp"
 #include "init.hpp"
 #include <zi/time.hpp>
 
 using namespace znn::fwd;
 
-// Usable AlmostEqual function
-bool nearly_equal(float A, float B, int32_t maxUlps)
+template<typename NetworkType>
+void cpu_test_correctness( std::string const & name,
+                           long_t n,
+                           long_t fin,
+                           long_t fout,
+                           vec3i const & is,
+                           vec3i const & ks,
+                           real* km,
+                           real* bs,
+                           real* input,
+                           real* expected_output)
+
 {
-    // Make sure maxUlps is non-negative and small enough that the
-    // default NAN won't compare as equal to anything.
-    assert(maxUlps > 0 && maxUlps < 4 * 1024 * 1024);
-    int32_t aInt = *(int32_t*)&A;
-    // Make aInt lexicographically ordered as a twos-complement int
-    if (aInt < 0)
-        aInt = 0x80000000 - aInt;
-    // Make bInt lexicographically ordered as a twos-complement int
-    int32_t bInt = *(int32_t*)&B;
-    if (bInt < 0)
-        bInt = 0x80000000 - bInt;
-    int32_t intDiff = abs(aInt - bInt);
-    if (intDiff <= maxUlps)
-        return true;
-    return false;
+    NetworkType net(n,fin,fout,is,ks,km,bs);
+
+    host_array<real> in = get_array<real>(net.total_input_len);
+    std::copy_n(input, net.total_input_len, in.get());
+
+    zi::wall_timer wt;
+    auto out = net.forward(std::move(in));
+
+    std::cout << "CPU LAYER< " << name << " > "
+              << wt.elapsed<double>() << "\t";
+
+
+    real mdiff = 0;
+    for ( long_t i = 0; i < net.total_output_len; ++i )
+    {
+        mdiff = std::max(mdiff,std::abs(expected_output[i]-out.get()[i]));
+    }
+
+    std::cout << ( mdiff ) << "\n";
 }
+
+
+template<typename NetworkType>
+void gpu_test_correctness( std::string const & name,
+                           long_t n,
+                           long_t fin,
+                           long_t fout,
+                           vec3i const & is,
+                           vec3i const & ks,
+                           real* km,
+                           real* bs,
+                           real* input,
+                           real* expected_output)
+
+{
+    NetworkType net(n,fin,fout,is,ks,km,bs);
+
+    device_array<real> in_d = get_device_array<real>(net.total_input_len);
+
+    zi::wall_timer wt;
+
+    device_copy_n(input, net.total_input_len, in_d);
+    auto out_d = net.forward(std::move(in_d));
+
+    std::cout << "GPU LAYER< " << name << " > "
+              << wt.elapsed<double>() << "\t";
+
+    auto out = get_array<real>(net.total_output_len);
+
+    checkCudaErrors( cudaMemcpy(out.get(), out_d.get(),
+                                net.total_output_len * sizeof(float),
+                                cudaMemcpyDeviceToHost) );
+
+    real mdiff = 0;
+    for ( long_t i = 0; i < net.total_output_len; ++i )
+    {
+        mdiff = std::max(mdiff,std::abs(expected_output[i]-out.get()[i]));
+    }
+
+    std::cout << ( mdiff ) << "\n";
+}
+
 
 void test_conv_layer()
 {
     uniform_init ui(0.1);
 
     detail::random_number_generator_impl& rng =
-            zi::singleton<detail::random_number_generator_impl>::instance();
+        zi::singleton<detail::random_number_generator_impl>::instance();
 
     std::uniform_int_distribution<long_t> intdist(1,5);
 
     vec3i ws(intdist(rng.rng),intdist(rng.rng),intdist(rng.rng));
-
-    std::uniform_int_distribution<long_t> intdist2(1,40);
+    std::uniform_int_distribution<long_t> intdist2(1,29);
 
     vec3i os(intdist2(rng.rng),intdist2(rng.rng),intdist2(rng.rng));
 
+    std::uniform_int_distribution<long_t> intdist3(1,7);
+
+    long_t n = intdist3(rng.rng);
+    long_t l = intdist3(rng.rng);
+    long_t l2 = intdist3(rng.rng);
+
     vec3i is = os + ws - vec3i::one;
-
-    long_t n = intdist2(rng.rng);
-    long_t l = intdist2(rng.rng);
-    long_t l2 = intdist2(rng.rng);
-
-
-    task_package handle(1000000);
 
     host_array<real> kernels = get_array<real>(l*l2*ws[0]*ws[1]*ws[2]);
     host_array<real> biases  = get_array<real>(l2);
@@ -58,10 +117,7 @@ void test_conv_layer()
     ui.initialize(kernels.get(), l*l2*ws[0]*ws[1]*ws[2]);
     ui.initialize(biases.get(), l2);
 
-    //cpu::naive_convolutional_layer  np(n,l,l2,is,ws, kernels.get(), biases.get());
-    cpu::direct_convolutional_layer np(handle,n,l,l2,is,ws, kernels.get(), biases.get());
-
-    cpu::padded_pruned_fft_convolutional_layer pl(handle,n,l,l2,is,ws, kernels.get(), biases.get());
+    cpu::naive_convolutional_layer  np(n,l,l2,is,ws, kernels.get(), biases.get());
 
     host_array<real> ina = get_array<real>(np.total_input_len);
     ui.initialize(ina.get(), np.total_input_len);
@@ -69,34 +125,45 @@ void test_conv_layer()
     host_array<real> inb = get_array<real>(np.total_input_len);
     std::copy_n(ina.get(), np.total_input_len, inb.get());
 
-    std::cout << "   NETL " << ws << ' ' << n << ' '
-              << l << ' ' << l2 << ' ' << os << "\n";
-
-    zi::wall_timer wt;
     auto r1 = np.forward(std::move(ina));
-    std::cout << "    Naive took: " << wt.elapsed<double>() << std::endl;
 
-    wt.reset();
-    auto r2 = pl.forward(std::move(inb));
-    std::cout << "    Default took: " << wt.elapsed<double>() << std::endl;
+    cpu_test_correctness<cpu::direct_convolutional_layer>
+        ( "DIRECT", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
 
-    real mdiff = 0;
+    cpu_test_correctness<cpu::padded_pruned_fft_convolutional_layer>
+        ( "PADDED PRUNED FFT", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
 
-    bool ok = true;
+    cpu_test_correctness<gpu::ram_cudnn_convolutional_layer>
+        ( "RAMGPU", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
 
-    for ( long_t i = 0; i < np.total_output_len; ++i )
-    {
-        mdiff = std::max(mdiff,std::abs(r1.get()[i]- r2.get()[i]));
+    gpu_test_correctness<gpu::cudnn_convolutional_layer>
+        ( " CUDNN", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
 
-        if ( !nearly_equal(r1.get()[i], r2.get()[i], 1000000) )
-        {
-            //std::cout << "     " << r1.get()[i] << ' ' << r2.get()[i] << "\n";
-        }
+    gpu_test_correctness<gpu::cufft_convolutional_layer>
+        ( " CUFFT", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
 
-        ok &=  nearly_equal(r1.get()[i], r2.get()[i], 1000000);
-    }
+    gpu_test_correctness<gpu::padded_cufft_convolutional_layer>
+        ( "PCUFFT", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
 
-    std::cout << ( mdiff ) << "\n";
+    gpu_test_correctness<gpu::padded_pruned_cufft_convolutional_layer>
+        ( "PPCFFT", n, l, l2, is, ws, kernels.get(), biases.get(),
+          inb.get(), r1.get() );
+
+
+    // cpu::direct_convolutional_layer np(n,l,l2,is,ws, kernels.get(), biases.get());
+    // //cpu::padded_pruned_fft_convolutional_layer pl(n,l,l2,is,ws, kernels.get(), biases.get());
+    // gpu::ram_cudnn_convolutional_layer pl(n,l,l2,is,ws, kernels.get(), biases.get());
+    // gpu::cudnn_convolutional_layer cudn(n,l,l2,is,ws, kernels.get(), biases.get());
+    // gpu::cufft_convolutional_layer cudf(n,l,l2,is,ws, kernels.get(), biases.get());
+    // gpu::padded_cufft_convolutional_layer cudfp(n,l,l2,is,ws, kernels.get(), biases.get());
+    // gpu::padded_pruned_cufft_convolutional_layer cudfpp(n,l,l2,is,ws, kernels.get(), biases.get());
+
 
 }
 
@@ -104,4 +171,5 @@ int main()
 {
     while (1)
         test_conv_layer();
+
 }
