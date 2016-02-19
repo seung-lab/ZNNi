@@ -294,7 +294,19 @@ struct fast_stage_1_functor : public thrust::unary_function<uint,uint>
         uint r = div_i_l.divide(i);   //  r = i / i_l;
         i -= r * i_l;                 //  i = i % i_l;
         return r * o_l + i;
-        //return (i / i_l) * o_l + (i % i_l);
+    }
+};
+
+struct fast_stage_1_functor_1 : public thrust::unary_function<uint,uint>
+{
+    uint o_l;
+
+    fast_stage_1_functor(uint b): o_l(b) {}
+
+    __host__ __device__ __forceinline__
+    uint operator()(uint i) const
+    {
+        return r * o_l;
     }
 };
 
@@ -327,11 +339,58 @@ struct fast_stage_2_functor : public thrust::unary_function<uint,uint>
         b -= r * i_y;                 // b = (i / i_x) % i_y;
 
         return ( r * i_x + i ) * o_x + b;
+    }
+};
 
-        //return
-        //    (((i / i_x) / i_y)) * o_y * o_x) +
-        //    ((i % i_x) * o_x) +
-        //    ((i / i_x) % i_y);
+
+struct fast_stage_2_functor_1_N : public thrust::unary_function<uint,uint>
+{
+    uint i_y, o_x;
+    fast_divide div_i_y;
+
+    fast_stage_2_functor( uint iy, uint ox )
+        : i_y(iy), o_x(ox), div_i_y(iy) {}
+
+    __host__ __device__ __forceinline__
+    uint operator()(uint i) const
+    {
+        uint r = div_i_y.divide(i);
+        i -= r * i_y;
+
+        return r * o_x + i;
+    }
+};
+
+
+struct fast_stage_2_functor_N_1 : public thrust::unary_function<uint,uint>
+{
+    uint i_x, o_x;
+    fast_divide div_i_x;
+
+    fast_stage_2_functor( uint ix, uint ox )
+        : i_x(ix), o_x(ox), div_i_x(ix) {}
+
+    __host__ __device__ __forceinline__
+    uint operator()(uint i) const
+    {
+        uint b = div_i_x.divide(i);   // b = i / i_x;
+        i -= b * i_x;                 // i = i % i_x;
+
+        return ( b * i_x + i ) * o_x;
+    }
+};
+
+struct fast_stage_2_functor_1_1 : public thrust::unary_function<uint,uint>
+{
+    uint o_x;
+
+    fast_stage_2_functor( uint ox )
+        : o_x(ox) {}
+
+    __host__ __device__ __forceinline__
+    uint operator()(uint i) const
+    {
+        return i * o_x;
     }
 };
 
@@ -340,25 +399,98 @@ void stage_2_scatter( int i_x, int i_y, int o_x,
                       cuComplex* in, cuComplex* out, long_t n ) noexcept
 {
     checkCudaErrors( cudaMemset( out, 0, (n/i_y) * o_x * sizeof(cuComplex) ));
-    thrust::scatter(
-        thrust::device,
-        in, in + n,
-        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                        fast_stage_2_functor(i_x,i_y,o_x)),
-        out);
+
+    if ( i_x == 1 )
+    {
+        if ( i_y == 1 )
+        {
+            thrust::scatter(
+                thrust::device,
+                in, in + n,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_1_1(o_x)), out);
+        }
+        else
+        {
+            thrust::scatter(
+                thrust::device,
+                in, in + n,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_1_N(i_y,o_x)), out);
+        }
+    }
+    else
+    {
+        if ( i_y == 1 )
+        {
+            thrust::scatter(
+                thrust::device,
+                in, in + n,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_N_1(i_x,o_x)), out);
+        }
+        else
+        {
+            thrust::scatter(
+                thrust::device,
+                in, in + n,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor(i_x,i_y,o_x)), out);
+        }
+    }
 }
 
 
 void stage_2_gather( int i_x, int i_y, int o_x,
                      cuComplex* in, cuComplex* out, long_t n ) noexcept
 {
-    thrust::gather(
-        thrust::device,
-        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                        fast_stage_2_functor(i_x,i_y,o_x)),
-        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                        fast_stage_2_functor(i_x,i_y,o_x)) + n,
-        out, in);
+    if ( i_x == 1 )
+    {
+        if ( i_y == 1 )
+        {
+            thrust::gather(
+                thrust::device,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_1_1(o_x)),
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_1_1(o_x)) + n,
+                out, in);
+        }
+        else
+        {
+            thrust::gather(
+                thrust::device,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_1_N(i_y,o_x)),
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_1_N(i_y,o_x)) + n,
+                out, in);
+        }
+    }
+    else
+    {
+        if ( i_y == 1 )
+        {
+            thrust::gather(
+                thrust::device,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_N_1(i_x,o_x)),
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor_N_1(i_x,o_x)) + n,
+                out, in);
+        }
+        else
+        {
+            thrust::gather(
+                thrust::device,
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor(i_x,i_y,o_x)),
+                thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                                fast_stage_2_functor(i_x,i_y,o_x)) + n,
+                out, in);
+        }
+    }
+
 }
 
 
@@ -366,12 +498,23 @@ void stage_1_scatter( int i_x, int o_x,
                       float* in, float* out, long_t n ) noexcept
 {
     checkCudaErrors( cudaMemset( out, 0, (n/i_x) * o_x * sizeof(float) ));
-    thrust::scatter(
-        thrust::device,
-        in, in + n,
-        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                        fast_stage_1_functor(i_x,o_x)),
-        out);
+
+    if ( i_x == 1 )
+    {
+        thrust::scatter(
+            thrust::device,
+            in, in + n,
+            thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                            fast_stage_1_functor_1(o_x)), out);
+    }
+    else
+    {
+        thrust::scatter(
+            thrust::device,
+            in, in + n,
+            thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                            fast_stage_1_functor(i_x,o_x)), out);
+    }
 }
 
 
@@ -379,13 +522,26 @@ void stage_1_scatter( int i_x, int o_x,
 void stage_1_gather( int i_x, int o_x,
                      float* in, float* out, long_t n ) noexcept
 {
-    thrust::gather(
-        thrust::device,
-        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                        fast_stage_1_functor(i_x,o_x)),
-        thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
-                                        fast_stage_1_functor(i_x,o_x))+n,
-        out, in);
+    if ( i_x == 1 )
+    {
+        thrust::gather(
+            thrust::device,
+            thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                            fast_stage_1_functor(i_x,o_x)),
+            thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                            fast_stage_1_functor(i_x,o_x))+n,
+            out, in);
+    }
+    else
+    {
+        thrust::gather(
+            thrust::device,
+            thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                            fast_stage_1_functor_1(o_x)),
+            thrust::make_transform_iterator(thrust::counting_iterator<uint>(0),
+                                            fast_stage_1_functor_1(o_x))+n,
+            out, in);
+    }
 }
 
 
