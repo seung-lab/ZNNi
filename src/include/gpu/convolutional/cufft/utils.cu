@@ -29,6 +29,15 @@ void add_to( cuComplex* first, cuComplex* last,
          thrust::placeholders::_1 + beta * thrust::placeholders::_2 );
 }
 
+void add_to( float* first, float* last,
+             float* out, float beta) noexcept
+{
+    thrust::transform
+        (thrust::device, first, last, out, out,
+         thrust::placeholders::_1 + beta * thrust::placeholders::_2 );
+}
+
+
 void mul_add( cuComplex* first1, cuComplex* last1,
               cuComplex* first2, cuComplex* result ) noexcept
 {

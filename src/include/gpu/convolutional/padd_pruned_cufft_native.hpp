@@ -18,14 +18,10 @@
 
 namespace znn { namespace fwd { namespace gpu {
 
-class padded_pruned_cufft_convolutional_layer
+class padded_pruned_cufft_native_convolutional_layer
     : public convolutional_layer_base
-    , public device_layer
 {
 private:
-    device_array<float> kernels  ;
-    device_array<float> biases   ;
-
     cudnnTensorDescriptor_t   out_desc, bias_desc;
 
     std::unique_ptr<cufft_padded_pruned_forward_transformer>  input_transformer ;
@@ -49,11 +45,24 @@ private:
     }
 
 public:
-    device_array<float> forward( device_array<float> in ) const override
+    long_t workspace_size() const
+    {
+        return 0;
+    }
+
+    void forward( float* in,
+                  float* out,
+                  float* kernels,
+                  float  beta,
+                  void* workspace ) const noexcept
     {
         auto ws = get_device_array<char>(workspace_size_);
 
         long_t transform_elements = cs[0] * cs[1] * cs[2];
+
+        // Transform all the inputs
+        //auto in_t = get_device_array<cuComplex>
+        //(transform_elements * batch_size * num_inputs);
 
         std::vector<device_array<cuComplex>> in_t(batch_size);
 
@@ -66,12 +75,14 @@ public:
                 in_t[i] = get_device_array<cuComplex>
                     (transform_elements * num_inputs);
 
-                input_transformer->forward(in.get() + i * input_len,
+                input_transformer->forward(in + i * input_len,
                                            in_t[i].get(), tmp.get(), ws.get());
             }
         }
 
-        in.reset();
+        // We will store all the transforms here
+        //auto out_t = get_device_array<cuComplex>
+        //(transform_elements * batch_size * num_outputs);
 
         std::vector<device_array<cuComplex>> out_t(batch_size);
 
@@ -91,7 +102,7 @@ public:
             {
                 // fft of the kernels
                 kernel_transformer->forward
-                    (kernels.get() + i * num_inputs * kernel_len,
+                    (kernels + i * num_inputs * kernel_len,
                      scratch2.get(),
                      scratch1.get(), ws.get());
 
@@ -116,8 +127,7 @@ public:
 
         in_t.clear();
 
-        auto out = get_device_array<float>(total_output_len);
-
+        if ( beta == 0 )
         {
             auto tmp = get_device_array<cuComplex>
                 (transform_elements * num_outputs);
@@ -125,34 +135,51 @@ public:
             for ( long_t i = 0; i < batch_size; ++i )
             {
                 output_transformer->backward(out_t[i].get(),
-                                             out.get() + i * output_len,
+                                             out + i * output_len,
                                              tmp.get(), ws.get());
             }
         }
+        else
+        {
+            auto outs = get_device_array<float>(total_output_len);
 
-        out_t.clear();
+            auto tmp  = get_device_array<cuComplex>
+                (transform_elements * num_outputs);
 
-        float alpha = 1; float beta = 1;
+            for ( long_t i = 0; i < batch_size; ++i )
+            {
+                output_transformer->backward(out_t[i].get(),
+                                             outs.get() + i * output_len,
+                                             tmp.get(), ws.get());
+            }
+
+            add_to(outs.get(), outs.get() + total_output_len, out, beta);
+        }
+
+    }
+
+    void apply_bias( float* out, float* biases ) const noexcept
+    {
+        float alpha = 1;
+        float beta  = 1;
 
         checkCUDNN(
             cudnnAddTensor( handle.cudnn_handle,
                             &alpha,
-                            bias_desc, biases.get(),
+                            bias_desc, biases,
                             &beta,
-                            out_desc, out.get()) );
-        // beta = 0;
+                            out_desc, out) );
+        beta = 0;
+
         // checkCUDNN(
         //     cudnnActivationForward(
         //         handle_,
         //         CUDNN_ACTIVATION_RELU,
         //         &alpha, out_desc, out,
         //         &beta, out_desc, out) );
-
-        return out;
     }
 
-
-    ~padded_pruned_cufft_convolutional_layer()
+    ~padded_pruned_cufft_native_convolutional_layer()
     {
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc) );
         checkCUDNN( cudnnDestroyTensorDescriptor(bias_desc) );
@@ -174,13 +201,10 @@ private:
     }
 
 public:
-    padded_pruned_cufft_convolutional_layer( long_t n, long_t fin, long_t fout,
-                                             vec3i const & is, vec3i const & ks,
-                                             float* km = nullptr,
-                                             float* bs = nullptr )
+    padded_pruned_cufft_native_convolutional_layer
+    ( long_t n, long_t fin, long_t fout,
+      vec3i const & is, vec3i const & ks )
         : convolutional_layer_base(n,fin,fout,is,ks)
-        , kernels(get_device_array<float>(kernels_len))
-        , biases(get_device_array<float>(fout))
     {
         {
             float* onesh = new float[fin];
@@ -189,15 +213,6 @@ public:
             checkCudaErrors( cudaMemcpy( ones, onesh, fin * sizeof(float),
                                          cudaMemcpyHostToDevice ) );
             delete onesh;
-        }
-
-        if ( km )
-        {
-            device_copy_n(km, kernels_len, kernels);
-        }
-        if ( bs )
-        {
-            device_copy_n(bs, fout, biases);
         }
 
         vec3i os = out_image_size;
@@ -227,8 +242,6 @@ public:
         workspace_size_ = std::max({input_transformer->workspace_size(),
                     kernel_transformer->workspace_size(),
                     output_transformer->workspace_size()});
-
-        std::cout << "FFT WORKSIZE: " << (workspace_size_ / 1024 / 1024) << "\n";
 
     }
 };

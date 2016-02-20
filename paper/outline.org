@@ -1,0 +1,50 @@
+* ZNNi - Title
+** Algorithms
+*** CPU
+**** Version 1
+     - Perform the sequential algorithm.  First calculate the FFTs of
+       all the inputs.  Then for each kernel compute the transform, do
+       a point-wise multiply add with the appropriate FFT of the input
+       image transform and accumulate at appropriate output FFT.
+       Finally do inverse FFTs of the output images one image at the
+       time.
+     - Each FFT is parallelized by having multiple thread do a subset
+       of 1D convolutions across first x, then y then z - 3 sync
+       points.
+     - Point-wise operations on the images are also parallelized by
+       having multiple threads do different subset of elements [linear
+       separation in memmory].
+
+**** Version 2
+     - First stage batch x number of inputs tasks are generated for
+       computing FFTs of the inputs.  They are all executed - we wait
+       until the last one is executed.
+     - For each output we generate a task that loops over the kernels
+       incident to the output node and 1. computes the FFT of the
+       kernel and then generates sob-tasks for each batch that
+       accumulates the output FFT of the batch affected by this kernel
+     - Finally we do the inverse FFTs of the output the same way as
+       the FFTs of the inputs.
+
+*** GPU
+**** Calling CUDNN primitives
+**** Padded Pruned FFTs
+     - FFTs parallelized over batches of 1D FFTs using cuFFT
+       (cufftMakePlanMany).
+     - Memory reshuffled - transposed before each set of 1D FFTs -
+       parallelized using cuda Thrust and fast div/mod
+     - Taking N FFTs at once where N is the number of input
+       feature-maps of the layer.
+     - Accumulating the FFT of the output feature-map as a matrix
+       vector multiply,  paralallized using by cuBLAS gemv.
+*** Hybrid
+
+    Move just a subset of the network to the GPU to perform
+    computation, either direct of FFT.
+
+*** Fusion
+
+    CPU on the top layers, generating batches (pooling networks).  A
+    single batch can then fit on the GPU and is being executed there.
+
+    Pipeline form.

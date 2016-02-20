@@ -78,6 +78,11 @@
 
 cuDNN is described here~\cite{chetlur2014cudnn}
 
+We do max fragment pooling as described here~\cite{giusti2013fast}.
+Except that we are limiting the sizes of our output patches to have
+each dimension equal to the cartesian product of all corresponding
+dimensions of all pooling windows in the network.
+
 \section{Introduction}
 
 We care about throughput -- not latency in this case.  This is because

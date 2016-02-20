@@ -3,15 +3,17 @@
 #include "in_out_split_cudnn.hpp"
 #include "../../../cpu/host_layer.hpp"
 #include "../../../cpu/convolutional/base.hpp"
+#include "../padd_pruned_cufft_native.hpp"
 
 namespace znn { namespace fwd { namespace gpu {
 
+template<typename Native>
 class ram_cudnn_convolutional_layer
     : public cpu::cpu_convolutional_layer_base
     , public cpu::host_layer
 {
 private:
-    std::unique_ptr<in_out_split_cudnn_convolutional_layer> single_;
+    std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>> single_;
 
 public:
     host_array<real> forward( host_array<real> in ) const override
@@ -59,11 +61,14 @@ public:
                   << "  BREAKS INTO: " << fin_chunk << ' '
                   << fout_chunk << "\n";
 
-        single_ = std::unique_ptr<in_out_split_cudnn_convolutional_layer>
-            ( new in_out_split_cudnn_convolutional_layer(
+        single_ = std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>>
+            ( new in_out_split_cudnn_convolutional_layer<Native>(
                 fin, fin_chunk, fout, fout_chunk, is, ks ));
     }
 
 };
+
+typedef native_cudnn_convolutional_layer gemm_it;
+typedef padded_pruned_cufft_native_convolutional_layer fft_it;
 
 }}} // namespace znn::fwd::gpu

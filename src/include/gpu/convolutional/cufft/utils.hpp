@@ -8,6 +8,7 @@ namespace znn { namespace fwd {
 
 void div_all_by( float*, float*, float ) noexcept;
 void add_to( cuComplex*, cuComplex*, cuComplex*, float) noexcept;
+void add_to( float*, float*, float*, float) noexcept;
 void mul_add( cuComplex*, cuComplex*, cuComplex*, cuComplex* ) noexcept;
 
 void stage_1_scatter( int, int, float*, float*, long_t ) noexcept;

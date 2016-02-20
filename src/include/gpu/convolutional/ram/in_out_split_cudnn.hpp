@@ -4,12 +4,13 @@
 
 namespace znn { namespace fwd { namespace gpu {
 
+template<typename Native>
 class in_out_split_cudnn_convolutional_layer
     : public convolutional_layer_base
 {
 private:
-    std::unique_ptr<in_split_cudnn_convolutional_layer> full_   ;
-    std::unique_ptr<in_split_cudnn_convolutional_layer> partial_;
+    std::unique_ptr<in_split_cudnn_convolutional_layer<Native>> full_   ;
+    std::unique_ptr<in_split_cudnn_convolutional_layer<Native>> partial_;
 
     long_t n_full_;
 
@@ -53,16 +54,16 @@ public:
     {
         n_full_ = fout / fout_chunk;
 
-        full_ = std::unique_ptr<in_split_cudnn_convolutional_layer>
-            ( new in_split_cudnn_convolutional_layer
+        full_ = std::unique_ptr<in_split_cudnn_convolutional_layer<Native>>
+            ( new in_split_cudnn_convolutional_layer<Native>
               (fin, fin_chunk, fout_chunk, is, ks));
 
         workspace_size_ = full_->workspace_size();
 
         if ( fout % fout_chunk )
         {
-            partial_ = std::unique_ptr<in_split_cudnn_convolutional_layer>
-                ( new in_split_cudnn_convolutional_layer
+            partial_ = std::unique_ptr<in_split_cudnn_convolutional_layer<Native>>
+                ( new in_split_cudnn_convolutional_layer<Native>
                   (fin, fin_chunk, fout%fout_chunk, is, ks));
 
             workspace_size_ = std::max(workspace_size_,
