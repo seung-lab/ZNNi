@@ -22,6 +22,10 @@ function [ ret ] = direct_layer( n, fin, fout, is, fs )
 end
 
 function [ ret ] = fft_layer( n, fin, fout, is, fs )
+    fprintf('Layer:\n');
+    n
+    fin
+    fout
     C = 5;
 
     xs = floor(is/2) + 1;

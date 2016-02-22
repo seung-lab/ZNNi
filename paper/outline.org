@@ -1,5 +1,25 @@
-* ZNNi - Title
+
+* ZNNi - Maximizing the Inference Throughput of 3D Convolutional Networks on Multi-Core Machines and GPUs.
+** Claims
+*** Use large output patches
+
+    Saturation ~ to the field of view
+
+*** Don't use batch inputs
+*** Speed depends on the network depth, width and filter sizes
+*** Worth spending time on optimizing the performances as it will save more time overall
+*** Instead of buying 3 extra GPUs to get 4x improvement in the throughput, consider buying extra memory (cheaper and possibly better)
+** Intro
+
+   Explain convolutional networks, how the forward pass works
+   Explain how it can be done using FFTs
+
 ** Algorithms
+*** Max fragment pooling
+
+    With restricted output sizes to make sure all the batches have the
+    same size
+
 *** CPU
 **** Version 1
      - Perform the sequential algorithm.  First calculate the FFTs of
@@ -37,7 +57,7 @@
        feature-maps of the layer.
      - Accumulating the FFT of the output feature-map as a matrix
        vector multiply,  paralallized using by cuBLAS gemv.
-*** Hybrid
+*** Hybrid - GPURAM
 
     Move just a subset of the network to the GPU to perform
     computation, either direct of FFT.
@@ -48,3 +68,19 @@
     single batch can then fit on the GPU and is being executed there.
 
     Pipeline form.
+
+    More limits on the size of the network b/c we need to keep extra
+    data in memory (for the pipeline)
+
+** Experiments
+
+   Done on 3D networks with relatively large fields of view
+
+*** Purely convolutional networks
+*** Convolutional networks with pooling layers
+** Contributions
+
+   Parallel CPU algorithms
+   Pruned FFTs on the CPU
+
+   Parallel GPU algorithms using 1D FFTs.
