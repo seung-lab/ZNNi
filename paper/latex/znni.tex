@@ -22,6 +22,7 @@
 \setlength{\textfloatsep}{1ex}
 
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
 \begin{document}
 
@@ -34,8 +35,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{ZNN\emph{i} -- Maximizing the Inference Throughput of 3D
-  Convolutional Networks on Multi-Core and Many-Core Shared Memory
-  Machines}
+  Convolutional Networks on Multi-Core Machines and GPUs}
 
 \author{\IEEEauthorblockN{Aleksandar Zlateski\IEEEauthorrefmark{1},
     Kisuk Lee\IEEEauthorrefmark{2}}
@@ -64,6 +64,17 @@
 
 \begin{abstract}
 
+We present a novel parallel algorithm for 3D ConvNet inference on
+multi-core shared memory machines.  We also present a novel algorithm
+for ConvNet inference on the GPU that uses less memory.  We also
+present an algorithm that uses the GPU and host ram to improve the
+throughput.  As well as CPU-GPU combined algorithm.
+
+We compare discuss the advantages and disadvantages of all approaches.
+
+We compare our algorithms to publicly available implementation (on the
+same hardware) and observe great speedup.
+
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,8 +94,6 @@ Except that we are limiting the sizes of our output patches to have
 each dimension equal to the cartesian product of all corresponding
 dimensions of all pooling windows in the network.
 
-\section{Introduction}
-
 We care about throughput -- not latency in this case.  This is because
 we assume that we need to do inference on a large amount of data.
 
@@ -95,7 +104,21 @@ Examples -- videos, EM data, tons of images (FB?).
 Relate to ZNN for training as training has to be optimized for
 latency.
 
-\section{How do we do it}
+\section{Max fragment pooling}
+
+We should not use batches (except sometimes)
+
+\begin{figure}
+  \centering
+  \subfloat[]{\protect\includegraphics[width=0.24\textwidth]
+    {fig/fft_batch_speedup.eps}}
+  \subfloat[]{\protect\includegraphics[width=0.24\textwidth]
+    {fig/fft_mem_speedup.eps}}
+
+  \caption{Explains why we should not use batches ever!}
+  \label{fig:batch_explanation}
+\end{figure}
+
 
 
 We reduce the number of operations per output sample by:
@@ -111,44 +134,57 @@ available cores, while using little memory overhead per running
 thread.
 
 
-\section{Pruned FFT}
+\section{Padded pruned FFT}
+
+A 3D FFT transform is obtained by computing 1D FFTs along the three
+dimensions.  When computing a transform of a padded 3D image, many of
+these 1D transforms will operate on all $0$ elements.  These
+transforms are unnecessary as FFT of a zero vector is a zero vector.
+
+A convolution of a 3D image with a kernel is obtained by first zero
+padding the image and the kernel to the same size, after which we
+perform the transform of both the padded image and kernel.  The
+inverse transform of the point-wise product of the two transforms will
+contain the result of the convolution.
+
+We can reduce the amount of computation by computing only necessary 1D
+transforms.  For instance, when computing the FFT of trainable kernel
+of size $k^3$ zero padded to size of $n^3$, instead of naively
+computing $n^2$ 1D FFTs each dimension, which takes $C n^3 \log n^3$
+we could first only do $k^2$ FFTs along one direction, then $k \times
+x$ along then next, and finally $n^2$ along the last direction.  This
+way we reduce the computational cost from $C n^3 \log n^3$ to $C n\log
+n[k^2 + k \cdot n + n^2]$.  As most of the FFTs are performed on
+kernels, when $k << n$, we could reduce the computation cost by almost
+two thirds.
+
 
 \begin{figure}
   \begin{center}
-  \includegraphics[width=0.8\columnwidth]{fig/pruned_ffts.pdf}
+  \includegraphics[width=0.65\columnwidth]{fig/pruned_ffts.pdf}
   \end{center}
   \caption{Pruned FFTs.}
   \label{fig:pruned_ffts}
 \end{figure}
 
+\subsection{CPU implementation}
 
-When computing the FFTs of the trainable kernels we need to zero-pad
-the kernels of size $k^3$ to the same size as the image the kernel is
-being convolved with ($n^3$).  Naively, we can create a new kernel of
-size $n^3$ where only $k^3$ elements are non-zero.  The forward FFT of
-the new kernel will take $C n\log n^3$ operations.  As a 3D FFT
-transform is computed by performing a series of 1D transforms, many of
-the 1D transforms will be performed on arrays with all the elements
-equal to $0$.
+We describe how the serial padded pruned FFT and iFFT is done.
 
-Pruned FFTs can be computed from the same zero-padded kernel, however
-we first perform $k^2$ 1D FFTs along $x$-direction, then $k \cdot n$
-1D FFTs along $y$-direction, and finally $n^2$ FFTs along the
-$z$-direction.  The total complexity is then reduced from $3C n\log n$
-to $C n\log n[k^2 + k \cdot n + n^2]$.
+We also describe how we parallelize a single FFT.
 
-As the value of $k$ will typically be much lower than the value of
-$n$, the majority of the 1D FFTs will be performed in the
-$z$-direction.  When the image is stored in the row-major order (as it
-is in C and C++), most of the 1D FFTs will have the array as a
-continuous chunk of memory, thus increasing the cache hits.
-Additionally, we can easily store the image in memory such that each
-of the 1D arrays in $z$-direction is properly aligned for optimally
-leveraging the available SIMD instructions.
+When fftw is used, we only use sizes of $2^a3^b5^c7^d11^e13^f$ where
+$e+f$ is either $1$ or $0$~\cite{frigo1999fftw,frigo1998fftw}.
 
-On the gpu.  For index calculation we use~\cite{warren2013hacker}
+When using mkl fft we only use sizes of $2^a3^b5^c7^d11^e13^f$.
 
 \subsection{GPU implementation}
+
+On the gpu we only use sizes  $2^a3^b5^c7^d$~\cite{nvidia2010cufft}.
+
+We always do a batch of 3D FFTs (imagine as 4D tensor)
+
+On the gpu.  For index calculation we use~\cite{warren2013hacker}
 
 Assume that we want to compute the FFT transforms of $b$ 3D images
 each of size $x_i \times y_i \times z_i$.  We first compute the
@@ -164,10 +200,10 @@ $z_o' = z_o / 2 + 1$ complex numbers, and we need twice as many reals.
 A matrix of size $b \times x_i \times y_i \times 2z_o')$ is first
 initialized to zero, and appropriate elements from the input are
 filled in.  After batched in--place real to complex 1D transforms are
-performed the result represents a 4D matrix of complex numbers of size
-$b \times x_i \times y_i \times z_o'$.  Note that all the 1D
-transforms are done on contiguous memory chunks (along the last
-dimension).
+performed.  The result represents a 4D matrix of complex numbers of
+size $b \times x_i \times y_i \times z_o'$.  Note that all the 1D
+transforms are done on contiguous memory chunks (along the least
+significant dimension).
 
 In the next step we perform in-place complex to complex transforms
 along the $y$ direction.  To do that we will flip the dimensions and
@@ -175,8 +211,7 @@ zero pad the previous matrix.  First we initialize a matrix of complex
 numbers with the size of $b \times x_i \times z_o' \times y_o$.  The
 matrix is first initialized to zero.  Each element $i,j,k,l$ of the
 input matrix is mapped to $i,j,l,k$.  Then $b \times x_i \times z_o'$
-1D transforms are performed along the last dimension (with all
-elements contiguous in memory).
+1D transforms are performed along the last dimension.
 
 Finally we perform the last in-place complex to complex transform
 along the $x$ direction.  For that we initialize $b \times z_o' \times
@@ -198,132 +233,192 @@ multiplications by a pre--computed magic numbers and shift operations
 as described in ~\cite{warren2013hacker}.  Image reshaping is easily
 implemented using the Thrust CUDA library~\cite{bell2011thrust}.
 
+\section{Algorithms for the convolutional layers}
+
+In each algorithm we assume that we need to perform the computation of
+a convolutional layer with $f$ input feature-maps and $f'$ output
+feature-maps.  Each algorithm evaluates the layer on a batch of size
+$b$ inputs.  Let the size of each input image be $x \times y \times
+z$.  We represent the input as a 5D tensor with size $b \times
+f \times x \times y \times z$, and the output as a 5D tensor with the
+size $b \times f' \times x \times y \times z$.  The tensors are stored
+in memory in the row major (commonly known as C) order.
+
+\subsection{CPU algorithms}
+
+We present two algorithms suited for multi-core CPUs.  The two
+algorithms have different parallelization strategies and yield
+different performance and memory usage.
+
+Both algorithm consist of three stages.  In the first stage all the
+transforms of the inputs are computed.  In the second stage FFTs of
+the kernels are computed and point-wise products are accumulated.
+Finally in the third stage the inverse transforms of the accumulated
+products are computed obtaining the output images.
+
+Breaking up the algorithm into three stages allows us to more
+efficiently utilize the available memory.  After the first stage, the
+memory used by the input images is not required, and can be freed.
+After the second stage the memory used by the transforms of the input
+images can also be freed.
+
+\subsubsection{Direct convolution algorithm}
 
 \begin{algorithm}
   {\small
   \begin{codebox}
-    \Procname{$\proc{Linear-index-map}(i,x_i,y_i,y_o)$}
-    \li $b \gets i / y_i$
-    \li $i \gets i - b \times y_i$
-    \li $r \gets b / x_i$
-    \li $b \gets b - r \times x_i$
-    \li \Return $(r \times y_i + i) \times y_o + b$
+    \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,b,f,f',\vec{n},\vec{k})$}
+    \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
+    \li $O \gets \proc{5D-Real-Tensor}(b,f',n'_x,n'_y,n'_z)$
+    \li \kw{Parfor} $i \gets 0 \To b-1$
+    \li   \Do \kw{Parfor} $j \gets 0 \To f'-1$
+    \li     \Do \For $k \gets 0 \To f-1$
+    \li     \Do $O_{i,j} \gets O_{i,j} + \proc{Convolve}(I_{i,k},w_{j,k})$
+    \End \End \End
+    \li $\proc{Free-Memory}(I)$
+    \li \Return $O$
   \end{codebox}
   }
 
-  \caption{Index mapping between two 3D matrices.  The input matrix
-  had dimensions $b \times x_i \times y_i$, and the output $b \times
-  y_i \times y_o$} \label{alg:index_map}
+  \caption{Multi-core algorithm for a convolutional layer using direct
+  convolution.}
+  \label{alg:cpu_direct}
 \end{algorithm}
 
+\subsubsection{FFT based algorithm 1}
 
-\section{Serial}
+The first algorithm is very similar to the serial algorithm and is
+given in the algorithm listing~\ref{alg:cpu_alg1}.  The computationally
+intensive operations in the algorithm are individually parallelized.
+More specifically each FFT and inverse FFT transform is done in
+parallel as explained above.  The $\proc{Parallel-MAD}$ function
+computes a series of multiply-add operations in parallel by dividing
+the range into roughly equal sub-ranges, each of which is executed on
+a single core.
 
-Tables for serial execution.
+\begin{algorithm}
+  {\small
+  \begin{codebox}
+    \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,b,f,f',x,y,z)$}
+    \li $\widetilde{I} \gets \proc{5D-Complex-Tensor}(b,f,\floor{x/2}+1,y,z)$
+    \li \For $i \gets 0 \To b-1$
+    \li   \Do \For $j \gets 0 \To f-1$
+    \li     \Do $\widetilde{I}_{i,j} \gets \proc{Parallel-FFT}(I_{i,j})$
+    \End \End
+    \li $\proc{Free-Memory}(I)$
+    \li $\widetilde{O} \gets \proc{5D-Complex-Tensor}(b,f',\floor{x/2}+1,y,z)$
+    \li \For $i \gets 0 \To f'-1$
+    \li   \Do \For $j \gets 0 \To f-1$
+    \li     \Do $\widetilde{w}_{i,j} = \proc{Parallel-FFT}(w_{i,j})$
+    \li         \For $k \gets 0 \To b-1$
+    \li           \Do $\proc{Parallel-MAD}(\widetilde{O}_{k,j}, \widetilde{w}_{i,j}, \widetilde{O}_{k,i})$
+    \End \End \End
+    \li $\proc{Free-Memory}(\widetilde{I})$
+    \li $O \gets \proc{5D-Real-Tensor}(b,f',x,y,z)$
+    \li \For $i \gets 0 \To b-1$
+    \li   \Do \For $j \gets 0 \To f'-1$
+    \li     \Do $O_{i,j} \gets \proc{Parallel-Inverse-FFT}(\widetilde{O}_{i,j})$
+    \End \End
+    \li $\proc{Free-Memory}(\widetilde{O})$
+    \li \Return $O$
+  \end{codebox}
+  }
 
-\begin{table*}
-  \centering
-  \begin{tabular}{ll}
-    \hline
-    Method    &FLOPs
-    \\ \hline
-    Direct & $b \cdot f' \cdot f \cdot n'^3 \cdot k^3$
-    \\
-    Na\"{\i}ve FFTs & $3Cn^3 \log n[bf'+bf+f' \cdot f] + 4bf' \cdot f \cdot n^3$
-    \\
-    Memoized FFTs & $3bCn^3 \log n[f'+f] + 4bf' \cdot f \cdot n^3$
-    \\
-    Pruned FFTs & $3bCn^3 \log n[f'+f] + C n\log n[k^2 + k \cdot n + n^2] \cdot f' \cdot f + 4bf' \cdot f \cdot n^3$
-    \\ \hline
-  \end{tabular}
-  \caption{Computational complexity of a fully connected convolutional
-    layer, which maps $f$ input images to $f'$ output images using
-    $ff'$ kernels. FFT complexity for an array of $n$ elements is
-    assumed to be $Cn\log n$.  Complexity is measured in number of
-    floating point operations.}
-  \label{table:conv_complexity}
-\end{table*}
+  \caption{Multi-core algorithm for a convolutional
+  layer}
+  \label{alg:cpu_alg1}
+\end{algorithm}
 
+The memory requirement of the algorithm equals to the maximal amount
+of memory required by the algorithm at any single point of time during
+the execution.
 
-\begin{table}
-  \centering
-  \begin{tabular}{llll}
-    \hline
-    Method    &Images   &Stack   &Memoized
-    \\ \hline
-    Direct & $f \cdot b \cdot n^3 + f' \cdot b \cdot n'^3$ & - & -
-    \\
-    Na\"{\i}ve FFTs & $[f + f'] \cdot b \cdot  n^3$ & $2n^3$ & -
-    \\
-    Memoized FFTs & $[f + f'] \cdot b \cdot  n^3$ & - & $f' \cdot f \cdot n^3$
-    \\
-    Pruned FFTs & $[f + f'] \cdot b \cdot  n^3$ & $k^2n + n^3$ & -
-    \\ \hline
-  \end{tabular}
-  \caption{Memory usage in number of floating point numbers. $b$ is
-    the batch size.}
-  \label{table:conv_memory}
-\end{table}
+\subsubsection{FFT based algorithm 2}
 
-
-\section{Parallel}
-
-Tables for parallel execution.  Explain the parallelization strategies
--- they are different then ZNN training.
-
-ZNN training parallelization strategy:
-
-\begin{itemize}
-\item GOOD -- possible better parallelization on large number of cores.
-\item BAD -- MUCH more stack memory required -- limits image size
-\item BAD -- more instructions (mul to spare memory then add to the sum)
-\end{itemize}
-
-Generally, the lock-free summation might not be the best choice here.
-
-\begin{table}
-  \centering
-  \begin{tabular}{ll}
-    \hline
-    Method    &FLOPs
-    \\ \hline
-    Direct & $bf \cdot n'^3 \cdot k^3$
-    \\
-    Na\"{\i}ve FFTs & $3Cn^3 \log n[2b + f] + 4b f \cdot n^3$
-    \\
-    Memoized FFTs & $6bCn^3 \log n + 4b f \cdot n^3$
-    \\
-    Pruned FFTs & $6bCn^3 \log n + C n\log n[k^2 + k \cdot n + n^2] \cdot f + 4b f \cdot n^3$
-    \\ \hline
-  \end{tabular}
-  \caption{Computational complexity of a fully connected convolutional
-    layer, which maps $f$ input images to $f'$ output images using
-    $ff'$ kernels. FFT complexity for an array of $n$ elements is
-    assumed to be $Cn\log n$.  Complexity is measured in number of
-    floating point operations.}
-  \label{table:conv_complexity}
-\end{table}
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=0.95\columnwidth]{fig/deps}
+  \end{center}
+  \caption{Task dependencies of a convolutional layer.}
+  \label{fig:task_deps}
+\end{figure}
 
 
-\begin{table}
-  \centering
-  \begin{tabular}{llll}
-    \hline
-    Method    &Images   &Stack   &Memoized
-    \\ \hline
-    Direct & $f \cdot b \cdot n^3 + f' \cdot b \cdot n'^3$ & - & -
-    \\
-    Na\"{\i}ve FFTs & $[f + f'] \cdot b \cdot  n^3$ & $T \cdot 2n^3$ & -
-    \\
-    Memoized FFTs & $[f + f'] \cdot b \cdot  n^3$ & - & $f' \cdot f \cdot n^3$
-    \\
-    Pruned FFTs & $[f + f'] \cdot b \cdot  n^3$ & $T \cdot [k^2n + n^3]$ & -
-    \\ \hline
-  \end{tabular}
-  \caption{Memory usage in number of floating point numbers. $b$ is
-    the batch size.  $T$ is the number of threads.}
-  \label{table:conv_memory}
-\end{table}
+The main idea of the algorithm is to break up the computation of the
+convolutional layer into tasks that operate on an independent chunk of
+data.  We then create a task dependency graph and execute the tasks
+using $N$ workers.  To increase cache locality the tasks are managed
+using the work stealing scheduler, which means that each worker keeps
+a list of local tasks as a stack (last task put on the stack will be
+executed next)~\cite{reinders2007intel}.  If a local stack is empty,
+only then a worker \emph{steals} and executes a task from other
+worker's queue.
+
+We have 5 types of task, each of which performs relatively simple
+work.  A task dependency diagram is shown on
+figure~\ref{fig:task_deps}.
+
+The first type of tasks (yellow) have two purposes.  They serve as
+synchronization points, and they deal with memory management.  They
+allocate memory required for the next stage and free the memory that
+is not needed any more.  The topmost yellow task allocates memory for
+the FFT transforms of all the input images, as well as working memory
+for each of the $N$ workers.
+
+The second task type (red) performs a transform of a single image of
+the input.  Note that performing FFTs of image require some extra
+working memory, which was allocated for each worker in the dependent
+yellow task.  The number of such tasks will equal to the product of
+the batch size and the number of input feature-maps.
+
+After computing all the FFTs transforms of all the input images, we
+can free the memory used by the images (as we don't need that
+information anymore).  This is done by the second from the top yellow
+task.  This yellow task also allocates memory for FFTs of all the
+output images.
+
+The next two task types are blue -- performs the FFT transform of a
+kernel, and green -- multiplies the FFT transform of the kernel with
+the appropriate FFT transform of the input image and adds to the
+appropriate sum.  The task dependency is designed such that there's
+never two workers trying to access the same memory.  Notice that the
+blue tasks form some sort of a grid.  The blue tasks in each column
+operate on the same output feature map, and blue tasks in each row
+operate on the same input feature map.  More specifically a blue task
+in column $i$ and row $j$ represents performing the FFT of the kernel
+$k_{i,j}$.  For each blue task there is a number of green tasks equal
+to the batch size.
+
+\subsection{GPU implementations}
+
+\subsubsection{Direct convolution using CuDNN}
+
+\subsubsection{FFT based algorithm}
+
+
+
+%\begin{algorithm}
+%  {\small
+%  \begin{codebox}
+%    \Procname{$\proc{Linear-index-map}(i,x_i,y_i,y_o)$}
+%    \li $b \gets i / y_i$
+%    \li $i \gets i - b \times y_i$
+%    \li $r \gets b / x_i$
+%    \li $b \gets b - r \times x_i$
+%    \li \Return $(r \times y_i + i) \times y_o + b$
+%  \end{codebox}
+%  }%
+%
+%  \caption{Index mapping between two 3D matrices.  The input matrix
+%  had dimensions $b \times x_i \times y_i$, and the output $b \times
+%  y_i \times y_o$} \label{alg:index_map}
+%\end{algorithm}
+
+
+\section{Algorithms for the max fragment pooling layers}
+
+\subsection{CPU algorithm}
+\subsection{GPU algorithm}
 
 \section{Sliding window inference}
 
@@ -342,65 +437,21 @@ rarefied kernels are used, the only thing that changes is the size of
 the output image that now equals $n' = n - (k-1)*r$, where $r$ is the
 sparseness of the kernel.
 
-\section{CPU Algorithms}
 
-\subsection{Task package and task execution}
 
-We introduce a notion of a task package.  A task package is a set of
-independent tasks that we want executed in an arbitrary order, and
-which can be executed in parallel.  A task package will be executed by
-a thread pool of $N$ running threads.  In order to minimize the
-synchronization we do the following two optimization:
-
-All the threads are pre-spawn and are waiting on a condition variable
-to start executing the tasks from the task package.
-
-All the tasks in the task package are inserted before the execution
-start.  They are inserted onto a lock-free queue from which they will
-be picked up by some of the $N$ running threads.
-
-\subsection{Convolutional layers}
-
-The convolutional layers are processed in 3 stages.  In the first
-stage, the FFTs of the inputs are computed.  For each input image of
-each batch a single task is created.  The tasks are then executed in
-parallel.
-
-After the first stage the memory storing the input image can be freed
-as the data is not required anymore.
-
-In the second stage the FFTs of the outputs are collected.  A single
-task will compute the FFTs of the outputs for a single output image of
-each batch.  A network of width $N$ will therefore yield $N$ tasks.
-The job if each task is then to compute the FFT of appropriate filters
-(one at the time), do a point-wise multiplication and accumulate the
-results.
-
-After the second stage the memory where the FFTs of the input images
-are stored can be freed.
-
-In the third and final stage we compute the output images.  Each task
-here computes an inverse FFT for a single image of a single batch.  A
-batch of size $B$ and a network of width $N$ will yield $B \times N$
-tasks.  Each task also scales the output appropriately, adds the bias
-and applies the transfer function.
-
-\subsection{First layer optimization}
-
-We optimize the first layer to improve the parallelism and reduce the
-memory usage.  The problem is that first layer usually has a single
-input, and therefore the first stage of the previous algorithm will
-utilize only a single core.  Also, the images of the first layer will
-be the largest ones, and per-worker requirements for stack memory will
-be high.
-
-\section{GPU Algorithms}
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=0.95\columnwidth]{fig/gpuram.pdf}
+  \end{center}
+  \caption{Partial loading of data to the device.}
+  \label{fig:partial_exec}
+\end{figure}
 
 Pooling layers use CUDNN.
 
 Direct convolutional layers also use CUDNN.  If possible they use the
-precomputed gemm which requires workspace memory.  The cases when this
-is possible is not well documented so we experimentally determine
+pre--computed gemm which requires workspace memory.  The cases when
+this is possible is not well documented so we experimentally determine
 whether we can use it.
 
 FFT convolutional layers are implemented in the following way.  For
@@ -424,6 +475,47 @@ utilization.
 
 
 \section{Experiments}
+
+\subsection{Purely convolutional networks}
+\subsection{Max-pooling convolutional networks}
+
+
+\begin{figure*}[h!t]
+  \centering
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m96.eps}}
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m96.eps}}
+    \\
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m96.eps}}
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m96.eps}}
+
+  \caption{Throughput vs output patch size for pooling networks
+  }
+  \label{fig:2dspeedups_threads}
+\end{figure*}
+
+
+\begin{figure*}[h!t]
+  \centering
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m96.eps}}
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m56.eps}}
+    \\
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m76.eps}}
+  \subfloat[]{\protect\includegraphics[width=0.44\textwidth]
+    {fig/m96.eps}}
+
+  \caption{Throughput vs output patch size for pooling networks
+  }
+  \label{fig:2dspeedups_threads}
+\end{figure*}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -432,7 +524,6 @@ utilization.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\IEEEtriggeratref{25}
 
 {\small
 \bibliographystyle{IEEEtran}
