@@ -30,7 +30,7 @@ struct benchmark
     typedef typename conv_t::layer_type  layer_t;
     typedef typename conv_t::array_type  array_t;
 
-    void operator()( znni_network & net ) const
+    double operator()( znni_network & net, long_t rounds = 2 ) const
     {
         sampler_t sampler;
 
@@ -61,8 +61,9 @@ struct benchmark
             }
         }
 
+        double total_time = 0;
 
-        for ( long_t r = 0; r < 2; ++r )
+        for ( long_t r = 0; r < rounds; ++r )
         {
             zi::wall_timer wta, wt;
             auto x = net.get_random_sample();
@@ -83,6 +84,8 @@ struct benchmark
                           << std::endl;
             }
 
+            total_time += wta.elapsed<double>();
+
             wt.reset();
             x = sampler.fetch(std::move(y), net.out_len());
             std::cout << "Result copy took\t" << wt.elapsed<double>()
@@ -92,13 +95,14 @@ struct benchmark
                       << std::endl << std::endl;
         }
 
+        return total_time / rounds;
+
     }
 };
 
 
 int main(int argc, char *argv[])
 {
-    //auto x = znn::fwd::layer_type::convolutional;
 
     std::string f(argv[1]);
 
@@ -108,24 +112,36 @@ int main(int argc, char *argv[])
     if ( argc > 3 ) os[1] = atoi(argv[3]);
     if ( argc > 4 ) os[2] = atoi(argv[4]);
 
+    long_t rounds = 4;
+
+    if ( argc > 5 ) rounds = atoi(argv[5]);
+
     network_descriptor nd(f);
-    znni_network       net(nd, 1, os);
 
+    // {
+    //     benchmark<cpu_sample,
+    //               cpu::padded_pruned_fft_auto_convolutional_layer,
+    //               cpu::pooling_layer> b;
+
+    //     b(net);
+    // }
+
+
+    for ( long_t i = 16; i < 1000; ++i )
     {
-        benchmark<cpu_sample,
-                  cpu::padded_pruned_fft_auto_convolutional_layer,
-                  cpu::pooling_layer> b;
+        os[0] = os[1] = os[2] = i;
 
-        b(net);
-    }
+        znni_network       net(nd, 1, os);
 
-
-    {
         benchmark<cpu_sample,
                   znn::fwd::tbb::padded_pruned_fft_auto_convolutional_layer,
                   znn::fwd::tbb::pooling_layer> b;
 
-        b(net);
+        double tt = b(net,rounds);
+
+        tt /= os[0]*os[1]*os[2];
+
+        std::cout << "OS: " << os << ' ' << tt << std::endl;
     }
 
 }

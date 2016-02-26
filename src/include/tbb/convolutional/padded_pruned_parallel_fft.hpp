@@ -29,7 +29,7 @@ public:
         : cpu_convolutional_layer_base( n, fin, fout, is, ks, km, bs )
         , fft_(padded_pruned_fft_plans.get(is,ks))
     {
-        STRONG_ASSERT(n==1);
+        //STRONG_ASSERT(fin==1);
     }
 
 
@@ -85,8 +85,8 @@ private:
     void collect_single_kernel( bool first,
                                 real * kernel,
                                 real * rscratch,
-                                complex * input,
-                                complex * output,
+                                complex * inputs,
+                                complex * outputs,
                                 complex * cscratch ) const
     {
         // copy the kernel to the scratch
@@ -110,22 +110,30 @@ private:
         // loop over the batch
         long_t n_elements = fft_->transform_elements();
 
-        // TODO: PARALLEL
-        if ( first )
+        complex * input  = inputs ;
+        complex * output = outputs;
+
+        for ( long_t i = 0; i < batch_size; ++i )
         {
-            ::tbb::parallel_for( static_cast<long_t>(0), n_elements,
-                                 [&](long_t i)
-                                 {
-                                     output[i] = input[i] * cscratch[i];
-                                 } );
-        }
-        else
-        {
-            ::tbb::parallel_for( static_cast<long_t>(0), n_elements,
-                                 [&](long_t i)
-                                 {
-                                     output[i] += input[i] * cscratch[i];
-                                 } );
+            if ( first )
+            {
+                ::tbb::parallel_for( static_cast<long_t>(0), n_elements,
+                                     [&](long_t i)
+                                     {
+                                         output[i] = input[i] * cscratch[i];
+                                     } );
+            }
+            else
+            {
+                ::tbb::parallel_for( static_cast<long_t>(0), n_elements,
+                                     [&](long_t i)
+                                     {
+                                         output[i] += input[i] * cscratch[i];
+                                     } );
+            }
+
+            input  += n_elements * num_inputs;
+            output += n_elements;
         }
     }
 
@@ -161,7 +169,7 @@ private:
         if ( fft_->needs_padding() )
         {
             auto scratch = get_array<real>(fft_->image_scratch_elements());
-            for ( long_t j = 0; j < num_inputs; ++j )
+            for ( long_t j = 0; j < num_inputs * batch_size; ++j )
             {
                 do_input_fft_padded( in.get() + relements * j,
                                      itransforms.get() + celements * j,
@@ -170,7 +178,7 @@ private:
         }
         else
         {
-            for ( long_t j = 0; j < num_inputs; ++j )
+            for ( long_t j = 0; j < num_inputs * batch_size; ++j )
             {
                 do_input_fft( in.get() + relements * j,
                               itransforms.get() + celements * j);
@@ -188,7 +196,7 @@ private:
         auto result = get_array<real>(total_output_len);
 
         auto c1scratch = get_array<complex>(celements);
-        auto c2scratch = get_array<complex>(celements);
+        auto c2scratch = get_array<complex>(celements * batch_size);
 
         auto rscratch  = get_array<real>(relements);
 
@@ -200,10 +208,15 @@ private:
                                    rscratch.get(),
                                    c1scratch.get() );
 
-            do_output_ifft( c2scratch.get(),
-                            result.get() + out_image_len * i,
-                            biases.get()[i],
-                            rscratch.get() );
+
+            for ( long_t j = 0; j < batch_size; ++j )
+            {
+                do_output_ifft( c2scratch.get() + j * celements,
+                                result.get() + out_image_len * i
+                                + j * output_len,
+                                biases.get()[i],
+                                rscratch.get() );
+            }
         }
 
         return result;
