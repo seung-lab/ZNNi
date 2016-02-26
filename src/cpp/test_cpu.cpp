@@ -84,7 +84,7 @@ struct benchmark
                           << std::endl;
             }
 
-            total_time += wt.elapsed<double>();
+            total_time += wta.elapsed<double>();
 
             wt.reset();
             x = sampler.fetch(std::move(y), net.out_len());
@@ -112,12 +112,11 @@ int main(int argc, char *argv[])
     if ( argc > 3 ) os[1] = atoi(argv[3]);
     if ( argc > 4 ) os[2] = atoi(argv[4]);
 
-    long_t rounds = 2;
+    long_t rounds = 4;
 
     if ( argc > 5 ) rounds = atoi(argv[5]);
 
     network_descriptor nd(f);
-    znni_network       net(nd, 1, os);
 
     // {
     //     benchmark<cpu_sample,
@@ -128,7 +127,12 @@ int main(int argc, char *argv[])
     // }
 
 
+    for ( long_t i = 16; i < 1000; ++i )
     {
+        os[0] = os[1] = os[2] = i;
+
+        znni_network       net(nd, 1, os);
+
         benchmark<cpu_sample,
                   znn::fwd::tbb::padded_pruned_fft_auto_convolutional_layer,
                   znn::fwd::tbb::pooling_layer> b;
