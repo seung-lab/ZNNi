@@ -123,10 +123,11 @@ We should not use batches (except sometimes)
 
 We reduce the number of operations per output sample by:
 \begin{enumerate}
-\item Using sliding window inference by kernel rarefication.
+\item Using max fragment pooling.
 \item Choosing optimal size for the output image as well as the batch
   size.
-\item Using \emph{pruned FFTs} for computing the FFTs of the kernels.
+\item Using \emph{pruned FFTs} for computing the FFTs of the kernels
+  and images.
 \end{enumerate}
 
 We improve the throughput by parallelizing the algorithm over multiple
@@ -167,71 +168,142 @@ two thirds.
   \label{fig:pruned_ffts}
 \end{figure}
 
+\subsection{FFT based convolution}
+
+The convolution theorem states that the fourier transform of a
+convolution euqals the pointwise product of the fureier transforms of
+the signals.  In the descrete case, the theorem is given by:
+
+$$x \ast y = DTFT^{-1}[DTFT\{x\} \cdot DTFT\{y\}]$$
+
+When implementing the FFT based convolution, the signals $x$ and $y$
+are first zero-padded to the same size.  The inverse FFT of the
+point-wise product contains the result of the convolution.  The
+signals $x$ and $y$ can be zero-padded to any size, as long as their
+size is equal.  We zero-pad the signals to sizes for which we have
+very efficient FFT algorithms.  On the CPU we either use sizes that
+can be written in the form of $2^a3^b5^c7^d11^e13^f$.  When Intel MKL
+is used any such size is allowed, however, when fftw is used we only
+allow sizes for which $e+f$ is either $0$ or
+$1$~\cite{frigo1999fftw,frigo1998fftw}.  On the GPU we use
+cuFFT~\cite{nvidia2010cufft}, which has optimized algorithms only for
+sizes of the form $2^a3^b5^c7^d$.
+
+The main functionality required by our algorithms is performing FFT
+(and inverse FFT) of an image of size $x \times y \times z$
+zero-padded to the size of $x' \times y' \times z'$.
+
 \subsection{CPU implementation}
 
-We describe how the serial padded pruned FFT and iFFT is done.
+We present both a serial and parallel algorithm for performing a FFT
+transform of a single 3D image.
 
-We also describe how we parallelize a single FFT.
+First, the image of size $x \times y \times z$ is zero padded to the
+size $x' \times y \times z$.  Note that this can be easily implemented
+by doing a linear copy of the memory, and zero padding the rest.
 
-When fftw is used, we only use sizes of $2^a3^b5^c7^d11^e13^f$ where
-$e+f$ is either $1$ or $0$~\cite{frigo1999fftw,frigo1998fftw}.
+We then perform $y \cdot z$ 1D real to complex FFTs along $x$
+direction.  The transform is performed out of place into a
+pre-allocated, and zero initialized complex 3D image of size
+$\floor{\frac{x'}{2}} + 1 \times y' \times z'$.
 
-When using mkl fft we only use sizes of $2^a3^b5^c7^d11^e13^f$.
+After that we perform in-place 1D transforms along $y$ and finally
+along $z$.  The difference between the serial and the parallel
+algorithm is only in the way we are performing the 1D transforms -
+either in serial, or by $N$ workers in parallel (can be thought of as
+parallel for).
+
+The memory overhead of the transform is due to the fact that we have
+to store the padded $x' \times y \times z$ array before the first real
+to complex FFT.
+
+The inverse FFT can be computed in exact same way, just taking the
+steps in reverse order.
 
 \subsection{GPU implementation}
 
-On the gpu we only use sizes  $2^a3^b5^c7^d$~\cite{nvidia2010cufft}.
+On the GPU, we always perform a batch of size $b$ of 3D FFTs.  This is
+due to the fact that the GPUs have more effective threads and we want
+to saturate the computational power of the GPU.
 
-We always do a batch of 3D FFTs (imagine as 4D tensor)
-
-On the gpu.  For index calculation we use~\cite{warren2013hacker}
+A set of $b$ 3D images can be represented as a 4D tensor.  We need to
+perform 1D FFTs along the three least significant dimensions.  The 3D
+FFT is computed by series of tensor transforms~\footnote{This is known
+as a \texttt{permute} function in MATLAB} and 1D FFTs along the least
+significant dimension of the permuted tensor.
 
 Assume that we want to compute the FFT transforms of $b$ 3D images
-each of size $x_i \times y_i \times z_i$.  We first compute the
-optimal size for the transform independently in each of the three
-dimensions.  Let it be $x_o \times y_o \times z_o$.  The images are
-stored in a row major form in memory as a 4D row major matrix of real
-numbers with the dimension of $b \times x_i \times y_i \times z_i$.
+each of size $x \times y \times z$ padded to $x' \times y' \times z'$.
+The input is therefore a 4D tensor $I$ of dimensions $b \times
+x \times y \times z$.
 
 We first perform in--place real to complex 1D transforms along the $z$
-direction. We prepare the input by extending the 4D matrix along the
+direction. We prepare the input by extending the 4D tensor along the
 $z$ direction to fit the result.  The transform will need to contain
-$z_o' = z_o / 2 + 1$ complex numbers, and we need twice as many reals.
-A matrix of size $b \times x_i \times y_i \times 2z_o')$ is first
+$z'' = z' / 2 + 1$ complex numbers, and we need twice as many reals.
+A 4D tensor $I^1$ of size $b \times x \times y \times 2z'')$ is first
 initialized to zero, and appropriate elements from the input are
-filled in.  After batched in--place real to complex 1D transforms are
-performed.  The result represents a 4D matrix of complex numbers of
-size $b \times x_i \times y_i \times z_o'$.  Note that all the 1D
-transforms are done on contiguous memory chunks (along the least
-significant dimension).
+filled in (elements $I_{i,j,k,l}$ get mapped to $I^1_{i,j,k,l}$ while
+the rest of elements of $I^1$ are set to zero).
+
+After which a batch of $b$ in--place real to complex 1D transforms are
+performed.  The result represents a 4D complex tensor
+$\widetilde{I}^1$ of size $b \times x \times y \times z''$.  Note that
+all the 1D transforms are done on contiguous memory chunks (along the
+least significant dimension).
 
 In the next step we perform in-place complex to complex transforms
-along the $y$ direction.  To do that we will flip the dimensions and
-zero pad the previous matrix.  First we initialize a matrix of complex
-numbers with the size of $b \times x_i \times z_o' \times y_o$.  The
-matrix is first initialized to zero.  Each element $i,j,k,l$ of the
-input matrix is mapped to $i,j,l,k$.  Then $b \times x_i \times z_o'$
-1D transforms are performed along the last dimension.
+along the $y$ direction.  To do this the elements of $\widetilde{I}^1$
+are permuted into another 4D tensor $\widetilde{I}^2$ of size
+$b \times x \times z'' \times y'$, such that the element
+$\widetilde{I}^1_{i,j,k,l}$ gets mapped to $\widetilde{I}^2_{i,j,l,k}$
+and the rest of $\widetilde{I}^2$ is zero filled.  We then perform
+in-place complex to complex transforms along the least significant
+dimension of $\widetilde{I}^2$.
 
-Finally we perform the last in-place complex to complex transform
-along the $x$ direction.  For that we initialize $b \times z_o' \times
-y_o \times x_o$ matrix to all zeros.  An element $i,j,k,l$ from the
-previous result gets mapped to an element $i,k,l,j$.  Once again we
-perform $b \times z_o' \times y_o$ 1D in--place transforms, once again
-on contiguous chunks.
+In the final step, we perform the transform along the $x$ direction.
+We permute $\widetilde{I}^2$ into a new 4D complex tensor
+$\widetilde{I}^3$ of size $b \times z'' \times y' \times x'$.  An
+element $\widetilde{I}^2_{i,j,k,l}$ is mapped to
+$\widetilde{I}^3_{i,k,l,j}$.  Finally once more complex to complex
+in-place transforms are performed along the least significant
+dimension of $\widetilde{I}^3$.
 
-We keep this as the output shape, as we only care about being able to
-perform point--wise operations on the image transform.  The backward
-transform is done in a similar fashion just taking the steps in the
-reverse.
+As we only perform point-wise multiplications of transformed images,
+or take the inverse transforms of them we can just keep the result in
+this representation -- not waste computation doing extra permuting.
 
-4D matrix reshaping requires a lot of index to index calculation,
-which can involve a lot expensive division and modulus operations.
-Sometimes these operations are more expensive than the actual 1D
-transforms performed.  We improve the performances by only using
-multiplications by a pre--computed magic numbers and shift operations
-as described in ~\cite{warren2013hacker}.  Image reshaping is easily
-implemented using the Thrust CUDA library~\cite{bell2011thrust}.
+The inverse transform can be performed taking the same steps in
+reverse order.
+
+{\bf Implementation details} 4D tensor permuting requires a lot of
+index to index calculation, which can involve a lot expensive division
+and modulus operations.  Sometimes these operations are more expensive
+than the actual 1D FFT transforms performed.  We improve the
+performances by only using multiplications by a pre--computed magic
+numbers and shift operations as described in ~\cite{warren2013hacker}.
+Image reshaping is easily implemented using the Thrust CUDA
+library~\cite{bell2011thrust}.
+
+We limit the large cuFFT memory overhead for computing batches of 1D
+transforms by splitting the batch computation into sub--batches of 1D
+transforms.  We make sure that the sub--batch size is still large
+enough to utilize all the computational power, but limit the size so
+that we limit the memory overhead.  (Maybe mention that we have to
+keep the pointers to texture alignment?)
+
+The memory overhead of the algorithm is due to the fact that we do
+out-of-place permuting of the 4D tensor and requires space for
+$b \cdot x \cdot y' \cdot z''$ complex numbers.  This is, however,
+will not increase the memory overhead of our algorithm for
+convolutional layer on the GPU already needs a temporary tensor of
+size $b \cdot x' \cdot y' \cdot z''$ which can be used as scratch
+space for computing the FFT transforms.
+
+Additional, relatively small, overhead comes from the memory required
+by cuFFT to perform a batch of 1D transforms.  By dividing the batch
+into sub--batches we essentially limit this overhead to a pre--defined
+constant amount of memory.
 
 \section{Algorithms for the convolutional layers}
 
@@ -311,7 +383,7 @@ a single core.
     \li   \Do \For $j \gets 0 \To f-1$
     \li     \Do $\widetilde{w}_{i,j} = \proc{Parallel-FFT}(w_{i,j})$
     \li         \For $k \gets 0 \To b-1$
-    \li           \Do $\proc{Parallel-MAD}(\widetilde{O}_{k,j}, \widetilde{w}_{i,j}, \widetilde{O}_{k,i})$
+    \li           \Do $\proc{Parallel-MAD}(\widetilde{I}_{k,j}, \widetilde{w}_{i,j}, \widetilde{O}_{k,i})$
     \End \End \End
     \li $\proc{Free-Memory}(\widetilde{I})$
     \li $O \gets \proc{5D-Real-Tensor}(b,f',x,y,z)$
@@ -396,24 +468,35 @@ to the batch size.
 \subsubsection{FFT based algorithm}
 
 
+\begin{algorithm}
+  {\small
+  \begin{codebox}
+    \Procname{$\proc{Convolutional-Forward-FFT-GPU}(I,w,b,f,f',x,y,z)$}
+    \li $\widetilde{I} \gets \proc{5D-Complex-Tensor}(b,f,\floor{x/2}+1,y,z)$
+    \li \For $i \gets 0 \To b-1$
+    \li   \Do $\widetilde{I}_{i} \gets \proc{GPU-Parallel-FFT}(I_{i})$
+    \End
+    \li $\proc{Free-Memory}(I)$
+    \li $\widetilde{O} \gets \proc{5D-Complex-Tensor}(b,f',\floor{x/2}+1,y,z)$
+    \li \For $i \gets 0 \To f'-1$
+    \li    \Do $\widetilde{w}_{i} = \proc{Parallel-FFT}(w_{i})$
+    \li        \For $j \gets 0 \To b-1$
+    \li           \Do $p \gets \proc{Parallel-Mult}(\widetilde{w}_{i}, \widetilde{I}_{j})$
+    \li               $\widetilde{O}_{j,i} \gets \proc{Parallel-Accumulate}(p)$
+    \End \End
+    \li $\proc{Free-Memory}(\widetilde{I})$
+    \li $O \gets \proc{5D-Real-Tensor}(b,f',x,y,z)$
+    \li \For $i \gets 0 \To b-1$
+    \li   \Do $O_{i} \gets \proc{GPU-Parallel-Inverse-FFT}(\widetilde{O}_{i})$
+    \End
+    \li $\proc{Free-Memory}(\widetilde{O})$
+    \li \Return $O$
+  \end{codebox}
+  }
 
-%\begin{algorithm}
-%  {\small
-%  \begin{codebox}
-%    \Procname{$\proc{Linear-index-map}(i,x_i,y_i,y_o)$}
-%    \li $b \gets i / y_i$
-%    \li $i \gets i - b \times y_i$
-%    \li $r \gets b / x_i$
-%    \li $b \gets b - r \times x_i$
-%    \li \Return $(r \times y_i + i) \times y_o + b$
-%  \end{codebox}
-%  }%
-%
-%  \caption{Index mapping between two 3D matrices.  The input matrix
-%  had dimensions $b \times x_i \times y_i$, and the output $b \times
-%  y_i \times y_o$} \label{alg:index_map}
-%\end{algorithm}
-
+  \caption{FFT based convolutional layer algorithm for the GPU.}
+  \label{alg:gpu_alg}
+\end{algorithm}
 
 \section{Algorithms for the max fragment pooling layers}
 
