@@ -64,22 +64,40 @@
 ****** loop over batch
 ******* point-wise multiplication of all input and kernel FFTs
 ******* accumulation of output expressed as matrix multiplication
+vector multiply,  parallelized using by cuBLAS gemv.
 ***** release memory used for input FFTs
 ***** loop over batch
 ****** inverse FFT of all outputs in layer
 ***** release memory used for output FFTs
 **** Padded Pruned FFTs
-     - FFTs parallelized over batches of 1D FFTs using cuFFT
+***** each batch of 3D FFTs is parallelized  
+either batch of input images
+or batch of all kernels incident on one output image
+treat as 4D array
+***** for each of last three dimensions
+****** transpose array so that 
+******* dimension is adjacent in memory
+******* zero padded for good FFT size
+******* parallelized using cuda Thrust
+******** memory read/write
+******** index arithmetic fast div/mod
+****** do 1D FFTs in parallel batches (multiple of 512) using cuFFT
+     over batches of 1D FFTs using cuFFT
        (cufftMakePlanMany).
-     - Memory reshuffled - transposed before each set of 1D FFTs -
-       parallelized using cuda Thrust and fast div/mod
-     - Taking N FFTs at once where N is the number of input
-       feature-maps of the layer.
-     - Accumulating the FFT of the output feature-map as a matrix
-       vector multiply,  parallelized using by cuBLAS gemv.
+****** note: no need to transpose array to original state as long as 
+******* all FFTs leave array in same state
+******* IFFT does the opposite thing as FFT
 *** GPU (onboard and host RAM)
-    Move just a subset of the network to the GPU to perform
-    computation, either direct or FFT.
+**** algorithm for a layer
+***** for each input in batch
+****** for each subset of output nodes do
+******* for each subset of input nodes
+******** load input from host
+******** do previous algorithm
+******* move result to host
+**** analysis shows that
+***** subset of output nodes should be as large as possible
+***** subset of input nodes might be only one
 *** CPU-GPU Fusion
 
     CPU on the top layers, generating batches (pooling networks).  A
