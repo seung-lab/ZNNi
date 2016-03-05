@@ -47,7 +47,7 @@ private:
 public:
     long_t workspace_size() const
     {
-        return 0;
+        return workspace_size_;
     }
 
     void forward( float* in,
