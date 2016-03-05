@@ -78,7 +78,7 @@ public:
         : cpu::cpu_convolutional_layer_base( n, fin, fout, is, ks, km, bs )
     {
         long_t max_elements = 1000000000;
-        long_t total_len    = total_input_len + total_output_len;
+        long_t total_len    = input_len + output_len;
 
         if ( total_len < max_elements )
         {
