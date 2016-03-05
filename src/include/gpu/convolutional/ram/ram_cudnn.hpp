@@ -1,6 +1,7 @@
 #pragma once
 
 #include "in_out_split_cudnn.hpp"
+#include "batch_split_cudnn.hpp"
 #include "../../../cpu/host_layer.hpp"
 #include "../../../cpu/convolutional/base.hpp"
 #include "../padd_pruned_cufft_native.hpp"
@@ -15,26 +16,32 @@ class ram_cudnn_convolutional_layer
 private:
     std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>> single_;
 
-public:
-    host_array<real> forward( host_array<real> in ) const override
+private:
+    template<class L>
+    host_array<real> forward( host_array<real> in, L const * const l ) const
     {
         host_array<real> out = get_array<real>(total_output_len);
 
         real* outp = out.get();
         real* inp  = in.get();
 
-        auto workspace = get_device_array<char>(single_->workspace_size());
+        auto workspace = get_device_array<char>(l->workspace_size());
 
         for ( long_t i = 0; i < batch_size; ++i )
         {
-            single_->forward(inp, outp, kernels.get(),
-                             biases.get(), workspace.get());
-
+            l->forward(inp, outp, kernels.get(), biases.get(), workspace.get());
             inp  += input_len ;
             outp += output_len;
         }
 
         return out;
+    }
+
+
+public:
+    host_array<real> forward( host_array<real> in ) const override
+    {
+        return forward(std::move(in), single_.get());
     }
 
 public:
