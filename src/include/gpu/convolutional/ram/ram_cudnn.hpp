@@ -14,7 +14,8 @@ class ram_cudnn_convolutional_layer
     , public cpu::host_layer
 {
 private:
-    std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>> single_;
+    std::unique_ptr<batch_split_cudnn_convolutional_layer<Native>>  impl1_;
+    std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>> impl2_;
 
 private:
     template<class L>
@@ -41,7 +42,14 @@ private:
 public:
     host_array<real> forward( host_array<real> in ) const override
     {
-        return forward(std::move(in), single_.get());
+        if ( impl1_ )
+        {
+            return forward(std::move(in), impl1_.get());
+        }
+        else
+        {
+            return forward(std::move(in), impl2_.get());
+        }
     }
 
 public:
@@ -54,23 +62,45 @@ public:
                                    real* bs = nullptr )
         : cpu::cpu_convolutional_layer_base( n, fin, fout, is, ks, km, bs )
     {
-        long_t fin_chunk = 700*700*700 / in_image_len;
-        fin_chunk = fin_chunk > fin ? fin : fin_chunk;
+        long_t max_elements = 1000000000;
+        long_t total_len    = total_input_len + total_output_len;
 
-        long_t fout_chunk = 700*700*700 / out_image_len;
-        fout_chunk = fout_chunk > fout ? fout : fout_chunk;
+        if ( total_len < max_elements )
+        {
+            long_t n_chunk = max_elements / total_len;
+            n_chunk = n_chunk > n ? n : n_chunk;
 
-        STRONG_ASSERT(fin_chunk>0);
-        STRONG_ASSERT(fout_chunk>0);
+            STRONG_ASSERT(n_chunk>0);
 
-        std::cout << "LAYER: " << fin << ' ' << fout << ' '
-                  << is << ' ' << ks << '\n'
-                  << "  BREAKS INTO: " << fin_chunk << ' '
-                  << fout_chunk << "\n";
+            std::cout << "LAYER<batch_split>: " << n << ' '
+                      << fin << ' ' << fout << ' '
+                      << is << ' ' << ks << '\n'
+                      << "  BREAKS INTO: " << n_chunk << "\n";
 
-        single_ = std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>>
-            ( new in_out_split_cudnn_convolutional_layer<Native>(
-                fin, fin_chunk, fout, fout_chunk, is, ks ));
+            impl1_ = std::unique_ptr<batch_split_cudnn_convolutional_layer<Native>>
+                ( new batch_split_cudnn_convolutional_layer<Native>(
+                    n, n_chunk, fin, fout, fout_chunk, is, ks ));
+        }
+        else
+        {
+            long_t fin_chunk = 700*700*700 / in_image_len;
+            fin_chunk = fin_chunk > fin ? fin : fin_chunk;
+
+            long_t fout_chunk = 700*700*700 / out_image_len;
+            fout_chunk = fout_chunk > fout ? fout : fout_chunk;
+
+            STRONG_ASSERT(fin_chunk>0);
+            STRONG_ASSERT(fout_chunk>0);
+
+            std::cout << "LAYER<in_out_split>: " << fin << ' ' << fout << ' '
+                      << is << ' ' << ks << '\n'
+                      << "  BREAKS INTO: " << fin_chunk << ' '
+                      << fout_chunk << "\n";
+
+            impl2_ = std::unique_ptr<in_out_split_cudnn_convolutional_layer<Native>>
+                ( new in_out_split_cudnn_convolutional_layer<Native>(
+                    fin, fin_chunk, fout, fout_chunk, is, ks ));
+        }
     }
 
 };
