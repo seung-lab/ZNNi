@@ -3,10 +3,13 @@
 \usepackage{xcolor}
 \usepackage{mathtools}
 \usepackage{enumerate}
+\usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{eqnarray}
+\usepackage{booktabs}
+\usepackage{array}
 \usepackage[]{algorithm}
 \usepackage{clrscode3e}
 \usepackage[pdftex]{graphicx}
@@ -23,6 +26,7 @@
 
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\angled}{\langle}{\rangle}
 
 \begin{document}
 
@@ -305,20 +309,181 @@ by cuFFT to perform a batch of 1D transforms.  By dividing the batch
 into sub--batches we essentially limit this overhead to a pre--defined
 constant amount of memory.
 
-\section{Algorithms for the convolutional layers}
+\section{Convolutional layers}
 
-In each algorithm we assume that we need to perform the computation of
-a convolutional layer with $f$ input feature-maps and $f'$ output
-feature-maps.  Each algorithm evaluates the layer on a batch of size
-$b$ inputs.  Let the size of each input image be $x \times y \times
-z$.  We represent the input as a 5D tensor with size $b \times
-f \times x \times y \times z$, and the output as a 5D tensor with the
-size $b \times f' \times x \times y \times z$.  The tensors are stored
-in memory in the row major (commonly known as C) order.
+  Consider a convolutional layer with $f$ input feature--maps and $f'$
+  output feature--maps.  The input to the layer is a set of $f$ 3D
+  images, or a minibatch of size $S$ each having $f$ 3D input images.
+  The $f$ images of each minimbatch are convolved with $f' \times f$
+  3D kernels producing $f'$ output images.
+
+  In the computational sense, the convolutional layer operates on two
+  5D tensors.  The first 5D tensor $I$ represents all the 3D input
+  images such that $I_{s,i}$ is the $i^{th}$ 3D image of the $s^{th}$
+  minibatch.  The second 5D tensor $w$ represents the set of all
+  convolution kernels.  The output of the layer can also be
+  represented as a 5D tensor $O$, such that
+
+  $$O_{s,j} = \sum_{1 \le i \le f} I_{s,i} \ast w_{j,i}$$
+  for $1 \le s \le S$ and $1 \le j \le f'$.
+
+  If the size of the input images is $\vec{n} = \angled{n_x, n_y,
+  n_z}$ and the size of the kernels is $\vec{k}
+  = \angled{k_x,k_y,k_z}$, then the inputs to a convolutional layer
+  are a 5D tensor $I$ of size $S \times f \times n_x \times n_y \times
+  n_z$ representing the images, and a 5D tensor $w$ of size $f' \times
+  f \times k_x \times k_y \times k_z$ representing the kernels.  The
+  output of the convolutional layer is another 5D tensor of size
+  $S \times f' \times n_x' \times n_y' \times n_z'$, where $\vec{n}'
+  = \vec{n} - \vec{k} + \vec{1}$.
 
 \subsection{CPU algorithms}
 
-We present two algorithms suited for multi-core CPUs.  The two
+  We propose three parallel algorithms for the convolutional layer
+  that are suited for multi-core CPUs.  The first algorithm performs
+  direct convolution, whereas the other two use FFT based
+  convolutions.
+
+\subsubsection{Direct convolution algorithm}
+
+  \begin{algorithm}
+    {\small
+      \begin{codebox}
+        \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,b,f,f',\vec{n},\vec{k})$}
+        \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
+        \li $O \gets \proc{5D-Real-Tensor}(b,f',n'_x,n'_y,n'_z)$
+        \li \kw{parallel for} $i \gets 0 \To b-1$
+        \li   \Do \kw{parallel for} $j \gets 0 \To f'-1$
+        \li     \Do \For $k \gets 0 \To f-1$
+        \li     \Do $O_{i,j} \gets O_{i,j} + \proc{Convolve}(I_{i,k},w_{j,k})$
+        \End \End \End
+        \li $\proc{Free-Memory}(I)$
+        \li \Return $O$
+      \end{codebox}
+    }
+
+    \caption{Multi-core algorithm for a convolutional layer using direct
+      convolution.}
+    \label{alg:cpu_direct}
+  \end{algorithm}
+
+  The algorithm using direct convolution is showin in the
+  Algorithm~\ref{alg:cpu_direct}.  The computation is parallelized by
+  two $\kw{parallel for}$ loops such that each output image of each
+  minimbatch is computed in parallel on a different working thread.
+  The $\kw{parallel for}$ loops are implemented using intel$^{\small
+    \textregistered}$ thread building blocks such that the work is
+  evenly divided over the available cores.
+
+  For the direct convolution we provide two implementations.  The
+  first is a naive convolution implementation, and the second one is
+  using Intel\^{}$\{$$\backslash$ textregistered$\}$ to perform
+  convolutions.  MKL implementation is 2x faster on average, however
+  it requires extra memory for a temporary image where a result of
+  convolution is stored before accumulating it to the output image.
+  When $c$ cores are available this yields a memory overhead of $c
+  \times n_x' \times n_y' \times n_z'$.  The total amount of memory
+  required for a layer is given in the
+  Table~\ref{table:memory_requirements}.
+
+  \begin{table}
+    \centering
+    \begin{tabular}{l >{$}l<{$}}
+      \toprule
+      CPU algorithm & \text{Memory required} \\
+      \midrule
+      Direct (naive) &
+      S \cdot f \cdot n + S \cdot f' \cdot n'\\
+      Direct (MKL) &
+      S \cdot f \cdot n + S \cdot f' \cdot n' + T \cdot n' \\
+      FFT algorithm 1 &
+      \max
+      \begin{cases}
+        S \cdot f \cdot (n + \widetilde{n}) \\
+        S \cdot f' \cdot n' + (S + 1) \cdot \widetilde{n}
+      \end{cases} \\
+      FFT algorithm 2 &
+      \max
+      \begin{cases}
+        S \cdot f \cdot (n + \widetilde{n}) \\
+        S \cdot (f + f') \cdot \widetilde{n} + T \cdot \widetilde{n} \\
+        S \cdot f' \cdot (n' + \widetilde{n})
+      \end{cases} \\
+      \midrule
+      GPU algorithm & \text{Memory required} \\
+      \midrule
+      cuDNN (default) &
+      S \cdot f \cdot n + S \cdot f' \cdot n' \\
+      cuDNN (precomp) &
+      2S \cdot f \cdot n + S \cdot f' \cdot n' \\
+      FFT &
+      C + \max
+      \begin{cases}
+        S \cdot f \cdot (n + \widetilde{n}) + f \cdot \widetilde{n} \\
+        S \cdot (f + f') \cdot \widetilde{n} + 2f \cdot \widetilde{n} \\
+        S \cdot f' \cdot (n' + \widetilde{n}) + f' \cdot \widetilde{n}
+      \end{cases} \\
+      \bottomrule
+    \end{tabular}
+
+    \caption{Memory required by different implementations.}
+    \label{table:memory_requirements}
+  \end{table}
+
+\subsubsection{FFT based algorithm 1}
+
+  The first algorithm is very similar to the serial algorithm and is
+  given in the algorithm listing~\ref{alg:cpu_fft_alg1}.  The
+  computationally intensive operations in the algorithm are
+  individually parallelized.  More specifically each FFT and inverse
+  FFT transform is done in parallel as explained in the previous
+  section.  The $\proc{Parallel-MAD}$ function computes a series of
+  multiply-add operations in parallel by dividing the range into
+  roughly equal sub-ranges, each of which is executed on a single
+  core.
+
+  \begin{algorithm}
+    {\small
+      \begin{codebox}
+        \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,b,f,f',\vec{n},\vec{k})$}
+        \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
+        \li $\vec{\widetilde{n}} = \proc{FFT-Optimal-Size}(\vec{n})$
+        \li $\widetilde{I} \gets \proc{5D-Complex-Tensor}(b,f,\floor{\widetilde{n}_x/2}+1,\widetilde{n}_y,\widetilde{n}_z)$
+        \li \For $i \gets 0 \To b-1$
+        \li   \Do \For $j \gets 0 \To f-1$
+        \li     \Do $\widetilde{I}_{i,j} \gets \proc{Parallel-FFT}(I_{i,j})$
+        \End \End
+        \li $\proc{Free-Memory}(I)$
+        \li $O \gets \proc{5D-Real-Tensor}(b,f',n'_x,n'_y,n'_z)$
+        \li $\widetilde{O} \gets \proc{4D-Complex-Tensor}(b,\floor{\widetilde{n}_x/2}+1,\widetilde{n}_y,\widetilde{n}_z)$
+        \li $\widetilde{w} \gets \proc{3D-Complex-Tensor}(\floor{\widetilde{n}_x/2}+1,\widetilde{n}_y,\widetilde{n}_z)$
+        \li \For $i \gets 0 \To f'-1$
+        \li   \Do \For $j \gets 0 \To f-1$
+        \li     \Do $\widetilde{w} = \proc{Parallel-FFT}(w_{i,j})$
+        \li         \For $k \gets 0 \To b-1$
+        \li           \Do $\proc{Parallel-MAD}(\widetilde{I}_{k,j}, \widetilde{w}, \widetilde{O}_{k})$
+        \End \End
+        \li   \For $k \gets 0 \To b-1$
+        \li      \Do $O_{k,i} \gets \proc{Parallel-Inverse-FFT}(\widetilde{O}_{k})$
+        \End \End
+        \li $\proc{Free-Memory}(\widetilde{I})$
+        \li $\proc{Free-Memory}(\widetilde{O})$
+        \li $\proc{Free-Memory}(\widetilde{w})$
+        \li \Return $O$
+      \end{codebox}
+    }
+
+    \caption{Multi-core algorithm for a convolutional layer}
+    \label{alg:cpu_fft_alg1}
+  \end{algorithm}
+
+  The memory requirement of the algorithm equals to the maximal amount
+  of memory required by the algorithm at any single point of time
+  during the execution.  Given in the table.
+
+
+
+We propose two algorithms suited for multi-core CPUs.  The two
 algorithms have different parallelization strategies and yield
 different performance and memory usage.
 
@@ -336,74 +501,6 @@ images can also be freed.
 
 \subsubsection{Direct convolution algorithm}
 
-\begin{algorithm}
-  {\small
-  \begin{codebox}
-    \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,b,f,f',\vec{n},\vec{k})$}
-    \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
-    \li $O \gets \proc{5D-Real-Tensor}(b,f',n'_x,n'_y,n'_z)$
-    \li \kw{Parfor} $i \gets 0 \To b-1$
-    \li   \Do \kw{Parfor} $j \gets 0 \To f'-1$
-    \li     \Do \For $k \gets 0 \To f-1$
-    \li     \Do $O_{i,j} \gets O_{i,j} + \proc{Convolve}(I_{i,k},w_{j,k})$
-    \End \End \End
-    \li $\proc{Free-Memory}(I)$
-    \li \Return $O$
-  \end{codebox}
-  }
-
-  \caption{Multi-core algorithm for a convolutional layer using direct
-  convolution.}
-  \label{alg:cpu_direct}
-\end{algorithm}
-
-\subsubsection{FFT based algorithm 1}
-
-The first algorithm is very similar to the serial algorithm and is
-given in the algorithm listing~\ref{alg:cpu_alg1}.  The computationally
-intensive operations in the algorithm are individually parallelized.
-More specifically each FFT and inverse FFT transform is done in
-parallel as explained above.  The $\proc{Parallel-MAD}$ function
-computes a series of multiply-add operations in parallel by dividing
-the range into roughly equal sub-ranges, each of which is executed on
-a single core.
-
-\begin{algorithm}
-  {\small
-  \begin{codebox}
-    \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,b,f,f',x,y,z)$}
-    \li $\widetilde{I} \gets \proc{5D-Complex-Tensor}(b,f,\floor{x/2}+1,y,z)$
-    \li \For $i \gets 0 \To b-1$
-    \li   \Do \For $j \gets 0 \To f-1$
-    \li     \Do $\widetilde{I}_{i,j} \gets \proc{Parallel-FFT}(I_{i,j})$
-    \End \End
-    \li $\proc{Free-Memory}(I)$
-    \li $\widetilde{O} \gets \proc{5D-Complex-Tensor}(b,f',\floor{x/2}+1,y,z)$
-    \li \For $i \gets 0 \To f'-1$
-    \li   \Do \For $j \gets 0 \To f-1$
-    \li     \Do $\widetilde{w}_{i,j} = \proc{Parallel-FFT}(w_{i,j})$
-    \li         \For $k \gets 0 \To b-1$
-    \li           \Do $\proc{Parallel-MAD}(\widetilde{I}_{k,j}, \widetilde{w}_{i,j}, \widetilde{O}_{k,i})$
-    \End \End \End
-    \li $\proc{Free-Memory}(\widetilde{I})$
-    \li $O \gets \proc{5D-Real-Tensor}(b,f',x,y,z)$
-    \li \For $i \gets 0 \To b-1$
-    \li   \Do \For $j \gets 0 \To f'-1$
-    \li     \Do $O_{i,j} \gets \proc{Parallel-Inverse-FFT}(\widetilde{O}_{i,j})$
-    \End \End
-    \li $\proc{Free-Memory}(\widetilde{O})$
-    \li \Return $O$
-  \end{codebox}
-  }
-
-  \caption{Multi-core algorithm for a convolutional
-  layer}
-  \label{alg:cpu_alg1}
-\end{algorithm}
-
-The memory requirement of the algorithm equals to the maximal amount
-of memory required by the algorithm at any single point of time during
-the execution.
 
 \subsubsection{FFT based algorithm 2}
 
@@ -422,9 +519,9 @@ data.  We then create a task dependency graph and execute the tasks
 using $N$ workers.  To increase cache locality the tasks are managed
 using the work stealing scheduler, which means that each worker keeps
 a list of local tasks as a stack (last task put on the stack will be
-executed next)~\cite{reinders2007intel}.  If a local stack is empty,
-only then a worker \emph{steals} and executes a task from other
-worker's queue.
+executed next)~\cite{reinders2007intel, willhalm2008putting}.  If a
+local stack is empty, only then a worker \emph{steals} and executes a
+task from other worker's queue.
 
 We have 5 types of task, each of which performs relatively simple
 work.  A task dependency diagram is shown on
@@ -500,6 +597,8 @@ to the batch size.
 
 \section{Algorithms for the max fragment pooling layers}
 
+
+
 \subsection{CPU algorithm}
 \subsection{GPU algorithm}
 
@@ -536,6 +635,14 @@ Direct convolutional layers also use CUDNN.  If possible they use the
 pre--computed gemm which requires workspace memory.  The cases when
 this is possible is not well documented so we experimentally determine
 whether we can use it.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=0.9\textwidth]{fig/fusion.pdf}
+  \caption{CPU--GPU combined approach}
+  \label{fig:fusion}
+\end{figure*}
+
 
 FFT convolutional layers are implemented in the following way.  For
 each layer we do the following.  We transform all the inputs first.

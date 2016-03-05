@@ -56,7 +56,7 @@ public:
                   float  beta,
                   void* workspace ) const noexcept
     {
-        auto ws = get_device_array<char>(workspace_size_);
+        //auto ws = get_device_array<char>(workspace_size_);
 
         long_t transform_elements = cs[0] * cs[1] * cs[2];
 
@@ -76,7 +76,7 @@ public:
                     (transform_elements * num_inputs);
 
                 input_transformer->forward(in + i * input_len,
-                                           in_t[i].get(), tmp.get(), ws.get());
+                                           in_t[i].get(), tmp.get(), workspace);
             }
         }
 
@@ -104,13 +104,12 @@ public:
                 kernel_transformer->forward
                     (kernels + i * num_inputs * kernel_len,
                      scratch2.get(),
-                     scratch1.get(), ws.get());
+                     scratch1.get(), workspace);
 
                 // Use the FFT(kernels for all the batches)
                 for ( long_t j = 0; j < batch_size; ++j )
                 {
                     long_t inumel = transform_elements * num_inputs ;
-                    long_t onumel = transform_elements * num_outputs;
 
                     mul_add( scratch2.get(), scratch2.get() + inumel,
                              in_t[j].get(), scratch1.get() );
@@ -136,7 +135,7 @@ public:
             {
                 output_transformer->backward(out_t[i].get(),
                                              out + i * output_len,
-                                             tmp.get(), ws.get());
+                                             tmp.get(), workspace);
             }
         }
         else
@@ -150,7 +149,7 @@ public:
             {
                 output_transformer->backward(out_t[i].get(),
                                              outs.get() + i * output_len,
-                                             tmp.get(), ws.get());
+                                             tmp.get(), workspace);
             }
 
             add_to(outs.get(), outs.get() + total_output_len, out, beta);

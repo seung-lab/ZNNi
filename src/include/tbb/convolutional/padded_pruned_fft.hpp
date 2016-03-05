@@ -8,6 +8,7 @@
 #include "padded_pruned_fft/fft.hpp"
 #include "base.hpp"
 #include <tbb/tbb.h>
+#include <complexvec.h>
 
 namespace znn { namespace fwd { namespace tbb {
 
@@ -66,15 +67,50 @@ private:
 
     void mul_to( complex* a, complex* b, complex* r, long_t n ) const noexcept
     {
+        // Complex8f ac, bc;
+
+        // long_t i = 0;
+
+        // for ( ; i < n; i += 4 )
+        // {
+        //     ac.load(reinterpret_cast<float*>(&a[i]));
+        //     bc.load(reinterpret_cast<float*>(&b[i]));
+
+        //     //ac *= bc;
+
+        //     ac.store(reinterpret_cast<float*>(&r[i]));
+        // }
+
+        // i -= 4;
+
         for ( long_t i = 0; i < n; ++i )
         {
             r[i] = a[i] * b[i];
         }
+
     }
 
     void mul_add_to( complex* a, complex* b,
                      complex* r, long_t n ) const noexcept
     {
+        // Complex8f ac, bc, rc;
+
+        // long_t i = 0;
+
+        // for ( ; i < n; i += 4 )
+        // {
+        //     ac.load(reinterpret_cast<float*>(&a[i]));
+        //     bc.load(reinterpret_cast<float*>(&b[i]));
+        //     rc.load(reinterpret_cast<float*>(&r[i]));
+
+        //     // ac *= bc;
+        //     // rc += ac;
+
+        //     rc.store(reinterpret_cast<float*>(&r[i]));
+        // }
+
+        // i -= 4;
+
         for ( long_t i = 0; i < n; ++i )
         {
             r[i] += a[i] * b[i];
@@ -113,7 +149,7 @@ private:
 
         // figure out an optimal way to saturate the cores
 
-        long_t n_cores = std::thread::hardware_concurrency();
+        long_t n_cores = std::thread::hardware_concurrency() / 2;
 
         // simple strategy.. all batches on the same core
         if ( (n_cores <= num_outputs) || (batch_size == 1) )

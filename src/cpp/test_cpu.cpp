@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
     // }
 
 
-    for ( long_t i = 16; i < 1000; ++i )
+    for ( long_t i = 16; i < 1000; i += 4 )
     {
         os[0] = os[1] = os[2] = i;
 

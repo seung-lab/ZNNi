@@ -20,7 +20,8 @@ public:
       real * km = nullptr,
       real* bs = nullptr )
     {
-        if ( (n == 1) && (fin == 1) )
+        //if ( (n == 1) && (fin == 1) )
+        if ( fin == 1 )
         {
             layer_ = std::unique_ptr<host_layer>
                 ( new padded_pruned_parallel_fft_convolutional_layer

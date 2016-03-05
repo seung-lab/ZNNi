@@ -40,7 +40,6 @@ struct gpu_sample
     }
 };
 
-
 template<class Sampler, class Conv, class Pool>
 struct benchmark
 {
@@ -51,7 +50,7 @@ struct benchmark
     typedef typename conv_t::layer_type  layer_t;
     typedef typename conv_t::array_type  array_t;
 
-    void operator()( znni_network & net ) const
+    double operator()( znni_network & net, long_t rounds = 2 ) const
     {
         sampler_t sampler;
 
@@ -82,8 +81,9 @@ struct benchmark
             }
         }
 
+        double total_time = 0;
 
-        for ( long_t r = 0; r < 100; ++r )
+        for ( long_t r = 0; r < rounds; ++r )
         {
             zi::wall_timer wta, wt;
             auto x = net.get_random_sample();
@@ -104,8 +104,12 @@ struct benchmark
                           << std::endl;
             }
 
+
             wt.reset();
             x = sampler.fetch(std::move(y), net.out_len());
+
+            total_time += wta.elapsed<double>();
+
             std::cout << "Result copy took\t" << wt.elapsed<double>()
                       << std::endl;
 
@@ -113,13 +117,13 @@ struct benchmark
                       << std::endl << std::endl;
         }
 
+        return total_time / rounds;
+
     }
 };
 
-
 int main(int argc, char *argv[])
 {
-    //auto x = znn::fwd::layer_type::convolutional;
 
     std::string f(argv[1]);
 
@@ -129,23 +133,43 @@ int main(int argc, char *argv[])
     if ( argc > 3 ) os[1] = atoi(argv[3]);
     if ( argc > 4 ) os[2] = atoi(argv[4]);
 
+    long_t rounds = 2;
+
+    if ( argc > 5 ) rounds = atoi(argv[5]);
+
+    long_t bs = 1;
+
+    if ( argc > 6 ) bs = atoi(argv[6]);
+
     network_descriptor nd(f);
-    znni_network       net(nd, 1, os);
 
+
+    //znni_network       net(nd, 1, os);
+
+    // {
+    //     benchmark<cpu_sample,
+    //               cpu::padded_pruned_fft_auto_convolutional_layer,
+    //               cpu::pooling_layer> b;
+
+    //     b(net);
+    // }
+
+    for ( long_t x = 4; x < 400; x += 4 )
     {
-        benchmark<cpu_sample,
-                  gpu::ram_cudnn_convolutional_layer,
-                  cpu::pooling_layer> b;
+        os[0] = x; os[1] = x; os[2] = x;
+        znni_network net(nd, bs, os);
 
-        b(net);
-    }
+        benchmark<gpu_sample,
+                  //gpu::padded_pruned_cufft_convolutional_layer,
+		  //gpu::cudnn_convolutional_layer,
+		  gpu::cudnn_implicit_gemm_convolutional_layer,
+                  gpu::cudnn_pooling_layer> b;
 
-    {
-        benchmark<cpu_sample,
-                  cpu::padded_pruned_fft_convolutional_layer,
-                  cpu::pooling_layer> b;
+        double tt = b(net,rounds);
 
-        b(net);
+        tt /= os[0]*os[1]*os[2]*bs;
+
+        std::cout << "OS: " << os << ' ' << bs << ' ' << tt << std::endl;
     }
 
 }

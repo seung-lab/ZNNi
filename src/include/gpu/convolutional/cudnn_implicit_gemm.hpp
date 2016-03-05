@@ -12,7 +12,7 @@
 namespace znn { namespace fwd { namespace gpu {
 
 
-class cudnn_convolutional_layer
+class cudnn_implicit_gemm_convolutional_layer
     : public convolutional_layer_base
     , public device_layer
 {
@@ -24,20 +24,10 @@ private:
     cudnnFilterDescriptor_t      kernel_desc;
     cudnnConvolutionDescriptor_t conv_desc;
 
-    size_t workspace_size_ = 0;
-
-
 public:
     device_array<float> forward( device_array<float> in ) const override
     {
         auto out = get_device_array<float>(total_output_len);
-
-        void * workspace = NULL;
-
-        if ( workspace_size_ )
-        {
-            checkCudaErrors( cudaMalloc(&workspace, workspace_size_ ));
-        }
 
         float alpha = 1; float beta = 0;
 
@@ -48,19 +38,10 @@ public:
                 in_desc, in.get(),
                 kernel_desc, kernels.get(),
                 conv_desc,
-#if defined(ZNN_NO_PRECOMP_GEMM)
                 CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_GEMM,
-#else
-                CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
-#endif
-                workspace, workspace_size_,
+                nullptr, 0,
                 &beta,
                 out_desc, out.get()) );
-
-        if ( workspace_size_ )
-        {
-            checkCudaErrors( cudaFree(workspace) );
-        }
 
         beta = 1;
 
@@ -83,7 +64,7 @@ public:
     }
 
 
-    ~cudnn_convolutional_layer()
+    ~cudnn_implicit_gemm_convolutional_layer()
     {
         checkCUDNN( cudnnDestroyTensorDescriptor(in_desc) );
         checkCUDNN( cudnnDestroyTensorDescriptor(out_desc) );
@@ -109,9 +90,10 @@ private:
     }
 
 public:
-    cudnn_convolutional_layer( long_t n, long_t fin, long_t fout,
-                               vec3i const & is, vec3i const & ks,
-                               float* km = nullptr, float* bs = nullptr )
+    cudnn_implicit_gemm_convolutional_layer( long_t n, long_t fin, long_t fout,
+                                             vec3i const & is, vec3i const & ks,
+                                             float* km = nullptr,
+                                             float* bs = nullptr )
         : convolutional_layer_base(n,fin,fout,is,ks)
         , kernels(get_device_array<float>(kernels_len))
         , biases(get_device_array<float>(fout))
@@ -158,24 +140,6 @@ public:
                     CUDNN_DATA_FLOAT) );
 
         }
-
-#if !defined(ZNN_NO_PRECOMP_GEMM)
-
-        {
-            size_t what_size;
-            checkCUDNN(
-                cudnnGetConvolutionForwardWorkspaceSize(
-                    handle.cudnn_handle,
-                    in_desc,
-                    kernel_desc,
-                    conv_desc,
-                    out_desc,
-                    CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
-                    &what_size));
-
-            workspace_size_ = std::max(workspace_size_, what_size);
-        }
-#endif
     }
 };
 

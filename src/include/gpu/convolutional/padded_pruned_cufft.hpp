@@ -99,7 +99,6 @@ public:
                 for ( long_t j = 0; j < batch_size; ++j )
                 {
                     long_t inumel = transform_elements * num_inputs ;
-                    long_t onumel = transform_elements * num_outputs;
 
                     mul_add( scratch2.get(), scratch2.get() + inumel,
                              in_t[j].get(), scratch1.get() );

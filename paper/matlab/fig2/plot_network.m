@@ -46,11 +46,16 @@ ymax = max(ymax, max(1./b(:)));
 
 plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CuDNN Implicit GEMM');
 
-[a, b] = read_data([net '.gpufft']);
+
+if exist([net '.gpuram'], 'file')
+    [a, b] = read_data([net '.gpuram']);
+    plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU RAM');
+end
 
 xmax = max(xmax, max(a(:)));
 ymax = max(ymax, max(1./b(:)));
 
+[a, b] = read_data([net '.gpufft']);
 plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU FFT');
 
 axes2 = axes('Parent',figure1,'YMinorGrid','on','YGrid','on',...
@@ -63,7 +68,7 @@ axes2 = axes('Parent',figure1,'YMinorGrid','on','YGrid','on',...
     'FontSize',10,...
     'XLim', [0 xmax * 1.1],...
     'YLim', [0 ymax * 1.1],...
-    'Position',[.18 .55 .33 .33],...
+    'Position',[.18 .55 .13 .13],...
     'AmbientLightColor',[0.8 0.8 0.8]);
 
 legend1 = legend(axes1,'show');
