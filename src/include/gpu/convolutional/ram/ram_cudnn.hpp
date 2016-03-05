@@ -79,7 +79,7 @@ public:
 
             impl1_ = std::unique_ptr<batch_split_cudnn_convolutional_layer<Native>>
                 ( new batch_split_cudnn_convolutional_layer<Native>(
-                    n, n_chunk, fin, fout, fout_chunk, is, ks ));
+                    n, n_chunk, fin, fout, is, ks ));
         }
         else
         {
