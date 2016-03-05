@@ -19,7 +19,22 @@ private:
 
 private:
     template<class L>
-    host_array<real> forward( host_array<real> in, L const * const l ) const
+    host_array<real> forward1( host_array<real> in, L const * const l ) const
+    {
+        host_array<real> out = get_array<real>(total_output_len);
+
+        real* outp = out.get();
+        real* inp  = in.get();
+
+        auto workspace = get_device_array<char>(l->workspace_size());
+
+        l->forward(inp, outp, kernels.get(), biases.get(), workspace.get());
+
+        return out;
+    }
+
+    template<class L>
+    host_array<real> forward2( host_array<real> in, L const * const l ) const
     {
         host_array<real> out = get_array<real>(total_output_len);
 
@@ -44,11 +59,11 @@ public:
     {
         if ( impl1_ )
         {
-            return forward(std::move(in), impl1_.get());
+            return forward1(std::move(in), impl1_.get());
         }
         else
         {
-            return forward(std::move(in), impl2_.get());
+            return forward2(std::move(in), impl2_.get());
         }
     }
 
