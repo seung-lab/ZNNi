@@ -353,7 +353,7 @@ int main(int argc, char *argv[])
             gpu::padded_pruned_cufft_convolutional_layer,
             gpu::cudnn_pooling_layer> b;
 
-        b(net,cuttoff,rounds);
+        b(net,cutoff,rounds);
     }
 
 }
