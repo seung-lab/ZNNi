@@ -133,7 +133,6 @@ struct benchmark_fusion
     typedef CPUConv    cpu_conv_t;
     typedef CPUPool    cpu_pool_t;
 
-    typedef cpu_sample sampler_t ;
     typedef GPUConv    gpu_conv_t;
     typedef GPUPool    gpu_pool_t;
 
