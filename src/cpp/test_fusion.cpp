@@ -233,7 +233,7 @@ struct benchmark_fusion
                 for ( long_t r = 0; r < rounds; ++r )
                 {
                     {
-                        guard g(mtx);
+                        std::unique_lock<std::mutex> g(mtx);
                         while ( cpu_done <= r )
                         {
                             gpu_cv.wait(g);
@@ -265,7 +265,7 @@ struct benchmark_fusion
                     }
 
                     {
-                        guard g(mtx);
+                        std::unique_lock<std::mutex> g(mtx);
                         ++gpu_done;
                         cpu_cv.notify_all();
                     }
@@ -292,7 +292,7 @@ struct benchmark_fusion
         for ( long_t r = 0; r < rounds; ++r )
         {
             {
-                guard g(mtx);
+                std::unique_lock<std::mutex> g(mtx);
                 while ( gpu_done + 2 <= r )
                 {
                     cpu_cv.wait(g);
@@ -309,7 +309,7 @@ struct benchmark_fusion
             handover[r%2] = std::move(x);
 
             {
-                guard g(mtx);
+                std::unique_lock<std::mutex> g(mtx);
                 ++cpu_done;
                 gpu_cv.notify_all();
             }
