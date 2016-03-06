@@ -232,6 +232,7 @@ struct benchmark_fusion
                 double tot_time = 0;
 
                 zi::wall_timer wt;
+                zi::wall_timer wtr;
 
                 for ( long_t r = 0; r < rounds; ++r )
                 {
@@ -242,6 +243,8 @@ struct benchmark_fusion
                             gpu_cv.wait(g);
                         }
                     }
+
+                    wtr.reset();
 
                     auto input  = std::move(handover[r%2]);
                     auto output = get_array<real>
@@ -273,11 +276,11 @@ struct benchmark_fusion
                         cpu_cv.notify_all();
                     }
 
+                    std::cout << "GPU ROUND: " << wtr.elapsed<double>() << std::endl;
                     double tt = wt.lap<double>();
 
                     if ( r > 0 )
                     {
-                        std::cout << "GPU ROUND: " << tt << std::endl;w
                         tot_time += tt;
                         tt /= net.out_len();
                         std::cout << "AS: " << net.get_out_size()
@@ -303,6 +306,8 @@ struct benchmark_fusion
                     cpu_cv.wait(g);
                 }
             }
+
+            wt.reset();
 
             auto x = net.get_random_sample();
 
