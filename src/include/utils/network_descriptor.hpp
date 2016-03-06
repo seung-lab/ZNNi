@@ -142,6 +142,11 @@ private:
     long_t                  out_len_   ;
 
 public:
+    long_t get_total_out_len() const
+    {
+        return out_size_[0] * out_size_[1] * out_size_[2] * batch_size_;
+    }
+
     long_t get_batch_size() const
     {
         return batch_size_;
@@ -154,7 +159,7 @@ public:
 
     vec3i const & get_out_size() const
     {
-        return in_size_;
+        return out_size_;
     }
 
     host_array<real> get_random_sample()
