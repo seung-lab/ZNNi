@@ -243,7 +243,7 @@ struct benchmark_fusion
                     auto output = get_array<real>
                         (tot_out_len*gpu_batch_size);
 
-                    for ( long_t i = 0; i < gpu_batch_size )
+                    for ( long_t i = 0; i < gpu_batch_size; ++i )
                     {
                         device_array<float> r = get_device_array<float>(tot_in_len);
                         checkCudaErrors( cudaMemcpy(r.get(), input.get()
@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
     for ( long_t x = 16; x < 400; x += 16 )
     {
         os[0] = x; os[1] = x; os[2] = x;
-        znni_network net(nd, bs, os);
+        znni_network net(nd, 1, os);
 
         benchmark_fusion<
             znn::fwd::tbb::padded_pruned_fft_auto_convolutional_layer,
