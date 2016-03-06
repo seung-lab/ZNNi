@@ -278,13 +278,13 @@ struct benchmark_fusion
                     if ( r > 0 )
                     {
                         tot_time += tt;
-                        tt /= net.get_total_out_len();
+                        tt /= net.out_len();
                         std::cout << "AS: " << net.get_out_size()
                                   << ' ' << tt << std::endl;
                     }
                 }
 
-                tot_time /= net.get_total_out_len();
+                tot_time /= net.out_len();
                 tot_time /= (rounds-1);
 
                 std::cout << "OS: " << net.get_out_size()

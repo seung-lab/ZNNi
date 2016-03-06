@@ -186,7 +186,7 @@ public:
     {
         vec3i is = os + nd.fov() - vec3i::one;
 
-        out_len_ = b * os[0] * os[1] * os[2] * layers().back().num_outputs;;
+        out_len_ = b * os[0] * os[1] * os[2] * nd.layers().back().num_outputs;
 
         for ( auto const & l: nd.layers() )
         {
