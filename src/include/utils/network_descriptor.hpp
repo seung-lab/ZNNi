@@ -142,16 +142,6 @@ private:
     long_t                  out_len_   ;
 
 public:
-    long_t get_total_out_len() const
-    {
-        return out_size_[0] * out_size_[1] * out_size_[2] * batch_size_;
-    }
-
-    long_t get_batch_size() const
-    {
-        return batch_size_;
-    }
-
     vec3i const & get_in_size() const
     {
         return in_size_;
@@ -196,7 +186,7 @@ public:
     {
         vec3i is = os + nd.fov() - vec3i::one;
 
-        out_len_ = b * os[0] * os[1] * os[2];
+        out_len_ = b * os[0] * os[1] * os[2] * layers().back().num_outputs;;
 
         for ( auto const & l: nd.layers() )
         {
@@ -224,6 +214,7 @@ public:
 
             layers_.push_back(std::move(znnil));
         }
+
     }
 
 

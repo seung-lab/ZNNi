@@ -148,10 +148,13 @@ struct benchmark_fusion
     {
         sampler_t sampler;
 
+
         std::vector<std::unique_ptr<cpu_layer_t>> cpu_layers;
         std::vector<std::unique_ptr<gpu_layer_t>> gpu_layers;
 
         long_t gpu_batch_size = 0;
+        long_t tot_in_len  = 0;
+        long_t tot_out_len = 0;
 
         long_t curr_layer = 0;
         for ( auto const & l: net.layers() )
@@ -185,27 +188,31 @@ struct benchmark_fusion
                 if ( cuttoff == curr_layer )
                 {
                     gpu_batch_size = l.batch_size;
+                    tot_in_len = l.in_size[0]*l.in_size[1]*l.in_size[2]
+                        * l.descriptor.num_inputs;
                 }
                 if ( l.descriptor.type == layer_type::convolutional )
                 {
-                    gpu_layers.push_back(std::unique_ptr<gpu_layer_t>
-                                         (new gpu_conv_t
-                                          (l.batch_size/gpu_batch_size,
-                                           l.descriptor.num_inputs,
-                                           l.descriptor.num_outputs,
-                                           l.in_size,
-                                           l.descriptor.k_or_w_size,
-                                           l.kernels.get(),
-                                           l.biases.get())));
+                    auto gl = new gpu_conv_t(l.batch_size/gpu_batch_size,
+                                             l.descriptor.num_inputs,
+                                             l.descriptor.num_outputs,
+                                             l.in_size,
+                                             l.descriptor.k_or_w_size,
+                                             l.kernels.get(),
+                                             l.biases.get());
+
+                    tot_out_len = gl->total_output_len;
+                    gpu_layers.push_back(std::unique_ptr<gpu_layer_t>(gl));
                 }
                 else
                 {
-                    gpu_layers.push_back(std::unique_ptr<gpu_layer_t>
-                                         (new gpu_pool_t
-                                          (l.batch_size/gpu_batch_size,
-                                           l.descriptor.num_outputs,
-                                           l.in_size,
-                                           l.descriptor.k_or_w_size)));
+                    auto gl = new gpu_pool_t(l.batch_size/gpu_batch_size,
+                                             l.descriptor.num_outputs,
+                                             l.in_size,
+                                             l.descriptor.k_or_w_size);
+
+                    tot_out_len = gl->total_output_len;
+                    gpu_layers.push_back(std::unique_ptr<gpu_layer_t>(gl));
                 }
             }
             ++ curr_layer;
@@ -225,9 +232,6 @@ struct benchmark_fusion
                 double tot_time = 0;
 
                 zi::wall_timer wt;
-
-                long_t tot_in_len  = gpu_layers.front()->total_input_len;
-                long_t tot_out_len = gpu_layers.back()->total_output_len;
 
                 for ( long_t r = 0; r < rounds; ++r )
                 {
@@ -302,7 +306,7 @@ struct benchmark_fusion
 
             for ( auto & l: cpu_layers )
             {
-                x = l->forward(std::move(l));
+                x = l->forward(std::move(x));
             }
 
             handover[r%2] = std::move(x);
