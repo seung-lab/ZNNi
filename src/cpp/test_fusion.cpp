@@ -241,7 +241,7 @@ struct benchmark_fusion
 
                     auto input  = std::move(handover[r%2]);
                     auto output = get_array<real>
-                        (total_output_len*gpu_batch_size);
+                        (tot_out_len*gpu_batch_size);
 
                     for ( long_t i = 0; i < gpu_batch_size )
                     {
@@ -273,18 +273,18 @@ struct benchmark_fusion
 
                     if ( r > 0 )
                     {
-                        total_time += tt;
+                        tot_time += tt;
                         tt /= net.get_total_out_len();
                         std::cout << "AS: " << net.get_out_size()
                                   << ' ' << tt << std::endl;
                     }
                 }
 
-                total_time /= net.get_total_out_len();
-                total_time /= (rounds-1);
+                tot_time /= net.get_total_out_len();
+                tot_time /= (rounds-1);
 
                 std::cout << "OS: " << net.get_out_size()
-                          << ' ' << total_time << std::endl;
+                          << ' ' << tot_time << std::endl;
 
             });
 
