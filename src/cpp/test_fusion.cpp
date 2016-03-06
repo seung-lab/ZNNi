@@ -3,6 +3,8 @@
 #include "cpu/convolutional/padded_pruned_fft_auto.hpp"
 #include "gpu/convolutional/ram/ram_cudnn.hpp"
 #include "gpu/layers.hpp"
+#include "cpu/layers.hpp"
+#include "tbb/layers.hpp"
 
 #include <zi/time.hpp>
 #include <condition_variable>
