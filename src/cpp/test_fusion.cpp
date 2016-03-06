@@ -277,6 +277,7 @@ struct benchmark_fusion
 
                     if ( r > 0 )
                     {
+                        std::cout << "GPU ROUND: " << tt << std::endl;w
                         tot_time += tt;
                         tt /= net.out_len();
                         std::cout << "AS: " << net.get_out_size()
@@ -294,6 +295,7 @@ struct benchmark_fusion
 
         for ( long_t r = 0; r < rounds; ++r )
         {
+            zi::wall_timer wt;
             {
                 std::unique_lock<std::mutex> g(mtx);
                 while ( gpu_done + 2 <= r )
@@ -310,6 +312,8 @@ struct benchmark_fusion
             }
 
             handover[r%2] = std::move(x);
+
+            std::cout << "CPU ROUND: " << wt.elapsed<double>() << std::endl;
 
             {
                 std::unique_lock<std::mutex> g(mtx);
