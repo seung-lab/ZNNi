@@ -2,6 +2,7 @@
 #include "cpu/layers.hpp"
 #include "cpu/convolutional/padded_pruned_fft_auto.hpp"
 #include "gpu/convolutional/ram/ram_cudnn.hpp"
+#include "gpu/convolutional/faster.hpp"
 #include "gpu/layers.hpp"
 #include "cpu/layers.hpp"
 #include "tbb/layers.hpp"
@@ -211,6 +212,10 @@ struct benchmark_fusion
                                              l.biases.get());
 
                     tot_out_len = gl->total_output_len;
+                    if (gl->permanent_memory_required() < 0 )
+                    {
+                        return 0;
+                    }
                     gpu_layers.push_back(std::unique_ptr<gpu_layer_t>(gl));
                 }
                 else
@@ -300,9 +305,16 @@ struct benchmark_fusion
                                                 tot_in_len*sizeof(float),
                                                 cudaMemcpyHostToDevice) );
 
-                    for ( auto & l: gpu_layers )
+                    try
                     {
-                        r = l->forward(std::move(r));
+                        for ( auto & l: gpu_layers )
+                        {
+                            r = l->forward(std::move(r));
+                        }
+                    }
+                    catch(...)
+                    {
+                        while (1);
                     }
 
                     checkCudaErrors( cudaMemcpy(output.get()
