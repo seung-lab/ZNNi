@@ -126,6 +126,15 @@ struct benchmark
 };
 
 
+// class tail_network
+// {
+// private:
+//     std::vector<std::unique_ptr<device_layer>> layers;
+
+// public:
+
+// };
+
 template<class CPUConv, class CPUPool, class GPUConv, class GPUPool>
 struct benchmark_fusion
 {
@@ -227,107 +236,109 @@ struct benchmark_fusion
 
         host_array<real> handover[2];
 
-        std::thread gpu_thread( [&]() {
-
-                double tot_time = 0;
-
-                zi::wall_timer wt;
-                zi::wall_timer wtr;
+        std::thread cpu_thread( [&]() {
 
                 for ( long_t r = 0; r < rounds; ++r )
                 {
+                    zi::wall_timer wt;
                     {
                         std::unique_lock<std::mutex> g(mtx);
-                        while ( cpu_done <= r )
+                        while ( gpu_done + 2 <= r )
                         {
-                            gpu_cv.wait(g);
+                            cpu_cv.wait(g);
                         }
                     }
 
-                    wtr.reset();
+                    wt.reset();
 
-                    auto input  = std::move(handover[r%2]);
-                    auto output = get_array<real>
-                        (tot_out_len*gpu_batch_size);
+                    auto x = net.get_random_sample();
 
-                    for ( long_t i = 0; i < gpu_batch_size; ++i )
+                    for ( auto & l: cpu_layers )
                     {
-                        device_array<float> r = get_device_array<float>(tot_in_len);
-                        checkCudaErrors( cudaMemcpy(r.get(), input.get()
-                                                    + i * tot_in_len,
-                                                    tot_in_len*sizeof(float),
-                                                    cudaMemcpyHostToDevice) );
-
-                        for ( auto & l: gpu_layers )
-                        {
-                            r = l->forward(std::move(r));
-                        }
-
-                        checkCudaErrors( cudaMemcpy(output.get()
-                                                    + i * tot_out_len,
-                                                    r.get(),
-                                                    tot_out_len*sizeof(float),
-                                                    cudaMemcpyDeviceToHost) );
+                        x = l->forward(std::move(x));
                     }
 
+                    handover[r%2] = std::move(x);
+
+                    std::cout << "CPU ROUND: " << wt.elapsed<double>() << std::endl;
+
                     {
+                        std::unique_lock<std::mutex> g(mtx);
+                        ++cpu_done;
+                        gpu_cv.notify_all();
+                    }
+                }
+            });
+
+        {
+            double tot_time = 0;
+
+            zi::wall_timer wt;
+            zi::wall_timer wtr;
+
+            for ( long_t r = 0; r < rounds; ++r )
+            {
+                {
+                    std::unique_lock<std::mutex> g(mtx);
+                    while ( cpu_done <= r )
+                    {
+                        gpu_cv.wait(g);
+                    }
+                }
+
+                wtr.reset();
+
+                auto input  = std::move(handover[r%2]);
+                auto output = get_array<real>
+                    (tot_out_len*gpu_batch_size);
+
+                for ( long_t i = 0; i < gpu_batch_size; ++i )
+                {
+                    device_array<float> r = get_device_array<float>(tot_in_len);
+                    checkCudaErrors( cudaMemcpy(r.get(), input.get()
+                                                + i * tot_in_len,
+                                                tot_in_len*sizeof(float),
+                                                cudaMemcpyHostToDevice) );
+
+                    for ( auto & l: gpu_layers )
+                    {
+                        r = l->forward(std::move(r));
+                    }
+
+                    checkCudaErrors( cudaMemcpy(output.get()
+                                                + i * tot_out_len,
+                                                r.get(),
+                                                tot_out_len*sizeof(float),
+                                                cudaMemcpyDeviceToHost) );
+                }
+
+                {
                         std::unique_lock<std::mutex> g(mtx);
                         ++gpu_done;
                         cpu_cv.notify_all();
-                    }
-
-                    std::cout << "GPU ROUND: " << wtr.elapsed<double>() << std::endl;
-                    double tt = wt.lap<double>();
-
-                    if ( r > 0 )
-                    {
-                        tot_time += tt;
-                        tt /= net.out_len();
-                        std::cout << "AS: " << net.get_out_size()
-                                  << ' ' << tt << std::endl;
-                    }
                 }
 
-                tot_time /= net.out_len();
-                tot_time /= (rounds-1);
+                std::cout << "GPU ROUND: " << wtr.elapsed<double>() << std::endl;
+                double tt = wt.lap<double>();
 
-                std::cout << "OS: " << net.get_out_size()
-                          << ' ' << tot_time << std::endl;
-
-            });
-
-        for ( long_t r = 0; r < rounds; ++r )
-        {
-            zi::wall_timer wt;
-            {
-                std::unique_lock<std::mutex> g(mtx);
-                while ( gpu_done + 2 <= r )
+                if ( r > 0 )
                 {
-                    cpu_cv.wait(g);
-                }
+                    tot_time += tt;
+                    tt /= net.out_len();
+                    std::cout << "AS: " << net.get_out_size()
+                              << ' ' << tt << std::endl;
+                    }
             }
 
-            wt.reset();
+            tot_time /= net.out_len();
+            tot_time /= (rounds-1);
 
-            auto x = net.get_random_sample();
+            std::cout << "OS: " << net.get_out_size()
+                      << ' ' << tot_time << std::endl;
 
-            for ( auto & l: cpu_layers )
-            {
-                x = l->forward(std::move(x));
-            }
-
-            handover[r%2] = std::move(x);
-
-            std::cout << "CPU ROUND: " << wt.elapsed<double>() << std::endl;
-
-            {
-                std::unique_lock<std::mutex> g(mtx);
-                ++cpu_done;
-                gpu_cv.notify_all();
-            }
         }
 
-        gpu_thread.join();
+        cpu_thread.join();
     }
 };
 
@@ -359,7 +370,7 @@ int main(int argc, char *argv[])
         benchmark_fusion<
             znn::fwd::tbb::padded_pruned_fft_auto_convolutional_layer,
             znn::fwd::tbb::pooling_layer,
-            gpu::padded_pruned_cufft_convolutional_layer,
+            gpu::faster_convolutional_layer,
             gpu::cudnn_pooling_layer> b;
 
         b(net,cutoff,rounds);

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../assert.hpp"
 #include "memory.hpp"
 #include "handle.hpp"
 
@@ -14,6 +15,17 @@ public:
 
     virtual ~device_layer() {}
     virtual device_array<float> forward( device_array<float> ) const = 0;
+
+    virtual long_t permanent_memory_required() const
+    {
+        UNIMPLEMENTED();
+    }
+
+    virtual long_t working_memory_required() const
+    {
+        UNIMPLEMENTED();
+    }
+
 };
 
 

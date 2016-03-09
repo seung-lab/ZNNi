@@ -173,6 +173,31 @@ private:
     }
 
 public:
+    long_t permanent_memory_required() const override
+    {
+        return kernel_memory;
+    }
+
+    long_t working_memory_required() const override
+    {
+        long_t transform_elements = cs[0] * cs[1] * cs[2];
+
+        long_t usage1
+            = total_input_len
+            + (batch_size + 1) * num_inputs * transform_elements;
+
+        long_t usage2
+            = (batch_size + 2) * num_inputs * transform_elements
+            + batch_size * num_outputs * transform_elements;
+
+        long_t usage3
+            = (batch_size + 1) * num_outputs * transform_elements
+            + total_output_len;
+
+        return std::max({usage1,usage2,usage3}) * sizeof(float)
+            + workspace_size_;
+    }
+
     padded_pruned_cufft_convolutional_layer( long_t n, long_t fin, long_t fout,
                                              vec3i const & is, vec3i const & ks,
                                              float* km = nullptr,
@@ -227,7 +252,7 @@ public:
                     kernel_transformer->workspace_size(),
                     output_transformer->workspace_size()});
 
-        std::cout << "FFT WORKSIZE: " << (workspace_size_ / 1024 / 1024) << "\n";
+        //std::cout << "FFT WORKSIZE: " << (workspace_size_ / 1024 / 1024) << "\n";
 
     }
 };

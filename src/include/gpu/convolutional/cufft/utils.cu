@@ -10,6 +10,19 @@
 
 namespace znn { namespace fwd {
 
+__global__ void elementwise_multiply( cuComplex* a,
+                                      cuComplex* b,
+                                      cuComplex* r,
+                                      int size )
+{
+    const int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < size)
+    {
+        r[i].x = a[i].x * b[i].x - a[i].y * b[i].y;
+        r[i].y = a[i].x * b[i].y + a[i].y * b[i].x;
+    }
+}
+
 void div_all_by( float* first, float* last, float val ) noexcept
 {
     thrust::transform(thrust::device,
@@ -54,6 +67,16 @@ void mul_add( cuComplex* first1, cuComplex* last1,
                       cfirst1, clast1, cfirst2, cresult, op);
 
 }
+
+void mul_add2( cuComplex* first1, cuComplex* first2,
+               cuComplex* result, int size ) noexcept
+{
+    int block_size = 512;
+    int nblocks = (size + block_size - 1) / block_size;
+
+    elementwise_multiply<<<nblocks, block_size>>>(first1, first2, result, size);
+}
+
 
 struct implode_functor: public thrust::unary_function<int, int>
 {

@@ -25,6 +25,16 @@ private:
     cudnnConvolutionDescriptor_t conv_desc;
 
 public:
+    long_t permanent_memory_required() const override
+    {
+        return kernel_memory;
+    }
+
+    long_t working_memory_required() const override
+    {
+        return input_memory + output_memory;
+    }
+
     device_array<float> forward( device_array<float> in ) const override
     {
         auto out = get_device_array<float>(total_output_len);
