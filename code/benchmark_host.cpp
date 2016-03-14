@@ -14,7 +14,7 @@ using namespace znn::fwd;
 
 std::string net_name;
 vec3i       os;
-long_t      max_memory = static_cast<long_t>(230) * 1024 * 1024 * 1024; // GB
+long_t      max_memory = static_cast<long_t>(240) * 1024 * 1024 * 1024; // GB
 
 inline double benchmark_mfp_layer( znni_network::znni_layer const & layer,
                                    long_t layer_num,
@@ -181,30 +181,112 @@ inline void benchmark_network( network_descriptor & ndesc,
     rout << "## " << net_name << " :: starting benchmark for output size "
          << os << std::endl;
 
+    std::vector<std::unique_ptr<host::v1::host_layer>> layers;
+
     long_t lnum = 0;
 
-    double total = 0;
+    long_t rm = 0;
+    long_t wm = 0;
 
     for ( auto & l: net.layers() )
     {
         if ( l.descriptor.type == layer_type::convolutional )
         {
-            total += benchmark_conv_layer(l, lnum, rounds, rout);
+            if ( lnum == 0 )
+            {
+                layers.push_back(std::unique_ptr<host::v1::host_layer>
+                                 (new host::v1::dp_fft_conv
+                                  (l.batch_size,
+                                   l.descriptor.num_inputs,
+                                   l.descriptor.num_outputs,
+                                   l.in_size,
+                                   l.descriptor.k_or_w_size,
+                                   l.random_kernels().data(),
+                                   l.random_biases().data())));
+            }
+            else
+            {
+                layers.push_back(std::unique_ptr<host::v1::host_layer>
+                                 (new host::v1::fft_conv
+                                  (l.batch_size,
+                                   l.descriptor.num_inputs,
+                                   l.descriptor.num_outputs,
+                                   l.in_size,
+                                   l.descriptor.k_or_w_size,
+                                   l.random_kernels().data(),
+                                   l.random_biases().data())));
+            }
         }
         else
         {
-            total += benchmark_mfp_layer(l, lnum, rounds, rout);
+            layers.push_back(std::unique_ptr<host::v1::host_layer>
+                             (new host::v1::mfp
+                              (l.batch_size,
+                               l.descriptor.num_inputs,
+                               l.in_size,
+                               l.descriptor.k_or_w_size)));
         }
+
         ++lnum;
+
+        rm += layers.back()->resident_memory();
+        wm = std::max(wm, layers.back()->working_memory());
     }
 
-    rout << "[network_measurement] " << net_name
-         << " :: " << os << " :: " << total << std::endl;
+    rout << "[network_requirements] " << net_name
+         << " :: " << os << " :: "
+         << "RM: " << rm/1024/1024/1024
+         << " GB WM: " << wm/1024/1024/1024 << " GB" << std::endl;
 
-    double voxels = net.out_voxels();
+    if ( rm + wm < max_memory )
+    {
+        double total = 0;
+        zi::wall_timer wtn;
+        zi::wall_timer wtl;
 
-    rout << "[network_throughput] " << net_name
-         << " :: " << os << " :: " << (voxels/total) << std::endl;
+        for ( long_t i = 0; i < rounds; ++i )
+        {
+            lnum = 0;
+            auto in = net.get_random_sample();
+            wtn.reset();
+
+            for ( auto & l: layers )
+            {
+                wtl.reset();
+                in = l->forward(std::move(in));
+                double t = wtl.elapsed<double>();
+
+                rout << "[layer_measurement] " << net_name
+                     << " :: " << os << " :: " << lnum
+                     << " :: " << t << std::endl;
+
+                ++lnum;
+            }
+
+            double t = wtn.elapsed<double>();
+
+            rout << "[network_measurement] " << net_name
+                     << " :: " << os
+                     << " :: " << t << std::endl;
+
+            total += t;
+
+            ++lnum;
+        }
+
+        total /= rounds;
+
+    // rout << "## " << net_name << " :: starting benchmark for output size "
+    //      << os << std::endl;
+
+        rout << "[network_average] " << net_name
+             << " :: " << os << " :: " << total << std::endl;
+
+        double voxels = net.out_voxels();
+
+        rout << "[network_throughput] " << net_name
+             << " :: " << os << " :: " << (voxels/total) << std::endl;
+    }
 
 }
 
