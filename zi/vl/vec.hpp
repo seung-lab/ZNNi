@@ -107,6 +107,27 @@ public:
         d[ 3 ] = p3;
     }
 
+    explicit vec( const T& p0, const T& p1, const T& p2, const T& p3, const T& p4 )
+    {
+        ZI_ASSERT( N == 5 && "ctor_only_avaible_vec_of_size_5" );
+        d[ 0 ] = p0;
+        d[ 1 ] = p1;
+        d[ 2 ] = p2;
+        d[ 3 ] = p3;
+        d[ 4 ] = p4;
+    }
+
+    explicit vec( const T& p0, const T& p1, const T& p2, const T& p3, const T& p4, const T& p5 )
+    {
+        ZI_ASSERT( N == 6 && "ctor_only_avaible_vec_of_size_6" );
+        d[ 0 ] = p0;
+        d[ 1 ] = p1;
+        d[ 2 ] = p2;
+        d[ 3 ] = p3;
+        d[ 4 ] = p4;
+        d[ 5 ] = p5;
+    }
+
     template< class X >
     explicit vec( const vec< X, N >& rcp )
     {
