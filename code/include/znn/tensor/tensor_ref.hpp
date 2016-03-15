@@ -11,7 +11,7 @@
 
 namespace znn { namespace fwd {
 
-template<class T, size_t D, class A>
+template<class T, size_t D, class A, class TPtr = T const *>
 class const_tensor_ref
     : public detail::tensor::value_accessor<T,D,A>
 {
@@ -32,7 +32,7 @@ public:
 protected:
     zi::vl::vec<long_t,D>   extents_;
     zi::vl::vec<long_t,D+1> strides_;
-    T* ptr_ = nullptr;
+    TPtr ptr_ = nullptr;
 
 private:
     void compute_strides()
@@ -58,7 +58,7 @@ public:
         , ptr_(other.ptr_)
     {}
 
-    explicit const_tensor_ref( T * t, zi::vl::vec<long_t,D> const & e )
+    explicit const_tensor_ref( TPtr t, zi::vl::vec<long_t,D> const & e )
         : extents_(e)
         , ptr_(t)
     {
@@ -66,7 +66,7 @@ public:
     }
 
     template<typename... Args>
-    explicit const_tensor_ref( T * t, Args&&... args )
+    explicit const_tensor_ref( TPtr t, Args&&... args )
         : extents_( zi::vl::vec<long_t,D>(std::forward<Args>(args)...) )
         , ptr_(t)
     {
@@ -93,7 +93,7 @@ public:
         return strides_[0];
     }
 
-    T /* const */ * data() const
+    TPtr data() const
     {
         return ptr_;
     }
@@ -113,7 +113,7 @@ public:
 
     template<typename X = A>
     typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
-                            T const *>::type
+                            TPtr>::type
     begin() const
     {
         return ptr_;
@@ -121,7 +121,7 @@ public:
 
     template<typename X = A>
     typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
-                            T const *>::type
+                            TPtr>::type
     end() const
     {
         return ptr_ + strides_[0];
@@ -136,10 +136,10 @@ public:
 
 template<class T, size_t D, class A>
 class tensor_ref
-    : public const_tensor_ref<T,D,A>
+    : public const_tensor_ref<T,D,A,T*>
 {
 private:
-    typedef const_tensor_ref<T,D,A> super_type;
+    typedef const_tensor_ref<T,D,A,T*> super_type;
 
 public:
     static const size_t dimensionality = super_type::dimensionality;

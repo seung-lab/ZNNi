@@ -48,7 +48,7 @@ private:
     }
 
 public:
-    void randomize( T const & v = static_cast<T>(0.5) )
+    void randomize( T const & v = static_cast<T>(0.1) )
     {
         do_random_init( v, architecture() );
     }
