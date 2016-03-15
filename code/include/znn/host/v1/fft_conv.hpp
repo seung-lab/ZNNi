@@ -397,8 +397,8 @@ public:
         long_t stage2_memory
             = in_batch_size * num_inputs * ts[0]*ts[1]*ts[2] * sizeof(complex)
             + out_batch_size * num_outputs * ts[0]*ts[1]*ts[2] * sizeof(complex)
-            + fft_->transform_elements() * sizeof(complex)
-            + fft_->kernel_scratch_elements() * sizeof(real);
+            + num_tasks * fft_->transform_elements() * sizeof(complex)
+            + num_tasks * fft_->kernel_scratch_elements() * sizeof(real);
 
         num_tasks = std::thread::hardware_concurrency();
         num_tasks = std::min(num_tasks, in_batch_size*num_inputs);

@@ -10,6 +10,12 @@
 #include <fstream>
 #include <sstream>
 
+// RUN THE FOLLOWING
+// ./benchmark_host m37 8
+// ./benchmark_host m57 8
+// ./benchmark_host m77 8
+// ./benchmark_host m97 8
+
 using namespace znn::fwd;
 
 std::string net_name;
@@ -295,7 +301,7 @@ int main(int argc, char *argv[])
     net_name = std::string(argv[1]);
 
     std::string net_path    = "../networks/" + net_name + ".znni";
-    std::string report_path = "../reports/" + net_name + ".report";
+    std::string report_path = "../reports/" + net_name + ".host.report";
 
     std::ofstream ofs;
     ofs.open (report_path.c_str(), std::ofstream::out | std::ofstream::app);

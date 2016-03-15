@@ -31,10 +31,26 @@ private:
         }
     }
 
-public:
-    void randomize( T const & v = static_cast<T>(0.5) ) noexcept
+private:
+    void do_random_init( T const & v, detail::tensor::host_tag )
     {
         random_initialize(this->data(), this->num_elements(), v);
+    }
+
+    void do_random_init( T const & v, detail::tensor::device_tag )
+    {
+        T* rnd = reinterpret_cast<T*>(
+            detail::tensor::malloc(this->num_elements()*sizeof(T),
+                                   detail::tensor::host_tag()));
+        random_initialize(rnd, this->num_elements(), v);
+        this->load(rnd, detail::tensor::host_tag());
+        detail::tensor::free(rnd, detail::tensor::host_tag());
+    }
+
+public:
+    void randomize( T const & v = static_cast<T>(0.5) )
+    {
+        do_random_init( v, architecture() );
     }
 
     void reset()
