@@ -26,14 +26,14 @@ public:
 
 
 private:
-    void do_input_fft( real* in, complex* out ) noexcept
+    void do_input_fft( real* in, complex* out ) const noexcept
     {
         fft_->forward_image(in,out);
     }
 
     void do_input_fft_padded( real* in,
                               complex* out,
-                              real* tmp) noexcept
+                              real* tmp) const noexcept
     {
         std::memcpy( tmp, in, fft_->image_memory());
 
@@ -46,7 +46,7 @@ private:
     }
 
     void do_output_ifft( complex* in, real* out,
-                         real bias, real* out_scratch ) noexcept
+                         real bias, real* out_scratch ) const noexcept
     {
         fft_->backward(in,out_scratch);
         real scale = fft_->get_scale();
@@ -59,7 +59,7 @@ private:
         }
     }
 
-    void mul_to( complex* a, complex* b, complex* r, long_t n ) noexcept
+    void mul_to( complex* a, complex* b, complex* r, long_t n ) const noexcept
     {
         for ( long_t i = 0; i < n; ++i )
         {
@@ -69,7 +69,7 @@ private:
     }
 
     void mul_add_to( complex* a, complex* b,
-                     complex* r, long_t n ) noexcept
+                     complex* r, long_t n ) const noexcept
     {
         for ( long_t i = 0; i < n; ++i )
         {
@@ -82,9 +82,10 @@ private:
                                 real* iscratch,
                                 complex* oscratch,
                                 complex* inputs,
-                                complex* outputs ) noexcept
+                                complex* outputs ) const noexcept
     {
-        real* kernel = kernels.data() + (out_no*num_inputs + in_no) * kernel_len;
+        real const * kernel
+            = kernels.data() + (out_no*num_inputs + in_no) * kernel_len;
 
         // copy the kernel to the scratch
         std::memcpy( iscratch, kernel, fft_->kernel_memory());
@@ -121,7 +122,7 @@ private:
     }
 
 private:
-    host_tensor<complex,5> transform_inputs( host_tensor<real,5> in )
+    host_tensor<complex,5> transform_inputs( host_tensor<real,5> in ) const
     {
         long_t relements = fft_->image_elements();
         long_t celements = fft_->transform_elements();
@@ -160,7 +161,8 @@ private:
         return itransforms;
     }
 
-    host_tensor<complex,5> collect_outputs( host_tensor<complex,5> itransforms )
+    host_tensor<complex,5>
+    collect_outputs( host_tensor<complex,5> itransforms ) const
     {
         vec3i transform_size = fft_->transform_size();
 
@@ -183,7 +185,8 @@ private:
         return otransforms;
     }
 
-    host_tensor<real,5> process_outputs( host_tensor<complex,5> otransforms )
+    host_tensor<real,5>
+    process_outputs( host_tensor<complex,5> otransforms ) const
     {
         long_t celements = fft_->transform_elements();
 
@@ -209,7 +212,7 @@ private:
     }
 
 public:
-    host_tensor<float,5> forward( host_tensor<float,5> in ) override
+    host_tensor<float,5> forward( host_tensor<float,5> in ) const override
     {
         auto   in_transforms  = transform_inputs(std::move(in));
         auto   out_transforms = collect_outputs(std::move(in_transforms));

@@ -17,7 +17,7 @@ public:
         : pool_layer<host_layer>(n,finout,is,ws)
     { }
 
-    host_tensor<real,5> forward( host_tensor<real,5> m ) override
+    host_tensor<real,5> forward( host_tensor<real,5> m ) const override
     {
         host_tensor<float,5> ret(output_shape);
 

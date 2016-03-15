@@ -46,7 +46,7 @@ public:
         status = vslConvSetStart(conv_, start);
     }
 
-    void convolve( real* in, real* kernel, real* out )
+    void convolve( real* in, real const* kernel, real* out ) const
     {
 #if defined(ZNN_USE_LONG_DOUBLE_PRECISION)
 

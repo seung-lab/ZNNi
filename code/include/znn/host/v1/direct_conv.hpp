@@ -27,7 +27,7 @@ public:
     { }
 
 private:
-    void nonlinearity( real* out, real bias ) noexcept
+    void nonlinearity( real* out, real bias ) const noexcept
     {
         for ( long_t i = 0; i < out_image_len; ++i )
         {
@@ -38,10 +38,10 @@ private:
 
 #if defined(ZNN_USE_MKL_CONVOLUTION)
     void do_single_output( real* input,
-                           real* kernel
+                           real const * kernel
                            real* out,
                            real  bias,
-                           void* stack) noexcept
+                           void* stack) const noexcept
     {
         convolver_.convolve_add(input, kernel, out);
 
@@ -63,9 +63,9 @@ private:
     }
 #else
     void do_single_output( real* input ,
-                           real* kernel,
+                           real const * kernel,
                            real* out,
-                           real  bias ) noexcept
+                           real  bias ) const noexcept
     {
         convolver_.convolve(input, kernel, out);
 
@@ -81,7 +81,7 @@ private:
 #endif
 
 public:
-    host_tensor<real,5> forward( host_tensor<float,5> in ) override
+    host_tensor<real,5> forward( host_tensor<float,5> in ) const override
     {
         host_tensor<real,5> out(output_shape);
 

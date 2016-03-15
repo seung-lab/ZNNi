@@ -15,7 +15,7 @@ public:
         : mfp_layer<host_layer>(n,finout,is,ws)
     { }
 
-    host_tensor<real,5> forward( host_tensor<real,5> in ) override
+    host_tensor<real,5> forward( host_tensor<real,5> in ) const override
     {
         host_tensor<float,5> ret(output_shape);
         host_tensor_ref<float,6> out(ret.data(),

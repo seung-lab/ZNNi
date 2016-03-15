@@ -51,7 +51,7 @@ private:
     }
 
 public:
-    host_tensor<real,5> forward( host_tensor<real,5> in ) override
+    host_tensor<real,5> forward( host_tensor<real,5> in ) const override
     {
         host_tensor<float,5> ret(output_shape);
 

@@ -27,6 +27,25 @@ private:
         }
     };
 
+    class cref
+    {
+    private:
+        long_t xs, ys;
+        real const * data;
+
+    public:
+        cref( long_t y, long_t z, real const * d )
+            : xs(y*z)
+            , ys(z)
+            , data(d)
+        {}
+
+        real const & operator()( long_t x, long_t y, long_t z ) const
+        {
+            return data[x*xs + y*ys + z];
+        }
+    };
+
 private:
     vec3i ix, kx, rx;
 
@@ -37,11 +56,11 @@ public:
         , rx(i - k + vec3i::one)
     { }
 
-    void convolve( real* in, real* kernel, real* out )
+    void convolve( real* in, real const* kernel, real* out ) const
     {
-        ref a(ix[1], ix[2], in);
-        ref b(kx[1], kx[2], kernel);
-        ref r(rx[1], rx[2], out);
+        ref  a(ix[1], ix[2], in);
+        cref b(kx[1], kx[2], kernel);
+        ref  r(rx[1], rx[2], out);
 
         for ( long_t x = 0; x < rx[0]; ++x )
             for ( long_t y = 0; y < rx[1]; ++y )
@@ -56,11 +75,11 @@ public:
                 }
     }
 
-    void convolve_add( real* in, real* kernel, real* out )
+    void convolve_add( real* in, real const* kernel, real* out ) const
     {
-        ref a(ix[1], ix[2], in);
-        ref b(kx[1], kx[2], kernel);
-        ref r(rx[1], rx[2], out);
+        ref  a(ix[1], ix[2], in);
+        cref b(kx[1], kx[2], kernel);
+        ref  r(rx[1], rx[2], out);
 
         for ( long_t x = 0; x < rx[0]; ++x )
             for ( long_t y = 0; y < rx[1]; ++y )

@@ -22,7 +22,7 @@ public:
     { }
 
 
-    host_tensor<float,5> forward( host_tensor<float,5> m ) override
+    host_tensor<float,5> forward( host_tensor<float,5> m ) const override
     {
         host_tensor<float,5> ret(output_shape);
 
@@ -34,13 +34,13 @@ public:
                                           [in_image_size[1]]
                                           [in_image_size[2]]);
 
-        boost::multi_array_ref<real,5> ks(conv_data::kernels.data(),
-                                          boost::extents
-                                          [num_outputs]
-                                          [num_inputs]
-                                          [kernel_size[0]]
-                                          [kernel_size[1]]
-                                          [kernel_size[2]]);
+        boost::const_multi_array_ref<real,5> ks(conv_data::kernels.data(),
+                                                boost::extents
+                                                [num_outputs]
+                                                [num_inputs]
+                                                [kernel_size[0]]
+                                                [kernel_size[1]]
+                                                [kernel_size[2]]);
 
         boost::multi_array_ref<real,5> out(ret.data(),
                                            boost::extents
@@ -51,7 +51,7 @@ public:
                                            [out_image_size[2]]);
 
 
-        real* bs = conv_data::biases.data();
+        real const * bs = conv_data::biases.data();
         vec3i kl = kernel_size;
 
         for ( long_t b = 0; b < in_batch_size; ++b )

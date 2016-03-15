@@ -9,6 +9,8 @@
 
 namespace znn { namespace fwd { namespace detail { namespace tensor {
 
+
+
 template<class T, size_t D, class A>
 class const_sub_tensor
     : public value_accessor<T,D,A>

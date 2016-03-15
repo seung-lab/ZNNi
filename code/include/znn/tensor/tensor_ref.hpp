@@ -77,8 +77,10 @@ public:
 
     const_reference operator[]( long_t i ) const noexcept
     {
-        return super_type::access(znn::fwd::type<const_reference>(),
-                                  i, ptr_, extents_.data(), strides_.data());
+        return super_type::access(znn::fwd::type<const_reference>(), i,
+                                  ptr_,
+                                  extents_.data(),
+                                  strides_.data());
     }
 
     long_t const * shape() const
@@ -91,7 +93,7 @@ public:
         return strides_[0];
     }
 
-    T const * data() const
+    T /* const */ * data() const
     {
         return ptr_;
     }
@@ -196,6 +198,11 @@ public:
                                   super_type::ptr_,
                                   super_type::extents_.data(),
                                   super_type::strides_.data());
+    }
+
+    const_reference operator[]( long_t i ) const noexcept
+    {
+        return super_type::operator[](i);
     }
 
     T const * data() const

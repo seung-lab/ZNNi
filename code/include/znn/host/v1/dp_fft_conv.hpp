@@ -28,14 +28,14 @@ public:
 
 
 private:
-    void do_input_fft( real* in, complex* out ) noexcept
+    void do_input_fft( real* in, complex* out ) const noexcept
     {
         fft_->parallel_forward_image(in, out);
     }
 
     void do_input_fft_padded( real* in,
                               complex* out,
-                              real* scratch) noexcept
+                              real* scratch) const noexcept
     {
         // copy the image to the scratch
         tbb::parallel_for( static_cast<long_t>(0), fft_->image_elements(),
@@ -59,7 +59,7 @@ private:
     void do_output_ifft( complex* in,
                          real*    out,
                          real     bias,
-                         real*    rscratch )
+                         real*    rscratch ) const
     {
         fft_->parallel_backward( in, rscratch );
 
@@ -76,11 +76,11 @@ private:
     }
 
     void collect_single_kernel( bool first,
-                                real * kernel,
+                                real const * kernel,
                                 real * rscratch,
                                 complex * inputs,
                                 complex * outputs,
-                                complex * cscratch )
+                                complex * cscratch ) const
     {
         // copy the kernel to the scratch
         tbb::parallel_for( static_cast<long_t>(0), fft_->kernel_elements(),
@@ -130,11 +130,11 @@ private:
         }
     }
 
-    void collect_single_output( real*    kernelz,
+    void collect_single_output( real const * kernelz,
                                 complex* inputs,
                                 complex* output,
                                 real *   rscratch,
-                                complex* cscratch )
+                                complex* cscratch ) const
     {
         long_t cstride = fft_->transform_elements();
 
@@ -151,7 +151,7 @@ private:
 
 
 private:
-    host_tensor<complex,5> transform_inputs( host_tensor<real,5> in )
+    host_tensor<complex,5> transform_inputs( host_tensor<real,5> in ) const
     {
         long_t relements = fft_->image_elements();
         long_t celements = fft_->transform_elements();
@@ -184,7 +184,8 @@ private:
         return itransforms;
     }
 
-    host_tensor<float,5> collect_outputs( host_tensor<complex,5> itransforms )
+    host_tensor<float,5>
+    collect_outputs( host_tensor<complex,5> itransforms ) const
     {
         long_t celements = fft_->transform_elements();
         long_t relements = std::max(fft_->result_scratch_elements(),
@@ -223,7 +224,7 @@ private:
 
 
 public:
-    host_tensor<real,5> forward( host_tensor<float,5> in ) override
+    host_tensor<real,5> forward( host_tensor<float,5> in ) const override
     {
         auto   in_transforms  = transform_inputs(std::move(in));
         return collect_outputs(std::move(in_transforms));

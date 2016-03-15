@@ -20,11 +20,11 @@ public:
     { }
 
 
-    host_tensor<float,5> forward( host_tensor<float,5> in ) override
+    host_tensor<float,5> forward( host_tensor<float,5> in ) const override
     {
         host_tensor<float,5> out(output_shape);
-        host_tensor<float,5>& ks = conv_data::kernels;
-        real* bs = conv_data::biases.data();
+        auto & ks = conv_data::kernels;
+        real const * bs = conv_data::biases.data();
         vec3i kl = kernel_size;
 
         for ( long_t b = 0; b < in_batch_size; ++b )

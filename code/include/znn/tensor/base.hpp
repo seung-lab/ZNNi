@@ -21,11 +21,11 @@ class value_accessor
 public:
     static const size_t dimensionality = NumDims;
 
-    typedef T                                element        ;
-    typedef tensor<T,NumDims-1,Arch>         value_type     ;
-    typedef sub_tensor<T,NumDims-1,Arch>     reference      ;
-    typedef const_sub_tensor<T,NumDims,Arch> const_reference;
-    typedef Arch                             architecture   ;
+    typedef T                                  element        ;
+    typedef tensor<T,NumDims-1,Arch>           value_type     ;
+    typedef sub_tensor<T,NumDims-1,Arch>       reference      ;
+    typedef const_sub_tensor<T,NumDims-1,Arch> const_reference;
+    typedef Arch                               architecture   ;
 
 protected:
     template<typename Reference>

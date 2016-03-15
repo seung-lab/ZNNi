@@ -10,7 +10,7 @@ class host_layer: public layer
 {
 public:
     using layer::layer;
-    virtual host_tensor<float,5> forward( host_tensor<float,5> ) = 0;
+    virtual host_tensor<float,5> forward( host_tensor<float,5> ) const = 0;
 
     virtual long_t resident_memory() const = 0;
     virtual long_t working_memory() const = 0;
