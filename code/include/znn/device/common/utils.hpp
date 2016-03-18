@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cstddef>
 #include <cstdio>
+#include <stdexcept>
 
 #define STRINGIFY_(s)   #s
 #define STRINGIFY(s)    STRINGIFY_(s)
@@ -57,6 +58,21 @@
             FATAL_ERROR(_error.str());                                  \
         }                                                               \
     }
+
+
+#define tryCUDNN(status)                                                \
+    {                                                                   \
+        if (status != CUDNN_STATUS_SUCCESS)                             \
+        {                                                               \
+            std::stringstream _error;                                   \
+            _error << "File: " << __FILE__ << ", ";                     \
+            _error << "Line: " << __LINE__ << ", ";                     \
+            _error << "CUDNN failure, Error: ";                         \
+            _error << cudnnGetErrorString(status);                      \
+            throw std::runtime_error(_error.str());                     \
+        }                                                               \
+    }
+
 
 #define checkCudaErrors(status)                                         \
     {                                                                   \

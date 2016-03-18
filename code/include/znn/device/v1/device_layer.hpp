@@ -4,6 +4,8 @@
 #include "znn/layer.hpp"
 #include "znn/tensor/tensor.hpp"
 
+#include <zi/time.hpp>
+
 namespace znn { namespace fwd { namespace device { namespace v1 {
 
 class device_layer: public layer
@@ -20,17 +22,19 @@ public:
         return this->resident_memory() + this->working_memory();
     }
 
-    bool workable() const
+    std::pair<bool,double> workable() const
     {
+        zi::wall_timer wt;
         try
         {
-            device_tensor<float,5> in(output_shape);
+            device_tensor<float,5> in(rand_init,input_shape);
+            wt.reset();
             auto out = this->forward(std::move(in));
-            return true;
+            return std::make_pair(true, wt.elapsed<double>());
         }
         catch (...)
         {
-            return false;
+            return std::make_pair(false,static_cast<double>(0));
         }
     }
 };

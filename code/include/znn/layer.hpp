@@ -57,6 +57,7 @@ public:
     long_t const kernels_len   ;
     long_t const kernels_memory;
     long_t const bias_memory   ;
+    long_t const batch_size    ;
 
     conv_layer( long_t n, long_t fin, long_t fout,
                 vec3i const & is, vec3i const & ks ) noexcept
@@ -66,6 +67,7 @@ public:
         , kernels_len(kernel_len*fin*fout)
         , kernels_memory(kernels_len*sizeof(float))
         , bias_memory(fout*sizeof(float))
+        , batch_size(n)
     { }
 };
 

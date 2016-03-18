@@ -25,9 +25,9 @@ private:
     {
         if ( super_type::strides_[0] > 0 )
         {
-            this->ptr_ = reinterpret_cast<T*>
-                (detail::tensor::malloc(this->num_elements()*sizeof(T),
-                                        architecture()));
+            auto ptr = detail::tensor::malloc(this->num_elements()*sizeof(T),
+                                              architecture());
+            this->ptr_ = reinterpret_cast<T*>(ptr);
         }
     }
 

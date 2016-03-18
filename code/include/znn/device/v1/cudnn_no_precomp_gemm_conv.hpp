@@ -12,7 +12,7 @@
 namespace znn { namespace fwd { namespace device { namespace v1 {
 
 
-class cudnn_conv
+class cudnn_no_precomp_gemm_conv
     : public conv_layer<device_layer>
     , public conv_data
 {
@@ -20,8 +20,6 @@ private:
     cudnn::tensor_descriptor      in_desc, out_desc, bias_desc;
     cudnn::kernel_descriptor      kernel_desc;
     cudnn::convolution_descriptor conv_desc;
-
-    size_t workspace_size_ = 0;
 
 public:
     long_t resident_memory() const override
@@ -31,27 +29,12 @@ public:
 
     long_t working_memory() const override
     {
-        return input_memory + output_memory + workspace_size_;
+        return input_memory + output_memory;
     }
 
     device_tensor<float,5> forward( device_tensor<float,5> in ) const override
     {
-        //  I'm not sure what the problem is here, but when the input
-        //  or output is larger than 1 Giga elements, the PRECOMP_GEMM
-        //  seems to do something weird - writes outside of the memory
-        //  given to the output tensor.  Same code works with
-        //  IMPLICIT_GEMM.  Assume it's NVIDIA bug or undocumented
-        //  limitation. Solution - limit the size to 1 Giga elements.
-
-        if (   total_output_len > 1024*1024*1024
-               || total_input_len > 1024*1024*1024  )
-        {
-            throw std::logic_error("in or out too big");
-        }
-
         device_tensor<real,5> out(output_shape);
-
-        device_array<char> workspace(workspace_size_);
 
         float alpha = 1; float beta = 0;
 
@@ -62,8 +45,8 @@ public:
                 in_desc.handle(), in.data(),
                 kernel_desc.handle(), kernels.data(),
                 conv_desc.handle(),
-                CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
-                workspace.data(), workspace_size_,
+                CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_GEMM,
+                nullptr, 0,
                 &beta,
                 out_desc.handle(), out.data()) );
 
@@ -88,9 +71,9 @@ public:
     }
 
 public:
-    cudnn_conv( long_t n, long_t fin, long_t fout,
-                vec3i const & is, vec3i const & ks,
-                float * km = nullptr, float* bs = nullptr )
+    cudnn_no_precomp_gemm_conv( long_t n, long_t fin, long_t fout,
+                                vec3i const & is, vec3i const & ks,
+                                float * km = nullptr, float* bs = nullptr )
         : conv_layer<device_layer>(n,fin,fout,is,ks)
         , conv_data(fin,fout,ks,km,bs)
     {
@@ -102,21 +85,6 @@ public:
 
         kernel_desc.set(fout,fin,ks[0],ks[1],ks[2]);
         conv_desc.set();
-
-        {
-            size_t what_size;
-            tryCUDNN(
-                cudnnGetConvolutionForwardWorkspaceSize(
-                    handle.cudnn_handle,
-                    in_desc.handle(),
-                    kernel_desc.handle(),
-                    conv_desc.handle(),
-                    out_desc.handle(),
-                    CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
-                    &what_size));
-
-            workspace_size_ = std::max(workspace_size_, what_size);
-        }
     }
 };
 

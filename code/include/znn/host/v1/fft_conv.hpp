@@ -5,7 +5,9 @@
 #include "znn/host/v1/host_layer.hpp"
 #include "znn/host/v1/conv_data.hpp"
 #include "znn/host/common/fft/fft.hpp"
+#include "znn/host/common/thread_pin.hpp"
 
+#include <atomic>
 #include <thread>
 #include <tbb/tbb.h>
 
@@ -268,8 +270,12 @@ private:
             queues[0].push(i);
         }
 
+        thread_distributor td;
+
         auto fn = [&,this]()
             {
+                thread_pin pin(td);
+
                 host_tensor<complex,1> oscratch(this->fft_->transform_elements());
                 host_tensor<real,1>    iscratch(this->fft_->kernel_scratch_elements());
 

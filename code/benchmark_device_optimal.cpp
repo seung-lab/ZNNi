@@ -27,7 +27,6 @@ std::string net_name;
 vec3i       os;
 long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
 
-template<typename Conv>
 inline void benchmark_network( network_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
@@ -50,14 +49,108 @@ inline void benchmark_network( network_descriptor & ndesc,
         {
             if ( l.descriptor.type == layer_type::convolutional )
             {
-                layers.push_back(make_unique<Conv>
-                              (l.batch_size,
-                               l.descriptor.num_inputs,
-                               l.descriptor.num_outputs,
-                               l.in_size,
-                               l.descriptor.k_or_w_size,
-                               l.random_kernels().data(),
-                               l.random_biases().data()));
+                // find the best network
+                std::unique_ptr<device::v1::device_layer> to_add;
+                double best = std::numeric_limits<double>::max();
+
+                try
+                {
+                    auto attempt = make_unique<device::v1::cudnn_conv>
+                        (l.batch_size,
+                         l.descriptor.num_inputs,
+                         l.descriptor.num_outputs,
+                         l.in_size,
+                         l.descriptor.k_or_w_size,
+                         l.random_kernels().data(),
+                         l.random_biases().data());
+
+                    auto r = attempt->workable();
+                    if (r.first && (r.second < best))
+                    {
+                        best = r.second;
+                        to_add = std::move(attempt);
+                    }
+
+                    rout << "   ## cudnn_conv test " << lnum << ' '
+                         << ( r.first ? "OK" : "NO" )
+                         << ' ' << r.second << std::endl;
+
+                }
+                catch (...)
+                {
+                    // whatever
+                }
+
+                try
+                {
+                    auto attempt = make_unique<device::v1::fft_conv>
+                        (l.batch_size,
+                         l.descriptor.num_inputs,
+                         l.descriptor.num_outputs,
+                         l.in_size,
+                         l.descriptor.k_or_w_size,
+                         l.random_kernels().data(),
+                         l.random_biases().data());
+
+                    auto r = attempt->workable();
+                    if (r.first && (r.second < best))
+                    {
+                        best = r.second;
+                        to_add = std::move(attempt);
+                    }
+
+                    rout << "   ## fft_conv   test " << lnum << ' '
+                         << ( r.first ? "OK" : "NO" )
+                         << ' ' << r.second << std::endl;
+                }
+                catch (...)
+                {
+                    // whatever
+                }
+
+
+                if ( !to_add )
+                {
+                    try
+                    {
+                        auto attempt
+                            = make_unique<device::v1::cudnn_no_precomp_gemm_conv>
+                            (l.batch_size,
+                             l.descriptor.num_inputs,
+                             l.descriptor.num_outputs,
+                             l.in_size,
+                             l.descriptor.k_or_w_size,
+                             l.random_kernels().data(),
+                             l.random_biases().data());
+
+                        auto r = attempt->workable();
+                        if (r.first && (r.second < best))
+                        {
+                            to_add = std::move(attempt);
+                            best = r.second;
+                        }
+
+                        rout << "   ## ngemm_conv test " << lnum << ' '
+                             << ( r.first ? "OK" : "NO" )
+                             << ' ' << r.second << std::endl;
+
+                    }
+                    catch (...)
+                    {
+                        // whatever
+                    }
+                }
+
+                if ( to_add )
+                {
+                    layers.push_back(std::move(to_add));
+                }
+                else
+                {
+                    rout << "[network_information] " << net_name
+                         << " :: " << os << " :: IS NOT WORKABLE!" << std::endl;
+                    return;
+                }
 
             }
             else
@@ -89,22 +182,22 @@ inline void benchmark_network( network_descriptor & ndesc,
          << " MB WM: " << wm/1024/1024 << " MB" << std::endl;
 
 
-    bool workable = true;
-    for ( auto & l: layers )
-    {
-        if ( workable )
-        {
-            auto r = l->workable();
-            workable = workable && r.first;
-        }
-    }
+    // bool workable = true;
+    // for ( auto & l: layers )
+    // {
+    //     if ( workable )
+    //     {
+    //         auto r = l->workable();
+    //         workable = workable && r.first;
+    //     }
+    // }
 
-    if ( !workable )
-    {
-        rout << "[network_information] " << net_name
-             << " :: " << os << " :: IS NOT WORKABLE!" << std::endl;
-        return;
-    }
+    // if ( !workable )
+    // {
+    //     rout << "[network_information] " << net_name
+    //          << " :: " << os << " :: IS NOT WORKABLE!" << std::endl;
+    //     return;
+    // }
 
     if ( rm + wm < max_memory )
     {
@@ -167,7 +260,6 @@ inline void benchmark_network( network_descriptor & ndesc,
 
 }
 
-template<class Conv>
 void benchmark( std::string const & rep, long_t rounds )
 {
     std::string net_path    = "../networks/" + net_name + ".znni";
@@ -185,7 +277,7 @@ void benchmark( std::string const & rep, long_t rounds )
     for ( long_t i = 8; i < 400; i += 8 )
     {
         os = vec3i(i,i,i);
-        benchmark_network<Conv>(nd, rounds, ofs);
+        benchmark_network(nd, rounds, ofs);
     }
 }
 
@@ -196,10 +288,5 @@ int main(int argc, char *argv[])
     long_t rounds = 4;
     if ( argc > 2 ) rounds = atoi(argv[2]);
 
-    benchmark<device::v1::cudnn_conv>("cudnn", rounds);
-    benchmark<device::v1::fft_conv>("fft", rounds);
-
-    benchmark<device::v1::cudnn_no_precomp_gemm_conv>
-        ("cudnn_no_precomp_gemm_conv", rounds);
-
+    benchmark("optimal", rounds);
 }

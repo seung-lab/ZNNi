@@ -261,6 +261,20 @@ template<class T, size_t D>
 using device_const_tensor_ref =
     const_tensor_ref<T,D,detail::tensor::device_tag>;
 
+template<class T>
+using host_array_ref = tensor_ref<T,1,detail::tensor::host_tag>;
+
+template<class T>
+using device_array_ref = tensor_ref<T,1,detail::tensor::device_tag>;
+
+template<class T>
+using host_const_array_ref =
+    const_tensor_ref<T,1,detail::tensor::host_tag>;
+
+template<class T>
+using device_const_array_ref =
+    const_tensor_ref<T,1,detail::tensor::device_tag>;
+
 
 
 }} // namespace znn::fwd

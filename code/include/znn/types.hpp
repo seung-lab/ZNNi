@@ -42,4 +42,11 @@ typedef std::lock_guard<std::mutex> guard;
 template<typename T>
 struct type {};
 
+template<typename T, typename... Args>
+std::unique_ptr<T> make_unique(Args&&... args)
+{
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+
+
 }} // namespace znn::fwd

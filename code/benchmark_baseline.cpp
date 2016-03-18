@@ -1,12 +1,6 @@
-#include "znn/device/common/cudnn.hpp"
-#include "znn/device/common/fft/transformer.hpp"
-
 #include "znn/util/network.hpp"
 #include "znn/device/v1/cudnn_conv.hpp"
-#include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
-#include "znn/device/v1/fft_conv.hpp"
 #include "znn/device/v1/cudnn_pool.hpp"
-#include "znn/device/v1/cudnn_mfp.hpp"
 
 #include <zi/time.hpp>
 
@@ -15,10 +9,10 @@
 #include <sstream>
 
 // RUN THE FOLLOWING
-// ./benchmark_device m37 4
-// ./benchmark_device m57 4
-// ./benchmark_device m77 4
-// ./benchmark_device m97 4
+// ./benchmark_baseline m37 4
+// ./benchmark_baseline m57 4
+// ./benchmark_baseline m77 4
+// ./benchmark_baseline m97 4
 
 
 using namespace znn::fwd;
@@ -27,12 +21,11 @@ std::string net_name;
 vec3i       os;
 long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
 
-template<typename Conv>
 inline void benchmark_network( network_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network net(ndesc, 1, os);
+    znni_pooling_network net(ndesc, 1, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
          << os << std::endl;
@@ -50,7 +43,7 @@ inline void benchmark_network( network_descriptor & ndesc,
         {
             if ( l.descriptor.type == layer_type::convolutional )
             {
-                layers.push_back(make_unique<Conv>
+                layers.push_back(make_unique<device::v1::cudnn_conv>
                               (l.batch_size,
                                l.descriptor.num_inputs,
                                l.descriptor.num_outputs,
@@ -62,7 +55,7 @@ inline void benchmark_network( network_descriptor & ndesc,
             }
             else
             {
-                layers.push_back(make_unique<device::v1::cudnn_mfp>
+                layers.push_back(make_unique<device::v1::cudnn_pool>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.in_size,
@@ -167,7 +160,6 @@ inline void benchmark_network( network_descriptor & ndesc,
 
 }
 
-template<class Conv>
 void benchmark( std::string const & rep, long_t rounds )
 {
     std::string net_path    = "../networks/" + net_name + ".znni";
@@ -182,10 +174,10 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network_descriptor nd(net_path);
 
-    for ( long_t i = 8; i < 400; i += 8 )
+    for ( long_t i = 1; i < 400; i++ )
     {
         os = vec3i(i,i,i);
-        benchmark_network<Conv>(nd, rounds, ofs);
+        benchmark_network(nd, rounds, ofs);
     }
 }
 
@@ -196,10 +188,6 @@ int main(int argc, char *argv[])
     long_t rounds = 4;
     if ( argc > 2 ) rounds = atoi(argv[2]);
 
-    benchmark<device::v1::cudnn_conv>("cudnn", rounds);
-    benchmark<device::v1::fft_conv>("fft", rounds);
-
-    benchmark<device::v1::cudnn_no_precomp_gemm_conv>
-        ("cudnn_no_precomp_gemm_conv", rounds);
+    benchmark("baseline", rounds);
 
 }

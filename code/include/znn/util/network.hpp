@@ -32,6 +32,7 @@ class network_descriptor
 private:
     std::list<layer_descriptor> layers_;
     vec3i                       fov_ = vec3i::one;
+    vec3i                       fragmentation_ = vec3i::one;
 
 public:
     std::list<layer_descriptor> const & layers() const
@@ -42,6 +43,11 @@ public:
     vec3i const & fov() const
     {
         return fov_;
+    }
+
+    vec3i const & fragmentation() const
+    {
+        return fragmentation_;
     }
 
     network_descriptor( std::string const & fname )
@@ -102,6 +108,7 @@ public:
             else
             {
                 fov_ *= l.k_or_w_size;
+                fragmentation_ *= l.k_or_w_size;
             }
         }
 
@@ -223,5 +230,82 @@ public:
 
 
 };
+
+
+class znni_pooling_network
+{
+public:
+    using znni_layer = znni_network::znni_layer;
+private:
+    std::vector<znni_layer> layers_    ;
+    vec3i                   in_size_   ;
+    vec3i                   out_size_  ;
+    vec5i                   in_shape_  ;
+    long_t                  out_voxels_;
+
+public:
+    vec3i const & get_in_size() const
+    {
+        return in_size_;
+    }
+
+    vec3i const & get_out_size() const
+    {
+        return out_size_;
+    }
+
+    host_tensor<real,5> get_random_sample() const
+    {
+        return host_tensor<real,5>(rand_init,in_shape_);
+    }
+
+    std::vector<znni_layer> const & layers() const
+    {
+        return layers_;
+    }
+
+    vec5i in_shape() const
+    {
+        return in_shape_;
+    }
+
+    long_t out_voxels() const
+    {
+        return out_voxels_;
+    }
+
+    znni_pooling_network( network_descriptor const & nd,
+                          long_t b, vec3i const & os )
+        : layers_()
+        , in_size_(nd.fov() + (os - vec3i::one) * nd.fragmentation())
+        , out_size_(os)
+        , in_shape_(b,nd.layers().front().num_inputs,
+                    in_size_[0], in_size_[1], in_size_[2])
+    {
+        vec3i is = nd.fov() + (os - vec3i::one) * nd.fragmentation();
+
+        out_voxels_ = b * os[0] * os[1] * os[2];
+
+        for ( auto const & l: nd.layers() )
+        {
+            znni_layer znnil(l,b,is);
+
+            if ( l.type == layer_type::convolutional )
+            {
+                is = is - l.k_or_w_size + vec3i::one;
+            }
+            else
+            {
+                is /= l.k_or_w_size;
+            }
+
+            layers_.push_back(std::move(znnil));
+        }
+
+    }
+
+
+};
+
 
 }} // namespace znn::fwd
