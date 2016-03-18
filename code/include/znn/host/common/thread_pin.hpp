@@ -7,7 +7,7 @@
 #endif
 
 #ifndef ZNNI_CORES_PER_CHIP
-#  define ZNNI_CORES_PER_CHIP 4
+#  define ZNNI_CORES_PER_CHIP 36
 #endif
 
 #ifndef ZNNI_HYPERTHREADING
