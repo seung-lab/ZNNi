@@ -32,7 +32,17 @@ for bp = 0:0
     
     label = sprintf('Batch of %d', b);
     
-    plot(x./z.direct.flops, z.direct.memory, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
+    plot(x./z.fft.flops, z.fft.memory, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
+end
+
+for bp = 0:0
+    b = 2^bp;
+    int = 8:8:(1000/(b^(1/3)));
+    z = net.sparse_cost(net,b,int);
+    
+    label = sprintf('Batch of %d', b);
+    
+    plot(x./z.fft.flops, z.fft.memory, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
 end
 
 legend1 = legend(axes1,'show');

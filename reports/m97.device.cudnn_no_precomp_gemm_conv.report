@@ -1,0 +1,81 @@
+--------------------------------------------
+
+## m97 :: starting benchmark for output size 8,8,8
+[network_requirements] m97 :: 8,8,8 :: RM: 72 MB WM: 2251 MB
+[layer_measurement] m97 :: 8,8,8 :: 0 :: 0.263218
+[layer_measurement] m97 :: 8,8,8 :: 1 :: 0.0409389
+[layer_measurement] m97 :: 8,8,8 :: 2 :: 20.9533
+[layer_measurement] m97 :: 8,8,8 :: 3 :: 0.0296404
+[layer_measurement] m97 :: 8,8,8 :: 4 :: 9.09343
+[layer_measurement] m97 :: 8,8,8 :: 5 :: 2.90764
+[layer_measurement] m97 :: 8,8,8 :: 6 :: 0.509203
+[layer_measurement] m97 :: 8,8,8 :: 7 :: 0.0226321
+[network_measurement] m97 :: 8,8,8 :: 33.8237
+[layer_measurement] m97 :: 8,8,8 :: 0 :: 0.264755
+[layer_measurement] m97 :: 8,8,8 :: 1 :: 0.040953
+[layer_measurement] m97 :: 8,8,8 :: 2 :: 20.6353
+[layer_measurement] m97 :: 8,8,8 :: 3 :: 0.0295428
+[layer_measurement] m97 :: 8,8,8 :: 4 :: 8.89662
+[layer_measurement] m97 :: 8,8,8 :: 5 :: 2.91022
+[layer_measurement] m97 :: 8,8,8 :: 6 :: 0.50725
+[layer_measurement] m97 :: 8,8,8 :: 7 :: 0.022869
+[network_measurement] m97 :: 8,8,8 :: 33.3114
+[network_average] m97 :: 8,8,8 :: 33.5675
+[network_throughput] m97 :: 8,8,8 :: 15.2528
+## m97 :: starting benchmark for output size 16,16,16
+[network_requirements] m97 :: 16,16,16 :: RM: 72 MB WM: 2619 MB
+[layer_measurement] m97 :: 16,16,16 :: 0 :: 0.301
+[layer_measurement] m97 :: 16,16,16 :: 1 :: 0.0485036
+[layer_measurement] m97 :: 16,16,16 :: 2 :: 24.3866
+[layer_measurement] m97 :: 16,16,16 :: 3 :: 0.0346
+[layer_measurement] m97 :: 16,16,16 :: 4 :: 11.1553
+[layer_measurement] m97 :: 16,16,16 :: 5 :: 4.02684
+[layer_measurement] m97 :: 16,16,16 :: 6 :: 0.856244
+[layer_measurement] m97 :: 16,16,16 :: 7 :: 0.0250598
+[network_measurement] m97 :: 16,16,16 :: 40.8387
+[layer_measurement] m97 :: 16,16,16 :: 0 :: 0.308473
+[layer_measurement] m97 :: 16,16,16 :: 1 :: 0.047056
+[layer_measurement] m97 :: 16,16,16 :: 2 :: 24.3494
+[layer_measurement] m97 :: 16,16,16 :: 3 :: 0.0343945
+[layer_measurement] m97 :: 16,16,16 :: 4 :: 11.0803
+[layer_measurement] m97 :: 16,16,16 :: 5 :: 4.0139
+[layer_measurement] m97 :: 16,16,16 :: 6 :: 0.880898
+[layer_measurement] m97 :: 16,16,16 :: 7 :: 0.0250796
+[network_measurement] m97 :: 16,16,16 :: 40.7438
+[network_average] m97 :: 16,16,16 :: 40.7912
+[network_throughput] m97 :: 16,16,16 :: 100.414
+## m97 :: starting benchmark for output size 24,24,24
+[network_requirements] m97 :: 24,24,24 :: RM: 72 MB WM: 3025 MB
+[layer_measurement] m97 :: 24,24,24 :: 0 :: 0.353465
+[layer_measurement] m97 :: 24,24,24 :: 1 :: 0.0547798
+[layer_measurement] m97 :: 24,24,24 :: 2 :: 28.6356
+[layer_measurement] m97 :: 24,24,24 :: 3 :: 0.0407693
+[layer_measurement] m97 :: 24,24,24 :: 4 :: 13.511
+[layer_measurement] m97 :: 24,24,24 :: 5 :: 5.29889
+[layer_measurement] m97 :: 24,24,24 :: 6 :: 1.36469
+[layer_measurement] m97 :: 24,24,24 :: 7 :: 0.0440208
+[network_measurement] m97 :: 24,24,24 :: 49.308
+[layer_measurement] m97 :: 24,24,24 :: 0 :: 0.415922
+[layer_measurement] m97 :: 24,24,24 :: 1 :: 0.0949789
+[layer_measurement] m97 :: 24,24,24 :: 2 :: 28.3154
+[layer_measurement] m97 :: 24,24,24 :: 3 :: 0.0416008
+[layer_measurement] m97 :: 24,24,24 :: 4 :: 13.4612
+[layer_measurement] m97 :: 24,24,24 :: 5 :: 5.31776
+[layer_measurement] m97 :: 24,24,24 :: 6 :: 1.38051
+[layer_measurement] m97 :: 24,24,24 :: 7 :: 0.0442519
+[network_measurement] m97 :: 24,24,24 :: 49.0765
+[network_average] m97 :: 24,24,24 :: 49.1923
+[network_throughput] m97 :: 24,24,24 :: 281.02
+## m97 :: starting benchmark for output size 32,32,32
+[network_requirements] m97 :: 32,32,32 :: RM: 72 MB WM: 3471 MB
+[layer_measurement] m97 :: 32,32,32 :: 0 :: 0.396188
+[layer_measurement] m97 :: 32,32,32 :: 1 :: 0.0626183
+[layer_measurement] m97 :: 32,32,32 :: 2 :: 33.238
+[layer_measurement] m97 :: 32,32,32 :: 3 :: 0.0482174
+[layer_measurement] m97 :: 32,32,32 :: 4 :: 16.1441
+[layer_measurement] m97 :: 32,32,32 :: 5 :: 6.87704
+[layer_measurement] m97 :: 32,32,32 :: 6 :: 2.0578
+[layer_measurement] m97 :: 32,32,32 :: 7 :: 0.127611
+[network_measurement] m97 :: 32,32,32 :: 58.9571
+[layer_measurement] m97 :: 32,32,32 :: 0 :: 0.410848
+[layer_measurement] m97 :: 32,32,32 :: 1 :: 0.0635686

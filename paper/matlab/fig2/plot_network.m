@@ -46,17 +46,26 @@ ymax = max(ymax, max(1./b(:)));
 
 plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CuDNN Implicit GEMM');
 
-
-if exist([net '.gpuram'], 'file')
-    [a, b] = read_data([net '.gpuram']);
-    plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU RAM');
-end
+[a, b] = read_data([net '.gpufft']);
+plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU FFT');
 
 xmax = max(xmax, max(a(:)));
 ymax = max(ymax, max(1./b(:)));
 
-[a, b] = read_data([net '.gpufft']);
-plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU FFT');
+if exist([net '.gpuram'], 'file')
+    [a, b] = read_data([net '.gpuram']);
+    plot(a,1./b,'LineWidth',1.5,'Parent',axes1,'DisplayName','GPU RAM');
+end
+
+if exist([net '.gpuramfft'], 'file')
+    [a, b] = read_data([net '.gpuramfft']);
+    plot(a,1./b,'LineWidth',1.5,'Parent',axes1,'DisplayName','GPU RAM (FFT)');
+end
+
+if exist([net '.fusion'], 'file')
+    [a, b] = read_data([net '.fusion']);
+    plot(a,1./b,'LineWidth',3.5,'Parent',axes1,'DisplayName','FUSION');
+end
 
 axes2 = axes('Parent',figure1,'YMinorGrid','on','YGrid','on',...
     'XMinorGrid','on',...
@@ -68,7 +77,7 @@ axes2 = axes('Parent',figure1,'YMinorGrid','on','YGrid','on',...
     'FontSize',10,...
     'XLim', [0 xmax * 1.1],...
     'YLim', [0 ymax * 1.1],...
-    'Position',[.18 .55 .13 .13],...
+    'Position',[.08 .75 .2 .2],...
     'AmbientLightColor',[0.8 0.8 0.8]);
 
 legend1 = legend(axes1,'show');
@@ -100,6 +109,20 @@ plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CuDNN Implicit GEMM');
 
 plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','GPU FFT');
 
+if exist([net '.gpuram'], 'file')
+    [a, b] = read_data([net '.gpuram']);
+    plot(a,1./b,'LineWidth',1.5,'Parent',axes2,'DisplayName','GPU RAM');
+end
+
+if exist([net '.gpuramfft'], 'file')
+    [a, b] = read_data([net '.gpuramfft']);
+    plot(a,1./b,'LineWidth',1.5,'Parent',axes2,'DisplayName','GPU RAM (FFT)');
+end
+
+if exist([net '.fusion'], 'file')
+    [a, b] = read_data([net '.fusion']);
+    plot(a,1./b,'LineWidth',3.5,'Parent',axes2,'DisplayName','FUSION');
+end
 
 end
 

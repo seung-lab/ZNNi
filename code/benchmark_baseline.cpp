@@ -146,9 +146,6 @@ inline void benchmark_network( network_descriptor & ndesc,
 
         total /= rounds;
 
-    // rout << "## " << net_name << " :: starting benchmark for output size "
-    //      << os << std::endl;
-
         rout << "[network_average] " << net_name
              << " :: " << os << " :: " << total << std::endl;
 

@@ -12,11 +12,10 @@
 #include <sstream>
 
 // RUN THE FOLLOWING
-// ./benchmark_device m36 4
-// ./benchmark_device m56 4
-// ./benchmark_device m76 4
-// ./benchmark_device m96 4
-
+// ./bin/benchmark_device m36 4
+// ./bin/benchmark_device m56 4
+// ./bin/benchmark_device m76 4
+// ./bin/benchmark_device m96 4
 
 using namespace znn::fwd;
 
@@ -149,9 +148,6 @@ inline void benchmark_network( network_descriptor & ndesc,
         }
 
         total /= rounds;
-
-    // rout << "## " << net_name << " :: starting benchmark for output size "
-    //      << os << std::endl;
 
         rout << "[network_average] " << net_name
              << " :: " << os << " :: " << total << std::endl;

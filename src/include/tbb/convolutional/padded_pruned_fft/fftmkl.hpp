@@ -287,7 +287,7 @@ public:
                              csize[0], [cp, this](long_t i)
                              {
                                  MKL_INT status
-                                     = DftiComputeForward( this->t3,
+                                     = DftiComputeForward( this->pt3,
                                                            cp + i * this->csize[2]*this->csize[1],
                                                            cp + i * this->csize[2]*this->csize[1] );
                              });
@@ -330,7 +330,7 @@ public:
                              csize[0], [cp, this](long_t i)
                              {
                                  MKL_INT status
-                                     = DftiComputeForward( this->t3,
+                                     = DftiComputeForward( this->pt3,
                                                            cp + i * this->csize[2]*this->csize[1],
                                                            cp + i * this->csize[2]*this->csize[1] );
                              });
@@ -346,7 +346,7 @@ public:
                              csize[0], [cp, this](long_t i)
                              {
                                  MKL_LONG status =
-                                     DftiComputeBackward( this->t3,
+                                     DftiComputeBackward( this->pt3,
                                                           cp + i * this->csize[2]*this->csize[1],
                                                           cp + i * this->csize[2]*this->csize[1] );
                              });

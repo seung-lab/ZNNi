@@ -23,7 +23,7 @@ ylabel('Theoretical speedup','FontSize',16);
 xlabel('Output voxels','FontSize',16);
 
 z = net.sparse_cost(net,1,1);
-x = z.fft.flops;
+x = z.direct.flops;
 
 for bp = 0:6
     b = 2^bp;
@@ -32,7 +32,7 @@ for bp = 0:6
     
     label = sprintf('Batch of %d', b);
     
-    plot(int.^3*b, x./z.fft.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
+    plot(int.^3*b, x./z.direct.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
 end
 
 legend1 = legend(axes1,'show');

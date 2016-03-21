@@ -3,7 +3,7 @@
 HERE    	=       .
 BINDIR		=	./bin
 
-AT	=       @
+AT	=	@
 DOLLAR  = 	$$
 
 CD	=	$(AT)cd
@@ -25,36 +25,38 @@ DATE    =       $(AT)date
 NVCC		=	$(AT)/usr/local/cuda/bin/nvcc
 
 ifneq ($(strip $(ICC)),)
-	CXX 			=	$(AT)icc
-	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
-	CS_FLAGS		=	-static-intel -mkl=sequential
+	CXX 			=	$(AT)icpc
+	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -ipo
+	CS_FLAGS		=	-DZNN_USE_MKL_FFT
+	CS_LD_FLAGS		=	-static-intel -mkl=sequential
 else
 	CXX			=	$(AT)g++
-	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -mavx2 -mfma -ffast-math
+	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -ffast-math
 	CS_FLAGS		=
+	CS_LD_FLAGS		=
 endif
 
 FPIC	=	-fPIC
 
 CXXINCLUDES	=	-I$(HERE)/include -I$(HERE)/.. -I/usr/local/cuda/include
-CXXWARN		=	-Wall -Wextra
+CXXWARN		=	-Wall -Wextra -Wno-format
 
 NVCCFLAGS	=	-std=c++11 -O3 -DNDEBUG $(CXXINCLUDES)
 
 DEPFLAGS	=	-std=c++11 -MM -MG -MP $(CXXINCLUDES) -MT "$(@:.d=.o)"
 INLINE_DEPFLAGS	=	-MMD -MP -MT "$(@)" -MF $(@:.o=.T)
 
-COMMON_FLAGS	=	-c -g -std=c++11 $(INLINE_DEPFLAGS) $(CXXINCLUDES) $(FPIC) $(CXXWARN)
+COMMON_FLAGS	=	-g -std=c++11 $(INLINE_DEPFLAGS) $(CXXINCLUDES) $(CXXWARN)
 
 DBG_FLAGS		=	$(COMMON_FLAGS)
-#OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -mavx2 -mfma -ffast-math
+LD_OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
 
 OPT_FLAGS		=	$(COMMON_FLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
 
-COMMON_LDFLAGS		=	-g $(FPIC) -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
+COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
 
-DBG_LDFLAGS		=	$(COMMON_LDFLAGS)
-OPT_LDFLAGS		=	$(COMMON_LDFLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
+DBG_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS)
+OPT_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS) $(LD_OPTIMIZATION_FLAGS)
 
 ifneq ($(strip $(OPT)),)
   CXXFLAGS	=	$(OPT_FLAGS)
@@ -64,7 +66,9 @@ else
   CXXLDFLAGS	=	$(DBG_LDFLAGS)
 endif
 
-OBJS = test.o benchmark_host.o
+OBJS = test.o test_host.o test_device.o benchmark_device.o \
+	benchmark_host.o benchmark_baseline.o kernels.o \
+	benchmark_device_optimal.o benchmark_best_device.o
 
 DEPS = $(patsubst %.o,$(BINDIR)/%.d,$(OBJS))
 
@@ -110,12 +114,32 @@ $(BINDIR)/test: $(BINDIR)/test.o
 	$(ECHO) "[CXX] linking $<"
 	$(CXX) $< $(CXXLDFLAGS) -o $@
 
-$(BINDIR)/benchmark_host: $(BINDIR)/benchmark_host.o
+$(BINDIR)/test_host: $(BINDIR)/test_host.o
 	$(ECHO) "[CXX] linking $<"
 	$(CXX) $< $(CXXLDFLAGS) -o $@
 
-$(BINDIR)/benchmark_device: $(BINDIR)/benchmark_device.o $(BINDIR)/kernels.o
-	$(ECHO) "[CXX] linking $<"
+$(BINDIR)/test_device: $(BINDIR)/kernels.o $(BINDIR)/test_device.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_host: $(BINDIR)/benchmark_host.o
+	$(ECHO) "[CXX] linking $^"
 	$(CXX) $< $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_device:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_device.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_baseline:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_baseline.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_device_optimal:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_device_optimal.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_best_device:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_best_device.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 remake: clean all

@@ -1,4 +1,3 @@
-#include "znn/host/common/fft/fft.hpp"
 
 #include "znn/tensor/tensor.hpp"
 #include "znn/host/v1/naive_boost_conv.hpp"
@@ -110,7 +109,7 @@ void conv_test()
     vec3i ws(intdist(rng),intdist(rng),intdist(rng));
 
 
-    std::uniform_int_distribution<long_t> intdist2(2,55);
+    std::uniform_int_distribution<long_t> intdist2(2,24);
     vec3i os(intdist2(rng),intdist2(rng),intdist2(rng));
 
     std::uniform_int_distribution<long_t> intdist3(1,15);
@@ -230,6 +229,18 @@ void pool_test()
 
 int main()
 {
-    while (1)
-        conv_test();
+    // network_descriptor nd("../networks/m76.znni");
+    // device::v2::device_network dn(nd,1,vec3i(4,4,4));
+
+    // auto t = dn.tail();
+
+    // std::cout << t;
+
+    //host::thread_distributor td;
+    //host::thread_pin z(td);
+    //
+    //while (1)
+    //    conv_test();
+
+
 }

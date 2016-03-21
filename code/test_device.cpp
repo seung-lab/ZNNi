@@ -205,5 +205,9 @@ void pool_test()
 int main()
 {
     while (1)
+    {
         conv_test();
+        mfp_test();
+        pool_test();
+    }
 }

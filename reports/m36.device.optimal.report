@@ -1,0 +1,730 @@
+--------------------------------------------
+
+## m36 :: starting benchmark for output size 8,8,8
+   ## cudnn_conv test 0 OK 0.0088354
+   ## fft_conv   test 0 OK 0.0678099
+   ## cudnn_conv test 2 OK 0.0639006
+   ## fft_conv   test 2 OK 0.412645
+   ## cudnn_conv test 4 OK 0.0442796
+   ## fft_conv   test 4 OK 0.367886
+   ## cudnn_conv test 6 OK 0.0182694
+   ## fft_conv   test 6 OK 0.72101
+   ## cudnn_conv test 7 OK 0.00719852
+   ## fft_conv   test 7 OK 0.625249
+   ## cudnn_conv test 8 OK 0.0019826
+   ## fft_conv   test 8 OK 0.590423
+   ## cudnn_conv test 9 OK 0.000465076
+   ## fft_conv   test 9 OK 0.110398
+[network_requirements] m36 :: 8,8,8 :: RM: 3 MB WM: 452 MB
+[layer_measurement] m36 :: 8,8,8 :: 0 :: 0.0084922
+[layer_measurement] m36 :: 8,8,8 :: 1 :: 0.00847333
+[layer_measurement] m36 :: 8,8,8 :: 2 :: 0.0932286
+[layer_measurement] m36 :: 8,8,8 :: 3 :: 0.0310345
+[layer_measurement] m36 :: 8,8,8 :: 4 :: 0.0444918
+[layer_measurement] m36 :: 8,8,8 :: 5 :: 0.00548677
+[layer_measurement] m36 :: 8,8,8 :: 6 :: 0.0182392
+[layer_measurement] m36 :: 8,8,8 :: 7 :: 0.00720829
+[layer_measurement] m36 :: 8,8,8 :: 8 :: 0.0020046
+[layer_measurement] m36 :: 8,8,8 :: 9 :: 0.000517318
+[network_measurement] m36 :: 8,8,8 :: 0.22063
+[network_average] m36 :: 8,8,8 :: 0.22063
+[network_throughput] m36 :: 8,8,8 :: 2320.62
+## m36 :: starting benchmark for output size 16,16,16
+   ## cudnn_conv test 0 OK 0.0107556
+   ## fft_conv   test 0 OK 0.0818803
+   ## cudnn_conv test 2 OK 0.0832336
+   ## fft_conv   test 2 OK 0.550235
+   ## cudnn_conv test 4 OK 0.0608032
+   ## fft_conv   test 4 OK 0.490726
+   ## cudnn_conv test 6 OK 0.0267374
+   ## fft_conv   test 6 OK 0.764673
+   ## cudnn_conv test 7 OK 0.0116224
+   ## fft_conv   test 7 OK 0.682047
+   ## cudnn_conv test 8 OK 0.00399453
+   ## fft_conv   test 8 OK 0.571354
+   ## cudnn_conv test 9 OK 0.00052933
+   ## fft_conv   test 9 OK 0.108796
+[network_requirements] m36 :: 16,16,16 :: RM: 3 MB WM: 583 MB
+[layer_measurement] m36 :: 16,16,16 :: 0 :: 0.011027
+[layer_measurement] m36 :: 16,16,16 :: 1 :: 0.011071
+[layer_measurement] m36 :: 16,16,16 :: 2 :: 0.0834011
+[layer_measurement] m36 :: 16,16,16 :: 3 :: 0.00976283
+[layer_measurement] m36 :: 16,16,16 :: 4 :: 0.0596304
+[layer_measurement] m36 :: 16,16,16 :: 5 :: 0.00706113
+[layer_measurement] m36 :: 16,16,16 :: 6 :: 0.0266484
+[layer_measurement] m36 :: 16,16,16 :: 7 :: 0.0114901
+[layer_measurement] m36 :: 16,16,16 :: 8 :: 0.00388047
+[layer_measurement] m36 :: 16,16,16 :: 9 :: 0.000387551
+[network_measurement] m36 :: 16,16,16 :: 0.226432
+[network_average] m36 :: 16,16,16 :: 0.226432
+[network_throughput] m36 :: 16,16,16 :: 18089.3
+## m36 :: starting benchmark for output size 24,24,24
+   ## cudnn_conv test 0 OK 0.0134913
+   ## fft_conv   test 0 OK 0.104557
+   ## cudnn_conv test 2 OK 0.106162
+   ## fft_conv   test 2 OK 0.695215
+   ## cudnn_conv test 4 OK 0.077907
+   ## fft_conv   test 4 OK 0.578908
+   ## cudnn_conv test 6 OK 0.0380644
+   ## fft_conv   test 6 OK 0.971732
+   ## cudnn_conv test 7 OK 0.0183432
+   ## fft_conv   test 7 OK 0.869441
+   ## cudnn_conv test 8 OK 0.00734553
+   ## fft_conv   test 8 OK 0.915201
+   ## cudnn_conv test 9 OK 0.00100516
+   ## fft_conv   test 9 OK 0.154422
+[network_requirements] m36 :: 24,24,24 :: RM: 3 MB WM: 737 MB
+[layer_measurement] m36 :: 24,24,24 :: 0 :: 0.0133172
+[layer_measurement] m36 :: 24,24,24 :: 1 :: 0.0135122
+[layer_measurement] m36 :: 24,24,24 :: 2 :: 0.106207
+[layer_measurement] m36 :: 24,24,24 :: 3 :: 0.0120858
+[layer_measurement] m36 :: 24,24,24 :: 4 :: 0.0784924
+[layer_measurement] m36 :: 24,24,24 :: 5 :: 0.00881906
+[layer_measurement] m36 :: 24,24,24 :: 6 :: 0.0396022
+[layer_measurement] m36 :: 24,24,24 :: 7 :: 0.019286
+[layer_measurement] m36 :: 24,24,24 :: 8 :: 0.00766646
+[layer_measurement] m36 :: 24,24,24 :: 9 :: 0.000988959
+[network_measurement] m36 :: 24,24,24 :: 0.301906
+[network_average] m36 :: 24,24,24 :: 0.301906
+[network_throughput] m36 :: 24,24,24 :: 45789
+## m36 :: starting benchmark for output size 32,32,32
+   ## cudnn_conv test 0 OK 0.0170553
+   ## fft_conv   test 0 OK 0.138615
+   ## cudnn_conv test 2 OK 0.133391
+   ## fft_conv   test 2 OK 0.936707
+   ## cudnn_conv test 4 OK 0.100177
+   ## fft_conv   test 4 OK 0.704118
+   ## cudnn_conv test 6 OK 0.0518997
+   ## fft_conv   test 6 OK 0.97868
+   ## cudnn_conv test 7 OK 0.0266869
+   ## fft_conv   test 7 OK 0.764667
+   ## cudnn_conv test 8 OK 0.011624
+   ## fft_conv   test 8 OK 0.680382
+   ## cudnn_conv test 9 OK 0.00168298
+   ## fft_conv   test 9 OK 0.187529
+[network_requirements] m36 :: 32,32,32 :: RM: 3 MB WM: 916 MB
+[layer_measurement] m36 :: 32,32,32 :: 0 :: 0.0162714
+[layer_measurement] m36 :: 32,32,32 :: 1 :: 0.0168833
+[layer_measurement] m36 :: 32,32,32 :: 2 :: 0.134858
+[layer_measurement] m36 :: 32,32,32 :: 3 :: 0.0151856
+[layer_measurement] m36 :: 32,32,32 :: 4 :: 0.103391
+[layer_measurement] m36 :: 32,32,32 :: 5 :: 0.0115328
+[layer_measurement] m36 :: 32,32,32 :: 6 :: 0.0546075
+[layer_measurement] m36 :: 32,32,32 :: 7 :: 0.0283372
+[layer_measurement] m36 :: 32,32,32 :: 8 :: 0.0122474
+[layer_measurement] m36 :: 32,32,32 :: 9 :: 0.00165273
+[network_measurement] m36 :: 32,32,32 :: 0.396994
+[network_average] m36 :: 32,32,32 :: 0.396994
+[network_throughput] m36 :: 32,32,32 :: 82540.4
+## m36 :: starting benchmark for output size 40,40,40
+   ## cudnn_conv test 0 OK 0.0204817
+   ## fft_conv   test 0 OK 0.191492
+   ## cudnn_conv test 2 OK 0.165844
+   ## fft_conv   test 2 OK 1.10624
+   ## cudnn_conv test 4 OK 0.125975
+   ## fft_conv   test 4 OK 0.896504
+   ## cudnn_conv test 6 OK 0.0690768
+   ## fft_conv   test 6 OK 1.1607
+   ## cudnn_conv test 7 OK 0.0380445
+   ## fft_conv   test 7 OK 0.973419
+   ## cudnn_conv test 8 OK 0.0183029
+   ## fft_conv   test 8 OK 0.713767
+   ## cudnn_conv test 9 OK 0.00266676
+   ## fft_conv   test 9 OK 0.13708
+[network_requirements] m36 :: 40,40,40 :: RM: 3 MB WM: 1122 MB
+[layer_measurement] m36 :: 40,40,40 :: 0 :: 0.0201588
+[layer_measurement] m36 :: 40,40,40 :: 1 :: 0.0204298
+[layer_measurement] m36 :: 40,40,40 :: 2 :: 0.18514
+[layer_measurement] m36 :: 40,40,40 :: 3 :: 0.018862
+[layer_measurement] m36 :: 40,40,40 :: 4 :: 0.130577
+[layer_measurement] m36 :: 40,40,40 :: 5 :: 0.0145985
+[layer_measurement] m36 :: 40,40,40 :: 6 :: 0.0733129
+[layer_measurement] m36 :: 40,40,40 :: 7 :: 0.0409508
+[layer_measurement] m36 :: 40,40,40 :: 8 :: 0.0195472
+[layer_measurement] m36 :: 40,40,40 :: 9 :: 0.0027093
+[network_measurement] m36 :: 40,40,40 :: 0.528996
+[network_average] m36 :: 40,40,40 :: 0.528996
+[network_throughput] m36 :: 40,40,40 :: 120984
+## m36 :: starting benchmark for output size 48,48,48
+   ## cudnn_conv test 0 OK 0.0242178
+   ## fft_conv   test 0 OK 0.216738
+   ## cudnn_conv test 2 OK 0.202796
+   ## fft_conv   test 2 OK 1.4939
+   ## cudnn_conv test 4 OK 0.15775
+   ## fft_conv   test 4 OK 1.06624
+   ## cudnn_conv test 6 OK 0.0898906
+   ## fft_conv   test 6 OK 1.15632
+   ## cudnn_conv test 7 OK 0.0546313
+   ## fft_conv   test 7 OK 0.98411
+   ## cudnn_conv test 8 OK 0.0270697
+   ## fft_conv   test 8 OK 0.959054
+   ## cudnn_conv test 9 OK 0.00417982
+   ## fft_conv   test 9 OK 0.120096
+[network_requirements] m36 :: 48,48,48 :: RM: 3 MB WM: 1356 MB
+[layer_measurement] m36 :: 48,48,48 :: 0 :: 0.0237545
+[layer_measurement] m36 :: 48,48,48 :: 1 :: 0.0245029
+[layer_measurement] m36 :: 48,48,48 :: 2 :: 0.202459
+[layer_measurement] m36 :: 48,48,48 :: 3 :: 0.022814
+[layer_measurement] m36 :: 48,48,48 :: 4 :: 0.164914
+[layer_measurement] m36 :: 48,48,48 :: 5 :: 0.0186743
+[layer_measurement] m36 :: 48,48,48 :: 6 :: 0.094343
+[layer_measurement] m36 :: 48,48,48 :: 7 :: 0.0546425
+[layer_measurement] m36 :: 48,48,48 :: 8 :: 0.0280225
+[layer_measurement] m36 :: 48,48,48 :: 9 :: 0.00416969
+[network_measurement] m36 :: 48,48,48 :: 0.641721
+[network_average] m36 :: 48,48,48 :: 0.641721
+[network_throughput] m36 :: 48,48,48 :: 172336
+## m36 :: starting benchmark for output size 56,56,56
+   ## cudnn_conv test 0 OK 0.0288052
+   ## fft_conv   test 0 OK 0.221664
+   ## cudnn_conv test 2 OK 0.244526
+   ## fft_conv   test 2 OK 1.52066
+   ## cudnn_conv test 4 OK 0.193783
+   ## fft_conv   test 4 OK 1.41196
+   ## cudnn_conv test 6 OK 0.115483
+   ## fft_conv   test 6 OK 1.28479
+   ## cudnn_conv test 7 OK 0.0703001
+   ## fft_conv   test 7 OK 1.21215
+   ## cudnn_conv test 8 OK 0.0385366
+   ## fft_conv   test 8 OK 1.00813
+   ## cudnn_conv test 9 OK 0.00630119
+   ## fft_conv   test 9 OK 0.130679
+[network_requirements] m36 :: 56,56,56 :: RM: 3 MB WM: 1621 MB
+[layer_measurement] m36 :: 56,56,56 :: 0 :: 0.0285083
+[layer_measurement] m36 :: 56,56,56 :: 1 :: 0.0293202
+[layer_measurement] m36 :: 56,56,56 :: 2 :: 0.246951
+[layer_measurement] m36 :: 56,56,56 :: 3 :: 0.0272734
+[layer_measurement] m36 :: 56,56,56 :: 4 :: 0.207297
+[layer_measurement] m36 :: 56,56,56 :: 5 :: 0.022124
+[layer_measurement] m36 :: 56,56,56 :: 6 :: 0.12482
+[layer_measurement] m36 :: 56,56,56 :: 7 :: 0.0742332
+[layer_measurement] m36 :: 56,56,56 :: 8 :: 0.0417633
+[layer_measurement] m36 :: 56,56,56 :: 9 :: 0.00668692
+[network_measurement] m36 :: 56,56,56 :: 0.813292
+[network_average] m36 :: 56,56,56 :: 0.813292
+[network_throughput] m36 :: 56,56,56 :: 215932
+## m36 :: starting benchmark for output size 64,64,64
+   ## cudnn_conv test 0 OK 0.0349552
+   ## fft_conv   test 0 OK 0.279186
+   ## cudnn_conv test 2 OK 0.294709
+   ## fft_conv   test 2 OK 2.28892
+   ## cudnn_conv test 4 OK 0.234668
+   ## fft_conv   test 4 OK 1.42192
+   ## cudnn_conv test 6 OK 0.142403
+   ## fft_conv   test 6 OK 1.38475
+   ## cudnn_conv test 7 OK 0.0901098
+   ## fft_conv   test 7 OK 1.15342
+   ## cudnn_conv test 8 OK 0.0525703
+   ## fft_conv   test 8 OK 0.991011
+   ## cudnn_conv test 9 OK 0.00882234
+   ## fft_conv   test 9 OK 0.147775
+[network_requirements] m36 :: 64,64,64 :: RM: 3 MB WM: 1919 MB
+[layer_measurement] m36 :: 64,64,64 :: 0 :: 0.034436
+[layer_measurement] m36 :: 64,64,64 :: 1 :: 0.0349415
+[layer_measurement] m36 :: 64,64,64 :: 2 :: 0.297713
+[layer_measurement] m36 :: 64,64,64 :: 3 :: 0.0322388
+[layer_measurement] m36 :: 64,64,64 :: 4 :: 0.250799
+[layer_measurement] m36 :: 64,64,64 :: 5 :: 0.0245886
+[layer_measurement] m36 :: 64,64,64 :: 6 :: 0.151893
+[layer_measurement] m36 :: 64,64,64 :: 7 :: 0.0949893
+[layer_measurement] m36 :: 64,64,64 :: 8 :: 0.0555111
+[layer_measurement] m36 :: 64,64,64 :: 9 :: 0.009246
+[network_measurement] m36 :: 64,64,64 :: 0.990761
+[network_average] m36 :: 64,64,64 :: 0.990761
+[network_throughput] m36 :: 64,64,64 :: 264588
+## m36 :: starting benchmark for output size 72,72,72
+   ## cudnn_conv test 0 OK 0.0401759
+   ## fft_conv   test 0 OK 0.314667
+   ## cudnn_conv test 2 OK 0.354397
+   ## fft_conv   test 2 OK 2.26514
+   ## cudnn_conv test 4 OK 0.281899
+   ## fft_conv   test 4 OK 2.0125
+   ## cudnn_conv test 6 OK 0.175471
+   ## fft_conv   test 6 OK 1.71262
+   ## cudnn_conv test 7 OK 0.116459
+   ## fft_conv   test 7 OK 1.29865
+   ## cudnn_conv test 8 OK 0.0704653
+   ## fft_conv   test 8 OK 1.17861
+   ## cudnn_conv test 9 OK 0.0137035
+   ## fft_conv   test 9 OK 0.207981
+[network_requirements] m36 :: 72,72,72 :: RM: 3 MB WM: 2251 MB
+[layer_measurement] m36 :: 72,72,72 :: 0 :: 0.0395309
+[layer_measurement] m36 :: 72,72,72 :: 1 :: 0.0408031
+[layer_measurement] m36 :: 72,72,72 :: 2 :: 0.358881
+[layer_measurement] m36 :: 72,72,72 :: 3 :: 0.0376829
+[layer_measurement] m36 :: 72,72,72 :: 4 :: 0.304372
+[layer_measurement] m36 :: 72,72,72 :: 5 :: 0.0319402
+[layer_measurement] m36 :: 72,72,72 :: 6 :: 0.186051
+[layer_measurement] m36 :: 72,72,72 :: 7 :: 0.12154
+[layer_measurement] m36 :: 72,72,72 :: 8 :: 0.0745761
+[layer_measurement] m36 :: 72,72,72 :: 9 :: 0.0131645
+[network_measurement] m36 :: 72,72,72 :: 1.21554
+[network_average] m36 :: 72,72,72 :: 1.21554
+[network_throughput] m36 :: 72,72,72 :: 307064
+## m36 :: starting benchmark for output size 80,80,80
+   ## cudnn_conv test 0 OK 0.0468866
+   ## fft_conv   test 0 OK 0.358509
+   ## cudnn_conv test 2 OK 0.422516
+   ## fft_conv   test 2 OK 2.60106
+   ## cudnn_conv test 4 OK 0.338882
+   ## fft_conv   test 4 OK 2.02891
+   ## cudnn_conv test 6 OK 0.21452
+   ## fft_conv   test 6 OK 1.72318
+   ## cudnn_conv test 7 OK 0.143607
+   ## fft_conv   test 7 OK 1.43924
+   ## cudnn_conv test 8 OK 0.0908547
+   ## fft_conv   test 8 OK 1.20085
+   ## cudnn_conv test 9 OK 0.0169134
+   ## fft_conv   test 9 OK 0.209226
+[network_requirements] m36 :: 80,80,80 :: RM: 3 MB WM: 2619 MB
+[layer_measurement] m36 :: 80,80,80 :: 0 :: 0.0453811
+[layer_measurement] m36 :: 80,80,80 :: 1 :: 0.0477939
+[layer_measurement] m36 :: 80,80,80 :: 2 :: 0.425385
+[layer_measurement] m36 :: 80,80,80 :: 3 :: 0.0437785
+[layer_measurement] m36 :: 80,80,80 :: 4 :: 0.35316
+[layer_measurement] m36 :: 80,80,80 :: 5 :: 0.0386737
+[layer_measurement] m36 :: 80,80,80 :: 6 :: 0.222141
+[layer_measurement] m36 :: 80,80,80 :: 7 :: 0.150884
+[layer_measurement] m36 :: 80,80,80 :: 8 :: 0.09679
+[layer_measurement] m36 :: 80,80,80 :: 9 :: 0.0178693
+[network_measurement] m36 :: 80,80,80 :: 1.44785
+[network_average] m36 :: 80,80,80 :: 1.44785
+[network_throughput] m36 :: 80,80,80 :: 353627
+## m36 :: starting benchmark for output size 88,88,88
+   ## cudnn_conv test 0 OK 0.0539082
+   ## fft_conv   test 0 OK 0.477545
+   ## cudnn_conv test 2 OK 0.495103
+   ## fft_conv   test 2 OK 3.2612
+   ## cudnn_conv test 4 OK 0.402336
+   ## fft_conv   test 4 OK 2.3585
+   ## cudnn_conv test 6 OK 0.258951
+   ## fft_conv   test 6 OK 2.5087
+   ## cudnn_conv test 7 OK 0.208725
+   ## fft_conv   test 7 OK 1.75384
+   ## cudnn_conv test 8 OK 0.116779
+   ## fft_conv   test 8 OK 1.25311
+   ## cudnn_conv test 9 OK 0.022436
+   ## fft_conv   test 9 OK 0.248963
+[network_requirements] m36 :: 88,88,88 :: RM: 3 MB WM: 3025 MB
+[layer_measurement] m36 :: 88,88,88 :: 0 :: 0.0530068
+[layer_measurement] m36 :: 88,88,88 :: 1 :: 0.0545508
+[layer_measurement] m36 :: 88,88,88 :: 2 :: 0.496896
+[layer_measurement] m36 :: 88,88,88 :: 3 :: 0.0505673
+[layer_measurement] m36 :: 88,88,88 :: 4 :: 0.413386
+[layer_measurement] m36 :: 88,88,88 :: 5 :: 0.0442359
+[layer_measurement] m36 :: 88,88,88 :: 6 :: 0.273421
+[layer_measurement] m36 :: 88,88,88 :: 7 :: 0.187584
+[layer_measurement] m36 :: 88,88,88 :: 8 :: 0.124482
+[layer_measurement] m36 :: 88,88,88 :: 9 :: 0.0249504
+[network_measurement] m36 :: 88,88,88 :: 1.72976
+[network_average] m36 :: 88,88,88 :: 1.72976
+[network_throughput] m36 :: 88,88,88 :: 393969
+## m36 :: starting benchmark for output size 96,96,96
+   ## cudnn_conv test 0 OK 0.061399
+   ## fft_conv   test 0 OK 0.484679
+   ## cudnn_conv test 2 OK 0.572118
+   ## fft_conv   test 2 OK 3.3103
+   ## cudnn_conv test 4 OK 0.469277
+   ## fft_conv   test 4 OK 2.93318
+   ## cudnn_conv test 6 OK 0.310999
+   ## fft_conv   test 6 OK 2.55105
+   ## cudnn_conv test 7 OK 0.213465
+   ## fft_conv   test 7 OK 1.71795
+   ## cudnn_conv test 8 OK 0.143596
+   ## fft_conv   test 8 OK 1.4033
+   ## cudnn_conv test 9 OK 0.0292357
+   ## fft_conv   test 9 OK 0.251945
+[network_requirements] m36 :: 96,96,96 :: RM: 3 MB WM: 3471 MB
+[layer_measurement] m36 :: 96,96,96 :: 0 :: 0.06048
+[layer_measurement] m36 :: 96,96,96 :: 1 :: 0.0625631
+[layer_measurement] m36 :: 96,96,96 :: 2 :: 0.57516
+[layer_measurement] m36 :: 96,96,96 :: 3 :: 0.0580473
+[layer_measurement] m36 :: 96,96,96 :: 4 :: 0.478004
+[layer_measurement] m36 :: 96,96,96 :: 5 :: 0.0507353
+[layer_measurement] m36 :: 96,96,96 :: 6 :: 0.319943
+[layer_measurement] m36 :: 96,96,96 :: 7 :: 0.228467
+[layer_measurement] m36 :: 96,96,96 :: 8 :: 0.153506
+[layer_measurement] m36 :: 96,96,96 :: 9 :: 0.0305659
+[network_measurement] m36 :: 96,96,96 :: 2.02522
+[network_average] m36 :: 96,96,96 :: 2.02522
+[network_throughput] m36 :: 96,96,96 :: 436860
+## m36 :: starting benchmark for output size 104,104,104
+   ## cudnn_conv test 0 OK 0.0708437
+   ## fft_conv   test 0 OK 0.587703
+   ## cudnn_conv test 2 OK 0.658235
+   ## fft_conv   test 2 OK 3.96315
+   ## cudnn_conv test 4 OK 0.545651
+   ## fft_conv   test 4 OK 2.9799
+   ## cudnn_conv test 6 OK 0.367614
+   ## fft_conv   test 6 OK 2.88413
+   ## cudnn_conv test 7 OK 0.259266
+   ## fft_conv   test 7 OK 2.51347
+   ## cudnn_conv test 8 OK 0.176741
+   ## fft_conv   test 8 OK 1.73553
+   ## cudnn_conv test 9 OK 0.0366547
+   ## fft_conv   test 9 OK 0.333735
+[network_requirements] m36 :: 104,104,104 :: RM: 3 MB WM: 3959 MB
+[layer_measurement] m36 :: 104,104,104 :: 0 :: 0.0701386
+[layer_measurement] m36 :: 104,104,104 :: 1 :: 0.0718881
+[layer_measurement] m36 :: 104,104,104 :: 2 :: 0.659644
+[layer_measurement] m36 :: 104,104,104 :: 3 :: 0.0671427
+[layer_measurement] m36 :: 104,104,104 :: 4 :: 0.553532
+[layer_measurement] m36 :: 104,104,104 :: 5 :: 0.0596171
+[layer_measurement] m36 :: 104,104,104 :: 6 :: 0.376213
+[layer_measurement] m36 :: 104,104,104 :: 7 :: 0.276086
+[layer_measurement] m36 :: 104,104,104 :: 8 :: 0.188579
+[layer_measurement] m36 :: 104,104,104 :: 9 :: 0.0402893
+[network_measurement] m36 :: 104,104,104 :: 2.37229
+[network_average] m36 :: 104,104,104 :: 2.37229
+[network_throughput] m36 :: 104,104,104 :: 474169
+## m36 :: starting benchmark for output size 112,112,112
+   ## cudnn_conv test 0 OK 0.0789344
+   ## fft_conv   test 0 OK 0.687691
+   ## cudnn_conv test 2 OK 0.757853
+   ## fft_conv   test 2 OK 4.57781
+   ## cudnn_conv test 4 OK 0.634434
+   ## fft_conv   test 4 OK 3.51855
+   ## cudnn_conv test 6 OK 0.434494
+   ## fft_conv   test 6 OK 3.85179
+   ## cudnn_conv test 7 OK 0.310396
+   ## fft_conv   test 7 OK 2.50967
+   ## cudnn_conv test 8 OK 0.214344
+   ## fft_conv   test 8 OK 1.72895
+   ## cudnn_conv test 9 OK 0.0453852
+   ## fft_conv   test 9 OK 0.268935
+[network_requirements] m36 :: 112,112,112 :: RM: 3 MB WM: 4491 MB
+[layer_measurement] m36 :: 112,112,112 :: 0 :: 0.0788447
+[layer_measurement] m36 :: 112,112,112 :: 1 :: 0.0817096
+[layer_measurement] m36 :: 112,112,112 :: 2 :: 0.783752
+[layer_measurement] m36 :: 112,112,112 :: 3 :: 0.076677
+[layer_measurement] m36 :: 112,112,112 :: 4 :: 0.633241
+[layer_measurement] m36 :: 112,112,112 :: 5 :: 0.0670395
+[layer_measurement] m36 :: 112,112,112 :: 6 :: 0.440862
+[layer_measurement] m36 :: 112,112,112 :: 7 :: 0.326162
+[layer_measurement] m36 :: 112,112,112 :: 8 :: 0.228683
+[layer_measurement] m36 :: 112,112,112 :: 9 :: 0.0485793
+[network_measurement] m36 :: 112,112,112 :: 2.77601
+[network_average] m36 :: 112,112,112 :: 2.77601
+[network_throughput] m36 :: 112,112,112 :: 506096
+## m36 :: starting benchmark for output size 120,120,120
+   ## cudnn_conv test 0 OK 0.0913659
+   ## fft_conv   test 0 OK 0.733401
+   ## cudnn_conv test 2 OK 0.860686
+   ## fft_conv   test 2 OK 5.47128
+   ## cudnn_conv test 4 OK 0.728183
+   ## fft_conv   test 4 OK 3.89319
+   ## cudnn_conv test 6 OK 0.509402
+   ## fft_conv   test 6 OK 3.90421
+   ## cudnn_conv test 7 OK 0.373116
+   ## fft_conv   test 7 OK 2.94871
+   ## cudnn_conv test 8 OK 0.260228
+   ## fft_conv   test 8 OK 2.54673
+   ## cudnn_conv test 9 OK 0.0559223
+   ## fft_conv   test 9 OK 0.343145
+[network_requirements] m36 :: 120,120,120 :: RM: 3 MB WM: 5068 MB
+[layer_measurement] m36 :: 120,120,120 :: 0 :: 0.0895168
+[layer_measurement] m36 :: 120,120,120 :: 1 :: 0.0920232
+[layer_measurement] m36 :: 120,120,120 :: 2 :: 0.855642
+[layer_measurement] m36 :: 120,120,120 :: 3 :: 0.0874915
+[layer_measurement] m36 :: 120,120,120 :: 4 :: 0.721704
+[layer_measurement] m36 :: 120,120,120 :: 5 :: 0.0784713
+[layer_measurement] m36 :: 120,120,120 :: 6 :: 0.510633
+[layer_measurement] m36 :: 120,120,120 :: 7 :: 0.386897
+[layer_measurement] m36 :: 120,120,120 :: 8 :: 0.274786
+[layer_measurement] m36 :: 120,120,120 :: 9 :: 0.0603092
+[network_measurement] m36 :: 120,120,120 :: 3.16971
+[network_average] m36 :: 120,120,120 :: 3.16971
+[network_throughput] m36 :: 120,120,120 :: 545160
+## m36 :: starting benchmark for output size 128,128,128
+   ## cudnn_conv test 0 OK 0.100129
+   ## fft_conv   test 0 OK 0.804277
+   ## cudnn_conv test 2 OK 0.96078
+   ## fft_conv   test 2 OK 5.55506
+   ## cudnn_conv test 4 OK 0.825183
+   ## fft_conv   test 4 OK 4.9958
+   ## cudnn_conv test 6 OK 0.590303
+   ## fft_conv   test 6 OK 3.88212
+   ## cudnn_conv test 7 OK 0.434791
+   ## fft_conv   test 7 OK 3.82571
+   ## cudnn_conv test 8 OK 0.308503
+   ## fft_conv   test 8 OK 2.50949
+   ## cudnn_conv test 9 OK 0.0683252
+   ## fft_conv   test 9 OK 0.293554
+[network_requirements] m36 :: 128,128,128 :: RM: 3 MB WM: 5693 MB
+[layer_measurement] m36 :: 128,128,128 :: 0 :: 0.0992696
+[layer_measurement] m36 :: 128,128,128 :: 1 :: 0.102165
+[layer_measurement] m36 :: 128,128,128 :: 2 :: 0.961517
+[layer_measurement] m36 :: 128,128,128 :: 3 :: 0.0963962
+[layer_measurement] m36 :: 128,128,128 :: 4 :: 0.822367
+[layer_measurement] m36 :: 128,128,128 :: 5 :: 0.0849704
+[layer_measurement] m36 :: 128,128,128 :: 6 :: 0.590094
+[layer_measurement] m36 :: 128,128,128 :: 7 :: 0.449585
+[layer_measurement] m36 :: 128,128,128 :: 8 :: 0.328671
+[layer_measurement] m36 :: 128,128,128 :: 9 :: 0.0728159
+[network_measurement] m36 :: 128,128,128 :: 3.62101
+[network_average] m36 :: 128,128,128 :: 3.62101
+[network_throughput] m36 :: 128,128,128 :: 579161
+## m36 :: starting benchmark for output size 136,136,136
+   ## cudnn_conv test 0 OK 0.112489
+   ## fft_conv   test 0 OK 0.856118
+   ## cudnn_conv test 2 OK 1.08218
+   ## fft_conv   test 2 OK 6.38958
+   ## cudnn_conv test 4 OK 0.927169
+   ## fft_conv   test 4 OK 5.05933
+   ## cudnn_conv test 6 OK 0.677711
+   ## fft_conv   test 6 OK 4.55232
+   ## cudnn_conv test 7 OK 0.511848
+   ## fft_conv   test 7 OK 3.88115
+   ## cudnn_conv test 8 OK 0.370927
+   ## fft_conv   test 8 OK 2.89551
+   ## cudnn_conv test 9 OK 0.0819405
+   ## fft_conv   test 9 OK 0.32077
+[network_requirements] m36 :: 136,136,136 :: RM: 3 MB WM: 6367 MB
+[layer_measurement] m36 :: 136,136,136 :: 0 :: 0.110488
+[layer_measurement] m36 :: 136,136,136 :: 1 :: 0.114391
+[layer_measurement] m36 :: 136,136,136 :: 2 :: 1.08325
+[layer_measurement] m36 :: 136,136,136 :: 3 :: 0.107269
+[layer_measurement] m36 :: 136,136,136 :: 4 :: 0.944287
+[layer_measurement] m36 :: 136,136,136 :: 5 :: 0.0960778
+[layer_measurement] m36 :: 136,136,136 :: 6 :: 0.678055
+[layer_measurement] m36 :: 136,136,136 :: 7 :: 0.516343
+[layer_measurement] m36 :: 136,136,136 :: 8 :: 0.383076
+[layer_measurement] m36 :: 136,136,136 :: 9 :: 0.0873429
+[network_measurement] m36 :: 136,136,136 :: 4.13515
+[network_average] m36 :: 136,136,136 :: 4.13515
+[network_throughput] m36 :: 136,136,136 :: 608310
+## m36 :: starting benchmark for output size 144,144,144
+   ## cudnn_conv test 0 OK 0.126272
+   ## fft_conv   test 0 NO 0
+   ## cudnn_conv test 2 OK 1.21302
+   ## fft_conv   test 2 OK 7.90486
+   ## cudnn_conv test 4 OK 1.04728
+   ## fft_conv   test 4 OK 5.61224
+   ## cudnn_conv test 6 OK 0.777566
+   ## fft_conv   test 6 OK 5.45407
+   ## cudnn_conv test 7 OK 0.590253
+   ## fft_conv   test 7 OK 3.87532
+   ## cudnn_conv test 8 OK 0.435982
+   ## fft_conv   test 8 OK 3.83317
+   ## cudnn_conv test 9 OK 0.0956061
+   ## fft_conv   test 9 OK 0.327138
+[network_requirements] m36 :: 144,144,144 :: RM: 3 MB WM: 7092 MB
+[layer_measurement] m36 :: 144,144,144 :: 0 :: 0.124712
+[layer_measurement] m36 :: 144,144,144 :: 1 :: 0.128449
+[layer_measurement] m36 :: 144,144,144 :: 2 :: 1.21184
+[layer_measurement] m36 :: 144,144,144 :: 3 :: 0.11913
+[layer_measurement] m36 :: 144,144,144 :: 4 :: 1.04231
+[layer_measurement] m36 :: 144,144,144 :: 5 :: 0.107939
+[layer_measurement] m36 :: 144,144,144 :: 6 :: 0.770134
+[layer_measurement] m36 :: 144,144,144 :: 7 :: 0.595599
+[layer_measurement] m36 :: 144,144,144 :: 8 :: 0.449552
+[layer_measurement] m36 :: 144,144,144 :: 9 :: 0.103489
+[network_measurement] m36 :: 144,144,144 :: 4.66966
+[network_average] m36 :: 144,144,144 :: 4.66966
+[network_throughput] m36 :: 144,144,144 :: 639444
+## m36 :: starting benchmark for output size 152,152,152
+   ## cudnn_conv test 0 OK 0.138464
+   ## fft_conv   test 0 NO 0
+   ## cudnn_conv test 2 OK 1.35271
+   ## fft_conv   test 2 OK 7.98246
+   ## cudnn_conv test 4 OK 1.16612
+   ## fft_conv   test 4 OK 6.87406
+   ## cudnn_conv test 6 OK 0.877279
+   ## fft_conv   test 6 OK 5.51117
+   ## cudnn_conv test 7 OK 0.681772
+   ## fft_conv   test 7 OK 4.57374
+   ## cudnn_conv test 8 OK 0.508808
+   ## fft_conv   test 8 OK 3.85728
+   ## cudnn_conv test 9 OK 0.113615
+   ## fft_conv   test 9 OK 0.454014
+[network_requirements] m36 :: 152,152,152 :: RM: 3 MB WM: 7870 MB
+[layer_measurement] m36 :: 152,152,152 :: 0 :: 0.137817
+[layer_measurement] m36 :: 152,152,152 :: 1 :: 0.140486
+[layer_measurement] m36 :: 152,152,152 :: 2 :: 1.34811
+[layer_measurement] m36 :: 152,152,152 :: 3 :: 0.134106
+[layer_measurement] m36 :: 152,152,152 :: 4 :: 1.16282
+[layer_measurement] m36 :: 152,152,152 :: 5 :: 0.121643
+[layer_measurement] m36 :: 152,152,152 :: 6 :: 0.879025
+[layer_measurement] m36 :: 152,152,152 :: 7 :: 0.683011
+[layer_measurement] m36 :: 152,152,152 :: 8 :: 0.521604
+[layer_measurement] m36 :: 152,152,152 :: 9 :: 0.12163
+[network_measurement] m36 :: 152,152,152 :: 5.26915
+[network_average] m36 :: 152,152,152 :: 5.26915
+[network_throughput] m36 :: 152,152,152 :: 666485
+## m36 :: starting benchmark for output size 160,160,160
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.108576
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 OK 3.70612
+   ## cudnn_conv test 4 OK 1.30249
+   ## fft_conv   test 4 OK 6.92103
+   ## cudnn_conv test 6 OK 0.979756
+   ## fft_conv   test 6 OK 5.9772
+   ## cudnn_conv test 7 OK 0.776047
+   ## fft_conv   test 7 OK 5.45043
+   ## cudnn_conv test 8 OK 0.589423
+   ## fft_conv   test 8 OK 4.01642
+   ## cudnn_conv test 9 OK 0.130547
+   ## fft_conv   test 9 OK 0.437537
+[network_requirements] m36 :: 160,160,160 :: RM: 3 MB WM: 8704 MB
+[layer_measurement] m36 :: 160,160,160 :: 0 :: 0.10841
+[layer_measurement] m36 :: 160,160,160 :: 1 :: 0.160061
+[layer_measurement] m36 :: 160,160,160 :: 2 :: 3.70964
+[layer_measurement] m36 :: 160,160,160 :: 3 :: 0.151151
+[layer_measurement] m36 :: 160,160,160 :: 4 :: 1.29863
+[layer_measurement] m36 :: 160,160,160 :: 5 :: 0.132936
+[layer_measurement] m36 :: 160,160,160 :: 6 :: 0.985713
+[layer_measurement] m36 :: 160,160,160 :: 7 :: 0.779952
+[layer_measurement] m36 :: 160,160,160 :: 8 :: 0.59588
+[layer_measurement] m36 :: 160,160,160 :: 9 :: 0.139292
+[network_measurement] m36 :: 160,160,160 :: 8.08734
+[network_average] m36 :: 160,160,160 :: 8.08734
+[network_throughput] m36 :: 160,160,160 :: 506471
+## m36 :: starting benchmark for output size 168,168,168
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.119639
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 OK 4.1127
+   ## cudnn_conv test 4 NO 0
+   ## fft_conv   test 4 OK 8.12566
+   ## cudnn_conv test 6 OK 1.0998
+   ## fft_conv   test 6 OK 7.03969
+   ## cudnn_conv test 7 OK 0.874612
+   ## fft_conv   test 7 OK 5.49748
+   ## cudnn_conv test 8 OK 0.678199
+   ## fft_conv   test 8 OK 4.57165
+   ## cudnn_conv test 9 OK 0.151116
+   ## fft_conv   test 9 OK 0.495427
+[network_requirements] m36 :: 168,168,168 :: RM: 3 MB WM: 10333 MB
+[layer_measurement] m36 :: 168,168,168 :: 0 :: 0.120584
+[layer_measurement] m36 :: 168,168,168 :: 1 :: 0.194142
+[layer_measurement] m36 :: 168,168,168 :: 2 :: 4.09251
+[layer_measurement] m36 :: 168,168,168 :: 3 :: 0.161956
+[layer_measurement] m36 :: 168,168,168 :: 4 :: 8.11832
+[layer_measurement] m36 :: 168,168,168 :: 5 :: 0.150992
+[layer_measurement] m36 :: 168,168,168 :: 6 :: 1.1043
+[layer_measurement] m36 :: 168,168,168 :: 7 :: 0.878933
+[layer_measurement] m36 :: 168,168,168 :: 8 :: 0.686378
+[layer_measurement] m36 :: 168,168,168 :: 9 :: 0.164592
+[network_measurement] m36 :: 168,168,168 :: 15.6969
+[network_average] m36 :: 168,168,168 :: 15.6969
+[network_throughput] m36 :: 168,168,168 :: 302074
+## m36 :: starting benchmark for output size 176,176,176
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.130905
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 OK 4.52492
+   ## cudnn_conv test 4 NO 0
+   ## fft_conv   test 4 OK 8.21614
+   ## cudnn_conv test 6 NO 0
+   ## fft_conv   test 6 OK 7.10853
+   ## cudnn_conv test 7 OK 0.983811
+   ## fft_conv   test 7 OK 6.01191
+   ## cudnn_conv test 8 OK 0.775536
+   ## fft_conv   test 8 OK 5.50589
+   ## cudnn_conv test 9 OK 0.173738
+   ## fft_conv   test 9 OK 0.460457
+[network_requirements] m36 :: 176,176,176 :: RM: 3 MB WM: 10543 MB
+[layer_measurement] m36 :: 176,176,176 :: 0 :: 0.130809
+[layer_measurement] m36 :: 176,176,176 :: 1 :: 0.210046
+[layer_measurement] m36 :: 176,176,176 :: 2 :: 4.50152
+[layer_measurement] m36 :: 176,176,176 :: 3 :: 0.197843
+[layer_measurement] m36 :: 176,176,176 :: 4 :: 8.19966
+[layer_measurement] m36 :: 176,176,176 :: 5 :: 0.163037
+[layer_measurement] m36 :: 176,176,176 :: 6 :: 7.06598
+[layer_measurement] m36 :: 176,176,176 :: 7 :: 0.980956
+[layer_measurement] m36 :: 176,176,176 :: 8 :: 0.778065
+[layer_measurement] m36 :: 176,176,176 :: 9 :: 0.184134
+[network_measurement] m36 :: 176,176,176 :: 22.4384
+[network_average] m36 :: 176,176,176 :: 22.4384
+[network_throughput] m36 :: 176,176,176 :: 242966
+## m36 :: starting benchmark for output size 184,184,184
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.14389
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 NO 0
+[network_information] m36 :: 184,184,184 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 192,192,192
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.183696
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 NO 0
+[network_information] m36 :: 192,192,192 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 200,200,200
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.198933
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 NO 0
+[network_information] m36 :: 200,200,200 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 208,208,208
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.217063
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 NO 0
+[network_information] m36 :: 208,208,208 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 216,216,216
+   ## cudnn_conv test 0 NO 0
+   ## fft_conv   test 0 NO 0
+   ## ngemm_conv test 0 OK 0.233941
+   ## cudnn_conv test 2 NO 0
+   ## fft_conv   test 2 NO 0
+   ## ngemm_conv test 2 NO 0
+[network_information] m36 :: 216,216,216 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 224,224,224
+[network_information] m36 :: 224,224,224 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 232,232,232
+[network_information] m36 :: 232,232,232 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 240,240,240
+[network_information] m36 :: 240,240,240 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 248,248,248
+[network_information] m36 :: 248,248,248 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 256,256,256
+[network_information] m36 :: 256,256,256 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 264,264,264
+[network_information] m36 :: 264,264,264 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 272,272,272
+[network_information] m36 :: 272,272,272 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 280,280,280
+[network_information] m36 :: 280,280,280 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 288,288,288
+[network_information] m36 :: 288,288,288 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 296,296,296
+[network_information] m36 :: 296,296,296 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 304,304,304
+[network_information] m36 :: 304,304,304 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 312,312,312
+[network_information] m36 :: 312,312,312 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 320,320,320
+[network_information] m36 :: 320,320,320 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 328,328,328
+[network_information] m36 :: 328,328,328 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 336,336,336
+[network_information] m36 :: 336,336,336 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 344,344,344
+[network_information] m36 :: 344,344,344 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 352,352,352
+[network_information] m36 :: 352,352,352 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 360,360,360
+[network_information] m36 :: 360,360,360 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 368,368,368
+[network_information] m36 :: 368,368,368 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 376,376,376
+[network_information] m36 :: 376,376,376 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 384,384,384
+[network_information] m36 :: 384,384,384 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 392,392,392
+[network_information] m36 :: 392,392,392 :: IS NOT WORKABLE!

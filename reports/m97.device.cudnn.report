@@ -1,0 +1,328 @@
+--------------------------------------------
+
+## m97 :: starting benchmark for output size 8,8,8
+[network_requirements] m97 :: 8,8,8 :: RM: 72 MB WM: 2251 MB
+[layer_measurement] m97 :: 8,8,8 :: 0 :: 0.150265
+[layer_measurement] m97 :: 8,8,8 :: 1 :: 0.0409167
+[layer_measurement] m97 :: 8,8,8 :: 2 :: 6.73717
+[layer_measurement] m97 :: 8,8,8 :: 3 :: 0.0292997
+[layer_measurement] m97 :: 8,8,8 :: 4 :: 2.91318
+[layer_measurement] m97 :: 8,8,8 :: 5 :: 0.969649
+[layer_measurement] m97 :: 8,8,8 :: 6 :: 0.167129
+[layer_measurement] m97 :: 8,8,8 :: 7 :: 0.00162969
+[network_measurement] m97 :: 8,8,8 :: 11.013
+[layer_measurement] m97 :: 8,8,8 :: 0 :: 0.156538
+[layer_measurement] m97 :: 8,8,8 :: 1 :: 0.0410542
+[layer_measurement] m97 :: 8,8,8 :: 2 :: 6.79128
+[layer_measurement] m97 :: 8,8,8 :: 3 :: 0.0295961
+[layer_measurement] m97 :: 8,8,8 :: 4 :: 2.93342
+[layer_measurement] m97 :: 8,8,8 :: 5 :: 0.973946
+[layer_measurement] m97 :: 8,8,8 :: 6 :: 0.16872
+[layer_measurement] m97 :: 8,8,8 :: 7 :: 0.00180597
+[network_measurement] m97 :: 8,8,8 :: 11.1001
+[network_average] m97 :: 8,8,8 :: 11.0566
+[network_throughput] m97 :: 8,8,8 :: 46.3073
+## m97 :: starting benchmark for output size 16,16,16
+[network_requirements] m97 :: 16,16,16 :: RM: 72 MB WM: 2619 MB
+[layer_measurement] m97 :: 16,16,16 :: 0 :: 0.179216
+[layer_measurement] m97 :: 16,16,16 :: 1 :: 0.0468744
+[layer_measurement] m97 :: 16,16,16 :: 2 :: 8.14336
+[layer_measurement] m97 :: 16,16,16 :: 3 :: 0.0344122
+[layer_measurement] m97 :: 16,16,16 :: 4 :: 3.71916
+[layer_measurement] m97 :: 16,16,16 :: 5 :: 1.34973
+[layer_measurement] m97 :: 16,16,16 :: 6 :: 0.295655
+[layer_measurement] m97 :: 16,16,16 :: 7 :: 0.00458371
+[network_measurement] m97 :: 16,16,16 :: 13.7772
+[layer_measurement] m97 :: 16,16,16 :: 0 :: 0.184542
+[layer_measurement] m97 :: 16,16,16 :: 1 :: 0.0470757
+[layer_measurement] m97 :: 16,16,16 :: 2 :: 8.31221
+[layer_measurement] m97 :: 16,16,16 :: 3 :: 0.0344385
+[layer_measurement] m97 :: 16,16,16 :: 4 :: 3.83358
+[layer_measurement] m97 :: 16,16,16 :: 5 :: 1.39954
+[layer_measurement] m97 :: 16,16,16 :: 6 :: 0.306388
+[layer_measurement] m97 :: 16,16,16 :: 7 :: 0.00476411
+[network_measurement] m97 :: 16,16,16 :: 14.1268
+[network_average] m97 :: 16,16,16 :: 13.952
+[network_throughput] m97 :: 16,16,16 :: 293.578
+## m97 :: starting benchmark for output size 24,24,24
+[network_requirements] m97 :: 24,24,24 :: RM: 72 MB WM: 3025 MB
+[layer_measurement] m97 :: 24,24,24 :: 0 :: 0.204594
+[layer_measurement] m97 :: 24,24,24 :: 1 :: 0.0545249
+[layer_measurement] m97 :: 24,24,24 :: 2 :: 9.58014
+[layer_measurement] m97 :: 24,24,24 :: 3 :: 0.0406541
+[layer_measurement] m97 :: 24,24,24 :: 4 :: 4.59895
+[layer_measurement] m97 :: 24,24,24 :: 5 :: 1.80309
+[layer_measurement] m97 :: 24,24,24 :: 6 :: 0.465819
+[layer_measurement] m97 :: 24,24,24 :: 7 :: 0.0134206
+[network_measurement] m97 :: 24,24,24 :: 16.766
+[layer_measurement] m97 :: 24,24,24 :: 0 :: 0.213538
+[layer_measurement] m97 :: 24,24,24 :: 1 :: 0.0548354
+[layer_measurement] m97 :: 24,24,24 :: 2 :: 9.74532
+[layer_measurement] m97 :: 24,24,24 :: 3 :: 0.0409832
+[layer_measurement] m97 :: 24,24,24 :: 4 :: 4.70114
+[layer_measurement] m97 :: 24,24,24 :: 5 :: 1.86358
+[layer_measurement] m97 :: 24,24,24 :: 6 :: 0.483624
+[layer_measurement] m97 :: 24,24,24 :: 7 :: 0.013957
+[network_measurement] m97 :: 24,24,24 :: 17.1217
+[network_average] m97 :: 24,24,24 :: 16.9438
+[network_throughput] m97 :: 24,24,24 :: 815.872
+## m97 :: starting benchmark for output size 32,32,32
+[network_requirements] m97 :: 32,32,32 :: RM: 72 MB WM: 3471 MB
+[layer_measurement] m97 :: 32,32,32 :: 0 :: 0.235394
+[layer_measurement] m97 :: 32,32,32 :: 1 :: 0.0626239
+[layer_measurement] m97 :: 32,32,32 :: 2 :: 11.1544
+[layer_measurement] m97 :: 32,32,32 :: 3 :: 0.0472395
+[layer_measurement] m97 :: 32,32,32 :: 4 :: 5.56514
+[layer_measurement] m97 :: 32,32,32 :: 5 :: 2.40861
+[layer_measurement] m97 :: 32,32,32 :: 6 :: 0.721413
+[layer_measurement] m97 :: 32,32,32 :: 7 :: 0.0308569
+[network_measurement] m97 :: 32,32,32 :: 20.2312
+[layer_measurement] m97 :: 32,32,32 :: 0 :: 0.253302
+[layer_measurement] m97 :: 32,32,32 :: 1 :: 0.063078
+[layer_measurement] m97 :: 32,32,32 :: 2 :: 11.494
+[layer_measurement] m97 :: 32,32,32 :: 3 :: 0.0469115
+[layer_measurement] m97 :: 32,32,32 :: 4 :: 5.69406
+[layer_measurement] m97 :: 32,32,32 :: 5 :: 2.41251
+[layer_measurement] m97 :: 32,32,32 :: 6 :: 0.720728
+[layer_measurement] m97 :: 32,32,32 :: 7 :: 0.0308705
+[network_measurement] m97 :: 32,32,32 :: 20.7209
+[network_average] m97 :: 32,32,32 :: 20.4761
+[network_throughput] m97 :: 32,32,32 :: 1600.31
+## m97 :: starting benchmark for output size 40,40,40
+[network_requirements] m97 :: 40,40,40 :: RM: 72 MB WM: 3959 MB
+[layer_measurement] m97 :: 40,40,40 :: 0 :: 0.271699
+[layer_measurement] m97 :: 40,40,40 :: 1 :: 0.0715614
+[layer_measurement] m97 :: 40,40,40 :: 2 :: 12.9105
+[layer_measurement] m97 :: 40,40,40 :: 3 :: 0.0541444
+[layer_measurement] m97 :: 40,40,40 :: 4 :: 6.83197
+[layer_measurement] m97 :: 40,40,40 :: 5 :: 3.06294
+[layer_measurement] m97 :: 40,40,40 :: 6 :: 1.0227
+[layer_measurement] m97 :: 40,40,40 :: 7 :: 0.0587997
+[network_measurement] m97 :: 40,40,40 :: 24.2908
+[layer_measurement] m97 :: 40,40,40 :: 0 :: 0.287447
+[layer_measurement] m97 :: 40,40,40 :: 1 :: 0.0718624
+[layer_measurement] m97 :: 40,40,40 :: 2 :: 13.3663
+[layer_measurement] m97 :: 40,40,40 :: 3 :: 0.0540956
+[layer_measurement] m97 :: 40,40,40 :: 4 :: 6.83508
+[layer_measurement] m97 :: 40,40,40 :: 5 :: 3.06725
+[layer_measurement] m97 :: 40,40,40 :: 6 :: 1.02121
+[layer_measurement] m97 :: 40,40,40 :: 7 :: 0.0588553
+[network_measurement] m97 :: 40,40,40 :: 24.7681
+[network_average] m97 :: 40,40,40 :: 24.5295
+[network_throughput] m97 :: 40,40,40 :: 2609.11
+## m97 :: starting benchmark for output size 48,48,48
+[network_requirements] m97 :: 48,48,48 :: RM: 72 MB WM: 4491 MB
+[layer_measurement] m97 :: 48,48,48 :: 0 :: 0.305469
+[layer_measurement] m97 :: 48,48,48 :: 1 :: 0.0811278
+[layer_measurement] m97 :: 48,48,48 :: 2 :: 14.8228
+[layer_measurement] m97 :: 48,48,48 :: 3 :: 0.0619888
+[layer_measurement] m97 :: 48,48,48 :: 4 :: 8.09922
+[layer_measurement] m97 :: 48,48,48 :: 5 :: 3.82495
+[layer_measurement] m97 :: 48,48,48 :: 6 :: 1.39741
+[layer_measurement] m97 :: 48,48,48 :: 7 :: 0.100567
+[network_measurement] m97 :: 48,48,48 :: 28.7003
+[layer_measurement] m97 :: 48,48,48 :: 0 :: 0.325793
+[layer_measurement] m97 :: 48,48,48 :: 1 :: 0.0823855
+[layer_measurement] m97 :: 48,48,48 :: 2 :: 15.2335
+[layer_measurement] m97 :: 48,48,48 :: 3 :: 0.0620135
+[layer_measurement] m97 :: 48,48,48 :: 4 :: 8.10742
+[layer_measurement] m97 :: 48,48,48 :: 5 :: 3.82041
+[layer_measurement] m97 :: 48,48,48 :: 6 :: 1.40077
+[layer_measurement] m97 :: 48,48,48 :: 7 :: 0.100657
+[network_measurement] m97 :: 48,48,48 :: 29.1397
+[network_average] m97 :: 48,48,48 :: 28.92
+[network_throughput] m97 :: 48,48,48 :: 3824.07
+## m97 :: starting benchmark for output size 56,56,56
+[network_requirements] m97 :: 56,56,56 :: RM: 72 MB WM: 5068 MB
+[layer_measurement] m97 :: 56,56,56 :: 0 :: 0.343213
+[layer_measurement] m97 :: 56,56,56 :: 1 :: 0.0915445
+[layer_measurement] m97 :: 56,56,56 :: 2 :: 16.9606
+[layer_measurement] m97 :: 56,56,56 :: 3 :: 0.0734108
+[layer_measurement] m97 :: 56,56,56 :: 4 :: 9.52742
+[layer_measurement] m97 :: 56,56,56 :: 5 :: 4.6952
+[layer_measurement] m97 :: 56,56,56 :: 6 :: 1.86357
+[layer_measurement] m97 :: 56,56,56 :: 7 :: 0.158582
+[network_measurement] m97 :: 56,56,56 :: 33.7211
+[layer_measurement] m97 :: 56,56,56 :: 0 :: 0.367425
+[layer_measurement] m97 :: 56,56,56 :: 1 :: 0.0916429
+[layer_measurement] m97 :: 56,56,56 :: 2 :: 17.3773
+[layer_measurement] m97 :: 56,56,56 :: 3 :: 0.0723759
+[layer_measurement] m97 :: 56,56,56 :: 4 :: 9.56153
+[layer_measurement] m97 :: 56,56,56 :: 5 :: 4.69696
+[layer_measurement] m97 :: 56,56,56 :: 6 :: 1.85819
+[layer_measurement] m97 :: 56,56,56 :: 7 :: 0.159948
+[network_measurement] m97 :: 56,56,56 :: 34.1928
+[network_average] m97 :: 56,56,56 :: 33.957
+[network_throughput] m97 :: 56,56,56 :: 5171.72
+## m97 :: starting benchmark for output size 64,64,64
+[network_requirements] m97 :: 64,64,64 :: RM: 72 MB WM: 5693 MB
+[layer_measurement] m97 :: 64,64,64 :: 0 :: 0.390723
+[layer_measurement] m97 :: 64,64,64 :: 1 :: 0.102614
+[layer_measurement] m97 :: 64,64,64 :: 2 :: 19.2767
+[layer_measurement] m97 :: 64,64,64 :: 3 :: 0.0792804
+[layer_measurement] m97 :: 64,64,64 :: 4 :: 11.1027
+[layer_measurement] m97 :: 64,64,64 :: 5 :: 5.69119
+[layer_measurement] m97 :: 64,64,64 :: 6 :: 2.40872
+[layer_measurement] m97 :: 64,64,64 :: 7 :: 0.235546
+[network_measurement] m97 :: 64,64,64 :: 39.2968
+[layer_measurement] m97 :: 64,64,64 :: 0 :: 0.413923
+[layer_measurement] m97 :: 64,64,64 :: 1 :: 0.102479
+[layer_measurement] m97 :: 64,64,64 :: 2 :: 19.7157
+[layer_measurement] m97 :: 64,64,64 :: 3 :: 0.079228
+[layer_measurement] m97 :: 64,64,64 :: 4 :: 11.1046
+[layer_measurement] m97 :: 64,64,64 :: 5 :: 5.68952
+[layer_measurement] m97 :: 64,64,64 :: 6 :: 2.40958
+[layer_measurement] m97 :: 64,64,64 :: 7 :: 0.237324
+[network_measurement] m97 :: 64,64,64 :: 39.7608
+[network_average] m97 :: 64,64,64 :: 39.5288
+[network_throughput] m97 :: 64,64,64 :: 6631.72
+## m97 :: starting benchmark for output size 72,72,72
+[network_requirements] m97 :: 72,72,72 :: RM: 72 MB WM: 6367 MB
+[layer_measurement] m97 :: 72,72,72 :: 0 :: 0.433394
+[layer_measurement] m97 :: 72,72,72 :: 1 :: 0.116332
+[layer_measurement] m97 :: 72,72,72 :: 2 :: 21.8702
+[layer_measurement] m97 :: 72,72,72 :: 3 :: 0.0906016
+[layer_measurement] m97 :: 72,72,72 :: 4 :: 12.8568
+[layer_measurement] m97 :: 72,72,72 :: 5 :: 6.83121
+[layer_measurement] m97 :: 72,72,72 :: 6 :: 3.0626
+[layer_measurement] m97 :: 72,72,72 :: 7 :: 0.334352
+[network_measurement] m97 :: 72,72,72 :: 45.6055
+[layer_measurement] m97 :: 72,72,72 :: 0 :: 0.462503
+[layer_measurement] m97 :: 72,72,72 :: 1 :: 0.115409
+[layer_measurement] m97 :: 72,72,72 :: 2 :: 22.2509
+[layer_measurement] m97 :: 72,72,72 :: 3 :: 0.0914922
+[layer_measurement] m97 :: 72,72,72 :: 4 :: 12.8546
+[layer_measurement] m97 :: 72,72,72 :: 5 :: 6.92061
+[layer_measurement] m97 :: 72,72,72 :: 6 :: 3.06243
+[layer_measurement] m97 :: 72,72,72 :: 7 :: 0.336696
+[network_measurement] m97 :: 72,72,72 :: 46.1047
+[network_average] m97 :: 72,72,72 :: 45.8551
+[network_throughput] m97 :: 72,72,72 :: 8139.73
+## m97 :: starting benchmark for output size 80,80,80
+[network_requirements] m97 :: 80,80,80 :: RM: 72 MB WM: 7092 MB
+[layer_measurement] m97 :: 80,80,80 :: 0 :: 0.48916
+[layer_measurement] m97 :: 80,80,80 :: 1 :: 0.128419
+[layer_measurement] m97 :: 80,80,80 :: 2 :: 24.6614
+[layer_measurement] m97 :: 80,80,80 :: 3 :: 0.101636
+[layer_measurement] m97 :: 80,80,80 :: 4 :: 14.7763
+[layer_measurement] m97 :: 80,80,80 :: 5 :: 8.10315
+[layer_measurement] m97 :: 80,80,80 :: 6 :: 3.82507
+[layer_measurement] m97 :: 80,80,80 :: 7 :: 0.459442
+[network_measurement] m97 :: 80,80,80 :: 52.5557
+[layer_measurement] m97 :: 80,80,80 :: 0 :: 0.515379
+[layer_measurement] m97 :: 80,80,80 :: 1 :: 0.128364
+[layer_measurement] m97 :: 80,80,80 :: 2 :: 25.013
+[layer_measurement] m97 :: 80,80,80 :: 3 :: 0.101687
+[layer_measurement] m97 :: 80,80,80 :: 4 :: 14.7753
+[layer_measurement] m97 :: 80,80,80 :: 5 :: 8.1112
+[layer_measurement] m97 :: 80,80,80 :: 6 :: 3.82073
+[layer_measurement] m97 :: 80,80,80 :: 7 :: 0.459288
+[network_measurement] m97 :: 80,80,80 :: 52.9363
+[network_average] m97 :: 80,80,80 :: 52.746
+[network_throughput] m97 :: 80,80,80 :: 9706.9
+## m97 :: starting benchmark for output size 88,88,88
+[network_requirements] m97 :: 88,88,88 :: RM: 72 MB WM: 7870 MB
+[layer_measurement] m97 :: 88,88,88 :: 0 :: 0.547177
+[layer_measurement] m97 :: 88,88,88 :: 1 :: 0.140982
+[layer_measurement] m97 :: 88,88,88 :: 2 :: 27.723
+[layer_measurement] m97 :: 88,88,88 :: 3 :: 0.116032
+[layer_measurement] m97 :: 88,88,88 :: 4 :: 16.8953
+[layer_measurement] m97 :: 88,88,88 :: 5 :: 9.5278
+[layer_measurement] m97 :: 88,88,88 :: 6 :: 4.69739
+[layer_measurement] m97 :: 88,88,88 :: 7 :: 0.609622
+[network_measurement] m97 :: 88,88,88 :: 60.2698
+[layer_measurement] m97 :: 88,88,88 :: 0 :: 0.570714
+[layer_measurement] m97 :: 88,88,88 :: 1 :: 0.141397
+[layer_measurement] m97 :: 88,88,88 :: 2 :: 27.9597
+[layer_measurement] m97 :: 88,88,88 :: 3 :: 0.113032
+[layer_measurement] m97 :: 88,88,88 :: 4 :: 16.8809
+[layer_measurement] m97 :: 88,88,88 :: 5 :: 9.57824
+[layer_measurement] m97 :: 88,88,88 :: 6 :: 4.69619
+[layer_measurement] m97 :: 88,88,88 :: 7 :: 0.609197
+[network_measurement] m97 :: 88,88,88 :: 60.5621
+[network_average] m97 :: 88,88,88 :: 60.416
+[network_throughput] m97 :: 88,88,88 :: 11279.7
+## m97 :: starting benchmark for output size 96,96,96
+[network_requirements] m97 :: 96,96,96 :: RM: 72 MB WM: 8704 MB
+[network_information] m97 :: 96,96,96 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 104,104,104
+[network_requirements] m97 :: 104,104,104 :: RM: 72 MB WM: 9594 MB
+[network_information] m97 :: 104,104,104 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 112,112,112
+[network_requirements] m97 :: 112,112,112 :: RM: 72 MB WM: 10543 MB
+[network_information] m97 :: 112,112,112 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 120,120,120
+[network_requirements] m97 :: 120,120,120 :: RM: 72 MB WM: 11552 MB
+[network_information] m97 :: 120,120,120 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 128,128,128
+[network_requirements] m97 :: 128,128,128 :: RM: 72 MB WM: 12624 MB
+[network_information] m97 :: 128,128,128 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 136,136,136
+[network_requirements] m97 :: 136,136,136 :: RM: 72 MB WM: 13760 MB
+[network_information] m97 :: 136,136,136 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 144,144,144
+[network_requirements] m97 :: 144,144,144 :: RM: 72 MB WM: 14963 MB
+[network_information] m97 :: 144,144,144 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 152,152,152
+[network_requirements] m97 :: 152,152,152 :: RM: 72 MB WM: 16233 MB
+[network_information] m97 :: 152,152,152 :: IS NOT WORKABLE!
+## m97 :: starting benchmark for output size 160,160,160
+[network_exception] m97 :: 160,160,160 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 168,168,168
+[network_exception] m97 :: 168,168,168 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 176,176,176
+[network_exception] m97 :: 176,176,176 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 184,184,184
+[network_exception] m97 :: 184,184,184 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 192,192,192
+[network_exception] m97 :: 192,192,192 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 200,200,200
+[network_exception] m97 :: 200,200,200 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 208,208,208
+[network_exception] m97 :: 208,208,208 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 216,216,216
+[network_exception] m97 :: 216,216,216 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 224,224,224
+[network_exception] m97 :: 224,224,224 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 232,232,232
+[network_exception] m97 :: 232,232,232 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 240,240,240
+[network_exception] m97 :: 240,240,240 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 248,248,248
+[network_exception] m97 :: 248,248,248 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 256,256,256
+[network_exception] m97 :: 256,256,256 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 264,264,264
+[network_exception] m97 :: 264,264,264 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 272,272,272
+[network_exception] m97 :: 272,272,272 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 280,280,280
+[network_exception] m97 :: 280,280,280 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 288,288,288
+[network_exception] m97 :: 288,288,288 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 296,296,296
+[network_exception] m97 :: 296,296,296 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 304,304,304
+[network_exception] m97 :: 304,304,304 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 312,312,312
+[network_exception] m97 :: 312,312,312 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 320,320,320
+[network_exception] m97 :: 320,320,320 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 328,328,328
+[network_exception] m97 :: 328,328,328 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 336,336,336
+[network_exception] m97 :: 336,336,336 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 344,344,344
+[network_exception] m97 :: 344,344,344 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 352,352,352
+[network_exception] m97 :: 352,352,352 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 360,360,360
+[network_exception] m97 :: 360,360,360 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 368,368,368
+[network_exception] m97 :: 368,368,368 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 376,376,376
+[network_exception] m97 :: 376,376,376 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 384,384,384
+[network_exception] m97 :: 384,384,384 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m97 :: starting benchmark for output size 392,392,392
+[network_exception] m97 :: 392,392,392 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED

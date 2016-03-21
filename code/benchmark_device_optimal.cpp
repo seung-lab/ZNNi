@@ -1,3 +1,5 @@
+#include "znn/device/v2/best_device_layer.hpp"
+
 #include "znn/device/common/cudnn.hpp"
 #include "znn/device/common/fft/transformer.hpp"
 
@@ -15,10 +17,10 @@
 #include <sstream>
 
 // RUN THE FOLLOWING
-// ./benchmark_device m37 4
-// ./benchmark_device m57 4
-// ./benchmark_device m77 4
-// ./benchmark_device m97 4
+// ./benchmark_device m36 4
+// ./benchmark_device m56 4
+// ./benchmark_device m76 4
+// ./benchmark_device m96 4
 
 
 using namespace znn::fwd;

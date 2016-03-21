@@ -1,0 +1,938 @@
+--------------------------------------------
+
+## m56 :: starting benchmark for output size 1,1,1
+[network_requirements] m56 :: 1,1,1 :: RM: 15 MB WM: 1406 MB
+[layer_measurement] m56 :: 1,1,1 :: 0 :: 0.0678358
+[layer_measurement] m56 :: 1,1,1 :: 1 :: 0.00600094
+[layer_measurement] m56 :: 1,1,1 :: 2 :: 0.189673
+[layer_measurement] m56 :: 1,1,1 :: 3 :: 0.000967866
+[layer_measurement] m56 :: 1,1,1 :: 4 :: 0.0179559
+[layer_measurement] m56 :: 1,1,1 :: 5 :: 0.000296967
+[layer_measurement] m56 :: 1,1,1 :: 6 :: 0.00146605
+[layer_measurement] m56 :: 1,1,1 :: 7 :: 0.000572912
+[layer_measurement] m56 :: 1,1,1 :: 8 :: 0.000690455
+[layer_measurement] m56 :: 1,1,1 :: 9 :: 0.000555172
+[network_measurement] m56 :: 1,1,1 :: 0.289689
+[network_average] m56 :: 1,1,1 :: 0.289689
+[network_throughput] m56 :: 1,1,1 :: 3.45198
+## m56 :: starting benchmark for output size 2,2,2
+[network_requirements] m56 :: 2,2,2 :: RM: 15 MB WM: 1627 MB
+[layer_measurement] m56 :: 2,2,2 :: 0 :: 0.0785365
+[layer_measurement] m56 :: 2,2,2 :: 1 :: 0.00703872
+[layer_measurement] m56 :: 2,2,2 :: 2 :: 0.221959
+[layer_measurement] m56 :: 2,2,2 :: 3 :: 0.000987561
+[layer_measurement] m56 :: 2,2,2 :: 4 :: 0.0211227
+[layer_measurement] m56 :: 2,2,2 :: 5 :: 0.000281602
+[layer_measurement] m56 :: 2,2,2 :: 6 :: 0.00156446
+[layer_measurement] m56 :: 2,2,2 :: 7 :: 0.000829998
+[layer_measurement] m56 :: 2,2,2 :: 8 :: 0.00067956
+[layer_measurement] m56 :: 2,2,2 :: 9 :: 0.000667965
+[network_measurement] m56 :: 2,2,2 :: 0.337836
+[network_average] m56 :: 2,2,2 :: 0.337836
+[network_throughput] m56 :: 2,2,2 :: 23.6801
+## m56 :: starting benchmark for output size 3,3,3
+[network_requirements] m56 :: 3,3,3 :: RM: 15 MB WM: 1871 MB
+[layer_measurement] m56 :: 3,3,3 :: 0 :: 0.0909119
+[layer_measurement] m56 :: 3,3,3 :: 1 :: 0.00797739
+[layer_measurement] m56 :: 3,3,3 :: 2 :: 0.258816
+[layer_measurement] m56 :: 3,3,3 :: 3 :: 0.00110539
+[layer_measurement] m56 :: 3,3,3 :: 4 :: 0.0276056
+[layer_measurement] m56 :: 3,3,3 :: 5 :: 0.000310167
+[layer_measurement] m56 :: 3,3,3 :: 6 :: 0.00205754
+[layer_measurement] m56 :: 3,3,3 :: 7 :: 0.00111558
+[layer_measurement] m56 :: 3,3,3 :: 8 :: 0.000833562
+[layer_measurement] m56 :: 3,3,3 :: 9 :: 0.000572353
+[network_measurement] m56 :: 3,3,3 :: 0.395968
+[network_average] m56 :: 3,3,3 :: 0.395968
+[network_throughput] m56 :: 3,3,3 :: 68.1874
+## m56 :: starting benchmark for output size 4,4,4
+[network_requirements] m56 :: 4,4,4 :: RM: 15 MB WM: 2138 MB
+[layer_measurement] m56 :: 4,4,4 :: 0 :: 0.105968
+[layer_measurement] m56 :: 4,4,4 :: 1 :: 0.00936661
+[layer_measurement] m56 :: 4,4,4 :: 2 :: 0.299185
+[layer_measurement] m56 :: 4,4,4 :: 3 :: 0.00129123
+[layer_measurement] m56 :: 4,4,4 :: 4 :: 0.0307191
+[layer_measurement] m56 :: 4,4,4 :: 5 :: 0.000353818
+[layer_measurement] m56 :: 4,4,4 :: 6 :: 0.00220658
+[layer_measurement] m56 :: 4,4,4 :: 7 :: 0.00122027
+[layer_measurement] m56 :: 4,4,4 :: 8 :: 0.000542321
+[layer_measurement] m56 :: 4,4,4 :: 9 :: 0.000617191
+[network_measurement] m56 :: 4,4,4 :: 0.456724
+[network_average] m56 :: 4,4,4 :: 0.456724
+[network_throughput] m56 :: 4,4,4 :: 140.129
+## m56 :: starting benchmark for output size 5,5,5
+[network_requirements] m56 :: 5,5,5 :: RM: 15 MB WM: 2430 MB
+[layer_measurement] m56 :: 5,5,5 :: 0 :: 0.127954
+[layer_measurement] m56 :: 5,5,5 :: 1 :: 0.010119
+[layer_measurement] m56 :: 5,5,5 :: 2 :: 0.342952
+[layer_measurement] m56 :: 5,5,5 :: 3 :: 0.00139837
+[layer_measurement] m56 :: 5,5,5 :: 4 :: 0.0356707
+[layer_measurement] m56 :: 5,5,5 :: 5 :: 0.000336218
+[layer_measurement] m56 :: 5,5,5 :: 6 :: 0.00269659
+[layer_measurement] m56 :: 5,5,5 :: 7 :: 0.00159295
+[layer_measurement] m56 :: 5,5,5 :: 8 :: 0.000607903
+[layer_measurement] m56 :: 5,5,5 :: 9 :: 0.00068864
+[network_measurement] m56 :: 5,5,5 :: 0.529905
+[network_average] m56 :: 5,5,5 :: 0.529905
+[network_throughput] m56 :: 5,5,5 :: 235.891
+## m56 :: starting benchmark for output size 6,6,6
+[network_requirements] m56 :: 6,6,6 :: RM: 15 MB WM: 2746 MB
+[layer_measurement] m56 :: 6,6,6 :: 0 :: 0.134418
+[layer_measurement] m56 :: 6,6,6 :: 1 :: 0.011766
+[layer_measurement] m56 :: 6,6,6 :: 2 :: 0.393528
+[layer_measurement] m56 :: 6,6,6 :: 3 :: 0.0015222
+[layer_measurement] m56 :: 6,6,6 :: 4 :: 0.0408739
+[layer_measurement] m56 :: 6,6,6 :: 5 :: 0.000346415
+[layer_measurement] m56 :: 6,6,6 :: 6 :: 0.0031294
+[layer_measurement] m56 :: 6,6,6 :: 7 :: 0.00167473
+[layer_measurement] m56 :: 6,6,6 :: 8 :: 0.000872741
+[layer_measurement] m56 :: 6,6,6 :: 9 :: 0.000769586
+[network_measurement] m56 :: 6,6,6 :: 0.595314
+[network_average] m56 :: 6,6,6 :: 0.595314
+[network_throughput] m56 :: 6,6,6 :: 362.834
+## m56 :: starting benchmark for output size 7,7,7
+[network_requirements] m56 :: 7,7,7 :: RM: 15 MB WM: 3089 MB
+[layer_measurement] m56 :: 7,7,7 :: 0 :: 0.148504
+[layer_measurement] m56 :: 7,7,7 :: 1 :: 0.013004
+[layer_measurement] m56 :: 7,7,7 :: 2 :: 0.451986
+[layer_measurement] m56 :: 7,7,7 :: 3 :: 0.00172991
+[layer_measurement] m56 :: 7,7,7 :: 4 :: 0.0466482
+[layer_measurement] m56 :: 7,7,7 :: 5 :: 0.000430854
+[layer_measurement] m56 :: 7,7,7 :: 6 :: 0.0038693
+[layer_measurement] m56 :: 7,7,7 :: 7 :: 0.00207535
+[layer_measurement] m56 :: 7,7,7 :: 8 :: 0.00116817
+[layer_measurement] m56 :: 7,7,7 :: 9 :: 0.000575845
+[network_measurement] m56 :: 7,7,7 :: 0.677112
+[network_average] m56 :: 7,7,7 :: 0.677112
+[network_throughput] m56 :: 7,7,7 :: 506.563
+## m56 :: starting benchmark for output size 8,8,8
+[network_requirements] m56 :: 8,8,8 :: RM: 15 MB WM: 3459 MB
+[layer_measurement] m56 :: 8,8,8 :: 0 :: 0.166205
+[layer_measurement] m56 :: 8,8,8 :: 1 :: 0.0149256
+[layer_measurement] m56 :: 8,8,8 :: 2 :: 0.508377
+[layer_measurement] m56 :: 8,8,8 :: 3 :: 0.00190018
+[layer_measurement] m56 :: 8,8,8 :: 4 :: 0.0529769
+[layer_measurement] m56 :: 8,8,8 :: 5 :: 0.000381266
+[layer_measurement] m56 :: 8,8,8 :: 6 :: 0.0042646
+[layer_measurement] m56 :: 8,8,8 :: 7 :: 0.00238154
+[layer_measurement] m56 :: 8,8,8 :: 8 :: 0.00148539
+[layer_measurement] m56 :: 8,8,8 :: 9 :: 0.000676347
+[network_measurement] m56 :: 8,8,8 :: 0.761492
+[network_average] m56 :: 8,8,8 :: 0.761492
+[network_throughput] m56 :: 8,8,8 :: 672.364
+## m56 :: starting benchmark for output size 9,9,9
+[network_requirements] m56 :: 9,9,9 :: RM: 15 MB WM: 3858 MB
+[layer_measurement] m56 :: 9,9,9 :: 0 :: 0.185138
+[layer_measurement] m56 :: 9,9,9 :: 1 :: 0.0160164
+[layer_measurement] m56 :: 9,9,9 :: 2 :: 0.573882
+[layer_measurement] m56 :: 9,9,9 :: 3 :: 0.00210684
+[layer_measurement] m56 :: 9,9,9 :: 4 :: 0.0588178
+[layer_measurement] m56 :: 9,9,9 :: 5 :: 0.000413114
+[layer_measurement] m56 :: 9,9,9 :: 6 :: 0.0050844
+[layer_measurement] m56 :: 9,9,9 :: 7 :: 0.00264679
+[layer_measurement] m56 :: 9,9,9 :: 8 :: 0.00155195
+[layer_measurement] m56 :: 9,9,9 :: 9 :: 0.000618728
+[network_measurement] m56 :: 9,9,9 :: 0.855266
+[network_average] m56 :: 9,9,9 :: 0.855266
+[network_throughput] m56 :: 9,9,9 :: 852.366
+## m56 :: starting benchmark for output size 10,10,10
+[network_requirements] m56 :: 10,10,10 :: RM: 15 MB WM: 4287 MB
+[layer_measurement] m56 :: 10,10,10 :: 0 :: 0.205578
+[layer_measurement] m56 :: 10,10,10 :: 1 :: 0.0180941
+[layer_measurement] m56 :: 10,10,10 :: 2 :: 0.641229
+[layer_measurement] m56 :: 10,10,10 :: 3 :: 0.00226078
+[layer_measurement] m56 :: 10,10,10 :: 4 :: 0.0653171
+[layer_measurement] m56 :: 10,10,10 :: 5 :: 0.000472339
+[layer_measurement] m56 :: 10,10,10 :: 6 :: 0.00556017
+[layer_measurement] m56 :: 10,10,10 :: 7 :: 0.00303951
+[layer_measurement] m56 :: 10,10,10 :: 8 :: 0.00169219
+[layer_measurement] m56 :: 10,10,10 :: 9 :: 0.000658748
+[network_measurement] m56 :: 10,10,10 :: 0.953581
+[network_average] m56 :: 10,10,10 :: 0.953581
+[network_throughput] m56 :: 10,10,10 :: 1048.68
+## m56 :: starting benchmark for output size 11,11,11
+[network_requirements] m56 :: 11,11,11 :: RM: 15 MB WM: 4746 MB
+[network_information] m56 :: 11,11,11 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 12,12,12
+[network_requirements] m56 :: 12,12,12 :: RM: 15 MB WM: 5236 MB
+[network_information] m56 :: 12,12,12 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 13,13,13
+[network_requirements] m56 :: 13,13,13 :: RM: 15 MB WM: 5760 MB
+[network_information] m56 :: 13,13,13 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 14,14,14
+[network_requirements] m56 :: 14,14,14 :: RM: 15 MB WM: 6317 MB
+[network_information] m56 :: 14,14,14 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 15,15,15
+[network_requirements] m56 :: 15,15,15 :: RM: 15 MB WM: 6908 MB
+[network_information] m56 :: 15,15,15 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 16,16,16
+[network_requirements] m56 :: 16,16,16 :: RM: 15 MB WM: 7536 MB
+[network_information] m56 :: 16,16,16 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 17,17,17
+[network_requirements] m56 :: 17,17,17 :: RM: 15 MB WM: 8201 MB
+[network_information] m56 :: 17,17,17 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 18,18,18
+[network_requirements] m56 :: 18,18,18 :: RM: 15 MB WM: 8903 MB
+[network_information] m56 :: 18,18,18 :: IS NOT WORKABLE!
+## m56 :: starting benchmark for output size 19,19,19
+[network_exception] m56 :: 19,19,19 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 20,20,20
+[network_exception] m56 :: 20,20,20 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 21,21,21
+[network_exception] m56 :: 21,21,21 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 22,22,22
+[network_exception] m56 :: 22,22,22 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 23,23,23
+[network_exception] m56 :: 23,23,23 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 24,24,24
+[network_exception] m56 :: 24,24,24 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 25,25,25
+[network_exception] m56 :: 25,25,25 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 26,26,26
+[network_exception] m56 :: 26,26,26 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 27,27,27
+[network_exception] m56 :: 27,27,27 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 28,28,28
+[network_exception] m56 :: 28,28,28 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 29,29,29
+[network_exception] m56 :: 29,29,29 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 30,30,30
+[network_exception] m56 :: 30,30,30 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 31,31,31
+[network_exception] m56 :: 31,31,31 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 32,32,32
+[network_exception] m56 :: 32,32,32 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 33,33,33
+[network_exception] m56 :: 33,33,33 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 34,34,34
+[network_exception] m56 :: 34,34,34 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 35,35,35
+[network_exception] m56 :: 35,35,35 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 36,36,36
+[network_exception] m56 :: 36,36,36 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 37,37,37
+[network_exception] m56 :: 37,37,37 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 38,38,38
+[network_exception] m56 :: 38,38,38 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 39,39,39
+[network_exception] m56 :: 39,39,39 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 40,40,40
+[network_exception] m56 :: 40,40,40 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 41,41,41
+[network_exception] m56 :: 41,41,41 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 42,42,42
+[network_exception] m56 :: 42,42,42 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 43,43,43
+[network_exception] m56 :: 43,43,43 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 44,44,44
+[network_exception] m56 :: 44,44,44 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 45,45,45
+[network_exception] m56 :: 45,45,45 ::  threw an exception: File: ./include/znn/device/v1/cudnn_conv.hpp, Line: 116, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 46,46,46
+[network_exception] m56 :: 46,46,46 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 47,47,47
+[network_exception] m56 :: 47,47,47 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 48,48,48
+[network_exception] m56 :: 48,48,48 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 49,49,49
+[network_exception] m56 :: 49,49,49 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 50,50,50
+[network_exception] m56 :: 50,50,50 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 51,51,51
+[network_exception] m56 :: 51,51,51 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 52,52,52
+[network_exception] m56 :: 52,52,52 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 53,53,53
+[network_exception] m56 :: 53,53,53 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 54,54,54
+[network_exception] m56 :: 54,54,54 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 55,55,55
+[network_exception] m56 :: 55,55,55 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 56,56,56
+[network_exception] m56 :: 56,56,56 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 57,57,57
+[network_exception] m56 :: 57,57,57 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 58,58,58
+[network_exception] m56 :: 58,58,58 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 59,59,59
+[network_exception] m56 :: 59,59,59 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 60,60,60
+[network_exception] m56 :: 60,60,60 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 61,61,61
+[network_exception] m56 :: 61,61,61 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 62,62,62
+[network_exception] m56 :: 62,62,62 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 63,63,63
+[network_exception] m56 :: 63,63,63 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 64,64,64
+[network_exception] m56 :: 64,64,64 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 65,65,65
+[network_exception] m56 :: 65,65,65 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 66,66,66
+[network_exception] m56 :: 66,66,66 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 67,67,67
+[network_exception] m56 :: 67,67,67 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 68,68,68
+[network_exception] m56 :: 68,68,68 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 69,69,69
+[network_exception] m56 :: 69,69,69 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 70,70,70
+[network_exception] m56 :: 70,70,70 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 71,71,71
+[network_exception] m56 :: 71,71,71 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 72,72,72
+[network_exception] m56 :: 72,72,72 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 73,73,73
+[network_exception] m56 :: 73,73,73 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 74,74,74
+[network_exception] m56 :: 74,74,74 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 75,75,75
+[network_exception] m56 :: 75,75,75 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 76,76,76
+[network_exception] m56 :: 76,76,76 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 77,77,77
+[network_exception] m56 :: 77,77,77 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 78,78,78
+[network_exception] m56 :: 78,78,78 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 79,79,79
+[network_exception] m56 :: 79,79,79 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 80,80,80
+[network_exception] m56 :: 80,80,80 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 81,81,81
+[network_exception] m56 :: 81,81,81 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 82,82,82
+[network_exception] m56 :: 82,82,82 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 83,83,83
+[network_exception] m56 :: 83,83,83 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 84,84,84
+[network_exception] m56 :: 84,84,84 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 85,85,85
+[network_exception] m56 :: 85,85,85 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 86,86,86
+[network_exception] m56 :: 86,86,86 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 87,87,87
+[network_exception] m56 :: 87,87,87 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 88,88,88
+[network_exception] m56 :: 88,88,88 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 89,89,89
+[network_exception] m56 :: 89,89,89 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 90,90,90
+[network_exception] m56 :: 90,90,90 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 91,91,91
+[network_exception] m56 :: 91,91,91 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 92,92,92
+[network_exception] m56 :: 92,92,92 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 93,93,93
+[network_exception] m56 :: 93,93,93 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 94,94,94
+[network_exception] m56 :: 94,94,94 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 95,95,95
+[network_exception] m56 :: 95,95,95 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 96,96,96
+[network_exception] m56 :: 96,96,96 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 97,97,97
+[network_exception] m56 :: 97,97,97 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 98,98,98
+[network_exception] m56 :: 98,98,98 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 99,99,99
+[network_exception] m56 :: 99,99,99 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 100,100,100
+[network_exception] m56 :: 100,100,100 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 101,101,101
+[network_exception] m56 :: 101,101,101 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 102,102,102
+[network_exception] m56 :: 102,102,102 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 103,103,103
+[network_exception] m56 :: 103,103,103 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 104,104,104
+[network_exception] m56 :: 104,104,104 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 105,105,105
+[network_exception] m56 :: 105,105,105 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 106,106,106
+[network_exception] m56 :: 106,106,106 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 107,107,107
+[network_exception] m56 :: 107,107,107 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 108,108,108
+[network_exception] m56 :: 108,108,108 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 109,109,109
+[network_exception] m56 :: 109,109,109 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_BAD_PARAM
+## m56 :: starting benchmark for output size 110,110,110
+[network_exception] m56 :: 110,110,110 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 111,111,111
+[network_exception] m56 :: 111,111,111 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 112,112,112
+[network_exception] m56 :: 112,112,112 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 113,113,113
+[network_exception] m56 :: 113,113,113 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 114,114,114
+[network_exception] m56 :: 114,114,114 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 115,115,115
+[network_exception] m56 :: 115,115,115 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 116,116,116
+[network_exception] m56 :: 116,116,116 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 117,117,117
+[network_exception] m56 :: 117,117,117 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 118,118,118
+[network_exception] m56 :: 118,118,118 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 119,119,119
+[network_exception] m56 :: 119,119,119 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 120,120,120
+[network_exception] m56 :: 120,120,120 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 121,121,121
+[network_exception] m56 :: 121,121,121 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 122,122,122
+[network_exception] m56 :: 122,122,122 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 123,123,123
+[network_exception] m56 :: 123,123,123 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 124,124,124
+[network_exception] m56 :: 124,124,124 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 125,125,125
+[network_exception] m56 :: 125,125,125 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 126,126,126
+[network_exception] m56 :: 126,126,126 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 127,127,127
+[network_exception] m56 :: 127,127,127 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 128,128,128
+[network_exception] m56 :: 128,128,128 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 129,129,129
+[network_exception] m56 :: 129,129,129 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 130,130,130
+[network_exception] m56 :: 130,130,130 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 131,131,131
+[network_exception] m56 :: 131,131,131 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 132,132,132
+[network_exception] m56 :: 132,132,132 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 133,133,133
+[network_exception] m56 :: 133,133,133 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 134,134,134
+[network_exception] m56 :: 134,134,134 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 135,135,135
+[network_exception] m56 :: 135,135,135 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 136,136,136
+[network_exception] m56 :: 136,136,136 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 137,137,137
+[network_exception] m56 :: 137,137,137 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 138,138,138
+[network_exception] m56 :: 138,138,138 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 139,139,139
+[network_exception] m56 :: 139,139,139 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 140,140,140
+[network_exception] m56 :: 140,140,140 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 141,141,141
+[network_exception] m56 :: 141,141,141 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 142,142,142
+[network_exception] m56 :: 142,142,142 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 143,143,143
+[network_exception] m56 :: 143,143,143 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 144,144,144
+[network_exception] m56 :: 144,144,144 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 145,145,145
+[network_exception] m56 :: 145,145,145 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 146,146,146
+[network_exception] m56 :: 146,146,146 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 147,147,147
+[network_exception] m56 :: 147,147,147 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 148,148,148
+[network_exception] m56 :: 148,148,148 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 149,149,149
+[network_exception] m56 :: 149,149,149 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 150,150,150
+[network_exception] m56 :: 150,150,150 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 151,151,151
+[network_exception] m56 :: 151,151,151 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 152,152,152
+[network_exception] m56 :: 152,152,152 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 153,153,153
+[network_exception] m56 :: 153,153,153 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 154,154,154
+[network_exception] m56 :: 154,154,154 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 155,155,155
+[network_exception] m56 :: 155,155,155 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 156,156,156
+[network_exception] m56 :: 156,156,156 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 157,157,157
+[network_exception] m56 :: 157,157,157 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 158,158,158
+[network_exception] m56 :: 158,158,158 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 159,159,159
+[network_exception] m56 :: 159,159,159 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 160,160,160
+[network_exception] m56 :: 160,160,160 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 161,161,161
+[network_exception] m56 :: 161,161,161 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 162,162,162
+[network_exception] m56 :: 162,162,162 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 163,163,163
+[network_exception] m56 :: 163,163,163 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 164,164,164
+[network_exception] m56 :: 164,164,164 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 165,165,165
+[network_exception] m56 :: 165,165,165 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 166,166,166
+[network_exception] m56 :: 166,166,166 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 167,167,167
+[network_exception] m56 :: 167,167,167 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 168,168,168
+[network_exception] m56 :: 168,168,168 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 169,169,169
+[network_exception] m56 :: 169,169,169 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 170,170,170
+[network_exception] m56 :: 170,170,170 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 171,171,171
+[network_exception] m56 :: 171,171,171 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 172,172,172
+[network_exception] m56 :: 172,172,172 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 173,173,173
+[network_exception] m56 :: 173,173,173 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 174,174,174
+[network_exception] m56 :: 174,174,174 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 175,175,175
+[network_exception] m56 :: 175,175,175 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 176,176,176
+[network_exception] m56 :: 176,176,176 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 177,177,177
+[network_exception] m56 :: 177,177,177 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 178,178,178
+[network_exception] m56 :: 178,178,178 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 179,179,179
+[network_exception] m56 :: 179,179,179 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 180,180,180
+[network_exception] m56 :: 180,180,180 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 181,181,181
+[network_exception] m56 :: 181,181,181 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 182,182,182
+[network_exception] m56 :: 182,182,182 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 183,183,183
+[network_exception] m56 :: 183,183,183 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 184,184,184
+[network_exception] m56 :: 184,184,184 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 185,185,185
+[network_exception] m56 :: 185,185,185 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 186,186,186
+[network_exception] m56 :: 186,186,186 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 187,187,187
+[network_exception] m56 :: 187,187,187 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 188,188,188
+[network_exception] m56 :: 188,188,188 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 189,189,189
+[network_exception] m56 :: 189,189,189 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 190,190,190
+[network_exception] m56 :: 190,190,190 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 191,191,191
+[network_exception] m56 :: 191,191,191 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 192,192,192
+[network_exception] m56 :: 192,192,192 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 193,193,193
+[network_exception] m56 :: 193,193,193 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 194,194,194
+[network_exception] m56 :: 194,194,194 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 195,195,195
+[network_exception] m56 :: 195,195,195 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 196,196,196
+[network_exception] m56 :: 196,196,196 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 197,197,197
+[network_exception] m56 :: 197,197,197 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 198,198,198
+[network_exception] m56 :: 198,198,198 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 199,199,199
+[network_exception] m56 :: 199,199,199 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 200,200,200
+[network_exception] m56 :: 200,200,200 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 201,201,201
+[network_exception] m56 :: 201,201,201 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 202,202,202
+[network_exception] m56 :: 202,202,202 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 203,203,203
+[network_exception] m56 :: 203,203,203 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 204,204,204
+[network_exception] m56 :: 204,204,204 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 205,205,205
+[network_exception] m56 :: 205,205,205 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 206,206,206
+[network_exception] m56 :: 206,206,206 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 207,207,207
+[network_exception] m56 :: 207,207,207 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 208,208,208
+[network_exception] m56 :: 208,208,208 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 209,209,209
+[network_exception] m56 :: 209,209,209 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 210,210,210
+[network_exception] m56 :: 210,210,210 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 211,211,211
+[network_exception] m56 :: 211,211,211 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 212,212,212
+[network_exception] m56 :: 212,212,212 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 213,213,213
+[network_exception] m56 :: 213,213,213 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 214,214,214
+[network_exception] m56 :: 214,214,214 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 215,215,215
+[network_exception] m56 :: 215,215,215 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 216,216,216
+[network_exception] m56 :: 216,216,216 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 217,217,217
+[network_exception] m56 :: 217,217,217 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 218,218,218
+[network_exception] m56 :: 218,218,218 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 219,219,219
+[network_exception] m56 :: 219,219,219 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 220,220,220
+[network_exception] m56 :: 220,220,220 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 221,221,221
+[network_exception] m56 :: 221,221,221 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 222,222,222
+[network_exception] m56 :: 222,222,222 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 223,223,223
+[network_exception] m56 :: 223,223,223 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 224,224,224
+[network_exception] m56 :: 224,224,224 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 225,225,225
+[network_exception] m56 :: 225,225,225 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 226,226,226
+[network_exception] m56 :: 226,226,226 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 227,227,227
+[network_exception] m56 :: 227,227,227 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 228,228,228
+[network_exception] m56 :: 228,228,228 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 229,229,229
+[network_exception] m56 :: 229,229,229 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 230,230,230
+[network_exception] m56 :: 230,230,230 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 231,231,231
+[network_exception] m56 :: 231,231,231 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 232,232,232
+[network_exception] m56 :: 232,232,232 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 233,233,233
+[network_exception] m56 :: 233,233,233 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 234,234,234
+[network_exception] m56 :: 234,234,234 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 235,235,235
+[network_exception] m56 :: 235,235,235 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 236,236,236
+[network_exception] m56 :: 236,236,236 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 237,237,237
+[network_exception] m56 :: 237,237,237 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 238,238,238
+[network_exception] m56 :: 238,238,238 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 239,239,239
+[network_exception] m56 :: 239,239,239 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 240,240,240
+[network_exception] m56 :: 240,240,240 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 241,241,241
+[network_exception] m56 :: 241,241,241 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 242,242,242
+[network_exception] m56 :: 242,242,242 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 243,243,243
+[network_exception] m56 :: 243,243,243 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 244,244,244
+[network_exception] m56 :: 244,244,244 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 245,245,245
+[network_exception] m56 :: 245,245,245 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 246,246,246
+[network_exception] m56 :: 246,246,246 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 247,247,247
+[network_exception] m56 :: 247,247,247 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 248,248,248
+[network_exception] m56 :: 248,248,248 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 249,249,249
+[network_exception] m56 :: 249,249,249 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 250,250,250
+[network_exception] m56 :: 250,250,250 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 251,251,251
+[network_exception] m56 :: 251,251,251 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 252,252,252
+[network_exception] m56 :: 252,252,252 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 253,253,253
+[network_exception] m56 :: 253,253,253 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 254,254,254
+[network_exception] m56 :: 254,254,254 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 255,255,255
+[network_exception] m56 :: 255,255,255 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 256,256,256
+[network_exception] m56 :: 256,256,256 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 257,257,257
+[network_exception] m56 :: 257,257,257 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 258,258,258
+[network_exception] m56 :: 258,258,258 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 259,259,259
+[network_exception] m56 :: 259,259,259 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 260,260,260
+[network_exception] m56 :: 260,260,260 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 261,261,261
+[network_exception] m56 :: 261,261,261 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 262,262,262
+[network_exception] m56 :: 262,262,262 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 263,263,263
+[network_exception] m56 :: 263,263,263 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 264,264,264
+[network_exception] m56 :: 264,264,264 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 265,265,265
+[network_exception] m56 :: 265,265,265 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 266,266,266
+[network_exception] m56 :: 266,266,266 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 267,267,267
+[network_exception] m56 :: 267,267,267 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 268,268,268
+[network_exception] m56 :: 268,268,268 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 269,269,269
+[network_exception] m56 :: 269,269,269 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 270,270,270
+[network_exception] m56 :: 270,270,270 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 271,271,271
+[network_exception] m56 :: 271,271,271 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 272,272,272
+[network_exception] m56 :: 272,272,272 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 273,273,273
+[network_exception] m56 :: 273,273,273 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 274,274,274
+[network_exception] m56 :: 274,274,274 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 275,275,275
+[network_exception] m56 :: 275,275,275 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 276,276,276
+[network_exception] m56 :: 276,276,276 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 277,277,277
+[network_exception] m56 :: 277,277,277 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 278,278,278
+[network_exception] m56 :: 278,278,278 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 279,279,279
+[network_exception] m56 :: 279,279,279 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 280,280,280
+[network_exception] m56 :: 280,280,280 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 281,281,281
+[network_exception] m56 :: 281,281,281 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 282,282,282
+[network_exception] m56 :: 282,282,282 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 283,283,283
+[network_exception] m56 :: 283,283,283 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 284,284,284
+[network_exception] m56 :: 284,284,284 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 285,285,285
+[network_exception] m56 :: 285,285,285 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 286,286,286
+[network_exception] m56 :: 286,286,286 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 287,287,287
+[network_exception] m56 :: 287,287,287 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 288,288,288
+[network_exception] m56 :: 288,288,288 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 289,289,289
+[network_exception] m56 :: 289,289,289 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 290,290,290
+[network_exception] m56 :: 290,290,290 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 291,291,291
+[network_exception] m56 :: 291,291,291 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 292,292,292
+[network_exception] m56 :: 292,292,292 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 293,293,293
+[network_exception] m56 :: 293,293,293 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 294,294,294
+[network_exception] m56 :: 294,294,294 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 295,295,295
+[network_exception] m56 :: 295,295,295 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 296,296,296
+[network_exception] m56 :: 296,296,296 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 297,297,297
+[network_exception] m56 :: 297,297,297 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 298,298,298
+[network_exception] m56 :: 298,298,298 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 299,299,299
+[network_exception] m56 :: 299,299,299 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 300,300,300
+[network_exception] m56 :: 300,300,300 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 301,301,301
+[network_exception] m56 :: 301,301,301 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 302,302,302
+[network_exception] m56 :: 302,302,302 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 303,303,303
+[network_exception] m56 :: 303,303,303 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 304,304,304
+[network_exception] m56 :: 304,304,304 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 305,305,305
+[network_exception] m56 :: 305,305,305 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 306,306,306
+[network_exception] m56 :: 306,306,306 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 307,307,307
+[network_exception] m56 :: 307,307,307 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 308,308,308
+[network_exception] m56 :: 308,308,308 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 309,309,309
+[network_exception] m56 :: 309,309,309 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 310,310,310
+[network_exception] m56 :: 310,310,310 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 311,311,311
+[network_exception] m56 :: 311,311,311 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 312,312,312
+[network_exception] m56 :: 312,312,312 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 313,313,313
+[network_exception] m56 :: 313,313,313 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 314,314,314
+[network_exception] m56 :: 314,314,314 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 315,315,315
+[network_exception] m56 :: 315,315,315 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 316,316,316
+[network_exception] m56 :: 316,316,316 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 317,317,317
+[network_exception] m56 :: 317,317,317 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 318,318,318
+[network_exception] m56 :: 318,318,318 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 319,319,319
+[network_exception] m56 :: 319,319,319 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 320,320,320
+[network_exception] m56 :: 320,320,320 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 321,321,321
+[network_exception] m56 :: 321,321,321 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 322,322,322
+[network_exception] m56 :: 322,322,322 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 323,323,323
+[network_exception] m56 :: 323,323,323 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 324,324,324
+[network_exception] m56 :: 324,324,324 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 325,325,325
+[network_exception] m56 :: 325,325,325 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 326,326,326
+[network_exception] m56 :: 326,326,326 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 327,327,327
+[network_exception] m56 :: 327,327,327 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 328,328,328
+[network_exception] m56 :: 328,328,328 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 329,329,329
+[network_exception] m56 :: 329,329,329 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 330,330,330
+[network_exception] m56 :: 330,330,330 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 331,331,331
+[network_exception] m56 :: 331,331,331 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 332,332,332
+[network_exception] m56 :: 332,332,332 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 333,333,333
+[network_exception] m56 :: 333,333,333 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 334,334,334
+[network_exception] m56 :: 334,334,334 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 335,335,335
+[network_exception] m56 :: 335,335,335 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 336,336,336
+[network_exception] m56 :: 336,336,336 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 337,337,337
+[network_exception] m56 :: 337,337,337 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 338,338,338
+[network_exception] m56 :: 338,338,338 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 339,339,339
+[network_exception] m56 :: 339,339,339 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 340,340,340
+[network_exception] m56 :: 340,340,340 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 341,341,341
+[network_exception] m56 :: 341,341,341 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 342,342,342
+[network_exception] m56 :: 342,342,342 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 343,343,343
+[network_exception] m56 :: 343,343,343 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 344,344,344
+[network_exception] m56 :: 344,344,344 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 345,345,345
+[network_exception] m56 :: 345,345,345 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 346,346,346
+[network_exception] m56 :: 346,346,346 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 347,347,347
+[network_exception] m56 :: 347,347,347 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 348,348,348
+[network_exception] m56 :: 348,348,348 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 349,349,349
+[network_exception] m56 :: 349,349,349 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 350,350,350
+[network_exception] m56 :: 350,350,350 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 351,351,351
+[network_exception] m56 :: 351,351,351 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 352,352,352
+[network_exception] m56 :: 352,352,352 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 353,353,353
+[network_exception] m56 :: 353,353,353 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 354,354,354
+[network_exception] m56 :: 354,354,354 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 355,355,355
+[network_exception] m56 :: 355,355,355 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 356,356,356
+[network_exception] m56 :: 356,356,356 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 357,357,357
+[network_exception] m56 :: 357,357,357 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 358,358,358
+[network_exception] m56 :: 358,358,358 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 359,359,359
+[network_exception] m56 :: 359,359,359 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 360,360,360
+[network_exception] m56 :: 360,360,360 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 361,361,361
+[network_exception] m56 :: 361,361,361 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 362,362,362
+[network_exception] m56 :: 362,362,362 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 363,363,363
+[network_exception] m56 :: 363,363,363 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 364,364,364
+[network_exception] m56 :: 364,364,364 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 365,365,365
+[network_exception] m56 :: 365,365,365 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 366,366,366
+[network_exception] m56 :: 366,366,366 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 367,367,367
+[network_exception] m56 :: 367,367,367 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 368,368,368
+[network_exception] m56 :: 368,368,368 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 369,369,369
+[network_exception] m56 :: 369,369,369 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 370,370,370
+[network_exception] m56 :: 370,370,370 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 371,371,371
+[network_exception] m56 :: 371,371,371 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 372,372,372
+[network_exception] m56 :: 372,372,372 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 373,373,373
+[network_exception] m56 :: 373,373,373 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 374,374,374
+[network_exception] m56 :: 374,374,374 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 375,375,375
+[network_exception] m56 :: 375,375,375 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 376,376,376
+[network_exception] m56 :: 376,376,376 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 377,377,377
+[network_exception] m56 :: 377,377,377 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 378,378,378
+[network_exception] m56 :: 378,378,378 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 379,379,379
+[network_exception] m56 :: 379,379,379 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 380,380,380
+[network_exception] m56 :: 380,380,380 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 381,381,381
+[network_exception] m56 :: 381,381,381 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 382,382,382
+[network_exception] m56 :: 382,382,382 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 383,383,383
+[network_exception] m56 :: 383,383,383 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 384,384,384
+[network_exception] m56 :: 384,384,384 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 385,385,385
+[network_exception] m56 :: 385,385,385 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 386,386,386
+[network_exception] m56 :: 386,386,386 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 387,387,387
+[network_exception] m56 :: 387,387,387 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 388,388,388
+[network_exception] m56 :: 388,388,388 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 389,389,389
+[network_exception] m56 :: 389,389,389 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 390,390,390
+[network_exception] m56 :: 390,390,390 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 391,391,391
+[network_exception] m56 :: 391,391,391 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 392,392,392
+[network_exception] m56 :: 392,392,392 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 393,393,393
+[network_exception] m56 :: 393,393,393 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 394,394,394
+[network_exception] m56 :: 394,394,394 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 395,395,395
+[network_exception] m56 :: 395,395,395 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 396,396,396
+[network_exception] m56 :: 396,396,396 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 397,397,397
+[network_exception] m56 :: 397,397,397 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 398,398,398
+[network_exception] m56 :: 398,398,398 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m56 :: starting benchmark for output size 399,399,399
+[network_exception] m56 :: 399,399,399 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED

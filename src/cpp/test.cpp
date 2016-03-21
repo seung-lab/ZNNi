@@ -2,9 +2,11 @@
 #include "cpu/layers.hpp"
 #include "cpu/convolutional/padded_pruned_fft_auto.hpp"
 #include "gpu/convolutional/ram/ram_cudnn.hpp"
+#include "gpu/convolutional/faster.hpp"
 #include "gpu/layers.hpp"
 
 #include <zi/time.hpp>
+#include <condition_variable>
 
 using namespace znn::fwd;
 
@@ -122,6 +124,7 @@ struct benchmark
     }
 };
 
+
 int main(int argc, char *argv[])
 {
 
@@ -154,15 +157,15 @@ int main(int argc, char *argv[])
     //     b(net);
     // }
 
-    for ( long_t x = 4; x < 400; x += 4 )
+    for ( long_t x = 32; x < 4000; x += 32 )
     {
         os[0] = x; os[1] = x; os[2] = x;
         znni_network net(nd, bs, os);
 
         benchmark<gpu_sample,
                   //gpu::padded_pruned_cufft_convolutional_layer,
-		  //gpu::cudnn_convolutional_layer,
-		  gpu::cudnn_implicit_gemm_convolutional_layer,
+                  //gpu::cudnn_convolutional_layer,
+                  gpu::faster_convolutional_layer,
                   gpu::cudnn_pooling_layer> b;
 
         double tt = b(net,rounds);
