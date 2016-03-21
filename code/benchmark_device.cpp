@@ -178,7 +178,10 @@ void benchmark( std::string const & rep, long_t rounds )
     for ( long_t i = 4; i < 400; i += 4 )
     {
         os = vec3i(i,i,i);
-        benchmark_network<Conv>(nd, rounds, ofs);
+        if ( os % nd.fragmentation() == vec3i::zero )
+        {
+            benchmark_network<Conv>(nd, rounds, ofs);
+        }
     }
 }
 

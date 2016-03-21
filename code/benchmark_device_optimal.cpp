@@ -35,7 +35,7 @@ inline void benchmark_network( network_descriptor & ndesc,
         try
         {
             double time = x->benchmark(rounds);
-            double tput = os[2] * os[3] * os[4];
+            double tput = os[0] * os[1] * os[2];
             tput /= time;
 
             rout << "[network_build] " << net_name
