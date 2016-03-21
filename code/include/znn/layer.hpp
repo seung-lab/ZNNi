@@ -8,25 +8,27 @@ namespace znn { namespace fwd {
 class layer
 {
 public:
-    long_t const in_batch_size   ;
-    long_t const num_inputs      ;
-    vec3i  const in_image_size   ;
-    long_t const in_image_len    ;
-    long_t const input_len       ;
-    long_t const total_input_len ;
-    long_t const input_memory    ;
-    vec5i  const input_shape     ;
+    long_t in_batch_size   ;
+    long_t num_inputs      ;
+    vec3i  in_image_size   ;
+    long_t in_image_len    ;
+    long_t input_len       ;
+    long_t total_input_len ;
+    long_t input_memory    ;
+    vec5i  input_shape     ;
 
-    long_t const out_batch_size  ;
-    long_t const num_outputs     ;
-    vec3i  const out_image_size  ;
-    long_t const out_image_len   ;
-    long_t const output_len      ;
-    long_t const total_output_len;
-    long_t const output_memory   ;
-    vec5i  const output_shape    ;
+    long_t out_batch_size  ;
+    long_t num_outputs     ;
+    vec3i  out_image_size  ;
+    long_t out_image_len   ;
+    long_t output_len      ;
+    long_t total_output_len;
+    long_t output_memory   ;
+    vec5i  output_shape    ;
 
 public:
+    layer() noexcept {}
+
     layer( long_t nin, long_t fin, vec3i const & is,
            long_t nout, long_t fout, vec3i const & os ) noexcept
         : in_batch_size(nin)
@@ -46,18 +48,24 @@ public:
         , output_memory(total_output_len*sizeof(float))
         , output_shape(nout,fout,os[0],os[1],os[2])
     { }
+
+    layer& operator=( layer const & ) = default;
+
 };
 
 template<typename Base>
 class conv_layer: public Base
 {
 public:
-    vec3i  const kernel_size   ;
-    long_t const kernel_len    ;
-    long_t const kernels_len   ;
-    long_t const kernels_memory;
-    long_t const bias_memory   ;
-    long_t const batch_size    ;
+    vec3i  kernel_size   ;
+    long_t kernel_len    ;
+    long_t kernels_len   ;
+    long_t kernels_memory;
+    long_t bias_memory   ;
+    long_t batch_size    ;
+    vec5i  kernels_shape ;
+
+    conv_layer() noexcept {}
 
     conv_layer( long_t n, long_t fin, long_t fout,
                 vec3i const & is, vec3i const & ks ) noexcept
@@ -68,14 +76,20 @@ public:
         , kernels_memory(kernels_len*sizeof(float))
         , bias_memory(fout*sizeof(float))
         , batch_size(n)
+        , kernels_shape(fout,fin,ks[0],ks[1],ks[2])
     { }
+
+    conv_layer& operator=( conv_layer const & ) = default;
+
 };
 
 template<typename Base>
 class pool_layer: public Base
 {
 public:
-    vec3i const window_size;
+    vec3i window_size;
+
+    pool_layer() noexcept {}
 
     pool_layer( long_t n, long_t finout,
                 vec3i const & is, vec3i const & ws ) noexcept
@@ -84,14 +98,18 @@ public:
     {
         STRONG_ASSERT( is % ws == vec3i::zero );
     }
+
+    pool_layer& operator=( pool_layer const & ) = default;
 };
 
 template<typename Base>
 class mfp_layer: public Base
 {
 public:
-    vec3i  const window_size  ;
-    long_t const num_fragments;
+    vec3i  window_size  ;
+    long_t num_fragments;
+
+    mfp_layer() noexcept {};
 
     mfp_layer( long_t n, long_t finout,
                vec3i const & is, vec3i const & ws ) noexcept
@@ -101,7 +119,51 @@ public:
     {
         STRONG_ASSERT( (is+vec3i::one) % ws == vec3i::zero );
     }
+
+    mfp_layer & operator=( mfp_layer const & ) = default;
 };
+
+
+
+template<typename T, typename charT, typename traits>
+std::basic_ostream<charT, traits> &
+operator<<(std::basic_ostream<charT, traits> &os,
+           conv_layer<T> const & p)
+{
+    os << "conv_layer: " << p.in_batch_size << ' '
+       << p.num_inputs << "->"
+       << p.num_outputs << ' '
+       << p.in_image_size << ' '
+       << p.kernel_size << std::endl;
+    return os;
+}
+
+
+template<typename T, typename charT, typename traits>
+std::basic_ostream<charT, traits> &
+operator<<(std::basic_ostream<charT, traits> &os,
+           pool_layer<T> const & p)
+{
+    os << "pool_layer: " << p.in_batch_size << ' '
+       << p.num_outputs << ' '
+       << p.in_image_size << ' '
+       << p.window_size << std::endl;
+    return os;
+}
+
+template<typename T, typename charT, typename traits>
+std::basic_ostream<charT, traits> &
+operator<<(std::basic_ostream<charT, traits> &os,
+           mfp_layer<T> const & p)
+{
+    os << "mfp_layer : " << p.in_batch_size << "->"
+       << p.out_batch_size << ' '
+       << p.num_outputs << ' '
+       << p.in_image_size << ' '
+       << p.window_size << std::endl;
+    return os;
+}
+
 
 
 }} // namespace znn::fwd

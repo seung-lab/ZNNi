@@ -25,19 +25,25 @@ struct layer_descriptor
     long_t     num_inputs   ;
     long_t     num_outputs  ;
     vec3i      k_or_w_size  ;
+    vec3i      fov          ;
 };
 
 class network_descriptor
 {
 private:
-    std::list<layer_descriptor> layers_;
-    vec3i                       fov_ = vec3i::one;
-    vec3i                       fragmentation_ = vec3i::one;
+    std::vector<layer_descriptor> layers_;
+    vec3i                         fov_ = vec3i::one;
+    vec3i                         fragmentation_ = vec3i::one;
 
 public:
-    std::list<layer_descriptor> const & layers() const
+    std::vector<layer_descriptor> const & layers() const
     {
         return layers_;
+    }
+
+    size_t num_layers() const
+    {
+        return layers_.size();
     }
 
     vec3i const & fov() const
@@ -78,7 +84,8 @@ public:
                 long_t w;
                 STRONG_ASSERT( std::fscanf(f, "%ld\n", &w) == 1 );
 
-                layers_.push_front({layer_type::convolutional, n_in, w, k_or_w});
+                layers_.push_back({layer_type::convolutional, n_in, w,
+                            k_or_w, vec3i::zero});
 
                 std::cout << "CONV LAYER: " << k_or_w
                           << " :: " << n_in << " -> " << w << "\n";
@@ -87,7 +94,8 @@ public:
             }
             else if ( std::string(nt) == "POOL" )
             {
-                layers_.push_front({layer_type::pooling, n_in, n_in, k_or_w});
+                layers_.push_back({layer_type::pooling, n_in, n_in,
+                            k_or_w, vec3i::zero});
 
                 std::cout << "POOL LAYER: " << k_or_w
                           << " :: " << n_in << " -> " << n_in << "\n";
@@ -98,6 +106,8 @@ public:
                 DIE("UNKNOWN LAYER TYPE");
             }
         }
+
+        std::reverse( layers_.begin(), layers_.end() );
 
         for ( auto & l: layers_ )
         {
@@ -110,8 +120,8 @@ public:
                 fov_ *= l.k_or_w_size;
                 fragmentation_ *= l.k_or_w_size;
             }
+            l.fov = fov_;
         }
-
 
         std::reverse(layers_.begin(), layers_.end());
 
@@ -306,6 +316,5 @@ public:
 
 
 };
-
 
 }} // namespace znn::fwd

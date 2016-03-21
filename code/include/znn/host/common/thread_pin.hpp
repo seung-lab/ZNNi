@@ -93,6 +93,10 @@ public:
 
     ~thread_pin()
     {
+        std::cout << "Going back to: ";
+        for ( int i = 0; i < 4; ++i )
+            std::cout << CPU_ISSET(i,&old_set);
+        std::cout << std::endl;
         sched_setaffinity(0, sizeof(old_set), &old_set);
     }
 

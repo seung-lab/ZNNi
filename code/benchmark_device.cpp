@@ -1,6 +1,3 @@
-#include "znn/device/common/cudnn.hpp"
-#include "znn/device/common/fft/transformer.hpp"
-
 #include "znn/util/network.hpp"
 #include "znn/device/v1/cudnn_conv.hpp"
 #include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
@@ -15,10 +12,10 @@
 #include <sstream>
 
 // RUN THE FOLLOWING
-// ./benchmark_device m37 4
-// ./benchmark_device m57 4
-// ./benchmark_device m77 4
-// ./benchmark_device m97 4
+// ./benchmark_device m36 4
+// ./benchmark_device m56 4
+// ./benchmark_device m76 4
+// ./benchmark_device m96 4
 
 
 using namespace znn::fwd;
@@ -182,7 +179,7 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network_descriptor nd(net_path);
 
-    for ( long_t i = 8; i < 400; i += 8 )
+    for ( long_t i = 4; i < 400; i += 4 )
     {
         os = vec3i(i,i,i);
         benchmark_network<Conv>(nd, rounds, ofs);

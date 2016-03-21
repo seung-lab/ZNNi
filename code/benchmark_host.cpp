@@ -11,10 +11,10 @@
 #include <sstream>
 
 // RUN THE FOLLOWING
-// ./benchmark_host m37 8
-// ./benchmark_host m57 8
-// ./benchmark_host m77 8
-// ./benchmark_host m97 8
+// ./benchmark_host m36 8
+// ./benchmark_host m56 8
+// ./benchmark_host m76 8
+// ./benchmark_host m96 8
 
 using namespace znn::fwd;
 

@@ -5,6 +5,7 @@
 namespace znn { namespace fwd { namespace device {
 
 void div_all_by( float*, float*, float ) noexcept;
+void add_to( cuComplex*, cuComplex*, cuComplex*, float) noexcept;
 void mul_add( cuComplex*, cuComplex*, cuComplex*, cuComplex* ) noexcept;
 
 void stage_1_scatter( int, int, float const*, float*, long_t ) noexcept;

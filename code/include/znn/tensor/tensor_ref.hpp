@@ -83,6 +83,11 @@ public:
                                   strides_.data());
     }
 
+    zi::vl::vec<long_t,D> const & shape_vec() const
+    {
+        return extents_;
+    }
+
     long_t const * shape() const
     {
         return extents_.data();
@@ -109,6 +114,22 @@ public:
     {
         detail::tensor::copy_n(ptr_, strides_[0], d,
                                architecture(), tag);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
+                            host_ptr<T const> >::type
+    ptr() const
+    {
+        return host_ptr<T const>(ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::device_tag>::value,
+                            device_ptr<T const> >::type
+    ptr() const
+    {
+        return device_ptr<T const>(ptr_);
     }
 
     template<typename X = A>
@@ -226,6 +247,38 @@ public:
     {
         detail::tensor::copy_n(d, this->strides_[0], this->ptr_,
                                tag, architecture());
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
+                            host_ptr<T> >::type
+    ptr()
+    {
+        return host_ptr<T>(this->ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::device_tag>::value,
+                            device_ptr<T> >::type
+    ptr()
+    {
+        return device_ptr<T>(this->ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
+                            host_ptr<T const> >::type
+    ptr() const
+    {
+        return host_ptr<T const>(this->ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::device_tag>::value,
+                            device_ptr<T const> >::type
+    ptr() const
+    {
+        return device_ptr<T const>(this->ptr_);
     }
 
     template<typename X = A>

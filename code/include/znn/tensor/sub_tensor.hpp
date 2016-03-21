@@ -55,6 +55,11 @@ public:
                                   i, ptr_, extents_, strides_);
     }
 
+    zi::vl::vec<long_t,D> shape_vec() const
+    {
+        return zi::vl::vec<long_t,D>(zi::vl::load, extents_);
+    }
+
     long_t const * shape() const
     {
         return extents_;
@@ -81,6 +86,22 @@ public:
     {
         detail::tensor::copy_n(ptr_, strides_[0], d,
                                architecture(), tag);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
+                            host_ptr<T const> >::type
+    ptr() const
+    {
+        return host_ptr<T const>(ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::device_tag>::value,
+                            device_ptr<T const> >::type
+    ptr() const
+    {
+        return device_ptr<T const>(ptr_);
     }
 
     template<typename X = A>
@@ -183,6 +204,39 @@ public:
     {
         detail::tensor::copy_n(d, this->num_elements(), super_type::ptr_,
                                tag, architecture());
+    }
+
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
+                            host_ptr<T> >::type
+    ptr()
+    {
+        return host_ptr<T>(this->ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::device_tag>::value,
+                            device_ptr<T> >::type
+    ptr()
+    {
+        return device_ptr<T>(this->ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,
+                            host_ptr<T const> >::type
+    ptr() const
+    {
+        return host_ptr<T const>(this->ptr_);
+    }
+
+    template<typename X = A>
+    typename std::enable_if<std::is_same<X,detail::tensor::device_tag>::value,
+                            device_ptr<T const> >::type
+    ptr() const
+    {
+        return device_ptr<T const>(this->ptr_);
     }
 
     template<typename X = A>
