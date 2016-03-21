@@ -1,0 +1,947 @@
+--------------------------------------------
+
+## m76 :: starting benchmark for output size 4,4,4
+[network_requirements] m76 :: 4,4,4 :: RM: 33 MB WM: 1600 MB
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.122633
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.0162305
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.914317
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.011436
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.546273
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.298987
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.138099
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.0165951
+[network_measurement] m76 :: 4,4,4 :: 2.0661
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.122408
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.0161956
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.914539
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.0113991
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.546227
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.298976
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.138001
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.016576
+[network_measurement] m76 :: 4,4,4 :: 2.06554
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.122512
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.0161711
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.914504
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.0114629
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.546174
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.298967
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.138012
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.0167629
+[network_measurement] m76 :: 4,4,4 :: 2.06606
+[network_average] m76 :: 4,4,4 :: 2.0659
+[network_throughput] m76 :: 4,4,4 :: 30.9793
+## m76 :: starting benchmark for output size 8,8,8
+[network_requirements] m76 :: 8,8,8 :: RM: 33 MB WM: 1971 MB
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.160219
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.0179263
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.923341
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.012806
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.663643
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.302236
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.138965
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.0169211
+[network_measurement] m76 :: 8,8,8 :: 2.23747
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.16001
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.0179314
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.922963
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.0128272
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.663785
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.302087
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.138794
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.0170303
+[network_measurement] m76 :: 8,8,8 :: 2.2368
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.160253
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.0179209
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.927445
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.0128351
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.665201
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.316447
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.149147
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.0224139
+[network_measurement] m76 :: 8,8,8 :: 2.27342
+[network_average] m76 :: 8,8,8 :: 2.24923
+[network_throughput] m76 :: 8,8,8 :: 227.633
+## m76 :: starting benchmark for output size 12,12,12
+[network_requirements] m76 :: 12,12,12 :: RM: 33 MB WM: 1931 MB
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.149749
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.0197636
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 1.07752
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.0143062
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.672363
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.351398
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.151418
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.0377755
+[network_measurement] m76 :: 12,12,12 :: 2.47611
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.151146
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.0198612
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 1.07734
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.0143239
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.663165
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.34646
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.16103
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.0234257
+[network_measurement] m76 :: 12,12,12 :: 2.45841
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.15085
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.0198573
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 1.07819
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.0143683
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.665674
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.348798
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.151701
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.0182282
+[network_measurement] m76 :: 12,12,12 :: 2.4492
+[network_average] m76 :: 12,12,12 :: 2.46124
+[network_throughput] m76 :: 12,12,12 :: 702.085
+## m76 :: starting benchmark for output size 16,16,16
+[network_requirements] m76 :: 16,16,16 :: RM: 33 MB WM: 2392 MB
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.185325
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.0224958
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 1.08714
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.0157515
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.722465
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.461625
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.169058
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.0196504
+[network_measurement] m76 :: 16,16,16 :: 2.68546
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.184728
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.0216391
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 1.08636
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.0157438
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.722413
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.461585
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.169009
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.0195887
+[network_measurement] m76 :: 16,16,16 :: 2.68267
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.184648
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.0216471
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 1.08611
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.0160306
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.732919
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.465416
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.170775
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.0195865
+[network_measurement] m76 :: 16,16,16 :: 2.69877
+[network_average] m76 :: 16,16,16 :: 2.68897
+[network_throughput] m76 :: 16,16,16 :: 1523.26
+## m76 :: starting benchmark for output size 20,20,20
+[network_requirements] m76 :: 20,20,20 :: RM: 33 MB WM: 2448 MB
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.181386
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.0236931
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 1.4548
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.0182602
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.861733
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.467653
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.207628
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.0252557
+[network_measurement] m76 :: 20,20,20 :: 3.24255
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.181629
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.0237096
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 1.45522
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.0175475
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.855559
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.467755
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.20733
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.0254951
+[network_measurement] m76 :: 20,20,20 :: 3.23602
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.181761
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.0236915
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 1.4549
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.0182423
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.856798
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.464696
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.205721
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.0253903
+[network_measurement] m76 :: 20,20,20 :: 3.23324
+[network_average] m76 :: 20,20,20 :: 3.23727
+[network_throughput] m76 :: 20,20,20 :: 2471.22
+## m76 :: starting benchmark for output size 24,24,24
+[network_requirements] m76 :: 24,24,24 :: RM: 33 MB WM: 2513 MB
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.188711
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.0259456
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 1.46448
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.0194957
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.865054
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.470018
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.206306
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.0255068
+[network_measurement] m76 :: 24,24,24 :: 3.26781
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.189139
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.0259808
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 1.46579
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.0195072
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.859563
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.469873
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.206309
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.0254654
+[network_measurement] m76 :: 24,24,24 :: 3.26362
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.188994
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.0259985
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 1.46554
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.0194773
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.861836
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.472955
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.210586
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.0256274
+[network_measurement] m76 :: 24,24,24 :: 3.27303
+[network_average] m76 :: 24,24,24 :: 3.26815
+[network_throughput] m76 :: 24,24,24 :: 4229.91
+## m76 :: starting benchmark for output size 28,28,28
+[network_requirements] m76 :: 28,28,28 :: RM: 33 MB WM: 2731 MB
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.203961
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.0293224
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.47696
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.0213052
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 1.02751
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.549804
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.303043
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.0316655
+[network_measurement] m76 :: 28,28,28 :: 3.64631
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.202857
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.0283325
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.4774
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.0213336
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 1.02546
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.552371
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.302374
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.031371
+[network_measurement] m76 :: 28,28,28 :: 3.64394
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.202421
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.028241
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.4761
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.0212668
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 1.02688
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.549312
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.303109
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.0316506
+[network_measurement] m76 :: 28,28,28 :: 3.64115
+[network_average] m76 :: 28,28,28 :: 3.6438
+[network_throughput] m76 :: 28,28,28 :: 6024.48
+## m76 :: starting benchmark for output size 32,32,32
+[network_requirements] m76 :: 32,32,32 :: RM: 33 MB WM: 3043 MB
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.237582
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0319326
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.59867
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.0229409
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 1.02453
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.655766
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.301078
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0309955
+[network_measurement] m76 :: 32,32,32 :: 3.90658
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.236914
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0308005
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.59808
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.022913
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 1.02435
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.666153
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.306175
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0316127
+[network_measurement] m76 :: 32,32,32 :: 3.91961
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.23724
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0308573
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.59939
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.0229935
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 1.03159
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.66109
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.304065
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0320962
+[network_measurement] m76 :: 32,32,32 :: 3.92184
+[network_average] m76 :: 32,32,32 :: 3.91601
+[network_throughput] m76 :: 32,32,32 :: 8367.7
+## m76 :: starting benchmark for output size 36,36,36
+[network_requirements] m76 :: 36,36,36 :: RM: 33 MB WM: 3564 MB
+[layer_measurement] m76 :: 36,36,36 :: 0 :: 0.260396
+[layer_measurement] m76 :: 36,36,36 :: 1 :: 0.0336407
+[layer_measurement] m76 :: 36,36,36 :: 2 :: 1.98406
+[layer_measurement] m76 :: 36,36,36 :: 3 :: 0.0255145
+[layer_measurement] m76 :: 36,36,36 :: 4 :: 1.33682
+[layer_measurement] m76 :: 36,36,36 :: 5 :: 0.663003
+[layer_measurement] m76 :: 36,36,36 :: 6 :: 0.345703
+[layer_measurement] m76 :: 36,36,36 :: 7 :: 0.0285486
+[network_measurement] m76 :: 36,36,36 :: 4.68059
+[layer_measurement] m76 :: 36,36,36 :: 0 :: 0.260574
+[layer_measurement] m76 :: 36,36,36 :: 1 :: 0.0336226
+[layer_measurement] m76 :: 36,36,36 :: 2 :: 1.98446
+[layer_measurement] m76 :: 36,36,36 :: 3 :: 0.0254871
+[layer_measurement] m76 :: 36,36,36 :: 4 :: 1.34029
+[layer_measurement] m76 :: 36,36,36 :: 5 :: 0.670653
+[layer_measurement] m76 :: 36,36,36 :: 6 :: 0.3494
+[layer_measurement] m76 :: 36,36,36 :: 7 :: 0.0297386
+[network_measurement] m76 :: 36,36,36 :: 4.69687
+[layer_measurement] m76 :: 36,36,36 :: 0 :: 0.260605
+[layer_measurement] m76 :: 36,36,36 :: 1 :: 0.0336675
+[layer_measurement] m76 :: 36,36,36 :: 2 :: 1.98614
+[layer_measurement] m76 :: 36,36,36 :: 3 :: 0.0255618
+[layer_measurement] m76 :: 36,36,36 :: 4 :: 1.34059
+[layer_measurement] m76 :: 36,36,36 :: 5 :: 0.666898
+[layer_measurement] m76 :: 36,36,36 :: 6 :: 0.348876
+[layer_measurement] m76 :: 36,36,36 :: 7 :: 0.0291775
+[network_measurement] m76 :: 36,36,36 :: 4.69441
+[network_average] m76 :: 36,36,36 :: 4.69063
+[network_throughput] m76 :: 36,36,36 :: 9946.65
+## m76 :: starting benchmark for output size 40,40,40
+[network_requirements] m76 :: 40,40,40 :: RM: 33 MB WM: 3645 MB
+[layer_measurement] m76 :: 40,40,40 :: 0 :: 0.269645
+[layer_measurement] m76 :: 40,40,40 :: 1 :: 0.0373698
+[layer_measurement] m76 :: 40,40,40 :: 2 :: 2.0034
+[layer_measurement] m76 :: 40,40,40 :: 3 :: 0.0277514
+[layer_measurement] m76 :: 40,40,40 :: 4 :: 1.34505
+[layer_measurement] m76 :: 40,40,40 :: 5 :: 0.721667
+[layer_measurement] m76 :: 40,40,40 :: 6 :: 0.462811
+[layer_measurement] m76 :: 40,40,40 :: 7 :: 0.0312819
+[network_measurement] m76 :: 40,40,40 :: 4.90256
+[layer_measurement] m76 :: 40,40,40 :: 0 :: 0.269449
+[layer_measurement] m76 :: 40,40,40 :: 1 :: 0.036083
+[layer_measurement] m76 :: 40,40,40 :: 2 :: 2.00245
+[layer_measurement] m76 :: 40,40,40 :: 3 :: 0.0277774
+[layer_measurement] m76 :: 40,40,40 :: 4 :: 1.35269
+[layer_measurement] m76 :: 40,40,40 :: 5 :: 0.725183
+[layer_measurement] m76 :: 40,40,40 :: 6 :: 0.466379
+[layer_measurement] m76 :: 40,40,40 :: 7 :: 0.0320303
+[network_measurement] m76 :: 40,40,40 :: 4.91494
+[layer_measurement] m76 :: 40,40,40 :: 0 :: 0.269819
+[layer_measurement] m76 :: 40,40,40 :: 1 :: 0.036123
+[layer_measurement] m76 :: 40,40,40 :: 2 :: 2.00406
+[layer_measurement] m76 :: 40,40,40 :: 3 :: 0.0278449
+[layer_measurement] m76 :: 40,40,40 :: 4 :: 1.34904
+[layer_measurement] m76 :: 40,40,40 :: 5 :: 0.72499
+[layer_measurement] m76 :: 40,40,40 :: 6 :: 0.466292
+[layer_measurement] m76 :: 40,40,40 :: 7 :: 0.053206
+[network_measurement] m76 :: 40,40,40 :: 4.93448
+[network_average] m76 :: 40,40,40 :: 4.91733
+[network_throughput] m76 :: 40,40,40 :: 13015.2
+## m76 :: starting benchmark for output size 44,44,44
+[network_requirements] m76 :: 44,44,44 :: RM: 33 MB WM: 3731 MB
+[layer_measurement] m76 :: 44,44,44 :: 0 :: 0.278912
+[layer_measurement] m76 :: 44,44,44 :: 1 :: 0.0392523
+[layer_measurement] m76 :: 44,44,44 :: 2 :: 2.19015
+[layer_measurement] m76 :: 44,44,44 :: 3 :: 0.0302015
+[layer_measurement] m76 :: 44,44,44 :: 4 :: 1.35353
+[layer_measurement] m76 :: 44,44,44 :: 5 :: 0.851911
+[layer_measurement] m76 :: 44,44,44 :: 6 :: 0.464213
+[layer_measurement] m76 :: 44,44,44 :: 7 :: 0.0303823
+[network_measurement] m76 :: 44,44,44 :: 5.24245
+[layer_measurement] m76 :: 44,44,44 :: 0 :: 0.279092
+[layer_measurement] m76 :: 44,44,44 :: 1 :: 0.0392647
+[layer_measurement] m76 :: 44,44,44 :: 2 :: 2.19046
+[layer_measurement] m76 :: 44,44,44 :: 3 :: 0.0302278
+[layer_measurement] m76 :: 44,44,44 :: 4 :: 1.36121
+[layer_measurement] m76 :: 44,44,44 :: 5 :: 0.859241
+[layer_measurement] m76 :: 44,44,44 :: 6 :: 0.468344
+[layer_measurement] m76 :: 44,44,44 :: 7 :: 0.0341205
+[network_measurement] m76 :: 44,44,44 :: 5.2663
+[layer_measurement] m76 :: 44,44,44 :: 0 :: 0.279254
+[layer_measurement] m76 :: 44,44,44 :: 1 :: 0.0392988
+[layer_measurement] m76 :: 44,44,44 :: 2 :: 2.1923
+[layer_measurement] m76 :: 44,44,44 :: 3 :: 0.0302671
+[layer_measurement] m76 :: 44,44,44 :: 4 :: 1.35711
+[layer_measurement] m76 :: 44,44,44 :: 5 :: 0.855632
+[layer_measurement] m76 :: 44,44,44 :: 6 :: 0.467437
+[layer_measurement] m76 :: 44,44,44 :: 7 :: 0.0310076
+[network_measurement] m76 :: 44,44,44 :: 5.25548
+[network_average] m76 :: 44,44,44 :: 5.25475
+[network_throughput] m76 :: 44,44,44 :: 16210.9
+## m76 :: starting benchmark for output size 48,48,48
+[network_requirements] m76 :: 48,48,48 :: RM: 33 MB WM: 4218 MB
+[layer_measurement] m76 :: 48,48,48 :: 0 :: 0.310859
+[layer_measurement] m76 :: 48,48,48 :: 1 :: 0.0426649
+[layer_measurement] m76 :: 48,48,48 :: 2 :: 2.20772
+[layer_measurement] m76 :: 48,48,48 :: 3 :: 0.0326911
+[layer_measurement] m76 :: 48,48,48 :: 4 :: 1.49635
+[layer_measurement] m76 :: 48,48,48 :: 5 :: 0.857569
+[layer_measurement] m76 :: 48,48,48 :: 6 :: 0.476858
+[layer_measurement] m76 :: 48,48,48 :: 7 :: 0.0371226
+[network_measurement] m76 :: 48,48,48 :: 5.46624
+[layer_measurement] m76 :: 48,48,48 :: 0 :: 0.312061
+[layer_measurement] m76 :: 48,48,48 :: 1 :: 0.042268
+[layer_measurement] m76 :: 48,48,48 :: 2 :: 2.2093
+[layer_measurement] m76 :: 48,48,48 :: 3 :: 0.0327747
+[layer_measurement] m76 :: 48,48,48 :: 4 :: 1.49986
+[layer_measurement] m76 :: 48,48,48 :: 5 :: 0.863065
+[layer_measurement] m76 :: 48,48,48 :: 6 :: 0.466429
+[layer_measurement] m76 :: 48,48,48 :: 7 :: 0.0300899
+[network_measurement] m76 :: 48,48,48 :: 5.46037
+[layer_measurement] m76 :: 48,48,48 :: 0 :: 0.310592
+[layer_measurement] m76 :: 48,48,48 :: 1 :: 0.0422283
+[layer_measurement] m76 :: 48,48,48 :: 2 :: 2.20728
+[layer_measurement] m76 :: 48,48,48 :: 3 :: 0.0326856
+[layer_measurement] m76 :: 48,48,48 :: 4 :: 1.49672
+[layer_measurement] m76 :: 48,48,48 :: 5 :: 0.866445
+[layer_measurement] m76 :: 48,48,48 :: 6 :: 0.476236
+[layer_measurement] m76 :: 48,48,48 :: 7 :: 0.0371584
+[network_measurement] m76 :: 48,48,48 :: 5.4728
+[network_average] m76 :: 48,48,48 :: 5.46647
+[network_throughput] m76 :: 48,48,48 :: 20231
+## m76 :: starting benchmark for output size 52,52,52
+[network_requirements] m76 :: 52,52,52 :: RM: 33 MB WM: 4313 MB
+[layer_measurement] m76 :: 52,52,52 :: 0 :: 0.321261
+[layer_measurement] m76 :: 52,52,52 :: 1 :: 0.0452939
+[layer_measurement] m76 :: 52,52,52 :: 2 :: 2.51094
+[layer_measurement] m76 :: 52,52,52 :: 3 :: 0.0354937
+[layer_measurement] m76 :: 52,52,52 :: 4 :: 1.9389
+[layer_measurement] m76 :: 52,52,52 :: 5 :: 1.0271
+[layer_measurement] m76 :: 52,52,52 :: 6 :: 0.556626
+[layer_measurement] m76 :: 52,52,52 :: 7 :: 0.0404146
+[network_measurement] m76 :: 52,52,52 :: 6.48123
+[layer_measurement] m76 :: 52,52,52 :: 0 :: 0.324415
+[layer_measurement] m76 :: 52,52,52 :: 1 :: 0.0453097
+[layer_measurement] m76 :: 52,52,52 :: 2 :: 2.51106
+[layer_measurement] m76 :: 52,52,52 :: 3 :: 0.035541
+[layer_measurement] m76 :: 52,52,52 :: 4 :: 1.93934
+[layer_measurement] m76 :: 52,52,52 :: 5 :: 1.02558
+[layer_measurement] m76 :: 52,52,52 :: 6 :: 0.549982
+[layer_measurement] m76 :: 52,52,52 :: 7 :: 0.0371513
+[network_measurement] m76 :: 52,52,52 :: 6.47257
+[layer_measurement] m76 :: 52,52,52 :: 0 :: 0.321214
+[layer_measurement] m76 :: 52,52,52 :: 1 :: 0.045343
+[layer_measurement] m76 :: 52,52,52 :: 2 :: 2.51108
+[layer_measurement] m76 :: 52,52,52 :: 3 :: 0.0354874
+[layer_measurement] m76 :: 52,52,52 :: 4 :: 1.93942
+[layer_measurement] m76 :: 52,52,52 :: 5 :: 1.02494
+[layer_measurement] m76 :: 52,52,52 :: 6 :: 0.549782
+[layer_measurement] m76 :: 52,52,52 :: 7 :: 0.0370292
+[network_measurement] m76 :: 52,52,52 :: 6.46805
+[network_average] m76 :: 52,52,52 :: 6.47395
+[network_throughput] m76 :: 52,52,52 :: 21719
+## m76 :: starting benchmark for output size 56,56,56
+[network_requirements] m76 :: 56,56,56 :: RM: 33 MB WM: 4966 MB
+[layer_measurement] m76 :: 56,56,56 :: 0 :: 0.416182
+[layer_measurement] m76 :: 56,56,56 :: 1 :: 0.0503364
+[layer_measurement] m76 :: 56,56,56 :: 2 :: 2.57201
+[layer_measurement] m76 :: 56,56,56 :: 3 :: 0.0385361
+[layer_measurement] m76 :: 56,56,56 :: 4 :: 1.94411
+[layer_measurement] m76 :: 56,56,56 :: 5 :: 1.02796
+[layer_measurement] m76 :: 56,56,56 :: 6 :: 0.659658
+[layer_measurement] m76 :: 56,56,56 :: 7 :: 0.0513092
+[network_measurement] m76 :: 56,56,56 :: 6.76639
+[layer_measurement] m76 :: 56,56,56 :: 0 :: 0.41868
+[layer_measurement] m76 :: 56,56,56 :: 1 :: 0.0491008
+[layer_measurement] m76 :: 56,56,56 :: 2 :: 2.57043
+[layer_measurement] m76 :: 56,56,56 :: 3 :: 0.0385463
+[layer_measurement] m76 :: 56,56,56 :: 4 :: 1.94158
+[layer_measurement] m76 :: 56,56,56 :: 5 :: 1.02439
+[layer_measurement] m76 :: 56,56,56 :: 6 :: 0.666713
+[layer_measurement] m76 :: 56,56,56 :: 7 :: 0.0406082
+[network_measurement] m76 :: 56,56,56 :: 6.75428
+[layer_measurement] m76 :: 56,56,56 :: 0 :: 0.41698
+[layer_measurement] m76 :: 56,56,56 :: 1 :: 0.0488803
+[layer_measurement] m76 :: 56,56,56 :: 2 :: 2.58476
+[layer_measurement] m76 :: 56,56,56 :: 3 :: 0.0487596
+[layer_measurement] m76 :: 56,56,56 :: 4 :: 1.94565
+[layer_measurement] m76 :: 56,56,56 :: 5 :: 1.02823
+[layer_measurement] m76 :: 56,56,56 :: 6 :: 0.662615
+[layer_measurement] m76 :: 56,56,56 :: 7 :: 0.0388441
+[network_measurement] m76 :: 56,56,56 :: 6.77913
+[network_average] m76 :: 56,56,56 :: 6.7666
+[network_throughput] m76 :: 56,56,56 :: 25953.4
+## m76 :: starting benchmark for output size 60,60,60
+[network_requirements] m76 :: 60,60,60 :: RM: 33 MB WM: 5189 MB
+[layer_measurement] m76 :: 60,60,60 :: 0 :: 0.404134
+[layer_measurement] m76 :: 60,60,60 :: 1 :: 0.0525208
+[layer_measurement] m76 :: 60,60,60 :: 2 :: 3.15227
+[layer_measurement] m76 :: 60,60,60 :: 3 :: 0.0415362
+[layer_measurement] m76 :: 60,60,60 :: 4 :: 1.94763
+[layer_measurement] m76 :: 60,60,60 :: 5 :: 1.33581
+[layer_measurement] m76 :: 60,60,60 :: 6 :: 0.662837
+[layer_measurement] m76 :: 60,60,60 :: 7 :: 0.0528917
+[network_measurement] m76 :: 60,60,60 :: 7.65555
+[layer_measurement] m76 :: 60,60,60 :: 0 :: 0.404231
+[layer_measurement] m76 :: 60,60,60 :: 1 :: 0.0525777
+[layer_measurement] m76 :: 60,60,60 :: 2 :: 3.15168
+[layer_measurement] m76 :: 60,60,60 :: 3 :: 0.0414288
+[layer_measurement] m76 :: 60,60,60 :: 4 :: 1.95168
+[layer_measurement] m76 :: 60,60,60 :: 5 :: 1.34143
+[layer_measurement] m76 :: 60,60,60 :: 6 :: 0.666308
+[layer_measurement] m76 :: 60,60,60 :: 7 :: 0.0526298
+[network_measurement] m76 :: 60,60,60 :: 7.66633
+[layer_measurement] m76 :: 60,60,60 :: 0 :: 0.404724
+[layer_measurement] m76 :: 60,60,60 :: 1 :: 0.0533962
+[layer_measurement] m76 :: 60,60,60 :: 2 :: 3.15389
+[layer_measurement] m76 :: 60,60,60 :: 3 :: 0.0427441
+[layer_measurement] m76 :: 60,60,60 :: 4 :: 1.95048
+[layer_measurement] m76 :: 60,60,60 :: 5 :: 1.33558
+[layer_measurement] m76 :: 60,60,60 :: 6 :: 0.664155
+[layer_measurement] m76 :: 60,60,60 :: 7 :: 0.0524908
+[network_measurement] m76 :: 60,60,60 :: 7.66188
+[network_average] m76 :: 60,60,60 :: 7.66125
+[network_throughput] m76 :: 60,60,60 :: 28193.8
+## m76 :: starting benchmark for output size 64,64,64
+[network_requirements] m76 :: 64,64,64 :: RM: 33 MB WM: 5298 MB
+[layer_measurement] m76 :: 64,64,64 :: 0 :: 0.41651
+[layer_measurement] m76 :: 64,64,64 :: 1 :: 0.0563438
+[layer_measurement] m76 :: 64,64,64 :: 2 :: 3.19566
+[layer_measurement] m76 :: 64,64,64 :: 3 :: 0.0449326
+[layer_measurement] m76 :: 64,64,64 :: 4 :: 1.96282
+[layer_measurement] m76 :: 64,64,64 :: 5 :: 1.34903
+[layer_measurement] m76 :: 64,64,64 :: 6 :: 0.725377
+[layer_measurement] m76 :: 64,64,64 :: 7 :: 0.0510751
+[network_measurement] m76 :: 64,64,64 :: 7.80827
+[layer_measurement] m76 :: 64,64,64 :: 0 :: 0.417083
+[layer_measurement] m76 :: 64,64,64 :: 1 :: 0.056374
+[layer_measurement] m76 :: 64,64,64 :: 2 :: 3.17353
+[layer_measurement] m76 :: 64,64,64 :: 3 :: 0.0447466
+[layer_measurement] m76 :: 64,64,64 :: 4 :: 1.96014
+[layer_measurement] m76 :: 64,64,64 :: 5 :: 1.349
+[layer_measurement] m76 :: 64,64,64 :: 6 :: 0.724104
+[layer_measurement] m76 :: 64,64,64 :: 7 :: 0.0510869
+[network_measurement] m76 :: 64,64,64 :: 7.78081
+[layer_measurement] m76 :: 64,64,64 :: 0 :: 0.418284
+[layer_measurement] m76 :: 64,64,64 :: 1 :: 0.0564072
+[layer_measurement] m76 :: 64,64,64 :: 2 :: 3.17416
+[layer_measurement] m76 :: 64,64,64 :: 3 :: 0.0460483
+[layer_measurement] m76 :: 64,64,64 :: 4 :: 1.96349
+[layer_measurement] m76 :: 64,64,64 :: 5 :: 1.35304
+[layer_measurement] m76 :: 64,64,64 :: 6 :: 0.724283
+[layer_measurement] m76 :: 64,64,64 :: 7 :: 0.0510577
+[network_measurement] m76 :: 64,64,64 :: 7.79185
+[network_average] m76 :: 64,64,64 :: 7.79364
+[network_throughput] m76 :: 64,64,64 :: 33635.6
+## m76 :: starting benchmark for output size 68,68,68
+[network_requirements] m76 :: 68,68,68 :: RM: 33 MB WM: 6148 MB
+[layer_measurement] m76 :: 68,68,68 :: 0 :: 0.499666
+[layer_measurement] m76 :: 68,68,68 :: 1 :: 0.0602805
+[layer_measurement] m76 :: 68,68,68 :: 2 :: 3.19349
+[layer_measurement] m76 :: 68,68,68 :: 3 :: 0.0503434
+[layer_measurement] m76 :: 68,68,68 :: 4 :: 2.27234
+[layer_measurement] m76 :: 68,68,68 :: 5 :: 1.36069
+[layer_measurement] m76 :: 68,68,68 :: 6 :: 0.855212
+[layer_measurement] m76 :: 68,68,68 :: 7 :: 0.0600311
+[network_measurement] m76 :: 68,68,68 :: 8.35973
+[layer_measurement] m76 :: 68,68,68 :: 0 :: 0.500864
+[layer_measurement] m76 :: 68,68,68 :: 1 :: 0.0605322
+[layer_measurement] m76 :: 68,68,68 :: 2 :: 3.1922
+[layer_measurement] m76 :: 68,68,68 :: 3 :: 0.0479593
+[layer_measurement] m76 :: 68,68,68 :: 4 :: 2.26593
+[layer_measurement] m76 :: 68,68,68 :: 5 :: 1.35759
+[layer_measurement] m76 :: 68,68,68 :: 6 :: 0.861303
+[layer_measurement] m76 :: 68,68,68 :: 7 :: 0.0530304
+[network_measurement] m76 :: 68,68,68 :: 8.34715
+[layer_measurement] m76 :: 68,68,68 :: 0 :: 0.500113
+[layer_measurement] m76 :: 68,68,68 :: 1 :: 0.0602702
+[layer_measurement] m76 :: 68,68,68 :: 2 :: 3.19523
+[layer_measurement] m76 :: 68,68,68 :: 3 :: 0.0480365
+[layer_measurement] m76 :: 68,68,68 :: 4 :: 2.27035
+[layer_measurement] m76 :: 68,68,68 :: 5 :: 1.3667
+[layer_measurement] m76 :: 68,68,68 :: 6 :: 0.85596
+[layer_measurement] m76 :: 68,68,68 :: 7 :: 0.0525781
+[network_measurement] m76 :: 68,68,68 :: 8.3547
+[network_average] m76 :: 68,68,68 :: 8.35386
+[network_throughput] m76 :: 68,68,68 :: 37639.1
+## m76 :: starting benchmark for output size 72,72,72
+[network_requirements] m76 :: 72,72,72 :: RM: 33 MB WM: 6268 MB
+[layer_measurement] m76 :: 72,72,72 :: 0 :: 0.515545
+[layer_measurement] m76 :: 72,72,72 :: 1 :: 0.0666603
+[layer_measurement] m76 :: 72,72,72 :: 2 :: 3.79939
+[layer_measurement] m76 :: 72,72,72 :: 3 :: 0.0513973
+[layer_measurement] m76 :: 72,72,72 :: 4 :: 2.2733
+[layer_measurement] m76 :: 72,72,72 :: 5 :: 1.501
+[layer_measurement] m76 :: 72,72,72 :: 6 :: 0.867032
+[layer_measurement] m76 :: 72,72,72 :: 7 :: 0.0540599
+[network_measurement] m76 :: 72,72,72 :: 9.1362
+[layer_measurement] m76 :: 72,72,72 :: 0 :: 0.515399
+[layer_measurement] m76 :: 72,72,72 :: 1 :: 0.0647817
+[layer_measurement] m76 :: 72,72,72 :: 2 :: 3.7989
+[layer_measurement] m76 :: 72,72,72 :: 3 :: 0.0514274
+[layer_measurement] m76 :: 72,72,72 :: 4 :: 2.27595
+[layer_measurement] m76 :: 72,72,72 :: 5 :: 1.50424
+[layer_measurement] m76 :: 72,72,72 :: 6 :: 0.864756
+[layer_measurement] m76 :: 72,72,72 :: 7 :: 0.0535865
+[network_measurement] m76 :: 72,72,72 :: 9.13611
+[layer_measurement] m76 :: 72,72,72 :: 0 :: 0.515598
+[layer_measurement] m76 :: 72,72,72 :: 1 :: 0.0666592
+[layer_measurement] m76 :: 72,72,72 :: 2 :: 3.79821
+[layer_measurement] m76 :: 72,72,72 :: 3 :: 0.0513867
+[layer_measurement] m76 :: 72,72,72 :: 4 :: 2.27466
+[layer_measurement] m76 :: 72,72,72 :: 5 :: 1.5102
+[layer_measurement] m76 :: 72,72,72 :: 6 :: 0.866252
+[layer_measurement] m76 :: 72,72,72 :: 7 :: 0.0536508
+[network_measurement] m76 :: 72,72,72 :: 9.14246
+[network_average] m76 :: 72,72,72 :: 9.13826
+[network_throughput] m76 :: 72,72,72 :: 40844.5
+## m76 :: starting benchmark for output size 76,76,76
+[network_requirements] m76 :: 76,76,76 :: RM: 33 MB WM: 6424 MB
+[layer_measurement] m76 :: 76,76,76 :: 0 :: 0.517784
+[layer_measurement] m76 :: 76,76,76 :: 1 :: 0.0706354
+[layer_measurement] m76 :: 76,76,76 :: 2 :: 3.82107
+[layer_measurement] m76 :: 76,76,76 :: 3 :: 0.0551774
+[layer_measurement] m76 :: 76,76,76 :: 4 :: 2.81349
+[layer_measurement] m76 :: 76,76,76 :: 5 :: 1.93687
+[layer_measurement] m76 :: 76,76,76 :: 6 :: 1.02207
+[layer_measurement] m76 :: 76,76,76 :: 7 :: 0.0787453
+[network_measurement] m76 :: 76,76,76 :: 10.3235
+[layer_measurement] m76 :: 76,76,76 :: 0 :: 0.518764
+[layer_measurement] m76 :: 76,76,76 :: 1 :: 0.0788126
+[layer_measurement] m76 :: 76,76,76 :: 2 :: 3.81927
+[layer_measurement] m76 :: 76,76,76 :: 3 :: 0.0551125
+[layer_measurement] m76 :: 76,76,76 :: 4 :: 2.81271
+[layer_measurement] m76 :: 76,76,76 :: 5 :: 1.93832
+[layer_measurement] m76 :: 76,76,76 :: 6 :: 1.03079
+[layer_measurement] m76 :: 76,76,76 :: 7 :: 0.0790365
+[network_measurement] m76 :: 76,76,76 :: 10.3411
+[layer_measurement] m76 :: 76,76,76 :: 0 :: 0.518268
+[layer_measurement] m76 :: 76,76,76 :: 1 :: 0.0688397
+[layer_measurement] m76 :: 76,76,76 :: 2 :: 3.82574
+[layer_measurement] m76 :: 76,76,76 :: 3 :: 0.0568268
+[layer_measurement] m76 :: 76,76,76 :: 4 :: 2.82634
+[layer_measurement] m76 :: 76,76,76 :: 5 :: 1.94063
+[layer_measurement] m76 :: 76,76,76 :: 6 :: 1.03286
+[layer_measurement] m76 :: 76,76,76 :: 7 :: 0.0824961
+[network_measurement] m76 :: 76,76,76 :: 10.3605
+[network_average] m76 :: 76,76,76 :: 10.3417
+[network_throughput] m76 :: 76,76,76 :: 42447.3
+## m76 :: starting benchmark for output size 80,80,80
+[network_requirements] m76 :: 80,80,80 :: RM: 33 MB WM: 6832 MB
+[layer_measurement] m76 :: 80,80,80 :: 0 :: 0.604868
+[layer_measurement] m76 :: 80,80,80 :: 1 :: 0.0733399
+[layer_measurement] m76 :: 80,80,80 :: 2 :: 3.84777
+[layer_measurement] m76 :: 80,80,80 :: 3 :: 0.0591342
+[layer_measurement] m76 :: 80,80,80 :: 4 :: 2.82863
+[layer_measurement] m76 :: 80,80,80 :: 5 :: 1.94508
+[layer_measurement] m76 :: 80,80,80 :: 6 :: 1.02718
+[layer_measurement] m76 :: 80,80,80 :: 7 :: 0.0951538
+[network_measurement] m76 :: 80,80,80 :: 10.4918
+[layer_measurement] m76 :: 80,80,80 :: 0 :: 0.60565
+[layer_measurement] m76 :: 80,80,80 :: 1 :: 0.0736885
+[layer_measurement] m76 :: 80,80,80 :: 2 :: 3.84544
+[layer_measurement] m76 :: 80,80,80 :: 3 :: 0.0591101
+[layer_measurement] m76 :: 80,80,80 :: 4 :: 2.82843
+[layer_measurement] m76 :: 80,80,80 :: 5 :: 1.94382
+[layer_measurement] m76 :: 80,80,80 :: 6 :: 1.03383
+[layer_measurement] m76 :: 80,80,80 :: 7 :: 0.0871953
+[network_measurement] m76 :: 80,80,80 :: 10.4861
+[layer_measurement] m76 :: 80,80,80 :: 0 :: 0.604078
+[layer_measurement] m76 :: 80,80,80 :: 1 :: 0.0733314
+[layer_measurement] m76 :: 80,80,80 :: 2 :: 3.84657
+[layer_measurement] m76 :: 80,80,80 :: 3 :: 0.0590532
+[layer_measurement] m76 :: 80,80,80 :: 4 :: 2.83299
+[layer_measurement] m76 :: 80,80,80 :: 5 :: 1.94537
+[layer_measurement] m76 :: 80,80,80 :: 6 :: 1.03004
+[layer_measurement] m76 :: 80,80,80 :: 7 :: 0.0878036
+[network_measurement] m76 :: 80,80,80 :: 10.4859
+[network_average] m76 :: 80,80,80 :: 10.4879
+[network_throughput] m76 :: 80,80,80 :: 48818
+## m76 :: starting benchmark for output size 84,84,84
+[network_requirements] m76 :: 84,84,84 :: RM: 33 MB WM: 7258 MB
+[layer_measurement] m76 :: 84,84,84 :: 0 :: 0.562338
+[layer_measurement] m76 :: 84,84,84 :: 1 :: 0.0778671
+[layer_measurement] m76 :: 84,84,84 :: 2 :: 4.40735
+[layer_measurement] m76 :: 84,84,84 :: 3 :: 0.0652761
+[layer_measurement] m76 :: 84,84,84 :: 4 :: 2.84901
+[layer_measurement] m76 :: 84,84,84 :: 5 :: 1.94737
+[layer_measurement] m76 :: 84,84,84 :: 6 :: 1.3428
+[layer_measurement] m76 :: 84,84,84 :: 7 :: 0.0926905
+[network_measurement] m76 :: 84,84,84 :: 11.3567
+[layer_measurement] m76 :: 84,84,84 :: 0 :: 0.565171
+[layer_measurement] m76 :: 84,84,84 :: 1 :: 0.0783833
+[layer_measurement] m76 :: 84,84,84 :: 2 :: 4.40886
+[layer_measurement] m76 :: 84,84,84 :: 3 :: 0.0649398
+[layer_measurement] m76 :: 84,84,84 :: 4 :: 2.85474
+[layer_measurement] m76 :: 84,84,84 :: 5 :: 1.95543
+[layer_measurement] m76 :: 84,84,84 :: 6 :: 1.34752
+[layer_measurement] m76 :: 84,84,84 :: 7 :: 0.0987786
+[network_measurement] m76 :: 84,84,84 :: 11.3849
+[layer_measurement] m76 :: 84,84,84 :: 0 :: 0.564755
+[layer_measurement] m76 :: 84,84,84 :: 1 :: 0.0802482
+[layer_measurement] m76 :: 84,84,84 :: 2 :: 4.40813
+[layer_measurement] m76 :: 84,84,84 :: 3 :: 0.0634019
+[layer_measurement] m76 :: 84,84,84 :: 4 :: 2.8465
+[layer_measurement] m76 :: 84,84,84 :: 5 :: 1.94663
+[layer_measurement] m76 :: 84,84,84 :: 6 :: 1.34461
+[layer_measurement] m76 :: 84,84,84 :: 7 :: 0.10254
+[network_measurement] m76 :: 84,84,84 :: 11.3648
+[network_average] m76 :: 84,84,84 :: 11.3688
+[network_throughput] m76 :: 84,84,84 :: 52134.3
+## m76 :: starting benchmark for output size 88,88,88
+[network_requirements] m76 :: 88,88,88 :: RM: 33 MB WM: 8175 MB
+[layer_measurement] m76 :: 88,88,88 :: 0 :: 0.631089
+[layer_measurement] m76 :: 88,88,88 :: 1 :: 0.0852999
+[layer_measurement] m76 :: 88,88,88 :: 2 :: 4.41942
+[layer_measurement] m76 :: 88,88,88 :: 3 :: 0.0683344
+[layer_measurement] m76 :: 88,88,88 :: 4 :: 3.35877
+[layer_measurement] m76 :: 88,88,88 :: 5 :: 1.95809
+[layer_measurement] m76 :: 88,88,88 :: 6 :: 1.34594
+[layer_measurement] m76 :: 88,88,88 :: 7 :: 0.083023
+[network_measurement] m76 :: 88,88,88 :: 11.9597
+[layer_measurement] m76 :: 88,88,88 :: 0 :: 0.630567
+[layer_measurement] m76 :: 88,88,88 :: 1 :: 0.082933
+[layer_measurement] m76 :: 88,88,88 :: 2 :: 4.41763
+[layer_measurement] m76 :: 88,88,88 :: 3 :: 0.0679199
+[layer_measurement] m76 :: 88,88,88 :: 4 :: 3.35869
+[layer_measurement] m76 :: 88,88,88 :: 5 :: 1.96394
+[layer_measurement] m76 :: 88,88,88 :: 6 :: 1.35139
+[layer_measurement] m76 :: 88,88,88 :: 7 :: 0.0836312
+[network_measurement] m76 :: 88,88,88 :: 11.967
+[layer_measurement] m76 :: 88,88,88 :: 0 :: 0.634646
+[layer_measurement] m76 :: 88,88,88 :: 1 :: 0.0835851
+[layer_measurement] m76 :: 88,88,88 :: 2 :: 4.42242
+[layer_measurement] m76 :: 88,88,88 :: 3 :: 0.0681646
+[layer_measurement] m76 :: 88,88,88 :: 4 :: 3.36562
+[layer_measurement] m76 :: 88,88,88 :: 5 :: 1.96086
+[layer_measurement] m76 :: 88,88,88 :: 6 :: 1.35579
+[layer_measurement] m76 :: 88,88,88 :: 7 :: 0.0837083
+[network_measurement] m76 :: 88,88,88 :: 11.9829
+[network_average] m76 :: 88,88,88 :: 11.9699
+[network_throughput] m76 :: 88,88,88 :: 56932.2
+## m76 :: starting benchmark for output size 92,92,92
+[network_requirements] m76 :: 92,92,92 :: RM: 33 MB WM: 8323 MB
+[layer_measurement] m76 :: 92,92,92 :: 0 :: 0.648478
+[layer_measurement] m76 :: 92,92,92 :: 1 :: 0.0878651
+[layer_measurement] m76 :: 92,92,92 :: 2 :: 5.23925
+[layer_measurement] m76 :: 92,92,92 :: 3 :: 0.0725611
+[layer_measurement] m76 :: 92,92,92 :: 4 :: 3.38132
+[layer_measurement] m76 :: 92,92,92 :: 5 :: 2.26872
+[layer_measurement] m76 :: 92,92,92 :: 6 :: 1.3555
+[layer_measurement] m76 :: 92,92,92 :: 7 :: 0.0892103
+[network_measurement] m76 :: 92,92,92 :: 13.1556
+[layer_measurement] m76 :: 92,92,92 :: 0 :: 0.650855
+[layer_measurement] m76 :: 92,92,92 :: 1 :: 0.0882327
+[layer_measurement] m76 :: 92,92,92 :: 2 :: 5.2403
+[layer_measurement] m76 :: 92,92,92 :: 3 :: 0.0729894
+[layer_measurement] m76 :: 92,92,92 :: 4 :: 3.38904
+[layer_measurement] m76 :: 92,92,92 :: 5 :: 2.2763
+[layer_measurement] m76 :: 92,92,92 :: 6 :: 1.36071
+[layer_measurement] m76 :: 92,92,92 :: 7 :: 0.0884763
+[network_measurement] m76 :: 92,92,92 :: 13.1782
+[layer_measurement] m76 :: 92,92,92 :: 0 :: 0.64877
+[layer_measurement] m76 :: 92,92,92 :: 1 :: 0.0879238
+[layer_measurement] m76 :: 92,92,92 :: 2 :: 5.24372
+[layer_measurement] m76 :: 92,92,92 :: 3 :: 0.0745972
+[layer_measurement] m76 :: 92,92,92 :: 4 :: 3.38315
+[layer_measurement] m76 :: 92,92,92 :: 5 :: 2.27064
+[layer_measurement] m76 :: 92,92,92 :: 6 :: 1.36058
+[layer_measurement] m76 :: 92,92,92 :: 7 :: 0.0884786
+[network_measurement] m76 :: 92,92,92 :: 13.1664
+[network_average] m76 :: 92,92,92 :: 13.1667
+[network_throughput] m76 :: 92,92,92 :: 59140.6
+## m76 :: starting benchmark for output size 96,96,96
+[network_requirements] m76 :: 96,96,96 :: RM: 33 MB WM: 8978 MB
+[layer_measurement] m76 :: 96,96,96 :: 0 :: 0.694799
+[layer_measurement] m76 :: 96,96,96 :: 1 :: 0.09584
+[layer_measurement] m76 :: 96,96,96 :: 2 :: 5.27908
+[layer_measurement] m76 :: 96,96,96 :: 3 :: 0.07604
+[layer_measurement] m76 :: 96,96,96 :: 4 :: 3.38474
+[layer_measurement] m76 :: 96,96,96 :: 5 :: 2.28291
+[layer_measurement] m76 :: 96,96,96 :: 6 :: 1.50338
+[layer_measurement] m76 :: 96,96,96 :: 7 :: 0.0897086
+[network_measurement] m76 :: 96,96,96 :: 13.418
+[layer_measurement] m76 :: 96,96,96 :: 0 :: 0.695799
+[layer_measurement] m76 :: 96,96,96 :: 1 :: 0.0938732
+[layer_measurement] m76 :: 96,96,96 :: 2 :: 5.27902
+[layer_measurement] m76 :: 96,96,96 :: 3 :: 0.0891809
+[layer_measurement] m76 :: 96,96,96 :: 4 :: 3.39492
+[layer_measurement] m76 :: 96,96,96 :: 5 :: 2.28036
+[layer_measurement] m76 :: 96,96,96 :: 6 :: 1.50256
+[layer_measurement] m76 :: 96,96,96 :: 7 :: 0.095582
+[network_measurement] m76 :: 96,96,96 :: 13.4438
+[layer_measurement] m76 :: 96,96,96 :: 0 :: 0.69647
+[layer_measurement] m76 :: 96,96,96 :: 1 :: 0.0932903
+[layer_measurement] m76 :: 96,96,96 :: 2 :: 5.27951
+[layer_measurement] m76 :: 96,96,96 :: 3 :: 0.0760935
+[layer_measurement] m76 :: 96,96,96 :: 4 :: 3.39722
+[layer_measurement] m76 :: 96,96,96 :: 5 :: 2.27835
+[layer_measurement] m76 :: 96,96,96 :: 6 :: 1.49936
+[layer_measurement] m76 :: 96,96,96 :: 7 :: 0.0898536
+[network_measurement] m76 :: 96,96,96 :: 13.4187
+[network_average] m76 :: 96,96,96 :: 13.4268
+[network_throughput] m76 :: 96,96,96 :: 65893.1
+## m76 :: starting benchmark for output size 100,100,100
+[network_requirements] m76 :: 100,100,100 :: RM: 33 MB WM: 9138 MB
+[layer_measurement] m76 :: 100,100,100 :: 0 :: 0.714551
+[layer_measurement] m76 :: 100,100,100 :: 1 :: 0.0985367
+[layer_measurement] m76 :: 100,100,100 :: 2 :: 5.31507
+[layer_measurement] m76 :: 100,100,100 :: 3 :: 0.0814417
+[layer_measurement] m76 :: 100,100,100 :: 4 :: 3.69884
+[layer_measurement] m76 :: 100,100,100 :: 5 :: 2.81781
+[layer_measurement] m76 :: 100,100,100 :: 6 :: 1.93701
+[layer_measurement] m76 :: 100,100,100 :: 7 :: 0.108295
+[network_measurement] m76 :: 100,100,100 :: 14.785
+[layer_measurement] m76 :: 100,100,100 :: 0 :: 0.713714
+[layer_measurement] m76 :: 100,100,100 :: 1 :: 0.0986779
+[layer_measurement] m76 :: 100,100,100 :: 2 :: 5.31769
+[layer_measurement] m76 :: 100,100,100 :: 3 :: 0.0816155
+[layer_measurement] m76 :: 100,100,100 :: 4 :: 3.69751
+[layer_measurement] m76 :: 100,100,100 :: 5 :: 2.81673
+[layer_measurement] m76 :: 100,100,100 :: 6 :: 1.93177
+[layer_measurement] m76 :: 100,100,100 :: 7 :: 0.116556
+[network_measurement] m76 :: 100,100,100 :: 14.7895
+[layer_measurement] m76 :: 100,100,100 :: 0 :: 0.71615
+[layer_measurement] m76 :: 100,100,100 :: 1 :: 0.0986942
+[layer_measurement] m76 :: 100,100,100 :: 2 :: 5.33026
+[layer_measurement] m76 :: 100,100,100 :: 3 :: 0.0837254
+[layer_measurement] m76 :: 100,100,100 :: 4 :: 3.69363
+[layer_measurement] m76 :: 100,100,100 :: 5 :: 2.81341
+[layer_measurement] m76 :: 100,100,100 :: 6 :: 1.93191
+[layer_measurement] m76 :: 100,100,100 :: 7 :: 0.107711
+[network_measurement] m76 :: 100,100,100 :: 14.7853
+[network_average] m76 :: 100,100,100 :: 14.7866
+[network_throughput] m76 :: 100,100,100 :: 67628.9
+## m76 :: starting benchmark for output size 104,104,104
+[network_requirements] m76 :: 104,104,104 :: RM: 33 MB WM: 10017 MB
+[network_information] m76 :: 104,104,104 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 108,108,108
+[network_requirements] m76 :: 108,108,108 :: RM: 33 MB WM: 10190 MB
+[network_information] m76 :: 108,108,108 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 112,112,112
+[network_requirements] m76 :: 112,112,112 :: RM: 33 MB WM: 11955 MB
+[network_information] m76 :: 112,112,112 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 116,116,116
+[network_requirements] m76 :: 116,116,116 :: RM: 33 MB WM: 12141 MB
+[network_information] m76 :: 116,116,116 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 120,120,120
+[network_requirements] m76 :: 120,120,120 :: RM: 33 MB WM: 12333 MB
+[network_information] m76 :: 120,120,120 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 124,124,124
+[network_requirements] m76 :: 124,124,124 :: RM: 33 MB WM: 12532 MB
+[network_information] m76 :: 124,124,124 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 128,128,128
+[network_requirements] m76 :: 128,128,128 :: RM: 33 MB WM: 13432 MB
+[network_information] m76 :: 128,128,128 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 132,132,132
+[network_requirements] m76 :: 132,132,132 :: RM: 33 MB WM: 14055 MB
+[network_information] m76 :: 132,132,132 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 136,136,136
+[network_requirements] m76 :: 136,136,136 :: RM: 33 MB WM: 14507 MB
+[network_information] m76 :: 136,136,136 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 140,140,140
+[network_requirements] m76 :: 140,140,140 :: RM: 33 MB WM: 15209 MB
+[network_information] m76 :: 140,140,140 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 144,144,144
+[network_requirements] m76 :: 144,144,144 :: RM: 33 MB WM: 17226 MB
+[network_information] m76 :: 144,144,144 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 148,148,148
+[network_requirements] m76 :: 148,148,148 :: RM: 33 MB WM: 17468 MB
+[network_information] m76 :: 148,148,148 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 152,152,152
+[network_requirements] m76 :: 152,152,152 :: RM: 33 MB WM: 17717 MB
+[network_information] m76 :: 152,152,152 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 156,156,156
+[network_requirements] m76 :: 156,156,156 :: RM: 33 MB WM: 19366 MB
+[network_information] m76 :: 156,156,156 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 160,160,160
+[network_requirements] m76 :: 160,160,160 :: RM: 33 MB WM: 19631 MB
+[network_information] m76 :: 160,160,160 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 164,164,164
+[network_requirements] m76 :: 164,164,164 :: RM: 33 MB WM: 19904 MB
+[network_information] m76 :: 164,164,164 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 168,168,168
+[network_requirements] m76 :: 168,168,168 :: RM: 33 MB WM: 21372 MB
+[network_information] m76 :: 168,168,168 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 172,172,172
+[network_requirements] m76 :: 172,172,172 :: RM: 33 MB WM: 21661 MB
+[network_information] m76 :: 172,172,172 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 176,176,176
+[network_requirements] m76 :: 176,176,176 :: RM: 33 MB WM: 22893 MB
+[network_information] m76 :: 176,176,176 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 180,180,180
+[network_requirements] m76 :: 180,180,180 :: RM: 33 MB WM: 24173 MB
+[network_information] m76 :: 180,180,180 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 184,184,184
+[network_requirements] m76 :: 184,184,184 :: RM: 33 MB WM: 24487 MB
+[network_information] m76 :: 184,184,184 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 188,188,188
+[network_requirements] m76 :: 188,188,188 :: RM: 33 MB WM: 27547 MB
+[network_information] m76 :: 188,188,188 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 192,192,192
+[network_exception] m76 :: 192,192,192 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 196,196,196
+[network_exception] m76 :: 196,196,196 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 200,200,200
+[network_exception] m76 :: 200,200,200 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 204,204,204
+[network_exception] m76 :: 204,204,204 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 208,208,208
+[network_exception] m76 :: 208,208,208 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 212,212,212
+[network_exception] m76 :: 212,212,212 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 216,216,216
+[network_exception] m76 :: 216,216,216 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 220,220,220
+[network_exception] m76 :: 220,220,220 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 224,224,224
+[network_exception] m76 :: 224,224,224 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 228,228,228
+[network_exception] m76 :: 228,228,228 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 232,232,232
+[network_exception] m76 :: 232,232,232 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 236,236,236
+[network_exception] m76 :: 236,236,236 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 240,240,240
+[network_exception] m76 :: 240,240,240 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 244,244,244
+[network_exception] m76 :: 244,244,244 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 248,248,248
+[network_exception] m76 :: 248,248,248 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 252,252,252
+[network_exception] m76 :: 252,252,252 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 256,256,256
+[network_exception] m76 :: 256,256,256 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 260,260,260
+[network_exception] m76 :: 260,260,260 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 264,264,264
+[network_exception] m76 :: 264,264,264 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 268,268,268
+[network_exception] m76 :: 268,268,268 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 272,272,272
+[network_exception] m76 :: 272,272,272 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 276,276,276
+[network_exception] m76 :: 276,276,276 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 280,280,280
+[network_exception] m76 :: 280,280,280 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 284,284,284
+[network_exception] m76 :: 284,284,284 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 288,288,288
+[network_exception] m76 :: 288,288,288 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 292,292,292
+[network_exception] m76 :: 292,292,292 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 296,296,296
+[network_exception] m76 :: 296,296,296 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 300,300,300
+[network_exception] m76 :: 300,300,300 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 304,304,304
+[network_exception] m76 :: 304,304,304 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 308,308,308
+[network_exception] m76 :: 308,308,308 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 312,312,312
+[network_exception] m76 :: 312,312,312 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 316,316,316
+[network_exception] m76 :: 316,316,316 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 320,320,320
+[network_exception] m76 :: 320,320,320 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 324,324,324
+[network_exception] m76 :: 324,324,324 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 328,328,328
+[network_exception] m76 :: 328,328,328 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 332,332,332
+[network_exception] m76 :: 332,332,332 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 336,336,336
+[network_exception] m76 :: 336,336,336 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 340,340,340
+[network_exception] m76 :: 340,340,340 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 344,344,344
+[network_exception] m76 :: 344,344,344 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 348,348,348
+[network_exception] m76 :: 348,348,348 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 352,352,352
+[network_exception] m76 :: 352,352,352 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 356,356,356
+[network_exception] m76 :: 356,356,356 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 360,360,360
+[network_exception] m76 :: 360,360,360 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 364,364,364
+[network_exception] m76 :: 364,364,364 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 368,368,368
+[network_exception] m76 :: 368,368,368 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 372,372,372
+[network_exception] m76 :: 372,372,372 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 376,376,376
+[network_exception] m76 :: 376,376,376 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 380,380,380
+[network_exception] m76 :: 380,380,380 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 384,384,384
+[network_exception] m76 :: 384,384,384 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 388,388,388
+[network_exception] m76 :: 388,388,388 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 392,392,392
+[network_exception] m76 :: 392,392,392 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 396,396,396
+[network_exception] m76 :: 396,396,396 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED

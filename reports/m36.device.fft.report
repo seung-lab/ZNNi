@@ -1,0 +1,705 @@
+--------------------------------------------
+
+## m36 :: starting benchmark for output size 8,8,8
+[network_requirements] m36 :: 8,8,8 :: RM: 3 MB WM: 845 MB
+[layer_measurement] m36 :: 8,8,8 :: 0 :: 0.0609614
+[layer_measurement] m36 :: 8,8,8 :: 1 :: 0.00865837
+[layer_measurement] m36 :: 8,8,8 :: 2 :: 0.39934
+[layer_measurement] m36 :: 8,8,8 :: 3 :: 0.00699378
+[layer_measurement] m36 :: 8,8,8 :: 4 :: 0.35492
+[layer_measurement] m36 :: 8,8,8 :: 5 :: 0.00493241
+[layer_measurement] m36 :: 8,8,8 :: 6 :: 0.69466
+[layer_measurement] m36 :: 8,8,8 :: 7 :: 0.608757
+[layer_measurement] m36 :: 8,8,8 :: 8 :: 0.613644
+[layer_measurement] m36 :: 8,8,8 :: 9 :: 0.136606
+[network_measurement] m36 :: 8,8,8 :: 2.89047
+[layer_measurement] m36 :: 8,8,8 :: 0 :: 0.0606676
+[layer_measurement] m36 :: 8,8,8 :: 1 :: 0.00813477
+[layer_measurement] m36 :: 8,8,8 :: 2 :: 0.397621
+[layer_measurement] m36 :: 8,8,8 :: 3 :: 0.00692606
+[layer_measurement] m36 :: 8,8,8 :: 4 :: 0.351085
+[layer_measurement] m36 :: 8,8,8 :: 5 :: 0.00487633
+[layer_measurement] m36 :: 8,8,8 :: 6 :: 0.690912
+[layer_measurement] m36 :: 8,8,8 :: 7 :: 0.608235
+[layer_measurement] m36 :: 8,8,8 :: 8 :: 0.673387
+[layer_measurement] m36 :: 8,8,8 :: 9 :: 0.176082
+[network_measurement] m36 :: 8,8,8 :: 2.97855
+[layer_measurement] m36 :: 8,8,8 :: 0 :: 0.0620117
+[layer_measurement] m36 :: 8,8,8 :: 1 :: 0.00823851
+[layer_measurement] m36 :: 8,8,8 :: 2 :: 0.39913
+[layer_measurement] m36 :: 8,8,8 :: 3 :: 0.00739542
+[layer_measurement] m36 :: 8,8,8 :: 4 :: 0.36278
+[layer_measurement] m36 :: 8,8,8 :: 5 :: 0.00498228
+[layer_measurement] m36 :: 8,8,8 :: 6 :: 0.735747
+[layer_measurement] m36 :: 8,8,8 :: 7 :: 0.622371
+[layer_measurement] m36 :: 8,8,8 :: 8 :: 0.596542
+[layer_measurement] m36 :: 8,8,8 :: 9 :: 0.131865
+[network_measurement] m36 :: 8,8,8 :: 2.93211
+[network_average] m36 :: 8,8,8 :: 2.93371
+[network_throughput] m36 :: 8,8,8 :: 174.523
+## m36 :: starting benchmark for output size 16,16,16
+[network_requirements] m36 :: 16,16,16 :: RM: 3 MB WM: 982 MB
+[layer_measurement] m36 :: 16,16,16 :: 0 :: 0.0734729
+[layer_measurement] m36 :: 16,16,16 :: 1 :: 0.0104313
+[layer_measurement] m36 :: 16,16,16 :: 2 :: 0.523567
+[layer_measurement] m36 :: 16,16,16 :: 3 :: 0.00912413
+[layer_measurement] m36 :: 16,16,16 :: 4 :: 0.473583
+[layer_measurement] m36 :: 16,16,16 :: 5 :: 0.00647046
+[layer_measurement] m36 :: 16,16,16 :: 6 :: 0.738972
+[layer_measurement] m36 :: 16,16,16 :: 7 :: 0.672856
+[layer_measurement] m36 :: 16,16,16 :: 8 :: 0.571587
+[layer_measurement] m36 :: 16,16,16 :: 9 :: 0.130746
+[network_measurement] m36 :: 16,16,16 :: 3.21163
+[layer_measurement] m36 :: 16,16,16 :: 0 :: 0.0734548
+[layer_measurement] m36 :: 16,16,16 :: 1 :: 0.0104032
+[layer_measurement] m36 :: 16,16,16 :: 2 :: 0.523514
+[layer_measurement] m36 :: 16,16,16 :: 3 :: 0.00965224
+[layer_measurement] m36 :: 16,16,16 :: 4 :: 0.477113
+[layer_measurement] m36 :: 16,16,16 :: 5 :: 0.00645994
+[layer_measurement] m36 :: 16,16,16 :: 6 :: 0.757804
+[layer_measurement] m36 :: 16,16,16 :: 7 :: 0.661317
+[layer_measurement] m36 :: 16,16,16 :: 8 :: 0.713985
+[layer_measurement] m36 :: 16,16,16 :: 9 :: 0.15457
+[network_measurement] m36 :: 16,16,16 :: 3.38939
+[layer_measurement] m36 :: 16,16,16 :: 0 :: 0.0736698
+[layer_measurement] m36 :: 16,16,16 :: 1 :: 0.0104294
+[layer_measurement] m36 :: 16,16,16 :: 2 :: 0.523705
+[layer_measurement] m36 :: 16,16,16 :: 3 :: 0.00911342
+[layer_measurement] m36 :: 16,16,16 :: 4 :: 0.473638
+[layer_measurement] m36 :: 16,16,16 :: 5 :: 0.00639828
+[layer_measurement] m36 :: 16,16,16 :: 6 :: 0.737545
+[layer_measurement] m36 :: 16,16,16 :: 7 :: 0.672448
+[layer_measurement] m36 :: 16,16,16 :: 8 :: 0.570862
+[layer_measurement] m36 :: 16,16,16 :: 9 :: 0.130222
+[network_measurement] m36 :: 16,16,16 :: 3.2088
+[network_average] m36 :: 16,16,16 :: 3.26994
+[network_throughput] m36 :: 16,16,16 :: 1252.62
+## m36 :: starting benchmark for output size 24,24,24
+[network_requirements] m36 :: 24,24,24 :: RM: 3 MB WM: 1220 MB
+[layer_measurement] m36 :: 24,24,24 :: 0 :: 0.092651
+[layer_measurement] m36 :: 24,24,24 :: 1 :: 0.0130513
+[layer_measurement] m36 :: 24,24,24 :: 2 :: 0.671011
+[layer_measurement] m36 :: 24,24,24 :: 3 :: 0.0120539
+[layer_measurement] m36 :: 24,24,24 :: 4 :: 0.558301
+[layer_measurement] m36 :: 24,24,24 :: 5 :: 0.00835564
+[layer_measurement] m36 :: 24,24,24 :: 6 :: 0.990692
+[layer_measurement] m36 :: 24,24,24 :: 7 :: 0.739462
+[layer_measurement] m36 :: 24,24,24 :: 8 :: 0.62115
+[layer_measurement] m36 :: 24,24,24 :: 9 :: 0.143777
+[network_measurement] m36 :: 24,24,24 :: 3.85186
+[layer_measurement] m36 :: 24,24,24 :: 0 :: 0.0932114
+[layer_measurement] m36 :: 24,24,24 :: 1 :: 0.0130668
+[layer_measurement] m36 :: 24,24,24 :: 2 :: 0.670751
+[layer_measurement] m36 :: 24,24,24 :: 3 :: 0.0114576
+[layer_measurement] m36 :: 24,24,24 :: 4 :: 0.563798
+[layer_measurement] m36 :: 24,24,24 :: 5 :: 0.00835976
+[layer_measurement] m36 :: 24,24,24 :: 6 :: 0.968437
+[layer_measurement] m36 :: 24,24,24 :: 7 :: 0.691464
+[layer_measurement] m36 :: 24,24,24 :: 8 :: 0.799732
+[layer_measurement] m36 :: 24,24,24 :: 9 :: 0.146387
+[network_measurement] m36 :: 24,24,24 :: 3.96793
+[layer_measurement] m36 :: 24,24,24 :: 0 :: 0.0929625
+[layer_measurement] m36 :: 24,24,24 :: 1 :: 0.0130337
+[layer_measurement] m36 :: 24,24,24 :: 2 :: 0.669937
+[layer_measurement] m36 :: 24,24,24 :: 3 :: 0.0114254
+[layer_measurement] m36 :: 24,24,24 :: 4 :: 0.552677
+[layer_measurement] m36 :: 24,24,24 :: 5 :: 0.00821445
+[layer_measurement] m36 :: 24,24,24 :: 6 :: 0.900319
+[layer_measurement] m36 :: 24,24,24 :: 7 :: 0.786794
+[layer_measurement] m36 :: 24,24,24 :: 8 :: 0.68351
+[layer_measurement] m36 :: 24,24,24 :: 9 :: 0.143855
+[network_measurement] m36 :: 24,24,24 :: 3.8637
+[network_average] m36 :: 24,24,24 :: 3.8945
+[network_throughput] m36 :: 24,24,24 :: 3549.62
+## m36 :: starting benchmark for output size 32,32,32
+[network_requirements] m36 :: 32,32,32 :: RM: 3 MB WM: 1600 MB
+[layer_measurement] m36 :: 32,32,32 :: 0 :: 0.121938
+[layer_measurement] m36 :: 32,32,32 :: 1 :: 0.0169651
+[layer_measurement] m36 :: 32,32,32 :: 2 :: 0.905681
+[layer_measurement] m36 :: 32,32,32 :: 3 :: 0.0142753
+[layer_measurement] m36 :: 32,32,32 :: 4 :: 0.683488
+[layer_measurement] m36 :: 32,32,32 :: 5 :: 0.0107624
+[layer_measurement] m36 :: 32,32,32 :: 6 :: 0.937146
+[layer_measurement] m36 :: 32,32,32 :: 7 :: 0.736667
+[layer_measurement] m36 :: 32,32,32 :: 8 :: 0.672044
+[layer_measurement] m36 :: 32,32,32 :: 9 :: 0.109853
+[network_measurement] m36 :: 32,32,32 :: 4.21048
+[layer_measurement] m36 :: 32,32,32 :: 0 :: 0.121889
+[layer_measurement] m36 :: 32,32,32 :: 1 :: 0.016223
+[layer_measurement] m36 :: 32,32,32 :: 2 :: 0.905858
+[layer_measurement] m36 :: 32,32,32 :: 3 :: 0.0143361
+[layer_measurement] m36 :: 32,32,32 :: 4 :: 0.676936
+[layer_measurement] m36 :: 32,32,32 :: 5 :: 0.0106945
+[layer_measurement] m36 :: 32,32,32 :: 6 :: 0.92038
+[layer_measurement] m36 :: 32,32,32 :: 7 :: 0.73625
+[layer_measurement] m36 :: 32,32,32 :: 8 :: 0.673278
+[layer_measurement] m36 :: 32,32,32 :: 9 :: 0.10982
+[network_measurement] m36 :: 32,32,32 :: 4.18691
+[layer_measurement] m36 :: 32,32,32 :: 0 :: 0.122057
+[layer_measurement] m36 :: 32,32,32 :: 1 :: 0.0162314
+[layer_measurement] m36 :: 32,32,32 :: 2 :: 0.905357
+[layer_measurement] m36 :: 32,32,32 :: 3 :: 0.0143213
+[layer_measurement] m36 :: 32,32,32 :: 4 :: 0.676881
+[layer_measurement] m36 :: 32,32,32 :: 5 :: 0.01117
+[layer_measurement] m36 :: 32,32,32 :: 6 :: 0.972639
+[layer_measurement] m36 :: 32,32,32 :: 7 :: 0.716899
+[layer_measurement] m36 :: 32,32,32 :: 8 :: 0.661285
+[layer_measurement] m36 :: 32,32,32 :: 9 :: 0.11247
+[network_measurement] m36 :: 32,32,32 :: 4.21078
+[network_average] m36 :: 32,32,32 :: 4.20272
+[network_throughput] m36 :: 32,32,32 :: 7796.85
+## m36 :: starting benchmark for output size 40,40,40
+[network_requirements] m36 :: 40,40,40 :: RM: 3 MB WM: 2025 MB
+[layer_measurement] m36 :: 40,40,40 :: 0 :: 0.165671
+[layer_measurement] m36 :: 40,40,40 :: 1 :: 0.0197155
+[layer_measurement] m36 :: 40,40,40 :: 2 :: 1.06832
+[layer_measurement] m36 :: 40,40,40 :: 3 :: 0.0175206
+[layer_measurement] m36 :: 40,40,40 :: 4 :: 0.859266
+[layer_measurement] m36 :: 40,40,40 :: 5 :: 0.0134487
+[layer_measurement] m36 :: 40,40,40 :: 6 :: 1.04955
+[layer_measurement] m36 :: 40,40,40 :: 7 :: 0.900814
+[layer_measurement] m36 :: 40,40,40 :: 8 :: 0.68893
+[layer_measurement] m36 :: 40,40,40 :: 9 :: 0.128465
+[network_measurement] m36 :: 40,40,40 :: 4.91361
+[layer_measurement] m36 :: 40,40,40 :: 0 :: 0.16548
+[layer_measurement] m36 :: 40,40,40 :: 1 :: 0.0196786
+[layer_measurement] m36 :: 40,40,40 :: 2 :: 1.06862
+[layer_measurement] m36 :: 40,40,40 :: 3 :: 0.017617
+[layer_measurement] m36 :: 40,40,40 :: 4 :: 0.859476
+[layer_measurement] m36 :: 40,40,40 :: 5 :: 0.0134286
+[layer_measurement] m36 :: 40,40,40 :: 6 :: 1.16437
+[layer_measurement] m36 :: 40,40,40 :: 7 :: 0.920993
+[layer_measurement] m36 :: 40,40,40 :: 8 :: 0.754742
+[layer_measurement] m36 :: 40,40,40 :: 9 :: 0.164961
+[network_measurement] m36 :: 40,40,40 :: 5.1513
+[layer_measurement] m36 :: 40,40,40 :: 0 :: 0.166713
+[layer_measurement] m36 :: 40,40,40 :: 1 :: 0.0198506
+[layer_measurement] m36 :: 40,40,40 :: 2 :: 1.06975
+[layer_measurement] m36 :: 40,40,40 :: 3 :: 0.0175181
+[layer_measurement] m36 :: 40,40,40 :: 4 :: 0.868111
+[layer_measurement] m36 :: 40,40,40 :: 5 :: 0.0140507
+[layer_measurement] m36 :: 40,40,40 :: 6 :: 1.1308
+[layer_measurement] m36 :: 40,40,40 :: 7 :: 0.900621
+[layer_measurement] m36 :: 40,40,40 :: 8 :: 0.689385
+[layer_measurement] m36 :: 40,40,40 :: 9 :: 0.128682
+[network_measurement] m36 :: 40,40,40 :: 5.0074
+[network_average] m36 :: 40,40,40 :: 5.0241
+[network_throughput] m36 :: 40,40,40 :: 12738.6
+## m36 :: starting benchmark for output size 48,48,48
+[network_requirements] m36 :: 48,48,48 :: RM: 3 MB WM: 2453 MB
+[layer_measurement] m36 :: 48,48,48 :: 0 :: 0.191873
+[layer_measurement] m36 :: 48,48,48 :: 1 :: 0.0245832
+[layer_measurement] m36 :: 48,48,48 :: 2 :: 1.44268
+[layer_measurement] m36 :: 48,48,48 :: 3 :: 0.0213298
+[layer_measurement] m36 :: 48,48,48 :: 4 :: 1.03737
+[layer_measurement] m36 :: 48,48,48 :: 5 :: 0.0169142
+[layer_measurement] m36 :: 48,48,48 :: 6 :: 1.07672
+[layer_measurement] m36 :: 48,48,48 :: 7 :: 0.921842
+[layer_measurement] m36 :: 48,48,48 :: 8 :: 0.737891
+[layer_measurement] m36 :: 48,48,48 :: 9 :: 0.134112
+[network_measurement] m36 :: 48,48,48 :: 5.60826
+[layer_measurement] m36 :: 48,48,48 :: 0 :: 0.191234
+[layer_measurement] m36 :: 48,48,48 :: 1 :: 0.0237088
+[layer_measurement] m36 :: 48,48,48 :: 2 :: 1.44267
+[layer_measurement] m36 :: 48,48,48 :: 3 :: 0.0221174
+[layer_measurement] m36 :: 48,48,48 :: 4 :: 1.03302
+[layer_measurement] m36 :: 48,48,48 :: 5 :: 0.0168604
+[layer_measurement] m36 :: 48,48,48 :: 6 :: 1.06204
+[layer_measurement] m36 :: 48,48,48 :: 7 :: 0.903024
+[layer_measurement] m36 :: 48,48,48 :: 8 :: 0.719735
+[layer_measurement] m36 :: 48,48,48 :: 9 :: 0.134821
+[network_measurement] m36 :: 48,48,48 :: 5.55142
+[layer_measurement] m36 :: 48,48,48 :: 0 :: 0.191257
+[layer_measurement] m36 :: 48,48,48 :: 1 :: 0.0236543
+[layer_measurement] m36 :: 48,48,48 :: 2 :: 1.44173
+[layer_measurement] m36 :: 48,48,48 :: 3 :: 0.0213405
+[layer_measurement] m36 :: 48,48,48 :: 4 :: 1.02893
+[layer_measurement] m36 :: 48,48,48 :: 5 :: 0.0168763
+[layer_measurement] m36 :: 48,48,48 :: 6 :: 1.062
+[layer_measurement] m36 :: 48,48,48 :: 7 :: 0.902579
+[layer_measurement] m36 :: 48,48,48 :: 8 :: 0.816063
+[layer_measurement] m36 :: 48,48,48 :: 9 :: 0.138101
+[network_measurement] m36 :: 48,48,48 :: 5.64454
+[network_average] m36 :: 48,48,48 :: 5.60141
+[network_throughput] m36 :: 48,48,48 :: 19743.6
+## m36 :: starting benchmark for output size 56,56,56
+[network_requirements] m36 :: 56,56,56 :: RM: 3 MB WM: 2582 MB
+[layer_measurement] m36 :: 56,56,56 :: 0 :: 0.19506
+[layer_measurement] m36 :: 56,56,56 :: 1 :: 0.0293431
+[layer_measurement] m36 :: 56,56,56 :: 2 :: 1.46294
+[layer_measurement] m36 :: 56,56,56 :: 3 :: 0.0254564
+[layer_measurement] m36 :: 56,56,56 :: 4 :: 1.35175
+[layer_measurement] m36 :: 56,56,56 :: 5 :: 0.0203119
+[layer_measurement] m36 :: 56,56,56 :: 6 :: 1.24079
+[layer_measurement] m36 :: 56,56,56 :: 7 :: 1.09169
+[layer_measurement] m36 :: 56,56,56 :: 8 :: 0.921769
+[layer_measurement] m36 :: 56,56,56 :: 9 :: 0.213138
+[network_measurement] m36 :: 56,56,56 :: 6.55654
+[layer_measurement] m36 :: 56,56,56 :: 0 :: 0.19591
+[layer_measurement] m36 :: 56,56,56 :: 1 :: 0.0284607
+[layer_measurement] m36 :: 56,56,56 :: 2 :: 1.46333
+[layer_measurement] m36 :: 56,56,56 :: 3 :: 0.0263118
+[layer_measurement] m36 :: 56,56,56 :: 4 :: 1.35855
+[layer_measurement] m36 :: 56,56,56 :: 5 :: 0.0203864
+[layer_measurement] m36 :: 56,56,56 :: 6 :: 1.18132
+[layer_measurement] m36 :: 56,56,56 :: 7 :: 1.07733
+[layer_measurement] m36 :: 56,56,56 :: 8 :: 0.92146
+[layer_measurement] m36 :: 56,56,56 :: 9 :: 0.143403
+[network_measurement] m36 :: 56,56,56 :: 6.42086
+[layer_measurement] m36 :: 56,56,56 :: 0 :: 0.195072
+[layer_measurement] m36 :: 56,56,56 :: 1 :: 0.028292
+[layer_measurement] m36 :: 56,56,56 :: 2 :: 1.46376
+[layer_measurement] m36 :: 56,56,56 :: 3 :: 0.0254993
+[layer_measurement] m36 :: 56,56,56 :: 4 :: 1.35493
+[layer_measurement] m36 :: 56,56,56 :: 5 :: 0.0204209
+[layer_measurement] m36 :: 56,56,56 :: 6 :: 1.18062
+[layer_measurement] m36 :: 56,56,56 :: 7 :: 1.07745
+[layer_measurement] m36 :: 56,56,56 :: 8 :: 1.04234
+[layer_measurement] m36 :: 56,56,56 :: 9 :: 0.184428
+[network_measurement] m36 :: 56,56,56 :: 6.57571
+[network_average] m36 :: 56,56,56 :: 6.51771
+[network_throughput] m36 :: 56,56,56 :: 26944.5
+## m36 :: starting benchmark for output size 64,64,64
+[network_requirements] m36 :: 64,64,64 :: RM: 3 MB WM: 3120 MB
+[layer_measurement] m36 :: 64,64,64 :: 0 :: 0.245637
+[layer_measurement] m36 :: 64,64,64 :: 1 :: 0.0347785
+[layer_measurement] m36 :: 64,64,64 :: 2 :: 1.9687
+[layer_measurement] m36 :: 64,64,64 :: 3 :: 0.0302342
+[layer_measurement] m36 :: 64,64,64 :: 4 :: 1.37919
+[layer_measurement] m36 :: 64,64,64 :: 5 :: 0.0235474
+[layer_measurement] m36 :: 64,64,64 :: 6 :: 1.34964
+[layer_measurement] m36 :: 64,64,64 :: 7 :: 1.07087
+[layer_measurement] m36 :: 64,64,64 :: 8 :: 0.92377
+[layer_measurement] m36 :: 64,64,64 :: 9 :: 0.218881
+[network_measurement] m36 :: 64,64,64 :: 7.25027
+[layer_measurement] m36 :: 64,64,64 :: 0 :: 0.24577
+[layer_measurement] m36 :: 64,64,64 :: 1 :: 0.0337957
+[layer_measurement] m36 :: 64,64,64 :: 2 :: 1.96773
+[layer_measurement] m36 :: 64,64,64 :: 3 :: 0.0302482
+[layer_measurement] m36 :: 64,64,64 :: 4 :: 1.3721
+[layer_measurement] m36 :: 64,64,64 :: 5 :: 0.0235331
+[layer_measurement] m36 :: 64,64,64 :: 6 :: 1.41886
+[layer_measurement] m36 :: 64,64,64 :: 7 :: 1.07056
+[layer_measurement] m36 :: 64,64,64 :: 8 :: 0.923617
+[layer_measurement] m36 :: 64,64,64 :: 9 :: 0.154352
+[network_measurement] m36 :: 64,64,64 :: 7.24364
+[layer_measurement] m36 :: 64,64,64 :: 0 :: 0.244659
+[layer_measurement] m36 :: 64,64,64 :: 1 :: 0.0336411
+[layer_measurement] m36 :: 64,64,64 :: 2 :: 1.96799
+[layer_measurement] m36 :: 64,64,64 :: 3 :: 0.0320448
+[layer_measurement] m36 :: 64,64,64 :: 4 :: 1.37461
+[layer_measurement] m36 :: 64,64,64 :: 5 :: 0.0234883
+[layer_measurement] m36 :: 64,64,64 :: 6 :: 1.40769
+[layer_measurement] m36 :: 64,64,64 :: 7 :: 1.08264
+[layer_measurement] m36 :: 64,64,64 :: 8 :: 0.924516
+[layer_measurement] m36 :: 64,64,64 :: 9 :: 0.217205
+[network_measurement] m36 :: 64,64,64 :: 7.31193
+[network_average] m36 :: 64,64,64 :: 7.26861
+[network_throughput] m36 :: 64,64,64 :: 36065.2
+## m36 :: starting benchmark for output size 72,72,72
+[network_requirements] m36 :: 72,72,72 :: RM: 3 MB WM: 3731 MB
+[layer_measurement] m36 :: 72,72,72 :: 0 :: 0.277864
+[layer_measurement] m36 :: 72,72,72 :: 1 :: 0.0394631
+[layer_measurement] m36 :: 72,72,72 :: 2 :: 2.17471
+[layer_measurement] m36 :: 72,72,72 :: 3 :: 0.0355806
+[layer_measurement] m36 :: 72,72,72 :: 4 :: 1.95066
+[layer_measurement] m36 :: 72,72,72 :: 5 :: 0.0292998
+[layer_measurement] m36 :: 72,72,72 :: 6 :: 1.69385
+[layer_measurement] m36 :: 72,72,72 :: 7 :: 1.18226
+[layer_measurement] m36 :: 72,72,72 :: 8 :: 1.15453
+[layer_measurement] m36 :: 72,72,72 :: 9 :: 0.196524
+[network_measurement] m36 :: 72,72,72 :: 8.74015
+[layer_measurement] m36 :: 72,72,72 :: 0 :: 0.2783
+[layer_measurement] m36 :: 72,72,72 :: 1 :: 0.0392753
+[layer_measurement] m36 :: 72,72,72 :: 2 :: 2.17577
+[layer_measurement] m36 :: 72,72,72 :: 3 :: 0.0354225
+[layer_measurement] m36 :: 72,72,72 :: 4 :: 1.95073
+[layer_measurement] m36 :: 72,72,72 :: 5 :: 0.0293243
+[layer_measurement] m36 :: 72,72,72 :: 6 :: 1.67258
+[layer_measurement] m36 :: 72,72,72 :: 7 :: 1.18249
+[layer_measurement] m36 :: 72,72,72 :: 8 :: 1.07473
+[layer_measurement] m36 :: 72,72,72 :: 9 :: 0.201915
+[network_measurement] m36 :: 72,72,72 :: 8.64592
+[layer_measurement] m36 :: 72,72,72 :: 0 :: 0.278364
+[layer_measurement] m36 :: 72,72,72 :: 1 :: 0.039329
+[layer_measurement] m36 :: 72,72,72 :: 2 :: 2.17598
+[layer_measurement] m36 :: 72,72,72 :: 3 :: 0.0366895
+[layer_measurement] m36 :: 72,72,72 :: 4 :: 1.95457
+[layer_measurement] m36 :: 72,72,72 :: 5 :: 0.0293111
+[layer_measurement] m36 :: 72,72,72 :: 6 :: 1.62002
+[layer_measurement] m36 :: 72,72,72 :: 7 :: 1.18124
+[layer_measurement] m36 :: 72,72,72 :: 8 :: 1.07541
+[layer_measurement] m36 :: 72,72,72 :: 9 :: 0.201459
+[network_measurement] m36 :: 72,72,72 :: 8.59628
+[network_average] m36 :: 72,72,72 :: 8.66079
+[network_throughput] m36 :: 72,72,72 :: 43096.3
+## m36 :: starting benchmark for output size 80,80,80
+[network_requirements] m36 :: 80,80,80 :: RM: 3 MB WM: 4313 MB
+[layer_measurement] m36 :: 80,80,80 :: 0 :: 0.321865
+[layer_measurement] m36 :: 80,80,80 :: 1 :: 0.0455336
+[layer_measurement] m36 :: 80,80,80 :: 2 :: 2.4895
+[layer_measurement] m36 :: 80,80,80 :: 3 :: 0.0414264
+[layer_measurement] m36 :: 80,80,80 :: 4 :: 1.96642
+[layer_measurement] m36 :: 80,80,80 :: 5 :: 0.0357524
+[layer_measurement] m36 :: 80,80,80 :: 6 :: 1.67361
+[layer_measurement] m36 :: 80,80,80 :: 7 :: 1.37733
+[layer_measurement] m36 :: 80,80,80 :: 8 :: 1.05293
+[layer_measurement] m36 :: 80,80,80 :: 9 :: 0.196474
+[network_measurement] m36 :: 80,80,80 :: 9.20689
+[layer_measurement] m36 :: 80,80,80 :: 0 :: 0.319591
+[layer_measurement] m36 :: 80,80,80 :: 1 :: 0.0452469
+[layer_measurement] m36 :: 80,80,80 :: 2 :: 2.4886
+[layer_measurement] m36 :: 80,80,80 :: 3 :: 0.0414894
+[layer_measurement] m36 :: 80,80,80 :: 4 :: 1.96484
+[layer_measurement] m36 :: 80,80,80 :: 5 :: 0.0349676
+[layer_measurement] m36 :: 80,80,80 :: 6 :: 1.68984
+[layer_measurement] m36 :: 80,80,80 :: 7 :: 1.38458
+[layer_measurement] m36 :: 80,80,80 :: 8 :: 1.0522
+[layer_measurement] m36 :: 80,80,80 :: 9 :: 0.196269
+[network_measurement] m36 :: 80,80,80 :: 9.22389
+[layer_measurement] m36 :: 80,80,80 :: 0 :: 0.32072
+[layer_measurement] m36 :: 80,80,80 :: 1 :: 0.0452401
+[layer_measurement] m36 :: 80,80,80 :: 2 :: 2.48975
+[layer_measurement] m36 :: 80,80,80 :: 3 :: 0.0414582
+[layer_measurement] m36 :: 80,80,80 :: 4 :: 1.9647
+[layer_measurement] m36 :: 80,80,80 :: 5 :: 0.0349674
+[layer_measurement] m36 :: 80,80,80 :: 6 :: 1.6712
+[layer_measurement] m36 :: 80,80,80 :: 7 :: 1.38533
+[layer_measurement] m36 :: 80,80,80 :: 8 :: 1.06378
+[layer_measurement] m36 :: 80,80,80 :: 9 :: 0.195566
+[network_measurement] m36 :: 80,80,80 :: 9.21697
+[network_average] m36 :: 80,80,80 :: 9.21592
+[network_throughput] m36 :: 80,80,80 :: 55556.1
+## m36 :: starting benchmark for output size 88,88,88
+[network_requirements] m36 :: 88,88,88 :: RM: 3 MB WM: 5071 MB
+[layer_measurement] m36 :: 88,88,88 :: 0 :: 0.428526
+[layer_measurement] m36 :: 88,88,88 :: 1 :: 0.0540957
+[layer_measurement] m36 :: 88,88,88 :: 2 :: 3.12702
+[layer_measurement] m36 :: 88,88,88 :: 3 :: 0.0479063
+[layer_measurement] m36 :: 88,88,88 :: 4 :: 2.28753
+[layer_measurement] m36 :: 88,88,88 :: 5 :: 0.0417354
+[layer_measurement] m36 :: 88,88,88 :: 6 :: 2.41583
+[layer_measurement] m36 :: 88,88,88 :: 7 :: 1.65881
+[layer_measurement] m36 :: 88,88,88 :: 8 :: 1.16095
+[layer_measurement] m36 :: 88,88,88 :: 9 :: 0.249929
+[network_measurement] m36 :: 88,88,88 :: 11.4799
+[layer_measurement] m36 :: 88,88,88 :: 0 :: 0.4285
+[layer_measurement] m36 :: 88,88,88 :: 1 :: 0.0524757
+[layer_measurement] m36 :: 88,88,88 :: 2 :: 3.12632
+[layer_measurement] m36 :: 88,88,88 :: 3 :: 0.0479013
+[layer_measurement] m36 :: 88,88,88 :: 4 :: 2.28408
+[layer_measurement] m36 :: 88,88,88 :: 5 :: 0.0405173
+[layer_measurement] m36 :: 88,88,88 :: 6 :: 2.40824
+[layer_measurement] m36 :: 88,88,88 :: 7 :: 1.6084
+[layer_measurement] m36 :: 88,88,88 :: 8 :: 1.24268
+[layer_measurement] m36 :: 88,88,88 :: 9 :: 0.255333
+[network_measurement] m36 :: 88,88,88 :: 11.502
+[layer_measurement] m36 :: 88,88,88 :: 0 :: 0.428561
+[layer_measurement] m36 :: 88,88,88 :: 1 :: 0.0525201
+[layer_measurement] m36 :: 88,88,88 :: 2 :: 3.12545
+[layer_measurement] m36 :: 88,88,88 :: 3 :: 0.0479499
+[layer_measurement] m36 :: 88,88,88 :: 4 :: 2.28857
+[layer_measurement] m36 :: 88,88,88 :: 5 :: 0.0407117
+[layer_measurement] m36 :: 88,88,88 :: 6 :: 2.39892
+[layer_measurement] m36 :: 88,88,88 :: 7 :: 1.60902
+[layer_measurement] m36 :: 88,88,88 :: 8 :: 1.18098
+[layer_measurement] m36 :: 88,88,88 :: 9 :: 0.338232
+[network_measurement] m36 :: 88,88,88 :: 11.516
+[network_average] m36 :: 88,88,88 :: 11.4993
+[network_throughput] m36 :: 88,88,88 :: 59262
+## m36 :: starting benchmark for output size 96,96,96
+[network_requirements] m36 :: 96,96,96 :: RM: 3 MB WM: 5413 MB
+[layer_measurement] m36 :: 96,96,96 :: 0 :: 0.429337
+[layer_measurement] m36 :: 96,96,96 :: 1 :: 0.0602605
+[layer_measurement] m36 :: 96,96,96 :: 2 :: 3.16953
+[layer_measurement] m36 :: 96,96,96 :: 3 :: 0.0567664
+[layer_measurement] m36 :: 96,96,96 :: 4 :: 2.84999
+[layer_measurement] m36 :: 96,96,96 :: 5 :: 0.0468514
+[layer_measurement] m36 :: 96,96,96 :: 6 :: 2.41971
+[layer_measurement] m36 :: 96,96,96 :: 7 :: 1.65704
+[layer_measurement] m36 :: 96,96,96 :: 8 :: 1.40364
+[layer_measurement] m36 :: 96,96,96 :: 9 :: 0.29247
+[network_measurement] m36 :: 96,96,96 :: 12.3973
+[layer_measurement] m36 :: 96,96,96 :: 0 :: 0.429757
+[layer_measurement] m36 :: 96,96,96 :: 1 :: 0.0605691
+[layer_measurement] m36 :: 96,96,96 :: 2 :: 3.17125
+[layer_measurement] m36 :: 96,96,96 :: 3 :: 0.0551475
+[layer_measurement] m36 :: 96,96,96 :: 4 :: 2.85254
+[layer_measurement] m36 :: 96,96,96 :: 5 :: 0.0469475
+[layer_measurement] m36 :: 96,96,96 :: 6 :: 2.41914
+[layer_measurement] m36 :: 96,96,96 :: 7 :: 1.66619
+[layer_measurement] m36 :: 96,96,96 :: 8 :: 1.44353
+[layer_measurement] m36 :: 96,96,96 :: 9 :: 0.258581
+[network_measurement] m36 :: 96,96,96 :: 12.4129
+[layer_measurement] m36 :: 96,96,96 :: 0 :: 0.428789
+[layer_measurement] m36 :: 96,96,96 :: 1 :: 0.0602705
+[layer_measurement] m36 :: 96,96,96 :: 2 :: 3.16973
+[layer_measurement] m36 :: 96,96,96 :: 3 :: 0.0551856
+[layer_measurement] m36 :: 96,96,96 :: 4 :: 2.85482
+[layer_measurement] m36 :: 96,96,96 :: 5 :: 0.0469956
+[layer_measurement] m36 :: 96,96,96 :: 6 :: 2.44993
+[layer_measurement] m36 :: 96,96,96 :: 7 :: 1.75508
+[layer_measurement] m36 :: 96,96,96 :: 8 :: 1.34651
+[layer_measurement] m36 :: 96,96,96 :: 9 :: 0.255455
+[network_measurement] m36 :: 96,96,96 :: 12.4293
+[network_average] m36 :: 96,96,96 :: 12.4132
+[network_throughput] m36 :: 96,96,96 :: 71274.1
+## m36 :: starting benchmark for output size 104,104,104
+[network_requirements] m36 :: 104,104,104 :: RM: 3 MB WM: 6393 MB
+[layer_measurement] m36 :: 104,104,104 :: 0 :: 0.540609
+[layer_measurement] m36 :: 104,104,104 :: 1 :: 0.0705373
+[layer_measurement] m36 :: 104,104,104 :: 2 :: 3.79783
+[layer_measurement] m36 :: 104,104,104 :: 3 :: 0.0634499
+[layer_measurement] m36 :: 104,104,104 :: 4 :: 2.87175
+[layer_measurement] m36 :: 104,104,104 :: 5 :: 0.0541358
+[layer_measurement] m36 :: 104,104,104 :: 6 :: 2.7689
+[layer_measurement] m36 :: 104,104,104 :: 7 :: 2.41867
+[layer_measurement] m36 :: 104,104,104 :: 8 :: 1.61147
+[layer_measurement] m36 :: 104,104,104 :: 9 :: 0.23472
+[network_measurement] m36 :: 104,104,104 :: 14.4443
+[layer_measurement] m36 :: 104,104,104 :: 0 :: 0.540679
+[layer_measurement] m36 :: 104,104,104 :: 1 :: 0.0688125
+[layer_measurement] m36 :: 104,104,104 :: 2 :: 3.7973
+[layer_measurement] m36 :: 104,104,104 :: 3 :: 0.0635145
+[layer_measurement] m36 :: 104,104,104 :: 4 :: 2.87629
+[layer_measurement] m36 :: 104,104,104 :: 5 :: 0.0554086
+[layer_measurement] m36 :: 104,104,104 :: 6 :: 2.76954
+[layer_measurement] m36 :: 104,104,104 :: 7 :: 2.39104
+[layer_measurement] m36 :: 104,104,104 :: 8 :: 1.69001
+[layer_measurement] m36 :: 104,104,104 :: 9 :: 0.302471
+[network_measurement] m36 :: 104,104,104 :: 14.5678
+[layer_measurement] m36 :: 104,104,104 :: 0 :: 0.541257
+[layer_measurement] m36 :: 104,104,104 :: 1 :: 0.0693454
+[layer_measurement] m36 :: 104,104,104 :: 2 :: 3.79971
+[layer_measurement] m36 :: 104,104,104 :: 3 :: 0.0634602
+[layer_measurement] m36 :: 104,104,104 :: 4 :: 2.87298
+[layer_measurement] m36 :: 104,104,104 :: 5 :: 0.0536413
+[layer_measurement] m36 :: 104,104,104 :: 6 :: 2.74272
+[layer_measurement] m36 :: 104,104,104 :: 7 :: 2.42154
+[layer_measurement] m36 :: 104,104,104 :: 8 :: 1.69136
+[layer_measurement] m36 :: 104,104,104 :: 9 :: 0.236697
+[network_measurement] m36 :: 104,104,104 :: 14.5013
+[network_average] m36 :: 104,104,104 :: 14.5045
+[network_throughput] m36 :: 104,104,104 :: 77552.9
+## m36 :: starting benchmark for output size 112,112,112
+[network_requirements] m36 :: 112,112,112 :: RM: 3 MB WM: 6968 MB
+[layer_measurement] m36 :: 112,112,112 :: 0 :: 0.617755
+[layer_measurement] m36 :: 112,112,112 :: 1 :: 0.0800553
+[layer_measurement] m36 :: 112,112,112 :: 2 :: 4.37243
+[layer_measurement] m36 :: 112,112,112 :: 3 :: 0.0730038
+[layer_measurement] m36 :: 112,112,112 :: 4 :: 3.42288
+[layer_measurement] m36 :: 112,112,112 :: 5 :: 0.0621831
+[layer_measurement] m36 :: 112,112,112 :: 6 :: 3.7338
+[layer_measurement] m36 :: 112,112,112 :: 7 :: 2.38809
+[layer_measurement] m36 :: 112,112,112 :: 8 :: 1.61528
+[layer_measurement] m36 :: 112,112,112 :: 9 :: 0.258201
+[network_measurement] m36 :: 112,112,112 :: 16.6381
+[layer_measurement] m36 :: 112,112,112 :: 0 :: 0.618641
+[layer_measurement] m36 :: 112,112,112 :: 1 :: 0.0779207
+[layer_measurement] m36 :: 112,112,112 :: 2 :: 4.36895
+[layer_measurement] m36 :: 112,112,112 :: 3 :: 0.0744829
+[layer_measurement] m36 :: 112,112,112 :: 4 :: 3.41602
+[layer_measurement] m36 :: 112,112,112 :: 5 :: 0.0622022
+[layer_measurement] m36 :: 112,112,112 :: 6 :: 3.71682
+[layer_measurement] m36 :: 112,112,112 :: 7 :: 2.38835
+[layer_measurement] m36 :: 112,112,112 :: 8 :: 1.6133
+[layer_measurement] m36 :: 112,112,112 :: 9 :: 0.254098
+[network_measurement] m36 :: 112,112,112 :: 16.6043
+[layer_measurement] m36 :: 112,112,112 :: 0 :: 0.617816
+[layer_measurement] m36 :: 112,112,112 :: 1 :: 0.0800358
+[layer_measurement] m36 :: 112,112,112 :: 2 :: 4.36991
+[layer_measurement] m36 :: 112,112,112 :: 3 :: 0.0724901
+[layer_measurement] m36 :: 112,112,112 :: 4 :: 3.41321
+[layer_measurement] m36 :: 112,112,112 :: 5 :: 0.062017
+[layer_measurement] m36 :: 112,112,112 :: 6 :: 3.7299
+[layer_measurement] m36 :: 112,112,112 :: 7 :: 2.43083
+[layer_measurement] m36 :: 112,112,112 :: 8 :: 1.61317
+[layer_measurement] m36 :: 112,112,112 :: 9 :: 0.254668
+[network_measurement] m36 :: 112,112,112 :: 16.6533
+[network_average] m36 :: 112,112,112 :: 16.6319
+[network_throughput] m36 :: 112,112,112 :: 84472
+## m36 :: starting benchmark for output size 120,120,120
+[network_requirements] m36 :: 120,120,120 :: RM: 3 MB WM: 8323 MB
+[layer_measurement] m36 :: 120,120,120 :: 0 :: 0.645417
+[layer_measurement] m36 :: 120,120,120 :: 1 :: 0.0904685
+[layer_measurement] m36 :: 120,120,120 :: 2 :: 5.21191
+[layer_measurement] m36 :: 120,120,120 :: 3 :: 0.0814916
+[layer_measurement] m36 :: 120,120,120 :: 4 :: 3.72162
+[layer_measurement] m36 :: 120,120,120 :: 5 :: 0.0714974
+[layer_measurement] m36 :: 120,120,120 :: 6 :: 3.73841
+[layer_measurement] m36 :: 120,120,120 :: 7 :: 2.76263
+[layer_measurement] m36 :: 120,120,120 :: 8 :: 2.37651
+[layer_measurement] m36 :: 120,120,120 :: 9 :: 0.248866
+[network_measurement] m36 :: 120,120,120 :: 18.9649
+[layer_measurement] m36 :: 120,120,120 :: 0 :: 0.644905
+[layer_measurement] m36 :: 120,120,120 :: 1 :: 0.0879134
+[layer_measurement] m36 :: 120,120,120 :: 2 :: 5.21096
+[layer_measurement] m36 :: 120,120,120 :: 3 :: 0.0836792
+[layer_measurement] m36 :: 120,120,120 :: 4 :: 3.72459
+[layer_measurement] m36 :: 120,120,120 :: 5 :: 0.071442
+[layer_measurement] m36 :: 120,120,120 :: 6 :: 3.74076
+[layer_measurement] m36 :: 120,120,120 :: 7 :: 2.76308
+[layer_measurement] m36 :: 120,120,120 :: 8 :: 2.43448
+[layer_measurement] m36 :: 120,120,120 :: 9 :: 0.251296
+[network_measurement] m36 :: 120,120,120 :: 19.0296
+[layer_measurement] m36 :: 120,120,120 :: 0 :: 0.64522
+[layer_measurement] m36 :: 120,120,120 :: 1 :: 0.0878934
+[layer_measurement] m36 :: 120,120,120 :: 2 :: 5.20956
+[layer_measurement] m36 :: 120,120,120 :: 3 :: 0.0852153
+[layer_measurement] m36 :: 120,120,120 :: 4 :: 3.7219
+[layer_measurement] m36 :: 120,120,120 :: 5 :: 0.0714524
+[layer_measurement] m36 :: 120,120,120 :: 6 :: 3.74001
+[layer_measurement] m36 :: 120,120,120 :: 7 :: 2.76291
+[layer_measurement] m36 :: 120,120,120 :: 8 :: 2.376
+[layer_measurement] m36 :: 120,120,120 :: 9 :: 0.324634
+[network_measurement] m36 :: 120,120,120 :: 19.0349
+[network_average] m36 :: 120,120,120 :: 19.0098
+[network_throughput] m36 :: 120,120,120 :: 90900.6
+## m36 :: starting benchmark for output size 128,128,128
+[network_requirements] m36 :: 128,128,128 :: RM: 3 MB WM: 9138 MB
+[layer_measurement] m36 :: 128,128,128 :: 0 :: 0.710625
+[layer_measurement] m36 :: 128,128,128 :: 1 :: 0.101914
+[layer_measurement] m36 :: 128,128,128 :: 2 :: 5.29458
+[layer_measurement] m36 :: 128,128,128 :: 3 :: 0.0916979
+[layer_measurement] m36 :: 128,128,128 :: 4 :: 4.82708
+[layer_measurement] m36 :: 128,128,128 :: 5 :: 0.0790531
+[layer_measurement] m36 :: 128,128,128 :: 6 :: 3.75522
+[layer_measurement] m36 :: 128,128,128 :: 7 :: 3.69988
+[layer_measurement] m36 :: 128,128,128 :: 8 :: 2.38836
+[layer_measurement] m36 :: 128,128,128 :: 9 :: 0.239389
+[network_measurement] m36 :: 128,128,128 :: 21.2067
+[layer_measurement] m36 :: 128,128,128 :: 0 :: 0.711473
+[layer_measurement] m36 :: 128,128,128 :: 1 :: 0.0986702
+[layer_measurement] m36 :: 128,128,128 :: 2 :: 5.29429
+[layer_measurement] m36 :: 128,128,128 :: 3 :: 0.0941004
+[layer_measurement] m36 :: 128,128,128 :: 4 :: 4.83034
+[layer_measurement] m36 :: 128,128,128 :: 5 :: 0.0791437
+[layer_measurement] m36 :: 128,128,128 :: 6 :: 3.7475
+[layer_measurement] m36 :: 128,128,128 :: 7 :: 3.7015
+[layer_measurement] m36 :: 128,128,128 :: 8 :: 2.39323
+[layer_measurement] m36 :: 128,128,128 :: 9 :: 0.318304
+[network_measurement] m36 :: 128,128,128 :: 21.2912
+[layer_measurement] m36 :: 128,128,128 :: 0 :: 0.711995
+[layer_measurement] m36 :: 128,128,128 :: 1 :: 0.0985488
+[layer_measurement] m36 :: 128,128,128 :: 2 :: 5.29413
+[layer_measurement] m36 :: 128,128,128 :: 3 :: 0.0917794
+[layer_measurement] m36 :: 128,128,128 :: 4 :: 4.82967
+[layer_measurement] m36 :: 128,128,128 :: 5 :: 0.0791792
+[layer_measurement] m36 :: 128,128,128 :: 6 :: 3.75861
+[layer_measurement] m36 :: 128,128,128 :: 7 :: 3.71212
+[layer_measurement] m36 :: 128,128,128 :: 8 :: 2.38835
+[layer_measurement] m36 :: 128,128,128 :: 9 :: 0.23925
+[network_measurement] m36 :: 128,128,128 :: 21.2155
+[network_average] m36 :: 128,128,128 :: 21.2378
+[network_throughput] m36 :: 128,128,128 :: 98746.2
+## m36 :: starting benchmark for output size 136,136,136
+[network_requirements] m36 :: 136,136,136 :: RM: 3 MB WM: 10190 MB
+[layer_measurement] m36 :: 136,136,136 :: 0 :: 0.749572
+[layer_measurement] m36 :: 136,136,136 :: 1 :: 0.113544
+[layer_measurement] m36 :: 136,136,136 :: 2 :: 6.10651
+[layer_measurement] m36 :: 136,136,136 :: 3 :: 0.105827
+[layer_measurement] m36 :: 136,136,136 :: 4 :: 4.87648
+[layer_measurement] m36 :: 136,136,136 :: 5 :: 0.0902866
+[layer_measurement] m36 :: 136,136,136 :: 6 :: 4.3329
+[layer_measurement] m36 :: 136,136,136 :: 7 :: 3.71176
+[layer_measurement] m36 :: 136,136,136 :: 8 :: 2.75106
+[layer_measurement] m36 :: 136,136,136 :: 9 :: 0.330213
+[network_measurement] m36 :: 136,136,136 :: 23.1936
+[layer_measurement] m36 :: 136,136,136 :: 0 :: 0.752355
+[layer_measurement] m36 :: 136,136,136 :: 1 :: 0.110551
+[layer_measurement] m36 :: 136,136,136 :: 2 :: 6.10554
+[layer_measurement] m36 :: 136,136,136 :: 3 :: 0.103292
+[layer_measurement] m36 :: 136,136,136 :: 4 :: 4.87413
+[layer_measurement] m36 :: 136,136,136 :: 5 :: 0.0925655
+[layer_measurement] m36 :: 136,136,136 :: 6 :: 4.33788
+[layer_measurement] m36 :: 136,136,136 :: 7 :: 3.71325
+[layer_measurement] m36 :: 136,136,136 :: 8 :: 2.753
+[layer_measurement] m36 :: 136,136,136 :: 9 :: 0.287118
+[network_measurement] m36 :: 136,136,136 :: 23.1518
+[layer_measurement] m36 :: 136,136,136 :: 0 :: 0.748906
+[layer_measurement] m36 :: 136,136,136 :: 1 :: 0.110538
+[layer_measurement] m36 :: 136,136,136 :: 2 :: 6.10428
+[layer_measurement] m36 :: 136,136,136 :: 3 :: 0.102697
+[layer_measurement] m36 :: 136,136,136 :: 4 :: 4.87387
+[layer_measurement] m36 :: 136,136,136 :: 5 :: 0.0925148
+[layer_measurement] m36 :: 136,136,136 :: 6 :: 4.37308
+[layer_measurement] m36 :: 136,136,136 :: 7 :: 3.74342
+[layer_measurement] m36 :: 136,136,136 :: 8 :: 2.76461
+[layer_measurement] m36 :: 136,136,136 :: 9 :: 0.339598
+[network_measurement] m36 :: 136,136,136 :: 23.2691
+[network_average] m36 :: 136,136,136 :: 23.2048
+[network_throughput] m36 :: 136,136,136 :: 108402
+## m36 :: starting benchmark for output size 144,144,144
+[network_requirements] m36 :: 144,144,144 :: RM: 3 MB WM: 12141 MB
+[network_information] m36 :: 144,144,144 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 152,152,152
+[network_requirements] m36 :: 152,152,152 :: RM: 3 MB WM: 12532 MB
+[network_information] m36 :: 152,152,152 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 160,160,160
+[network_requirements] m36 :: 160,160,160 :: RM: 3 MB WM: 13645 MB
+[network_information] m36 :: 160,160,160 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 168,168,168
+[network_requirements] m36 :: 168,168,168 :: RM: 3 MB WM: 14734 MB
+[network_information] m36 :: 168,168,168 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 176,176,176
+[network_requirements] m36 :: 176,176,176 :: RM: 3 MB WM: 17468 MB
+[network_information] m36 :: 176,176,176 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 184,184,184
+[network_requirements] m36 :: 184,184,184 :: RM: 3 MB WM: 17975 MB
+[network_information] m36 :: 184,184,184 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 192,192,192
+[network_requirements] m36 :: 192,192,192 :: RM: 3 MB WM: 19904 MB
+[network_information] m36 :: 192,192,192 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 200,200,200
+[network_requirements] m36 :: 200,200,200 :: RM: 3 MB WM: 21661 MB
+[network_information] m36 :: 200,200,200 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 208,208,208
+[network_requirements] m36 :: 208,208,208 :: RM: 3 MB WM: 23199 MB
+[network_information] m36 :: 208,208,208 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 216,216,216
+[network_requirements] m36 :: 216,216,216 :: RM: 3 MB WM: 24810 MB
+[network_information] m36 :: 216,216,216 :: IS NOT WORKABLE!
+## m36 :: starting benchmark for output size 224,224,224
+[network_exception] m36 :: 224,224,224 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 232,232,232
+[network_exception] m36 :: 232,232,232 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 240,240,240
+[network_exception] m36 :: 240,240,240 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 248,248,248
+[network_exception] m36 :: 248,248,248 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 256,256,256
+[network_exception] m36 :: 256,256,256 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 264,264,264
+[network_exception] m36 :: 264,264,264 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 272,272,272
+[network_exception] m36 :: 272,272,272 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 280,280,280
+[network_exception] m36 :: 280,280,280 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 288,288,288
+[network_exception] m36 :: 288,288,288 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 296,296,296
+[network_exception] m36 :: 296,296,296 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 304,304,304
+[network_exception] m36 :: 304,304,304 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 312,312,312
+[network_exception] m36 :: 312,312,312 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 320,320,320
+[network_exception] m36 :: 320,320,320 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 328,328,328
+[network_exception] m36 :: 328,328,328 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 336,336,336
+[network_exception] m36 :: 336,336,336 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 344,344,344
+[network_exception] m36 :: 344,344,344 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 352,352,352
+[network_exception] m36 :: 352,352,352 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 360,360,360
+[network_exception] m36 :: 360,360,360 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 368,368,368
+[network_exception] m36 :: 368,368,368 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 376,376,376
+[network_exception] m36 :: 376,376,376 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 384,384,384
+[network_exception] m36 :: 384,384,384 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m36 :: starting benchmark for output size 392,392,392
+[network_exception] m36 :: 392,392,392 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
