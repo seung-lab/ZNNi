@@ -1,246 +1,89 @@
+#include "znn/fusion/device/network.hpp"
+#include "znn/fusion/network_data.hpp"
+#include "znn/fusion/device/sub_network.hpp"
+#include "znn/log.hpp"
 
-#include "znn/tensor/tensor.hpp"
-#include "znn/host/v1/naive_boost_conv.hpp"
-#include "znn/host/v1/naive_conv.hpp"
-#include "znn/host/v1/fft_conv_serial.hpp"
-#include "znn/host/v1/fft_conv.hpp"
-#include "znn/host/v1/dp_fft_conv.hpp"
-#include "znn/host/v1/direct_conv.hpp"
-#include "znn/host/v1/naive_boost_mfp.hpp"
-#include "znn/host/v1/naive_mfp.hpp"
-#include "znn/host/v1/mfp.hpp"
-#include "znn/host/v1/naive_boost_pool.hpp"
-#include "znn/host/v1/naive_pool.hpp"
-#include "znn/host/v1/pool.hpp"
-#include "znn/util/network.hpp"
-
-
-#include "znn/tensor/base.hpp"
+#include <string>
+#include <fstream>
+#include <sstream>
 
 using namespace znn::fwd;
 
-template<class T1, class T2>
-inline float max_abs_diff( T1 & t1, T2 & t2 )
+std::string net_name;
+vec3i       os;
+long_t      max_memory = static_cast<long_t>(240) * 1024 * 1024 * 1024; // GB
+
+// inline void benchmark_network( network_descriptor & ndesc,
+//                                long_t rounds,
+//                                std::ofstream & rout )
+// {
+
+//     rout << "## " << net_name << " :: starting benchmark for output size "
+//          << os << std::endl;
+
+//     try
+//     {
+//         device::v2::network_data nd(ndesc, 1, os);
+//         device::v2::best_device_network net(nd);
+
+//         double time = 0;
+
+//         for ( long_t i = 0; i < rounds; ++i )
+//         {
+//             std::cout << "BENCH:" << std::endl;
+//             double t = net.benchmark();
+//             rout << "[network_measurement] " << net_name
+//                  << " :: " << os
+//                  << " :: " << t << std::endl;
+//             time += t;
+//         }
+
+//         time /= rounds;
+
+//         rout << "[network_average] " << net_name
+//              << " :: " << os << " :: " << time << std::endl;
+
+//         double voxels = os[0] * os[1] * os[2];
+
+//         rout << "[network_throughput] " << net_name
+//              << " :: " << os << " :: " << (voxels/time) << std::endl;
+//     }
+//     catch (...)
+//     {
+//         rout << "## " << net_name << " :: " << os
+//              << " :: EXCEPTION!" << std::endl;
+//     }
+
+// }
+
+int main(int argc, char *argv[])
 {
-    float* d1 = reinterpret_cast<float*>(
-        detail::tensor::malloc(t1.num_elements() * sizeof(float),
-                               from_host));
-    float* d2 = reinterpret_cast<float*>(
-        detail::tensor::malloc(t2.num_elements() * sizeof(float),
-                               from_host));
+    net_name = std::string(argv[1]);
 
-    STRONG_ASSERT(t1.num_elements()==t2.num_elements());
+    std::string net_path    = "../networks/" + net_name + ".znni";
+    std::string report_path = "../reports/" + net_name + ".best_device.report";
 
-    t1.store(d1, to_host);
-    t2.store(d2, to_host);
+    std::ofstream ofs;
+    ofs.open (report_path.c_str(), std::ofstream::out | std::ofstream::app);
 
-    float res = 0;
+    ofs << "--------------------------------------------\n\n";
 
-    for ( long_t i = 0; i < t1.num_elements(); ++i )
+    std::cout << net_path << "\n";
+
+    long_t rounds = 4;
+    if ( argc > 2 ) rounds = atoi(argv[2]);
+
+    network_descriptor ndesc(net_path);
+
+    for ( long_t i = 32; i < 1000; i += 32 )
     {
-        res = std::max(res, std::abs(d1[i]-d2[i]));
+        os = vec3i(i,i,i);
+        //benchmark_network(nd, rounds, ofs);
+        fusion::network_data nd(ndesc, 8, os);
+
+        auto x = device::fusion::network::get(nd, false);
+
+        if ( x )
+            std::cout << "NAME: " << x->name() << "\n";
     }
-
-    detail::tensor::free(d1, from_host);
-    detail::tensor::free(d2, from_host);
-
-    return res;
-}
-
-template<typename Net>
-inline void compare_conv( long_t n, long_t l1, long_t l2,
-                          vec3i const & is, vec3i const & ws,
-                          host_tensor<float,5> & kernels,
-                          host_tensor<float,1> & biases,
-                          host_tensor<float,5> & input,
-                          host_tensor<float,5> & output )
-{
-    Net net(n,l1,l2,is,ws,kernels.data(),biases.data());
-    host_tensor<float,5> in(n,l1,is[0],is[1],is[2]);
-    in = input;
-
-    std::cout << "Net needs: "
-              << (net.resident_memory() / 1024 / 1024)
-              << " MB of Resident memory, and "
-              << (net.working_memory() / 1024 / 1024)
-              << " MB of Working memory\n";
-
-    auto out = net.forward(std::move(in));
-
-    std::cout << "YAYA: " << max_abs_diff(output,out) << std::endl;
-}
-
-template<typename Net>
-inline void compare_mfp( long_t n, long_t l,
-                         vec3i const & is, vec3i const & ws,
-                         host_tensor<float,5> & input,
-                         host_tensor<float,5> & output )
-{
-    Net net(n,l,is,ws);
-    host_tensor<float,5> in(n,l,is[0],is[1],is[2]);
-    in = input;
-
-    auto out = net.forward(std::move(in));
-
-    std::cout << "YAYA: " << max_abs_diff(output,out) << std::endl;
-}
-
-template<typename Net>
-inline void compare_pool( long_t n, long_t l,
-                          vec3i const & is, vec3i const & ws,
-                          host_tensor<float,5> & input,
-                          host_tensor<float,5> & output )
-{
-    Net net(n,l,is,ws);
-    host_tensor<float,5> in(n,l,is[0],is[1],is[2]);
-    in = input;
-
-    auto out = net.forward(std::move(in));
-
-    std::cout << "YAYA: " << max_abs_diff(output,out) << std::endl;
-}
-
-
-void conv_test()
-{
-    static std::mt19937 rng = std::mt19937(1234);
-
-    std::uniform_int_distribution<long_t> intdist(2,5);
-    vec3i ws(intdist(rng),intdist(rng),intdist(rng));
-
-
-    std::uniform_int_distribution<long_t> intdist2(2,24);
-    vec3i os(intdist2(rng),intdist2(rng),intdist2(rng));
-
-    std::uniform_int_distribution<long_t> intdist3(1,15);
-
-    // long_t n = intdist3(rng);
-    // long_t l1 = intdist3(rng);
-    // long_t l2 = intdist3(rng);
-
-    long_t n = 8;
-    long_t l1 = 64;
-    long_t l2 = 48;
-
-
-    vec3i is = os + ws - vec3i::one;
-
-    host_tensor<float,5> kernels(rand_init,l1,l2,ws[0],ws[1],ws[2]);
-    host_tensor<float,1> biases(rand_init,l2);
-
-    host::v1::naive_boost_conv net(n,l1,l2,is,ws,kernels.data(),biases.data());
-    host_tensor<float,5> input(rand_init,n,l1,is[0],is[1],is[2]);
-
-    host_tensor<float,5> in1(n,l1,is[0],is[1],is[2]);
-    in1 = input;
-
-    auto output = net.forward(std::move(in1));
-
-    compare_conv<host::v1::naive_boost_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
-
-    compare_conv<host::v1::naive_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
-
-    compare_conv<host::v1::fft_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
-
-    compare_conv<host::v1::fft_conv_serial>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
-
-    compare_conv<host::v1::dp_fft_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
-
-    compare_conv<host::v1::direct_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
-
-
-    std::cout << "\n\n";
-}
-
-
-
-void mfp_test()
-{
-    static std::mt19937 rng = std::mt19937(1234);
-
-    std::uniform_int_distribution<long_t> intdist(1,4);
-    vec3i ws(intdist(rng),intdist(rng),intdist(rng));
-
-    std::uniform_int_distribution<long_t> intdist2(2,13);
-    vec3i os(intdist2(rng),intdist2(rng),intdist2(rng));
-
-    std::uniform_int_distribution<long_t> intdist3(1,5);
-
-    long_t n = intdist3(rng);
-    long_t l = intdist3(rng);
-
-    vec3i is;
-    is[0] = (ws[0] > 1) ? ws[0] * os[0] + ws[0] - 1: os[0];
-    is[1] = (ws[1] > 1) ? ws[1] * os[1] + ws[1] - 1: os[1];
-    is[2] = (ws[2] > 1) ? ws[2] * os[2] + ws[2] - 1: os[2];
-
-    host::v1::naive_boost_mfp net(n,l,is,ws);
-    host_tensor<float,5> input(rand_init,n,l,is[0],is[1],is[2]);
-
-    host_tensor<float,5> in1(n,l,is[0],is[1],is[2]);
-    in1 = input;
-
-    auto output = net.forward(std::move(in1));
-
-    compare_mfp<host::v1::naive_mfp>(n,l,is,ws,input,output);
-    compare_mfp<host::v1::mfp>(n,l,is,ws,input,output);
-
-    std::cout << "\n\n";
-}
-
-void pool_test()
-{
-    static std::mt19937 rng = std::mt19937(1234);
-
-    std::uniform_int_distribution<long_t> intdist(1,4);
-    vec3i ws(intdist(rng),intdist(rng),intdist(rng));
-
-    std::uniform_int_distribution<long_t> intdist2(2,13);
-    vec3i os(intdist2(rng),intdist2(rng),intdist2(rng));
-
-    std::uniform_int_distribution<long_t> intdist3(1,5);
-
-    long_t n = intdist3(rng);
-    long_t l = intdist3(rng);
-
-    vec3i is = os * ws;
-
-    host::v1::naive_boost_pool net(n,l,is,ws);
-    host_tensor<float,5> input(rand_init,n,l,is[0],is[1],is[2]);
-
-    host_tensor<float,5> in1(n,l,is[0],is[1],is[2]);
-    in1 = input;
-
-    auto output = net.forward(std::move(in1));
-
-    compare_pool<host::v1::naive_pool>(n,l,is,ws,input,output);
-    compare_pool<host::v1::pool>(n,l,is,ws,input,output);
-    compare_pool<host::v1::pool>(n,l,is,ws,input,output);
-
-
-    std::cout << "\n\n";
-}
-
-int main()
-{
-    // network_descriptor nd("../networks/m76.znni");
-    // device::v2::device_network dn(nd,1,vec3i(4,4,4));
-
-    // auto t = dn.tail();
-
-    // std::cout << t;
-
-    //host::thread_distributor td;
-    //host::thread_pin z(td);
-    //
-    //while (1)
-    //    conv_test();
-
-
 }

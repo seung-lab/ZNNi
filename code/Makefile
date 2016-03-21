@@ -53,7 +53,7 @@ LD_OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
 
 OPT_FLAGS		=	$(COMMON_FLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
 
-COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
+COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
 
 DBG_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS)
 OPT_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS) $(LD_OPTIMIZATION_FLAGS)
@@ -110,9 +110,9 @@ clean:
 	$(ECHO) Cleaning...
 	$(RM) -rf $(BINDIR)
 
-$(BINDIR)/test: $(BINDIR)/test.o
-	$(ECHO) "[CXX] linking $<"
-	$(CXX) $< $(CXXLDFLAGS) -o $@
+$(BINDIR)/test: $(BINDIR)/kernels.o $(BINDIR)/test.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/test_host: $(BINDIR)/test_host.o
 	$(ECHO) "[CXX] linking $<"
