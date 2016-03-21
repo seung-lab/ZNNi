@@ -31,12 +31,21 @@
 
 #include <limits>
 #include <initializer_list>
+#include <type_traits>
 #include <cstddef>
 #include <stdexcept>
 #include <algorithm>
 
 namespace zi {
 namespace vl {
+
+struct load_tag {};
+
+namespace {
+load_tag load;
+}
+
+inline void ____use_load_tag() { static_cast<void>(load); }
 
 template< class T, std::size_t N >
 class vec;
@@ -76,6 +85,16 @@ public:
     {
         ZI_ASSERT( N == v.size() );
         std::copy(v.begin(), v.end(), d);
+    }
+
+    template<typename O>
+    vec( load_tag, O const * data,
+         typename std::enable_if< std::is_convertible<O,T>::value, void*>::type = 0 )
+    {
+        for ( size_type i = 0; i < N; ++i )
+        {
+            d[ i ] = data[ i ];
+        }
     }
 
     explicit vec( const T& rcp = T() )
