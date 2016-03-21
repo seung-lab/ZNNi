@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 
     network_descriptor nd(net_path);
 
-    for ( long_t i = 4; i < 1000; i += 4 )
+    for ( long_t i = 8; i < 1000; i += 8 )
     {
         os = vec3i(i,i,i);
         benchmark_network(nd, rounds, ofs);
