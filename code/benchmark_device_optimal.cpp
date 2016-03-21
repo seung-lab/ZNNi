@@ -1,26 +1,17 @@
-#include "znn/device/v2/best_device_layer.hpp"
-
-#include "znn/device/common/cudnn.hpp"
-#include "znn/device/common/fft/transformer.hpp"
-
-#include "znn/util/network.hpp"
-#include "znn/device/v1/cudnn_conv.hpp"
-#include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
-#include "znn/device/v1/fft_conv.hpp"
-#include "znn/device/v1/cudnn_pool.hpp"
-#include "znn/device/v1/cudnn_mfp.hpp"
-
-#include <zi/time.hpp>
+#include "znn/fusion/device/network.hpp"
+#include "znn/fusion/network_data.hpp"
+#include "znn/fusion/device/sub_network.hpp"
+#include "znn/log.hpp"
 
 #include <string>
 #include <fstream>
 #include <sstream>
 
 // RUN THE FOLLOWING
-// ./benchmark_device m36 4
-// ./benchmark_device m56 4
-// ./benchmark_device m76 4
-// ./benchmark_device m96 4
+// ./bin/benchmark_device_optimal m36 4
+// ./bin/benchmark_device_optimal m56 4
+// ./bin/benchmark_device_optimal m76 4
+// ./bin/benchmark_device_optimal m96 4
 
 
 using namespace znn::fwd;
@@ -33,231 +24,34 @@ inline void benchmark_network( network_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network net(ndesc, 1, os);
+    fusion::network_data nd(ndesc, 1, os);
 
-    rout << "## " << net_name << " :: starting benchmark for output size "
-         << os << std::endl;
+    LOG(benchmark) << net_name << " :: starting os :: " << os;
 
-    std::vector<std::unique_ptr<device::v1::device_layer>> layers;
+    auto x = device::fusion::network::get(nd, true);
 
-    long_t lnum = 0;
-
-    long_t rm = 0;
-    long_t wm = 0;
-
-    try
+    if ( x )
     {
-        for ( auto & l: net.layers() )
+        try
         {
-            if ( l.descriptor.type == layer_type::convolutional )
-            {
-                // find the best network
-                std::unique_ptr<device::v1::device_layer> to_add;
-                double best = std::numeric_limits<double>::max();
+            double time = x->benchmark(rounds);
+            double tput = os[2] * os[3] * os[4];
+            tput /= time;
 
-                try
-                {
-                    auto attempt = make_unique<device::v1::cudnn_conv>
-                        (l.batch_size,
-                         l.descriptor.num_inputs,
-                         l.descriptor.num_outputs,
-                         l.in_size,
-                         l.descriptor.k_or_w_size,
-                         l.random_kernels().data(),
-                         l.random_biases().data());
+            rout << "[network_build] " << net_name
+                 << " :: " << os << " :: " << x->name() << std::endl;
 
-                    auto r = attempt->workable();
-                    if (r.first && (r.second < best))
-                    {
-                        best = r.second;
-                        to_add = std::move(attempt);
-                    }
-
-                    rout << "   ## cudnn_conv test " << lnum << ' '
-                         << ( r.first ? "OK" : "NO" )
-                         << ' ' << r.second << std::endl;
-
-                }
-                catch (...)
-                {
-                    // whatever
-                }
-
-                try
-                {
-                    auto attempt = make_unique<device::v1::fft_conv>
-                        (l.batch_size,
-                         l.descriptor.num_inputs,
-                         l.descriptor.num_outputs,
-                         l.in_size,
-                         l.descriptor.k_or_w_size,
-                         l.random_kernels().data(),
-                         l.random_biases().data());
-
-                    auto r = attempt->workable();
-                    if (r.first && (r.second < best))
-                    {
-                        best = r.second;
-                        to_add = std::move(attempt);
-                    }
-
-                    rout << "   ## fft_conv   test " << lnum << ' '
-                         << ( r.first ? "OK" : "NO" )
-                         << ' ' << r.second << std::endl;
-                }
-                catch (...)
-                {
-                    // whatever
-                }
-
-
-                if ( !to_add )
-                {
-                    try
-                    {
-                        auto attempt
-                            = make_unique<device::v1::cudnn_no_precomp_gemm_conv>
-                            (l.batch_size,
-                             l.descriptor.num_inputs,
-                             l.descriptor.num_outputs,
-                             l.in_size,
-                             l.descriptor.k_or_w_size,
-                             l.random_kernels().data(),
-                             l.random_biases().data());
-
-                        auto r = attempt->workable();
-                        if (r.first && (r.second < best))
-                        {
-                            to_add = std::move(attempt);
-                            best = r.second;
-                        }
-
-                        rout << "   ## ngemm_conv test " << lnum << ' '
-                             << ( r.first ? "OK" : "NO" )
-                             << ' ' << r.second << std::endl;
-
-                    }
-                    catch (...)
-                    {
-                        // whatever
-                    }
-                }
-
-                if ( to_add )
-                {
-                    layers.push_back(std::move(to_add));
-                }
-                else
-                {
-                    rout << "[network_information] " << net_name
-                         << " :: " << os << " :: IS NOT WORKABLE!" << std::endl;
-                    return;
-                }
-
-            }
-            else
-            {
-                layers.push_back(make_unique<device::v1::cudnn_mfp>
-                                 (l.batch_size,
-                                  l.descriptor.num_inputs,
-                                  l.in_size,
-                                  l.descriptor.k_or_w_size));
-            }
-
-            ++lnum;
-
-            rm += layers.back()->resident_memory();
-            wm = std::max(wm, layers.back()->working_memory());
+            rout << "[network_throughput] " << net_name
+                 << " :: " << os << " :: " << (tput) << std::endl;
+        }
+        catch ( std::exception & e )
+        {
+            LOG(benchmark) << "benchmark filed: " << e.what();
         }
     }
-    catch ( std::exception & e )
+    else
     {
-        rout << "[network_exception] " << net_name
-             << " :: " << os << " :: "
-             << " threw an exception: " << e.what() << std::endl;
-        return;
-    }
-
-    rout << "[network_requirements] " << net_name
-         << " :: " << os << " :: "
-         << "RM: " << rm/1024/1024
-         << " MB WM: " << wm/1024/1024 << " MB" << std::endl;
-
-
-    // bool workable = true;
-    // for ( auto & l: layers )
-    // {
-    //     if ( workable )
-    //     {
-    //         auto r = l->workable();
-    //         workable = workable && r.first;
-    //     }
-    // }
-
-    // if ( !workable )
-    // {
-    //     rout << "[network_information] " << net_name
-    //          << " :: " << os << " :: IS NOT WORKABLE!" << std::endl;
-    //     return;
-    // }
-
-    if ( rm + wm < max_memory )
-    {
-        double total = 0;
-        zi::wall_timer wtn;
-        zi::wall_timer wtl;
-
-        for ( long_t i = 0; i < rounds; ++i )
-        {
-            lnum = 0;
-            auto inh = net.get_random_sample();
-
-            wtn.reset();
-
-            device_tensor<float,5> in(net.in_shape());
-            in = inh;
-
-            for ( auto & l: layers )
-            {
-                wtl.reset();
-                in = l->forward(std::move(in));
-                double t = wtl.elapsed<double>();
-
-                rout << "[layer_measurement] " << net_name
-                     << " :: " << os << " :: " << lnum
-                     << " :: " << t << std::endl;
-
-                ++lnum;
-            }
-
-            host_tensor<float,5> result(in.shape()[0], in.shape()[1],
-                                        in.shape()[2], in.shape()[3],
-                                        in.shape()[4]);
-
-            result = in;
-            double t = wtn.elapsed<double>();
-
-            rout << "[network_measurement] " << net_name
-                     << " :: " << os
-                     << " :: " << t << std::endl;
-
-            total += t;
-
-            ++lnum;
-        }
-
-        total /= rounds;
-
-    // rout << "## " << net_name << " :: starting benchmark for output size "
-    //      << os << std::endl;
-
-        rout << "[network_average] " << net_name
-             << " :: " << os << " :: " << total << std::endl;
-
-        double voxels = net.out_voxels();
-
-        rout << "[network_throughput] " << net_name
-             << " :: " << os << " :: " << (voxels/total) << std::endl;
+        LOG(benchmark) << "not possible";
     }
 
 }
@@ -271,16 +65,22 @@ void benchmark( std::string const & rep, long_t rounds )
     ofs.open (report_path.c_str(), std::ofstream::out | std::ofstream::app);
 
     ofs << "--------------------------------------------\n\n";
+    logger.set_ostream(ofs);
 
     std::cout << net_path << "\n";
 
     network_descriptor nd(net_path);
 
-    for ( long_t i = 8; i < 400; i += 8 )
+    for ( long_t i = 4; i < 400; i += 4 )
     {
         os = vec3i(i,i,i);
-        benchmark_network(nd, rounds, ofs);
+        if ( os % nd.fragmentation() == vec3i::zero )
+        {
+            benchmark_network(nd, rounds, ofs);
+        }
     }
+
+    logger.set_ostream(std::cout);
 }
 
 int main(int argc, char *argv[])
