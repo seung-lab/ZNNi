@@ -1,22 +1,37 @@
 
-* ZNNi - Maximizing the Inference Throughput of 3D Convolutional Networks on Multi-Core Machines and GPUs.
+* ZNNi - Maximizing the Inference Throughput of 3D Convolutional Networks on Multi-Core CPUs and GPUs
+** short abstract (150 words)
+Sliding window convolutional networks (ConvNets) have become a popular
+approach to computer vision problems such as image segmentation, and
+object detection and localization. Here we consider the
+parallelization of inference, i.e., the application of a previously
+trained ConvNet, with emphasis on 3D images.  Our goal is to maximize
+throughput, defined as the number of output voxels computed per unit
+time.  We propose CPU and GPU primitives for convolutional and pooling
+layers, which are combined to create CPU, GPU, and CPU-GPU inference
+algorithms.  The primitives include convolution based on highly
+efficient padded and pruned FFTs. Our theoretical analyses and
+empirical tests reveal a number of interesting findings.  For example,
+adding host RAM can be a more efficient way of increasing throughput
+than adding another GPU or more CPUs.  Furthermore, our CPU-GPU
+algorithm can achieve greater throughput than the sum of CPU-only and
+GPU-only throughputs.
 ** Abstract
-
   Sliding window convolutional networks (ConvNets) have become a
-  popular approach to computer vision problems such as: semantic
-  segmentation, object detection and localization.  Often, a trained
-  ConvNet has to be applied to very large (3D) images, which is
-  computationaly very costly.
+  popular approach to computer vision problems such as image
+  segmentation, and object detection and localization. A sizable
+  literature already exists on parallelizing ConvNet training on GPUs
+  and CPUs.  Here we consider the parallelization of inference, i.e.,
+  the application of a previously trained ConvNet, with the goal of maximizing throughput.
 
-  We propose a set of novel, high throughput, parallel algorithms for
-  ConvNet inference, optimized for both the CPU and the GPU.  A very
-  large image is divided into smaller images each of which is
-  processed separately.  The inference throughput strongly depends on
-  the size of the image that can be processed at once.
-
-
-  To achieve
-  maximal throughput, our algorithms are designed to minimize the
+  Th CPU-only and GPU-only algorithms are based on a set of primitives
+  for convolutional and pooling layers.  For a given ConvNet
+  architecture, the best algorithm is found by choosing the primitive
+  for each layer and the input size to maximize throughput, defined as
+  number of output voxels computed per unit time. The maximization is
+  subject to a number of constraints, chief among them a limit on RAM usage. 
+  
+  our algorithms are designed to minimize the
   memory overhead, allowing us to process very large inputs.  Using
   "fragment pooling" instead of regular pooling allows us to reduce
   the amount of computation.  We implement the convolutional layers
