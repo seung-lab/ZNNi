@@ -1,5 +1,40 @@
 
 * ZNNi - Maximizing the Inference Throughput of 3D Convolutional Networks on Multi-Core Machines and GPUs.
+** Abstract
+
+  Sliding window convolutional networks (ConvNets) have become a
+  popular approach to computer vision problems such as: semantic
+  segmentation, object detection and localization.  Often, a trained
+  ConvNet has to be applied to very large (3D) images, which is
+  computationaly very costly.
+
+  We propose a set of novel, high throughput, parallel algorithms for
+  ConvNet inference, optimized for both the CPU and the GPU.  A very
+  large image is divided into smaller images each of which is
+  processed separately.  The inference throughput strongly depends on
+  the size of the image that can be processed at once.
+
+
+  To achieve
+  maximal throughput, our algorithms are designed to minimize the
+  memory overhead, allowing us to process very large inputs.  Using
+  "fragment pooling" instead of regular pooling allows us to reduce
+  the amount of computation.  We implement the convolutional layers
+  with a novel FFT-based parallel algorithms for the convolutional
+  layers that are based on highly efficient padded and pruned FFTs,
+  and have minimal memory overhead.  For small filter sizes we use can
+  utilize the CuDNN primitives on the GPU.  We show that both the
+  multi-core CPU and the GPU algorithms greatly benefit from the
+  amount of memory available, where the GPUs can also benefit from the
+  amount of the host RAM.  We also propose an algorithm that uses all
+  available resources -- the CPUs and the GPUs.  We show that our
+  approach greatly outperforms other publicly available ConvNet
+  packages.
+
+- Sliding window conv nets can be implemented using max fragment pooling.
+- Increasing the input/output sizes reduces number of operations required by a single pixel.
+-
+
 ** Claims
 *** Use large output patches
 
@@ -30,7 +65,7 @@
        - for each output
          - for each incoming kernel
            - FFT of kernel
-           - point-wise multiply add with the appropriate input FFT 
+           - point-wise multiply add with the appropriate input FFT
          - end
          - inverse FFT of the output image
        - end
@@ -70,12 +105,12 @@ vector multiply,  parallelized using by cuBLAS gemv.
 ****** inverse FFT of all outputs in layer
 ***** release memory used for output FFTs
 **** Padded Pruned FFTs
-***** each batch of 3D FFTs is parallelized  
+***** each batch of 3D FFTs is parallelized
 either batch of input images
 or batch of all kernels incident on one output image
 treat as 4D array
 ***** for each of last three dimensions
-****** transpose array so that 
+****** transpose array so that
 ******* dimension is adjacent in memory
 ******* zero padded for good FFT size
 ******* parallelized using cuda Thrust
@@ -84,7 +119,7 @@ treat as 4D array
 ****** do 1D FFTs in parallel batches (multiple of 512) using cuFFT
      over batches of 1D FFTs using cuFFT
        (cufftMakePlanMany).
-****** note: no need to transpose array to original state as long as 
+****** note: no need to transpose array to original state as long as
 ******* all FFTs leave array in same state
 ******* IFFT does the opposite thing as FFT
 *** GPU (onboard and host RAM)
