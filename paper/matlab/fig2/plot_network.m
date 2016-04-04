@@ -24,48 +24,74 @@ ylabel('Voxels per second','FontSize',16);
 % Create xlabel
 xlabel('Output size','FontSize',16);
 
-[a, b] = read_data([net '.cpu']);
-plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CPU');
+[a, b] = read_data([net '.behir']);
+plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','72 Core CPU');
 
 if exist([net '.aws'], 'file')
     [a, b] = read_data([net '.aws']);
-    plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CPU AWS');
+    plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CPU AWS');
 end
 
-[a, b] = read_data([net '.gpu']);
 
+if exist([net '.fusion.4'], 'file')
+    [a, b] = read_data([net '.fusion.4']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','ZNNi Fusion');
+end
+
+if exist([net '.ram'], 'file')
+    [a, b] = read_data([net '.ram']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU + Host RAM');
+end
+
+
+
+[a, b] = read_data([net '.gpu.optimal']);
 xmax = max(xmax, max(a(:)));
-ymax = max(ymax, max(1./b(:)));
+ymax = max(ymax, max(b(:)));
 
-plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CuDNN Precomputed GEMM');
+plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','Titan X (Optimal)');
 
-[a, b] = read_data([net '.gpu_no_precomp_gemm']);
-
-xmax = max(xmax, max(a(:)));
-ymax = max(ymax, max(1./b(:)));
-
-plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CuDNN Implicit GEMM');
-
-[a, b] = read_data([net '.gpufft']);
-plot(a,1./b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU FFT');
-
-xmax = max(xmax, max(a(:)));
-ymax = max(ymax, max(1./b(:)));
-
-if exist([net '.gpuram'], 'file')
-    [a, b] = read_data([net '.gpuram']);
-    plot(a,1./b,'LineWidth',1.5,'Parent',axes1,'DisplayName','GPU RAM');
+if exist([net '.gpu.cudnn'], 'file')
+    [a, b] = read_data([net '.gpu.cudnn']);
+    xmax = max(xmax, max(a(:)));
+    ymax = max(ymax, max(b(:)));
+    plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CuDNN Precomputed GEMM');
 end
 
-if exist([net '.gpuramfft'], 'file')
-    [a, b] = read_data([net '.gpuramfft']);
-    plot(a,1./b,'LineWidth',1.5,'Parent',axes1,'DisplayName','GPU RAM (FFT)');
+if exist([net '.gpu.cudnn_np'], 'file')
+    [a, b] = read_data([net '.gpu.cudnn_np']);
+    xmax = max(xmax, max(a(:)));
+    ymax = max(ymax, max(b(:)));
+    plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','CuDNN GEMM');
 end
 
-if exist([net '.fusion'], 'file')
-    [a, b] = read_data([net '.fusion']);
-    plot(a,1./b,'LineWidth',3.5,'Parent',axes1,'DisplayName','FUSION');
+if exist([net '.gpu.fft'], 'file')
+    [a, b] = read_data([net '.gpu.fft']);
+    xmax = max(xmax, max(a(:)));
+    ymax = max(ymax, max(b(:)));
+    plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU FFT');
 end
+
+% [a, b] = read_data([net '.gpufft']);
+% plot(a,b,'LineWidth',2.5,'Parent',axes1,'DisplayName','GPU FFT');
+% 
+% xmax = max(xmax, max(a(:)));
+% ymax = max(ymax, max(b(:)));
+% 
+% if exist([net '.gpuram'], 'file')
+%     [a, b] = read_data([net '.gpuram']);
+%     plot(a,b,'LineWidth',1.5,'Parent',axes1,'DisplayName','GPU RAM');
+% end
+% 
+% if exist([net '.gpuramfft'], 'file')
+%     [a, b] = read_data([net '.gpuramfft']);
+%     plot(a,b,'LineWidth',1.5,'Parent',axes1,'DisplayName','GPU RAM (FFT)');
+% end
+% 
+% if exist([net '.fusion'], 'file')
+%     [a, b] = read_data([net '.fusion']);
+%     plot(a,b,'LineWidth',3.5,'Parent',axes1,'DisplayName','FUSION');
+% end
 
 axes2 = axes('Parent',figure1,'YMinorGrid','on','YGrid','on',...
     'XMinorGrid','on',...
@@ -89,40 +115,42 @@ set(legend1,...
 box(axes2,'on');
 hold(axes2,'on');
 
-[a, b] = read_data([net '.cpu']);
-plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CPU');
+[a, b] = read_data([net '.behir']);
+plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CPU');
 
 if exist([net '.aws'], 'file')
     [a, b] = read_data([net '.aws']);
-    plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CPU AWS');
+    plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CPU AWS');
 end
 
-[a, b] = read_data([net '.gpu']);
-
-plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CuDNN Precomputed GEMM');
-
-[a, b] = read_data([net '.gpu_no_precomp_gemm']);
-
-plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CuDNN Implicit GEMM');
-
-[a, b] = read_data([net '.gpufft']);
-
-plot(a,1./b,'LineWidth',2.5,'Parent',axes2,'DisplayName','GPU FFT');
-
-if exist([net '.gpuram'], 'file')
-    [a, b] = read_data([net '.gpuram']);
-    plot(a,1./b,'LineWidth',1.5,'Parent',axes2,'DisplayName','GPU RAM');
+if exist([net '.fusion.4'], 'file')
+    [a, b] = read_data([net '.fusion.4']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','ZNNi Fusion');
 end
 
-if exist([net '.gpuramfft'], 'file')
-    [a, b] = read_data([net '.gpuramfft']);
-    plot(a,1./b,'LineWidth',1.5,'Parent',axes2,'DisplayName','GPU RAM (FFT)');
+if exist([net '.ram'], 'file')
+    [a, b] = read_data([net '.ram']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','GPU + Host RAM');
 end
 
-if exist([net '.fusion'], 'file')
-    [a, b] = read_data([net '.fusion']);
-    plot(a,1./b,'LineWidth',3.5,'Parent',axes2,'DisplayName','FUSION');
+[a, b] = read_data([net '.gpu.optimal']);
+plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','Titan X (Optimal)');
+
+if exist([net '.gpu.cudnn'], 'file')
+    [a, b] = read_data([net '.gpu.cudnn']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CuDNN Precomputed GEMM');
 end
+
+if exist([net '.gpu.cudnn_np'], 'file')
+    [a, b] = read_data([net '.gpu.cudnn_np']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','CuDNN GEMM');
+end
+
+if exist([net '.gpu.fft'], 'file')
+    [a, b] = read_data([net '.gpu.fft']);
+    plot(a,b,'LineWidth',2.5,'Parent',axes2,'DisplayName','GPU FFT');
+end
+
 
 end
 

@@ -1,0 +1,17 @@
+[network_throughput] m36 :: 8,8,8 :: 174.523
+[network_throughput] m36 :: 16,16,16 :: 1252.62
+[network_throughput] m36 :: 24,24,24 :: 3549.62
+[network_throughput] m36 :: 32,32,32 :: 7796.85
+[network_throughput] m36 :: 40,40,40 :: 12738.6
+[network_throughput] m36 :: 48,48,48 :: 19743.6
+[network_throughput] m36 :: 56,56,56 :: 26944.5
+[network_throughput] m36 :: 64,64,64 :: 36065.2
+[network_throughput] m36 :: 72,72,72 :: 43096.3
+[network_throughput] m36 :: 80,80,80 :: 55556.1
+[network_throughput] m36 :: 88,88,88 :: 59262
+[network_throughput] m36 :: 96,96,96 :: 71274.1
+[network_throughput] m36 :: 104,104,104 :: 77552.9
+[network_throughput] m36 :: 112,112,112 :: 84472
+[network_throughput] m36 :: 120,120,120 :: 90900.6
+[network_throughput] m36 :: 128,128,128 :: 98746.2
+[network_throughput] m36 :: 136,136,136 :: 108402
