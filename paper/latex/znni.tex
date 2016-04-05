@@ -1155,15 +1155,21 @@ Explain ConvNets (short)
 
   The CPU--only network is performed layer at the time.  Task parallel
   FFT--based convolutional layers are used for all except the first
-  layer, where data parallel algorithm is used.
+  layer, where data parallel FFT--based algorithm is used.
 
   \subsubsection{GPU + host RAM}
 
-  First 4 layers are done layer at the time using GPU + host RAM
-  implementation.  As there are 2 pooling layers in the first 4
-  layers, the output of the first four layers has a mini--batch size
-  of 64.  The latter layers are applied mini--batch at the time, where
-  the size of minibatch is maximized so that it can fit on the GPU.
+  First 4 layers are done layer at the time.  The convolutional layers
+  ($1$st and $3$rd layer) are computed using the convolutional layer
+  implementation that uses GPU for computation and host RAM for
+  storage (cross reference).  The $2$nd and $4$th layers are computed
+  using the CPU MFP implementation.
+
+  As there are two pooling layers of size $2 \times 2 \times 2$ among
+  the first four layers, the output of the fourth layer will have the
+  first dimension of size $64$ (mini--batch size).  The rest of the
+  network is then computed mini--batch at the time, where the size of
+  minibatch is maximized so that it can fit on the GPU.
 
   \subsubsection{CPU + GPU}
 
@@ -1193,20 +1199,8 @@ Explain ConvNets (short)
   convolutions for all except for the first layer, where it is better
   to use the direct convolution.
 
-
 \section{Comparison to other algorithms}
 
-  We implement the baseline algorithm ourselves, by simply calling
-  CuDNN~\cite{chetlur2014cudnn} primitives.
-
-  We compare our approach to Theano~\cite{bergstra2010theano} that
-  computes sparse outputs, a version of Caffe~\cite{jia2014caffe} that
-  is capable of producing dense output using strided
-  kernels~\cite{tschopp2015efficient}, ELENTRONN~\cite{ELEKTRONN2015},
-  and ZNN~\cite{zlateski2015znn}.
-
-  The only package that has an optimization for inference is
-  ELEKTRONN.
 
   \begin{table*}[t]
     \centering
@@ -1223,6 +1217,18 @@ Explain ConvNets (short)
     \caption{Comparisons to other methods.}
     \label{table:conv_complexity}
   \end{table*}
+
+  We implement the baseline algorithm ourselves, by simply calling
+  CuDNN~\cite{chetlur2014cudnn} primitives.
+
+  We compare our approach to Theano~\cite{bergstra2010theano} that
+  computes sparse outputs, a version of Caffe~\cite{jia2014caffe} that
+  is capable of producing dense output using strided
+  kernels~\cite{tschopp2015efficient}, ELENTRONN~\cite{ELEKTRONN2015},
+  and ZNN~\cite{zlateski2015znn}.
+
+  The only package that has an optimization for inference is
+  ELEKTRONN.
 
 
 
