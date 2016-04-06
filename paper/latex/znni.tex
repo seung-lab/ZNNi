@@ -172,8 +172,9 @@ Explain ConvNets (short)
   number of input/output feature--maps and size of the 3D images.
 
   The choice between regular pooling and \emph{max--fragment--pooling}
-  layer implementation determines what is the spatial distribution of
-  the network when compared to the sliding window output???
+  (\emph{MFP}) layer implementation determines what is the spatial
+  distribution of the network when compared to the sliding window
+  output???
 
   \begin{figure}
     \begin{center}
@@ -195,7 +196,7 @@ Explain ConvNets (short)
 
   \begin{equation*}
     \begin{aligned}
-      & \min_{\id{Shape}^{out}_L, \id{Impl}_i}
+      & \min_{\id{Shape}^{in}_1, \id{Impl}_i}
       & & \frac{\sum_{1 \le i \le L} \proc{Time}(\id{Impl}_i,\id{Shape}^{in}_i,\id{Shape}^{out}_i)}
       { \proc{Size}( \id{Shape}^{out}_L)} \\
       & \textrm{subject to} & &
@@ -203,38 +204,76 @@ Explain ConvNets (short)
       & & &
       \proc{Type}(\id{Impl}_i) = \proc{Type}(Layer_i). \\
       & & &
+      \proc{Out-Shape}(\id{Impl}_i,\id{Shape}^{in}_i) = \id{Shape}^{out}_i \\
+      & & &
+      \proc{Num-Inputs}(\id{Layer}_i) = \id{Shape}^{in}_i[2] \\
+      & & &
+      \id{Shape}^{out}_i[j] \in \mathbb{N}^+ \\
+      & & &
       \proc{Memory}(\id{Impl}_i) \le M_{\max} \\
     \end{aligned}
   \end{equation*}
 
-  We are trying to find an optimal output shape of the network
-  $\id{Shape}^{out}_L$ and an implementation for each of the network
+  We are trying to find an optimal input shape of the network
+  $\id{Shape}^{in}_1$ and an implementation for each of the network
   layers $\id{Impl}_i$ such that the total time spent computing the
   output, divided by the number of elements of the output is
-  minimized.
+  minimized.  Note that for a fixed set of layer implementations
+  $\id{Impl}_i$ and fixed input shape $\id{Shape}^{in}_1$, the
+  network's output shape $\id{Shape}^{out}_L$ is uniquely determined.
 
   Naturally, the input shape of each layer has to be equal to the
-  output shape of the previous layer, and has to be of the same type
-  defined by the network architecture.  Furthermore, the memory
-  required for computation by each layer has to be smaller than some
-  pre--defined constant (memory available to the CPU or GPU),
-  depending on the architecture.
+  output shape of the previous layer, and each layer has to be of the
+  same type defined by the network architecture.
+
+  Furthermore, memory required for computation by each layer has to be
+  smaller than some pre--defined constant (memory available to the CPU
+  or GPU), depending on the architecture.
 
   As all input and output shapes have to be integral, choice of the
   output shape can limit the choice of max--pooling layer
   implementations and vice versa.
 
-  For a given problem the minimization problem can be solved using
-  exhaustive search over the output shapes and layer implementations
-  and collecting empirical results, which can be computationally very
-  intensive.  As it turns out, with theoretical analysis of different
-  implementations' computational complexities and memory requirements,
-  we can narrow the search space.
+  There are multiple reasons why this minimization problem is hard.
+  First, the actual time required for each layer implementation will
+  depend on the architecture it is running on (number of cores for
+  CPUs, or the GPU type).  Secondly, because of the memory constraint,
+  a choice of one parameter can limit the available range of the other
+  parameters.  For example, for large kernel sizes, increasing the
+  input shape, can allow only use of slower direct convolution, as
+  FFT--based convolution requires more memory.  Therefore, some
+  exhaustive search has to be done.
 
-\subsection{Max--pooling vs max--fragment--pooling}
+  In general case, the exhaustive search can be performed by:
+
+  \begin{enumerate}
+    \item Loop over all possibilities for the pooling layers.  This
+      will introduce constraints on the allowable input shapes.
+    \item Loop over all allowed input shapes.
+    \item Determine the best implementation for each convolutional
+      layer.
+  \end{enumerate}
+
+  This is possible because for fixed choice of \emph{max--pooling} or
+  \emph{MFP} of each pooling layer, and fixed input shape, the time
+  and space required for each convolutional layer is uniquely
+  determined.  We pick the fastest one that satisfies the memory
+  constrain.
+
+  Sometimes, for a given network architecture, the following two
+  choices can be made by analytically analyzing the network:
+
+  \begin{enumerate}
+    \item The choice between \emph{max--pooling} and \emph{MFP} for
+      the pooling layers.
+    \item The choice of the input's shape mini--batch size $S$ -- the
+      most significant dimension of the input shape.
+  \end{enumerate}
+
+\subsection{Max--pooling vs MFP}
 
   Giusti at al.~\cite{giusti2013fast} and Masci at
-  al.~\cite{masci2013fast} show that \emph{max--fragment--pooling}
+  al.~\cite{masci2013fast} show that \emph{MFP}
   layers will outperform the network using regular \emph{max--pooling}
   layers.  However, they limit the sizes of the output images of the
   \emph{max--pooling} networks to $1 \times 1 \times 1$, while
@@ -248,7 +287,7 @@ Explain ConvNets (short)
   In order to use \emph{max--fragment-pooling} layers, the output
   shape has to be of the form $(\alpha S_{\min},f'_L,x,y,z)$, where
   $S_{min} = \prod_{i \in \id{Pooling}} p^3_i$.  This is because each
-  \emph{max--fragment--pooling} layer $i$ with a window size of
+  \emph{MFP} layer $i$ with a window size of
   $p_i^3$ creates $p_i^3$ fragments for each input.
 
   Consider a network in the form of 'CPCPCCCC' where 'C' represents a
@@ -272,7 +311,7 @@ Explain ConvNets (short)
       \label{fig:sparse_explanationb}
     }
     \caption{Comparison of the theoretical speedups of max--pooling
-      and max--fragment--pooling ConvNets.}
+      and MFP ConvNets.}
     \label{fig:sparse_explanation}
   \end{figure}
 
@@ -349,7 +388,7 @@ Explain ConvNets (short)
 
   The two approaches essentially perform the same computation, the
   only difference is the way the intermediate results are stored.  The
-  \emph{max--fragment--pooling} approach has a very slightly
+  \emph{MFP} approach has a very slightly
   lower computational complexity when FFT--based convolution is used,
   but might be very tedious to implement for an arbitrary input image
   size.
@@ -1033,7 +1072,7 @@ Explain ConvNets (short)
   convolution -- enough memory to store one input 3D image, a kernel,
   and one output 3D image.
 
-\section{Algorithms for the max--pooling and max--fragment--pooling layers}
+\section{Algorithms for the max--pooling and MFP layers}
 
   \emph{Max pooling} of an image of size $\vec{n}$ with the window
   size of $\vec{p} = (p_x,p_y,p_z)$ divides an image into blocks of
@@ -1058,7 +1097,7 @@ Explain ConvNets (short)
 
   Similarly as in the max--pooling case, our CPU implementation loops
   over all the $f$ input images of each of $S$ inputs in a parallel
-  for loop, and performs the max--fragment--pooling by performing the
+  for loop, and performs the MFP by performing the
   max--pooling operation at each offset.
 
   The GPU implementation is based on the CuDNN primitive for
@@ -1098,7 +1137,7 @@ Explain ConvNets (short)
   As described in~\ref{sec:sliding-window} the two ways to produce an
   output of a sliding--window ConvNet is by: (1) naively applying a
   max--poling ConvNet for every window location and (2) using
-  \emph{max--fragment--pooling} or \emph{filter-rarefication}.
+  \emph{MFP} or \emph{filter-rarefication}.
   The second approach greatly reduces the amount of computation
   required per output pixel~\cite{giusti2013fast,masci2013fast,
     zlateski2015znn,long2015fully,sermanet2013overfeat,yu2015multi}.
@@ -1133,9 +1172,9 @@ Explain ConvNets (short)
   \end{figure}
 
   Interestingly, for some fixed output sizes, this approach can
-  outperform the \emph{max--fragment--pooling}.
+  outperform the \emph{MFP}.
   Figure~\ref{fig:sparse_explanationa} shows the theoretical speedup
-  for different output sizes for both \emph{max--fragment--pooling}
+  for different output sizes for both \emph{MFP}
   and \emph{sparse} computation as described above.  The theoretical
   speedup is defined as the ratio of operations required for producing
   $1^3$ output vs the amount of operations required per output pixel
@@ -1155,12 +1194,12 @@ Explain ConvNets (short)
   we should always try to maximize the output image size.  Using
   \emph{sparse} computation for the same output size requires much
   more memory, as the input sizes grow faster than in the
-  \emph{max--fragment--pooling} networks.  On
+  \emph{MFP} networks.  On
   Figure~\ref{fig:sparse_explanationb} we plot the theoretical speedup
   achievable given certain amount of memory available.  For given
   memory limit we determine what is the largest possible output image
   we can compute using both methods, and plot the theoretical speedup.
-  From the figure we can conclude that \emph{max--fragment--pooling}
+  From the figure we can conclude that \emph{MFP}
   always outperforms the \emph{sparse} computation.
 
 \subsection{Optimal mini--batch size for FFT--based convolutions}
@@ -1420,3 +1459,4 @@ Explain ConvNets (short)
 \end{document}
 
 %% r3.8xlarge
+%% CUDNN GEMM not OK for 9x9x9
