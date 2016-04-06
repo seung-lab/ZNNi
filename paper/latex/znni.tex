@@ -114,6 +114,115 @@ We care about throughput.
 
 Explain ConvNets (short)
 
+\section{Network execution}
+
+  In the computational sense, each layer of a ConvNet takes a 5
+  dimensional tensor $I$ as an input and produces another 5
+  dimensional tensor $I'$.  The input tensor is in the form
+  $(S,f,x,y,z)$ and the output $(S',f',x',y',z')$.  $S$ is the
+  mini--batch size -- how many sets of inputs are provided.  $f$ and
+  $f'$ are the number of input/output feature--maps of the layer, and
+  $(x,y,z)$ and $(x',y',z')$ is the size of each input/output 3D
+  image.
+
+  We'll refer to the size of $I$ and $I'$ as input and output shape,
+  respectively.  The relationship between the input shape and output
+  shape will depend on the layer type, and kernel size in the case of
+  a convolutional layer.  The relationship between the two is shown in
+  the columns 2 and 3 of
+  Table~\ref{table:layers_complexity}\footnote{The table assumes
+    isotropic 3D images.}.  Because all the dimensions of the input
+  and output shape have to be integral, not every size of input and
+  output shape is allowed.
+
+  For the input shape $I = (S,f,x,y,z)$ with $S > 1$, the mini--batch
+  size $S'$ of the output shape $I' = (S',f',x',y',z')$ will always be
+  divisible by $S$.  The values $I'(\frac{S'}{S} i : \frac{S'}{S}
+  (i+1),:,:,:,:)$ will only depend on $I(i,:,:,:,:)$.  This means that
+  concatenating results of applying a layer on two inputs
+  $I_1(S_1,f,x,y,z)$ and $I_2(S_2,f,x,y,z)$ will equal to the result
+  of the concatenated input of size $(S_1+S_2,f,x,y,z)$.  This means
+  that each layer can compute the result of the 5D input tensor $I$ by
+  sequentially computing the result of each 4D sub--tensor.  However,
+  having $S > 1$ can be computationally beneficial, especially when
+  FFT--based convolution is used.
+
+  We'll refer to the input shape to the first layer, as the input to
+  the ConvNet, and the output of the last layer as the output of the
+  ConvNet.
+
+  \subsection{Maximizing inference throughput}
+
+  [This text should maybe go somewhere above]
+
+  ConvNet architecture represents an ordered set of layers, where each
+  layer can be either convolutional or max--pooling\footnote{We focus
+    on these two layer types because the convolutional is the
+    computationally intensive one, and max--pooling allows for
+    different implementations.}.  Furthermore, for each convolutional
+  layer we are given the set of kernels, biases, and the transfer
+  function.
+
+  For a given ConvNet architecture, we can have different
+  implementations, that is composed of different implementation of the
+  two layer types.  The different implementations of the convolutional
+  layers produce the same result, but their speed depends on various
+  things such as kernel sizes, number of input/output feature--maps
+  and size of the 3D images.
+
+  The choice between regular pooling and \emph{max--fragment--pooling}
+  layer implementation determines what is the spacial distribution of
+  the network when compared to the sliding window output???
+
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=0.99\columnwidth]{fig/layers.pdf}
+    \end{center}
+    \caption{Diagram of available layer implementations.}
+    \label{fig:layers}
+  \end{figure}
+
+  In order to maximize the throughput we provide algorithms fast and
+  memory efficient primitives for direct and FFT--based convolutional
+  layers, as well as max--pooling and max--fragment--poling.
+  Figure~\ref{fig:layers} summarizes our basic primitives based on the
+  architecture they run on, and layer type they implement.
+
+  When executing a ConvNet on a single architecture (CPU--only or
+  GPU--only), maximizing throughput can be represented by the
+  following minimization problem:
+
+  \begin{equation*}
+    \begin{aligned}
+      & \min_{\id{Shape}^{out}_L, \id{Impl}_i}
+      & & \frac{\sum_{1 \le i \le L} \proc{Time}(\id{Impl}_i,\id{Shape}^{in}_i,\id{Shape}^{out}_i)}
+      { \proc{Size}( \id{Shape}^{out}_L)} \\
+      & \textrm{subject to} & &
+      \id{Shape}^{in}_i = \id{Shape}^{out}_{i-1} \\
+      & & &
+      \proc{Type}(\id{Impl}_i) = \proc{Type}(Layer_i). \\
+      & & &
+      \proc{Memory}(\id{Impl}_i) \le M_{\max} \\
+    \end{aligned}
+  \end{equation*}
+
+  We are trying to find an optimal output shape of the network
+  $\id{Shape}^{out}_L$ and an implementation for each of the network
+  layers $\id{Impl}_i$ such that the total time spent computing the
+  output, divided by the number of elements of the output is
+  minimized.
+
+  Naturally, the input shape of each layer has to be equal to the
+  output shape of the previous layer, and has to be of the same type
+  defined by the network architecture.  Furthermore, the memory
+  required for computation by each layer has to be smaller than some
+  pre--defined constant (memory available to the CPU or GPU),
+  depending on the architecture.
+
+  As all input and output shapes have to be integral, choice of the
+  output shape can limit the choice of max--pooling layer
+  implementations and vice versa.
+
 \section{Sliding window max--pooling ConvNet}
 
   \label{sec:sliding-window}
@@ -171,6 +280,9 @@ Explain ConvNets (short)
   Limiting the input sizes to ones that require minimal amount of
   computation makes sense when optimizing for sliding--window
   inference throughput, as there is no reason to use any other sizes??
+
+
+
 
 \section{Padded--pruned FFTs}
 
