@@ -161,14 +161,15 @@ Explain ConvNets (short)
     computationally intensive one, and max--pooling allows for
     different implementations.}.  Furthermore, for each convolutional
   layer we are given the set of kernels, biases, and the transfer
-  function.
+  function, and for weach max--poling layer we are given the pooling
+  window size.
 
-  For a given ConvNet architecture, we can have different
-  implementations, that is composed of different implementation of the
-  two layer types.  The different implementations of the convolutional
-  layers produce the same result, but their speed depends on various
-  things such as kernel sizes, number of input/output feature--maps
-  and size of the 3D images.
+  For a given ConvNet architecture, we can have different network
+  implementations.  Each network implementation is composed of
+  different implementation of the two layer types.  The different
+  implementations of the convolutional layers produce the same result,
+  but their speed depends on various things such as kernel sizes,
+  number of input/output feature--maps and size of the 3D images.
 
   The choice between regular pooling and \emph{max--fragment--pooling}
   layer implementation determines what is the spatial distribution of
@@ -222,6 +223,89 @@ Explain ConvNets (short)
   As all input and output shapes have to be integral, choice of the
   output shape can limit the choice of max--pooling layer
   implementations and vice versa.
+
+  For a given problem the minimization problem can be solved using
+  exhaustive search over the output shapes and layer implementations
+  and collecting empirical results, which can be computationally very
+  intensive.  As it turns out, with theoretical analysis of different
+  implementations' computational complexities and memory requirements,
+  we can narrow the search space.
+
+\subsection{Max--pooling vs max--fragment--pooling}
+
+  Giusti at al.~\cite{giusti2013fast} and Masci at
+  al.~\cite{masci2013fast} show that \emph{max--fragment--pooling}
+  layers will outperform the network using regular \emph{max--pooling}
+  layers.  However, they limit the sizes of the output images of the
+  \emph{max--pooling} networks to $1 \times 1 \times 1$, while
+  allowing the \emph{max--fragment--polling} networks to have an
+  arbitrary output shape.
+
+  The minimal output shape of a given ConvNet is $(1,f'_L,1,1,1)$
+  where $f'_L$ is the number of output feature--maps of the last layer
+  of the network.  When the most significant dimension of the output
+  shape equals to $1$, only \emph{max--pooling} layers can be used.
+  In order to use \emph{max--fragment-pooling} layers, the output
+  shape has to be of the form $(\alpha S_{\min},f'_L,x,y,z)$, where
+  $S_{min} = \prod_{i \in \id{Pooling}} p^3_i$.  This is because each
+  \emph{max--fragment--pooling} layer $i$ with a window size of
+  $p_i^3$ creates $p_i^3$ fragments for each input.
+
+  Consider a network in the form of 'CPCPCCCC' where 'C' represents a
+  convolutional layer with the kernel size of
+
+  It is well known (cite what?) that when the size of output images
+  are increased, ConvNets require less operations per output pixel.
+
+  As it turns out, when limited amount of RAM is available, a network
+  using.
+
+
+  \begin{figure}
+    \centering
+    \subfloat[]{\protect\includegraphics[width=0.24\textwidth]
+      {fig/vssparsesize.eps}
+      \label{fig:sparse_explanationa}
+    }
+    \subfloat[]{\protect\includegraphics[width=0.24\textwidth]
+      {fig/vssparsemem.eps}
+      \label{fig:sparse_explanationb}
+    }
+    \caption{Comparison of the theoretical speedups of max--pooling
+      and max--fragment--pooling ConvNets.}
+    \label{fig:sparse_explanation}
+  \end{figure}
+
+
+
+  \begin{table*}[t]
+    \centering
+    \begin{tabular}{l|lll}
+      \toprule
+      Layer   & Input shape    & Output shape     & FLOPS \\
+      \midrule
+      Convolutional -- Direct &
+      $S \times f \times n^3$ &
+      $S \times f' \times [n-k]^3$ &
+      $S \cdot f' \cdot f \cdot n^3 \cdot k^3$ \\
+      Convolutional -- FFT--based &
+      $S \times f \times n^3$ &
+      $S \times f' \times [n-k]^3$ &
+      $S \cdot 3Cn^3 \log n[f' + f] + 4Sf' \cdot f \cdot n^3 + f \cdot f' \cdot Cn \log n[k^2 + k \cdot n + n^2]$ \\
+      Max Pooling &
+      $S \times f \times n^3$ &
+      $S \times f \times [n/p]^3$ &
+      $S \cdot f \cdot n^3$ \\
+      Max Fragment Pooling &
+      $S \times f \times n^3$ &
+      $[S \cdot p^3] \times f \times (n/p)^3$ &
+      $S \cdot f \cdot n^3 \cdot p^3$ \\
+      \bottomrule
+    \end{tabular}
+    \caption{Computational complexities.}
+    \label{table:layers_complexity}
+  \end{table*}
+
 
 \section{Sliding window max--pooling ConvNet}
 
@@ -308,13 +392,14 @@ Explain ConvNets (short)
 
   We propose an algorithm that efficiently computes padded--pruned for
   3D FFTs for both the CPU and GPU. Our approach achieves an average
-  of $5 \times$ speedup over the naive approach on both CPU and GPU,
-  and greatly reduce the memory overhead compared to the approaches
-  described in ~\cite{mathieu-iclr-14,vasilache2014fast}.  Our
-  padded--pruned FFT algorithms are the foundation of our FFT--based
-  convolutional layers; however detailed understanding of the FFT
-  transform algorithms are not required for understanding the latter
-  part of the paper.
+  of $5 \times$ speedup over the naive approach on the CPU and $10
+  \times$ speedup on the GPU, and greatly reduce the memory overhead
+  compared to the approaches described in
+  ~\cite{mathieu-iclr-14,vasilache2014fast}.  Our padded--pruned FFT
+  algorithms are the foundation of our FFT--based convolutional
+  layers; however detailed understanding of the FFT transform
+  algorithms are not required for understanding the latter part of the
+  paper.
 
 \subsection{FFT based convolution}
 
@@ -981,34 +1066,6 @@ Explain ConvNets (short)
   max--pooling primitive to compute the max--pooling of all the input
   images at that offset.
 
-
-  \begin{table*}[t]
-    \centering
-    \begin{tabular}{l|lll}
-      \toprule
-      Layer   & Input shape    & Output shape     & FLOPS \\
-      \midrule
-      Convolutional -- Direct &
-      $S \times f \times n^3$ &
-      $S \times f' \times [n-k]^3$ &
-      $S \cdot f' \cdot f \cdot n^3 \cdot k^3$ \\
-      Convolutional -- FFT--based &
-      $S \times f \times n^3$ &
-      $S \times f' \times [n-k]^3$ &
-      $S \cdot 3Cn^3 \log n[f' + f] + 4Sf' \cdot f \cdot n^3 + f \cdot f' \cdot Cn \log n[k^2 + k \cdot n + n^2]$ \\
-      Max Pooling &
-      $S \times f \times n^3$ &
-      $S \times f \times [n/p]^3$ &
-      $S \cdot f \cdot n^3$ \\
-      Max Fragment Pooling &
-      $S \times f \times n^3$ &
-      $[S \cdot p^3] \times f \times (n/p)^3$ &
-      $S \cdot f \cdot n^3 \cdot p^3$ \\
-      \bottomrule
-    \end{tabular}
-    \caption{Computational complexities.}
-    \label{table:layers_complexity}
-  \end{table*}
 
 
 \section{ConvNet computation strategies}
