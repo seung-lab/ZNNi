@@ -112,7 +112,116 @@ We care about throughput.
 
 \section{Convolutional networks}
 
-Explain ConvNets (short)
+  Short ConvNet desc...
+
+  Each layer of the ConvNet takes as an input $f$ 3D images and
+  produces $f'$ 3D images.  The inputs to a layer are referred as
+  input feature--maps and the outputs as output feature--maps.
+
+\subsection{Convolutional layer}
+
+  ....
+
+  What it does
+
+\subsection{Pooling layer}
+
+  What it does
+
+\subsection{What do we study here}
+
+  We study only layered networks -- the input to each layer is either
+  a network input or the output of some other layer.  Our primitives
+  do not have that restriction, we just use them that way to analyze
+  some networks.
+
+  We study networks with only convolutional and pooling layers.
+  Convolutional layers are computationally most expensive, while the
+  pooling layers can be replaced with so called max--fragment--poling
+  layers to compute more pixels by reusing the computation from the
+  previous layers...
+
+  We assume that the transfer function is rectify linear, can be
+  anything.
+
+  dwell more..
+
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=0.99\columnwidth]{fig/alllayersram.pdf}
+    \end{center}
+    \caption{Diagram of all layers primitives.  The red primitives are
+      wrappers primitives provided by CuDNN.  The green primitives are
+      the novel primitives introduced in this paper.}
+    \label{fig:layers}
+  \end{figure}
+
+\subsection{Contributions and novelty}
+
+  - Introduction of new primitives for the CPU and GPU (list the novel ones)
+     a) based on previously mentioned as tedious Padded Pruned FFTs
+  - Showing how to use them to maximize throughput
+  - Novel GPU + Host primitive
+  - Showing how to use it
+  - CPU + GPU pipeline algorithm
+
+\section{Sliding window max--pooling ConvNet}
+
+  \label{sec:sliding-window}
+
+  A max-pooling ConvNet in the context of visual object
+  recognition~\cite{krizhevsky2012imagenet} is a special case of the
+  definition given above.  No max-filterings are used.  The size of
+  the input image (known as the ConvNet field of view) is such that
+  the convolutions and max-poolings reduce the output image(s) to
+  exactly one pixel/voxel.  There may be a single output representing
+  whether or not the input image belongs to a given object class, or a
+  set of $n$ outputs representing membership in one of $n$ object
+  classes.
+
+  If localization and detection are desired as well as recognition,
+  one can slide a window over a large image, and apply the max-pooling
+  ConvNet at each location of the window
+  \cite{sermanet2013overfeat}. For an input image of size $n^3$ and a
+  ConvNet field of view of size $v^3$, the output image is of size
+  $(n-v+1)^3$.  The sliding window max-pooling ConvNet is also useful
+  in the context of boundary detection and image
+  segmentation~\cite{ciresan2012deep}.
+
+  However, it is computationally wasteful to literally implement the
+  computation in this way.  The computational complexity can be
+  reduced by either increasing the input image size which will produce
+  sparse outputs. (Explain the limitations etc..) Or by more advanced
+  methods such as
+  \emph{max-fragment-pooling}~\cite{giusti2013fast,masci2013fast}
+  where the pooling layers produce multiple output images, each of
+  which is independently processed by all the subsequent layers.
+  Another approach that produces equivalent results by using
+  \emph{max-filtering} instead of max--pooling and increasing the
+  sparsity of all subsequent convolutions by a factor equal to the
+  size of the max--filtering window~\cite{zlateski2015znn} (This
+  approach has also been called
+  \emph{skip-kernels}~\cite{sermanet2013overfeat}, \emph{filter
+    rarefaction}~\cite{long2015fully}, and \emph{dilated
+    convolutions}~\cite{yu2015multi}).
+
+  Long at al.~\cite{long2015fully} shows that the two approaches
+  essentially perform the same computation, the only difference is the
+  way the intermediate results are stored.  The \emph{MFP} approach
+  has a very slightly lower computational complexity when FFT--based
+  convolution is used, but might be tricky to implement for an
+  arbitrary input image size.
+
+  Input image sizes can be restricted to the ones for which all
+  \emph{MFP} layers of a given ConvNet produce fragments of the same
+  size.  This can further lower the computational complexity when
+  FFT--based implementations are used, and greatly simplifies the
+  performances.  Limiting the inputs to a specific size also limits
+  the outputs to a specific size, which might be undesirable
+  limitation when training a ConvNet.  For maximizing the inference
+  throughput this limitation has no effect, as the goal is to obtain
+  the result of a ConvNet applied to a large 3D image, with the amount
+  of pixels computed at the time being irrelevant.
 
 \section{Network execution}
 
@@ -128,7 +237,16 @@ Explain ConvNets (short)
   We'll refer to the size of $I$ and $I'$ as input and output shape,
   respectively.  The relationship between the input shape and output
   shape will depend on the layer type, and kernel size in the case of
-  a convolutional layer.  The relationship between the two is shown in
+  a convolutional layer.
+
+  In the simple case when only convolutional and max--pooling layers
+  are present the mini--batch size of the input will be the same as
+  the mini--batch size of the output ($S = S'$).
+
+  When no \emph{max--fragment--pooling} (\emph{MFP}) layers are
+  present
+
+  The relationship between the two is shown in
   the columns 2 and 3 of
   Table~\ref{table:layers_complexity}\footnote{The table assumes
     isotropic 3D images.}.  Because all the dimensions of the input
@@ -175,14 +293,6 @@ Explain ConvNets (short)
   (\emph{MFP}) layer implementation determines what is the spatial
   distribution of the network when compared to the sliding window
   output???
-
-  \begin{figure}
-    \begin{center}
-      \includegraphics[width=0.99\columnwidth]{fig/layers.pdf}
-    \end{center}
-    \caption{Diagram of available layer implementations.}
-    \label{fig:layers}
-  \end{figure}
 
   In order to maximize the throughput we provide algorithms fast and
   memory efficient primitives for direct and FFT--based convolutional
@@ -345,64 +455,6 @@ Explain ConvNets (short)
     \label{table:layers_complexity}
   \end{table*}
 
-
-\section{Sliding window max--pooling ConvNet}
-
-  \label{sec:sliding-window}
-
-  A max-pooling ConvNet in the context of visual object
-  recognition~\cite{krizhevsky2012imagenet} is a special case of the
-  definition given above.  No max-filterings are used.  The size of
-  the input image (known as the ConvNet field of view) is such that
-  the convolutions and max-poolings reduce the output image(s) to
-  exactly one pixel/voxel.  There may be a single output representing
-  whether or not the input image belongs to a given object class, or a
-  set of $n$ outputs representing membership in one of $n$ object
-  classes.
-
-  If localization and detection are desired as well as recognition,
-  one can slide a window over a large image, and apply the max-pooling
-  ConvNet at each location of the window
-  \cite{sermanet2013overfeat}. For an input image of size $n^3$ and a
-  ConvNet field of view of size $v^3$, the output image is of size
-  $(n-v+1)^3$.  The sliding window max-pooling ConvNet is also useful
-  in the context of boundary detection and image
-  segmentation~\cite{ciresan2012deep}.
-
-  However, it is computationally wasteful to literally implement the
-  computation in this way.  The computational complexity can be
-  reduced by either increasing the input image size which will produce
-  sparse outputs. (Explain the limitations etc..) Or by more advanced
-  methods such as
-  \emph{max-fragment-pooling}~\cite{giusti2013fast,masci2013fast}
-  where the pooling layers produce multiple output images, each of
-  which is independently processed by all the subsequent layers.
-  Another approach that produces equivalent results by using
-  \emph{max-filtering} instead of max--pooling and increasing the
-  sparsity of all subsequent convolutions by a factor equal to the
-  size of the max--filtering window~\cite{zlateski2015znn} (This
-  approach has also been called
-  \emph{skip-kernels}~\cite{sermanet2013overfeat}, \emph{filter
-    rarefaction}~\cite{long2015fully}, and \emph{dilated
-    convolutions}~\cite{yu2015multi}).
-
-  The two approaches essentially perform the same computation, the
-  only difference is the way the intermediate results are stored.  The
-  \emph{MFP} approach has a very slightly
-  lower computational complexity when FFT--based convolution is used,
-  but might be very tedious to implement for an arbitrary input image
-  size.
-
-  We use a slightly modified version of
-  \emph{max-fragment-pooling} (MFP) that allows only certain
-  input image sizes, such that the output fragments of each MFP layer
-  have the same size.  This further lowers the computational
-  complexity when FFT--based convolutions are used, and greatly
-  simplifies the implementation.
-
-  Limiting the input sizes to ones that require minimal amount of
-  computation makes sense when optimizing for sliding--window
-  inference throughput, as there is no reason to use any other sizes??
 
 
 
