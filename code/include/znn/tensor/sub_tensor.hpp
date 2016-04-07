@@ -1,5 +1,6 @@
 #pragma once
 
+#include "znn/assert.hpp"
 #include "znn/types.hpp"
 #include "znn/tensor/tags.hpp"
 #include "znn/tensor/memory.hpp"
@@ -86,6 +87,13 @@ public:
     {
         detail::tensor::copy_n(ptr_, strides_[0], d,
                                architecture(), tag);
+    }
+
+    template<typename DevTag>
+    void store_n( T * d, size_t n, DevTag const & tag ) const
+    {
+        STRONG_ASSERT(n<=strides_[0]);
+        detail::tensor::copy_n(ptr_, n, d, architecture(), tag);
     }
 
     template<typename X = A>
@@ -206,6 +214,13 @@ public:
                                tag, architecture());
     }
 
+    template<typename DevTag>
+    void load_n( T const * d, size_t n, DevTag const & tag )
+    {
+        STRONG_ASSERT(n<=this->num_elements());
+        detail::tensor::copy_n(d, n, super_type::ptr_,
+                               tag, architecture());
+    }
 
     template<typename X = A>
     typename std::enable_if<std::is_same<X,detail::tensor::host_tag>::value,

@@ -22,13 +22,14 @@ using namespace znn::fwd;
 std::string net_name;
 vec3i       os;
 long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
+long_t      batch_size = 8;
 
 template<typename Conv>
 inline void benchmark_network( network_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network net(ndesc, 1, os);
+    znni_network net(ndesc, batch_size, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
          << os << std::endl;
@@ -175,7 +176,7 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network_descriptor nd(net_path);
 
-    for ( long_t i = 4; i < 400; i += 4 )
+    for ( long_t i = 128; i < 400; i += 4 )
     {
         os = vec3i(i,i,i);
         if ( os % nd.fragmentation() == vec3i::zero )
@@ -192,7 +193,7 @@ int main(int argc, char *argv[])
     long_t rounds = 4;
     if ( argc > 2 ) rounds = atoi(argv[2]);
 
-    benchmark<device::v1::cudnn_conv>("cudnn", rounds);
+    //benchmark<device::v1::cudnn_conv>("cudnn", rounds);
     benchmark<device::v1::fft_conv>("fft", rounds);
 
     benchmark<device::v1::cudnn_no_precomp_gemm_conv>

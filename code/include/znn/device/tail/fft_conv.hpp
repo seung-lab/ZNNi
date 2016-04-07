@@ -2,16 +2,16 @@
 
 #include "znn/types.hpp"
 #include "znn/tensor/tensor.hpp"
-#include "znn/device/v2/device_layer.hpp"
 #include "znn/device/common/utils.hpp"
 #include "znn/device/common/handle.hpp"
 #include "znn/device/common/cudnn.hpp"
 #include "znn/device/common/fft/transformer.hpp"
+#include "znn/device/tail/tail_layer.hpp"
 
-namespace znn { namespace fwd { namespace device { namespace v2 {
+namespace znn { namespace fwd { namespace device { namespace tail {
 
 class fft_conv
-    : public conv_layer<device_layer>
+    : public conv_layer<tail_layer>
 {
 private:
     std::shared_ptr<device_tensor<float,5>> kernels;
@@ -167,11 +167,16 @@ public:
             + workspace_size_;
     }
 
+    char const * name() const override
+    {
+        return "fft_conv";
+    }
+
     fft_conv( long_t n, long_t fin, long_t fout,
               vec3i const & is, vec3i const & ks,
               std::shared_ptr<device_tensor<float,5>> const & kd,
               std::shared_ptr<device_array<float>> const & bd )
-        : conv_layer<device_layer>(n,fin,fout,is,ks)
+        : conv_layer<tail_layer>(n,fin,fout,is,ks)
         , kernels(kd)
         , biases(bd)
         , as(detail::get_optimal_size(is))
@@ -198,6 +203,4 @@ public:
     }
 };
 
-
-
-}}}} // namespace znn::fwd::device::v2
+}}}} // namespace znn::fwd::device::tail

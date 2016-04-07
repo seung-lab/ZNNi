@@ -21,6 +21,7 @@ struct handle_t
 
     handle_t()
     {
+        //cudaDeviceReset();
         cudnn_version = static_cast<int>(cudnnGetVersion());
         printf("cudnnGetVersion() : %d , CUDNN_VERSION from cudnn.h"
                " : %d (%s)\n",

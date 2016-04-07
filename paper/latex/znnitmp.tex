@@ -308,34 +308,44 @@ We care about throughput.
     \label{table:layers_complexity}
   \end{table*}
 
-\section{FFT of padded image}
+
+
+
+
+\section{Padded--pruned FFTs}
+
   The computational complexity of a ConvNet can be reduced by using
   FFT convolutions.  The advantages of such approach have been shown
   for 2D ConvNets running on
   GPUs~\cite{mathieu-iclr-14,vasilache2014fast}, and 3D ConvNets
   running on CPUs~\cite{zlateski2015znn}.
 
-  In FFT convolution the kernel and the image are zero-padded to a
-  common size.  Since the kernel is typically much smaller than the
-  image, the padded kernel consists mostly of zeros.  If the FFT
-  computation were implemented to ignore the zeros of the padded
-  kernel, it would become much faster and use less memory.  We
-  propose such an algorithm, and implement it for both the CPU and
-  GPU. Our approach achieves an average of $5 \times$ speedup over the
-  naive approach on the CPU and $10 \times$ speedup on the GPU.  It
-  also greatly reduces the memory overhead compared to the approaches
-  described in ~\cite{mathieu-iclr-14,vasilache2014fast}.
+  A convolution of a 3D image with a kernel is obtained by first zero
+  padding the image and the kernel to the same size, after which we
+  perform the transform of both the padded image and kernel.  The
+  inverse transform of the point-wise product of the two transforms
+  will contain the result of the convolution.
 
-  The speedup is expected to be large for a ConvNet, which typically
-  contains many more kernel FFTs than image FFTs.  The speedup is more
-  modest for a single convolution, which requires one padded kernel
-  FFT, one image FFT, and one inverse FFT.
+  When FFT--based convolutions are used, most of the FFT transforms
+  are performed on relatively small kernels that are zero--padded to
+  match the image size, which can be very large.  Chetlur at
+  al.~\cite{chetlur2014cudnn} state that the computational complexity
+  of such transforms can be greatly reduced by computing
+  padded--pruned FFTs.  They also note that such algorithms can be
+  complex and tedious to implement.
 
-  Our padded FFT algorithms are the foundation of our FFT--based
-  convolutional layers, but understanding them is not necessary for
-  understanding the latter part of the paper.
+  We propose an algorithm that efficiently computes padded--pruned for
+  3D FFTs for both the CPU and GPU. Our approach achieves an average
+  of $5 \times$ speedup over the naive approach on the CPU and $10
+  \times$ speedup on the GPU, and greatly reduce the memory overhead
+  compared to the approaches described in
+  ~\cite{mathieu-iclr-14,vasilache2014fast}.  Our padded--pruned FFT
+  algorithms are the foundation of our FFT--based convolutional
+  layers; however detailed understanding of the FFT transform
+  algorithms are not required for understanding the latter part of the
+  paper.
 
-\subsection{Padded FFT algorithm}
+\subsection{FFT based convolution}
 
   \begin{figure}
     \begin{center}
@@ -345,15 +355,22 @@ We care about throughput.
     \label{fig:pruned_ffts}
   \end{figure}
 
+  The convolution theorem states that the fourier transform of a
+  convolution euqals the pointwise product of the fureier transforms
+  of the signals.  In the descrete case, the theorem is given by:
+
+  $$x \ast y = DTFT^{-1}[DTFT\{x\} \cdot DTFT\{y\}]$$
+
   For 3D FFT--based convolution, the 3D images $x$ and $y$ are first
   zero-padded to the same size.  The inverse FFT of the point-wise
   product contains the result of the convolution.  The images $x$ and
   $y$ can be zero-padded to any size, as long as their size is equal.
 
-  A 3D FFT is obtained by computing 1D FFTs along the three
-  dimensions.  Some of these 1D FFTs are of an array with all elements
-  equal to $0$.  These are unnecessary to compute as the FFT of
-  a \emph{all zeros} signal is all zeros.
+  A 3D FFT transform is obtained by computing 1D FFTs along the three
+  dimensions.  When computing a transform of a padded 3D image, some
+  of the 1D transforms compute the FFT of an array with all elements
+  equal to $0$.  These transforms are unnecessary as the FFT transform
+  of a \emph{zero signal} have all frequencies equal to zero.
 
   We can reduce the amount of computation by computing only necessary
   1D transforms.  When computing the FFT of a trainable kernel of size
@@ -365,10 +382,10 @@ We care about throughput.
   computational cost from $C n^3 \log n^3$ to $C n\log n[k^2 + k \cdot
     n + n^2]$.  As most of the FFTs are performed on kernels, and as
   the kernel sizes are usually much smaller compared to the image
-  sizes ($k \ll n$), we could reduce the computation cost by nearly two
+  sizes ($k << n$), we could reduce the computation cost by nearly two
   thirds.
 
-  Our approach uses $3$rd party libraries to perform a batch of 1D
+  Our approach uses $3$rd part libraries to perform a batch of 1D
   FFTs.  Depending on the library implementation, the size to which we
   pad the 3D image can greatly influence the computational complexity.
 
@@ -385,28 +402,35 @@ We care about throughput.
   to the size of $x' \times y' \times z'$.
 
 \subsection{CPU implementation}
-  The $x \times y \times z$ image is zero-padded to $x' \times
-  y \times z$.  This is easily implemented by doing a linear copy of
-  the memory, and zero-padding the rest. We then perform $y \cdot z$
-  1D real to complex FFT transforms along the $x$ direction.  The FFTs
-  are performed out of place into a pre-allocated, and
-  zero-initialized complex-valued $\floor{\frac{x'}{2}} + 1 \times
-  y' \times z'$ image.  We then perform in-place 1D transforms along
-  the $y$ direction, followed by the $z$ direction.
 
-  The inverse FFT is computed by following the above steps in reverse
-  order.  The 1D FFTs can either be done serially, or by $N$ workers
-  in parallel (in a parallel for loop).
+  For the CPU we propose both a parallel algorithm and a serial
+  algorithm that perform an FFT transform of a single 3D image.
 
-% say smth about memory requirement?
+  First, the image of size $x \times y \times z$ is zero padded to the
+  size $x' \times y \times z$.  Note that this can be easily
+  implemented by doing a linear copy of the memory, and zero padding
+  the rest. We then perform $y \cdot z$ 1D real to complex FFT
+  transforms along the $x$ direction.  The transform is performed out
+  of place into a pre-allocated, and zero initialized complex 3D image
+  of size $\floor{\frac{x'}{2}} + 1 \times y' \times z'$.
+
+  We then perform in-place 1D transforms along $y$ direction and
+  finally along $z$ direction.  The difference between the serial and
+  the parallel algorithm is only in the way we are performing the 1D
+  transforms -- either in serial, or by $N$ workers in parallel (in a
+  parallel for loop).
+
+  The inverse FFT can be computed in exact same way, just taking the
+  steps in reverse order.
 
 \subsection{GPU implementation}
 
 \label{sec:gpu-fft-impl}
 
-  Our GPU algorithm always performs FFTs on $b$ 3D images
-  simultaneously, in order to achieve high utilization of the many
-  GPU threads.
+  On the GPU, we propose an algorithm that always performs FFT
+  transform on $b$ 3D images simultaneously.  This way we can achieve
+  higher utilization of the high number of available threads on the
+  GPUs.
 
   A set of $b$ 3D images can be represented as a 4D tensor.  We need
   to perform 1D FFTs along the three least significant dimensions.
@@ -490,23 +514,32 @@ We care about throughput.
   pre--defined constant amount of memory.
 
 \section{Convolutional layers}
-  The input to a convolutional layer is a tuple of $f$ images, and the
-  output a tuple of $f'$ images.  We want to process a batch of $S$
-  inputs to yield a batch of $S$ outputs, via
-  $$O_{s,j} = \sum_{i=1}^f w_{ji}\ast I_{s,i}$$ for $1 \le s \le S$
-  and $1 \le j \le f'$.  Here $I_{s,i}$ is the $i^{th}$ image of the
-  $s^{th}$ input in the batch, and $O_{s,j}$ is the $j^{th}$ image of
-  the $s^{th}$ output in the batch, and $w_{ji}$ is the kernel from
-  the $i$th image in an input tuple to the $j$th image in an output
-  tuple.
 
-We will assume 3D images and kernels.  If $I_{s,i}$ has size $\vec{n}
-= \angled{n_x, n_y, n_z}$ and $w_{ji}$ has size $\vec{k}
-= \angled{k_x,k_y,k_z}$, then we can regard $I$ as a 5D tensor of size
-$S \times f \times n_x \times n_y \times n_z$, $w$ as a 5D tensor of size
-$f' \times f \times k_x \times k_y \times k_z$, and $O$ as a 5D tensor of
-size $S \times f' \times n_x' \times n_y' \times n_z'$, where
-$\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
+  Consider a convolutional layer with $f$ input feature--maps and $f'$
+  output feature--maps.  The input to the layer is a set of $f$ 3D
+  images, or a mini--batch of size $S$ each having $f$ 3D input
+  images.  The $f$ images of each minimbatch are convolved with $f'
+  \times f$ 3D kernels producing $f'$ output images.
+
+  In the computational sense, the convolutional layer operates on two
+  5D tensors.  The first 5D tensor $I$ represents all the 3D input
+  images such that $I_{s,i}$ is the $i^{th}$ 3D image of the $s^{th}$
+  mini--batch.  The second 5D tensor $w$ represents the set of all
+  convolution kernels.  The output of the layer can also be
+  represented as a 5D tensor $O$, such that
+
+  $$O_{s,j} = \sum_{1 \le i \le f} I_{s,i} \ast w_{j,i}$$
+  for $1 \le s \le S$ and $1 \le j \le f'$.
+
+  If the size of the input images is $\vec{n} = \angled{n_x, n_y,
+  n_z}$ and the size of the kernels is $\vec{k}
+  = \angled{k_x,k_y,k_z}$, then the inputs to a convolutional layer
+  are a 5D tensor $I$ of size $S \times f \times n_x \times n_y \times
+  n_z$ representing the images, and a 5D tensor $w$ of size $f' \times
+  f \times k_x \times k_y \times k_z$ representing the kernels.  The
+  output of the convolutional layer is another 5D tensor of size
+  $S \times f' \times n_x' \times n_y' \times n_z'$, where $\vec{n}'
+  = \vec{n} - \vec{k} + \vec{1}$.
 
 \subsection{CPU algorithms}
 
@@ -652,7 +685,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   during the execution, and is given in
   Table~\ref{table:memory_requirements}.
 
-\subsubsection{Task parallel FFT-based algorithm}
+\subsubsection{Task prallel FFT-based algorithm}
 
   \begin{figure}
     \begin{center}
@@ -794,15 +827,15 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 \subsection{GPU implementations}
 
   For the GPU, we propose three different algorithms.  Two of them use
-  based on cuDNN's 3D convolution that are based on implicit
+  based on CuDNN's 3D convolution that are based on implicit
   matrix--matrix multiplication.  The third FFT--based implementation
   is based on our, previously described, algorithm for padded--pruned
   FFTs.
 
-\subsubsection{Direct convolution using cuDNN}
+\subsubsection{Direct convolution using CuDNN}
 
   The two algorithms using the direct convolution are implemented
-  using cuDNN.  CuDNN performs 3D convolution as an implicit
+  using CuDNN.  CuDNN performs 3D convolution as an implicit
   matrix--matrix multiplication, meaning that the matrices are not
   actually created.  The first algorithm improves the speed by
   pre--computing a set of indices, and thus require additional
@@ -898,7 +931,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 
   On the CPU, we implement the max--pooling layer so that the
   max--pooling of each image is performed in parallel (e.g. by using
-  parallel for loop).  For the GPU we use the cuDNN primitives for
+  parallel for loop).  For the GPU we use the CuDNN primitives for
   max--pooling.
 
   \emph{Max fragment pooling} of an image of size $\vec{n}$ with the
@@ -915,8 +948,8 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   for loop, and performs the MFP by performing the
   max--pooling operation at each offset.
 
-  The GPU implementation is based on the cuDNN primitive for
-  max--pooling.  For each valid offset $(x,y,z)$ we invoke the cuDNN
+  The GPU implementation is based on the CuDNN primitive for
+  max--pooling.  For each valid offset $(x,y,z)$ we invoke the CuDNN
   max--pooling primitive to compute the max--pooling of all the input
   images at that offset.
 
@@ -1325,7 +1358,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
     \centering
     \begin{tabular}{l|cccccccc}
       \toprule
-      Network  & Baseline (cuDNN)    & Theano     & Caffe    & ELEKTRONN  & ZNN        & GPU-Only   & CPU-Only   & GPU-CPU \\
+      Network  & Baseline (CuDNN)    & Theano     & Caffe    & ELEKTRONN  & ZNN        & GPU-Only   & CPU-Only   & GPU-CPU \\
       \midrule
       n337     & $22934.8$           & $1979.3$   & $1.348$  & $122668$   & $34334.8$  & $666485$   & $262131$   & $933070$ \\
       n537     & $1048.68$           & --         & --       & --         & $9494.5$   & $28757.5$  & $194683$   & $334163$ \\
@@ -1338,7 +1371,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   \end{table*}
 
   We implement the baseline algorithm ourselves, by simply calling
-  cuDNN~\cite{chetlur2014cudnn} primitives.
+  CuDNN~\cite{chetlur2014cudnn} primitives.
 
   We compare our approach to Theano~\cite{bergstra2010theano} that
   computes sparse outputs, a version of Caffe~\cite{jia2014caffe} that
@@ -1353,12 +1386,6 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 \section{Conclusions}
 
   Publicly available.
-
-\section{Acknowledgments}
-We are grateful to Intel Corporation for providing the 4–way Intel
-Xeon E7–8890 v3 machine, and for support through an Intel Parallel
-Computing Center.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

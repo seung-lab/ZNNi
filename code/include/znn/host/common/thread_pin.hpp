@@ -54,13 +54,17 @@ public:
             r = r % total;
             if ( r < (total / 2))
             {
-                return r * 2 + 1;
+                int chip    = r % chips;
+                int on_chip = r / chips;
+
+                return chip * cores_per_chip + on_chip * 2 + 1;
+                //return r * 2 + 1;
             }
             else
             {
                 r -= (total / 2);
-                int chip    = r % 4;
-                int on_chip = r / 4;
+                int chip    = r % chips;
+                int on_chip = r / chips;
 
                 return chip * cores_per_chip + on_chip * 2;
             }
@@ -77,11 +81,12 @@ class thread_pin
 {
 private:
     cpu_set_t old_set;
+    int cpu;
 
 public:
     explicit thread_pin( thread_distributor & td )
     {
-        int cpu = td.next();
+        cpu = td.next();
         sched_getaffinity(0, sizeof(old_set), &old_set);
 
         cpu_set_t cpuset;
@@ -91,6 +96,11 @@ public:
         sched_setaffinity(0, sizeof(cpuset), &cpuset);
     }
 
+    int location() const
+    {
+        return cpu;
+    }
+
     ~thread_pin()
     {
         sched_setaffinity(0, sizeof(old_set), &old_set);
@@ -98,6 +108,39 @@ public:
 
     thread_pin( thread_pin const & ) = delete;
     thread_pin& operator=( thread_pin const & ) = delete;
+
+};
+
+class cpu_pin
+{
+private:
+    cpu_set_t old_set;
+
+public:
+    explicit cpu_pin( int vcore )
+    {
+        sched_getaffinity(0, sizeof(old_set), &old_set);
+
+        cpu_set_t cpuset;
+        CPU_ZERO(&cpuset);
+
+        vcore /= ZNNI_CORES_PER_CHIP;
+        vcore *= ZNNI_CORES_PER_CHIP;
+        for ( int i = 0; i < ZNNI_CORES_PER_CHIP; ++i )
+        {
+            CPU_SET(vcore+i, &cpuset);
+        }
+
+        sched_setaffinity(0, sizeof(cpuset), &cpuset);
+    }
+
+    ~cpu_pin()
+    {
+        sched_setaffinity(0, sizeof(old_set), &old_set);
+    }
+
+    cpu_pin( thread_pin const & ) = delete;
+    cpu_pin& operator=( thread_pin const & ) = delete;
 
 };
 

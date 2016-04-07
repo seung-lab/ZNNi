@@ -23,6 +23,28 @@ private:
 
     double estimate_;
 
+public:
+    long_t resident_memory() const
+    {
+        long_t r = 0;
+        for ( auto & l: layers )
+        {
+            r += l->resident_memory();
+        }
+        return r;
+    }
+
+    long_t working_memory() const
+    {
+        long_t r = 0;
+        for ( auto & l: layers )
+        {
+            r = std::max(r, l->working_memory());
+        }
+        return r;
+    }
+
+
 private:
     template<typename T>
     std::unique_ptr<device_layer>
@@ -96,16 +118,16 @@ private:
                 LOG(best_layer) << "cudnn_conv_precomp failed: " << e.what();
             }
 
-            if ( ret )
-            {
-                estimate_ += best;
-                return ret;
-            }
+            // if ( ret )
+            // {
+            //     estimate_ += best;
+            //     return ret;
+            // }
 
-            if ( !b )
-            {
-                return ret;
-            }
+            // if ( !b )
+            // {
+            //     return ret;
+            // }
 
             LOG(best_layer) << "trying cudnn_conv";
 

@@ -30,25 +30,25 @@ xd = z.direct.flops;
 
 int = 8:8:1100;
 z = net.dense_cost(net,1,int);
-    
-label = 'Max Frag Pooling';
-plot(z.direct.gb, x./z.direct.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
 
-int = 1:1:300;
+label = 'Max Frag Pooling';
+plot(z.fft.gb, x./z.fft.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
+
+int = 1:1:1300;
 z = net.sparse_cost(net,1,int);
-    
+
 label = 'Sparse Output';
-plot(z.direct.gb, x./z.direct.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
+plot(z.fft.gb, x./z.fft.flops, 'LineWidth',5.5,'Parent',axes1,'DisplayName',label);
 
 % int = 8:8:800;
 % z = net.dense_cost(net,1,int);
-%     
+%
 % label = 'Direct Conv + Max Frag Pooling';
 % plot(z.direct.gb, xd./z.direct.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
-% 
+%
 % int = 1:1:200;
 % z = net.sparse_cost(net,1,int);
-%     
+%
 % label = 'Direct Conv + Pooling';
 % plot(z.direct.gb, xd./z.direct.flops, 'LineWidth',2.5,'Parent',axes1,'DisplayName',label);
 
@@ -61,4 +61,3 @@ set(legend1,...
 
 
 end
-

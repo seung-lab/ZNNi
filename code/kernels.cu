@@ -17,15 +17,12 @@ void div_all_by( float* first, float* last, float val ) noexcept
 }
 
 
-void add_to( cuComplex* first, cuComplex* last,
-             cuComplex* out, float beta) noexcept
-{
-    float* f = reinterpret_cast<float*>(first);
-    float* l = reinterpret_cast<float*>(last);
-    float* o = reinterpret_cast<float*>(out);
 
+void add_to( float* first, float* last,
+             float* out, float beta) noexcept
+{
     thrust::transform
-        (thrust::device, f, l, o, o,
+        (thrust::device, first, last, out, out,
          thrust::placeholders::_1 + beta * thrust::placeholders::_2 );
 }
 

@@ -38,11 +38,13 @@ inline void benchmark_network( network_descriptor & ndesc,
             double tput = os[0] * os[1] * os[2];
             tput /= time;
 
+	    long_t mem = x->memory_required(); 
+
             rout << "[network_build] " << net_name
-                 << " :: " << os << " :: " << x->name() << std::endl;
+                 << " :: " << os << " :: " << x->name() << ' ' << mem << std::endl;
 
             rout << "[network_throughput] " << net_name
-                 << " :: " << os << " :: " << (tput) << std::endl;
+                 << " :: " << os << " :: " << (tput) << ' ' << mem << std::endl;
         }
         catch ( std::exception & e )
         {

@@ -87,7 +87,8 @@ private:
                                 real* iscratch,
                                 complex* oscratch,
                                 complex* inputs,
-                                complex* outputs ) const noexcept
+                                complex* outputs,
+                                int core_id ) const noexcept
     {
         real const * kernel
             = kernels.data() + (out_no*num_inputs + in_no) * kernel_len;
@@ -149,6 +150,7 @@ private:
             {
                 auto fn = [=]()
                 {
+                    cpu_pin pin(core_id);
                     for ( long_t k = t * batches_per_core;
                           k < std::min( (t+1) * batches_per_core, in_batch_size );
                           ++k )
@@ -289,7 +291,8 @@ private:
                                                      iscratch.data(),
                                                      oscratch.data(),
                                                      itransforms.data(),
-                                                     otransforms.data() );
+                                                     otransforms.data(),
+                                                     pin.location());
                         if ( i < num_inputs - 1 )
                         {
                             queues[i+1].push(out_no);

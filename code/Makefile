@@ -68,7 +68,9 @@ endif
 
 OBJS = test.o test_host.o test_device.o benchmark_device.o \
 	benchmark_host.o benchmark_baseline.o kernels.o \
-	benchmark_device_optimal.o benchmark_best_device.o
+	benchmark_device_optimal.o benchmark_best_device.o \
+	benchmark_ram_a.o benchmark_ram_a.o benchmark_fusion_a.o \
+	benchmarks/host.o
 
 DEPS = $(patsubst %.o,$(BINDIR)/%.d,$(OBJS))
 
@@ -114,15 +116,19 @@ $(BINDIR)/test: $(BINDIR)/kernels.o $(BINDIR)/test.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
-$(BINDIR)/test_host: $(BINDIR)/test_host.o
-	$(ECHO) "[CXX] linking $<"
-	$(CXX) $< $(CXXLDFLAGS) -o $@
+$(BINDIR)/test_host: $(BINDIR)/kernels.o $(BINDIR)/test_host.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/test_device: $(BINDIR)/kernels.o $(BINDIR)/test_device.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/benchmark_host: $(BINDIR)/benchmark_host.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $< $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmarks/host: $(BINDIR)/benchmarks/host.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $< $(CXXLDFLAGS) -o $@
 
@@ -139,6 +145,22 @@ $(BINDIR)/benchmark_device_optimal:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_dev
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/benchmark_best_device:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_best_device.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_ram_a:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_ram_a.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_ram_b:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_ram_b.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_fusion_a:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_fusion_a.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_fusion_b:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_fusion_b.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 

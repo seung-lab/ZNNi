@@ -17,6 +17,19 @@ private:
 
     double estimate_ = 0;
 
+public:
+    long_t memory_required() const
+    {
+        long_t r = full_->resident_memory();
+        long_t w = full_->working_memory();
+        if ( part_ )
+        {
+            w = std::max(w, part_->working_memory());
+        }
+
+        return r+w;
+    }
+
 private:
     template<typename ND>
     void search( long_t low, long_t high, ND const & nd, bool b )

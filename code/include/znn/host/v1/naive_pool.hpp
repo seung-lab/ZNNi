@@ -4,7 +4,7 @@
 #include "znn/tensor/tensor.hpp"
 #include "znn/host/v1/host_layer.hpp"
 
-#include <boost/multi_array.hpp>
+//#include <boost/multi_array.hpp>
 
 namespace znn { namespace fwd { namespace host { namespace v1 {
 

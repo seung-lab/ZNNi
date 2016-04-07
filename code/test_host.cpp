@@ -1,16 +1,17 @@
 #include "znn/tensor/tensor.hpp"
-#include "znn/host/v1/naive_boost_conv.hpp"
+//#include "znn/host/v1/naive_boost_conv.hpp"
 #include "znn/host/v1/naive_conv.hpp"
 #include "znn/host/v1/fft_conv_serial.hpp"
 #include "znn/host/v1/fft_conv.hpp"
 #include "znn/host/v1/dp_fft_conv.hpp"
 #include "znn/host/v1/direct_conv.hpp"
-#include "znn/host/v1/naive_boost_mfp.hpp"
+//#include "znn/host/v1/naive_boost_mfp.hpp"
 #include "znn/host/v1/naive_mfp.hpp"
 #include "znn/host/v1/mfp.hpp"
-#include "znn/host/v1/naive_boost_pool.hpp"
+//#include "znn/host/v1/naive_boost_pool.hpp"
 #include "znn/host/v1/naive_pool.hpp"
 #include "znn/host/v1/pool.hpp"
+#include "znn/device/ram/ram_conv.hpp"
 #include "znn/util/network.hpp"
 
 
@@ -126,7 +127,7 @@ void conv_test()
     host_tensor<float,5> kernels(rand_init,l1,l2,ws[0],ws[1],ws[2]);
     host_tensor<float,1> biases(rand_init,l2);
 
-    host::v1::naive_boost_conv net(n,l1,l2,is,ws,kernels.data(),biases.data());
+    host::v1::naive_conv net(n,l1,l2,is,ws,kernels.data(),biases.data());
     host_tensor<float,5> input(rand_init,n,l1,is[0],is[1],is[2]);
 
     host_tensor<float,5> in1(n,l1,is[0],is[1],is[2]);
@@ -134,22 +135,28 @@ void conv_test()
 
     auto output = net.forward(std::move(in1));
 
-    compare_conv<host::v1::naive_boost_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
+    // compare_conv<host::v1::naive_conv>
+    //     (n,l1,l2,is,ws,kernels,biases,input,output);
 
-    compare_conv<host::v1::naive_conv>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
+    // compare_conv<host::v1::naive_conv>
+    //     (n,l1,l2,is,ws,kernels,biases,input,output);
 
     compare_conv<host::v1::fft_conv>
         (n,l1,l2,is,ws,kernels,biases,input,output);
 
-    compare_conv<host::v1::fft_conv_serial>
-        (n,l1,l2,is,ws,kernels,biases,input,output);
+    // compare_conv<host::v1::fft_conv_serial>
+    //     (n,l1,l2,is,ws,kernels,biases,input,output);
 
     compare_conv<host::v1::dp_fft_conv>
         (n,l1,l2,is,ws,kernels,biases,input,output);
 
-    compare_conv<host::v1::direct_conv>
+    // compare_conv<host::v1::direct_conv>
+    //     (n,l1,l2,is,ws,kernels,biases,input,output);
+
+    compare_conv<device::ram::ram_conv<device::ram::gemm_it>>
+        (n,l1,l2,is,ws,kernels,biases,input,output);
+
+    compare_conv<device::ram::ram_conv<device::ram::fft_it>>
         (n,l1,l2,is,ws,kernels,biases,input,output);
 
 
@@ -178,7 +185,7 @@ void mfp_test()
     is[1] = (ws[1] > 1) ? ws[1] * os[1] + ws[1] - 1: os[1];
     is[2] = (ws[2] > 1) ? ws[2] * os[2] + ws[2] - 1: os[2];
 
-    host::v1::naive_boost_mfp net(n,l,is,ws);
+    host::v1::naive_mfp net(n,l,is,ws);
     host_tensor<float,5> input(rand_init,n,l,is[0],is[1],is[2]);
 
     host_tensor<float,5> in1(n,l,is[0],is[1],is[2]);
@@ -186,7 +193,7 @@ void mfp_test()
 
     auto output = net.forward(std::move(in1));
 
-    compare_mfp<host::v1::naive_mfp>(n,l,is,ws,input,output);
+    //compare_mfp<host::v1::naive_mfp>(n,l,is,ws,input,output);
     compare_mfp<host::v1::mfp>(n,l,is,ws,input,output);
 
     std::cout << "\n\n";
@@ -209,7 +216,7 @@ void pool_test()
 
     vec3i is = os * ws;
 
-    host::v1::naive_boost_pool net(n,l,is,ws);
+    host::v1::naive_pool net(n,l,is,ws);
     host_tensor<float,5> input(rand_init,n,l,is[0],is[1],is[2]);
 
     host_tensor<float,5> in1(n,l,is[0],is[1],is[2]);
@@ -230,7 +237,7 @@ int main()
     while (1)
     {
         conv_test();
-        mfp_test();
-        pool_test();
+        //mfp_test();
+        //pool_test();
     }
 }

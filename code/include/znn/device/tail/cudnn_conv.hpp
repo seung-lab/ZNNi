@@ -2,18 +2,17 @@
 
 #include "znn/types.hpp"
 #include "znn/tensor/tensor.hpp"
-#include "znn/device/v2/device_layer.hpp"
 #include "znn/device/common/utils.hpp"
 #include "znn/device/common/cudnn.hpp"
 #include "znn/device/common/handle.hpp"
+#include "znn/device/tail/tail_layer.hpp"
 
 #include <memory>
 
-namespace znn { namespace fwd { namespace device { namespace v2 {
-
+namespace znn { namespace fwd { namespace device { namespace tail {
 
 class cudnn_conv
-    : public conv_layer<device_layer>
+    : public conv_layer<tail_layer>
 {
 private:
     std::shared_ptr<device_tensor<float,5>> kernels;
@@ -34,6 +33,11 @@ public:
     long_t working_memory() const override
     {
         return input_memory + output_memory + workspace_size_;
+    }
+
+    char const * name() const override
+    {
+        return "tail_cudnn_conv";
     }
 
     device_tensor<float,5> forward( device_tensor<float,5> in ) const override
@@ -77,8 +81,7 @@ public:
                             bias_desc.handle(), biases->data(),
                             &beta,
                             out_desc.handle(), out.data()) );
-        beta = 0;
-
+        // beta = 0;
         // checkCUDNN(
         //     cudnnActivationForward(
         //         handle_,
@@ -94,10 +97,16 @@ public:
                 vec3i const & is, vec3i const & ks,
                 std::shared_ptr<device_tensor<float,5>> const & kd,
                 std::shared_ptr<device_array<float>> const & bd )
-        : conv_layer<device_layer>(n,fin,fout,is,ks)
+        : conv_layer<tail_layer>(n,fin,fout,is,ks)
         , kernels(kd)
         , biases(bd)
     {
+        if (   total_output_len > 1024*1024*1024
+               || total_input_len > 1024*1024*1024  )
+        {
+            throw std::logic_error("in or out too big");
+        }
+
         vec3i os = out_image_size;
 
         in_desc.set(n,fin,is[0],is[1],is[2]);
@@ -124,6 +133,4 @@ public:
     }
 };
 
-
-
-}}}} // namespace znn::fwd::device::v1
+}}}} // namespace znn::fwd::device::tail
