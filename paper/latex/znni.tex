@@ -319,12 +319,12 @@ We care about throughput.
   common size.  Since the kernel is typically much smaller than the
   image, the padded kernel consists mostly of zeros.  If the FFT
   computation were implemented to ignore the zeros of the padded
-  kernel, it would become much faster and use less memory.  We
-  propose such an algorithm, and implement it for both the CPU and
-  GPU. Our approach achieves an average of $5 \times$ speedup over the
-  naive approach on the CPU and $10 \times$ speedup on the GPU.  It
-  also greatly reduces the memory overhead compared to the approaches
-  described in ~\cite{mathieu-iclr-14,vasilache2014fast}.
+  kernel, it would become much faster.  We propose such an algorithm,
+  and implement it for both the CPU and GPU. Our approach achieves an
+  average of $5 \times$ speedup over the naive approach on the CPU and
+  $10 \times$ speedup on the GPU.  It also greatly reduces the memory
+  overhead compared to the approaches described in
+  ~\cite{mathieu-iclr-14,vasilache2014fast}.
 
   The speedup is expected to be large for a ConvNet, which typically
   contains many more kernel FFTs than image FFTs.  The speedup is more
@@ -358,14 +358,14 @@ We care about throughput.
   We can reduce the amount of computation by computing only necessary
   1D transforms.  When computing the FFT of a trainable kernel of size
   $k^3$ zero padded to size of $n^3$, instead of naively computing
-  $n^2$ 1D FFTs each dimension, which takes $C n^3 \log n^3$ we could
-  first only do $k^2$ FFTs along one direction, then $k \times x$
-  along then next, and finally $n^2$ along the last direction, as
+  $n^2$ 1D FFTs along each dimension, which takes $C n^3 \log n^3$ we
+  could first only do $k^2$ FFTs along one dimension, then $k \times
+  x$ along then next, and finally $n^2$ along the last dimension, as
   shown on Figure~\ref{fig:pruned_ffts}.  This approach reduces the
   computational cost from $C n^3 \log n^3$ to $C n\log n[k^2 + k \cdot
-    n + n^2]$.  As most of the FFTs are performed on kernels, and as
-  the kernel sizes are usually much smaller compared to the image
-  sizes ($k \ll n$), we could reduce the computation cost by nearly two
+  n + n^2]$.  As most of the FFTs are performed on kernels, and as the
+  kernel sizes are usually much smaller compared to the image sizes
+  ($k \ll n$), we could reduce the computation cost by nearly two
   thirds.
 
   Our approach uses $3$rd party libraries to perform a batch of 1D
