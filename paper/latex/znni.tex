@@ -98,7 +98,8 @@ manages to achieve higher throughput because of its fast access to
 more RAM.  A novel primitive in which the GPU accesses host RAM can
 significantly increase GPU throughput.  Finally, a CPU-GPU algorithm
 achieves the greatest throughput of all, $10\times$ or more than other
-publicly available implementations of sliding window 3D ConvNets.
+publicly available implementations of sliding window 3D ConvNets.  All
+of our code has been made available on github.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,9 +243,9 @@ $10\times$ or more in all cases.
 %  of pixels computed at the time being irrelevant.
 
 \section{Pruned FFT}
-  The efficiency of convolution is important, because this computation
-  is performed so many times in a ConvNet.  The advantages of FFT
-  convolution have been shown for 2D ConvNets running on
+  We begin by improving the efficiency of convolution, because this
+  computation is performed so many times in a ConvNet.  The advantages
+  of FFT convolution have been shown for 2D ConvNets running on
   GPUs~\cite{mathieu-iclr-14,vasilache2014fast}, and 3D ConvNets
   running on CPUs~\cite{zlateski2015znn}.
 
@@ -263,9 +264,11 @@ $10\times$ or more in all cases.
   modest for a single convolution, which requires one padded kernel
   FFT, one image FFT, and one inverse FFT.
 
-  Our pruned FFT algorithms are the foundation of our FFT-based
-  convolutional layers, but understanding them is not necessary for
-  understanding the rest of our contributions.
+  While our pruned FFT algorithms give a substantial speedup,
+  understanding them is not necessary for understanding the rest of
+  our contributions.  The reader may prefer to skip to the next
+  section on how pruned FFTs are used to compute the convolutional
+  layers.
 
   \begin{figure}
     \begin{center}
@@ -275,6 +278,7 @@ $10\times$ or more in all cases.
     \label{fig:pruned_ffts}
   \end{figure}
 
+\subsection{General algorithm}
   For 3D FFT-based convolution, the 3D images $x$ and $y$ are first
   zero-padded to the same size.  The inverse FFT of the point-wise
   product contains the result of the convolution.  The images $x$ and
@@ -298,23 +302,10 @@ $10\times$ or more in all cases.
   ($k \ll n$), we could reduce the computation cost by nearly two
   thirds.
 
-  Our approach uses $3$rd party libraries to perform a batch of 1D
-  FFTs.  Depending on the library implementation, the size to which we
-  pad the 3D image can greatly influence the computational complexity.
+\subsection{CPU implementation}
+  Suppose we would like to compute the FFT of an $x \times y \times z$
+  image zero-padded to an $x' \times y' \times z'$ image.
 
-  On the CPU we use either {\tt fftw} or {\tt Intel MKL}, and pad the
-  images (and kernels) to sizes that can be written in the form of
-  $2^a3^b5^c7^d11^e13^f$.  When {\tt Intel MKL} is used any such size
-  is allowed, however, when {\tt fftw} is used we only allow sizes for
-  which $e+f$ is either $0$ or $1$~\cite{frigo1999fftw,frigo1998fftw}.
-  On the GPU we use cuFFT~\cite{nvidia2010cufft}, which has optimized
-  algorithms only for sizes of the form $2^a3^b5^c7^d$.
-
-  We proceed to propose an algorithm that computes the FFT (and
-  inverse FFT) of an image of size $x \times y \times z$ zero-padded
-  to the size of $x' \times y' \times z'$.
-
-\subsection{CPU algorithm}
   The $x \times y \times z$ image is zero-padded to $x' \times
   y \times z$.  This is easily implemented by doing a linear copy of
   the memory, and zero-padding the rest. We then perform $y \cdot z$
@@ -330,11 +321,11 @@ $10\times$ or more in all cases.
 
 % say smth about memory requirement?
 
-\subsection{GPU algorithm}
+\subsection{GPU implementation}
 
 \label{sec:gpu-fft-impl}
 
-  Our GPU algorithm always performs FFTs on $b$ 3D images
+  On the GPU, we always perform FFTs on $b$ 3D images
   simultaneously, in order to achieve high utilization of the many
   GPU threads.
 
@@ -390,7 +381,21 @@ $10\times$ or more in all cases.
   The inverse transform can be performed taking the same steps in
   reverse order.
 
-  {\bf Implementation details} 4D tensor permuting requires a lot of
+  \subsection{Implementation details}
+
+Our approach uses $3$rd party libraries to perform each batch of 1D
+  FFTs.  Depending on the library implementation, the size to which we
+  pad the 3D image can greatly influence the computational complexity.
+
+  On the CPU we use either {\tt fftw} or {\tt Intel MKL}, and pad the
+  images (and kernels) to sizes that can be written in the form of
+  $2^a3^b5^c7^d11^e13^f$.  When {\tt Intel MKL} is used any such size
+  is allowed, however, when {\tt fftw} is used we only allow sizes for
+  which $e+f$ is either $0$ or $1$~\cite{frigo1999fftw,frigo1998fftw}.
+  On the GPU we use cuFFT~\cite{nvidia2010cufft}, which has optimized
+  algorithms only for sizes of the form $2^a3^b5^c7^d$.
+
+4D tensor permuting requires a lot of
   indexing calculation, which can involve a lot expensive division and
   modulus operations.  Sometimes these operations are more expensive
   than the actual 1D FFT transforms performed.  We improve the
@@ -418,6 +423,7 @@ $10\times$ or more in all cases.
   required by cuFFT to perform a batch of 1D transforms.  By dividing
   the batch into sub--batches we essentially limit this overhead to a
   pre--defined constant amount of memory.
+
 
 \section{Convolutional layers}
 We define a max-pooling ConvNet as a sequence of layers, where each
@@ -659,14 +665,14 @@ Table~\ref{table:layers_complexity}.
 
   The task dependency graph of all the tasks required for computing
   the output images of a convolutional layer with four input and five
-  output feature-maps for an input mini--batch size of $4$ is shown on
+  output images for a batch size of four is shown on
   Figure~\ref{fig:task_deps}.  The tasks are created and queued when
   all their dependencies have been satisfied.  There are four
   {\color{zyellow}\bf synchronization} tasks effectively dividing the
   computation into three stages.  The layout of the {\color{zblue}\bf
     kernel transform} tasks forms a grid, with the number of columns
-  equal to the number of output feature-maps, and the number of rows
-  equal to the number of input feature-maps.  The task of the $i$th
+  equal to the number of output images, and the number of rows
+  equal to the number of input images.  The task of the $i$th
   column and $j$th row computes the transform of the kernel $w_{i,j}$.
   Furthermore, each such task has $S$ dependent {\color{zgreen}\bf
     multiply-add} tasks, where $S$ is the batch size of the input
@@ -688,7 +694,7 @@ Table~\ref{table:layers_complexity}.
   The first {\color{zyellow}\bf synchronization} task allocates memory
   for the FFT transforms of the input images.  The number of dependent
   {\color{zred}\bf input image transform} tasks equals the number of
-  input feature-maps times the mini--batch size $S$.  They are then
+  input images times the batch size $S$.  They are then
   executed by the $N$ worker threads, such that each worker picks up
   an arbitrary task and executes it.
 
@@ -699,7 +705,7 @@ Table~\ref{table:layers_complexity}.
   required. It then allocates memory for the transforms of the output
   images.  At this point $M$ threads are chosen as \emph{primary}
   threads, where $M$ is the maximum of $N$ -- total number of threads,
-  and the number of output feature--maps.  The \emph{primary} threads
+  and the number of output images.  The \emph{primary} threads
   are chosen so that they are evenly distributed over multiple
   physical chips.  Each \emph{primary} thread is given a temporary
   buffer equal to the size required to fit the transform of a padded
@@ -731,7 +737,7 @@ Table~\ref{table:layers_complexity}.
   images.
 
   The number of {\color{zpurple}\bf output image transform} tasks
-  equals the number of output feature-maps times the batch size.  The
+  equals the number of output images times the batch size.  The
   tasks are executed by all $N$ workers, such that each worker picks
   up an arbitrary task and executes it.  The last {\color{zpurple}\bf
     output image transform} task to finish also executes the final
@@ -782,7 +788,7 @@ Table~\ref{table:layers_complexity}.
 \subsubsection{FFT based algorithm}
 
   FFT-based convolutional layer is based on the GPU implementation of
-  the padded--pruned FFT algorithm adescribed in
+  the pruned FFT algorithm described in
   Section~\ref{sec:gpu-fft-impl}.
 
   \begin{algorithm}
@@ -832,10 +838,10 @@ Table~\ref{table:layers_complexity}.
   output images is allocated (lines 6 and 7).
 
   In the second stage (lines 8--12) we loop over the $f'$ output
-  feature-maps.  For each output feature--map we compute the transform
+  images.  For each output image we compute the transform
   of the $f$ relevant kernels (ones connecting each of the input
-  feature--maps and the current output feature--map).  We then loop
-  over the mini--batches, and for each mini--batch we compute the
+  images and the current output image).  We then loop
+  over the inputs in the batch, and for each batch we compute the
   point--wise product of the relevant input image transforms with the
   relevant kernel transforms, producing $f$ complex valued images.
   The values of the $f$ images are then accumulated to a single image,
@@ -1253,8 +1259,8 @@ Table~\ref{table:layers_complexity}.
   transferred to and from the GPU.  We illustrate the stragety through
   the follwing example.  Assume we are given a ConvNet architecture in
   the form CPCPCCCC, where each layer has 3 input and 3 output
-  feature--maps, except for the first layer that has 1 input
-  feature--map and the last that has 1 output feature--map.  Let the
+  images, except for the first layer that has 1 input
+  image and the last that has 1 output image.  Let the
   sizes of the pooling window be $2 \times 1 \times 1$, this means
   that when \emph{MFP} layers is used, for each input tuple a
   \emph{MFP} layer will produce 2 fragments of the same size.  Mainly
