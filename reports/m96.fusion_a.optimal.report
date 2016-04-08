@@ -1,0 +1,82 @@
+--------------------------------------------
+
+### LOG[benchmark] :: m96 :: starting os :: 16,16,16 memory required 2780709264
+--------------------------------------------
+
+### LOG[benchmark] :: m96 :: starting os :: 16,16,16 memory required 2780709264
+### LOG[cpu_thread] :: 14.398
+### LOG[gpu_loop] :: Took time: 2.88549 :: 17.3058
+### LOG[cpu_thread] :: 14.5565
+### LOG[gpu_loop] :: Took time: 2.86527 :: 14.5518
+[network_round] m96 :: 16,16,16 :: 31.8841
+### LOG[cpu_thread] :: 14.5379
+### LOG[gpu_loop] :: Took time: 2.88271 :: 14.562
+[network_round] m96 :: 16,16,16 :: 14.5621
+### LOG[cpu_thread] :: 14.6349
+[network_throughput] m96 :: 16,16,16 :: 1.20466e+07
+### LOG[gpu_loop] :: Took time: 2.79776 :: 14.5674
+[network_round] m96 :: 16,16,16 :: 14.5675
+### LOG[benchmark] :: m96 :: starting os :: 32,32,32 memory required 3851543520
+### LOG[cpu_thread] :: 21.2662
+### LOG[gpu_loop] :: Took time: 3.92201 :: 25.2192
+### LOG[cpu_thread] :: 21.5172
+### LOG[gpu_loop] :: Took time: 3.89748 :: 21.518
+[network_round] m96 :: 32,32,32 :: 46.7433
+--------------------------------------------
+
+### LOG[benchmark] :: m96 :: starting os :: 16,16,16 memory required 2780709264
+### LOG[cpu_thread] :: 14.2883
+### LOG[gpu_loop] :: Took time: 2.89001 :: 17.2006
+### LOG[cpu_thread] :: 14.3399
+### LOG[gpu_loop] :: Took time: 2.86278 :: 14.3325
+[network_round] m96 :: 16,16,16 :: 31.5462
+### LOG[cpu_thread] :: 14.4651
+### LOG[gpu_loop] :: Took time: 2.87503 :: 14.4818
+[network_round] m96 :: 16,16,16 :: 14.4827
+### LOG[cpu_thread] :: 14.3765
+[network_throughput] m96 :: 16,16,16 :: 266.962
+### LOG[gpu_loop] :: Took time: 2.78823 :: 14.3077
+[network_round] m96 :: 16,16,16 :: 14.3078
+### LOG[benchmark] :: m96 :: starting os :: 32,32,32 memory required 3851543520
+### LOG[cpu_thread] :: 20.8158
+### LOG[gpu_loop] :: Took time: 3.9659 :: 24.8067
+### LOG[cpu_thread] :: 21.1659
+### LOG[gpu_loop] :: Took time: 3.95649 :: 21.168
+[network_round] m96 :: 32,32,32 :: 45.9898
+--------------------------------------------
+
+### LOG[benchmark] :: m96 :: starting os :: 16,16,16 memory required 2780709264
+### LOG[cpu_thread] :: 14.2537
+### LOG[gpu_loop] :: Took time: 2.87216 :: 17.1482
+### LOG[cpu_thread] :: 14.3538
+### LOG[gpu_loop] :: Took time: 3.03586 :: 14.5375
+[network_round] m96 :: 16,16,16 :: 31.9947
+### LOG[cpu_thread] :: 14.2908
+### LOG[gpu_loop] :: Took time: 3.04887 :: 14.3234
+[network_round] m96 :: 16,16,16 :: 14.325
+### LOG[cpu_thread] :: 14.218
+### LOG[gpu_loop] :: Took time: 2.79546 :: 13.9796
+[network_round] m96 :: 16,16,16 :: 13.981
+[network_throughput] m96 :: 16,16,16 :: 203.779
+### LOG[benchmark] :: m96 :: starting os :: 32,32,32 memory required 3851543520
+### LOG[cpu_thread] :: 20.7067
+### LOG[gpu_loop] :: Took time: 3.91026 :: 24.6482
+### LOG[cpu_thread] :: 21.0431
+### LOG[gpu_loop] :: Took time: 3.89757 :: 21.0578
+[network_round] m96 :: 32,32,32 :: 45.7648
+### LOG[cpu_thread] :: 20.9412
+### LOG[gpu_loop] :: Took time: 4.02588 :: 21.0973
+[network_round] m96 :: 32,32,32 :: 21.0983
+### LOG[cpu_thread] :: 20.9525
+### LOG[gpu_loop] :: Took time: 3.81258 :: 20.7516
+[network_round] m96 :: 32,32,32 :: 20.7644
+[network_throughput] m96 :: 32,32,32 :: 1121.84
+### LOG[benchmark] :: m96 :: starting os :: 48,48,48 memory required 4963728224
+### LOG[cpu_thread] :: 26.6718
+### LOG[gpu_loop] :: Took time: 5.70656 :: 32.4152
+### LOG[cpu_thread] :: 27.0438
+### LOG[gpu_loop] :: Took time: 5.69254 :: 27.0504
+[network_round] m96 :: 48,48,48 :: 59.5449
+### LOG[cpu_thread] :: 27.4533
+### LOG[gpu_loop] :: Took time: 5.71496 :: 27.4978
+[network_round] m96 :: 48,48,48 :: 27.4991

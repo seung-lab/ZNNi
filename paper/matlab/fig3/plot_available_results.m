@@ -18,10 +18,10 @@ GB = 1000 * 1000 * 1000;
 box(axes1,'on');
 hold(axes1,'on');
 % Create ylabel
-ylabel('Voxels per second','FontSize',16);
+ylabel('Voxels per second','FontSize',20);
 
 % Create xlabel
-xlabel('Memory available (GB)','FontSize',16);
+xlabel('Memory consumed (GB)','FontSize',20);
 
 if exist([net '.behir'], 'file')
     [~, b, c] = read_data([net '.behir']);

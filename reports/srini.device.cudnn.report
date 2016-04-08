@@ -1,0 +1,3170 @@
+--------------------------------------------
+
+## srini :: starting benchmark for output size 4,4,4
+[network_requirements] srini :: 4,4,4 :: RM: 0 MB WM: 3 MB
+[layer_measurement] srini :: 4,4,4 :: 0 :: 0.00107123
+[layer_measurement] srini :: 4,4,4 :: 1 :: 0.00207059
+[layer_measurement] srini :: 4,4,4 :: 2 :: 0.00108778
+[layer_measurement] srini :: 4,4,4 :: 3 :: 0.00058206
+[layer_measurement] srini :: 4,4,4 :: 4 :: 0.000262604
+[layer_measurement] srini :: 4,4,4 :: 5 :: 0.000247868
+[network_measurement] srini :: 4,4,4 :: 0.00614794
+[layer_measurement] srini :: 4,4,4 :: 0 :: 0.00107277
+[layer_measurement] srini :: 4,4,4 :: 1 :: 0.00199908
+[layer_measurement] srini :: 4,4,4 :: 2 :: 0.00108415
+[layer_measurement] srini :: 4,4,4 :: 3 :: 0.000546371
+[layer_measurement] srini :: 4,4,4 :: 4 :: 0.000292636
+[layer_measurement] srini :: 4,4,4 :: 5 :: 0.000236484
+[network_measurement] srini :: 4,4,4 :: 0.00601441
+[layer_measurement] srini :: 4,4,4 :: 0 :: 0.00104546
+[layer_measurement] srini :: 4,4,4 :: 1 :: 0.00201046
+[layer_measurement] srini :: 4,4,4 :: 2 :: 0.00105
+[layer_measurement] srini :: 4,4,4 :: 3 :: 0.000536243
+[layer_measurement] srini :: 4,4,4 :: 4 :: 0.000254712
+[layer_measurement] srini :: 4,4,4 :: 5 :: 0.000232084
+[network_measurement] srini :: 4,4,4 :: 0.0058266
+[layer_measurement] srini :: 4,4,4 :: 0 :: 0.00102213
+[layer_measurement] srini :: 4,4,4 :: 1 :: 0.00197617
+[layer_measurement] srini :: 4,4,4 :: 2 :: 0.00107759
+[layer_measurement] srini :: 4,4,4 :: 3 :: 0.000536174
+[layer_measurement] srini :: 4,4,4 :: 4 :: 0.000257575
+[layer_measurement] srini :: 4,4,4 :: 5 :: 0.00024256
+[network_measurement] srini :: 4,4,4 :: 0.00578303
+[network_average] srini :: 4,4,4 :: 0.005943
+[network_throughput] srini :: 4,4,4 :: 10769
+## srini :: starting benchmark for output size 8,8,8
+[network_requirements] srini :: 8,8,8 :: RM: 0 MB WM: 4 MB
+[layer_measurement] srini :: 8,8,8 :: 0 :: 0.0012253
+[layer_measurement] srini :: 8,8,8 :: 1 :: 0.00255313
+[layer_measurement] srini :: 8,8,8 :: 2 :: 0.00167473
+[layer_measurement] srini :: 8,8,8 :: 3 :: 0.000880353
+[layer_measurement] srini :: 8,8,8 :: 4 :: 0.000490148
+[layer_measurement] srini :: 8,8,8 :: 5 :: 0.00023383
+[network_measurement] srini :: 8,8,8 :: 0.0080901
+[layer_measurement] srini :: 8,8,8 :: 0 :: 0.00121462
+[layer_measurement] srini :: 8,8,8 :: 1 :: 0.00252701
+[layer_measurement] srini :: 8,8,8 :: 2 :: 0.00167313
+[layer_measurement] srini :: 8,8,8 :: 3 :: 0.000998456
+[layer_measurement] srini :: 8,8,8 :: 4 :: 0.000448103
+[layer_measurement] srini :: 8,8,8 :: 5 :: 0.000228871
+[network_measurement] srini :: 8,8,8 :: 0.00797291
+[layer_measurement] srini :: 8,8,8 :: 0 :: 0.00121203
+[layer_measurement] srini :: 8,8,8 :: 1 :: 0.00253176
+[layer_measurement] srini :: 8,8,8 :: 2 :: 0.00166929
+[layer_measurement] srini :: 8,8,8 :: 3 :: 0.00100279
+[layer_measurement] srini :: 8,8,8 :: 4 :: 0.000444751
+[layer_measurement] srini :: 8,8,8 :: 5 :: 0.000223493
+[network_measurement] srini :: 8,8,8 :: 0.00796411
+[layer_measurement] srini :: 8,8,8 :: 0 :: 0.00121063
+[layer_measurement] srini :: 8,8,8 :: 1 :: 0.00252491
+[layer_measurement] srini :: 8,8,8 :: 2 :: 0.00165071
+[layer_measurement] srini :: 8,8,8 :: 3 :: 0.000845503
+[layer_measurement] srini :: 8,8,8 :: 4 :: 0.00043686
+[layer_measurement] srini :: 8,8,8 :: 5 :: 0.000221468
+[network_measurement] srini :: 8,8,8 :: 0.00772364
+[network_average] srini :: 8,8,8 :: 0.00793769
+[network_throughput] srini :: 8,8,8 :: 64502.4
+## srini :: starting benchmark for output size 12,12,12
+[network_requirements] srini :: 12,12,12 :: RM: 0 MB WM: 6 MB
+[layer_measurement] srini :: 12,12,12 :: 0 :: 0.00139495
+[layer_measurement] srini :: 12,12,12 :: 1 :: 0.00330644
+[layer_measurement] srini :: 12,12,12 :: 2 :: 0.00213695
+[layer_measurement] srini :: 12,12,12 :: 3 :: 0.00138335
+[layer_measurement] srini :: 12,12,12 :: 4 :: 0.000844175
+[layer_measurement] srini :: 12,12,12 :: 5 :: 0.000262394
+[network_measurement] srini :: 12,12,12 :: 0.0101909
+[layer_measurement] srini :: 12,12,12 :: 0 :: 0.00139068
+[layer_measurement] srini :: 12,12,12 :: 1 :: 0.00329408
+[layer_measurement] srini :: 12,12,12 :: 2 :: 0.00212752
+[layer_measurement] srini :: 12,12,12 :: 3 :: 0.00136855
+[layer_measurement] srini :: 12,12,12 :: 4 :: 0.000804576
+[layer_measurement] srini :: 12,12,12 :: 5 :: 0.00025988
+[network_measurement] srini :: 12,12,12 :: 0.0101395
+[layer_measurement] srini :: 12,12,12 :: 0 :: 0.00138077
+[layer_measurement] srini :: 12,12,12 :: 1 :: 0.00326845
+[layer_measurement] srini :: 12,12,12 :: 2 :: 0.00213192
+[layer_measurement] srini :: 12,12,12 :: 3 :: 0.00136547
+[layer_measurement] srini :: 12,12,12 :: 4 :: 0.000863522
+[layer_measurement] srini :: 12,12,12 :: 5 :: 0.000256319
+[network_measurement] srini :: 12,12,12 :: 0.0100929
+[layer_measurement] srini :: 12,12,12 :: 0 :: 0.00136456
+[layer_measurement] srini :: 12,12,12 :: 1 :: 0.0032734
+[layer_measurement] srini :: 12,12,12 :: 2 :: 0.00211578
+[layer_measurement] srini :: 12,12,12 :: 3 :: 0.00135982
+[layer_measurement] srini :: 12,12,12 :: 4 :: 0.000819243
+[layer_measurement] srini :: 12,12,12 :: 5 :: 0.000246191
+[network_measurement] srini :: 12,12,12 :: 0.0100756
+[network_average] srini :: 12,12,12 :: 0.0101247
+[network_throughput] srini :: 12,12,12 :: 170671
+## srini :: starting benchmark for output size 16,16,16
+[network_requirements] srini :: 16,16,16 :: RM: 0 MB WM: 8 MB
+[layer_measurement] srini :: 16,16,16 :: 0 :: 0.00158673
+[layer_measurement] srini :: 16,16,16 :: 1 :: 0.00422633
+[layer_measurement] srini :: 16,16,16 :: 2 :: 0.00414642
+[layer_measurement] srini :: 16,16,16 :: 3 :: 0.00167906
+[layer_measurement] srini :: 16,16,16 :: 4 :: 0.00089495
+[layer_measurement] srini :: 16,16,16 :: 5 :: 0.000434904
+[network_measurement] srini :: 16,16,16 :: 0.0139138
+[layer_measurement] srini :: 16,16,16 :: 0 :: 0.00150893
+[layer_measurement] srini :: 16,16,16 :: 1 :: 0.00392245
+[layer_measurement] srini :: 16,16,16 :: 2 :: 0.00261298
+[layer_measurement] srini :: 16,16,16 :: 3 :: 0.00166006
+[layer_measurement] srini :: 16,16,16 :: 4 :: 0.000879584
+[layer_measurement] srini :: 16,16,16 :: 5 :: 0.000438117
+[network_measurement] srini :: 16,16,16 :: 0.011824
+[layer_measurement] srini :: 16,16,16 :: 0 :: 0.00151137
+[layer_measurement] srini :: 16,16,16 :: 1 :: 0.00391106
+[layer_measurement] srini :: 16,16,16 :: 2 :: 0.0029976
+[layer_measurement] srini :: 16,16,16 :: 3 :: 0.00195487
+[layer_measurement] srini :: 16,16,16 :: 4 :: 0.00107081
+[layer_measurement] srini :: 16,16,16 :: 5 :: 0.000652599
+[network_measurement] srini :: 16,16,16 :: 0.0129765
+[layer_measurement] srini :: 16,16,16 :: 0 :: 0.00176699
+[layer_measurement] srini :: 16,16,16 :: 1 :: 0.00417855
+[layer_measurement] srini :: 16,16,16 :: 2 :: 0.00283584
+[layer_measurement] srini :: 16,16,16 :: 3 :: 0.00195822
+[layer_measurement] srini :: 16,16,16 :: 4 :: 0.0010405
+[layer_measurement] srini :: 16,16,16 :: 5 :: 0.000552308
+[network_measurement] srini :: 16,16,16 :: 0.0133205
+[network_average] srini :: 16,16,16 :: 0.0130087
+[network_throughput] srini :: 16,16,16 :: 314866
+## srini :: starting benchmark for output size 20,20,20
+[network_requirements] srini :: 20,20,20 :: RM: 0 MB WM: 11 MB
+[layer_measurement] srini :: 20,20,20 :: 0 :: 0.00191925
+[layer_measurement] srini :: 20,20,20 :: 1 :: 0.00527115
+[layer_measurement] srini :: 20,20,20 :: 2 :: 0.00357079
+[layer_measurement] srini :: 20,20,20 :: 3 :: 0.00250298
+[layer_measurement] srini :: 20,20,20 :: 4 :: 0.00156131
+[layer_measurement] srini :: 20,20,20 :: 5 :: 0.000773494
+[network_measurement] srini :: 20,20,20 :: 0.0165993
+[layer_measurement] srini :: 20,20,20 :: 0 :: 0.00189788
+[layer_measurement] srini :: 20,20,20 :: 1 :: 0.00541859
+[layer_measurement] srini :: 20,20,20 :: 2 :: 0.00352169
+[layer_measurement] srini :: 20,20,20 :: 3 :: 0.00231657
+[layer_measurement] srini :: 20,20,20 :: 4 :: 0.00157332
+[layer_measurement] srini :: 20,20,20 :: 5 :: 0.000662517
+[network_measurement] srini :: 20,20,20 :: 0.0162562
+[layer_measurement] srini :: 20,20,20 :: 0 :: 0.00186198
+[layer_measurement] srini :: 20,20,20 :: 1 :: 0.00521709
+[layer_measurement] srini :: 20,20,20 :: 2 :: 0.00355431
+[layer_measurement] srini :: 20,20,20 :: 3 :: 0.00236833
+[layer_measurement] srini :: 20,20,20 :: 4 :: 0.00152262
+[layer_measurement] srini :: 20,20,20 :: 5 :: 0.000641495
+[network_measurement] srini :: 20,20,20 :: 0.0161186
+[layer_measurement] srini :: 20,20,20 :: 0 :: 0.00170923
+[layer_measurement] srini :: 20,20,20 :: 1 :: 0.00492334
+[layer_measurement] srini :: 20,20,20 :: 2 :: 0.00330232
+[layer_measurement] srini :: 20,20,20 :: 3 :: 0.00214679
+[layer_measurement] srini :: 20,20,20 :: 4 :: 0.00139648
+[layer_measurement] srini :: 20,20,20 :: 5 :: 0.000609019
+[network_measurement] srini :: 20,20,20 :: 0.0160132
+[network_average] srini :: 20,20,20 :: 0.0162468
+[network_throughput] srini :: 20,20,20 :: 492404
+## srini :: starting benchmark for output size 24,24,24
+[network_requirements] srini :: 24,24,24 :: RM: 0 MB WM: 14 MB
+[layer_measurement] srini :: 24,24,24 :: 0 :: 0.00203923
+[layer_measurement] srini :: 24,24,24 :: 1 :: 0.00614767
+[layer_measurement] srini :: 24,24,24 :: 2 :: 0.00426522
+[layer_measurement] srini :: 24,24,24 :: 3 :: 0.00282747
+[layer_measurement] srini :: 24,24,24 :: 4 :: 0.00179088
+[layer_measurement] srini :: 24,24,24 :: 5 :: 0.00102674
+[network_measurement] srini :: 24,24,24 :: 0.0188191
+[layer_measurement] srini :: 24,24,24 :: 0 :: 0.00201109
+[layer_measurement] srini :: 24,24,24 :: 1 :: 0.00612078
+[layer_measurement] srini :: 24,24,24 :: 2 :: 0.0042514
+[layer_measurement] srini :: 24,24,24 :: 3 :: 0.00281755
+[layer_measurement] srini :: 24,24,24 :: 4 :: 0.00176532
+[layer_measurement] srini :: 24,24,24 :: 5 :: 0.00101501
+[network_measurement] srini :: 24,24,24 :: 0.0186967
+[layer_measurement] srini :: 24,24,24 :: 0 :: 0.00199594
+[layer_measurement] srini :: 24,24,24 :: 1 :: 0.00611058
+[layer_measurement] srini :: 24,24,24 :: 2 :: 0.00422835
+[layer_measurement] srini :: 24,24,24 :: 3 :: 0.00281245
+[layer_measurement] srini :: 24,24,24 :: 4 :: 0.00175882
+[layer_measurement] srini :: 24,24,24 :: 5 :: 0.00100628
+[network_measurement] srini :: 24,24,24 :: 0.0186137
+[layer_measurement] srini :: 24,24,24 :: 0 :: 0.00199181
+[layer_measurement] srini :: 24,24,24 :: 1 :: 0.00610625
+[layer_measurement] srini :: 24,24,24 :: 2 :: 0.00424057
+[layer_measurement] srini :: 24,24,24 :: 3 :: 0.00281902
+[layer_measurement] srini :: 24,24,24 :: 4 :: 0.00176336
+[layer_measurement] srini :: 24,24,24 :: 5 :: 0.00100774
+[network_measurement] srini :: 24,24,24 :: 0.0186182
+[network_average] srini :: 24,24,24 :: 0.0186869
+[network_throughput] srini :: 24,24,24 :: 739768
+## srini :: starting benchmark for output size 28,28,28
+[network_requirements] srini :: 28,28,28 :: RM: 0 MB WM: 18 MB
+[layer_measurement] srini :: 28,28,28 :: 0 :: 0.00237315
+[layer_measurement] srini :: 28,28,28 :: 1 :: 0.00764256
+[layer_measurement] srini :: 28,28,28 :: 2 :: 0.00542767
+[layer_measurement] srini :: 28,28,28 :: 3 :: 0.00368973
+[layer_measurement] srini :: 28,28,28 :: 4 :: 0.00243342
+[layer_measurement] srini :: 28,28,28 :: 5 :: 0.00149321
+[network_measurement] srini :: 28,28,28 :: 0.023902
+[layer_measurement] srini :: 28,28,28 :: 0 :: 0.00237461
+[layer_measurement] srini :: 28,28,28 :: 1 :: 0.00765338
+[layer_measurement] srini :: 28,28,28 :: 2 :: 0.00544506
+[layer_measurement] srini :: 28,28,28 :: 3 :: 0.00369295
+[layer_measurement] srini :: 28,28,28 :: 4 :: 0.00242699
+[layer_measurement] srini :: 28,28,28 :: 5 :: 0.00149335
+[network_measurement] srini :: 28,28,28 :: 0.0238191
+[layer_measurement] srini :: 28,28,28 :: 0 :: 0.00236826
+[layer_measurement] srini :: 28,28,28 :: 1 :: 0.00765003
+[layer_measurement] srini :: 28,28,28 :: 2 :: 0.00543466
+[layer_measurement] srini :: 28,28,28 :: 3 :: 0.00368987
+[layer_measurement] srini :: 28,28,28 :: 4 :: 0.00243384
+[layer_measurement] srini :: 28,28,28 :: 5 :: 0.00186582
+[network_measurement] srini :: 28,28,28 :: 0.0242649
+[layer_measurement] srini :: 28,28,28 :: 0 :: 0.00268827
+[layer_measurement] srini :: 28,28,28 :: 1 :: 0.00794504
+[layer_measurement] srini :: 28,28,28 :: 2 :: 0.00572023
+[layer_measurement] srini :: 28,28,28 :: 3 :: 0.0039302
+[layer_measurement] srini :: 28,28,28 :: 4 :: 0.00266872
+[layer_measurement] srini :: 28,28,28 :: 5 :: 0.00170574
+[network_measurement] srini :: 28,28,28 :: 0.0257648
+[network_average] srini :: 28,28,28 :: 0.0244377
+[network_throughput] srini :: 28,28,28 :: 898285
+## srini :: starting benchmark for output size 32,32,32
+[network_requirements] srini :: 32,32,32 :: RM: 0 MB WM: 22 MB
+[layer_measurement] srini :: 32,32,32 :: 0 :: 0.00300822
+[layer_measurement] srini :: 32,32,32 :: 1 :: 0.00958681
+[layer_measurement] srini :: 32,32,32 :: 2 :: 0.00701252
+[layer_measurement] srini :: 32,32,32 :: 3 :: 0.00500457
+[layer_measurement] srini :: 32,32,32 :: 4 :: 0.00341323
+[layer_measurement] srini :: 32,32,32 :: 5 :: 0.00221454
+[network_measurement] srini :: 32,32,32 :: 0.0314107
+[layer_measurement] srini :: 32,32,32 :: 0 :: 0.0030027
+[layer_measurement] srini :: 32,32,32 :: 1 :: 0.0095463
+[layer_measurement] srini :: 32,32,32 :: 2 :: 0.00702592
+[layer_measurement] srini :: 32,32,32 :: 3 :: 0.00497566
+[layer_measurement] srini :: 32,32,32 :: 4 :: 0.00337579
+[layer_measurement] srini :: 32,32,32 :: 5 :: 0.00212381
+[network_measurement] srini :: 32,32,32 :: 0.0310457
+[layer_measurement] srini :: 32,32,32 :: 0 :: 0.00292651
+[layer_measurement] srini :: 32,32,32 :: 1 :: 0.00948651
+[layer_measurement] srini :: 32,32,32 :: 2 :: 0.00694407
+[layer_measurement] srini :: 32,32,32 :: 3 :: 0.00495966
+[layer_measurement] srini :: 32,32,32 :: 4 :: 0.00331427
+[layer_measurement] srini :: 32,32,32 :: 5 :: 0.0021507
+[network_measurement] srini :: 32,32,32 :: 0.0306785
+[layer_measurement] srini :: 32,32,32 :: 0 :: 0.00286916
+[layer_measurement] srini :: 32,32,32 :: 1 :: 0.00952653
+[layer_measurement] srini :: 32,32,32 :: 2 :: 0.00696873
+[layer_measurement] srini :: 32,32,32 :: 3 :: 0.00493919
+[layer_measurement] srini :: 32,32,32 :: 4 :: 0.00332244
+[layer_measurement] srini :: 32,32,32 :: 5 :: 0.00221377
+[network_measurement] srini :: 32,32,32 :: 0.0307596
+[network_average] srini :: 32,32,32 :: 0.0309736
+[network_throughput] srini :: 32,32,32 :: 1.05793e+06
+## srini :: starting benchmark for output size 36,36,36
+[network_requirements] srini :: 36,36,36 :: RM: 0 MB WM: 27 MB
+[layer_measurement] srini :: 36,36,36 :: 0 :: 0.0034242
+[layer_measurement] srini :: 36,36,36 :: 1 :: 0.0133897
+[layer_measurement] srini :: 36,36,36 :: 2 :: 0.0100655
+[layer_measurement] srini :: 36,36,36 :: 3 :: 0.00955398
+[layer_measurement] srini :: 36,36,36 :: 4 :: 0.00490547
+[layer_measurement] srini :: 36,36,36 :: 5 :: 0.00347601
+[network_measurement] srini :: 36,36,36 :: 0.0458875
+[layer_measurement] srini :: 36,36,36 :: 0 :: 0.00359139
+[layer_measurement] srini :: 36,36,36 :: 1 :: 0.0119016
+[layer_measurement] srini :: 36,36,36 :: 2 :: 0.00879892
+[layer_measurement] srini :: 36,36,36 :: 3 :: 0.00638631
+[layer_measurement] srini :: 36,36,36 :: 4 :: 0.00447734
+[layer_measurement] srini :: 36,36,36 :: 5 :: 0.00301464
+[network_measurement] srini :: 36,36,36 :: 0.0392636
+[layer_measurement] srini :: 36,36,36 :: 0 :: 0.0035476
+[layer_measurement] srini :: 36,36,36 :: 1 :: 0.0117111
+[layer_measurement] srini :: 36,36,36 :: 2 :: 0.0087427
+[layer_measurement] srini :: 36,36,36 :: 3 :: 0.00634281
+[layer_measurement] srini :: 36,36,36 :: 4 :: 0.00446071
+[layer_measurement] srini :: 36,36,36 :: 5 :: 0.00297413
+[network_measurement] srini :: 36,36,36 :: 0.0388538
+[layer_measurement] srini :: 36,36,36 :: 0 :: 0.00350388
+[layer_measurement] srini :: 36,36,36 :: 1 :: 0.011655
+[layer_measurement] srini :: 36,36,36 :: 2 :: 0.00871505
+[layer_measurement] srini :: 36,36,36 :: 3 :: 0.00631221
+[layer_measurement] srini :: 36,36,36 :: 4 :: 0.00440903
+[layer_measurement] srini :: 36,36,36 :: 5 :: 0.00290297
+[network_measurement] srini :: 36,36,36 :: 0.0384946
+[network_average] srini :: 36,36,36 :: 0.0406249
+[network_throughput] srini :: 36,36,36 :: 1.14846e+06
+## srini :: starting benchmark for output size 40,40,40
+[network_requirements] srini :: 40,40,40 :: RM: 0 MB WM: 33 MB
+[layer_measurement] srini :: 40,40,40 :: 0 :: 0.00393097
+[layer_measurement] srini :: 40,40,40 :: 1 :: 0.0138994
+[layer_measurement] srini :: 40,40,40 :: 2 :: 0.0105295
+[layer_measurement] srini :: 40,40,40 :: 3 :: 0.00777539
+[layer_measurement] srini :: 40,40,40 :: 4 :: 0.00552175
+[layer_measurement] srini :: 40,40,40 :: 5 :: 0.00373722
+[network_measurement] srini :: 40,40,40 :: 0.0464505
+[layer_measurement] srini :: 40,40,40 :: 0 :: 0.00398754
+[layer_measurement] srini :: 40,40,40 :: 1 :: 0.013918
+[layer_measurement] srini :: 40,40,40 :: 2 :: 0.0105266
+[layer_measurement] srini :: 40,40,40 :: 3 :: 0.00777448
+[layer_measurement] srini :: 40,40,40 :: 4 :: 0.00561149
+[layer_measurement] srini :: 40,40,40 :: 5 :: 0.00375287
+[network_measurement] srini :: 40,40,40 :: 0.0466279
+[layer_measurement] srini :: 40,40,40 :: 0 :: 0.00394535
+[layer_measurement] srini :: 40,40,40 :: 1 :: 0.0138939
+[layer_measurement] srini :: 40,40,40 :: 2 :: 0.0105383
+[layer_measurement] srini :: 40,40,40 :: 3 :: 0.00775703
+[layer_measurement] srini :: 40,40,40 :: 4 :: 0.00557916
+[layer_measurement] srini :: 40,40,40 :: 5 :: 0.00380972
+[network_measurement] srini :: 40,40,40 :: 0.0463943
+[layer_measurement] srini :: 40,40,40 :: 0 :: 0.00395366
+[layer_measurement] srini :: 40,40,40 :: 1 :: 0.0138598
+[layer_measurement] srini :: 40,40,40 :: 2 :: 0.0105015
+[layer_measurement] srini :: 40,40,40 :: 3 :: 0.00776513
+[layer_measurement] srini :: 40,40,40 :: 4 :: 0.00553257
+[layer_measurement] srini :: 40,40,40 :: 5 :: 0.00375287
+[network_measurement] srini :: 40,40,40 :: 0.0463993
+[network_average] srini :: 40,40,40 :: 0.046468
+[network_throughput] srini :: 40,40,40 :: 1.37729e+06
+## srini :: starting benchmark for output size 44,44,44
+[network_requirements] srini :: 44,44,44 :: RM: 0 MB WM: 40 MB
+[layer_measurement] srini :: 44,44,44 :: 0 :: 0.0045756
+[layer_measurement] srini :: 44,44,44 :: 1 :: 0.0165875
+[layer_measurement] srini :: 44,44,44 :: 2 :: 0.0127131
+[layer_measurement] srini :: 44,44,44 :: 3 :: 0.00948442
+[layer_measurement] srini :: 44,44,44 :: 4 :: 0.00695573
+[layer_measurement] srini :: 44,44,44 :: 5 :: 0.00486824
+[network_measurement] srini :: 44,44,44 :: 0.0565617
+[layer_measurement] srini :: 44,44,44 :: 0 :: 0.00456966
+[layer_measurement] srini :: 44,44,44 :: 1 :: 0.0165848
+[layer_measurement] srini :: 44,44,44 :: 2 :: 0.0127153
+[layer_measurement] srini :: 44,44,44 :: 3 :: 0.00949908
+[layer_measurement] srini :: 44,44,44 :: 4 :: 0.00694121
+[layer_measurement] srini :: 44,44,44 :: 5 :: 0.00487893
+[network_measurement] srini :: 44,44,44 :: 0.0561915
+[layer_measurement] srini :: 44,44,44 :: 0 :: 0.00454794
+[layer_measurement] srini :: 44,44,44 :: 1 :: 0.0165835
+[layer_measurement] srini :: 44,44,44 :: 2 :: 0.0127011
+[layer_measurement] srini :: 44,44,44 :: 3 :: 0.0095076
+[layer_measurement] srini :: 44,44,44 :: 4 :: 0.00692431
+[layer_measurement] srini :: 44,44,44 :: 5 :: 0.0048968
+[network_measurement] srini :: 44,44,44 :: 0.0562223
+[layer_measurement] srini :: 44,44,44 :: 0 :: 0.00459152
+[layer_measurement] srini :: 44,44,44 :: 1 :: 0.0165915
+[layer_measurement] srini :: 44,44,44 :: 2 :: 0.0126897
+[layer_measurement] srini :: 44,44,44 :: 3 :: 0.00951075
+[layer_measurement] srini :: 44,44,44 :: 4 :: 0.00694589
+[layer_measurement] srini :: 44,44,44 :: 5 :: 0.00486907
+[network_measurement] srini :: 44,44,44 :: 0.0561489
+[network_average] srini :: 44,44,44 :: 0.0562811
+[network_throughput] srini :: 44,44,44 :: 1.51355e+06
+## srini :: starting benchmark for output size 48,48,48
+[network_requirements] srini :: 48,48,48 :: RM: 0 MB WM: 47 MB
+[layer_measurement] srini :: 48,48,48 :: 0 :: 0.00524587
+[layer_measurement] srini :: 48,48,48 :: 1 :: 0.0195732
+[layer_measurement] srini :: 48,48,48 :: 2 :: 0.0151576
+[layer_measurement] srini :: 48,48,48 :: 3 :: 0.0117268
+[layer_measurement] srini :: 48,48,48 :: 4 :: 0.00853583
+[layer_measurement] srini :: 48,48,48 :: 5 :: 0.00610031
+[network_measurement] srini :: 48,48,48 :: 0.0680989
+[layer_measurement] srini :: 48,48,48 :: 0 :: 0.00522296
+[layer_measurement] srini :: 48,48,48 :: 1 :: 0.0195958
+[layer_measurement] srini :: 48,48,48 :: 2 :: 0.0151868
+[layer_measurement] srini :: 48,48,48 :: 3 :: 0.0115359
+[layer_measurement] srini :: 48,48,48 :: 4 :: 0.00854603
+[layer_measurement] srini :: 48,48,48 :: 5 :: 0.00606099
+[network_measurement] srini :: 48,48,48 :: 0.0672995
+[layer_measurement] srini :: 48,48,48 :: 0 :: 0.00520187
+[layer_measurement] srini :: 48,48,48 :: 1 :: 0.0195634
+[layer_measurement] srini :: 48,48,48 :: 2 :: 0.0151773
+[layer_measurement] srini :: 48,48,48 :: 3 :: 0.0115395
+[layer_measurement] srini :: 48,48,48 :: 4 :: 0.00855469
+[layer_measurement] srini :: 48,48,48 :: 5 :: 0.00611742
+[network_measurement] srini :: 48,48,48 :: 0.0672028
+[layer_measurement] srini :: 48,48,48 :: 0 :: 0.00522443
+[layer_measurement] srini :: 48,48,48 :: 1 :: 0.0195342
+[layer_measurement] srini :: 48,48,48 :: 2 :: 0.0151732
+[layer_measurement] srini :: 48,48,48 :: 3 :: 0.0115682
+[layer_measurement] srini :: 48,48,48 :: 4 :: 0.00859827
+[layer_measurement] srini :: 48,48,48 :: 5 :: 0.00608334
+[network_measurement] srini :: 48,48,48 :: 0.0673121
+[network_average] srini :: 48,48,48 :: 0.0674783
+[network_throughput] srini :: 48,48,48 :: 1.63893e+06
+## srini :: starting benchmark for output size 52,52,52
+[network_requirements] srini :: 52,52,52 :: RM: 0 MB WM: 55 MB
+[layer_measurement] srini :: 52,52,52 :: 0 :: 0.00596699
+[layer_measurement] srini :: 52,52,52 :: 1 :: 0.0228897
+[layer_measurement] srini :: 52,52,52 :: 2 :: 0.0180332
+[layer_measurement] srini :: 52,52,52 :: 3 :: 0.0138772
+[layer_measurement] srini :: 52,52,52 :: 4 :: 0.0104776
+[layer_measurement] srini :: 52,52,52 :: 5 :: 0.00757341
+[network_measurement] srini :: 52,52,52 :: 0.0806284
+[layer_measurement] srini :: 52,52,52 :: 0 :: 0.00596936
+[layer_measurement] srini :: 52,52,52 :: 1 :: 0.0229041
+[layer_measurement] srini :: 52,52,52 :: 2 :: 0.0180162
+[layer_measurement] srini :: 52,52,52 :: 3 :: 0.0138563
+[layer_measurement] srini :: 52,52,52 :: 4 :: 0.010471
+[layer_measurement] srini :: 52,52,52 :: 5 :: 0.00758969
+[network_measurement] srini :: 52,52,52 :: 0.0804718
+[layer_measurement] srini :: 52,52,52 :: 0 :: 0.00600261
+[layer_measurement] srini :: 52,52,52 :: 1 :: 0.0230223
+[layer_measurement] srini :: 52,52,52 :: 2 :: 0.0180329
+[layer_measurement] srini :: 52,52,52 :: 3 :: 0.0138778
+[layer_measurement] srini :: 52,52,52 :: 4 :: 0.0105033
+[layer_measurement] srini :: 52,52,52 :: 5 :: 0.00757216
+[network_measurement] srini :: 52,52,52 :: 0.0802376
+[layer_measurement] srini :: 52,52,52 :: 0 :: 0.00595679
+[layer_measurement] srini :: 52,52,52 :: 1 :: 0.0229286
+[layer_measurement] srini :: 52,52,52 :: 2 :: 0.018037
+[layer_measurement] srini :: 52,52,52 :: 3 :: 0.0138582
+[layer_measurement] srini :: 52,52,52 :: 4 :: 0.0104508
+[layer_measurement] srini :: 52,52,52 :: 5 :: 0.0075915
+[network_measurement] srini :: 52,52,52 :: 0.0799874
+[network_average] srini :: 52,52,52 :: 0.0803313
+[network_throughput] srini :: 52,52,52 :: 1.75035e+06
+## srini :: starting benchmark for output size 56,56,56
+[network_requirements] srini :: 56,56,56 :: RM: 0 MB WM: 64 MB
+[layer_measurement] srini :: 56,56,56 :: 0 :: 0.00680837
+[layer_measurement] srini :: 56,56,56 :: 1 :: 0.0266227
+[layer_measurement] srini :: 56,56,56 :: 2 :: 0.0211915
+[layer_measurement] srini :: 56,56,56 :: 3 :: 0.0165487
+[layer_measurement] srini :: 56,56,56 :: 4 :: 0.0126804
+[layer_measurement] srini :: 56,56,56 :: 5 :: 0.00934991
+[network_measurement] srini :: 56,56,56 :: 0.0951534
+[layer_measurement] srini :: 56,56,56 :: 0 :: 0.00679936
+[layer_measurement] srini :: 56,56,56 :: 1 :: 0.0266185
+[layer_measurement] srini :: 56,56,56 :: 2 :: 0.0211873
+[layer_measurement] srini :: 56,56,56 :: 3 :: 0.0165597
+[layer_measurement] srini :: 56,56,56 :: 4 :: 0.0126986
+[layer_measurement] srini :: 56,56,56 :: 5 :: 0.00931945
+[network_measurement] srini :: 56,56,56 :: 0.0950744
+[layer_measurement] srini :: 56,56,56 :: 0 :: 0.00686501
+[layer_measurement] srini :: 56,56,56 :: 1 :: 0.0291126
+[layer_measurement] srini :: 56,56,56 :: 2 :: 0.0212083
+[layer_measurement] srini :: 56,56,56 :: 3 :: 0.0166268
+[layer_measurement] srini :: 56,56,56 :: 4 :: 0.0126735
+[layer_measurement] srini :: 56,56,56 :: 5 :: 0.00933182
+[network_measurement] srini :: 56,56,56 :: 0.0971592
+[layer_measurement] srini :: 56,56,56 :: 0 :: 0.00678651
+[layer_measurement] srini :: 56,56,56 :: 1 :: 0.0265994
+[layer_measurement] srini :: 56,56,56 :: 2 :: 0.0211929
+[layer_measurement] srini :: 56,56,56 :: 3 :: 0.0165509
+[layer_measurement] srini :: 56,56,56 :: 4 :: 0.0127089
+[layer_measurement] srini :: 56,56,56 :: 5 :: 0.00933377
+[network_measurement] srini :: 56,56,56 :: 0.0946122
+[network_average] srini :: 56,56,56 :: 0.0954998
+[network_throughput] srini :: 56,56,56 :: 1.83892e+06
+## srini :: starting benchmark for output size 60,60,60
+[network_requirements] srini :: 60,60,60 :: RM: 0 MB WM: 74 MB
+[layer_measurement] srini :: 60,60,60 :: 0 :: 0.00772797
+[layer_measurement] srini :: 60,60,60 :: 1 :: 0.030719
+[layer_measurement] srini :: 60,60,60 :: 2 :: 0.0247561
+[layer_measurement] srini :: 60,60,60 :: 3 :: 0.0195281
+[layer_measurement] srini :: 60,60,60 :: 4 :: 0.0151761
+[layer_measurement] srini :: 60,60,60 :: 5 :: 0.0113619
+[network_measurement] srini :: 60,60,60 :: 0.110736
+[layer_measurement] srini :: 60,60,60 :: 0 :: 0.00772525
+[layer_measurement] srini :: 60,60,60 :: 1 :: 0.0307342
+[layer_measurement] srini :: 60,60,60 :: 2 :: 0.0247236
+[layer_measurement] srini :: 60,60,60 :: 3 :: 0.019538
+[layer_measurement] srini :: 60,60,60 :: 4 :: 0.0152197
+[layer_measurement] srini :: 60,60,60 :: 5 :: 0.0114021
+[network_measurement] srini :: 60,60,60 :: 0.110861
+[layer_measurement] srini :: 60,60,60 :: 0 :: 0.00770772
+[layer_measurement] srini :: 60,60,60 :: 1 :: 0.0307443
+[layer_measurement] srini :: 60,60,60 :: 2 :: 0.024737
+[layer_measurement] srini :: 60,60,60 :: 3 :: 0.0195518
+[layer_measurement] srini :: 60,60,60 :: 4 :: 0.0151808
+[layer_measurement] srini :: 60,60,60 :: 5 :: 0.0113684
+[network_measurement] srini :: 60,60,60 :: 0.110799
+[layer_measurement] srini :: 60,60,60 :: 0 :: 0.00771317
+[layer_measurement] srini :: 60,60,60 :: 1 :: 0.0307607
+[layer_measurement] srini :: 60,60,60 :: 2 :: 0.0247458
+[layer_measurement] srini :: 60,60,60 :: 3 :: 0.0195322
+[layer_measurement] srini :: 60,60,60 :: 4 :: 0.0151891
+[layer_measurement] srini :: 60,60,60 :: 5 :: 0.011364
+[network_measurement] srini :: 60,60,60 :: 0.110745
+[network_average] srini :: 60,60,60 :: 0.110785
+[network_throughput] srini :: 60,60,60 :: 1.94971e+06
+## srini :: starting benchmark for output size 64,64,64
+[network_requirements] srini :: 64,64,64 :: RM: 0 MB WM: 84 MB
+[layer_measurement] srini :: 64,64,64 :: 0 :: 0.00861419
+[layer_measurement] srini :: 64,64,64 :: 1 :: 0.0346895
+[layer_measurement] srini :: 64,64,64 :: 2 :: 0.0282016
+[layer_measurement] srini :: 64,64,64 :: 3 :: 0.0225629
+[layer_measurement] srini :: 64,64,64 :: 4 :: 0.0177714
+[layer_measurement] srini :: 64,64,64 :: 5 :: 0.0135163
+[network_measurement] srini :: 64,64,64 :: 0.127102
+[layer_measurement] srini :: 64,64,64 :: 0 :: 0.00861342
+[layer_measurement] srini :: 64,64,64 :: 1 :: 0.0347173
+[layer_measurement] srini :: 64,64,64 :: 2 :: 0.0282646
+[layer_measurement] srini :: 64,64,64 :: 3 :: 0.0225854
+[layer_measurement] srini :: 64,64,64 :: 4 :: 0.0177743
+[layer_measurement] srini :: 64,64,64 :: 5 :: 0.0134843
+[network_measurement] srini :: 64,64,64 :: 0.127054
+[layer_measurement] srini :: 64,64,64 :: 0 :: 0.00860357
+[layer_measurement] srini :: 64,64,64 :: 1 :: 0.0347378
+[layer_measurement] srini :: 64,64,64 :: 2 :: 0.0282365
+[layer_measurement] srini :: 64,64,64 :: 3 :: 0.0225865
+[layer_measurement] srini :: 64,64,64 :: 4 :: 0.0177486
+[layer_measurement] srini :: 64,64,64 :: 5 :: 0.013512
+[network_measurement] srini :: 64,64,64 :: 0.126999
+[layer_measurement] srini :: 64,64,64 :: 0 :: 0.00862397
+[layer_measurement] srini :: 64,64,64 :: 1 :: 0.0347434
+[layer_measurement] srini :: 64,64,64 :: 2 :: 0.0282295
+[layer_measurement] srini :: 64,64,64 :: 3 :: 0.0226119
+[layer_measurement] srini :: 64,64,64 :: 4 :: 0.0178058
+[layer_measurement] srini :: 64,64,64 :: 5 :: 0.0135156
+[network_measurement] srini :: 64,64,64 :: 0.127118
+[network_average] srini :: 64,64,64 :: 0.127068
+[network_throughput] srini :: 64,64,64 :: 2.06302e+06
+## srini :: starting benchmark for output size 68,68,68
+[network_requirements] srini :: 68,68,68 :: RM: 0 MB WM: 96 MB
+[layer_measurement] srini :: 68,68,68 :: 0 :: 0.0097186
+[layer_measurement] srini :: 68,68,68 :: 1 :: 0.0397149
+[layer_measurement] srini :: 68,68,68 :: 2 :: 0.0325969
+[layer_measurement] srini :: 68,68,68 :: 3 :: 0.0262989
+[layer_measurement] srini :: 68,68,68 :: 4 :: 0.0209368
+[layer_measurement] srini :: 68,68,68 :: 5 :: 0.0161804
+[network_measurement] srini :: 68,68,68 :: 0.148084
+[layer_measurement] srini :: 68,68,68 :: 0 :: 0.0098168
+[layer_measurement] srini :: 68,68,68 :: 1 :: 0.0397901
+[layer_measurement] srini :: 68,68,68 :: 2 :: 0.0325263
+[layer_measurement] srini :: 68,68,68 :: 3 :: 0.0262532
+[layer_measurement] srini :: 68,68,68 :: 4 :: 0.0209794
+[layer_measurement] srini :: 68,68,68 :: 5 :: 0.0162065
+[network_measurement] srini :: 68,68,68 :: 0.147786
+[layer_measurement] srini :: 68,68,68 :: 0 :: 0.0097105
+[layer_measurement] srini :: 68,68,68 :: 1 :: 0.0396961
+[layer_measurement] srini :: 68,68,68 :: 2 :: 0.032613
+[layer_measurement] srini :: 68,68,68 :: 3 :: 0.0263943
+[layer_measurement] srini :: 68,68,68 :: 4 :: 0.0209417
+[layer_measurement] srini :: 68,68,68 :: 5 :: 0.0161099
+[network_measurement] srini :: 68,68,68 :: 0.147567
+[layer_measurement] srini :: 68,68,68 :: 0 :: 0.00968605
+[layer_measurement] srini :: 68,68,68 :: 1 :: 0.0396195
+[layer_measurement] srini :: 68,68,68 :: 2 :: 0.0324631
+[layer_measurement] srini :: 68,68,68 :: 3 :: 0.0262291
+[layer_measurement] srini :: 68,68,68 :: 4 :: 0.020918
+[layer_measurement] srini :: 68,68,68 :: 5 :: 0.0161949
+[network_measurement] srini :: 68,68,68 :: 0.147096
+[network_average] srini :: 68,68,68 :: 0.147633
+[network_throughput] srini :: 68,68,68 :: 2.12982e+06
+## srini :: starting benchmark for output size 72,72,72
+[network_requirements] srini :: 72,72,72 :: RM: 0 MB WM: 109 MB
+[layer_measurement] srini :: 72,72,72 :: 0 :: 0.0108075
+[layer_measurement] srini :: 72,72,72 :: 1 :: 0.0450254
+[layer_measurement] srini :: 72,72,72 :: 2 :: 0.0371965
+[layer_measurement] srini :: 72,72,72 :: 3 :: 0.0302992
+[layer_measurement] srini :: 72,72,72 :: 4 :: 0.0244232
+[layer_measurement] srini :: 72,72,72 :: 5 :: 0.0190216
+[network_measurement] srini :: 72,72,72 :: 0.169781
+[layer_measurement] srini :: 72,72,72 :: 0 :: 0.010724
+[layer_measurement] srini :: 72,72,72 :: 1 :: 0.0449248
+[layer_measurement] srini :: 72,72,72 :: 2 :: 0.0371536
+[layer_measurement] srini :: 72,72,72 :: 3 :: 0.0302726
+[layer_measurement] srini :: 72,72,72 :: 4 :: 0.0244028
+[layer_measurement] srini :: 72,72,72 :: 5 :: 0.0190429
+[network_measurement] srini :: 72,72,72 :: 0.169328
+[layer_measurement] srini :: 72,72,72 :: 0 :: 0.0107734
+[layer_measurement] srini :: 72,72,72 :: 1 :: 0.0449158
+[layer_measurement] srini :: 72,72,72 :: 2 :: 0.0371679
+[layer_measurement] srini :: 72,72,72 :: 3 :: 0.030302
+[layer_measurement] srini :: 72,72,72 :: 4 :: 0.0244161
+[layer_measurement] srini :: 72,72,72 :: 5 :: 0.0190297
+[network_measurement] srini :: 72,72,72 :: 0.168799
+[layer_measurement] srini :: 72,72,72 :: 0 :: 0.0107817
+[layer_measurement] srini :: 72,72,72 :: 1 :: 0.044945
+[layer_measurement] srini :: 72,72,72 :: 2 :: 0.0371723
+[layer_measurement] srini :: 72,72,72 :: 3 :: 0.0303146
+[layer_measurement] srini :: 72,72,72 :: 4 :: 0.0244522
+[layer_measurement] srini :: 72,72,72 :: 5 :: 0.0214206
+[network_measurement] srini :: 72,72,72 :: 0.171298
+[network_average] srini :: 72,72,72 :: 0.169801
+[network_throughput] srini :: 72,72,72 :: 2.19815e+06
+## srini :: starting benchmark for output size 76,76,76
+[network_requirements] srini :: 76,76,76 :: RM: 0 MB WM: 123 MB
+[layer_measurement] srini :: 76,76,76 :: 0 :: 0.0120389
+[layer_measurement] srini :: 76,76,76 :: 1 :: 0.050714
+[layer_measurement] srini :: 76,76,76 :: 2 :: 0.0422215
+[layer_measurement] srini :: 76,76,76 :: 3 :: 0.0347297
+[layer_measurement] srini :: 76,76,76 :: 4 :: 0.0282189
+[layer_measurement] srini :: 76,76,76 :: 5 :: 0.0222707
+[network_measurement] srini :: 76,76,76 :: 0.193255
+[layer_measurement] srini :: 76,76,76 :: 0 :: 0.0120359
+[layer_measurement] srini :: 76,76,76 :: 1 :: 0.0507154
+[layer_measurement] srini :: 76,76,76 :: 2 :: 0.0422312
+[layer_measurement] srini :: 76,76,76 :: 3 :: 0.0347483
+[layer_measurement] srini :: 76,76,76 :: 4 :: 0.0282318
+[layer_measurement] srini :: 76,76,76 :: 5 :: 0.0222831
+[network_measurement] srini :: 76,76,76 :: 0.193264
+[layer_measurement] srini :: 76,76,76 :: 0 :: 0.0120375
+[layer_measurement] srini :: 76,76,76 :: 1 :: 0.0507318
+[layer_measurement] srini :: 76,76,76 :: 2 :: 0.0422287
+[layer_measurement] srini :: 76,76,76 :: 3 :: 0.0347391
+[layer_measurement] srini :: 76,76,76 :: 4 :: 0.0282505
+[layer_measurement] srini :: 76,76,76 :: 5 :: 0.0222737
+[network_measurement] srini :: 76,76,76 :: 0.19281
+[layer_measurement] srini :: 76,76,76 :: 0 :: 0.0120332
+[layer_measurement] srini :: 76,76,76 :: 1 :: 0.0507345
+[layer_measurement] srini :: 76,76,76 :: 2 :: 0.0422282
+[layer_measurement] srini :: 76,76,76 :: 3 :: 0.0347856
+[layer_measurement] srini :: 76,76,76 :: 4 :: 0.0282396
+[layer_measurement] srini :: 76,76,76 :: 5 :: 0.0222653
+[network_measurement] srini :: 76,76,76 :: 0.192793
+[network_average] srini :: 76,76,76 :: 0.19303
+[network_throughput] srini :: 76,76,76 :: 2.27413e+06
+## srini :: starting benchmark for output size 80,80,80
+[network_requirements] srini :: 80,80,80 :: RM: 0 MB WM: 138 MB
+[layer_measurement] srini :: 80,80,80 :: 0 :: 0.0134102
+[layer_measurement] srini :: 80,80,80 :: 1 :: 0.0570813
+[layer_measurement] srini :: 80,80,80 :: 2 :: 0.0478969
+[layer_measurement] srini :: 80,80,80 :: 3 :: 0.0397501
+[layer_measurement] srini :: 80,80,80 :: 4 :: 0.0325986
+[layer_measurement] srini :: 80,80,80 :: 5 :: 0.0260444
+[network_measurement] srini :: 80,80,80 :: 0.220449
+[layer_measurement] srini :: 80,80,80 :: 0 :: 0.0148566
+[layer_measurement] srini :: 80,80,80 :: 1 :: 0.0615005
+[layer_measurement] srini :: 80,80,80 :: 2 :: 0.0478928
+[layer_measurement] srini :: 80,80,80 :: 3 :: 0.0396492
+[layer_measurement] srini :: 80,80,80 :: 4 :: 0.0325352
+[layer_measurement] srini :: 80,80,80 :: 5 :: 0.0258909
+[network_measurement] srini :: 80,80,80 :: 0.22585
+[layer_measurement] srini :: 80,80,80 :: 0 :: 0.0134124
+[layer_measurement] srini :: 80,80,80 :: 1 :: 0.0570428
+[layer_measurement] srini :: 80,80,80 :: 2 :: 0.04793
+[layer_measurement] srini :: 80,80,80 :: 3 :: 0.0396554
+[layer_measurement] srini :: 80,80,80 :: 4 :: 0.0324934
+[layer_measurement] srini :: 80,80,80 :: 5 :: 0.0258861
+[network_measurement] srini :: 80,80,80 :: 0.219064
+[layer_measurement] srini :: 80,80,80 :: 0 :: 0.0134057
+[layer_measurement] srini :: 80,80,80 :: 1 :: 0.0570379
+[layer_measurement] srini :: 80,80,80 :: 2 :: 0.0478699
+[layer_measurement] srini :: 80,80,80 :: 3 :: 0.0397291
+[layer_measurement] srini :: 80,80,80 :: 4 :: 0.0325506
+[layer_measurement] srini :: 80,80,80 :: 5 :: 0.0258869
+[network_measurement] srini :: 80,80,80 :: 0.219127
+[network_average] srini :: 80,80,80 :: 0.221123
+[network_throughput] srini :: 80,80,80 :: 2.31546e+06
+## srini :: starting benchmark for output size 84,84,84
+[network_requirements] srini :: 84,84,84 :: RM: 0 MB WM: 155 MB
+[layer_measurement] srini :: 84,84,84 :: 0 :: 0.0148613
+[layer_measurement] srini :: 84,84,84 :: 1 :: 0.0638761
+[layer_measurement] srini :: 84,84,84 :: 2 :: 0.0539189
+[layer_measurement] srini :: 84,84,84 :: 3 :: 0.0449582
+[layer_measurement] srini :: 84,84,84 :: 4 :: 0.0372532
+[layer_measurement] srini :: 84,84,84 :: 5 :: 0.0301019
+[network_measurement] srini :: 84,84,84 :: 0.249817
+[layer_measurement] srini :: 84,84,84 :: 0 :: 0.0151882
+[layer_measurement] srini :: 84,84,84 :: 1 :: 0.0642366
+[layer_measurement] srini :: 84,84,84 :: 2 :: 0.0541149
+[layer_measurement] srini :: 84,84,84 :: 3 :: 0.0450956
+[layer_measurement] srini :: 84,84,84 :: 4 :: 0.0373183
+[layer_measurement] srini :: 84,84,84 :: 5 :: 0.0299722
+[network_measurement] srini :: 84,84,84 :: 0.249814
+[layer_measurement] srini :: 84,84,84 :: 0 :: 0.0149256
+[layer_measurement] srini :: 84,84,84 :: 1 :: 0.0639481
+[layer_measurement] srini :: 84,84,84 :: 2 :: 0.0539561
+[layer_measurement] srini :: 84,84,84 :: 3 :: 0.0450325
+[layer_measurement] srini :: 84,84,84 :: 4 :: 0.0376732
+[layer_measurement] srini :: 84,84,84 :: 5 :: 0.0304435
+[network_measurement] srini :: 84,84,84 :: 0.248895
+[layer_measurement] srini :: 84,84,84 :: 0 :: 0.0150928
+[layer_measurement] srini :: 84,84,84 :: 1 :: 0.06493
+[layer_measurement] srini :: 84,84,84 :: 2 :: 0.0548148
+[layer_measurement] srini :: 84,84,84 :: 3 :: 0.0458224
+[layer_measurement] srini :: 84,84,84 :: 4 :: 0.0372508
+[layer_measurement] srini :: 84,84,84 :: 5 :: 0.0321792
+[network_measurement] srini :: 84,84,84 :: 0.253056
+[network_average] srini :: 84,84,84 :: 0.250396
+[network_throughput] srini :: 84,84,84 :: 2.36707e+06
+## srini :: starting benchmark for output size 88,88,88
+[network_requirements] srini :: 88,88,88 :: RM: 0 MB WM: 172 MB
+[layer_measurement] srini :: 88,88,88 :: 0 :: 0.0165096
+[layer_measurement] srini :: 88,88,88 :: 1 :: 0.0711448
+[layer_measurement] srini :: 88,88,88 :: 2 :: 0.0604434
+[layer_measurement] srini :: 88,88,88 :: 3 :: 0.0508248
+[layer_measurement] srini :: 88,88,88 :: 4 :: 0.0423049
+[layer_measurement] srini :: 88,88,88 :: 5 :: 0.0343083
+[network_measurement] srini :: 88,88,88 :: 0.279507
+[layer_measurement] srini :: 88,88,88 :: 0 :: 0.0164615
+[layer_measurement] srini :: 88,88,88 :: 1 :: 0.0711421
+[layer_measurement] srini :: 88,88,88 :: 2 :: 0.0604973
+[layer_measurement] srini :: 88,88,88 :: 3 :: 0.0508109
+[layer_measurement] srini :: 88,88,88 :: 4 :: 0.0427639
+[layer_measurement] srini :: 88,88,88 :: 5 :: 0.034863
+[network_measurement] srini :: 88,88,88 :: 0.280509
+[layer_measurement] srini :: 88,88,88 :: 0 :: 0.0166833
+[layer_measurement] srini :: 88,88,88 :: 1 :: 0.0722854
+[layer_measurement] srini :: 88,88,88 :: 2 :: 0.0614017
+[layer_measurement] srini :: 88,88,88 :: 3 :: 0.0513315
+[layer_measurement] srini :: 88,88,88 :: 4 :: 0.0423262
+[layer_measurement] srini :: 88,88,88 :: 5 :: 0.0352125
+[network_measurement] srini :: 88,88,88 :: 0.28239
+[layer_measurement] srini :: 88,88,88 :: 0 :: 0.0167066
+[layer_measurement] srini :: 88,88,88 :: 1 :: 0.0722536
+[layer_measurement] srini :: 88,88,88 :: 2 :: 0.0614074
+[layer_measurement] srini :: 88,88,88 :: 3 :: 0.0515784
+[layer_measurement] srini :: 88,88,88 :: 4 :: 0.0428361
+[layer_measurement] srini :: 88,88,88 :: 5 :: 0.0346934
+[network_measurement] srini :: 88,88,88 :: 0.282762
+[network_average] srini :: 88,88,88 :: 0.281292
+[network_throughput] srini :: 88,88,88 :: 2.42265e+06
+## srini :: starting benchmark for output size 92,92,92
+[network_requirements] srini :: 92,92,92 :: RM: 0 MB WM: 191 MB
+[layer_measurement] srini :: 92,92,92 :: 0 :: 0.0182188
+[layer_measurement] srini :: 92,92,92 :: 1 :: 0.0790575
+[layer_measurement] srini :: 92,92,92 :: 2 :: 0.0675256
+[layer_measurement] srini :: 92,92,92 :: 3 :: 0.0571528
+[layer_measurement] srini :: 92,92,92 :: 4 :: 0.0479455
+[layer_measurement] srini :: 92,92,92 :: 5 :: 0.0391795
+[network_measurement] srini :: 92,92,92 :: 0.313246
+[layer_measurement] srini :: 92,92,92 :: 0 :: 0.0181904
+[layer_measurement] srini :: 92,92,92 :: 1 :: 0.0790325
+[layer_measurement] srini :: 92,92,92 :: 2 :: 0.0675072
+[layer_measurement] srini :: 92,92,92 :: 3 :: 0.057834
+[layer_measurement] srini :: 92,92,92 :: 4 :: 0.0486917
+[layer_measurement] srini :: 92,92,92 :: 5 :: 0.0397798
+[network_measurement] srini :: 92,92,92 :: 0.315211
+[layer_measurement] srini :: 92,92,92 :: 0 :: 0.0184628
+[layer_measurement] srini :: 92,92,92 :: 1 :: 0.0803023
+[layer_measurement] srini :: 92,92,92 :: 2 :: 0.0680249
+[layer_measurement] srini :: 92,92,92 :: 3 :: 0.0571767
+[layer_measurement] srini :: 92,92,92 :: 4 :: 0.0479724
+[layer_measurement] srini :: 92,92,92 :: 5 :: 0.0400392
+[network_measurement] srini :: 92,92,92 :: 0.315477
+[layer_measurement] srini :: 92,92,92 :: 0 :: 0.0184213
+[layer_measurement] srini :: 92,92,92 :: 1 :: 0.0802845
+[layer_measurement] srini :: 92,92,92 :: 2 :: 0.0681189
+[layer_measurement] srini :: 92,92,92 :: 3 :: 0.0572577
+[layer_measurement] srini :: 92,92,92 :: 4 :: 0.0485977
+[layer_measurement] srini :: 92,92,92 :: 5 :: 0.0397543
+[network_measurement] srini :: 92,92,92 :: 0.315962
+[network_average] srini :: 92,92,92 :: 0.314974
+[network_throughput] srini :: 92,92,92 :: 2.47223e+06
+## srini :: starting benchmark for output size 96,96,96
+[network_requirements] srini :: 96,96,96 :: RM: 0 MB WM: 211 MB
+[layer_measurement] srini :: 96,96,96 :: 0 :: 0.0200012
+[layer_measurement] srini :: 96,96,96 :: 1 :: 0.0873268
+[layer_measurement] srini :: 96,96,96 :: 2 :: 0.0750583
+[layer_measurement] srini :: 96,96,96 :: 3 :: 0.0639935
+[layer_measurement] srini :: 96,96,96 :: 4 :: 0.0540306
+[layer_measurement] srini :: 96,96,96 :: 5 :: 0.0445031
+[network_measurement] srini :: 96,96,96 :: 0.350576
+[layer_measurement] srini :: 96,96,96 :: 0 :: 0.0233514
+[layer_measurement] srini :: 96,96,96 :: 1 :: 0.0899445
+[layer_measurement] srini :: 96,96,96 :: 2 :: 0.0759506
+[layer_measurement] srini :: 96,96,96 :: 3 :: 0.0640287
+[layer_measurement] srini :: 96,96,96 :: 4 :: 0.0545738
+[layer_measurement] srini :: 96,96,96 :: 5 :: 0.045078
+[network_measurement] srini :: 96,96,96 :: 0.357781
+[layer_measurement] srini :: 96,96,96 :: 0 :: 0.0202358
+[layer_measurement] srini :: 96,96,96 :: 1 :: 0.0887055
+[layer_measurement] srini :: 96,96,96 :: 2 :: 0.0765526
+[layer_measurement] srini :: 96,96,96 :: 3 :: 0.0639548
+[layer_measurement] srini :: 96,96,96 :: 4 :: 0.0539882
+[layer_measurement] srini :: 96,96,96 :: 5 :: 0.0451321
+[network_measurement] srini :: 96,96,96 :: 0.352761
+[layer_measurement] srini :: 96,96,96 :: 0 :: 0.020626
+[layer_measurement] srini :: 96,96,96 :: 1 :: 0.0893369
+[layer_measurement] srini :: 96,96,96 :: 2 :: 0.0758807
+[layer_measurement] srini :: 96,96,96 :: 3 :: 0.0640811
+[layer_measurement] srini :: 96,96,96 :: 4 :: 0.0540392
+[layer_measurement] srini :: 96,96,96 :: 5 :: 0.0444139
+[network_measurement] srini :: 96,96,96 :: 0.35238
+[network_average] srini :: 96,96,96 :: 0.353375
+[network_throughput] srini :: 96,96,96 :: 2.50368e+06
+## srini :: starting benchmark for output size 100,100,100
+[network_requirements] srini :: 100,100,100 :: RM: 0 MB WM: 232 MB
+[layer_measurement] srini :: 100,100,100 :: 0 :: 0.0218705
+[layer_measurement] srini :: 100,100,100 :: 1 :: 0.096322
+[layer_measurement] srini :: 100,100,100 :: 2 :: 0.083226
+[layer_measurement] srini :: 100,100,100 :: 3 :: 0.0712461
+[layer_measurement] srini :: 100,100,100 :: 4 :: 0.0610178
+[layer_measurement] srini :: 100,100,100 :: 5 :: 0.050951
+[network_measurement] srini :: 100,100,100 :: 0.389749
+[layer_measurement] srini :: 100,100,100 :: 0 :: 0.0222224
+[layer_measurement] srini :: 100,100,100 :: 1 :: 0.0977622
+[layer_measurement] srini :: 100,100,100 :: 2 :: 0.0857989
+[layer_measurement] srini :: 100,100,100 :: 3 :: 0.0742181
+[layer_measurement] srini :: 100,100,100 :: 4 :: 0.0640968
+[layer_measurement] srini :: 100,100,100 :: 5 :: 0.0501942
+[network_measurement] srini :: 100,100,100 :: 0.399429
+[layer_measurement] srini :: 100,100,100 :: 0 :: 0.0218798
+[layer_measurement] srini :: 100,100,100 :: 1 :: 0.0963144
+[layer_measurement] srini :: 100,100,100 :: 2 :: 0.0831725
+[layer_measurement] srini :: 100,100,100 :: 3 :: 0.0712263
+[layer_measurement] srini :: 100,100,100 :: 4 :: 0.061289
+[layer_measurement] srini :: 100,100,100 :: 5 :: 0.0509593
+[network_measurement] srini :: 100,100,100 :: 0.389172
+[layer_measurement] srini :: 100,100,100 :: 0 :: 0.022171
+[layer_measurement] srini :: 100,100,100 :: 1 :: 0.0980849
+[layer_measurement] srini :: 100,100,100 :: 2 :: 0.0831387
+[layer_measurement] srini :: 100,100,100 :: 3 :: 0.0712158
+[layer_measurement] srini :: 100,100,100 :: 4 :: 0.0613125
+[layer_measurement] srini :: 100,100,100 :: 5 :: 0.0509084
+[network_measurement] srini :: 100,100,100 :: 0.391065
+[network_average] srini :: 100,100,100 :: 0.392353
+[network_throughput] srini :: 100,100,100 :: 2.54872e+06
+## srini :: starting benchmark for output size 104,104,104
+[network_requirements] srini :: 104,104,104 :: RM: 0 MB WM: 255 MB
+[layer_measurement] srini :: 104,104,104 :: 0 :: 0.0239345
+[layer_measurement] srini :: 104,104,104 :: 1 :: 0.105845
+[layer_measurement] srini :: 104,104,104 :: 2 :: 0.0918844
+[layer_measurement] srini :: 104,104,104 :: 3 :: 0.0790766
+[layer_measurement] srini :: 104,104,104 :: 4 :: 0.0687095
+[layer_measurement] srini :: 104,104,104 :: 5 :: 0.0572094
+[network_measurement] srini :: 104,104,104 :: 0.432199
+[layer_measurement] srini :: 104,104,104 :: 0 :: 0.0242561
+[layer_measurement] srini :: 104,104,104 :: 1 :: 0.107632
+[layer_measurement] srini :: 104,104,104 :: 2 :: 0.0918716
+[layer_measurement] srini :: 104,104,104 :: 3 :: 0.0799042
+[layer_measurement] srini :: 104,104,104 :: 4 :: 0.068615
+[layer_measurement] srini :: 104,104,104 :: 5 :: 0.058101
+[network_measurement] srini :: 104,104,104 :: 0.435866
+[layer_measurement] srini :: 104,104,104 :: 0 :: 0.0244656
+[layer_measurement] srini :: 104,104,104 :: 1 :: 0.108368
+[layer_measurement] srini :: 104,104,104 :: 2 :: 0.0997552
+[layer_measurement] srini :: 104,104,104 :: 3 :: 0.0826507
+[layer_measurement] srini :: 104,104,104 :: 4 :: 0.0676586
+[layer_measurement] srini :: 104,104,104 :: 5 :: 0.0563476
+[network_measurement] srini :: 104,104,104 :: 0.443884
+[layer_measurement] srini :: 104,104,104 :: 0 :: 0.0239538
+[layer_measurement] srini :: 104,104,104 :: 1 :: 0.105871
+[layer_measurement] srini :: 104,104,104 :: 2 :: 0.0918714
+[layer_measurement] srini :: 104,104,104 :: 3 :: 0.079972
+[layer_measurement] srini :: 104,104,104 :: 4 :: 0.0719664
+[layer_measurement] srini :: 104,104,104 :: 5 :: 0.0577198
+[network_measurement] srini :: 104,104,104 :: 0.435993
+[network_average] srini :: 104,104,104 :: 0.436986
+[network_throughput] srini :: 104,104,104 :: 2.57414e+06
+## srini :: starting benchmark for output size 108,108,108
+[network_requirements] srini :: 108,108,108 :: RM: 0 MB WM: 280 MB
+[layer_measurement] srini :: 108,108,108 :: 0 :: 0.0262691
+[layer_measurement] srini :: 108,108,108 :: 1 :: 0.116249
+[layer_measurement] srini :: 108,108,108 :: 2 :: 0.10252
+[layer_measurement] srini :: 108,108,108 :: 3 :: 0.0874686
+[layer_measurement] srini :: 108,108,108 :: 4 :: 0.0766652
+[layer_measurement] srini :: 108,108,108 :: 5 :: 0.0640674
+[network_measurement] srini :: 108,108,108 :: 0.479516
+[layer_measurement] srini :: 108,108,108 :: 0 :: 0.0264593
+[layer_measurement] srini :: 108,108,108 :: 1 :: 0.117939
+[layer_measurement] srini :: 108,108,108 :: 2 :: 0.102606
+[layer_measurement] srini :: 108,108,108 :: 3 :: 0.0887689
+[layer_measurement] srini :: 108,108,108 :: 4 :: 0.0762987
+[layer_measurement] srini :: 108,108,108 :: 5 :: 0.0641058
+[network_measurement] srini :: 108,108,108 :: 0.482434
+[layer_measurement] srini :: 108,108,108 :: 0 :: 0.0264454
+[layer_measurement] srini :: 108,108,108 :: 1 :: 0.118004
+[layer_measurement] srini :: 108,108,108 :: 2 :: 0.102627
+[layer_measurement] srini :: 108,108,108 :: 3 :: 0.0887756
+[layer_measurement] srini :: 108,108,108 :: 4 :: 0.0762976
+[layer_measurement] srini :: 108,108,108 :: 5 :: 0.0640889
+[network_measurement] srini :: 108,108,108 :: 0.481282
+[layer_measurement] srini :: 108,108,108 :: 0 :: 0.0264411
+[layer_measurement] srini :: 108,108,108 :: 1 :: 0.118013
+[layer_measurement] srini :: 108,108,108 :: 2 :: 0.102278
+[layer_measurement] srini :: 108,108,108 :: 3 :: 0.0892974
+[layer_measurement] srini :: 108,108,108 :: 4 :: 0.0763637
+[layer_measurement] srini :: 108,108,108 :: 5 :: 0.06411
+[network_measurement] srini :: 108,108,108 :: 0.481485
+[network_average] srini :: 108,108,108 :: 0.481179
+[network_throughput] srini :: 108,108,108 :: 2.61797e+06
+## srini :: starting benchmark for output size 112,112,112
+[network_requirements] srini :: 112,112,112 :: RM: 0 MB WM: 306 MB
+[layer_measurement] srini :: 112,112,112 :: 0 :: 0.0284358
+[layer_measurement] srini :: 112,112,112 :: 1 :: 0.12713
+[layer_measurement] srini :: 112,112,112 :: 2 :: 0.111756
+[layer_measurement] srini :: 112,112,112 :: 3 :: 0.0985228
+[layer_measurement] srini :: 112,112,112 :: 4 :: 0.0852435
+[layer_measurement] srini :: 112,112,112 :: 5 :: 0.0725026
+[network_measurement] srini :: 112,112,112 :: 0.53131
+[layer_measurement] srini :: 112,112,112 :: 0 :: 0.0293234
+[layer_measurement] srini :: 112,112,112 :: 1 :: 0.129452
+[layer_measurement] srini :: 112,112,112 :: 2 :: 0.111236
+[layer_measurement] srini :: 112,112,112 :: 3 :: 0.0981392
+[layer_measurement] srini :: 112,112,112 :: 4 :: 0.0855685
+[layer_measurement] srini :: 112,112,112 :: 5 :: 0.072141
+[network_measurement] srini :: 112,112,112 :: 0.533076
+[layer_measurement] srini :: 112,112,112 :: 0 :: 0.0291293
+[layer_measurement] srini :: 112,112,112 :: 1 :: 0.128264
+[layer_measurement] srini :: 112,112,112 :: 2 :: 0.112047
+[layer_measurement] srini :: 112,112,112 :: 3 :: 0.0986932
+[layer_measurement] srini :: 112,112,112 :: 4 :: 0.0853581
+[layer_measurement] srini :: 112,112,112 :: 5 :: 0.0721452
+[network_measurement] srini :: 112,112,112 :: 0.531152
+[layer_measurement] srini :: 112,112,112 :: 0 :: 0.0290448
+[layer_measurement] srini :: 112,112,112 :: 1 :: 0.127185
+[layer_measurement] srini :: 112,112,112 :: 2 :: 0.111163
+[layer_measurement] srini :: 112,112,112 :: 3 :: 0.0980349
+[layer_measurement] srini :: 112,112,112 :: 4 :: 0.0855015
+[layer_measurement] srini :: 112,112,112 :: 5 :: 0.0724132
+[network_measurement] srini :: 112,112,112 :: 0.528829
+[network_average] srini :: 112,112,112 :: 0.531092
+[network_throughput] srini :: 112,112,112 :: 2.64536e+06
+## srini :: starting benchmark for output size 116,116,116
+[network_requirements] srini :: 116,116,116 :: RM: 0 MB WM: 333 MB
+[layer_measurement] srini :: 116,116,116 :: 0 :: 0.0309353
+[layer_measurement] srini :: 116,116,116 :: 1 :: 0.138842
+[layer_measurement] srini :: 116,116,116 :: 2 :: 0.121838
+[layer_measurement] srini :: 116,116,116 :: 3 :: 0.108921
+[layer_measurement] srini :: 116,116,116 :: 4 :: 0.0940862
+[layer_measurement] srini :: 116,116,116 :: 5 :: 0.0799936
+[network_measurement] srini :: 116,116,116 :: 0.582057
+[layer_measurement] srini :: 116,116,116 :: 0 :: 0.0315597
+[layer_measurement] srini :: 116,116,116 :: 1 :: 0.141346
+[layer_measurement] srini :: 116,116,116 :: 2 :: 0.123517
+[layer_measurement] srini :: 116,116,116 :: 3 :: 0.107657
+[layer_measurement] srini :: 116,116,116 :: 4 :: 0.0943167
+[layer_measurement] srini :: 116,116,116 :: 5 :: 0.0799837
+[network_measurement] srini :: 116,116,116 :: 0.585746
+[layer_measurement] srini :: 116,116,116 :: 0 :: 0.0316043
+[layer_measurement] srini :: 116,116,116 :: 1 :: 0.141792
+[layer_measurement] srini :: 116,116,116 :: 2 :: 0.123575
+[layer_measurement] srini :: 116,116,116 :: 3 :: 0.107638
+[layer_measurement] srini :: 116,116,116 :: 4 :: 0.0943244
+[layer_measurement] srini :: 116,116,116 :: 5 :: 0.0799811
+[network_measurement] srini :: 116,116,116 :: 0.584953
+[layer_measurement] srini :: 116,116,116 :: 0 :: 0.0315893
+[layer_measurement] srini :: 116,116,116 :: 1 :: 0.141798
+[layer_measurement] srini :: 116,116,116 :: 2 :: 0.124878
+[layer_measurement] srini :: 116,116,116 :: 3 :: 0.107789
+[layer_measurement] srini :: 116,116,116 :: 4 :: 0.093509
+[layer_measurement] srini :: 116,116,116 :: 5 :: 0.0795664
+[network_measurement] srini :: 116,116,116 :: 0.585112
+[network_average] srini :: 116,116,116 :: 0.584467
+[network_throughput] srini :: 116,116,116 :: 2.67063e+06
+## srini :: starting benchmark for output size 120,120,120
+[network_requirements] srini :: 120,120,120 :: RM: 0 MB WM: 362 MB
+[layer_measurement] srini :: 120,120,120 :: 0 :: 0.033481
+[layer_measurement] srini :: 120,120,120 :: 1 :: 0.151103
+[layer_measurement] srini :: 120,120,120 :: 2 :: 0.134412
+[layer_measurement] srini :: 120,120,120 :: 3 :: 0.119378
+[layer_measurement] srini :: 120,120,120 :: 4 :: 0.103739
+[layer_measurement] srini :: 120,120,120 :: 5 :: 0.0885322
+[network_measurement] srini :: 120,120,120 :: 0.638418
+[layer_measurement] srini :: 120,120,120 :: 0 :: 0.034283
+[layer_measurement] srini :: 120,120,120 :: 1 :: 0.153635
+[layer_measurement] srini :: 120,120,120 :: 2 :: 0.133911
+[layer_measurement] srini :: 120,120,120 :: 3 :: 0.119053
+[layer_measurement] srini :: 120,120,120 :: 4 :: 0.104952
+[layer_measurement] srini :: 120,120,120 :: 5 :: 0.0901386
+[network_measurement] srini :: 120,120,120 :: 0.644047
+[layer_measurement] srini :: 120,120,120 :: 0 :: 0.0342481
+[layer_measurement] srini :: 120,120,120 :: 1 :: 0.153554
+[layer_measurement] srini :: 120,120,120 :: 2 :: 0.133015
+[layer_measurement] srini :: 120,120,120 :: 3 :: 0.119134
+[layer_measurement] srini :: 120,120,120 :: 4 :: 0.104389
+[layer_measurement] srini :: 120,120,120 :: 5 :: 0.0898977
+[network_measurement] srini :: 120,120,120 :: 0.640863
+[layer_measurement] srini :: 120,120,120 :: 0 :: 0.0346522
+[layer_measurement] srini :: 120,120,120 :: 1 :: 0.155205
+[layer_measurement] srini :: 120,120,120 :: 2 :: 0.135357
+[layer_measurement] srini :: 120,120,120 :: 3 :: 0.119216
+[layer_measurement] srini :: 120,120,120 :: 4 :: 0.103745
+[layer_measurement] srini :: 120,120,120 :: 5 :: 0.0885615
+[network_measurement] srini :: 120,120,120 :: 0.643181
+[network_average] srini :: 120,120,120 :: 0.641627
+[network_throughput] srini :: 120,120,120 :: 2.69315e+06
+## srini :: starting benchmark for output size 124,124,124
+[network_requirements] srini :: 124,124,124 :: RM: 0 MB WM: 392 MB
+[layer_measurement] srini :: 124,124,124 :: 0 :: 0.0367103
+[layer_measurement] srini :: 124,124,124 :: 1 :: 0.166695
+[layer_measurement] srini :: 124,124,124 :: 2 :: 0.14721
+[layer_measurement] srini :: 124,124,124 :: 3 :: 0.13067
+[layer_measurement] srini :: 124,124,124 :: 4 :: 0.114866
+[layer_measurement] srini :: 124,124,124 :: 5 :: 0.0988143
+[network_measurement] srini :: 124,124,124 :: 0.703321
+[layer_measurement] srini :: 124,124,124 :: 0 :: 0.037025
+[layer_measurement] srini :: 124,124,124 :: 1 :: 0.174337
+[layer_measurement] srini :: 124,124,124 :: 2 :: 0.148816
+[layer_measurement] srini :: 124,124,124 :: 3 :: 0.132234
+[layer_measurement] srini :: 124,124,124 :: 4 :: 0.118777
+[layer_measurement] srini :: 124,124,124 :: 5 :: 0.0969853
+[network_measurement] srini :: 124,124,124 :: 0.716658
+[layer_measurement] srini :: 124,124,124 :: 0 :: 0.0367406
+[layer_measurement] srini :: 124,124,124 :: 1 :: 0.166737
+[layer_measurement] srini :: 124,124,124 :: 2 :: 0.148069
+[layer_measurement] srini :: 124,124,124 :: 3 :: 0.130223
+[layer_measurement] srini :: 124,124,124 :: 4 :: 0.114351
+[layer_measurement] srini :: 124,124,124 :: 5 :: 0.0995777
+[network_measurement] srini :: 124,124,124 :: 0.7027
+[layer_measurement] srini :: 124,124,124 :: 0 :: 0.036698
+[layer_measurement] srini :: 124,124,124 :: 1 :: 0.166666
+[layer_measurement] srini :: 124,124,124 :: 2 :: 0.147103
+[layer_measurement] srini :: 124,124,124 :: 3 :: 0.131173
+[layer_measurement] srini :: 124,124,124 :: 4 :: 0.11549
+[layer_measurement] srini :: 124,124,124 :: 5 :: 0.0989774
+[network_measurement] srini :: 124,124,124 :: 0.70309
+[network_average] srini :: 124,124,124 :: 0.706442
+[network_throughput] srini :: 124,124,124 :: 2.69891e+06
+## srini :: starting benchmark for output size 128,128,128
+[network_requirements] srini :: 128,128,128 :: RM: 0 MB WM: 425 MB
+[layer_measurement] srini :: 128,128,128 :: 0 :: 0.0423604
+[layer_measurement] srini :: 128,128,128 :: 1 :: 0.182743
+[layer_measurement] srini :: 128,128,128 :: 2 :: 0.160153
+[layer_measurement] srini :: 128,128,128 :: 3 :: 0.14347
+[layer_measurement] srini :: 128,128,128 :: 4 :: 0.126592
+[layer_measurement] srini :: 128,128,128 :: 5 :: 0.108615
+[network_measurement] srini :: 128,128,128 :: 0.77304
+[layer_measurement] srini :: 128,128,128 :: 0 :: 0.0399443
+[layer_measurement] srini :: 128,128,128 :: 1 :: 0.181313
+[layer_measurement] srini :: 128,128,128 :: 2 :: 0.160091
+[layer_measurement] srini :: 128,128,128 :: 3 :: 0.143239
+[layer_measurement] srini :: 128,128,128 :: 4 :: 0.126547
+[layer_measurement] srini :: 128,128,128 :: 5 :: 0.10884
+[network_measurement] srini :: 128,128,128 :: 0.769505
+[layer_measurement] srini :: 128,128,128 :: 0 :: 0.0407787
+[layer_measurement] srini :: 128,128,128 :: 1 :: 0.181606
+[layer_measurement] srini :: 128,128,128 :: 2 :: 0.160059
+[layer_measurement] srini :: 128,128,128 :: 3 :: 0.147275
+[layer_measurement] srini :: 128,128,128 :: 4 :: 0.128817
+[layer_measurement] srini :: 128,128,128 :: 5 :: 0.107822
+[network_measurement] srini :: 128,128,128 :: 0.774958
+[layer_measurement] srini :: 128,128,128 :: 0 :: 0.0403507
+[layer_measurement] srini :: 128,128,128 :: 1 :: 0.183474
+[layer_measurement] srini :: 128,128,128 :: 2 :: 0.160354
+[layer_measurement] srini :: 128,128,128 :: 3 :: 0.143578
+[layer_measurement] srini :: 128,128,128 :: 4 :: 0.126796
+[layer_measurement] srini :: 128,128,128 :: 5 :: 0.109245
+[network_measurement] srini :: 128,128,128 :: 0.771673
+[network_average] srini :: 128,128,128 :: 0.772294
+[network_throughput] srini :: 128,128,128 :: 2.71548e+06
+## srini :: starting benchmark for output size 132,132,132
+[network_requirements] srini :: 132,132,132 :: RM: 0 MB WM: 459 MB
+[layer_measurement] srini :: 132,132,132 :: 0 :: 0.0426816
+[layer_measurement] srini :: 132,132,132 :: 1 :: 0.195082
+[layer_measurement] srini :: 132,132,132 :: 2 :: 0.174513
+[layer_measurement] srini :: 132,132,132 :: 3 :: 0.155312
+[layer_measurement] srini :: 132,132,132 :: 4 :: 0.140263
+[layer_measurement] srini :: 132,132,132 :: 5 :: 0.118742
+[network_measurement] srini :: 132,132,132 :: 0.836226
+[layer_measurement] srini :: 132,132,132 :: 0 :: 0.0427053
+[layer_measurement] srini :: 132,132,132 :: 1 :: 0.195144
+[layer_measurement] srini :: 132,132,132 :: 2 :: 0.175603
+[layer_measurement] srini :: 132,132,132 :: 3 :: 0.156875
+[layer_measurement] srini :: 132,132,132 :: 4 :: 0.138057
+[layer_measurement] srini :: 132,132,132 :: 5 :: 0.119237
+[network_measurement] srini :: 132,132,132 :: 0.837412
+[layer_measurement] srini :: 132,132,132 :: 0 :: 0.0435255
+[layer_measurement] srini :: 132,132,132 :: 1 :: 0.195782
+[layer_measurement] srini :: 132,132,132 :: 2 :: 0.174693
+[layer_measurement] srini :: 132,132,132 :: 3 :: 0.15558
+[layer_measurement] srini :: 132,132,132 :: 4 :: 0.138127
+[layer_measurement] srini :: 132,132,132 :: 5 :: 0.119306
+[network_measurement] srini :: 132,132,132 :: 0.835153
+[layer_measurement] srini :: 132,132,132 :: 0 :: 0.0437806
+[layer_measurement] srini :: 132,132,132 :: 1 :: 0.195124
+[layer_measurement] srini :: 132,132,132 :: 2 :: 0.17487
+[layer_measurement] srini :: 132,132,132 :: 3 :: 0.156955
+[layer_measurement] srini :: 132,132,132 :: 4 :: 0.13812
+[layer_measurement] srini :: 132,132,132 :: 5 :: 0.11929
+[network_measurement] srini :: 132,132,132 :: 0.836369
+[network_average] srini :: 132,132,132 :: 0.83629
+[network_throughput] srini :: 132,132,132 :: 2.7502e+06
+## srini :: starting benchmark for output size 136,136,136
+[network_requirements] srini :: 136,136,136 :: RM: 0 MB WM: 494 MB
+[layer_measurement] srini :: 136,136,136 :: 0 :: 0.045859
+[layer_measurement] srini :: 136,136,136 :: 1 :: 0.210714
+[layer_measurement] srini :: 136,136,136 :: 2 :: 0.189335
+[layer_measurement] srini :: 136,136,136 :: 3 :: 0.170724
+[layer_measurement] srini :: 136,136,136 :: 4 :: 0.15076
+[layer_measurement] srini :: 136,136,136 :: 5 :: 0.130047
+[network_measurement] srini :: 136,136,136 :: 0.908146
+[layer_measurement] srini :: 136,136,136 :: 0 :: 0.0514289
+[layer_measurement] srini :: 136,136,136 :: 1 :: 0.21396
+[layer_measurement] srini :: 136,136,136 :: 2 :: 0.188947
+[layer_measurement] srini :: 136,136,136 :: 3 :: 0.172024
+[layer_measurement] srini :: 136,136,136 :: 4 :: 0.150827
+[layer_measurement] srini :: 136,136,136 :: 5 :: 0.130849
+[network_measurement] srini :: 136,136,136 :: 0.91865
+[layer_measurement] srini :: 136,136,136 :: 0 :: 0.0458517
+[layer_measurement] srini :: 136,136,136 :: 1 :: 0.211064
+[layer_measurement] srini :: 136,136,136 :: 2 :: 0.189915
+[layer_measurement] srini :: 136,136,136 :: 3 :: 0.170565
+[layer_measurement] srini :: 136,136,136 :: 4 :: 0.150063
+[layer_measurement] srini :: 136,136,136 :: 5 :: 0.130472
+[network_measurement] srini :: 136,136,136 :: 0.906781
+[layer_measurement] srini :: 136,136,136 :: 0 :: 0.0468992
+[layer_measurement] srini :: 136,136,136 :: 1 :: 0.211546
+[layer_measurement] srini :: 136,136,136 :: 2 :: 0.194871
+[layer_measurement] srini :: 136,136,136 :: 3 :: 0.168967
+[layer_measurement] srini :: 136,136,136 :: 4 :: 0.155305
+[layer_measurement] srini :: 136,136,136 :: 5 :: 0.132502
+[network_measurement] srini :: 136,136,136 :: 0.918951
+[network_average] srini :: 136,136,136 :: 0.913132
+[network_throughput] srini :: 136,136,136 :: 2.75476e+06
+## srini :: starting benchmark for output size 140,140,140
+[network_requirements] srini :: 140,140,140 :: RM: 0 MB WM: 532 MB
+[layer_measurement] srini :: 140,140,140 :: 0 :: 0.0521886
+[layer_measurement] srini :: 140,140,140 :: 1 :: 0.228602
+[layer_measurement] srini :: 140,140,140 :: 2 :: 0.205556
+[layer_measurement] srini :: 140,140,140 :: 3 :: 0.184659
+[layer_measurement] srini :: 140,140,140 :: 4 :: 0.163881
+[layer_measurement] srini :: 140,140,140 :: 5 :: 0.14249
+[network_measurement] srini :: 140,140,140 :: 0.988957
+[layer_measurement] srini :: 140,140,140 :: 0 :: 0.0496554
+[layer_measurement] srini :: 140,140,140 :: 1 :: 0.228529
+[layer_measurement] srini :: 140,140,140 :: 2 :: 0.205777
+[layer_measurement] srini :: 140,140,140 :: 3 :: 0.184708
+[layer_measurement] srini :: 140,140,140 :: 4 :: 0.164362
+[layer_measurement] srini :: 140,140,140 :: 5 :: 0.143401
+[network_measurement] srini :: 140,140,140 :: 0.987977
+[layer_measurement] srini :: 140,140,140 :: 0 :: 0.0496154
+[layer_measurement] srini :: 140,140,140 :: 1 :: 0.228514
+[layer_measurement] srini :: 140,140,140 :: 2 :: 0.206008
+[layer_measurement] srini :: 140,140,140 :: 3 :: 0.184694
+[layer_measurement] srini :: 140,140,140 :: 4 :: 0.164633
+[layer_measurement] srini :: 140,140,140 :: 5 :: 0.143039
+[network_measurement] srini :: 140,140,140 :: 0.985913
+[layer_measurement] srini :: 140,140,140 :: 0 :: 0.0496724
+[layer_measurement] srini :: 140,140,140 :: 1 :: 0.228685
+[layer_measurement] srini :: 140,140,140 :: 2 :: 0.206305
+[layer_measurement] srini :: 140,140,140 :: 3 :: 0.184718
+[layer_measurement] srini :: 140,140,140 :: 4 :: 0.163965
+[layer_measurement] srini :: 140,140,140 :: 5 :: 0.142007
+[network_measurement] srini :: 140,140,140 :: 0.98479
+[network_average] srini :: 140,140,140 :: 0.986909
+[network_throughput] srini :: 140,140,140 :: 2.7804e+06
+## srini :: starting benchmark for output size 144,144,144
+[network_requirements] srini :: 144,144,144 :: RM: 0 MB WM: 571 MB
+[layer_measurement] srini :: 144,144,144 :: 0 :: 0.0532073
+[layer_measurement] srini :: 144,144,144 :: 1 :: 0.245911
+[layer_measurement] srini :: 144,144,144 :: 2 :: 0.222085
+[layer_measurement] srini :: 144,144,144 :: 3 :: 0.200213
+[layer_measurement] srini :: 144,144,144 :: 4 :: 0.178152
+[layer_measurement] srini :: 144,144,144 :: 5 :: 0.155402
+[network_measurement] srini :: 144,144,144 :: 1.06678
+[layer_measurement] srini :: 144,144,144 :: 0 :: 0.0532789
+[layer_measurement] srini :: 144,144,144 :: 1 :: 0.245976
+[layer_measurement] srini :: 144,144,144 :: 2 :: 0.221763
+[layer_measurement] srini :: 144,144,144 :: 3 :: 0.199776
+[layer_measurement] srini :: 144,144,144 :: 4 :: 0.178622
+[layer_measurement] srini :: 144,144,144 :: 5 :: 0.155436
+[network_measurement] srini :: 144,144,144 :: 1.0666
+[layer_measurement] srini :: 144,144,144 :: 0 :: 0.0532047
+[layer_measurement] srini :: 144,144,144 :: 1 :: 0.245574
+[layer_measurement] srini :: 144,144,144 :: 2 :: 0.233255
+[layer_measurement] srini :: 144,144,144 :: 3 :: 0.1995
+[layer_measurement] srini :: 144,144,144 :: 4 :: 0.178716
+[layer_measurement] srini :: 144,144,144 :: 5 :: 0.157183
+[network_measurement] srini :: 144,144,144 :: 1.07771
+[layer_measurement] srini :: 144,144,144 :: 0 :: 0.05396
+[layer_measurement] srini :: 144,144,144 :: 1 :: 0.246957
+[layer_measurement] srini :: 144,144,144 :: 2 :: 0.221765
+[layer_measurement] srini :: 144,144,144 :: 3 :: 0.19983
+[layer_measurement] srini :: 144,144,144 :: 4 :: 0.178738
+[layer_measurement] srini :: 144,144,144 :: 5 :: 0.156787
+[network_measurement] srini :: 144,144,144 :: 1.0683
+[network_average] srini :: 144,144,144 :: 1.06985
+[network_throughput] srini :: 144,144,144 :: 2.79104e+06
+## srini :: starting benchmark for output size 148,148,148
+[network_requirements] srini :: 148,148,148 :: RM: 0 MB WM: 613 MB
+[layer_measurement] srini :: 148,148,148 :: 0 :: 0.0569003
+[layer_measurement] srini :: 148,148,148 :: 1 :: 0.263723
+[layer_measurement] srini :: 148,148,148 :: 2 :: 0.239775
+[layer_measurement] srini :: 148,148,148 :: 3 :: 0.219708
+[layer_measurement] srini :: 148,148,148 :: 4 :: 0.193241
+[layer_measurement] srini :: 148,148,148 :: 5 :: 0.170811
+[network_measurement] srini :: 148,148,148 :: 1.1627
+[layer_measurement] srini :: 148,148,148 :: 0 :: 0.0623891
+[layer_measurement] srini :: 148,148,148 :: 1 :: 0.263811
+[layer_measurement] srini :: 148,148,148 :: 2 :: 0.240913
+[layer_measurement] srini :: 148,148,148 :: 3 :: 0.216295
+[layer_measurement] srini :: 148,148,148 :: 4 :: 0.193548
+[layer_measurement] srini :: 148,148,148 :: 5 :: 0.16972
+[network_measurement] srini :: 148,148,148 :: 1.15964
+[layer_measurement] srini :: 148,148,148 :: 0 :: 0.0569793
+[layer_measurement] srini :: 148,148,148 :: 1 :: 0.265599
+[layer_measurement] srini :: 148,148,148 :: 2 :: 0.240567
+[layer_measurement] srini :: 148,148,148 :: 3 :: 0.215364
+[layer_measurement] srini :: 148,148,148 :: 4 :: 0.193277
+[layer_measurement] srini :: 148,148,148 :: 5 :: 0.170153
+[network_measurement] srini :: 148,148,148 :: 1.15291
+[layer_measurement] srini :: 148,148,148 :: 0 :: 0.057637
+[layer_measurement] srini :: 148,148,148 :: 1 :: 0.264261
+[layer_measurement] srini :: 148,148,148 :: 2 :: 0.240154
+[layer_measurement] srini :: 148,148,148 :: 3 :: 0.217769
+[layer_measurement] srini :: 148,148,148 :: 4 :: 0.193299
+[layer_measurement] srini :: 148,148,148 :: 5 :: 0.170061
+[network_measurement] srini :: 148,148,148 :: 1.15415
+[network_average] srini :: 148,148,148 :: 1.15735
+[network_throughput] srini :: 148,148,148 :: 2.80105e+06
+## srini :: starting benchmark for output size 152,152,152
+[network_requirements] srini :: 152,152,152 :: RM: 0 MB WM: 656 MB
+[layer_measurement] srini :: 152,152,152 :: 0 :: 0.0608
+[layer_measurement] srini :: 152,152,152 :: 1 :: 0.283331
+[layer_measurement] srini :: 152,152,152 :: 2 :: 0.258856
+[layer_measurement] srini :: 152,152,152 :: 3 :: 0.232828
+[layer_measurement] srini :: 152,152,152 :: 4 :: 0.218131
+[layer_measurement] srini :: 152,152,152 :: 5 :: 0.183835
+[network_measurement] srini :: 152,152,152 :: 1.25194
+[layer_measurement] srini :: 152,152,152 :: 0 :: 0.0607705
+[layer_measurement] srini :: 152,152,152 :: 1 :: 0.287715
+[layer_measurement] srini :: 152,152,152 :: 2 :: 0.259514
+[layer_measurement] srini :: 152,152,152 :: 3 :: 0.233852
+[layer_measurement] srini :: 152,152,152 :: 4 :: 0.209441
+[layer_measurement] srini :: 152,152,152 :: 5 :: 0.184728
+[network_measurement] srini :: 152,152,152 :: 1.25005
+[layer_measurement] srini :: 152,152,152 :: 0 :: 0.0615818
+[layer_measurement] srini :: 152,152,152 :: 1 :: 0.286736
+[layer_measurement] srini :: 152,152,152 :: 2 :: 0.259475
+[layer_measurement] srini :: 152,152,152 :: 3 :: 0.234671
+[layer_measurement] srini :: 152,152,152 :: 4 :: 0.209435
+[layer_measurement] srini :: 152,152,152 :: 5 :: 0.190298
+[network_measurement] srini :: 152,152,152 :: 1.25398
+[layer_measurement] srini :: 152,152,152 :: 0 :: 0.0616256
+[layer_measurement] srini :: 152,152,152 :: 1 :: 0.286704
+[layer_measurement] srini :: 152,152,152 :: 2 :: 0.261153
+[layer_measurement] srini :: 152,152,152 :: 3 :: 0.233351
+[layer_measurement] srini :: 152,152,152 :: 4 :: 0.210145
+[layer_measurement] srini :: 152,152,152 :: 5 :: 0.184193
+[network_measurement] srini :: 152,152,152 :: 1.24892
+[network_average] srini :: 152,152,152 :: 1.25122
+[network_throughput] srini :: 152,152,152 :: 2.8067e+06
+## srini :: starting benchmark for output size 156,156,156
+[network_requirements] srini :: 156,156,156 :: RM: 0 MB WM: 701 MB
+[layer_measurement] srini :: 156,156,156 :: 0 :: 0.0651114
+[layer_measurement] srini :: 156,156,156 :: 1 :: 0.311051
+[layer_measurement] srini :: 156,156,156 :: 2 :: 0.288032
+[layer_measurement] srini :: 156,156,156 :: 3 :: 0.259043
+[layer_measurement] srini :: 156,156,156 :: 4 :: 0.228521
+[layer_measurement] srini :: 156,156,156 :: 5 :: 0.19728
+[network_measurement] srini :: 156,156,156 :: 1.36384
+[layer_measurement] srini :: 156,156,156 :: 0 :: 0.064923
+[layer_measurement] srini :: 156,156,156 :: 1 :: 0.303951
+[layer_measurement] srini :: 156,156,156 :: 2 :: 0.278218
+[layer_measurement] srini :: 156,156,156 :: 3 :: 0.250905
+[layer_measurement] srini :: 156,156,156 :: 4 :: 0.224782
+[layer_measurement] srini :: 156,156,156 :: 5 :: 0.199187
+[network_measurement] srini :: 156,156,156 :: 1.33648
+[layer_measurement] srini :: 156,156,156 :: 0 :: 0.0658974
+[layer_measurement] srini :: 156,156,156 :: 1 :: 0.303665
+[layer_measurement] srini :: 156,156,156 :: 2 :: 0.278934
+[layer_measurement] srini :: 156,156,156 :: 3 :: 0.250523
+[layer_measurement] srini :: 156,156,156 :: 4 :: 0.226052
+[layer_measurement] srini :: 156,156,156 :: 5 :: 0.199625
+[network_measurement] srini :: 156,156,156 :: 1.33722
+[layer_measurement] srini :: 156,156,156 :: 0 :: 0.0654612
+[layer_measurement] srini :: 156,156,156 :: 1 :: 0.303081
+[layer_measurement] srini :: 156,156,156 :: 2 :: 0.278681
+[layer_measurement] srini :: 156,156,156 :: 3 :: 0.252148
+[layer_measurement] srini :: 156,156,156 :: 4 :: 0.225606
+[layer_measurement] srini :: 156,156,156 :: 5 :: 0.199987
+[network_measurement] srini :: 156,156,156 :: 1.33745
+[network_average] srini :: 156,156,156 :: 1.34375
+[network_throughput] srini :: 156,156,156 :: 2.82524e+06
+## srini :: starting benchmark for output size 160,160,160
+[network_requirements] srini :: 160,160,160 :: RM: 0 MB WM: 748 MB
+[layer_measurement] srini :: 160,160,160 :: 0 :: 0.0692432
+[layer_measurement] srini :: 160,160,160 :: 1 :: 0.323991
+[layer_measurement] srini :: 160,160,160 :: 2 :: 0.298708
+[layer_measurement] srini :: 160,160,160 :: 3 :: 0.270743
+[layer_measurement] srini :: 160,160,160 :: 4 :: 0.243671
+[layer_measurement] srini :: 160,160,160 :: 5 :: 0.214204
+[network_measurement] srini :: 160,160,160 :: 1.43648
+[layer_measurement] srini :: 160,160,160 :: 0 :: 0.0691774
+[layer_measurement] srini :: 160,160,160 :: 1 :: 0.325593
+[layer_measurement] srini :: 160,160,160 :: 2 :: 0.29952
+[layer_measurement] srini :: 160,160,160 :: 3 :: 0.270713
+[layer_measurement] srini :: 160,160,160 :: 4 :: 0.243312
+[layer_measurement] srini :: 160,160,160 :: 5 :: 0.214883
+[network_measurement] srini :: 160,160,160 :: 1.43887
+[layer_measurement] srini :: 160,160,160 :: 0 :: 0.0691613
+[layer_measurement] srini :: 160,160,160 :: 1 :: 0.324694
+[layer_measurement] srini :: 160,160,160 :: 2 :: 0.298249
+[layer_measurement] srini :: 160,160,160 :: 3 :: 0.270029
+[layer_measurement] srini :: 160,160,160 :: 4 :: 0.249812
+[layer_measurement] srini :: 160,160,160 :: 5 :: 0.23138
+[network_measurement] srini :: 160,160,160 :: 1.45676
+[layer_measurement] srini :: 160,160,160 :: 0 :: 0.0794552
+[layer_measurement] srini :: 160,160,160 :: 1 :: 0.363488
+[layer_measurement] srini :: 160,160,160 :: 2 :: 0.315274
+[layer_measurement] srini :: 160,160,160 :: 3 :: 0.274655
+[layer_measurement] srini :: 160,160,160 :: 4 :: 0.243781
+[layer_measurement] srini :: 160,160,160 :: 5 :: 0.214954
+[network_measurement] srini :: 160,160,160 :: 1.50552
+[network_average] srini :: 160,160,160 :: 1.45941
+[network_throughput] srini :: 160,160,160 :: 2.80662e+06
+## srini :: starting benchmark for output size 164,164,164
+[network_requirements] srini :: 164,164,164 :: RM: 0 MB WM: 798 MB
+[layer_measurement] srini :: 164,164,164 :: 0 :: 0.0744873
+[layer_measurement] srini :: 164,164,164 :: 1 :: 0.350069
+[layer_measurement] srini :: 164,164,164 :: 2 :: 0.319756
+[layer_measurement] srini :: 164,164,164 :: 3 :: 0.289366
+[layer_measurement] srini :: 164,164,164 :: 4 :: 0.261696
+[layer_measurement] srini :: 164,164,164 :: 5 :: 0.230827
+[network_measurement] srini :: 164,164,164 :: 1.54305
+[layer_measurement] srini :: 164,164,164 :: 0 :: 0.0744846
+[layer_measurement] srini :: 164,164,164 :: 1 :: 0.349628
+[layer_measurement] srini :: 164,164,164 :: 2 :: 0.319132
+[layer_measurement] srini :: 164,164,164 :: 3 :: 0.295715
+[layer_measurement] srini :: 164,164,164 :: 4 :: 0.260106
+[layer_measurement] srini :: 164,164,164 :: 5 :: 0.231711
+[network_measurement] srini :: 164,164,164 :: 1.54766
+[layer_measurement] srini :: 164,164,164 :: 0 :: 0.0744991
+[layer_measurement] srini :: 164,164,164 :: 1 :: 0.34939
+[layer_measurement] srini :: 164,164,164 :: 2 :: 0.318796
+[layer_measurement] srini :: 164,164,164 :: 3 :: 0.290126
+[layer_measurement] srini :: 164,164,164 :: 4 :: 0.260292
+[layer_measurement] srini :: 164,164,164 :: 5 :: 0.230847
+[network_measurement] srini :: 164,164,164 :: 1.53824
+[layer_measurement] srini :: 164,164,164 :: 0 :: 0.0745767
+[layer_measurement] srini :: 164,164,164 :: 1 :: 0.349601
+[layer_measurement] srini :: 164,164,164 :: 2 :: 0.32787
+[layer_measurement] srini :: 164,164,164 :: 3 :: 0.347107
+[layer_measurement] srini :: 164,164,164 :: 4 :: 0.264689
+[layer_measurement] srini :: 164,164,164 :: 5 :: 0.24273
+[network_measurement] srini :: 164,164,164 :: 1.62094
+[network_average] srini :: 164,164,164 :: 1.56247
+[network_throughput] srini :: 164,164,164 :: 2.82306e+06
+## srini :: starting benchmark for output size 168,168,168
+[network_requirements] srini :: 168,168,168 :: RM: 0 MB WM: 849 MB
+[layer_measurement] srini :: 168,168,168 :: 0 :: 0.0792533
+[layer_measurement] srini :: 168,168,168 :: 1 :: 0.371716
+[layer_measurement] srini :: 168,168,168 :: 2 :: 0.350488
+[layer_measurement] srini :: 168,168,168 :: 3 :: 0.309872
+[layer_measurement] srini :: 168,168,168 :: 4 :: 0.282173
+[layer_measurement] srini :: 168,168,168 :: 5 :: 0.251069
+[network_measurement] srini :: 168,168,168 :: 1.66297
+[layer_measurement] srini :: 168,168,168 :: 0 :: 0.0792264
+[layer_measurement] srini :: 168,168,168 :: 1 :: 0.373154
+[layer_measurement] srini :: 168,168,168 :: 2 :: 0.340152
+[layer_measurement] srini :: 168,168,168 :: 3 :: 0.31171
+[layer_measurement] srini :: 168,168,168 :: 4 :: 0.286003
+[layer_measurement] srini :: 168,168,168 :: 5 :: 0.250018
+[network_measurement] srini :: 168,168,168 :: 1.65831
+[layer_measurement] srini :: 168,168,168 :: 0 :: 0.0792719
+[layer_measurement] srini :: 168,168,168 :: 1 :: 0.379089
+[layer_measurement] srini :: 168,168,168 :: 2 :: 0.341882
+[layer_measurement] srini :: 168,168,168 :: 3 :: 0.319968
+[layer_measurement] srini :: 168,168,168 :: 4 :: 0.288026
+[layer_measurement] srini :: 168,168,168 :: 5 :: 0.260743
+[network_measurement] srini :: 168,168,168 :: 1.68435
+[layer_measurement] srini :: 168,168,168 :: 0 :: 0.0794893
+[layer_measurement] srini :: 168,168,168 :: 1 :: 0.380406
+[layer_measurement] srini :: 168,168,168 :: 2 :: 0.342855
+[layer_measurement] srini :: 168,168,168 :: 3 :: 0.311282
+[layer_measurement] srini :: 168,168,168 :: 4 :: 0.280676
+[layer_measurement] srini :: 168,168,168 :: 5 :: 0.257008
+[network_measurement] srini :: 168,168,168 :: 1.66707
+[network_average] srini :: 168,168,168 :: 1.66817
+[network_throughput] srini :: 168,168,168 :: 2.84241e+06
+## srini :: starting benchmark for output size 172,172,172
+[network_requirements] srini :: 172,172,172 :: RM: 0 MB WM: 903 MB
+[layer_measurement] srini :: 172,172,172 :: 0 :: 0.0854497
+[layer_measurement] srini :: 172,172,172 :: 1 :: 0.408165
+[layer_measurement] srini :: 172,172,172 :: 2 :: 0.366151
+[layer_measurement] srini :: 172,172,172 :: 3 :: 0.33718
+[layer_measurement] srini :: 172,172,172 :: 4 :: 0.299983
+[layer_measurement] srini :: 172,172,172 :: 5 :: 0.277813
+[network_measurement] srini :: 172,172,172 :: 1.79396
+[layer_measurement] srini :: 172,172,172 :: 0 :: 0.0855663
+[layer_measurement] srini :: 172,172,172 :: 1 :: 0.398084
+[layer_measurement] srini :: 172,172,172 :: 2 :: 0.369156
+[layer_measurement] srini :: 172,172,172 :: 3 :: 0.331349
+[layer_measurement] srini :: 172,172,172 :: 4 :: 0.301396
+[layer_measurement] srini :: 172,172,172 :: 5 :: 0.279332
+[network_measurement] srini :: 172,172,172 :: 1.784
+[layer_measurement] srini :: 172,172,172 :: 0 :: 0.0846209
+[layer_measurement] srini :: 172,172,172 :: 1 :: 0.398028
+[layer_measurement] srini :: 172,172,172 :: 2 :: 0.363344
+[layer_measurement] srini :: 172,172,172 :: 3 :: 0.333902
+[layer_measurement] srini :: 172,172,172 :: 4 :: 0.30034
+[layer_measurement] srini :: 172,172,172 :: 5 :: 0.26556
+[network_measurement] srini :: 172,172,172 :: 1.76207
+[layer_measurement] srini :: 172,172,172 :: 0 :: 0.0840837
+[layer_measurement] srini :: 172,172,172 :: 1 :: 0.397224
+[layer_measurement] srini :: 172,172,172 :: 2 :: 0.363784
+[layer_measurement] srini :: 172,172,172 :: 3 :: 0.331259
+[layer_measurement] srini :: 172,172,172 :: 4 :: 0.301784
+[layer_measurement] srini :: 172,172,172 :: 5 :: 0.268717
+[network_measurement] srini :: 172,172,172 :: 1.76319
+[network_average] srini :: 172,172,172 :: 1.77581
+[network_throughput] srini :: 172,172,172 :: 2.86543e+06
+## srini :: starting benchmark for output size 176,176,176
+[network_requirements] srini :: 176,176,176 :: RM: 0 MB WM: 959 MB
+[layer_measurement] srini :: 176,176,176 :: 0 :: 0.0891119
+[layer_measurement] srini :: 176,176,176 :: 1 :: 0.422125
+[layer_measurement] srini :: 176,176,176 :: 2 :: 0.388102
+[layer_measurement] srini :: 176,176,176 :: 3 :: 0.353428
+[layer_measurement] srini :: 176,176,176 :: 4 :: 0.322053
+[layer_measurement] srini :: 176,176,176 :: 5 :: 0.286379
+[network_measurement] srini :: 176,176,176 :: 1.88123
+[layer_measurement] srini :: 176,176,176 :: 0 :: 0.0891075
+[layer_measurement] srini :: 176,176,176 :: 1 :: 0.422471
+[layer_measurement] srini :: 176,176,176 :: 2 :: 0.388054
+[layer_measurement] srini :: 176,176,176 :: 3 :: 0.356117
+[layer_measurement] srini :: 176,176,176 :: 4 :: 0.326702
+[layer_measurement] srini :: 176,176,176 :: 5 :: 0.296166
+[network_measurement] srini :: 176,176,176 :: 1.8989
+[layer_measurement] srini :: 176,176,176 :: 0 :: 0.0929041
+[layer_measurement] srini :: 176,176,176 :: 1 :: 0.44104
+[layer_measurement] srini :: 176,176,176 :: 2 :: 0.412108
+[layer_measurement] srini :: 176,176,176 :: 3 :: 0.370192
+[layer_measurement] srini :: 176,176,176 :: 4 :: 0.341679
+[layer_measurement] srini :: 176,176,176 :: 5 :: 0.29971
+[network_measurement] srini :: 176,176,176 :: 1.97493
+[layer_measurement] srini :: 176,176,176 :: 0 :: 0.0938777
+[layer_measurement] srini :: 176,176,176 :: 1 :: 0.444552
+[layer_measurement] srini :: 176,176,176 :: 2 :: 0.401923
+[layer_measurement] srini :: 176,176,176 :: 3 :: 0.365939
+[layer_measurement] srini :: 176,176,176 :: 4 :: 0.332528
+[layer_measurement] srini :: 176,176,176 :: 5 :: 0.296583
+[network_measurement] srini :: 176,176,176 :: 1.95272
+[network_average] srini :: 176,176,176 :: 1.92695
+[network_throughput] srini :: 176,176,176 :: 2.82923e+06
+## srini :: starting benchmark for output size 180,180,180
+[network_requirements] srini :: 180,180,180 :: RM: 0 MB WM: 1017 MB
+[layer_measurement] srini :: 180,180,180 :: 0 :: 0.0943568
+[layer_measurement] srini :: 180,180,180 :: 1 :: 0.457335
+[layer_measurement] srini :: 180,180,180 :: 2 :: 0.413967
+[layer_measurement] srini :: 180,180,180 :: 3 :: 0.379783
+[layer_measurement] srini :: 180,180,180 :: 4 :: 0.350714
+[layer_measurement] srini :: 180,180,180 :: 5 :: 0.304848
+[network_measurement] srini :: 180,180,180 :: 2.02272
+[layer_measurement] srini :: 180,180,180 :: 0 :: 0.0973486
+[layer_measurement] srini :: 180,180,180 :: 1 :: 0.457691
+[layer_measurement] srini :: 180,180,180 :: 2 :: 0.411724
+[layer_measurement] srini :: 180,180,180 :: 3 :: 0.375862
+[layer_measurement] srini :: 180,180,180 :: 4 :: 0.347439
+[layer_measurement] srini :: 180,180,180 :: 5 :: 0.323471
+[network_measurement] srini :: 180,180,180 :: 2.03625
+[layer_measurement] srini :: 180,180,180 :: 0 :: 0.0991576
+[layer_measurement] srini :: 180,180,180 :: 1 :: 0.45215
+[layer_measurement] srini :: 180,180,180 :: 2 :: 0.420793
+[layer_measurement] srini :: 180,180,180 :: 3 :: 0.374936
+[layer_measurement] srini :: 180,180,180 :: 4 :: 0.353439
+[layer_measurement] srini :: 180,180,180 :: 5 :: 0.304452
+[network_measurement] srini :: 180,180,180 :: 2.02329
+[layer_measurement] srini :: 180,180,180 :: 0 :: 0.0943566
+[layer_measurement] srini :: 180,180,180 :: 1 :: 0.456757
+[layer_measurement] srini :: 180,180,180 :: 2 :: 0.417168
+[layer_measurement] srini :: 180,180,180 :: 3 :: 0.379862
+[layer_measurement] srini :: 180,180,180 :: 4 :: 0.343683
+[layer_measurement] srini :: 180,180,180 :: 5 :: 0.310902
+[network_measurement] srini :: 180,180,180 :: 2.02115
+[network_average] srini :: 180,180,180 :: 2.02585
+[network_throughput] srini :: 180,180,180 :: 2.87879e+06
+## srini :: starting benchmark for output size 184,184,184
+[network_requirements] srini :: 184,184,184 :: RM: 0 MB WM: 1077 MB
+[layer_measurement] srini :: 184,184,184 :: 0 :: 0.099791
+[layer_measurement] srini :: 184,184,184 :: 1 :: 0.475295
+[layer_measurement] srini :: 184,184,184 :: 2 :: 0.437799
+[layer_measurement] srini :: 184,184,184 :: 3 :: 0.430455
+[layer_measurement] srini :: 184,184,184 :: 4 :: 0.391657
+[layer_measurement] srini :: 184,184,184 :: 5 :: 0.336751
+[network_measurement] srini :: 184,184,184 :: 2.19551
+[layer_measurement] srini :: 184,184,184 :: 0 :: 0.099814
+[layer_measurement] srini :: 184,184,184 :: 1 :: 0.480286
+[layer_measurement] srini :: 184,184,184 :: 2 :: 0.440651
+[layer_measurement] srini :: 184,184,184 :: 3 :: 0.403507
+[layer_measurement] srini :: 184,184,184 :: 4 :: 0.371011
+[layer_measurement] srini :: 184,184,184 :: 5 :: 0.325406
+[network_measurement] srini :: 184,184,184 :: 2.15161
+[layer_measurement] srini :: 184,184,184 :: 0 :: 0.105699
+[layer_measurement] srini :: 184,184,184 :: 1 :: 0.483377
+[layer_measurement] srini :: 184,184,184 :: 2 :: 0.440481
+[layer_measurement] srini :: 184,184,184 :: 3 :: 0.410213
+[layer_measurement] srini :: 184,184,184 :: 4 :: 0.371009
+[layer_measurement] srini :: 184,184,184 :: 5 :: 0.332577
+[network_measurement] srini :: 184,184,184 :: 2.16293
+[layer_measurement] srini :: 184,184,184 :: 0 :: 0.0998988
+[layer_measurement] srini :: 184,184,184 :: 1 :: 0.485381
+[layer_measurement] srini :: 184,184,184 :: 2 :: 0.443193
+[layer_measurement] srini :: 184,184,184 :: 3 :: 0.407405
+[layer_measurement] srini :: 184,184,184 :: 4 :: 0.385961
+[layer_measurement] srini :: 184,184,184 :: 5 :: 0.333107
+[network_measurement] srini :: 184,184,184 :: 2.17444
+[network_average] srini :: 184,184,184 :: 2.17112
+[network_throughput] srini :: 184,184,184 :: 2.86925e+06
+## srini :: starting benchmark for output size 188,188,188
+[network_requirements] srini :: 188,188,188 :: RM: 0 MB WM: 1140 MB
+[layer_measurement] srini :: 188,188,188 :: 0 :: 0.105501
+[layer_measurement] srini :: 188,188,188 :: 1 :: 0.509501
+[layer_measurement] srini :: 188,188,188 :: 2 :: 0.529886
+[layer_measurement] srini :: 188,188,188 :: 3 :: 0.438601
+[layer_measurement] srini :: 188,188,188 :: 4 :: 0.393365
+[layer_measurement] srini :: 188,188,188 :: 5 :: 0.35054
+[network_measurement] srini :: 188,188,188 :: 2.3521
+[layer_measurement] srini :: 188,188,188 :: 0 :: 0.105808
+[layer_measurement] srini :: 188,188,188 :: 1 :: 0.502961
+[layer_measurement] srini :: 188,188,188 :: 2 :: 0.474506
+[layer_measurement] srini :: 188,188,188 :: 3 :: 0.429272
+[layer_measurement] srini :: 188,188,188 :: 4 :: 0.396972
+[layer_measurement] srini :: 188,188,188 :: 5 :: 0.358653
+[network_measurement] srini :: 188,188,188 :: 2.29347
+[layer_measurement] srini :: 188,188,188 :: 0 :: 0.105506
+[layer_measurement] srini :: 188,188,188 :: 1 :: 0.503417
+[layer_measurement] srini :: 188,188,188 :: 2 :: 0.464497
+[layer_measurement] srini :: 188,188,188 :: 3 :: 0.450233
+[layer_measurement] srini :: 188,188,188 :: 4 :: 0.456735
+[layer_measurement] srini :: 188,188,188 :: 5 :: 0.363232
+[network_measurement] srini :: 188,188,188 :: 2.36437
+[layer_measurement] srini :: 188,188,188 :: 0 :: 0.105521
+[layer_measurement] srini :: 188,188,188 :: 1 :: 0.507137
+[layer_measurement] srini :: 188,188,188 :: 2 :: 0.467305
+[layer_measurement] srini :: 188,188,188 :: 3 :: 0.435169
+[layer_measurement] srini :: 188,188,188 :: 4 :: 0.39696
+[layer_measurement] srini :: 188,188,188 :: 5 :: 0.353799
+[network_measurement] srini :: 188,188,188 :: 2.2864
+[network_average] srini :: 188,188,188 :: 2.32408
+[network_throughput] srini :: 188,188,188 :: 2.85905e+06
+## srini :: starting benchmark for output size 192,192,192
+[network_requirements] srini :: 192,192,192 :: RM: 0 MB WM: 1205 MB
+[layer_measurement] srini :: 192,192,192 :: 0 :: 0.117137
+[layer_measurement] srini :: 192,192,192 :: 1 :: 0.536287
+[layer_measurement] srini :: 192,192,192 :: 2 :: 0.490644
+[layer_measurement] srini :: 192,192,192 :: 3 :: 0.450792
+[layer_measurement] srini :: 192,192,192 :: 4 :: 0.417221
+[layer_measurement] srini :: 192,192,192 :: 5 :: 0.368207
+[network_measurement] srini :: 192,192,192 :: 2.40568
+[layer_measurement] srini :: 192,192,192 :: 0 :: 0.11135
+[layer_measurement] srini :: 192,192,192 :: 1 :: 0.533125
+[layer_measurement] srini :: 192,192,192 :: 2 :: 0.492959
+[layer_measurement] srini :: 192,192,192 :: 3 :: 0.45092
+[layer_measurement] srini :: 192,192,192 :: 4 :: 0.414167
+[layer_measurement] srini :: 192,192,192 :: 5 :: 0.369894
+[network_measurement] srini :: 192,192,192 :: 2.39784
+[layer_measurement] srini :: 192,192,192 :: 0 :: 0.111326
+[layer_measurement] srini :: 192,192,192 :: 1 :: 0.537837
+[layer_measurement] srini :: 192,192,192 :: 2 :: 0.527118
+[layer_measurement] srini :: 192,192,192 :: 3 :: 0.485825
+[layer_measurement] srini :: 192,192,192 :: 4 :: 0.425215
+[layer_measurement] srini :: 192,192,192 :: 5 :: 0.373713
+[network_measurement] srini :: 192,192,192 :: 2.48316
+[layer_measurement] srini :: 192,192,192 :: 0 :: 0.111407
+[layer_measurement] srini :: 192,192,192 :: 1 :: 0.533568
+[layer_measurement] srini :: 192,192,192 :: 2 :: 0.493316
+[layer_measurement] srini :: 192,192,192 :: 3 :: 0.453538
+[layer_measurement] srini :: 192,192,192 :: 4 :: 0.420972
+[layer_measurement] srini :: 192,192,192 :: 5 :: 0.371317
+[network_measurement] srini :: 192,192,192 :: 2.40605
+[network_average] srini :: 192,192,192 :: 2.42318
+[network_throughput] srini :: 192,192,192 :: 2.9209e+06
+## srini :: starting benchmark for output size 196,196,196
+[network_requirements] srini :: 196,196,196 :: RM: 0 MB WM: 1273 MB
+[layer_measurement] srini :: 196,196,196 :: 0 :: 0.1175
+[layer_measurement] srini :: 196,196,196 :: 1 :: 0.568608
+[layer_measurement] srini :: 196,196,196 :: 2 :: 0.524739
+[layer_measurement] srini :: 196,196,196 :: 3 :: 0.483397
+[layer_measurement] srini :: 196,196,196 :: 4 :: 0.44015
+[layer_measurement] srini :: 196,196,196 :: 5 :: 0.399591
+[network_measurement] srini :: 196,196,196 :: 2.56106
+[layer_measurement] srini :: 196,196,196 :: 0 :: 0.117369
+[layer_measurement] srini :: 196,196,196 :: 1 :: 0.562806
+[layer_measurement] srini :: 196,196,196 :: 2 :: 0.51958
+[layer_measurement] srini :: 196,196,196 :: 3 :: 0.477909
+[layer_measurement] srini :: 196,196,196 :: 4 :: 0.439416
+[layer_measurement] srini :: 196,196,196 :: 5 :: 0.393614
+[network_measurement] srini :: 196,196,196 :: 2.53748
+[layer_measurement] srini :: 196,196,196 :: 0 :: 0.117403
+[layer_measurement] srini :: 196,196,196 :: 1 :: 0.562971
+[layer_measurement] srini :: 196,196,196 :: 2 :: 0.520139
+[layer_measurement] srini :: 196,196,196 :: 3 :: 0.477715
+[layer_measurement] srini :: 196,196,196 :: 4 :: 0.441426
+[layer_measurement] srini :: 196,196,196 :: 5 :: 0.394968
+[network_measurement] srini :: 196,196,196 :: 2.53766
+[layer_measurement] srini :: 196,196,196 :: 0 :: 0.117345
+[layer_measurement] srini :: 196,196,196 :: 1 :: 0.562911
+[layer_measurement] srini :: 196,196,196 :: 2 :: 0.522325
+[layer_measurement] srini :: 196,196,196 :: 3 :: 0.479654
+[layer_measurement] srini :: 196,196,196 :: 4 :: 0.441519
+[layer_measurement] srini :: 196,196,196 :: 5 :: 0.393104
+[network_measurement] srini :: 196,196,196 :: 2.54002
+[network_average] srini :: 196,196,196 :: 2.54405
+[network_throughput] srini :: 196,196,196 :: 2.95966e+06
+## srini :: starting benchmark for output size 200,200,200
+[network_requirements] srini :: 200,200,200 :: RM: 0 MB WM: 1343 MB
+[layer_measurement] srini :: 200,200,200 :: 0 :: 0.123802
+[layer_measurement] srini :: 200,200,200 :: 1 :: 0.593311
+[layer_measurement] srini :: 200,200,200 :: 2 :: 0.548915
+[layer_measurement] srini :: 200,200,200 :: 3 :: 0.507108
+[layer_measurement] srini :: 200,200,200 :: 4 :: 0.47548
+[layer_measurement] srini :: 200,200,200 :: 5 :: 0.420567
+[network_measurement] srini :: 200,200,200 :: 2.69807
+[layer_measurement] srini :: 200,200,200 :: 0 :: 0.123608
+[layer_measurement] srini :: 200,200,200 :: 1 :: 0.61412
+[layer_measurement] srini :: 200,200,200 :: 2 :: 0.557502
+[layer_measurement] srini :: 200,200,200 :: 3 :: 0.508477
+[layer_measurement] srini :: 200,200,200 :: 4 :: 0.478386
+[layer_measurement] srini :: 200,200,200 :: 5 :: 0.41515
+[network_measurement] srini :: 200,200,200 :: 2.7261
+[layer_measurement] srini :: 200,200,200 :: 0 :: 0.123697
+[layer_measurement] srini :: 200,200,200 :: 1 :: 0.606991
+[layer_measurement] srini :: 200,200,200 :: 2 :: 0.551321
+[layer_measurement] srini :: 200,200,200 :: 3 :: 0.508012
+[layer_measurement] srini :: 200,200,200 :: 4 :: 0.467464
+[layer_measurement] srini :: 200,200,200 :: 5 :: 0.431766
+[network_measurement] srini :: 200,200,200 :: 2.71379
+[layer_measurement] srini :: 200,200,200 :: 0 :: 0.123655
+[layer_measurement] srini :: 200,200,200 :: 1 :: 0.593705
+[layer_measurement] srini :: 200,200,200 :: 2 :: 0.552696
+[layer_measurement] srini :: 200,200,200 :: 3 :: 0.508795
+[layer_measurement] srini :: 200,200,200 :: 4 :: 0.468947
+[layer_measurement] srini :: 200,200,200 :: 5 :: 0.41966
+[network_measurement] srini :: 200,200,200 :: 2.69183
+[network_average] srini :: 200,200,200 :: 2.70745
+[network_throughput] srini :: 200,200,200 :: 2.95481e+06
+## srini :: starting benchmark for output size 204,204,204
+[network_requirements] srini :: 204,204,204 :: RM: 0 MB WM: 1415 MB
+[layer_measurement] srini :: 204,204,204 :: 0 :: 0.132788
+[layer_measurement] srini :: 204,204,204 :: 1 :: 0.627993
+[layer_measurement] srini :: 204,204,204 :: 2 :: 0.580301
+[layer_measurement] srini :: 204,204,204 :: 3 :: 0.538307
+[layer_measurement] srini :: 204,204,204 :: 4 :: 0.500657
+[layer_measurement] srini :: 204,204,204 :: 5 :: 0.448585
+[network_measurement] srini :: 204,204,204 :: 2.85899
+[layer_measurement] srini :: 204,204,204 :: 0 :: 0.131103
+[layer_measurement] srini :: 204,204,204 :: 1 :: 0.640113
+[layer_measurement] srini :: 204,204,204 :: 2 :: 0.58537
+[layer_measurement] srini :: 204,204,204 :: 3 :: 0.545309
+[layer_measurement] srini :: 204,204,204 :: 4 :: 0.496718
+[layer_measurement] srini :: 204,204,204 :: 5 :: 0.445653
+[network_measurement] srini :: 204,204,204 :: 2.87471
+[layer_measurement] srini :: 204,204,204 :: 0 :: 0.130158
+[layer_measurement] srini :: 204,204,204 :: 1 :: 0.639695
+[layer_measurement] srini :: 204,204,204 :: 2 :: 0.580795
+[layer_measurement] srini :: 204,204,204 :: 3 :: 0.54276
+[layer_measurement] srini :: 204,204,204 :: 4 :: 0.500087
+[layer_measurement] srini :: 204,204,204 :: 5 :: 0.45105
+[network_measurement] srini :: 204,204,204 :: 2.87031
+[layer_measurement] srini :: 204,204,204 :: 0 :: 0.132276
+[layer_measurement] srini :: 204,204,204 :: 1 :: 0.635214
+[layer_measurement] srini :: 204,204,204 :: 2 :: 0.594435
+[layer_measurement] srini :: 204,204,204 :: 3 :: 0.540839
+[layer_measurement] srini :: 204,204,204 :: 4 :: 0.49421
+[layer_measurement] srini :: 204,204,204 :: 5 :: 0.442759
+[network_measurement] srini :: 204,204,204 :: 2.86544
+[network_average] srini :: 204,204,204 :: 2.86736
+[network_throughput] srini :: 204,204,204 :: 2.96079e+06
+## srini :: starting benchmark for output size 208,208,208
+[network_requirements] srini :: 208,208,208 :: RM: 0 MB WM: 1491 MB
+[layer_measurement] srini :: 208,208,208 :: 0 :: 0.138298
+[layer_measurement] srini :: 208,208,208 :: 1 :: 0.669416
+[layer_measurement] srini :: 208,208,208 :: 2 :: 0.62319
+[layer_measurement] srini :: 208,208,208 :: 3 :: 0.567227
+[layer_measurement] srini :: 208,208,208 :: 4 :: 0.530415
+[layer_measurement] srini :: 208,208,208 :: 5 :: 0.485722
+[network_measurement] srini :: 208,208,208 :: 3.04625
+[layer_measurement] srini :: 208,208,208 :: 0 :: 0.13689
+[layer_measurement] srini :: 208,208,208 :: 1 :: 0.659801
+[layer_measurement] srini :: 208,208,208 :: 2 :: 0.621766
+[layer_measurement] srini :: 208,208,208 :: 3 :: 0.57597
+[layer_measurement] srini :: 208,208,208 :: 4 :: 0.534485
+[layer_measurement] srini :: 208,208,208 :: 5 :: 0.468627
+[network_measurement] srini :: 208,208,208 :: 3.02908
+[layer_measurement] srini :: 208,208,208 :: 0 :: 0.137148
+[layer_measurement] srini :: 208,208,208 :: 1 :: 0.664847
+[layer_measurement] srini :: 208,208,208 :: 2 :: 0.620462
+[layer_measurement] srini :: 208,208,208 :: 3 :: 0.575233
+[layer_measurement] srini :: 208,208,208 :: 4 :: 0.529566
+[layer_measurement] srini :: 208,208,208 :: 5 :: 0.471351
+[network_measurement] srini :: 208,208,208 :: 3.02584
+[layer_measurement] srini :: 208,208,208 :: 0 :: 0.13758
+[layer_measurement] srini :: 208,208,208 :: 1 :: 0.671758
+[layer_measurement] srini :: 208,208,208 :: 2 :: 0.623953
+[layer_measurement] srini :: 208,208,208 :: 3 :: 0.580231
+[layer_measurement] srini :: 208,208,208 :: 4 :: 0.535824
+[layer_measurement] srini :: 208,208,208 :: 5 :: 0.482761
+[network_measurement] srini :: 208,208,208 :: 3.05958
+[network_average] srini :: 208,208,208 :: 3.04019
+[network_throughput] srini :: 208,208,208 :: 2.95998e+06
+## srini :: starting benchmark for output size 212,212,212
+[network_requirements] srini :: 212,212,212 :: RM: 0 MB WM: 1568 MB
+[layer_measurement] srini :: 212,212,212 :: 0 :: 0.14398
+[layer_measurement] srini :: 212,212,212 :: 1 :: 0.699625
+[layer_measurement] srini :: 212,212,212 :: 2 :: 0.648609
+[layer_measurement] srini :: 212,212,212 :: 3 :: 0.602252
+[layer_measurement] srini :: 212,212,212 :: 4 :: 0.559082
+[layer_measurement] srini :: 212,212,212 :: 5 :: 0.509027
+[network_measurement] srini :: 212,212,212 :: 3.19598
+[layer_measurement] srini :: 212,212,212 :: 0 :: 0.145307
+[layer_measurement] srini :: 212,212,212 :: 1 :: 0.71089
+[layer_measurement] srini :: 212,212,212 :: 2 :: 0.64858
+[layer_measurement] srini :: 212,212,212 :: 3 :: 0.602624
+[layer_measurement] srini :: 212,212,212 :: 4 :: 0.562103
+[layer_measurement] srini :: 212,212,212 :: 5 :: 0.508332
+[network_measurement] srini :: 212,212,212 :: 3.21467
+[layer_measurement] srini :: 212,212,212 :: 0 :: 0.144017
+[layer_measurement] srini :: 212,212,212 :: 1 :: 0.70119
+[layer_measurement] srini :: 212,212,212 :: 2 :: 0.666303
+[layer_measurement] srini :: 212,212,212 :: 3 :: 0.608797
+[layer_measurement] srini :: 212,212,212 :: 4 :: 0.554993
+[layer_measurement] srini :: 212,212,212 :: 5 :: 0.513745
+[network_measurement] srini :: 212,212,212 :: 3.2178
+[layer_measurement] srini :: 212,212,212 :: 0 :: 0.147948
+[layer_measurement] srini :: 212,212,212 :: 1 :: 0.70047
+[layer_measurement] srini :: 212,212,212 :: 2 :: 0.649818
+[layer_measurement] srini :: 212,212,212 :: 3 :: 0.613518
+[layer_measurement] srini :: 212,212,212 :: 4 :: 0.570969
+[layer_measurement] srini :: 212,212,212 :: 5 :: 0.508927
+[network_measurement] srini :: 212,212,212 :: 3.2228
+[network_average] srini :: 212,212,212 :: 3.21281
+[network_throughput] srini :: 212,212,212 :: 2.96567e+06
+## srini :: starting benchmark for output size 216,216,216
+[network_requirements] srini :: 216,216,216 :: RM: 0 MB WM: 1649 MB
+[layer_measurement] srini :: 216,216,216 :: 0 :: 0.15774
+[layer_measurement] srini :: 216,216,216 :: 1 :: 0.730743
+[layer_measurement] srini :: 216,216,216 :: 2 :: 0.696599
+[layer_measurement] srini :: 216,216,216 :: 3 :: 0.634553
+[layer_measurement] srini :: 216,216,216 :: 4 :: 0.5862
+[layer_measurement] srini :: 216,216,216 :: 5 :: 0.537462
+[network_measurement] srini :: 216,216,216 :: 3.37848
+[layer_measurement] srini :: 216,216,216 :: 0 :: 0.15214
+[layer_measurement] srini :: 216,216,216 :: 1 :: 0.731718
+[layer_measurement] srini :: 216,216,216 :: 2 :: 0.699584
+[layer_measurement] srini :: 216,216,216 :: 3 :: 0.629192
+[layer_measurement] srini :: 216,216,216 :: 4 :: 0.596234
+[layer_measurement] srini :: 216,216,216 :: 5 :: 0.536382
+[network_measurement] srini :: 216,216,216 :: 3.38039
+[layer_measurement] srini :: 216,216,216 :: 0 :: 0.151433
+[layer_measurement] srini :: 216,216,216 :: 1 :: 0.747023
+[layer_measurement] srini :: 216,216,216 :: 2 :: 0.689922
+[layer_measurement] srini :: 216,216,216 :: 3 :: 0.631553
+[layer_measurement] srini :: 216,216,216 :: 4 :: 0.587966
+[layer_measurement] srini :: 216,216,216 :: 5 :: 0.525933
+[network_measurement] srini :: 216,216,216 :: 3.36411
+[layer_measurement] srini :: 216,216,216 :: 0 :: 0.152581
+[layer_measurement] srini :: 216,216,216 :: 1 :: 0.748416
+[layer_measurement] srini :: 216,216,216 :: 2 :: 0.686607
+[layer_measurement] srini :: 216,216,216 :: 3 :: 0.641221
+[layer_measurement] srini :: 216,216,216 :: 4 :: 0.590534
+[layer_measurement] srini :: 216,216,216 :: 5 :: 0.538238
+[network_measurement] srini :: 216,216,216 :: 3.38818
+[network_average] srini :: 216,216,216 :: 3.37779
+[network_throughput] srini :: 216,216,216 :: 2.98352e+06
+## srini :: starting benchmark for output size 220,220,220
+[network_requirements] srini :: 220,220,220 :: RM: 0 MB WM: 1732 MB
+[layer_measurement] srini :: 220,220,220 :: 0 :: 0.15875
+[layer_measurement] srini :: 220,220,220 :: 1 :: 0.776779
+[layer_measurement] srini :: 220,220,220 :: 2 :: 0.717789
+[layer_measurement] srini :: 220,220,220 :: 3 :: 0.666384
+[layer_measurement] srini :: 220,220,220 :: 4 :: 0.622018
+[layer_measurement] srini :: 220,220,220 :: 5 :: 0.643998
+[network_measurement] srini :: 220,220,220 :: 3.62572
+[layer_measurement] srini :: 220,220,220 :: 0 :: 0.167329
+[layer_measurement] srini :: 220,220,220 :: 1 :: 0.785421
+[layer_measurement] srini :: 220,220,220 :: 2 :: 0.723357
+[layer_measurement] srini :: 220,220,220 :: 3 :: 0.664987
+[layer_measurement] srini :: 220,220,220 :: 4 :: 0.626978
+[layer_measurement] srini :: 220,220,220 :: 5 :: 0.55711
+[network_measurement] srini :: 220,220,220 :: 3.56322
+[layer_measurement] srini :: 220,220,220 :: 0 :: 0.15868
+[layer_measurement] srini :: 220,220,220 :: 1 :: 0.776983
+[layer_measurement] srini :: 220,220,220 :: 2 :: 0.739007
+[layer_measurement] srini :: 220,220,220 :: 3 :: 0.665929
+[layer_measurement] srini :: 220,220,220 :: 4 :: 0.619576
+[layer_measurement] srini :: 220,220,220 :: 5 :: 0.562531
+[network_measurement] srini :: 220,220,220 :: 3.5545
+[layer_measurement] srini :: 220,220,220 :: 0 :: 0.159186
+[layer_measurement] srini :: 220,220,220 :: 1 :: 0.866977
+[layer_measurement] srini :: 220,220,220 :: 2 :: 0.72657
+[layer_measurement] srini :: 220,220,220 :: 3 :: 0.666408
+[layer_measurement] srini :: 220,220,220 :: 4 :: 0.62921
+[layer_measurement] srini :: 220,220,220 :: 5 :: 0.559755
+[network_measurement] srini :: 220,220,220 :: 3.64013
+[network_average] srini :: 220,220,220 :: 3.59589
+[network_throughput] srini :: 220,220,220 :: 2.96116e+06
+## srini :: starting benchmark for output size 224,224,224
+[network_requirements] srini :: 224,224,224 :: RM: 0 MB WM: 1818 MB
+[layer_measurement] srini :: 224,224,224 :: 0 :: 0.166398
+[layer_measurement] srini :: 224,224,224 :: 1 :: 0.806448
+[layer_measurement] srini :: 224,224,224 :: 2 :: 0.753788
+[layer_measurement] srini :: 224,224,224 :: 3 :: 0.700066
+[layer_measurement] srini :: 224,224,224 :: 4 :: 0.652567
+[layer_measurement] srini :: 224,224,224 :: 5 :: 0.586315
+[network_measurement] srini :: 224,224,224 :: 3.70474
+[layer_measurement] srini :: 224,224,224 :: 0 :: 0.166235
+[layer_measurement] srini :: 224,224,224 :: 1 :: 0.812156
+[layer_measurement] srini :: 224,224,224 :: 2 :: 0.763285
+[layer_measurement] srini :: 224,224,224 :: 3 :: 0.701051
+[layer_measurement] srini :: 224,224,224 :: 4 :: 0.661965
+[layer_measurement] srini :: 224,224,224 :: 5 :: 0.589298
+[network_measurement] srini :: 224,224,224 :: 3.73272
+[layer_measurement] srini :: 224,224,224 :: 0 :: 0.1663
+[layer_measurement] srini :: 224,224,224 :: 1 :: 0.810869
+[layer_measurement] srini :: 224,224,224 :: 2 :: 0.765066
+[layer_measurement] srini :: 224,224,224 :: 3 :: 0.700666
+[layer_measurement] srini :: 224,224,224 :: 4 :: 0.649958
+[layer_measurement] srini :: 224,224,224 :: 5 :: 0.596887
+[network_measurement] srini :: 224,224,224 :: 3.73086
+[layer_measurement] srini :: 224,224,224 :: 0 :: 0.173965
+[layer_measurement] srini :: 224,224,224 :: 1 :: 0.817828
+[layer_measurement] srini :: 224,224,224 :: 2 :: 0.758154
+[layer_measurement] srini :: 224,224,224 :: 3 :: 0.712753
+[layer_measurement] srini :: 224,224,224 :: 4 :: 0.664967
+[layer_measurement] srini :: 224,224,224 :: 5 :: 0.614235
+[network_measurement] srini :: 224,224,224 :: 3.78159
+[network_average] srini :: 224,224,224 :: 3.73748
+[network_throughput] srini :: 224,224,224 :: 3.00722e+06
+## srini :: starting benchmark for output size 228,228,228
+[network_requirements] srini :: 228,228,228 :: RM: 0 MB WM: 1907 MB
+[layer_measurement] srini :: 228,228,228 :: 0 :: 0.19453
+[layer_measurement] srini :: 228,228,228 :: 1 :: 0.846666
+[layer_measurement] srini :: 228,228,228 :: 2 :: 0.803932
+[layer_measurement] srini :: 228,228,228 :: 3 :: 0.736379
+[layer_measurement] srini :: 228,228,228 :: 4 :: 0.685304
+[layer_measurement] srini :: 228,228,228 :: 5 :: 0.617504
+[network_measurement] srini :: 228,228,228 :: 3.92492
+[layer_measurement] srini :: 228,228,228 :: 0 :: 0.174135
+[layer_measurement] srini :: 228,228,228 :: 1 :: 0.845128
+[layer_measurement] srini :: 228,228,228 :: 2 :: 0.803821
+[layer_measurement] srini :: 228,228,228 :: 3 :: 0.742166
+[layer_measurement] srini :: 228,228,228 :: 4 :: 0.703067
+[layer_measurement] srini :: 228,228,228 :: 5 :: 0.618649
+[network_measurement] srini :: 228,228,228 :: 3.92766
+[layer_measurement] srini :: 228,228,228 :: 0 :: 0.180811
+[layer_measurement] srini :: 228,228,228 :: 1 :: 0.853841
+[layer_measurement] srini :: 228,228,228 :: 2 :: 0.820865
+[layer_measurement] srini :: 228,228,228 :: 3 :: 0.755044
+[layer_measurement] srini :: 228,228,228 :: 4 :: 0.694689
+[layer_measurement] srini :: 228,228,228 :: 5 :: 0.636432
+[network_measurement] srini :: 228,228,228 :: 4.00002
+[layer_measurement] srini :: 228,228,228 :: 0 :: 0.174513
+[layer_measurement] srini :: 228,228,228 :: 1 :: 0.849958
+[layer_measurement] srini :: 228,228,228 :: 2 :: 0.796554
+[layer_measurement] srini :: 228,228,228 :: 3 :: 0.759156
+[layer_measurement] srini :: 228,228,228 :: 4 :: 0.698357
+[layer_measurement] srini :: 228,228,228 :: 5 :: 0.621836
+[network_measurement] srini :: 228,228,228 :: 3.94106
+[network_average] srini :: 228,228,228 :: 3.94841
+[network_throughput] srini :: 228,228,228 :: 3.0018e+06
+## srini :: starting benchmark for output size 232,232,232
+[network_requirements] srini :: 232,232,232 :: RM: 0 MB WM: 1998 MB
+[layer_measurement] srini :: 232,232,232 :: 0 :: 0.182544
+[layer_measurement] srini :: 232,232,232 :: 1 :: 0.887248
+[layer_measurement] srini :: 232,232,232 :: 2 :: 0.832678
+[layer_measurement] srini :: 232,232,232 :: 3 :: 0.776942
+[layer_measurement] srini :: 232,232,232 :: 4 :: 0.720773
+[layer_measurement] srini :: 232,232,232 :: 5 :: 0.651141
+[network_measurement] srini :: 232,232,232 :: 4.09408
+[layer_measurement] srini :: 232,232,232 :: 0 :: 0.182636
+[layer_measurement] srini :: 232,232,232 :: 1 :: 0.887358
+[layer_measurement] srini :: 232,232,232 :: 2 :: 0.835716
+[layer_measurement] srini :: 232,232,232 :: 3 :: 0.787996
+[layer_measurement] srini :: 232,232,232 :: 4 :: 0.734543
+[layer_measurement] srini :: 232,232,232 :: 5 :: 0.650202
+[network_measurement] srini :: 232,232,232 :: 4.12115
+[layer_measurement] srini :: 232,232,232 :: 0 :: 0.183731
+[layer_measurement] srini :: 232,232,232 :: 1 :: 0.900055
+[layer_measurement] srini :: 232,232,232 :: 2 :: 0.838407
+[layer_measurement] srini :: 232,232,232 :: 3 :: 0.794729
+[layer_measurement] srini :: 232,232,232 :: 4 :: 0.726504
+[layer_measurement] srini :: 232,232,232 :: 5 :: 0.665204
+[network_measurement] srini :: 232,232,232 :: 4.1516
+[layer_measurement] srini :: 232,232,232 :: 0 :: 0.182527
+[layer_measurement] srini :: 232,232,232 :: 1 :: 0.902921
+[layer_measurement] srini :: 232,232,232 :: 2 :: 0.838201
+[layer_measurement] srini :: 232,232,232 :: 3 :: 0.798149
+[layer_measurement] srini :: 232,232,232 :: 4 :: 0.75124
+[layer_measurement] srini :: 232,232,232 :: 5 :: 0.717279
+[network_measurement] srini :: 232,232,232 :: 4.2333
+[network_average] srini :: 232,232,232 :: 4.15003
+[network_throughput] srini :: 232,232,232 :: 3.00893e+06
+## srini :: starting benchmark for output size 236,236,236
+[network_requirements] srini :: 236,236,236 :: RM: 0 MB WM: 2092 MB
+[layer_measurement] srini :: 236,236,236 :: 0 :: 0.199484
+[layer_measurement] srini :: 236,236,236 :: 1 :: 0.953278
+[layer_measurement] srini :: 236,236,236 :: 2 :: 0.883256
+[layer_measurement] srini :: 236,236,236 :: 3 :: 0.807999
+[layer_measurement] srini :: 236,236,236 :: 4 :: 0.786881
+[layer_measurement] srini :: 236,236,236 :: 5 :: 0.72091
+[network_measurement] srini :: 236,236,236 :: 4.39835
+[layer_measurement] srini :: 236,236,236 :: 0 :: 0.199216
+[layer_measurement] srini :: 236,236,236 :: 1 :: 0.983662
+[layer_measurement] srini :: 236,236,236 :: 2 :: 0.903086
+[layer_measurement] srini :: 236,236,236 :: 3 :: 0.818345
+[layer_measurement] srini :: 236,236,236 :: 4 :: 0.778657
+[layer_measurement] srini :: 236,236,236 :: 5 :: 0.736262
+[network_measurement] srini :: 236,236,236 :: 4.46608
+[layer_measurement] srini :: 236,236,236 :: 0 :: 0.207666
+[layer_measurement] srini :: 236,236,236 :: 1 :: 0.95442
+[layer_measurement] srini :: 236,236,236 :: 2 :: 0.882255
+[layer_measurement] srini :: 236,236,236 :: 3 :: 0.832138
+[layer_measurement] srini :: 236,236,236 :: 4 :: 0.759142
+[layer_measurement] srini :: 236,236,236 :: 5 :: 0.70054
+[network_measurement] srini :: 236,236,236 :: 4.38229
+[layer_measurement] srini :: 236,236,236 :: 0 :: 0.212236
+[layer_measurement] srini :: 236,236,236 :: 1 :: 0.966292
+[layer_measurement] srini :: 236,236,236 :: 2 :: 0.89167
+[layer_measurement] srini :: 236,236,236 :: 3 :: 0.826385
+[layer_measurement] srini :: 236,236,236 :: 4 :: 0.773828
+[layer_measurement] srini :: 236,236,236 :: 5 :: 0.746041
+[network_measurement] srini :: 236,236,236 :: 4.4613
+[network_average] srini :: 236,236,236 :: 4.42701
+[network_throughput] srini :: 236,236,236 :: 2.96911e+06
+## srini :: starting benchmark for output size 240,240,240
+[network_requirements] srini :: 240,240,240 :: RM: 0 MB WM: 2190 MB
+[layer_measurement] srini :: 240,240,240 :: 0 :: 0.209999
+[layer_measurement] srini :: 240,240,240 :: 1 :: 0.970975
+[layer_measurement] srini :: 240,240,240 :: 2 :: 0.933694
+[layer_measurement] srini :: 240,240,240 :: 3 :: 0.86318
+[layer_measurement] srini :: 240,240,240 :: 4 :: 0.810329
+[layer_measurement] srini :: 240,240,240 :: 5 :: 0.734632
+[network_measurement] srini :: 240,240,240 :: 4.57004
+[layer_measurement] srini :: 240,240,240 :: 0 :: 0.199908
+[layer_measurement] srini :: 240,240,240 :: 1 :: 0.988405
+[layer_measurement] srini :: 240,240,240 :: 2 :: 0.969781
+[layer_measurement] srini :: 240,240,240 :: 3 :: 0.866193
+[layer_measurement] srini :: 240,240,240 :: 4 :: 0.802756
+[layer_measurement] srini :: 240,240,240 :: 5 :: 0.731059
+[network_measurement] srini :: 240,240,240 :: 4.60554
+[layer_measurement] srini :: 240,240,240 :: 0 :: 0.205489
+[layer_measurement] srini :: 240,240,240 :: 1 :: 0.988556
+[layer_measurement] srini :: 240,240,240 :: 2 :: 0.951497
+[layer_measurement] srini :: 240,240,240 :: 3 :: 0.877442
+[layer_measurement] srini :: 240,240,240 :: 4 :: 0.802221
+[layer_measurement] srini :: 240,240,240 :: 5 :: 0.725222
+[network_measurement] srini :: 240,240,240 :: 4.59703
+[layer_measurement] srini :: 240,240,240 :: 0 :: 0.199643
+[layer_measurement] srini :: 240,240,240 :: 1 :: 0.981766
+[layer_measurement] srini :: 240,240,240 :: 2 :: 0.923613
+[layer_measurement] srini :: 240,240,240 :: 3 :: 0.866765
+[layer_measurement] srini :: 240,240,240 :: 4 :: 0.861953
+[layer_measurement] srini :: 240,240,240 :: 5 :: 0.782574
+[network_measurement] srini :: 240,240,240 :: 4.66412
+[network_average] srini :: 240,240,240 :: 4.60918
+[network_throughput] srini :: 240,240,240 :: 2.99923e+06
+## srini :: starting benchmark for output size 244,244,244
+[network_requirements] srini :: 244,244,244 :: RM: 0 MB WM: 2290 MB
+[layer_measurement] srini :: 244,244,244 :: 0 :: 0.208848
+[layer_measurement] srini :: 244,244,244 :: 1 :: 1.03611
+[layer_measurement] srini :: 244,244,244 :: 2 :: 0.975489
+[layer_measurement] srini :: 244,244,244 :: 3 :: 0.918518
+[layer_measurement] srini :: 244,244,244 :: 4 :: 0.855413
+[layer_measurement] srini :: 244,244,244 :: 5 :: 0.758614
+[network_measurement] srini :: 244,244,244 :: 4.8019
+[layer_measurement] srini :: 244,244,244 :: 0 :: 0.208834
+[layer_measurement] srini :: 244,244,244 :: 1 :: 1.02802
+[layer_measurement] srini :: 244,244,244 :: 2 :: 0.964338
+[layer_measurement] srini :: 244,244,244 :: 3 :: 0.901796
+[layer_measurement] srini :: 244,244,244 :: 4 :: 0.839517
+[layer_measurement] srini :: 244,244,244 :: 5 :: 0.786796
+[network_measurement] srini :: 244,244,244 :: 4.77841
+[layer_measurement] srini :: 244,244,244 :: 0 :: 0.208893
+[layer_measurement] srini :: 244,244,244 :: 1 :: 1.04889
+[layer_measurement] srini :: 244,244,244 :: 2 :: 0.981297
+[layer_measurement] srini :: 244,244,244 :: 3 :: 0.89284
+[layer_measurement] srini :: 244,244,244 :: 4 :: 0.838621
+[layer_measurement] srini :: 244,244,244 :: 5 :: 0.761923
+[network_measurement] srini :: 244,244,244 :: 4.78152
+[layer_measurement] srini :: 244,244,244 :: 0 :: 0.208998
+[layer_measurement] srini :: 244,244,244 :: 1 :: 1.03208
+[layer_measurement] srini :: 244,244,244 :: 2 :: 0.96006
+[layer_measurement] srini :: 244,244,244 :: 3 :: 0.89568
+[layer_measurement] srini :: 244,244,244 :: 4 :: 0.86458
+[layer_measurement] srini :: 244,244,244 :: 5 :: 0.831969
+[network_measurement] srini :: 244,244,244 :: 4.84474
+[network_average] srini :: 244,244,244 :: 4.80164
+[network_throughput] srini :: 244,244,244 :: 3.02538e+06
+## srini :: starting benchmark for output size 248,248,248
+[network_requirements] srini :: 248,248,248 :: RM: 0 MB WM: 2393 MB
+[layer_measurement] srini :: 248,248,248 :: 0 :: 0.225343
+[layer_measurement] srini :: 248,248,248 :: 1 :: 1.11851
+[layer_measurement] srini :: 248,248,248 :: 2 :: 1.05403
+[layer_measurement] srini :: 248,248,248 :: 3 :: 0.980316
+[layer_measurement] srini :: 248,248,248 :: 4 :: 0.916268
+[layer_measurement] srini :: 248,248,248 :: 5 :: 0.814847
+[network_measurement] srini :: 248,248,248 :: 5.16197
+[layer_measurement] srini :: 248,248,248 :: 0 :: 0.218377
+[layer_measurement] srini :: 248,248,248 :: 1 :: 1.12299
+[layer_measurement] srini :: 248,248,248 :: 2 :: 1.02714
+[layer_measurement] srini :: 248,248,248 :: 3 :: 0.943367
+[layer_measurement] srini :: 248,248,248 :: 4 :: 0.874635
+[layer_measurement] srini :: 248,248,248 :: 5 :: 0.793798
+[network_measurement] srini :: 248,248,248 :: 5.03179
+[layer_measurement] srini :: 248,248,248 :: 0 :: 0.217854
+[layer_measurement] srini :: 248,248,248 :: 1 :: 1.0701
+[layer_measurement] srini :: 248,248,248 :: 2 :: 1.00566
+[layer_measurement] srini :: 248,248,248 :: 3 :: 0.937308
+[layer_measurement] srini :: 248,248,248 :: 4 :: 0.876687
+[layer_measurement] srini :: 248,248,248 :: 5 :: 0.792837
+[network_measurement] srini :: 248,248,248 :: 4.95204
+[layer_measurement] srini :: 248,248,248 :: 0 :: 0.217871
+[layer_measurement] srini :: 248,248,248 :: 1 :: 1.06893
+[layer_measurement] srini :: 248,248,248 :: 2 :: 1.00414
+[layer_measurement] srini :: 248,248,248 :: 3 :: 0.942269
+[layer_measurement] srini :: 248,248,248 :: 4 :: 0.921344
+[layer_measurement] srini :: 248,248,248 :: 5 :: 0.870465
+[network_measurement] srini :: 248,248,248 :: 5.07644
+[network_average] srini :: 248,248,248 :: 5.05556
+[network_throughput] srini :: 248,248,248 :: 3.01707e+06
+## srini :: starting benchmark for output size 252,252,252
+[network_requirements] srini :: 252,252,252 :: RM: 0 MB WM: 2500 MB
+[layer_measurement] srini :: 252,252,252 :: 0 :: 0.233241
+[layer_measurement] srini :: 252,252,252 :: 1 :: 1.11302
+[layer_measurement] srini :: 252,252,252 :: 2 :: 1.05573
+[layer_measurement] srini :: 252,252,252 :: 3 :: 0.999856
+[layer_measurement] srini :: 252,252,252 :: 4 :: 0.922416
+[layer_measurement] srini :: 252,252,252 :: 5 :: 0.858874
+[network_measurement] srini :: 252,252,252 :: 5.24057
+[layer_measurement] srini :: 252,252,252 :: 0 :: 0.227487
+[layer_measurement] srini :: 252,252,252 :: 1 :: 1.12897
+[layer_measurement] srini :: 252,252,252 :: 2 :: 1.04927
+[layer_measurement] srini :: 252,252,252 :: 3 :: 0.980798
+[layer_measurement] srini :: 252,252,252 :: 4 :: 0.92532
+[layer_measurement] srini :: 252,252,252 :: 5 :: 0.941453
+[network_measurement] srini :: 252,252,252 :: 5.31105
+[layer_measurement] srini :: 252,252,252 :: 0 :: 0.26397
+[layer_measurement] srini :: 252,252,252 :: 1 :: 1.15557
+[layer_measurement] srini :: 252,252,252 :: 2 :: 1.0735
+[layer_measurement] srini :: 252,252,252 :: 3 :: 0.987792
+[layer_measurement] srini :: 252,252,252 :: 4 :: 0.919291
+[layer_measurement] srini :: 252,252,252 :: 5 :: 0.834002
+[network_measurement] srini :: 252,252,252 :: 5.28788
+[layer_measurement] srini :: 252,252,252 :: 0 :: 0.227561
+[layer_measurement] srini :: 252,252,252 :: 1 :: 1.16448
+[layer_measurement] srini :: 252,252,252 :: 2 :: 1.17586
+[layer_measurement] srini :: 252,252,252 :: 3 :: 1.12589
+[layer_measurement] srini :: 252,252,252 :: 4 :: 1.05047
+[layer_measurement] srini :: 252,252,252 :: 5 :: 0.970547
+[network_measurement] srini :: 252,252,252 :: 5.775
+[network_average] srini :: 252,252,252 :: 5.40363
+[network_throughput] srini :: 252,252,252 :: 2.96153e+06
+## srini :: starting benchmark for output size 256,256,256
+[network_requirements] srini :: 256,256,256 :: RM: 0 MB WM: 2609 MB
+[layer_measurement] srini :: 256,256,256 :: 0 :: 0.238102
+[layer_measurement] srini :: 256,256,256 :: 1 :: 1.17116
+[layer_measurement] srini :: 256,256,256 :: 2 :: 1.10732
+[layer_measurement] srini :: 256,256,256 :: 3 :: 1.03472
+[layer_measurement] srini :: 256,256,256 :: 4 :: 0.964597
+[layer_measurement] srini :: 256,256,256 :: 5 :: 0.878257
+[network_measurement] srini :: 256,256,256 :: 5.45136
+[layer_measurement] srini :: 256,256,256 :: 0 :: 0.239582
+[layer_measurement] srini :: 256,256,256 :: 1 :: 1.16454
+[layer_measurement] srini :: 256,256,256 :: 2 :: 1.10233
+[layer_measurement] srini :: 256,256,256 :: 3 :: 1.03529
+[layer_measurement] srini :: 256,256,256 :: 4 :: 0.967731
+[layer_measurement] srini :: 256,256,256 :: 5 :: 0.883112
+[network_measurement] srini :: 256,256,256 :: 5.45102
+[layer_measurement] srini :: 256,256,256 :: 0 :: 0.239231
+[layer_measurement] srini :: 256,256,256 :: 1 :: 1.17792
+[layer_measurement] srini :: 256,256,256 :: 2 :: 1.12933
+[layer_measurement] srini :: 256,256,256 :: 3 :: 1.03018
+[layer_measurement] srini :: 256,256,256 :: 4 :: 0.993151
+[layer_measurement] srini :: 256,256,256 :: 5 :: 0.872827
+[network_measurement] srini :: 256,256,256 :: 5.50566
+[layer_measurement] srini :: 256,256,256 :: 0 :: 0.237401
+[layer_measurement] srini :: 256,256,256 :: 1 :: 1.17613
+[layer_measurement] srini :: 256,256,256 :: 2 :: 1.09812
+[layer_measurement] srini :: 256,256,256 :: 3 :: 1.04945
+[layer_measurement] srini :: 256,256,256 :: 4 :: 1.0441
+[layer_measurement] srini :: 256,256,256 :: 5 :: 0.975843
+[network_measurement] srini :: 256,256,256 :: 5.63763
+[network_average] srini :: 256,256,256 :: 5.51142
+[network_throughput] srini :: 256,256,256 :: 3.04408e+06
+## srini :: starting benchmark for output size 260,260,260
+[network_requirements] srini :: 260,260,260 :: RM: 0 MB WM: 2722 MB
+[layer_measurement] srini :: 260,260,260 :: 0 :: 0.251578
+[layer_measurement] srini :: 260,260,260 :: 1 :: 1.22856
+[layer_measurement] srini :: 260,260,260 :: 2 :: 1.15822
+[layer_measurement] srini :: 260,260,260 :: 3 :: 1.07833
+[layer_measurement] srini :: 260,260,260 :: 4 :: 1.01055
+[layer_measurement] srini :: 260,260,260 :: 5 :: 0.979819
+[network_measurement] srini :: 260,260,260 :: 5.76683
+[layer_measurement] srini :: 260,260,260 :: 0 :: 0.276203
+[layer_measurement] srini :: 260,260,260 :: 1 :: 1.30196
+[layer_measurement] srini :: 260,260,260 :: 2 :: 1.17179
+[layer_measurement] srini :: 260,260,260 :: 3 :: 1.08722
+[layer_measurement] srini :: 260,260,260 :: 4 :: 1.02151
+[layer_measurement] srini :: 260,260,260 :: 5 :: 0.947565
+[network_measurement] srini :: 260,260,260 :: 5.88718
+[layer_measurement] srini :: 260,260,260 :: 0 :: 0.252259
+[layer_measurement] srini :: 260,260,260 :: 1 :: 1.26355
+[layer_measurement] srini :: 260,260,260 :: 2 :: 1.17051
+[layer_measurement] srini :: 260,260,260 :: 3 :: 1.0948
+[layer_measurement] srini :: 260,260,260 :: 4 :: 1.01784
+[layer_measurement] srini :: 260,260,260 :: 5 :: 0.922571
+[network_measurement] srini :: 260,260,260 :: 5.78066
+[layer_measurement] srini :: 260,260,260 :: 0 :: 0.249328
+[layer_measurement] srini :: 260,260,260 :: 1 :: 1.23071
+[layer_measurement] srini :: 260,260,260 :: 2 :: 1.17562
+[layer_measurement] srini :: 260,260,260 :: 3 :: 1.17543
+[layer_measurement] srini :: 260,260,260 :: 4 :: 1.10009
+[layer_measurement] srini :: 260,260,260 :: 5 :: 1.01511
+[network_measurement] srini :: 260,260,260 :: 6.00518
+[network_average] srini :: 260,260,260 :: 5.85996
+[network_throughput] srini :: 260,260,260 :: 2.99934e+06
+## srini :: starting benchmark for output size 264,264,264
+[network_requirements] srini :: 264,264,264 :: RM: 0 MB WM: 2838 MB
+[layer_measurement] srini :: 264,264,264 :: 0 :: 0.258582
+[layer_measurement] srini :: 264,264,264 :: 1 :: 1.28927
+[layer_measurement] srini :: 264,264,264 :: 2 :: 1.19911
+[layer_measurement] srini :: 264,264,264 :: 3 :: 1.14072
+[layer_measurement] srini :: 264,264,264 :: 4 :: 1.07507
+[layer_measurement] srini :: 264,264,264 :: 5 :: 0.96501
+[network_measurement] srini :: 264,264,264 :: 5.98979
+[layer_measurement] srini :: 264,264,264 :: 0 :: 0.266028
+[layer_measurement] srini :: 264,264,264 :: 1 :: 1.27275
+[layer_measurement] srini :: 264,264,264 :: 2 :: 1.21269
+[layer_measurement] srini :: 264,264,264 :: 3 :: 1.13739
+[layer_measurement] srini :: 264,264,264 :: 4 :: 1.07648
+[layer_measurement] srini :: 264,264,264 :: 5 :: 0.988642
+[network_measurement] srini :: 264,264,264 :: 6.01597
+[layer_measurement] srini :: 264,264,264 :: 0 :: 0.271206
+[layer_measurement] srini :: 264,264,264 :: 1 :: 1.29715
+[layer_measurement] srini :: 264,264,264 :: 2 :: 1.22198
+[layer_measurement] srini :: 264,264,264 :: 3 :: 1.1293
+[layer_measurement] srini :: 264,264,264 :: 4 :: 1.061
+[layer_measurement] srini :: 264,264,264 :: 5 :: 0.961737
+[network_measurement] srini :: 264,264,264 :: 6.00421
+[layer_measurement] srini :: 264,264,264 :: 0 :: 0.26096
+[layer_measurement] srini :: 264,264,264 :: 1 :: 1.32962
+[layer_measurement] srini :: 264,264,264 :: 2 :: 1.30115
+[layer_measurement] srini :: 264,264,264 :: 3 :: 1.23291
+[layer_measurement] srini :: 264,264,264 :: 4 :: 1.15857
+[layer_measurement] srini :: 264,264,264 :: 5 :: 1.06144
+[network_measurement] srini :: 264,264,264 :: 6.40622
+[network_average] srini :: 264,264,264 :: 6.10405
+[network_throughput] srini :: 264,264,264 :: 3.01435e+06
+## srini :: starting benchmark for output size 268,268,268
+[network_requirements] srini :: 268,268,268 :: RM: 0 MB WM: 2957 MB
+[layer_measurement] srini :: 268,268,268 :: 0 :: 0.286735
+[layer_measurement] srini :: 268,268,268 :: 1 :: 1.37142
+[layer_measurement] srini :: 268,268,268 :: 2 :: 1.28958
+[layer_measurement] srini :: 268,268,268 :: 3 :: 1.22765
+[layer_measurement] srini :: 268,268,268 :: 4 :: 1.16662
+[layer_measurement] srini :: 268,268,268 :: 5 :: 1.09152
+[network_measurement] srini :: 268,268,268 :: 6.49992
+[layer_measurement] srini :: 268,268,268 :: 0 :: 0.286608
+[layer_measurement] srini :: 268,268,268 :: 1 :: 1.39732
+[layer_measurement] srini :: 268,268,268 :: 2 :: 1.33921
+[layer_measurement] srini :: 268,268,268 :: 3 :: 1.22892
+[layer_measurement] srini :: 268,268,268 :: 4 :: 1.1501
+[layer_measurement] srini :: 268,268,268 :: 5 :: 1.05876
+[network_measurement] srini :: 268,268,268 :: 6.52578
+[layer_measurement] srini :: 268,268,268 :: 0 :: 0.270131
+[layer_measurement] srini :: 268,268,268 :: 1 :: 1.35033
+[layer_measurement] srini :: 268,268,268 :: 2 :: 1.29078
+[layer_measurement] srini :: 268,268,268 :: 3 :: 1.19204
+[layer_measurement] srini :: 268,268,268 :: 4 :: 1.10609
+[layer_measurement] srini :: 268,268,268 :: 5 :: 1.00472
+[network_measurement] srini :: 268,268,268 :: 6.27856
+[layer_measurement] srini :: 268,268,268 :: 0 :: 0.269745
+[layer_measurement] srini :: 268,268,268 :: 1 :: 1.37161
+[layer_measurement] srini :: 268,268,268 :: 2 :: 1.3562
+[layer_measurement] srini :: 268,268,268 :: 3 :: 1.27099
+[layer_measurement] srini :: 268,268,268 :: 4 :: 1.19634
+[layer_measurement] srini :: 268,268,268 :: 5 :: 1.11439
+[network_measurement] srini :: 268,268,268 :: 6.64327
+[network_average] srini :: 268,268,268 :: 6.48688
+[network_throughput] srini :: 268,268,268 :: 2.96735e+06
+## srini :: starting benchmark for output size 272,272,272
+[network_requirements] srini :: 272,272,272 :: RM: 0 MB WM: 3079 MB
+[layer_measurement] srini :: 272,272,272 :: 0 :: 0.280206
+[layer_measurement] srini :: 272,272,272 :: 1 :: 1.37302
+[layer_measurement] srini :: 272,272,272 :: 2 :: 1.29612
+[layer_measurement] srini :: 272,272,272 :: 3 :: 1.21664
+[layer_measurement] srini :: 272,272,272 :: 4 :: 1.15131
+[layer_measurement] srini :: 272,272,272 :: 5 :: 1.04768
+[network_measurement] srini :: 272,272,272 :: 6.4317
+[layer_measurement] srini :: 272,272,272 :: 0 :: 0.280162
+[layer_measurement] srini :: 272,272,272 :: 1 :: 1.37396
+[layer_measurement] srini :: 272,272,272 :: 2 :: 1.30071
+[layer_measurement] srini :: 272,272,272 :: 3 :: 1.22569
+[layer_measurement] srini :: 272,272,272 :: 4 :: 1.15744
+[layer_measurement] srini :: 272,272,272 :: 5 :: 1.04658
+[network_measurement] srini :: 272,272,272 :: 6.4513
+[layer_measurement] srini :: 272,272,272 :: 0 :: 0.280377
+[layer_measurement] srini :: 272,272,272 :: 1 :: 1.38817
+[layer_measurement] srini :: 272,272,272 :: 2 :: 1.30281
+[layer_measurement] srini :: 272,272,272 :: 3 :: 1.22691
+[layer_measurement] srini :: 272,272,272 :: 4 :: 1.17492
+[layer_measurement] srini :: 272,272,272 :: 5 :: 1.1454
+[network_measurement] srini :: 272,272,272 :: 6.58536
+[layer_measurement] srini :: 272,272,272 :: 0 :: 0.299488
+[layer_measurement] srini :: 272,272,272 :: 1 :: 1.4939
+[layer_measurement] srini :: 272,272,272 :: 2 :: 1.41326
+[layer_measurement] srini :: 272,272,272 :: 3 :: 1.32593
+[layer_measurement] srini :: 272,272,272 :: 4 :: 1.24546
+[layer_measurement] srini :: 272,272,272 :: 5 :: 1.1515
+[network_measurement] srini :: 272,272,272 :: 6.99631
+[network_average] srini :: 272,272,272 :: 6.61617
+[network_throughput] srini :: 272,272,272 :: 3.04159e+06
+## srini :: starting benchmark for output size 276,276,276
+[network_requirements] srini :: 276,276,276 :: RM: 0 MB WM: 3205 MB
+[layer_measurement] srini :: 276,276,276 :: 0 :: 0.287895
+[layer_measurement] srini :: 276,276,276 :: 1 :: 1.43174
+[layer_measurement] srini :: 276,276,276 :: 2 :: 1.34831
+[layer_measurement] srini :: 276,276,276 :: 3 :: 1.27051
+[layer_measurement] srini :: 276,276,276 :: 4 :: 1.20305
+[layer_measurement] srini :: 276,276,276 :: 5 :: 1.08534
+[network_measurement] srini :: 276,276,276 :: 6.69601
+[layer_measurement] srini :: 276,276,276 :: 0 :: 0.290238
+[layer_measurement] srini :: 276,276,276 :: 1 :: 1.43335
+[layer_measurement] srini :: 276,276,276 :: 2 :: 1.36971
+[layer_measurement] srini :: 276,276,276 :: 3 :: 1.3431
+[layer_measurement] srini :: 276,276,276 :: 4 :: 1.24938
+[layer_measurement] srini :: 276,276,276 :: 5 :: 1.14838
+[network_measurement] srini :: 276,276,276 :: 6.92751
+[layer_measurement] srini :: 276,276,276 :: 0 :: 0.30059
+[layer_measurement] srini :: 276,276,276 :: 1 :: 1.49268
+[layer_measurement] srini :: 276,276,276 :: 2 :: 1.42165
+[layer_measurement] srini :: 276,276,276 :: 3 :: 1.30754
+[layer_measurement] srini :: 276,276,276 :: 4 :: 1.29316
+[layer_measurement] srini :: 276,276,276 :: 5 :: 1.28784
+[network_measurement] srini :: 276,276,276 :: 7.17397
+[layer_measurement] srini :: 276,276,276 :: 0 :: 0.321116
+[layer_measurement] srini :: 276,276,276 :: 1 :: 1.5539
+[layer_measurement] srini :: 276,276,276 :: 2 :: 1.49423
+[layer_measurement] srini :: 276,276,276 :: 3 :: 1.46072
+[layer_measurement] srini :: 276,276,276 :: 4 :: 1.2966
+[layer_measurement] srini :: 276,276,276 :: 5 :: 1.20026
+[network_measurement] srini :: 276,276,276 :: 7.39663
+[network_average] srini :: 276,276,276 :: 7.04853
+[network_throughput] srini :: 276,276,276 :: 2.98283e+06
+## srini :: starting benchmark for output size 280,280,280
+[network_requirements] srini :: 280,280,280 :: RM: 0 MB WM: 3334 MB
+[layer_measurement] srini :: 280,280,280 :: 0 :: 0.310302
+[layer_measurement] srini :: 280,280,280 :: 1 :: 1.5478
+[layer_measurement] srini :: 280,280,280 :: 2 :: 1.42749
+[layer_measurement] srini :: 280,280,280 :: 3 :: 1.36622
+[layer_measurement] srini :: 280,280,280 :: 4 :: 1.25997
+[layer_measurement] srini :: 280,280,280 :: 5 :: 1.14068
+[network_measurement] srini :: 280,280,280 :: 7.12712
+[layer_measurement] srini :: 280,280,280 :: 0 :: 0.303115
+[layer_measurement] srini :: 280,280,280 :: 1 :: 1.54719
+[layer_measurement] srini :: 280,280,280 :: 2 :: 1.4253
+[layer_measurement] srini :: 280,280,280 :: 3 :: 1.33495
+[layer_measurement] srini :: 280,280,280 :: 4 :: 1.2513
+[layer_measurement] srini :: 280,280,280 :: 5 :: 1.14538
+[network_measurement] srini :: 280,280,280 :: 7.08074
+[layer_measurement] srini :: 280,280,280 :: 0 :: 0.309045
+[layer_measurement] srini :: 280,280,280 :: 1 :: 1.56849
+[layer_measurement] srini :: 280,280,280 :: 2 :: 1.44801
+[layer_measurement] srini :: 280,280,280 :: 3 :: 1.3755
+[layer_measurement] srini :: 280,280,280 :: 4 :: 1.32678
+[layer_measurement] srini :: 280,280,280 :: 5 :: 1.25049
+[network_measurement] srini :: 280,280,280 :: 7.35077
+[layer_measurement] srini :: 280,280,280 :: 0 :: 0.325632
+[layer_measurement] srini :: 280,280,280 :: 1 :: 1.69005
+[layer_measurement] srini :: 280,280,280 :: 2 :: 1.53728
+[layer_measurement] srini :: 280,280,280 :: 3 :: 1.44591
+[layer_measurement] srini :: 280,280,280 :: 4 :: 1.40255
+[layer_measurement] srini :: 280,280,280 :: 5 :: 1.26566
+[network_measurement] srini :: 280,280,280 :: 7.73953
+[network_average] srini :: 280,280,280 :: 7.32454
+[network_throughput] srini :: 280,280,280 :: 2.99705e+06
+## srini :: starting benchmark for output size 284,284,284
+[network_requirements] srini :: 284,284,284 :: RM: 0 MB WM: 3466 MB
+[layer_measurement] srini :: 284,284,284 :: 0 :: 0.309854
+[layer_measurement] srini :: 284,284,284 :: 1 :: 1.55368
+[layer_measurement] srini :: 284,284,284 :: 2 :: 1.47658
+[layer_measurement] srini :: 284,284,284 :: 3 :: 1.38167
+[layer_measurement] srini :: 284,284,284 :: 4 :: 1.30436
+[layer_measurement] srini :: 284,284,284 :: 5 :: 1.19149
+[network_measurement] srini :: 284,284,284 :: 7.29299
+[layer_measurement] srini :: 284,284,284 :: 0 :: 0.314798
+[layer_measurement] srini :: 284,284,284 :: 1 :: 1.55008
+[layer_measurement] srini :: 284,284,284 :: 2 :: 1.4697
+[layer_measurement] srini :: 284,284,284 :: 3 :: 1.38947
+[layer_measurement] srini :: 284,284,284 :: 4 :: 1.31182
+[layer_measurement] srini :: 284,284,284 :: 5 :: 1.19163
+[network_measurement] srini :: 284,284,284 :: 7.30281
+[layer_measurement] srini :: 284,284,284 :: 0 :: 0.313715
+[layer_measurement] srini :: 284,284,284 :: 1 :: 1.60393
+[layer_measurement] srini :: 284,284,284 :: 2 :: 1.47956
+[layer_measurement] srini :: 284,284,284 :: 3 :: 1.44637
+[layer_measurement] srini :: 284,284,284 :: 4 :: 1.41406
+[layer_measurement] srini :: 284,284,284 :: 5 :: 1.31221
+[network_measurement] srini :: 284,284,284 :: 7.64519
+[layer_measurement] srini :: 284,284,284 :: 0 :: 0.337224
+[layer_measurement] srini :: 284,284,284 :: 1 :: 1.68215
+[layer_measurement] srini :: 284,284,284 :: 2 :: 1.60746
+[layer_measurement] srini :: 284,284,284 :: 3 :: 1.5224
+[layer_measurement] srini :: 284,284,284 :: 4 :: 1.42116
+[layer_measurement] srini :: 284,284,284 :: 5 :: 1.32269
+[network_measurement] srini :: 284,284,284 :: 7.96944
+[network_average] srini :: 284,284,284 :: 7.55261
+[network_throughput] srini :: 284,284,284 :: 3.0329e+06
+## srini :: starting benchmark for output size 288,288,288
+[network_requirements] srini :: 288,288,288 :: RM: 0 MB WM: 3602 MB
+[layer_measurement] srini :: 288,288,288 :: 0 :: 0.323067
+[layer_measurement] srini :: 288,288,288 :: 1 :: 1.60731
+[layer_measurement] srini :: 288,288,288 :: 2 :: 1.52223
+[layer_measurement] srini :: 288,288,288 :: 3 :: 1.43399
+[layer_measurement] srini :: 288,288,288 :: 4 :: 1.36234
+[layer_measurement] srini :: 288,288,288 :: 5 :: 1.24472
+[network_measurement] srini :: 288,288,288 :: 7.57192
+[layer_measurement] srini :: 288,288,288 :: 0 :: 0.325761
+[layer_measurement] srini :: 288,288,288 :: 1 :: 1.61466
+[layer_measurement] srini :: 288,288,288 :: 2 :: 1.53119
+[layer_measurement] srini :: 288,288,288 :: 3 :: 1.44122
+[layer_measurement] srini :: 288,288,288 :: 4 :: 1.38284
+[layer_measurement] srini :: 288,288,288 :: 5 :: 1.24693
+[network_measurement] srini :: 288,288,288 :: 7.62089
+[layer_measurement] srini :: 288,288,288 :: 0 :: 0.326797
+[layer_measurement] srini :: 288,288,288 :: 1 :: 1.68877
+[layer_measurement] srini :: 288,288,288 :: 2 :: 1.59425
+[layer_measurement] srini :: 288,288,288 :: 3 :: 1.57454
+[layer_measurement] srini :: 288,288,288 :: 4 :: 1.48037
+[layer_measurement] srini :: 288,288,288 :: 5 :: 1.36954
+[network_measurement] srini :: 288,288,288 :: 8.14083
+[layer_measurement] srini :: 288,288,288 :: 0 :: 0.355995
+[layer_measurement] srini :: 288,288,288 :: 1 :: 1.74316
+[layer_measurement] srini :: 288,288,288 :: 2 :: 1.65981
+[layer_measurement] srini :: 288,288,288 :: 3 :: 1.56632
+[layer_measurement] srini :: 288,288,288 :: 4 :: 1.50052
+[layer_measurement] srini :: 288,288,288 :: 5 :: 1.3814
+[network_measurement] srini :: 288,288,288 :: 8.28596
+[network_average] srini :: 288,288,288 :: 7.9049
+[network_throughput] srini :: 288,288,288 :: 3.02191e+06
+## srini :: starting benchmark for output size 292,292,292
+[network_requirements] srini :: 292,292,292 :: RM: 0 MB WM: 3742 MB
+[layer_measurement] srini :: 292,292,292 :: 0 :: 0.338295
+[layer_measurement] srini :: 292,292,292 :: 1 :: 1.73955
+[layer_measurement] srini :: 292,292,292 :: 2 :: 1.61962
+[layer_measurement] srini :: 292,292,292 :: 3 :: 1.51788
+[layer_measurement] srini :: 292,292,292 :: 4 :: 1.45407
+[layer_measurement] srini :: 292,292,292 :: 5 :: 1.31023
+[network_measurement] srini :: 292,292,292 :: 8.06205
+[layer_measurement] srini :: 292,292,292 :: 0 :: 0.343223
+[layer_measurement] srini :: 292,292,292 :: 1 :: 1.69362
+[layer_measurement] srini :: 292,292,292 :: 2 :: 1.59772
+[layer_measurement] srini :: 292,292,292 :: 3 :: 1.5174
+[layer_measurement] srini :: 292,292,292 :: 4 :: 1.43622
+[layer_measurement] srini :: 292,292,292 :: 5 :: 1.31904
+[network_measurement] srini :: 292,292,292 :: 7.98977
+[layer_measurement] srini :: 292,292,292 :: 0 :: 0.340906
+[layer_measurement] srini :: 292,292,292 :: 1 :: 1.69226
+[layer_measurement] srini :: 292,292,292 :: 2 :: 1.62785
+[layer_measurement] srini :: 292,292,292 :: 3 :: 1.64006
+[layer_measurement] srini :: 292,292,292 :: 4 :: 1.55635
+[layer_measurement] srini :: 292,292,292 :: 5 :: 1.44347
+[network_measurement] srini :: 292,292,292 :: 8.38297
+[layer_measurement] srini :: 292,292,292 :: 0 :: 0.372831
+[layer_measurement] srini :: 292,292,292 :: 1 :: 1.8382
+[layer_measurement] srini :: 292,292,292 :: 2 :: 1.76048
+[layer_measurement] srini :: 292,292,292 :: 3 :: 1.65664
+[layer_measurement] srini :: 292,292,292 :: 4 :: 1.59632
+[layer_measurement] srini :: 292,292,292 :: 5 :: 1.47685
+[network_measurement] srini :: 292,292,292 :: 8.78438
+[network_average] srini :: 292,292,292 :: 8.30479
+[network_throughput] srini :: 292,292,292 :: 2.99792e+06
+## srini :: starting benchmark for output size 296,296,296
+[network_requirements] srini :: 296,296,296 :: RM: 0 MB WM: 3885 MB
+[layer_measurement] srini :: 296,296,296 :: 0 :: 0.34993
+[layer_measurement] srini :: 296,296,296 :: 1 :: 1.76032
+[layer_measurement] srini :: 296,296,296 :: 2 :: 1.65972
+[layer_measurement] srini :: 296,296,296 :: 3 :: 1.56606
+[layer_measurement] srini :: 296,296,296 :: 4 :: 1.4906
+[layer_measurement] srini :: 296,296,296 :: 5 :: 1.36213
+[network_measurement] srini :: 296,296,296 :: 8.2746
+[layer_measurement] srini :: 296,296,296 :: 0 :: 0.354048
+[layer_measurement] srini :: 296,296,296 :: 1 :: 1.75148
+[layer_measurement] srini :: 296,296,296 :: 2 :: 1.66571
+[layer_measurement] srini :: 296,296,296 :: 3 :: 1.60691
+[layer_measurement] srini :: 296,296,296 :: 4 :: 1.54329
+[layer_measurement] srini :: 296,296,296 :: 5 :: 1.41855
+[network_measurement] srini :: 296,296,296 :: 8.44873
+[layer_measurement] srini :: 296,296,296 :: 0 :: 0.370316
+[layer_measurement] srini :: 296,296,296 :: 1 :: 1.83867
+[layer_measurement] srini :: 296,296,296 :: 2 :: 1.83919
+[layer_measurement] srini :: 296,296,296 :: 3 :: 1.79268
+[layer_measurement] srini :: 296,296,296 :: 4 :: 1.68489
+[layer_measurement] srini :: 296,296,296 :: 5 :: 1.49727
+[network_measurement] srini :: 296,296,296 :: 9.10855
+[layer_measurement] srini :: 296,296,296 :: 0 :: 0.382495
+[layer_measurement] srini :: 296,296,296 :: 1 :: 1.89893
+[layer_measurement] srini :: 296,296,296 :: 2 :: 1.81024
+[layer_measurement] srini :: 296,296,296 :: 3 :: 1.72307
+[layer_measurement] srini :: 296,296,296 :: 4 :: 1.61399
+[layer_measurement] srini :: 296,296,296 :: 5 :: 1.49972
+[network_measurement] srini :: 296,296,296 :: 9.01429
+[network_average] srini :: 296,296,296 :: 8.71154
+[network_throughput] srini :: 296,296,296 :: 2.97701e+06
+## srini :: starting benchmark for output size 300,300,300
+[network_requirements] srini :: 300,300,300 :: RM: 0 MB WM: 4031 MB
+[layer_measurement] srini :: 300,300,300 :: 0 :: 0.362306
+[layer_measurement] srini :: 300,300,300 :: 1 :: 1.81816
+[layer_measurement] srini :: 300,300,300 :: 2 :: 1.72233
+[layer_measurement] srini :: 300,300,300 :: 3 :: 1.62465
+[layer_measurement] srini :: 300,300,300 :: 4 :: 1.55374
+[layer_measurement] srini :: 300,300,300 :: 5 :: 1.42257
+[network_measurement] srini :: 300,300,300 :: 8.59206
+[layer_measurement] srini :: 300,300,300 :: 0 :: 0.366956
+[layer_measurement] srini :: 300,300,300 :: 1 :: 1.82217
+[layer_measurement] srini :: 300,300,300 :: 2 :: 1.72129
+[layer_measurement] srini :: 300,300,300 :: 3 :: 1.6307
+[layer_measurement] srini :: 300,300,300 :: 4 :: 1.55056
+[layer_measurement] srini :: 300,300,300 :: 5 :: 1.41822
+[network_measurement] srini :: 300,300,300 :: 8.59837
+[layer_measurement] srini :: 300,300,300 :: 0 :: 0.368423
+[layer_measurement] srini :: 300,300,300 :: 1 :: 1.84425
+[layer_measurement] srini :: 300,300,300 :: 2 :: 1.87218
+[layer_measurement] srini :: 300,300,300 :: 3 :: 1.77607
+[layer_measurement] srini :: 300,300,300 :: 4 :: 1.67784
+[layer_measurement] srini :: 300,300,300 :: 5 :: 1.57
+[network_measurement] srini :: 300,300,300 :: 9.19941
+[layer_measurement] srini :: 300,300,300 :: 0 :: 0.396654
+[layer_measurement] srini :: 300,300,300 :: 1 :: 2.01855
+[layer_measurement] srini :: 300,300,300 :: 2 :: 1.91209
+[layer_measurement] srini :: 300,300,300 :: 3 :: 1.80321
+[layer_measurement] srini :: 300,300,300 :: 4 :: 1.70671
+[layer_measurement] srini :: 300,300,300 :: 5 :: 1.58803
+[network_measurement] srini :: 300,300,300 :: 9.51732
+[network_average] srini :: 300,300,300 :: 8.97679
+[network_throughput] srini :: 300,300,300 :: 3.00776e+06
+## srini :: starting benchmark for output size 304,304,304
+[network_requirements] srini :: 304,304,304 :: RM: 0 MB WM: 4181 MB
+[layer_measurement] srini :: 304,304,304 :: 0 :: 0.3741
+[layer_measurement] srini :: 304,304,304 :: 1 :: 1.89717
+[layer_measurement] srini :: 304,304,304 :: 2 :: 1.79256
+[layer_measurement] srini :: 304,304,304 :: 3 :: 1.69377
+[layer_measurement] srini :: 304,304,304 :: 4 :: 1.60516
+[layer_measurement] srini :: 304,304,304 :: 5 :: 1.46489
+[network_measurement] srini :: 304,304,304 :: 8.91956
+[layer_measurement] srini :: 304,304,304 :: 0 :: 0.379219
+[layer_measurement] srini :: 304,304,304 :: 1 :: 1.86753
+[layer_measurement] srini :: 304,304,304 :: 2 :: 1.77745
+[layer_measurement] srini :: 304,304,304 :: 3 :: 1.68651
+[layer_measurement] srini :: 304,304,304 :: 4 :: 1.59564
+[layer_measurement] srini :: 304,304,304 :: 5 :: 1.45882
+[network_measurement] srini :: 304,304,304 :: 8.85788
+[layer_measurement] srini :: 304,304,304 :: 0 :: 0.376928
+[layer_measurement] srini :: 304,304,304 :: 1 :: 1.87546
+[layer_measurement] srini :: 304,304,304 :: 2 :: 1.86004
+[layer_measurement] srini :: 304,304,304 :: 3 :: 1.82178
+[layer_measurement] srini :: 304,304,304 :: 4 :: 1.72135
+[layer_measurement] srini :: 304,304,304 :: 5 :: 1.60312
+[network_measurement] srini :: 304,304,304 :: 9.35032
+[layer_measurement] srini :: 304,304,304 :: 0 :: 0.406484
+[layer_measurement] srini :: 304,304,304 :: 1 :: 2.02913
+[layer_measurement] srini :: 304,304,304 :: 2 :: 1.92839
+[layer_measurement] srini :: 304,304,304 :: 3 :: 1.82199
+[layer_measurement] srini :: 304,304,304 :: 4 :: 1.72138
+[layer_measurement] srini :: 304,304,304 :: 5 :: 1.60289
+[network_measurement] srini :: 304,304,304 :: 9.60205
+[network_average] srini :: 304,304,304 :: 9.18245
+[network_throughput] srini :: 304,304,304 :: 3.05958e+06
+## srini :: starting benchmark for output size 308,308,308
+[network_requirements] srini :: 308,308,308 :: RM: 0 MB WM: 4335 MB
+[layer_measurement] srini :: 308,308,308 :: 0 :: 0.385851
+[layer_measurement] srini :: 308,308,308 :: 1 :: 1.93956
+[layer_measurement] srini :: 308,308,308 :: 2 :: 1.86495
+[layer_measurement] srini :: 308,308,308 :: 3 :: 1.76816
+[layer_measurement] srini :: 308,308,308 :: 4 :: 1.66624
+[layer_measurement] srini :: 308,308,308 :: 5 :: 1.54007
+[network_measurement] srini :: 308,308,308 :: 9.26269
+[layer_measurement] srini :: 308,308,308 :: 0 :: 0.391308
+[layer_measurement] srini :: 308,308,308 :: 1 :: 1.97868
+[layer_measurement] srini :: 308,308,308 :: 2 :: 1.86357
+[layer_measurement] srini :: 308,308,308 :: 3 :: 1.76967
+[layer_measurement] srini :: 308,308,308 :: 4 :: 1.68164
+[layer_measurement] srini :: 308,308,308 :: 5 :: 1.54829
+[network_measurement] srini :: 308,308,308 :: 9.3326
+[layer_measurement] srini :: 308,308,308 :: 0 :: 0.407036
+[layer_measurement] srini :: 308,308,308 :: 1 :: 2.11187
+[layer_measurement] srini :: 308,308,308 :: 2 :: 2.03949
+[layer_measurement] srini :: 308,308,308 :: 3 :: 1.92801
+[layer_measurement] srini :: 308,308,308 :: 4 :: 1.8204
+[layer_measurement] srini :: 308,308,308 :: 5 :: 1.69289
+[network_measurement] srini :: 308,308,308 :: 10.0974
+[layer_measurement] srini :: 308,308,308 :: 0 :: 0.425282
+[layer_measurement] srini :: 308,308,308 :: 1 :: 2.11926
+[layer_measurement] srini :: 308,308,308 :: 2 :: 2.03022
+[layer_measurement] srini :: 308,308,308 :: 3 :: 1.90605
+[layer_measurement] srini :: 308,308,308 :: 4 :: 1.80426
+[layer_measurement] srini :: 308,308,308 :: 5 :: 1.68667
+[network_measurement] srini :: 308,308,308 :: 10.068
+[network_average] srini :: 308,308,308 :: 9.69017
+[network_throughput] srini :: 308,308,308 :: 3.01523e+06
+## srini :: starting benchmark for output size 312,312,312
+[network_requirements] srini :: 312,312,312 :: RM: 0 MB WM: 4493 MB
+[layer_measurement] srini :: 312,312,312 :: 0 :: 0.400108
+[layer_measurement] srini :: 312,312,312 :: 1 :: 2.00632
+[layer_measurement] srini :: 312,312,312 :: 2 :: 1.90786
+[layer_measurement] srini :: 312,312,312 :: 3 :: 1.80716
+[layer_measurement] srini :: 312,312,312 :: 4 :: 1.72016
+[layer_measurement] srini :: 312,312,312 :: 5 :: 1.57712
+[network_measurement] srini :: 312,312,312 :: 9.51716
+[layer_measurement] srini :: 312,312,312 :: 0 :: 0.404989
+[layer_measurement] srini :: 312,312,312 :: 1 :: 2.01145
+[layer_measurement] srini :: 312,312,312 :: 2 :: 1.91451
+[layer_measurement] srini :: 312,312,312 :: 3 :: 1.81969
+[layer_measurement] srini :: 312,312,312 :: 4 :: 1.7235
+[layer_measurement] srini :: 312,312,312 :: 5 :: 1.60806
+[network_measurement] srini :: 312,312,312 :: 9.58063
+[layer_measurement] srini :: 312,312,312 :: 0 :: 0.425562
+[layer_measurement] srini :: 312,312,312 :: 1 :: 2.17921
+[layer_measurement] srini :: 312,312,312 :: 2 :: 2.08016
+[layer_measurement] srini :: 312,312,312 :: 3 :: 1.96452
+[layer_measurement] srini :: 312,312,312 :: 4 :: 1.85756
+[layer_measurement] srini :: 312,312,312 :: 5 :: 1.73407
+[network_measurement] srini :: 312,312,312 :: 10.3396
+[layer_measurement] srini :: 312,312,312 :: 0 :: 0.43635
+[layer_measurement] srini :: 312,312,312 :: 1 :: 2.17494
+[layer_measurement] srini :: 312,312,312 :: 2 :: 2.07771
+[layer_measurement] srini :: 312,312,312 :: 3 :: 1.96439
+[layer_measurement] srini :: 312,312,312 :: 4 :: 1.85854
+[layer_measurement] srini :: 312,312,312 :: 5 :: 1.73373
+[network_measurement] srini :: 312,312,312 :: 10.3442
+[network_average] srini :: 312,312,312 :: 9.94539
+[network_throughput] srini :: 312,312,312 :: 3.05381e+06
+## srini :: starting benchmark for output size 316,316,316
+[network_requirements] srini :: 316,316,316 :: RM: 0 MB WM: 4654 MB
+[layer_measurement] srini :: 316,316,316 :: 0 :: 0.414234
+[layer_measurement] srini :: 316,316,316 :: 1 :: 2.08441
+[layer_measurement] srini :: 316,316,316 :: 2 :: 1.97756
+[layer_measurement] srini :: 316,316,316 :: 3 :: 1.87361
+[layer_measurement] srini :: 316,316,316 :: 4 :: 1.78515
+[layer_measurement] srini :: 316,316,316 :: 5 :: 1.63556
+[network_measurement] srini :: 316,316,316 :: 9.87262
+[layer_measurement] srini :: 316,316,316 :: 0 :: 0.419446
+[layer_measurement] srini :: 316,316,316 :: 1 :: 2.08649
+[layer_measurement] srini :: 316,316,316 :: 2 :: 1.99182
+[layer_measurement] srini :: 316,316,316 :: 3 :: 1.88683
+[layer_measurement] srini :: 316,316,316 :: 4 :: 1.78831
+[layer_measurement] srini :: 316,316,316 :: 5 :: 1.71418
+[network_measurement] srini :: 316,316,316 :: 9.98907
+[layer_measurement] srini :: 316,316,316 :: 0 :: 0.449457
+[layer_measurement] srini :: 316,316,316 :: 1 :: 2.26832
+[layer_measurement] srini :: 316,316,316 :: 2 :: 2.15242
+[layer_measurement] srini :: 316,316,316 :: 3 :: 2.03744
+[layer_measurement] srini :: 316,316,316 :: 4 :: 1.92963
+[layer_measurement] srini :: 316,316,316 :: 5 :: 1.801
+[network_measurement] srini :: 316,316,316 :: 10.7403
+[layer_measurement] srini :: 316,316,316 :: 0 :: 0.450911
+[layer_measurement] srini :: 316,316,316 :: 1 :: 2.26487
+[layer_measurement] srini :: 316,316,316 :: 2 :: 2.15176
+[layer_measurement] srini :: 316,316,316 :: 3 :: 2.03779
+[layer_measurement] srini :: 316,316,316 :: 4 :: 1.92962
+[layer_measurement] srini :: 316,316,316 :: 5 :: 1.80151
+[network_measurement] srini :: 316,316,316 :: 10.7386
+[network_average] srini :: 316,316,316 :: 10.3352
+[network_throughput] srini :: 316,316,316 :: 3.05312e+06
+## srini :: starting benchmark for output size 320,320,320
+[network_requirements] srini :: 320,320,320 :: RM: 0 MB WM: 4820 MB
+[layer_measurement] srini :: 320,320,320 :: 0 :: 0.429631
+[layer_measurement] srini :: 320,320,320 :: 1 :: 2.25907
+[layer_measurement] srini :: 320,320,320 :: 2 :: 2.0531
+[layer_measurement] srini :: 320,320,320 :: 3 :: 1.94142
+[layer_measurement] srini :: 320,320,320 :: 4 :: 1.86005
+[layer_measurement] srini :: 320,320,320 :: 5 :: 1.70356
+[network_measurement] srini :: 320,320,320 :: 10.3527
+[layer_measurement] srini :: 320,320,320 :: 0 :: 0.435155
+[layer_measurement] srini :: 320,320,320 :: 1 :: 2.15671
+[layer_measurement] srini :: 320,320,320 :: 2 :: 2.06175
+[layer_measurement] srini :: 320,320,320 :: 3 :: 1.95828
+[layer_measurement] srini :: 320,320,320 :: 4 :: 1.86431
+[layer_measurement] srini :: 320,320,320 :: 5 :: 1.70329
+[network_measurement] srini :: 320,320,320 :: 10.2853
+[layer_measurement] srini :: 320,320,320 :: 0 :: 0.438011
+[layer_measurement] srini :: 320,320,320 :: 1 :: 2.29681
+[layer_measurement] srini :: 320,320,320 :: 2 :: 2.23572
+[layer_measurement] srini :: 320,320,320 :: 3 :: 2.12161
+[layer_measurement] srini :: 320,320,320 :: 4 :: 2.0064
+[layer_measurement] srini :: 320,320,320 :: 5 :: 1.87286
+[network_measurement] srini :: 320,320,320 :: 11.0776
+[layer_measurement] srini :: 320,320,320 :: 0 :: 0.466447
+[layer_measurement] srini :: 320,320,320 :: 1 :: 2.34233
+[layer_measurement] srini :: 320,320,320 :: 2 :: 2.23443
+[layer_measurement] srini :: 320,320,320 :: 3 :: 2.11982
+[layer_measurement] srini :: 320,320,320 :: 4 :: 2.00737
+[layer_measurement] srini :: 320,320,320 :: 5 :: 1.87272
+[network_measurement] srini :: 320,320,320 :: 11.1493
+[network_average] srini :: 320,320,320 :: 10.7162
+[network_throughput] srini :: 320,320,320 :: 3.0578e+06
+## srini :: starting benchmark for output size 324,324,324
+[network_requirements] srini :: 324,324,324 :: RM: 0 MB WM: 4989 MB
+[layer_measurement] srini :: 324,324,324 :: 0 :: 0.444518
+[layer_measurement] srini :: 324,324,324 :: 1 :: 2.23156
+[layer_measurement] srini :: 324,324,324 :: 2 :: 2.12388
+[layer_measurement] srini :: 324,324,324 :: 3 :: 2.01589
+[layer_measurement] srini :: 324,324,324 :: 4 :: 1.92875
+[layer_measurement] srini :: 324,324,324 :: 5 :: 1.76737
+[network_measurement] srini :: 324,324,324 :: 10.622
+[layer_measurement] srini :: 324,324,324 :: 0 :: 0.48
+[layer_measurement] srini :: 324,324,324 :: 1 :: 2.24408
+[layer_measurement] srini :: 324,324,324 :: 2 :: 2.13268
+[layer_measurement] srini :: 324,324,324 :: 3 :: 2.02577
+[layer_measurement] srini :: 324,324,324 :: 4 :: 1.9305
+[layer_measurement] srini :: 324,324,324 :: 5 :: 1.84309
+[network_measurement] srini :: 324,324,324 :: 10.7661
+[layer_measurement] srini :: 324,324,324 :: 0 :: 0.483166
+[layer_measurement] srini :: 324,324,324 :: 1 :: 2.43229
+[layer_measurement] srini :: 324,324,324 :: 2 :: 2.31557
+[layer_measurement] srini :: 324,324,324 :: 3 :: 2.19602
+[layer_measurement] srini :: 324,324,324 :: 4 :: 2.08194
+[layer_measurement] srini :: 324,324,324 :: 5 :: 1.9826
+[network_measurement] srini :: 324,324,324 :: 11.6024
+[layer_measurement] srini :: 324,324,324 :: 0 :: 0.483195
+[layer_measurement] srini :: 324,324,324 :: 1 :: 2.41897
+[layer_measurement] srini :: 324,324,324 :: 2 :: 2.31596
+[layer_measurement] srini :: 324,324,324 :: 3 :: 2.19446
+[layer_measurement] srini :: 324,324,324 :: 4 :: 2.08376
+[layer_measurement] srini :: 324,324,324 :: 5 :: 1.94538
+[network_measurement] srini :: 324,324,324 :: 11.5517
+[network_average] srini :: 324,324,324 :: 11.1355
+[network_throughput] srini :: 324,324,324 :: 3.05438e+06
+## srini :: starting benchmark for output size 328,328,328
+[network_requirements] srini :: 328,328,328 :: RM: 0 MB WM: 5162 MB
+[layer_measurement] srini :: 328,328,328 :: 0 :: 0.459276
+[layer_measurement] srini :: 328,328,328 :: 1 :: 2.30738
+[layer_measurement] srini :: 328,328,328 :: 2 :: 2.2015
+[layer_measurement] srini :: 328,328,328 :: 3 :: 2.08966
+[layer_measurement] srini :: 328,328,328 :: 4 :: 1.99812
+[layer_measurement] srini :: 328,328,328 :: 5 :: 1.8354
+[network_measurement] srini :: 328,328,328 :: 11.0049
+[layer_measurement] srini :: 328,328,328 :: 0 :: 0.466216
+[layer_measurement] srini :: 328,328,328 :: 1 :: 2.31816
+[layer_measurement] srini :: 328,328,328 :: 2 :: 2.20664
+[layer_measurement] srini :: 328,328,328 :: 3 :: 2.10651
+[layer_measurement] srini :: 328,328,328 :: 4 :: 2.00075
+[layer_measurement] srini :: 328,328,328 :: 5 :: 1.91031
+[network_measurement] srini :: 328,328,328 :: 11.1223
+[layer_measurement] srini :: 328,328,328 :: 0 :: 0.501923
+[layer_measurement] srini :: 328,328,328 :: 1 :: 2.51949
+[layer_measurement] srini :: 328,328,328 :: 2 :: 2.40029
+[layer_measurement] srini :: 328,328,328 :: 3 :: 2.27566
+[layer_measurement] srini :: 328,328,328 :: 4 :: 2.15851
+[layer_measurement] srini :: 328,328,328 :: 5 :: 2.01967
+[network_measurement] srini :: 328,328,328 :: 11.9892
+[layer_measurement] srini :: 328,328,328 :: 0 :: 0.498072
+[layer_measurement] srini :: 328,328,328 :: 1 :: 2.50829
+[layer_measurement] srini :: 328,328,328 :: 2 :: 2.39773
+[layer_measurement] srini :: 328,328,328 :: 3 :: 2.27566
+[layer_measurement] srini :: 328,328,328 :: 4 :: 2.16105
+[layer_measurement] srini :: 328,328,328 :: 5 :: 2.02135
+[network_measurement] srini :: 328,328,328 :: 11.9759
+[network_average] srini :: 328,328,328 :: 11.5231
+[network_throughput] srini :: 328,328,328 :: 3.06234e+06
+## srini :: starting benchmark for output size 332,332,332
+[network_requirements] srini :: 332,332,332 :: RM: 0 MB WM: 5339 MB
+[layer_measurement] srini :: 332,332,332 :: 0 :: 0.474287
+[layer_measurement] srini :: 332,332,332 :: 1 :: 2.3935
+[layer_measurement] srini :: 332,332,332 :: 2 :: 2.27508
+[layer_measurement] srini :: 332,332,332 :: 3 :: 2.15928
+[layer_measurement] srini :: 332,332,332 :: 4 :: 2.07177
+[layer_measurement] srini :: 332,332,332 :: 5 :: 1.90111
+[network_measurement] srini :: 332,332,332 :: 11.3926
+[layer_measurement] srini :: 332,332,332 :: 0 :: 0.48309
+[layer_measurement] srini :: 332,332,332 :: 1 :: 2.41874
+[layer_measurement] srini :: 332,332,332 :: 2 :: 2.28333
+[layer_measurement] srini :: 332,332,332 :: 3 :: 2.174
+[layer_measurement] srini :: 332,332,332 :: 4 :: 2.09351
+[layer_measurement] srini :: 332,332,332 :: 5 :: 2.09199
+[network_measurement] srini :: 332,332,332 :: 11.6622
+[layer_measurement] srini :: 332,332,332 :: 0 :: 0.515297
+[layer_measurement] srini :: 332,332,332 :: 1 :: 2.59414
+[layer_measurement] srini :: 332,332,332 :: 2 :: 2.48141
+[layer_measurement] srini :: 332,332,332 :: 3 :: 2.35488
+[layer_measurement] srini :: 332,332,332 :: 4 :: 2.23892
+[layer_measurement] srini :: 332,332,332 :: 5 :: 2.09272
+[network_measurement] srini :: 332,332,332 :: 12.3952
+[layer_measurement] srini :: 332,332,332 :: 0 :: 0.514814
+[layer_measurement] srini :: 332,332,332 :: 1 :: 2.58641
+[layer_measurement] srini :: 332,332,332 :: 2 :: 2.48147
+[layer_measurement] srini :: 332,332,332 :: 3 :: 2.35999
+[layer_measurement] srini :: 332,332,332 :: 4 :: 2.23724
+[layer_measurement] srini :: 332,332,332 :: 5 :: 2.09431
+[network_measurement] srini :: 332,332,332 :: 12.3922
+[network_average] srini :: 332,332,332 :: 11.9605
+[network_throughput] srini :: 332,332,332 :: 3.0596e+06
+## srini :: starting benchmark for output size 336,336,336
+[network_requirements] srini :: 336,336,336 :: RM: 0 MB WM: 5520 MB
+[layer_measurement] srini :: 336,336,336 :: 0 :: 0.491525
+[layer_measurement] srini :: 336,336,336 :: 1 :: 2.46718
+[layer_measurement] srini :: 336,336,336 :: 2 :: 2.35297
+[layer_measurement] srini :: 336,336,336 :: 3 :: 2.24022
+[layer_measurement] srini :: 336,336,336 :: 4 :: 2.14645
+[layer_measurement] srini :: 336,336,336 :: 5 :: 1.9697
+[network_measurement] srini :: 336,336,336 :: 11.7899
+[layer_measurement] srini :: 336,336,336 :: 0 :: 0.497657
+[layer_measurement] srini :: 336,336,336 :: 1 :: 2.47284
+[layer_measurement] srini :: 336,336,336 :: 2 :: 2.36769
+[layer_measurement] srini :: 336,336,336 :: 3 :: 2.2594
+[layer_measurement] srini :: 336,336,336 :: 4 :: 2.21491
+[layer_measurement] srini :: 336,336,336 :: 5 :: 2.16972
+[network_measurement] srini :: 336,336,336 :: 12.1043
+[layer_measurement] srini :: 336,336,336 :: 0 :: 0.526866
+[layer_measurement] srini :: 336,336,336 :: 1 :: 2.69254
+[layer_measurement] srini :: 336,336,336 :: 2 :: 2.57336
+[layer_measurement] srini :: 336,336,336 :: 3 :: 2.4405
+[layer_measurement] srini :: 336,336,336 :: 4 :: 2.31771
+[layer_measurement] srini :: 336,336,336 :: 5 :: 2.1691
+[network_measurement] srini :: 336,336,336 :: 12.8423
+[layer_measurement] srini :: 336,336,336 :: 0 :: 0.53152
+[layer_measurement] srini :: 336,336,336 :: 1 :: 2.67423
+[layer_measurement] srini :: 336,336,336 :: 2 :: 2.56846
+[layer_measurement] srini :: 336,336,336 :: 3 :: 2.43954
+[layer_measurement] srini :: 336,336,336 :: 4 :: 2.31876
+[layer_measurement] srini :: 336,336,336 :: 5 :: 2.16825
+[network_measurement] srini :: 336,336,336 :: 12.8227
+[network_average] srini :: 336,336,336 :: 12.3898
+[network_throughput] srini :: 336,336,336 :: 3.06163e+06
+## srini :: starting benchmark for output size 340,340,340
+[network_requirements] srini :: 340,340,340 :: RM: 0 MB WM: 5705 MB
+[layer_measurement] srini :: 340,340,340 :: 0 :: 0.506565
+[layer_measurement] srini :: 340,340,340 :: 1 :: 2.55873
+[layer_measurement] srini :: 340,340,340 :: 2 :: 2.43518
+[layer_measurement] srini :: 340,340,340 :: 3 :: 2.31121
+[layer_measurement] srini :: 340,340,340 :: 4 :: 2.22186
+[layer_measurement] srini :: 340,340,340 :: 5 :: 2.04621
+[network_measurement] srini :: 340,340,340 :: 12.2058
+[layer_measurement] srini :: 340,340,340 :: 0 :: 0.513802
+[layer_measurement] srini :: 340,340,340 :: 1 :: 2.55908
+[layer_measurement] srini :: 340,340,340 :: 2 :: 2.45009
+[layer_measurement] srini :: 340,340,340 :: 3 :: 2.33072
+[layer_measurement] srini :: 340,340,340 :: 4 :: 2.33471
+[layer_measurement] srini :: 340,340,340 :: 5 :: 2.24793
+[network_measurement] srini :: 340,340,340 :: 12.5625
+[layer_measurement] srini :: 340,340,340 :: 0 :: 0.549113
+[layer_measurement] srini :: 340,340,340 :: 1 :: 2.77976
+[layer_measurement] srini :: 340,340,340 :: 2 :: 2.6604
+[layer_measurement] srini :: 340,340,340 :: 3 :: 2.52562
+[layer_measurement] srini :: 340,340,340 :: 4 :: 2.39993
+[layer_measurement] srini :: 340,340,340 :: 5 :: 2.24888
+[network_measurement] srini :: 340,340,340 :: 13.2902
+[layer_measurement] srini :: 340,340,340 :: 0 :: 0.54945
+[layer_measurement] srini :: 340,340,340 :: 1 :: 2.77809
+[layer_measurement] srini :: 340,340,340 :: 2 :: 2.64952
+[layer_measurement] srini :: 340,340,340 :: 3 :: 2.52341
+[layer_measurement] srini :: 340,340,340 :: 4 :: 2.39981
+[layer_measurement] srini :: 340,340,340 :: 5 :: 2.25084
+[network_measurement] srini :: 340,340,340 :: 13.2775
+[network_average] srini :: 340,340,340 :: 12.834
+[network_throughput] srini :: 340,340,340 :: 3.06249e+06
+## srini :: starting benchmark for output size 344,344,344
+[network_requirements] srini :: 344,344,344 :: RM: 0 MB WM: 5894 MB
+[layer_measurement] srini :: 344,344,344 :: 0 :: 0.522962
+[layer_measurement] srini :: 344,344,344 :: 1 :: 2.64391
+[layer_measurement] srini :: 344,344,344 :: 2 :: 2.52246
+[layer_measurement] srini :: 344,344,344 :: 3 :: 2.39542
+[layer_measurement] srini :: 344,344,344 :: 4 :: 2.29479
+[layer_measurement] srini :: 344,344,344 :: 5 :: 2.11217
+[network_measurement] srini :: 344,344,344 :: 12.6229
+[layer_measurement] srini :: 344,344,344 :: 0 :: 0.529674
+[layer_measurement] srini :: 344,344,344 :: 1 :: 2.63748
+[layer_measurement] srini :: 344,344,344 :: 2 :: 2.5384
+[layer_measurement] srini :: 344,344,344 :: 3 :: 2.41738
+[layer_measurement] srini :: 344,344,344 :: 4 :: 2.40971
+[layer_measurement] srini :: 344,344,344 :: 5 :: 2.32304
+[network_measurement] srini :: 344,344,344 :: 12.9861
+[layer_measurement] srini :: 344,344,344 :: 0 :: 0.56783
+[layer_measurement] srini :: 344,344,344 :: 1 :: 2.86765
+[layer_measurement] srini :: 344,344,344 :: 2 :: 2.74084
+[layer_measurement] srini :: 344,344,344 :: 3 :: 2.60912
+[layer_measurement] srini :: 344,344,344 :: 4 :: 2.4787
+[layer_measurement] srini :: 344,344,344 :: 5 :: 2.32316
+[network_measurement] srini :: 344,344,344 :: 13.718
+[layer_measurement] srini :: 344,344,344 :: 0 :: 0.56871
+[layer_measurement] srini :: 344,344,344 :: 1 :: 2.85758
+[layer_measurement] srini :: 344,344,344 :: 2 :: 2.74072
+[layer_measurement] srini :: 344,344,344 :: 3 :: 2.60734
+[layer_measurement] srini :: 344,344,344 :: 4 :: 2.47918
+[layer_measurement] srini :: 344,344,344 :: 5 :: 2.32577
+[network_measurement] srini :: 344,344,344 :: 13.7099
+[network_average] srini :: 344,344,344 :: 13.2592
+[network_throughput] srini :: 344,344,344 :: 3.07013e+06
+## srini :: starting benchmark for output size 348,348,348
+[network_requirements] srini :: 348,348,348 :: RM: 0 MB WM: 6087 MB
+[layer_measurement] srini :: 348,348,348 :: 0 :: 0.540052
+[layer_measurement] srini :: 348,348,348 :: 1 :: 2.72145
+[layer_measurement] srini :: 348,348,348 :: 2 :: 2.59999
+[layer_measurement] srini :: 348,348,348 :: 3 :: 2.47328
+[layer_measurement] srini :: 348,348,348 :: 4 :: 2.37776
+[layer_measurement] srini :: 348,348,348 :: 5 :: 2.18724
+[network_measurement] srini :: 348,348,348 :: 13.0346
+[layer_measurement] srini :: 348,348,348 :: 0 :: 0.546842
+[layer_measurement] srini :: 348,348,348 :: 1 :: 2.73176
+[layer_measurement] srini :: 348,348,348 :: 2 :: 2.62575
+[layer_measurement] srini :: 348,348,348 :: 3 :: 2.51956
+[layer_measurement] srini :: 348,348,348 :: 4 :: 2.56127
+[layer_measurement] srini :: 348,348,348 :: 5 :: 2.40665
+[network_measurement] srini :: 348,348,348 :: 13.5267
+[layer_measurement] srini :: 348,348,348 :: 0 :: 0.580795
+[layer_measurement] srini :: 348,348,348 :: 1 :: 2.96514
+[layer_measurement] srini :: 348,348,348 :: 2 :: 2.83427
+[layer_measurement] srini :: 348,348,348 :: 3 :: 2.69455
+[layer_measurement] srini :: 348,348,348 :: 4 :: 2.56515
+[layer_measurement] srini :: 348,348,348 :: 5 :: 2.40805
+[network_measurement] srini :: 348,348,348 :: 14.1829
+[layer_measurement] srini :: 348,348,348 :: 0 :: 0.58712
+[layer_measurement] srini :: 348,348,348 :: 1 :: 2.96197
+[layer_measurement] srini :: 348,348,348 :: 2 :: 2.82934
+[layer_measurement] srini :: 348,348,348 :: 3 :: 2.69747
+[layer_measurement] srini :: 348,348,348 :: 4 :: 2.5663
+[layer_measurement] srini :: 348,348,348 :: 5 :: 2.40561
+[network_measurement] srini :: 348,348,348 :: 14.183
+[network_average] srini :: 348,348,348 :: 13.7318
+[network_throughput] srini :: 348,348,348 :: 3.06909e+06
+## srini :: starting benchmark for output size 352,352,352
+[network_requirements] srini :: 352,352,352 :: RM: 0 MB WM: 6284 MB
+[layer_measurement] srini :: 352,352,352 :: 0 :: 0.557104
+[layer_measurement] srini :: 352,352,352 :: 1 :: 2.80534
+[layer_measurement] srini :: 352,352,352 :: 2 :: 2.68439
+[layer_measurement] srini :: 352,352,352 :: 3 :: 2.56052
+[layer_measurement] srini :: 352,352,352 :: 4 :: 2.45616
+[layer_measurement] srini :: 352,352,352 :: 5 :: 2.2605
+[network_measurement] srini :: 352,352,352 :: 13.4633
+[layer_measurement] srini :: 352,352,352 :: 0 :: 0.56445
+[layer_measurement] srini :: 352,352,352 :: 1 :: 2.82138
+[layer_measurement] srini :: 352,352,352 :: 2 :: 2.71061
+[layer_measurement] srini :: 352,352,352 :: 3 :: 2.58563
+[layer_measurement] srini :: 352,352,352 :: 4 :: 2.61421
+[layer_measurement] srini :: 352,352,352 :: 5 :: 2.49052
+[network_measurement] srini :: 352,352,352 :: 13.9263
+[layer_measurement] srini :: 352,352,352 :: 0 :: 0.600441
+[layer_measurement] srini :: 352,352,352 :: 1 :: 3.05255
+[layer_measurement] srini :: 352,352,352 :: 2 :: 2.92481
+[layer_measurement] srini :: 352,352,352 :: 3 :: 2.78819
+[layer_measurement] srini :: 352,352,352 :: 4 :: 2.65302
+[layer_measurement] srini :: 352,352,352 :: 5 :: 2.48852
+[network_measurement] srini :: 352,352,352 :: 14.6469
+[layer_measurement] srini :: 352,352,352 :: 0 :: 0.598966
+[layer_measurement] srini :: 352,352,352 :: 1 :: 3.05185
+[layer_measurement] srini :: 352,352,352 :: 2 :: 2.92605
+[layer_measurement] srini :: 352,352,352 :: 3 :: 2.78528
+[layer_measurement] srini :: 352,352,352 :: 4 :: 2.65229
+[layer_measurement] srini :: 352,352,352 :: 5 :: 2.48998
+[network_measurement] srini :: 352,352,352 :: 14.644
+[network_average] srini :: 352,352,352 :: 14.1701
+[network_throughput] srini :: 352,352,352 :: 3.0779e+06
+## srini :: starting benchmark for output size 356,356,356
+[network_requirements] srini :: 356,356,356 :: RM: 0 MB WM: 6486 MB
+[layer_measurement] srini :: 356,356,356 :: 0 :: 0.574599
+[layer_measurement] srini :: 356,356,356 :: 1 :: 2.89618
+[layer_measurement] srini :: 356,356,356 :: 2 :: 2.76972
+[layer_measurement] srini :: 356,356,356 :: 3 :: 2.63937
+[layer_measurement] srini :: 356,356,356 :: 4 :: 2.54201
+[layer_measurement] srini :: 356,356,356 :: 5 :: 2.33991
+[network_measurement] srini :: 356,356,356 :: 13.9061
+[layer_measurement] srini :: 356,356,356 :: 0 :: 0.581967
+[layer_measurement] srini :: 356,356,356 :: 1 :: 2.91664
+[layer_measurement] srini :: 356,356,356 :: 2 :: 2.7998
+[layer_measurement] srini :: 356,356,356 :: 3 :: 2.75013
+[layer_measurement] srini :: 356,356,356 :: 4 :: 2.74285
+[layer_measurement] srini :: 356,356,356 :: 5 :: 2.57568
+[network_measurement] srini :: 356,356,356 :: 14.5113
+[layer_measurement] srini :: 356,356,356 :: 0 :: 0.624616
+[layer_measurement] srini :: 356,356,356 :: 1 :: 3.17304
+[layer_measurement] srini :: 356,356,356 :: 2 :: 3.22686
+[layer_measurement] srini :: 356,356,356 :: 3 :: 3.07132
+[layer_measurement] srini :: 356,356,356 :: 4 :: 2.92812
+[layer_measurement] srini :: 356,356,356 :: 5 :: 2.63524
+[network_measurement] srini :: 356,356,356 :: 15.8037
+[layer_measurement] srini :: 356,356,356 :: 0 :: 0.617571
+[layer_measurement] srini :: 356,356,356 :: 1 :: 3.08413
+[layer_measurement] srini :: 356,356,356 :: 2 :: 3.01857
+[layer_measurement] srini :: 356,356,356 :: 3 :: 2.87654
+[layer_measurement] srini :: 356,356,356 :: 4 :: 2.74182
+[layer_measurement] srini :: 356,356,356 :: 5 :: 2.57646
+[network_measurement] srini :: 356,356,356 :: 15.0597
+[network_average] srini :: 356,356,356 :: 14.8202
+[network_throughput] srini :: 356,356,356 :: 3.04436e+06
+## srini :: starting benchmark for output size 360,360,360
+[network_requirements] srini :: 360,360,360 :: RM: 0 MB WM: 6692 MB
+[layer_measurement] srini :: 360,360,360 :: 0 :: 0.593102
+[layer_measurement] srini :: 360,360,360 :: 1 :: 2.98582
+[layer_measurement] srini :: 360,360,360 :: 2 :: 2.85515
+[layer_measurement] srini :: 360,360,360 :: 3 :: 2.7266
+[layer_measurement] srini :: 360,360,360 :: 4 :: 2.62548
+[layer_measurement] srini :: 360,360,360 :: 5 :: 2.41778
+[network_measurement] srini :: 360,360,360 :: 14.3527
+[layer_measurement] srini :: 360,360,360 :: 0 :: 0.600492
+[layer_measurement] srini :: 360,360,360 :: 1 :: 2.99688
+[layer_measurement] srini :: 360,360,360 :: 2 :: 2.87399
+[layer_measurement] srini :: 360,360,360 :: 3 :: 2.82594
+[layer_measurement] srini :: 360,360,360 :: 4 :: 2.83408
+[layer_measurement] srini :: 360,360,360 :: 5 :: 2.66473
+[network_measurement] srini :: 360,360,360 :: 14.9453
+[layer_measurement] srini :: 360,360,360 :: 0 :: 0.645125
+[layer_measurement] srini :: 360,360,360 :: 1 :: 3.25475
+[layer_measurement] srini :: 360,360,360 :: 2 :: 3.11616
+[layer_measurement] srini :: 360,360,360 :: 3 :: 2.97414
+[layer_measurement] srini :: 360,360,360 :: 4 :: 2.83397
+[layer_measurement] srini :: 360,360,360 :: 5 :: 2.6665
+[network_measurement] srini :: 360,360,360 :: 15.6393
+[layer_measurement] srini :: 360,360,360 :: 0 :: 0.642623
+[layer_measurement] srini :: 360,360,360 :: 1 :: 3.2637
+[layer_measurement] srini :: 360,360,360 :: 2 :: 3.11557
+[layer_measurement] srini :: 360,360,360 :: 3 :: 3.05879
+[layer_measurement] srini :: 360,360,360 :: 4 :: 2.83632
+[layer_measurement] srini :: 360,360,360 :: 5 :: 2.66355
+[network_measurement] srini :: 360,360,360 :: 15.7292
+[network_average] srini :: 360,360,360 :: 15.1666
+[network_throughput] srini :: 360,360,360 :: 3.07622e+06
+## srini :: starting benchmark for output size 364,364,364
+[network_requirements] srini :: 364,364,364 :: RM: 0 MB WM: 6902 MB
+[layer_measurement] srini :: 364,364,364 :: 0 :: 0.611908
+[layer_measurement] srini :: 364,364,364 :: 1 :: 3.09033
+[layer_measurement] srini :: 364,364,364 :: 2 :: 2.95561
+[layer_measurement] srini :: 364,364,364 :: 3 :: 2.83939
+[layer_measurement] srini :: 364,364,364 :: 4 :: 2.7507
+[layer_measurement] srini :: 364,364,364 :: 5 :: 2.53902
+[network_measurement] srini :: 364,364,364 :: 14.9445
+[layer_measurement] srini :: 364,364,364 :: 0 :: 0.628204
+[layer_measurement] srini :: 364,364,364 :: 1 :: 3.14432
+[layer_measurement] srini :: 364,364,364 :: 2 :: 3.0104
+[layer_measurement] srini :: 364,364,364 :: 3 :: 2.99559
+[layer_measurement] srini :: 364,364,364 :: 4 :: 2.99463
+[layer_measurement] srini :: 364,364,364 :: 5 :: 2.77439
+[network_measurement] srini :: 364,364,364 :: 15.7016
+[layer_measurement] srini :: 364,364,364 :: 0 :: 0.670586
+[layer_measurement] srini :: 364,364,364 :: 1 :: 3.39214
+[layer_measurement] srini :: 364,364,364 :: 2 :: 3.24679
+[layer_measurement] srini :: 364,364,364 :: 3 :: 3.11942
+[layer_measurement] srini :: 364,364,364 :: 4 :: 2.95206
+[layer_measurement] srini :: 364,364,364 :: 5 :: 2.78814
+[network_measurement] srini :: 364,364,364 :: 16.326
+[layer_measurement] srini :: 364,364,364 :: 0 :: 0.65987
+[layer_measurement] srini :: 364,364,364 :: 1 :: 3.36297
+[layer_measurement] srini :: 364,364,364 :: 2 :: 3.24532
+[layer_measurement] srini :: 364,364,364 :: 3 :: 3.12029
+[layer_measurement] srini :: 364,364,364 :: 4 :: 2.97344
+[layer_measurement] srini :: 364,364,364 :: 5 :: 2.82993
+[network_measurement] srini :: 364,364,364 :: 16.3487
+[network_average] srini :: 364,364,364 :: 15.8302
+[network_throughput] srini :: 364,364,364 :: 3.04662e+06
+## srini :: starting benchmark for output size 368,368,368
+[network_requirements] srini :: 368,368,368 :: RM: 0 MB WM: 7117 MB
+[layer_measurement] srini :: 368,368,368 :: 0 :: 0.639224
+[layer_measurement] srini :: 368,368,368 :: 1 :: 3.20979
+[layer_measurement] srini :: 368,368,368 :: 2 :: 3.07277
+[layer_measurement] srini :: 368,368,368 :: 3 :: 2.9685
+[layer_measurement] srini :: 368,368,368 :: 4 :: 2.82811
+[layer_measurement] srini :: 368,368,368 :: 5 :: 2.63193
+[network_measurement] srini :: 368,368,368 :: 15.5101
+[layer_measurement] srini :: 368,368,368 :: 0 :: 0.639924
+[layer_measurement] srini :: 368,368,368 :: 1 :: 3.2426
+[layer_measurement] srini :: 368,368,368 :: 2 :: 3.1237
+[layer_measurement] srini :: 368,368,368 :: 3 :: 3.1757
+[layer_measurement] srini :: 368,368,368 :: 4 :: 3.07382
+[layer_measurement] srini :: 368,368,368 :: 5 :: 2.87027
+[network_measurement] srini :: 368,368,368 :: 16.2852
+[layer_measurement] srini :: 368,368,368 :: 0 :: 0.68067
+[layer_measurement] srini :: 368,368,368 :: 1 :: 3.49794
+[layer_measurement] srini :: 368,368,368 :: 2 :: 3.33265
+[layer_measurement] srini :: 368,368,368 :: 3 :: 3.17145
+[layer_measurement] srini :: 368,368,368 :: 4 :: 3.02727
+[layer_measurement] srini :: 368,368,368 :: 5 :: 2.84797
+[network_measurement] srini :: 368,368,368 :: 16.7175
+[layer_measurement] srini :: 368,368,368 :: 0 :: 0.677835
+[layer_measurement] srini :: 368,368,368 :: 1 :: 3.50187
+[layer_measurement] srini :: 368,368,368 :: 2 :: 3.35679
+[layer_measurement] srini :: 368,368,368 :: 3 :: 3.25519
+[layer_measurement] srini :: 368,368,368 :: 4 :: 3.03264
+[layer_measurement] srini :: 368,368,368 :: 5 :: 2.86033
+[network_measurement] srini :: 368,368,368 :: 16.8456
+[network_average] srini :: 368,368,368 :: 16.3396
+[network_throughput] srini :: 368,368,368 :: 3.05001e+06
+## srini :: starting benchmark for output size 372,372,372
+[network_requirements] srini :: 372,372,372 :: RM: 0 MB WM: 7336 MB
+[layer_measurement] srini :: 372,372,372 :: 0 :: 0.654923
+[layer_measurement] srini :: 372,372,372 :: 1 :: 3.31716
+[layer_measurement] srini :: 372,372,372 :: 2 :: 3.18568
+[layer_measurement] srini :: 372,372,372 :: 3 :: 3.03587
+[layer_measurement] srini :: 372,372,372 :: 4 :: 2.93296
+[layer_measurement] srini :: 372,372,372 :: 5 :: 2.68632
+[network_measurement] srini :: 372,372,372 :: 15.9771
+[layer_measurement] srini :: 372,372,372 :: 0 :: 0.657703
+[layer_measurement] srini :: 372,372,372 :: 1 :: 3.31268
+[layer_measurement] srini :: 372,372,372 :: 2 :: 3.23801
+[layer_measurement] srini :: 372,372,372 :: 3 :: 3.32098
+[layer_measurement] srini :: 372,372,372 :: 4 :: 3.18031
+[layer_measurement] srini :: 372,372,372 :: 5 :: 2.963
+[network_measurement] srini :: 372,372,372 :: 16.844
+[layer_measurement] srini :: 372,372,372 :: 0 :: 0.718368
+[layer_measurement] srini :: 372,372,372 :: 1 :: 3.72084
+[layer_measurement] srini :: 372,372,372 :: 2 :: 3.52584
+[layer_measurement] srini :: 372,372,372 :: 3 :: 3.34432
+[layer_measurement] srini :: 372,372,372 :: 4 :: 3.17803
+[layer_measurement] srini :: 372,372,372 :: 5 :: 3.03216
+[network_measurement] srini :: 372,372,372 :: 17.6884
+[layer_measurement] srini :: 372,372,372 :: 0 :: 0.707321
+[layer_measurement] srini :: 372,372,372 :: 1 :: 3.53412
+[layer_measurement] srini :: 372,372,372 :: 2 :: 3.47447
+[layer_measurement] srini :: 372,372,372 :: 3 :: 3.32201
+[layer_measurement] srini :: 372,372,372 :: 4 :: 3.16161
+[layer_measurement] srini :: 372,372,372 :: 5 :: 2.99373
+[network_measurement] srini :: 372,372,372 :: 17.3599
+[network_average] srini :: 372,372,372 :: 16.9674
+[network_throughput] srini :: 372,372,372 :: 3.03399e+06
+## srini :: starting benchmark for output size 376,376,376
+[network_requirements] srini :: 376,376,376 :: RM: 0 MB WM: 7559 MB
+[layer_measurement] srini :: 376,376,376 :: 0 :: 0.680833
+[layer_measurement] srini :: 376,376,376 :: 1 :: 3.45642
+[layer_measurement] srini :: 376,376,376 :: 2 :: 3.32503
+[layer_measurement] srini :: 376,376,376 :: 3 :: 3.14679
+[layer_measurement] srini :: 376,376,376 :: 4 :: 3.13261
+[layer_measurement] srini :: 376,376,376 :: 5 :: 2.78533
+[network_measurement] srini :: 376,376,376 :: 16.7014
+[layer_measurement] srini :: 376,376,376 :: 0 :: 0.683815
+[layer_measurement] srini :: 376,376,376 :: 1 :: 3.42904
+[layer_measurement] srini :: 376,376,376 :: 2 :: 3.33233
+[layer_measurement] srini :: 376,376,376 :: 3 :: 3.52334
+[layer_measurement] srini :: 376,376,376 :: 4 :: 3.33649
+[layer_measurement] srini :: 376,376,376 :: 5 :: 3.08879
+[network_measurement] srini :: 376,376,376 :: 17.5638
+[layer_measurement] srini :: 376,376,376 :: 0 :: 0.737001
+[layer_measurement] srini :: 376,376,376 :: 1 :: 3.72925
+[layer_measurement] srini :: 376,376,376 :: 2 :: 3.5777
+[layer_measurement] srini :: 376,376,376 :: 3 :: 3.41135
+[layer_measurement] srini :: 376,376,376 :: 4 :: 3.25818
+[layer_measurement] srini :: 376,376,376 :: 5 :: 3.13576
+[network_measurement] srini :: 376,376,376 :: 18.0223
+[layer_measurement] srini :: 376,376,376 :: 0 :: 0.721585
+[layer_measurement] srini :: 376,376,376 :: 1 :: 3.6877
+[layer_measurement] srini :: 376,376,376 :: 2 :: 3.56061
+[layer_measurement] srini :: 376,376,376 :: 3 :: 3.43376
+[layer_measurement] srini :: 376,376,376 :: 4 :: 3.29034
+[layer_measurement] srini :: 376,376,376 :: 5 :: 3.10442
+[network_measurement] srini :: 376,376,376 :: 18.0797
+[network_average] srini :: 376,376,376 :: 17.5918
+[network_throughput] srini :: 376,376,376 :: 3.02171e+06
+## srini :: starting benchmark for output size 380,380,380
+[network_requirements] srini :: 380,380,380 :: RM: 0 MB WM: 7787 MB
+[layer_measurement] srini :: 380,380,380 :: 0 :: 0.689465
+[layer_measurement] srini :: 380,380,380 :: 1 :: 3.48254
+[layer_measurement] srini :: 380,380,380 :: 2 :: 3.33456
+[layer_measurement] srini :: 380,380,380 :: 3 :: 3.18605
+[layer_measurement] srini :: 380,380,380 :: 4 :: 3.07584
+[layer_measurement] srini :: 380,380,380 :: 5 :: 2.83874
+[network_measurement] srini :: 380,380,380 :: 16.7853
+[layer_measurement] srini :: 380,380,380 :: 0 :: 0.697263
+[layer_measurement] srini :: 380,380,380 :: 1 :: 3.53206
+[layer_measurement] srini :: 380,380,380 :: 2 :: 3.54461
+[layer_measurement] srini :: 380,380,380 :: 3 :: 3.65382
+[layer_measurement] srini :: 380,380,380 :: 4 :: 3.49141
+[layer_measurement] srini :: 380,380,380 :: 5 :: 3.29284
+[network_measurement] srini :: 380,380,380 :: 18.392
+[layer_measurement] srini :: 380,380,380 :: 0 :: 0.755075
+[layer_measurement] srini :: 380,380,380 :: 1 :: 3.8956
+[layer_measurement] srini :: 380,380,380 :: 2 :: 3.72757
+[layer_measurement] srini :: 380,380,380 :: 3 :: 3.55091
+[layer_measurement] srini :: 380,380,380 :: 4 :: 3.41123
+[layer_measurement] srini :: 380,380,380 :: 5 :: 3.16391
+[network_measurement] srini :: 380,380,380 :: 18.7003
+[layer_measurement] srini :: 380,380,380 :: 0 :: 0.736498
+[layer_measurement] srini :: 380,380,380 :: 1 :: 3.63046
+[layer_measurement] srini :: 380,380,380 :: 2 :: 3.60019
+[layer_measurement] srini :: 380,380,380 :: 3 :: 3.52443
+[layer_measurement] srini :: 380,380,380 :: 4 :: 3.34965
+[layer_measurement] srini :: 380,380,380 :: 5 :: 3.10258
+[network_measurement] srini :: 380,380,380 :: 18.1224
+[network_average] srini :: 380,380,380 :: 18
+[network_throughput] srini :: 380,380,380 :: 3.04845e+06
+## srini :: starting benchmark for output size 384,384,384
+[network_requirements] srini :: 384,384,384 :: RM: 0 MB WM: 8020 MB
+[layer_measurement] srini :: 384,384,384 :: 0 :: 0.711281
+[layer_measurement] srini :: 384,384,384 :: 1 :: 3.58449
+[layer_measurement] srini :: 384,384,384 :: 2 :: 3.4358
+[layer_measurement] srini :: 384,384,384 :: 3 :: 3.29058
+[layer_measurement] srini :: 384,384,384 :: 4 :: 3.17237
+[layer_measurement] srini :: 384,384,384 :: 5 :: 2.93554
+[network_measurement] srini :: 384,384,384 :: 17.3093
+[layer_measurement] srini :: 384,384,384 :: 0 :: 0.718332
+[layer_measurement] srini :: 384,384,384 :: 1 :: 3.61832
+[layer_measurement] srini :: 384,384,384 :: 2 :: 3.4904
+[layer_measurement] srini :: 384,384,384 :: 3 :: 3.60275
+[layer_measurement] srini :: 384,384,384 :: 4 :: 3.51278
+[layer_measurement] srini :: 384,384,384 :: 5 :: 3.34102
+[network_measurement] srini :: 384,384,384 :: 18.4646
+[layer_measurement] srini :: 384,384,384 :: 0 :: 0.768068
+[layer_measurement] srini :: 384,384,384 :: 1 :: 3.92219
+[layer_measurement] srini :: 384,384,384 :: 2 :: 3.81215
+[layer_measurement] srini :: 384,384,384 :: 3 :: 3.63203
+[layer_measurement] srini :: 384,384,384 :: 4 :: 3.46741
+[layer_measurement] srini :: 384,384,384 :: 5 :: 3.29978
+[network_measurement] srini :: 384,384,384 :: 19.0851
+[layer_measurement] srini :: 384,384,384 :: 0 :: 0.757007
+[layer_measurement] srini :: 384,384,384 :: 1 :: 3.82996
+[layer_measurement] srini :: 384,384,384 :: 2 :: 3.76743
+[layer_measurement] srini :: 384,384,384 :: 3 :: 3.5894
+[layer_measurement] srini :: 384,384,384 :: 4 :: 3.48184
+[layer_measurement] srini :: 384,384,384 :: 5 :: 3.18503
+[network_measurement] srini :: 384,384,384 :: 18.792
+[network_average] srini :: 384,384,384 :: 18.4127
+[network_throughput] srini :: 384,384,384 :: 3.07521e+06
+## srini :: starting benchmark for output size 388,388,388
+[network_requirements] srini :: 388,388,388 :: RM: 0 MB WM: 8257 MB
+[layer_measurement] srini :: 388,388,388 :: 0 :: 0.738816
+[layer_measurement] srini :: 388,388,388 :: 1 :: 3.74847
+[layer_measurement] srini :: 388,388,388 :: 2 :: 3.60749
+[layer_measurement] srini :: 388,388,388 :: 3 :: 3.44669
+[layer_measurement] srini :: 388,388,388 :: 4 :: 3.32545
+[layer_measurement] srini :: 388,388,388 :: 5 :: 3.11099
+[network_measurement] srini :: 388,388,388 :: 18.1627
+[layer_measurement] srini :: 388,388,388 :: 0 :: 0.742496
+[layer_measurement] srini :: 388,388,388 :: 1 :: 3.75424
+[layer_measurement] srini :: 388,388,388 :: 2 :: 3.68649
+[layer_measurement] srini :: 388,388,388 :: 3 :: 3.71492
+[layer_measurement] srini :: 388,388,388 :: 4 :: 3.56335
+[layer_measurement] srini :: 388,388,388 :: 5 :: 3.3358
+[network_measurement] srini :: 388,388,388 :: 18.9824
+[layer_measurement] srini :: 388,388,388 :: 0 :: 0.782151
+[layer_measurement] srini :: 388,388,388 :: 1 :: 4.03251
+[layer_measurement] srini :: 388,388,388 :: 2 :: 4.01453
+[layer_measurement] srini :: 388,388,388 :: 3 :: 3.79277
+[layer_measurement] srini :: 388,388,388 :: 4 :: 3.61741
+[layer_measurement] srini :: 388,388,388 :: 5 :: 3.40682
+[network_measurement] srini :: 388,388,388 :: 19.8354
+[layer_measurement] srini :: 388,388,388 :: 0 :: 0.781315
+[layer_measurement] srini :: 388,388,388 :: 1 :: 3.96473
+[layer_measurement] srini :: 388,388,388 :: 2 :: 3.84891
+[layer_measurement] srini :: 388,388,388 :: 3 :: 3.71149
+[layer_measurement] srini :: 388,388,388 :: 4 :: 3.5312
+[layer_measurement] srini :: 388,388,388 :: 5 :: 3.3372
+[network_measurement] srini :: 388,388,388 :: 19.3618
+[network_average] srini :: 388,388,388 :: 19.0856
+[network_throughput] srini :: 388,388,388 :: 3.06048e+06
+## srini :: starting benchmark for output size 392,392,392
+[network_requirements] srini :: 392,392,392 :: RM: 0 MB WM: 8498 MB
+[layer_measurement] srini :: 392,392,392 :: 0 :: 0.760304
+[layer_measurement] srini :: 392,392,392 :: 1 :: 3.92807
+[layer_measurement] srini :: 392,392,392 :: 2 :: 3.8128
+[layer_measurement] srini :: 392,392,392 :: 3 :: 3.6623
+[layer_measurement] srini :: 392,392,392 :: 4 :: 3.48706
+[layer_measurement] srini :: 392,392,392 :: 5 :: 3.251
+[network_measurement] srini :: 392,392,392 :: 19.095
+[layer_measurement] srini :: 392,392,392 :: 0 :: 0.78716
+[layer_measurement] srini :: 392,392,392 :: 1 :: 3.94888
+[layer_measurement] srini :: 392,392,392 :: 2 :: 3.8917
+[layer_measurement] srini :: 392,392,392 :: 3 :: 3.92359
+[layer_measurement] srini :: 392,392,392 :: 4 :: 3.82573
+[layer_measurement] srini :: 392,392,392 :: 5 :: 3.54189
+[network_measurement] srini :: 392,392,392 :: 20.1186
+[layer_measurement] srini :: 392,392,392 :: 0 :: 0.84927
+[layer_measurement] srini :: 392,392,392 :: 1 :: 4.28411
+[layer_measurement] srini :: 392,392,392 :: 2 :: 4.10024
+[layer_measurement] srini :: 392,392,392 :: 3 :: 3.91869
+[layer_measurement] srini :: 392,392,392 :: 4 :: 3.76903
+[layer_measurement] srini :: 392,392,392 :: 5 :: 3.55917
+[network_measurement] srini :: 392,392,392 :: 20.6852
+[layer_measurement] srini :: 392,392,392 :: 0 :: 0.825766
+[layer_measurement] srini :: 392,392,392 :: 1 :: 4.18462
+[layer_measurement] srini :: 392,392,392 :: 2 :: 4.09721
+[layer_measurement] srini :: 392,392,392 :: 3 :: 3.84016
+[layer_measurement] srini :: 392,392,392 :: 4 :: 3.76891
+[layer_measurement] srini :: 392,392,392 :: 5 :: 3.48056
+[network_measurement] srini :: 392,392,392 :: 20.4335
+[network_average] srini :: 392,392,392 :: 20.0831
+[network_throughput] srini :: 392,392,392 :: 2.99936e+06
+## srini :: starting benchmark for output size 396,396,396
+[network_requirements] srini :: 396,396,396 :: RM: 0 MB WM: 8745 MB
+[layer_measurement] srini :: 396,396,396 :: 0 :: 0.772519
+[layer_measurement] srini :: 396,396,396 :: 1 :: 3.95799
+[layer_measurement] srini :: 396,396,396 :: 2 :: 3.78438
+[layer_measurement] srini :: 396,396,396 :: 3 :: 3.63168
+[layer_measurement] srini :: 396,396,396 :: 4 :: 3.50116
+[layer_measurement] srini :: 396,396,396 :: 5 :: 3.242
+[network_measurement] srini :: 396,396,396 :: 19.092
+[layer_measurement] srini :: 396,396,396 :: 0 :: 0.786651
+[layer_measurement] srini :: 396,396,396 :: 1 :: 3.96413
+[layer_measurement] srini :: 396,396,396 :: 2 :: 4.0172
+[layer_measurement] srini :: 396,396,396 :: 3 :: 3.97464
+[layer_measurement] srini :: 396,396,396 :: 4 :: 3.80087
+[layer_measurement] srini :: 396,396,396 :: 5 :: 3.56066
+[network_measurement] srini :: 396,396,396 :: 20.3026
+[layer_measurement] srini :: 396,396,396 :: 0 :: 0.825777
+[layer_measurement] srini :: 396,396,396 :: 1 :: 4.26121
+[layer_measurement] srini :: 396,396,396 :: 2 :: 4.10405
+[layer_measurement] srini :: 396,396,396 :: 3 :: 3.92063
+[layer_measurement] srini :: 396,396,396 :: 4 :: 3.75517
+[layer_measurement] srini :: 396,396,396 :: 5 :: 3.54151
+[network_measurement] srini :: 396,396,396 :: 20.6048
+[layer_measurement] srini :: 396,396,396 :: 0 :: 0.819403
+[layer_measurement] srini :: 396,396,396 :: 1 :: 4.09217
+[layer_measurement] srini :: 396,396,396 :: 2 :: 4.0284
+[layer_measurement] srini :: 396,396,396 :: 3 :: 3.89645
+[layer_measurement] srini :: 396,396,396 :: 4 :: 3.75479
+[layer_measurement] srini :: 396,396,396 :: 5 :: 3.50826
+[network_measurement] srini :: 396,396,396 :: 20.2958
+[network_average] srini :: 396,396,396 :: 20.0738
+[network_throughput] srini :: 396,396,396 :: 3.09354e+06
