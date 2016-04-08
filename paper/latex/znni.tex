@@ -1,5 +1,6 @@
 \tolerance=10000
-\documentclass[conference]{IEEEtran}
+\documentclass[conference]{./IEEEtran/IEEEtran}
+\usepackage{float}
 \usepackage{xcolor}
 \usepackage{mathtools}
 \usepackage{enumerate}
@@ -13,6 +14,7 @@
 \usepackage[]{algorithm}
 \usepackage{clrscode3e}
 \usepackage[pdftex]{graphicx}
+%\usepackage[section]{placeins}
 
 \definecolor{zblack}{HTML}{000000}
 \definecolor{zblue}{HTML}{0072BD}
@@ -22,7 +24,7 @@
 \definecolor{zgreen}{HTML}{77AC30}
 
 %\usepackage{etoolbox}
-%\AtBeginEnvironment{algorithmic}{\small}
+%\AtBeginEnvironment{algorithmic}{\footnotesize}
 %\usepackage{subfig}
 % tricks for saving space
 \usepackage[font={small}]{caption,subfig}  % small fonts in captions
@@ -281,6 +283,7 @@ We care about throughput.
 
 
   \begin{table*}[t]
+    {\footnotesize
     \centering
     \begin{tabular}{l|lll}
       \toprule
@@ -306,6 +309,7 @@ We care about throughput.
     \end{tabular}
     \caption{Computational complexities.}
     \label{table:layers_complexity}
+    }
   \end{table*}
 
 \section{FFT of padded image}
@@ -518,7 +522,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 \subsubsection{Direct convolution algorithm}
 
   \begin{algorithm}
-    {\small
+    {\footnotesize
       \begin{codebox}
         \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,S,f,f',\vec{n},\vec{k})$}
         \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
@@ -531,24 +535,23 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
         \li $\proc{Free-Memory}(I)$
         \li \Return $O$
       \end{codebox}
-    }
-
     \caption{Multi-core algorithm for a convolutional layer using direct
       convolution.}
     \label{alg:cpu_direct}
+    }
   \end{algorithm}
 
   The algorithm using direct convolution is showin in the
   Algorithm~\ref{alg:cpu_direct}.  The computation is parallelized by
   two $\kw{parallel for}$ loops such that each output image of each
   minimbatch is computed in parallel on a different working thread.
-  The $\kw{parallel for}$ loops are implemented using intel$^{\small
+  The $\kw{parallel for}$ loops are implemented using intel$^{\footnotesize
     \textregistered}$ thread building blocks such that the work is
   evenly divided over the available cores.
 
   For the direct convolution we provide two implementations.  The
   first is a naive convolution implementation, and the second one is
-  using Intel$^{\small \textregistered}$ to perform convolutions.  MKL
+  using Intel$^{\footnotesize \textregistered}$ to perform convolutions.  MKL
   implementation is 2x faster on average, however it requires extra
   memory for a temporary image where a result of convolution is stored
   before accumulating it to the output image.  When $T$ cores are
@@ -613,7 +616,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   sub-ranges, each of which is executed on a single core.
 
   \begin{algorithm}
-    {\small
+    {\footnotesize
       \begin{codebox}
         \Procname{$\proc{Convolutional-Forward-FFT-CPU1}(I,w,S,f,f',\vec{n},\vec{k})$}
         \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
@@ -710,10 +713,11 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 
   The tasks are executed by $N$ worker threads, where $N$ equals the
   number of available cores (or virtual cores, when hyper--threading
-  is enabled).  Each worker thread is {\bf pinned} to a single core,
-  meaning that it can be executed on a specific hardware core.  For
-  this reason, we will use ``worker thread'' and ``core''
-  interchangeably.
+  is enabled).  Each worker thread is {\bf pinned} to a single core.
+  This means that there is 1--1 relation between the workers and the
+  available cores, where each worker can run only on a specific
+  hardware core, as described in~\cite{jeffers2015high}.  For this
+  reason, we will use ``worker thread'' and ``core'' interchangeably.
 
   The first {\color{zyellow}\bf synchronization} task allocates memory
   for the FFT transforms of the input images.  The number of dependent
@@ -795,9 +799,9 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 
   For the GPU, we propose three different algorithms.  Two of them use
   based on cuDNN's 3D convolution that are based on implicit
-  matrix--matrix multiplication.  The third FFT--based implementation
-  is based on our, previously described, algorithm for padded--pruned
-  FFTs.
+  matrix--matrix multiplication~\cite{chetlur2014cudnn}.  The third
+  FFT--based implementation is based on our, previously described,
+  algorithm for padded--pruned FFTs.
 
 \subsubsection{Direct convolution using cuDNN}
 
@@ -816,7 +820,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   Section~\ref{sec:gpu-fft-impl}.
 
   \begin{algorithm}
-    {\small
+    {\footnotesize
     \begin{codebox}
       \Procname{$\proc{Convolutional-Forward-FFT-GPU}(I,w,S,f,f',\vec{n},\vec{k})$}
       \li $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$
@@ -1105,7 +1109,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   %\end{figure*}
 
 
-  \begin{figure*}[h!t]
+  \begin{figure*}[!htbp]
     \centering %% LDRU
     \subfloat[]{\protect\includegraphics[trim= 6mm 0mm 9mm 1mm, clip, width=0.25\textwidth]
       {fig/m36s.eps}}
@@ -1258,59 +1262,81 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 
   Originally we implemented similar GPU + host RAM layer for the MAX
   fragment pooling layers.  However, it turned out that it is better
-  to compute the MFP layers on the CPU, as the transfer time dominates
-  the computation.
+  to compute the MFP layers on the CPU, even when very few cores are
+  available. This is because of the expensive transfer to and from
+  device.
 
-  Having the new primitive that, the simplest way to execute a network
-  is to use that primitive for all convolutional layers.  However, as
-  our networks have MFP layers, the effective batch size increases
-  after each MFP layer.
+  The simplest way to execute a network using the GPU for computation
+  and host RAM for storage is to use individually optimized GPU + host
+  RAM layer described above for each convolutional layer, and the CPU
+  implementation of a MFP layer for each pooling layer.
 
-  Then we can do one batch, or multiple sub--batches at the time, for
-  the rest of the network, minimizing the communication overhead.
-  Given on Figure~\ref{fig:layer-vs-batch}.
+  Turns out that, when using MFP layers for evaluating a max--pooling
+  ConvNet we can achieve better performances by minimizing the data
+  transferred to and from the GPU.  We illustrate the stragety through
+  the follwing example.  Assume we are given a ConvNet architecture in
+  the form CPCPCCCC, where each layer has 3 input and 3 output
+  feature--maps, except for the first layer that has 1 input
+  feature--map and the last that has 1 output feature--map.  Let the
+  sizes of the pooling window be $2 \times 1 \times 1$, this means
+  that when \emph{MFP} layers is used, for each input tuple a
+  \emph{MFP} layer will produce 2 fragments of the same size.  Mainly
+  the most significant dimension of the input tensor to the layer will
+  double.  If the batch size $S$ of the network input was $1$, the
+  output of the second \emph{MFP} layer will have the batch size of
+  $4$.  At this point we might be able to process the rest of the
+  network for a single input tuple (or multiple) using the GPU--only
+  approach, thus only having to upload the input to the GPU once, and
+  fetch the final result once.  Processing the first four layers of
+  the network using the GPU + host RAM and MFP layers and the rest of
+  the layers with the GPU--only approach for the rest of the ConvNet
+  is illustrated in Figure~\ref{fig:layer-vs-batch}.  Here we process
+  the first four layers, one layer at the time, and the last four
+  layers one batch at the time.
 
-  Finding the optimal network execution strategy becomes more
-  complicated.  The first additional parameter we have is $\theta$,
-  $(0 \le \theta \le L)$, where $L$ is the number of layers of the
-  given ConvNet.
+  Finding the optimal network execution strategy for such execution
+  becomes more complex.  The first additional parameter we have is
+  $\theta$, $(0 \le \theta \le L)$, where $L$ is the number of layers
+  of the given ConvNet.  This parameters represent the number of
+  layers that will be processed one at the time using the GPU + host
+  RAM or CPU-MFP layer at the time.  The rest of the network is then
+  executed one (or more) batches at the time using the GPU--only
+  primitives.
 
-  The first $\theta$ layers are then computed using the GPU + host RAM
-  implementation of the convolutional layers, or MFP implementation
-  for the CPU in the case of pooling layers.  These layers are
-  executed sequentially, producing an output of the $\theta$th layer.
+  For a given value of $\theta$ and a given input size, this approach
+  has two limitations.  Firstly, $\theta$ layers have to fit on the
+  host RAM.  Secondly, there has to exist a GPU--only network that can
+  process the latter layers on the GPU.
 
-  The rest of the layers will be executed differently.  Explain.
+  The optimal throughput can, once again be found by doing an
+  exhaustive search.  However, based on the results in the previous
+  section, we can limit the possible GPU--only convolutional layer
+  implementations based on the kernel sizes.  For kernels of $5$ and
+  smaller we shell use the direct convolution and for larger, the
+  FFT--based one.  Also, the use of MFP layers reduces the
+  performances, and in this case is required, as it increases the
+  batch size.
 
-  Note that when $\theta = 0$ the execution is identical to the
-  GPU--only execution.
+  In order to find an optimal implementation we perform the following
+  exhaustive search:
 
-  - Heuristic about FFT vs Direct based on the previous results.
-  - Fix $S$ to 1, vary input sizes.
-  - For each input size, vary $\theta$.
+  \begin{enumerate}
+    \item For each valid input
+    \item For each valid $\theta$
+    \item Separately optimize the fist $\theta$ that are convolutional
+      to use GPU + host RAM primitive, and separately optimize the
+      rest of the GPU--only network
+  \end{enumerate}
 
-\subsection{CPU--GPU ConvNet execution}
-
-  We want to harvest both CPU and GPU computational power.
-
-  - Similar to the previous execution
-
-  - Similar optimization
-
-  - Pipeline
-
-\subsection{GPU--only and CPU--only benchmarks}
-
-  \begin{figure*}[h!t]
+  \begin{figure*}[!htbp]
     \centering
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.38\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
       {fig/m36x.eps}}
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.38\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
       {fig/m56x.eps}}
-    \\
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.38\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
       {fig/m76x.eps}}
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.38\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
       {fig/m96x.eps}}
 
     \caption{Throughput vs memory available
@@ -1318,19 +1344,66 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
     \label{fig:final_results}
   \end{figure*}
 
+\subsection{CPU--GPU ConvNet execution}
+
+  Finally, we want to propose a way to implement a ConvNet that
+  utilizes both the available CPUs and GPUs.
+
+  The idea behind the approach is very similar to the GPU + host RAM
+  ConvNet execution in the sense that the network will be divided into
+  two parts.  However, in this case the first $\theta$ layers will be
+  processed by the CPU, and the rest by the GPU.
+
+  Finding the optimal CPU implementation for the first $\theta$ layers
+  is equivalent to finding a CPU--only implementation of a network
+  that consists of exactly the first $\theta$ layers of the network.
+  Optimizing the GPU--only of the network is equivalent to the one in
+  the previous section.
+
+  The CPU and the GPU will form a producer--consumer pipeline.  The
+  CPU, as a producer applies the first $\theta$ layers for a given
+  network input and puts the result on the queue to be consumed.  The
+  GPU on the other side, consumes the data on the queue, taking the
+  output of the $\theta$th layer, and producing the final output of
+  the ConvNet.
+
+  This approach can yield to huge memory overhead if the CPU produces
+  data much faster than the GPU can consume.  For that reason, the CPU
+  is not allowed to start working on the next input until the queue is
+  empty -- until the GPU had picked up and started executing the rest
+  of the network for all the data on the queue.  This will essentially
+  limit the queue size to the maximal size of one.
+
+  For a given value of $\theta$ and a given input size the GPU will
+  operate on the output of the $\theta$th layer producing the final
+  output.  Hence the output of the $\theta$th layer has to be stored
+  in the host ram, along and memory allocated for the network output.
+  As both the CPUs and GPUs can do work only when the queue is empty,
+  the rest of the host RAM is available to the CPUs.
+
+  Finding the optimal implementation through an exhaustive search
+  resembles the one in the previous section.  For each valid input
+  shape, we loop over all valid values of $\theta$, and for each such
+  division of the ConvNet, we separately optimize the first $\theta$
+  CPU--only layers and the rest of the GPU--only layers, having the
+  memory limitations in mind.
+
+\subsection{GPU--only and CPU--only benchmarks}
+
+
 \section{Comparison to other algorithms}
 
 
-  \begin{table*}[t]
+  \begin{table*}[h!tbp]
     \centering
     \begin{tabular}{l|cccccccc}
       \toprule
       Network  & Baseline (cuDNN)    & Theano     & Caffe    & ELEKTRONN  & ZNN        & GPU-Only   & CPU-Only   & GPU-CPU \\
       \midrule
-      n337     & $22934.8$           & $1979.3$   & $1.348$  & $122668$   & $34334.8$  & $666485$   & $262131$   & $933070$ \\
-      n537     & $1048.68$           & --         & --       & --         & $9494.5$   & $28757.5$  & $194683$   & $334163$ \\
-      n726     & $13520.4$           & $90.523$   & --       & $6122$     & $31354.8$  & $97413.4$  & $300312$   & $470166$ \\
-      n926     & $2667.86$           & --         & --       & --         & $20908.6$  & $27667.8$  & $249190$   & $375295$ \\
+      n337     & $22,934.8$           & $1,979.3$   & $1.348$  & $122,668$   & $34,334.8$  & $666,485$   & $262,131$   & $933,070$ \\
+      n537     & $10,48.68$           & --          & --       & --          & $9,494.5$   & $28,757.5$  & $194,683$   & $334,163$ \\
+      n726     & $13,520.4$           & $90.523$    & --       & $6,122$     & $31,354.8$  & $97,413.4$  & $300,312$   & $470,166$ \\
+      n926     & $2,667.86$           & --          & --       & --          & $20,908.6$  & $27,667.8$  & $249,190$   & $375,295$ \\
       \bottomrule
     \end{tabular}
     \caption{Comparisons to other methods.}
@@ -1368,12 +1441,10 @@ Computing Center.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
+% \clearpage
 
-{\small
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,./ref/bib}
-}
 
 
 \end{document}
