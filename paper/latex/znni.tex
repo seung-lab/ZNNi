@@ -79,29 +79,27 @@
 \begin{abstract}
 Sliding window convolutional networks (ConvNets) have become a popular
 approach to computer vision problems such as image segmentation, and
-object detection and localization. Here we consider the
-parallelization of inference, i.e., the application of a previously
-trained ConvNet, with emphasis on 3D images.  Our goal is to maximize
-throughput, defined as the number of output voxels computed per unit
-time.  Other things being equal, processing larger image sizes tends
-to increase throughput, because fractionally less computation is
-wasted on the borders of the image.  It follows that an apparently
-slower algorithm may end up having higher throughput if it can process
-a larger image within the constraint of the available RAM.  Therefore
-we propose a number of CPU and GPU primitives for convolutional and
-pooling layers, which are designed to minimize memory overhead.  The
-primitives are combined to create CPU-only, GPU-only, GPU + host RAM,
-and CPU-GPU inference algorithms.  The primitives include convolution
-based on highly efficient pruned FFTs. Our theoretical analyses and
-empirical tests reveal a number of interesting findings.  First,
-throughput is typically maximized for the CPU-only and GPU-only
-algorithms by choosing different primitives for successive layers.
-Second, it may be advantageous for the GPU to use host RAM for storage
-of intermediate results, though onboard RAM has much faster access.
-Third, our CPU-GPU algorithm can achieve greater throughput than the
-sum of CPU-only and GPU-only throughputs.  Fourth, adding host RAM can
-be a more efficient way of increasing throughput than adding another
-GPU or more CPUs.
+object detection and localization. Here we consider the problem of
+inference, the application of a previously trained ConvNet, with
+emphasis on 3D images.  Our goal is to maximize throughput, defined as
+the number of output voxels computed per unit time.  Other things
+being equal, processing a larger image tends to increase
+throughput, because fractionally less computation is wasted on the
+borders of the image.  It follows that an apparently slower algorithm
+may end up having higher throughput if it can process a larger image
+within the constraint of the available RAM.  We introduce novel CPU
+and GPU primitives for convolutional and pooling layers, which are
+designed to minimize memory overhead. The primitives include
+convolution based on highly efficient pruned FFTs. Our theoretical
+analyses and empirical tests reveal a number of interesting findings.
+For some ConvNet architectures, cuDNN is outperformed by our FFT-based
+GPU primitives, and these in turn can be outperformed by our CPU
+primitives. The CPU manages to achieve higher throughput because of
+its fast access to more RAM.  A novel primitive in which the GPU
+accesses host RAM can significantly increase GPU throughput.  Finally,
+a CPU-GPU algorithm achieves the greatest throughput of all. Overall,
+adding host RAM can be a more efficient way of increasing throughput
+than adding another GPU or more CPUs.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,14 +111,81 @@ GPU or more CPUs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
+Waving the banner of ``deep learning,'' researchers have revived the
+use of convolutional networks (ConvNets) for computer vision.  The
+revolution has been driven by increases in the speed of ConvNet
+training made possible by GPU
+implementations \cite{chellapilla2006high, scherer2010accelerating,
+strigl2010performance, ciresan2011flexible}. Here we are concerned
+with the problem of inference, applying a previously trained ConvNet
+to a new image.  Fast inference is critical for big data applications,
+when large numbers of images and/or very large images are to be
+processed.  Inference is especially costly when a ConvNet is applied
+in a window that slides over every location in a large image.  Sliding
+window ConvNets have been used successfully for image segmentation
+(cite), object detection and localization (cite), and are generally
+useful for image to image transformations.
+
+For sliding window inference, a large input image is divided into
+input patches, which are transformed into output patches by the
+ConvNet.  The output patches are smaller than the input patches, just
+as they would be for a single convolution. Therefore the overlap
+between the input patches is chosen so that the output patches exactly
+cover the output image without overlap. This algorithm discards
+computation at the borders of each input patch, and is analogous to
+the overlap-save or overlap-scrap method for computing a single
+convolution described in signal processing textbooks.  It is
+advantageous to make the input patch large so that the border effects
+are proportionally smaller.  This means that achieving high throughput
+inference tends to bump into the constraint of limited RAM.  This is
+not the case for ConvNet training, where there is typically some range
+of patch sizes that is optimal for training speed.
+
+We study ConvNet architectures consisting of sequences of
+convolutional and pooling layers.  GPU implementations such as cuDNN
+provide a number of primitives for computing the layers, and a
+particular architecture is implemented by combining primitives.  We
+introduce a number of new layer primitives for the CPU and GPU
+(Fig. \ref{fig:layers}). The new convolutional primitives are either
+direct or FFT-based, and the latter are based on highly efficient
+pruned FFTs.  The new pooling primitives implement
+max--fragment--pooling \cite{giusti2013fast, masci2013fast}.
+
+In empirical tests, we combine the primitives to maximize throughput
+for CPU-only and GPU-only algoritihms. In some cases, our FFT-based
+GPU primitives outperform the cuDNN primitives by a large margin.  The
+CPU-only algorithm may achieve higher throughput than the GPU-only
+algorithm because the CPU has fast access to more RAM, even if it is
+capable of fewer floating point operations (FLOPs) per second.
+
+Because the GPU has limited onboard RAM, we introduce a novel GPU +
+host RAM primitive.  We show that using this new primitive can lead to
+much higher throughput, in spite of the slower communication speed
+between GPU and host RAM.
+
+Finally, we study a CPU-GPU algorithm, in which the first layers of
+the ConvNet are computed by the CPU and the later layers are computed
+by the GPU.  The algorithm is pipelined to utilize the CPU and GPU
+efficiently.  This yields the highest throughput of all the
+algorithms, which is even greater than the sum of throughputs of GPU +
+host RAM and CPU-only.
+
+
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=0.99\columnwidth]{fig/alllayersram.pdf}
+    \end{center}
+    \caption{Diagram of all layers primitives.  The red primitives are
+      wrappers primitives provided by CuDNN.  The green primitives are
+      the novel primitives introduced in this paper.}
+    \label{fig:layers}
+  \end{figure}
 
 % cuDNN is described here~\cite{chetlur2014cudnn}
 %We do max fragment pooling as described here~\cite{giusti2013fast}.
 %Except that we are limiting the sizes of our output patches to have
 %each dimension equal to the cartesian product of all corresponding
 %dimensions of all pooling windows in the network.
-
-We care about throughput.
 
 \section{Convolutional networks}
 
@@ -140,42 +205,7 @@ We care about throughput.
 
   What it does
 
-\subsection{What do we study here}
 
-  We study only layered networks -- the input to each layer is either
-  a network input or the output of some other layer.  Our primitives
-  do not have that restriction, we just use them that way to analyze
-  some networks.
-
-  We study networks with only convolutional and pooling layers.
-  Convolutional layers are computationally most expensive, while the
-  pooling layers can be replaced with so called max--fragment--poling
-  layers to compute more pixels by reusing the computation from the
-  previous layers...
-
-  We assume that the transfer function is rectify linear, can be
-  anything.
-
-  dwell more..
-
-  \begin{figure}
-    \begin{center}
-      \includegraphics[width=0.99\columnwidth]{fig/alllayersram.pdf}
-    \end{center}
-    \caption{Diagram of all layers primitives.  The red primitives are
-      wrappers primitives provided by CuDNN.  The green primitives are
-      the novel primitives introduced in this paper.}
-    \label{fig:layers}
-  \end{figure}
-
-\subsection{Contributions and novelty}
-
-  - Introduction of new primitives for the CPU and GPU (list the novel ones)
-     a) based on previously mentioned as tedious Padded Pruned FFTs
-  - Showing how to use them to maximize throughput
-  - Novel GPU + Host primitive
-  - Showing how to use it
-  - CPU + GPU pipeline algorithm
 
 \section{Sliding window max--pooling ConvNet}
 
