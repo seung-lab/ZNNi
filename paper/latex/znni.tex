@@ -126,6 +126,18 @@ window ConvNets have been used successfully for image segmentation
 (cite), object detection and localization (cite), and are generally
 useful for image to image transformations.
 
+
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=0.99\columnwidth]{fig/alllayersram.pdf}
+    \end{center}
+    \caption{Diagram of all layers primitives.  The red primitives are
+      wrappers primitives provided by CuDNN.  The green primitives are
+      the novel primitives introduced in this paper.}
+    \label{fig:layers}
+  \end{figure}
+
+
 For sliding window inference, a large input image is divided into
 input patches, which are transformed into output patches by the
 ConvNet.  The output patches are smaller than the input patches, just
@@ -170,16 +182,6 @@ efficiently.  This yields the highest throughput of all the
 algorithms, which is even greater than the sum of throughputs of GPU +
 host RAM and CPU-only.
 
-
-  \begin{figure}
-    \begin{center}
-      \includegraphics[width=0.99\columnwidth]{fig/alllayersram.pdf}
-    \end{center}
-    \caption{Diagram of all layers primitives.  The red primitives are
-      wrappers primitives provided by CuDNN.  The green primitives are
-      the novel primitives introduced in this paper.}
-    \label{fig:layers}
-  \end{figure}
 
 % cuDNN is described here~\cite{chetlur2014cudnn}
 %We do max fragment pooling as described here~\cite{giusti2013fast}.
@@ -1424,6 +1426,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 \subsection{GPU--only and CPU--only benchmarks}
 
 
+
 \section{Comparison to other algorithms}
 
 
@@ -1431,21 +1434,50 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
     \centering
     \begin{tabular}{l|cccccccc}
       \toprule
-      Network  & Baseline (cuDNN)    & Theano     & Caffe    & ELEKTRONN  & ZNN        & GPU-Only   & CPU-Only   & GPU-CPU \\
+      Network  & Baseline (cuDNN)  & Theano      & Caffe    & ELEKTRONN   & ZNN         & GPU-Only    & CPU-Only    & GPU-CPU   \\
       \midrule
-      n337     & $22,934.8$           & $1,979.3$   & $1.348$  & $122,668$   & $34,334.8$  & $666,485$   & $262,131$   & $933,070$ \\
-      n537     & $10,48.68$           & --          & --       & --          & $9,494.5$   & $28,757.5$  & $194,683$   & $334,163$ \\
-      n726     & $13,520.4$           & $90.523$    & --       & $6,122$     & $31,354.8$  & $97,413.4$  & $300,312$   & $470,166$ \\
-      n926     & $2,667.86$           & --          & --       & --          & $20,908.6$  & $27,667.8$  & $249,190$   & $375,295$ \\
+      n337     & $22,934.8$        & $1,979.3$   & $1.348$  & $122,668$   & $34,334.8$  & $666,485$   & $262,131$   & $933,070$ \\
+      n537     & $1,048.68$        & --          & --       & --          & $9,494.5$   & $28,757.5$  & $194,683$   & $334,163$ \\
+      n726     & $13,520.4$        & $90.523$    & --       & $6,122$     & $31,354.8$  & $97,413.4$  & $300,312$   & $470,166$ \\
+      n926     & $2,667.86$        & --          & --       & --          & $20,908.6$  & $27,667.8$  & $249,190$   & $375,295$ \\
       \bottomrule
     \end{tabular}
     \caption{Comparisons to other methods.}
-    \label{table:conv_complexity}
+    \label{table:comparisons_to_others}
   \end{table*}
 
-  We implement the baseline algorithm ourselves, by simply calling
-  cuDNN~\cite{chetlur2014cudnn} primitives.
+  We compare our 4 approaches (GPU--only, CPU--only, GPU + host RAM
+  and GPU--CPU) with other publicly available implementations and show
+  the results in the Table~\ref{table:comparisons_to_others}.  The
+  benchmarks are performed on the same hardware, the 4--way Intel Xeon
+  E7–8890 v3 machine with 256GB of RAM and a Titan X GPU.
 
+  The results of our approaches are based on the optimizations
+  described in the previous sections.  For the other approaches, we
+  varied the input sizes and measured the throughput, we reported the
+  highest value of througput obtained, which was always correlated
+  with the size of the input we were able to process.
+
+  The baseline (cuDNN) approach consists of calling the
+  cuDNN~\cite{chetlur2014cudnn} primitives for convolution and
+  max--pooling.  Unlike other approaches, it this is not a framework
+  -- it requires the user to write some code for calling into the
+  cuDNN primitives, for calculating the input/output shapes and some
+  minimal memory management.  We expect that a user with minimal
+  programming experience could implement the above.  Our
+  implementation was done in C++, however one could use cuDNN bindings
+  for other languages.
+
+  Theano~\cite{bergstra2010theano} is popular machine learning
+  framework whose ConvNet capabilities are also based on cuDNN and use
+  GPUs.  Theano, however, assumes that a every inference computation
+  is a part of a ConvNet training.  This requires the outputs of each
+  layers to be stored for re--use during the backward pass.  This
+
+  The baseline implementation is based on the
+  cuDNN~\cite{chetlur2014cudnn} primitives.  This approach required
+  writting some minimal code that calculates the appropriate
+  input/output shapes for each layer and calls the cuDNN primitives.
   We compare our approach to Theano~\cite{bergstra2010theano} that
   computes sparse outputs, a version of Caffe~\cite{jia2014caffe} that
   is capable of producing dense output using strided
@@ -1484,3 +1516,7 @@ Computing Center at Princeton University.
 
 %% r3.8xlarge
 %% CUDNN GEMM not OK for 9x9x9
+
+
+%% we open a new space of exploration as the current ones depend only on the GPU computational power.  given the new efficent algorithms for different architectures, we make some instersting obsrvations... which are...
+%% we discuss why they are what we exepct them to be
