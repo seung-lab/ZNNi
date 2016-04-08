@@ -83,15 +83,25 @@ object detection and localization. Here we consider the
 parallelization of inference, i.e., the application of a previously
 trained ConvNet, with emphasis on 3D images.  Our goal is to maximize
 throughput, defined as the number of output voxels computed per unit
-time.  We propose CPU and GPU primitives for convolutional and pooling
-layers, which are combined to create CPU, GPU, and CPU-GPU inference
-algorithms.  The primitives include convolution based on highly
-efficient padded and pruned FFTs. Our theoretical analyses and
-empirical tests reveal a number of interesting findings.  For example,
-adding host RAM can be a more efficient way of increasing throughput
-than adding another GPU or more CPUs.  Furthermore, our CPU-GPU
-algorithm can achieve greater throughput than the sum of CPU-only and
-GPU-only throughputs.
+time.  Other things being equal, processing larger image sizes tends
+to increase throughput, because fractionally less computation is
+wasted on the borders of the image.  It follows that an apparently
+slower algorithm may end up having higher throughput if it can process
+a larger image within the constraint of the available RAM.  Therefore
+we propose a number of CPU and GPU primitives for convolutional and
+pooling layers, which are designed to minimize memory overhead.  The
+primitives are combined to create CPU-only, GPU-only, GPU + host RAM,
+and CPU-GPU inference algorithms.  The primitives include convolution
+based on highly efficient pruned FFTs. Our theoretical analyses and
+empirical tests reveal a number of interesting findings.  First,
+throughput is typically maximized for the CPU-only and GPU-only
+algorithms by choosing different primitives for successive layers.
+Second, it may be advantageous for the GPU to use host RAM for storage
+of intermediate results, though onboard RAM has much faster access.
+Third, our CPU-GPU algorithm can achieve greater throughput than the
+sum of CPU-only and GPU-only throughputs.  Fourth, adding host RAM can
+be a more efficient way of increasing throughput than adding another
+GPU or more CPUs.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -356,7 +366,7 @@ We care about throughput.
   A 3D FFT is obtained by computing 1D FFTs along the three
   dimensions.  Some of these 1D FFTs are of an array with all elements
   equal to $0$.  These are unnecessary to compute as the FFT of
-  a \emph{all zeros} signal is all zeros.
+  an all zeros signal is all zeros.
 
   We can reduce the amount of computation by computing only necessary
   1D transforms.  When computing the FFT of a trainable kernel of size
@@ -1422,8 +1432,8 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 
 \section{Acknowledgments}
 We are grateful to Intel Corporation for providing the 4–way Intel
-Xeon E7–8890 v3 machine, and for support through an Intel Parallel
-Computing Center.
+Xeon E7–8890 v3 machine, and for supporting the Intel Parallel
+Computing Center at Princeton University.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
