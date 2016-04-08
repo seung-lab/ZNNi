@@ -308,7 +308,7 @@ We care about throughput.
     \label{table:layers_complexity}
   \end{table*}
 
-\section{FFT of padded image}
+\section{Pruned FFT}
   The computational complexity of a ConvNet can be reduced by using
   FFT convolutions.  The advantages of such approach have been shown
   for 2D ConvNets running on
@@ -317,25 +317,24 @@ We care about throughput.
 
   In FFT convolution the kernel and the image are zero-padded to a
   common size.  Since the kernel is typically much smaller than the
-  image, the padded kernel consists mostly of zeros.  If the FFT
-  computation were implemented to ignore the zeros of the padded
-  kernel, it would become much faster.  We propose such an algorithm,
-  and implement it for both the CPU and GPU. Our approach achieves an
-  average of $5 \times$ speedup over the naive approach on the CPU and
-  $10 \times$ speedup on the GPU.  It also greatly reduces the memory
-  overhead compared to the approaches described in
-  ~\cite{mathieu-iclr-14,vasilache2014fast}.
+  image, the padded kernel consists mostly of zeros.  Ignoring the
+  zeros is known as FFT pruning, and can provide speedup.  We propose
+  and implement such an algorithm, for both the CPU and GPU. Our
+  approach achieves an average of $5 \times$ speedup over the naive
+  approach on the CPU and $10 \times$ speedup on the GPU.  It also
+  greatly reduces the memory overhead compared to the approaches
+  described in ~\cite{mathieu-iclr-14,vasilache2014fast}.
 
   The speedup is expected to be large for a ConvNet, which typically
   contains many more kernel FFTs than image FFTs.  The speedup is more
   modest for a single convolution, which requires one padded kernel
   FFT, one image FFT, and one inverse FFT.
 
-  Our padded FFT algorithms are the foundation of our FFT--based
+  Our pruned FFT algorithms are the foundation of our FFT--based
   convolutional layers, but understanding them is not necessary for
   understanding the latter part of the paper.
 
-\subsection{Padded FFT algorithm}
+\subsection{Pruned FFT algorithm}
 
   \begin{figure}
     \begin{center}
@@ -538,23 +537,20 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
     \label{alg:cpu_direct}
   \end{algorithm}
 
-  The algorithm using direct convolution is showin in the
-  Algorithm~\ref{alg:cpu_direct}.  The computation is parallelized by
-  two $\kw{parallel for}$ loops such that each output image of each
-  minimbatch is computed in parallel on a different working thread.
-  The $\kw{parallel for}$ loops are implemented using intel$^{\small
-    \textregistered}$ thread building blocks such that the work is
-  evenly divided over the available cores.
+  The computation is parallelized by two $\kw{parallel for}$ loops
+  such that each image of each output in the batch is computed in
+  parallel on a different working thread (see
+  Algorithm~\ref{alg:cpu_direct}).  The $\kw{parallel for}$ loops are
+  implemented using Intel thread building
+  blocks such that the work is evenly divided over the available
+  cores.
 
-  For the direct convolution we provide two implementations.  The
-  first is a naive convolution implementation, and the second one is
-  using Intel$^{\small \textregistered}$ to perform convolutions.  MKL
-  implementation is 2x faster on average, however it requires extra
-  memory for a temporary image where a result of convolution is stored
-  before accumulating it to the output image.  When $T$ cores are
-  utilized, the algorithm yields a memory overhead of $T \times n_x'
-  \times n_y' \times n_z'$.  The total amount of memory required for a
-  layer is given in the Table~\ref{table:memory_requirements}.
+  We provide one implementation using naive convolution and the other
+  using Intel MKL.  The latter is 2\times faster on average, but
+  requires extra memory for a temporary image where a result of
+  convolution is stored before accumulating it to the output image.
+  The memory overhead of both implementations is given in
+  Table~\ref{table:memory_requirements}.
 
   \begin{table}
     \centering
@@ -602,10 +598,8 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   \end{table}
 
 \subsubsection{Data parallel FFT-based algorithm}
-
-  The data parallel algorithm is given in the
-  Algorithm~\ref{alg:cpu_fft_alg1}.  The computationally intensive
-  operations in the algorithm are individually parallelized.  More
+  The computationally intensive operations are individually
+  parallelized (see Algorithm~\ref{alg:cpu_fft_alg1}).  More
   specifically each FFT and inverse FFT transform is done in parallel
   as explained in the previous section.  The $\proc{Parallel-MAD}$
   function computes a series of multiply-add operations of complex
@@ -796,7 +790,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   For the GPU, we propose three different algorithms.  Two of them use
   based on cuDNN's 3D convolution that are based on implicit
   matrix--matrix multiplication.  The third FFT--based implementation
-  is based on our, previously described, algorithm for padded--pruned
+  is based on our, previously described, algorithm for pruned
   FFTs.
 
 \subsubsection{Direct convolution using cuDNN}
@@ -960,7 +954,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   convolutional layers and 2 pooling layers (CPCPCCCC) with somehow
   larger filter sizes of $7 \times 7 \times 7$ and $9 \times 9 \times
   9$.  The architectures of the benchmarked networks are shown in
-  Table~\ref{table:benchmarked_networks}.  A that a rectify--linear
+  Table~\ref{table:benchmarked_networks}.  A rectified linear
   transfer function is applied after each convolutional layer.  The
   complexity of the transfer function can minimally influence the
   computation time as it represents only a small fraction of the
@@ -973,8 +967,7 @@ $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
   hyper--threads), 256GB of RAM and a Titan X GPU (with 12GB on--board
   RAM).  The second machine is an Amazon EC2 instance with $32$
   virtual cores and 244GB of RAM (r3.8xlarge).  The second machine is
-  included as it is more readily available for general public to
-  reproduce the results.
+  included as it is more readily available.
 
 \subsection{Minimizing throughput}
 
