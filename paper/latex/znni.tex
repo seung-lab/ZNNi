@@ -113,17 +113,18 @@ publicly available implementations of sliding window 3D ConvNets.
 Waving the banner of ``deep learning,'' researchers have revived the
 use of convolutional networks (ConvNets) for computer vision.  The
 revolution has been driven by increases in the speed of ConvNet
-training made possible by GPU
-implementations \cite{chellapilla2006high, scherer2010accelerating,
-strigl2010performance, ciresan2011flexible}. Here we are concerned
+training made possible by GPU implementations
+\cite{chellapilla2006high, scherer2010accelerating,
+  strigl2010performance, ciresan2011flexible}. Here we are concerned
 with the problem of inference, applying a previously trained ConvNet
 to a new image.  Fast inference is critical for big data applications,
 when large numbers of images and/or very large images are to be
 processed.  Inference is especially costly when a ConvNet is applied
 in a window that slides over every location in a large image.  Sliding
-window ConvNets have been used successfully for image segmentation
-(cite), object detection and localization (cite), and are generally
-useful for image to image transformations.
+window ConvNets have been used successfully for image
+segmentation~\cite{ciresan2012deep}, object detection and
+localization~\cite{sermanet2013overfeat}, and are generally useful for
+image to image transformations.
 
 
   \begin{figure}
@@ -451,7 +452,7 @@ We will refer to the sizes of the 5D tensors $I$ and $O$ as input and
 output shape, respectively.  The relationship between input shape and
 output shape depends on kernel size as in
 Table~\ref{table:layers_complexity}.
-  
+
   \begin{table*}[t]
     {\footnotesize
     \centering
@@ -477,7 +478,7 @@ Table~\ref{table:layers_complexity}.
       $S \cdot f \cdot n^3 \cdot p^3$ \\
       \bottomrule
     \end{tabular}
-    \caption{Relation between input and output shapes for convolutional and pooling layers, along with computational complexities. Input shape is for a batch of $S$ inputs, each of which is an $f$-tuple of 3D images with size $n^3$, and output shape is analogous. The 3D kernel has size $k^3$. The pooling window has size $p^3$, and FFT complexity for an image of size $n^3$ is assumed to be $C n^3\log n^3$.}  
+    \caption{Relation between input and output shapes for convolutional and pooling layers, along with computational complexities. Input shape is for a batch of $S$ inputs, each of which is an $f$-tuple of 3D images with size $n^3$, and output shape is analogous. The 3D kernel has size $k^3$. The pooling window has size $p^3$, and FFT complexity for an image of size $n^3$ is assumed to be $C n^3\log n^3$.}
     \label{table:layers_complexity}
     }
   \end{table*}
@@ -1415,24 +1416,35 @@ Table~\ref{table:layers_complexity}.
   GPUs.  Theano, however, assumes that a every inference computation
   is a part of a ConvNet training.  This requires the outputs of each
   layers to be stored for re--use during the backward pass.  This
+  greatly increases the memory overhead, thus the Theano's throughput
+  is much lower than the baseline, even though they both use the same
+  naive approach, and call to the same cuDNN primitives.
 
-  The baseline implementation is based on the
-  cuDNN~\cite{chetlur2014cudnn} primitives.  This approach required
-  writting some minimal code that calculates the appropriate
-  input/output shapes for each layer and calls the cuDNN primitives.
-  We compare our approach to Theano~\cite{bergstra2010theano} that
-  computes sparse outputs, a version of Caffe~\cite{jia2014caffe} that
-  is capable of producing dense output using strided
-  kernels~\cite{tschopp2015efficient}, ELENTRONN~\cite{ELEKTRONN2015},
-  and ZNN~\cite{zlateski2015znn}.
+  Caffe~\cite{jia2014caffe} is another GPU ConvNet framework.  We
+  benchmarked a version that can implements sliding window ConvNets
+  using ``strided kernels''~\cite{tschopp2015efficient}.  The
+  implementation is also optimized for training and seems to have a
+  huge memory overhead, as we were only able to run the smallest of
+  the networks.
 
-  The only package that has an optimization for inference is
-  ELEKTRONN.
+  ELEKTRONN~\cite{ELEKTRON2015} was the only competitor that provides
+  inference optimization for 3D sliding window ConvNets using
+  \emph{MPF}.  The package also uses cuDNN convolutional primitives.
+  However, it was able only to process two of our four networks.
+
+  ZNN~\cite{zlateski2015znn} is a framework optimized for training
+  sliding window 3D ConvNets on multi--core and many--core CPUs using
+  ``max--filtering'' followed by FFT--based ``sparse convolution''.
+  ZNN was the best competitor for networks with filters of $5 \times 5
+  \times 5$ or larger.
+
 
 
 \section{Conclusions}
 
-  Publicly available.
+  We want to say that we provide publicly available implementation of
+  all the primitives.  In future we might want to make wrappers for
+  other frameworks?  Everyone can reproduce the results.
 
 \section{Acknowledgments}
 We are grateful to Intel Corporation for providing the 4–way Intel
@@ -1448,17 +1460,8 @@ Computing Center at Princeton University.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \clearpage
-
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,./ref/bib}
 
 
 \end{document}
-
-%% r3.8xlarge
-%% CUDNN GEMM not OK for 9x9x9
-
-
-%% we open a new space of exploration as the current ones depend only on the GPU computational power.  given the new efficent algorithms for different architectures, we make some instersting obsrvations... which are...
-%% we discuss why they are what we exepct them to be
