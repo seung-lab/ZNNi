@@ -115,6 +115,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
+<<<<<<< HEAD
 
   Waving the banner of ``deep learning,'' researchers have revived the
   use of convolutional networks (ConvNets) for computer vision.  The
@@ -162,6 +163,63 @@
   kernels''\cite{tschopp2015efficient}, ``max
   filtering''\cite{zlateski2015znn}, or ``filter
   rarefaction''\cite{long2015fully}.
+=======
+Waving the banner of ``deep learning,'' researchers have revived the
+use of convolutional networks (ConvNets) for computer vision.  The
+revival has been driven by increases in the speed of ConvNet
+training made possible by GPU implementations
+\cite{chellapilla2006high, scherer2010accelerating,
+  strigl2010performance, ciresan2011flexible}. Here we are concerned
+with the problem of inference, applying a previously trained ConvNet
+to a new image.  Fast inference is critical for big data applications
+involving large numbers of images and/or very large images. Billions
+of photos and millions of videos are shared online every
+day \cite{MeekerReport14, ReelSEO}.  Scientists are also generating
+large amounts of image data.  For example, high-speed electron
+microscopy can generate a petascale 3D image from a cubic millimeter
+of brain in a few weeks \cite{Lichtman2014big}.  We will focus on 3D
+ConvNets, which are relevant for both videos and 3D images.  2D
+ConvNets are regarded as a special case that is less computationally
+costly.
+
+In contemporary computer vision, researchers are most familiar with
+applying ConvNets to image-to-label transformations.  For example, in
+object recognition the input is an image of an object and the desired
+output is the class of the object.  However, ConvNets can also be used
+for image-to-image transformations.  In this context, a ConvNet acts
+like a more complex version of a typical filtering operation in image
+processing.  The ConvNet is applied to a window that slides over the
+input image.  For each location of the window, the ConvNet outputs a
+set of numbers, effectively producing a set of output images, each
+with the same resolution as the input image.
+
+Sliding window ConvNets were originally applied to detect and/or
+localize objects in a larger image \cite{matan1991multi}, and this
+usage has been revived \cite{sermanet2013overfeat}. Here each output
+image represents the probability that an object of a certain class is
+located at a voxel.  Sliding window ConvNets have also been applied to
+image segmentation, to produce an output image representing the
+probability that a voxel is a boundary between objects or
+not \cite{jain2007supervised}.  And they have been applied to semantic
+segmentation, the problem of labeling each voxel in an input image by
+the class of the object to which it belongs \cite{ning2005toward}.
+In general, sliding window ConvNets are increasing in popularity as
+they are applied to more and more problems in computer vision.
+However, transforming image-to-image is even more computationally
+costly than image-to-label, so the need for speeding up sliding window
+ConvNets is especially acute.
+
+For speeding up ConvNet inference, a seemingly trivial detail about
+image borders turns out to matter. Because inference is less efficient
+at locations near image borders, it is advantageous to make the input
+image large so that border effects are proportionally smaller.  This
+means that efforts to maximize throughput tend to bump into the
+constraint of limited RAM.  (This is not the case for ConvNet
+training, where there is typically some range of input sizes that is
+optimal for training speed.)  It follows that an apparently slower
+algorithm may end up having higher throughput if it can process a
+larger image within the constraint of the available RAM.
+>>>>>>> 9495bf34ebda0e8b8caef65225ffeb15f672abdb
 
   \begin{figure}
     \begin{center}
@@ -173,6 +231,7 @@
     \label{fig:layers}
   \end{figure}
 
+<<<<<<< HEAD
 
   For sliding window inference, a large input image is divided into
   input patches that are larger than the sliding window.  Each input
@@ -221,6 +280,40 @@
   GPU-only algorithm because the CPU has fast access to more RAM, even
   if it is capable of fewer floating point operations (FLOPs) per
   second.
+=======
+We consider ConvNet architectures that contain both convolutional and
+pooling layers.  GPU implementations such as cuDNN provide a number of
+primitives for both kinds of layers.  A particular architecture is
+implemented by combining primitives.  In line with this approach, we
+introduce a number of new layer primitives for the CPU and GPU
+(Fig. \ref{fig:layers}).  These are designed to have low memory
+overhead, which should be important for high throughput as mentioned
+above.
+
+Our new convolutional primitives are either direct or FFT-based.  For
+the latter, we introduce new implementations of pruned FFTs that are
+faster (for kernels on average $5\times$ for CPU and $10\times$ for
+GPU) while using less memory.  Our FFT-based convolutional primitive
+for the GPU is designed to use much less memory than the algorithm
+proposed by \cite{mathieu-iclr-14,vasilache2014fast} and implemented
+in {\tt fbfft}.  We provide two new FFT-based convolutional primitives
+for the CPU. The task parallel version is more efficient if the number
+of input images and the number of output images are both large, but at
+the cost of more memory overhead than the data parallel version.  The
+task parallel algorithm is designed to use less memory than the one
+previously proposed for ConvNet training \cite{zlateski2015znn}.  To
+evaluate our novel primitives, we include comparisons with the direct
+convolutional primitives in cuDNN.  We also provide a new direct
+convolutional primitive for the CPU, but this turns out to be less
+useful than our FFT-based primitives in most circumstances.
+
+In empirical tests, we combine the primitives to maximize throughput
+for CPU-only and GPU-only algorithms. In some cases, our FFT-based
+GPU primitives outperform the cuDNN primitives by a large margin.  The
+CPU-only algorithm may achieve higher throughput than the GPU-only
+algorithm because the CPU has fast access to more RAM, even if it is
+capable of fewer floating point operations (FLOPs) per second.
+>>>>>>> 9495bf34ebda0e8b8caef65225ffeb15f672abdb
 
 To work around the limited onboard RAM of the GPU, we introduce a
 novel GPU + host RAM primitive.  We show that using this new primitive
@@ -237,9 +330,15 @@ host RAM and CPU-only.
 We also compare with other 3D sliding window max-pooling ConvNet
 implementations.  To the best of our knowledge, the only publicly
 available ones are the Caffe implementation
+<<<<<<< HEAD
 of~\cite{tschopp2015efficient}, ZNN~\cite{zlateski2015znn}, and
 ELEKTRONN~\cite{ELEKTRONN2015}.  (The last is the only competitor that
 is optimized for inference rather than training.) For comparison, we
+=======
+of \cite{tschopp2015efficient}, ZNN \cite{zlateski2015znn}, and
+ELEKTRONN \cite{ELEKTRONN2015}.  (The last is the only competitor that
+is specifically optimized for inference.) For comparison, we
+>>>>>>> 9495bf34ebda0e8b8caef65225ffeb15f672abdb
 also include a baseline implementation that utilizes the simple
 pooling primitives of cuDNN to perform the naive algorithm of
 computing all subsamplings of the output.  For four representative
@@ -248,6 +347,15 @@ E7 8890v3 machine with 256 GB RAM, our CPU-only, GPU-only, GPU + host
 RAM, and CPU-GPU implementations outperform all competitors.  In
 particular, our CPU-GPU implementation wins by a factor of roughly
 $10\times$ or more in all cases.
+
+We focus on throughput (number of output voxels per unit time) as the
+performance metric.  A related metric is energy consumed per voxel.
+For a given CPU or GPU, maximizing throughput is equivalent to
+minimizing energy consumption, assuming that the power consumption is
+roughly constant in time.  An interesting implication of our work is
+that in some situations the most economical way of increasing
+inference throughput may be to increase host RAM rather adding more
+GPUs or CPUs.
 
 % cuDNN is described here~\cite{chetlur2014cudnn}
 %We do max fragment pooling as described here~\cite{giusti2013fast}.
@@ -266,8 +374,75 @@ $10\times$ or more in all cases.
 %  the result of a ConvNet applied to a large 3D image, with the amount
 %  of pixels computed at the time being irrelevant.
 
+\section{Throughput of sliding window inference}
+In large scale sliding window inference, the input image is divided
+into smaller input patches. These are transformed by the ConvNet into
+output patches, which are recombined to generate the output image.
+This divide-and-conquer approach is motivated by both time and space
+considerations.  The computation can be sped up by assigning the
+patches to multiple workers.  Also if the computation were not
+divided, it might not fit in the RAM available to a single worker.
+
+Each output patch is smaller than the input patch, because the sliding
+window is restricted to be entirely contained within the input image.
+(This is analogous to a ``valid'' convolution in MATLAB.)  Therefore
+the input patches are chosen to overlap so that the output patches
+exactly cover the output image without overlap. (This is analogous to
+the overlap-save or overlap-scrap method for computing a single
+convolution described in signal processing textbooks.)
+
+We define the throughput of a single worker as the number of voxels in
+the output patch divided by the time required for the worker to
+process a single patch.  In this paper, a worker will be a single
+shared-memory machine, either CPU or GPU or combination of the two.
+Our goal is to maximize worker throughput.
+
+When computing ConvNet outputs for nearby locations of the sliding
+window, some of the arithmetic operations are identical.  For
+efficiency it is important to reuse the results of these operations.
+For ConvNets with  convolutional layers only, this happens naturally
+as the output patch is the same resolution as the input patch.  If
+there are pooling layers, however, the output patch produced by a
+ConvNet is a subsampling of the output of a sliding window ConvNet.
+To obtain the entire output image, one must compute all subsamplings
+with different offsets separately, and then combine them.  This
+algorithm does not efficiently reuse computations for nearby output
+voxels.
+
+Here we instead provide pooling primitives that compute max-pooling
+fragments (MPF), a more efficient strategy for sliding window
+computations \cite{giusti2013fast, masci2013fast}.  ELEKTRONN is the
+only other publicly available package with MPF support known to us
+(\url{http://elektronn.org}).  The MPF algorithm computes the same
+results as the approach known as ``dilated
+convolution''\cite{yu2015multi}, ``strided
+kernels''\cite{tschopp2015efficient}, ``max
+filtering''\cite{zlateski2015znn}, or ``filter
+rarefaction''\cite{long2015fully}.
+
+While MPF does efficiently reuse computation within a patch, the
+division into patches does itself incur a cost. Reuse cannot happen
+for nearby locations in different output patches, assuming the
+computations on the patches are done independently.  For example, it
+is highly inefficient to make the input patch the same size as the
+sliding window, which results in no reuse at all across different
+locations of the sliding window.  It is more efficient to increase the
+size of the input patch, to reduce the fraction of voxels near the
+border and thereby reduce inefficiency due to lack of reuse.
+
+Consequently memory overhead becomes important, if the goal is to
+maximize throughput.  An apparently faster algorithm may end up with
+inferior throughput if it cannot process a large input patch using the
+available RAM.  Later on, we will introduce a set of novel primitives
+for computing the layers of a ConvNet, which are designed to have low
+memory overhead as well as to be fast.  The primitives include
+convolutional and max-pooling layers.  (Our approach also can be
+extended to other kinds of pooling layers.)  As a prelude to the layer
+primitives, we first introduce lower-level FFT primitives which turn
+out to be important for efficient convolution.
+
 \section{Pruned FFT}
-  We begin by improving the efficiency of convolution, because this
+Improving the efficiency of convolution is crucial, because this
   computation is performed so many times in a ConvNet.  The advantages
   of FFT convolution have been shown for 2D ConvNets running on
   GPUs~\cite{mathieu-iclr-14,vasilache2014fast}, and 3D ConvNets
@@ -450,9 +625,7 @@ Our approach uses $3$rd party libraries to perform each batch of 1D
 
 
 \section{Convolutional layers}
-We define a max-pooling ConvNet as a sequence of layers, where each
-layer can be either convolutional or max--pooling. (Our approach
-also can be extended to other kinds of pooling layers.)  We begin with the
+We begin with the
 primitives for the convolutional layers, which are the most
 computationally intensive.
 
