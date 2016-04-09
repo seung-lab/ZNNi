@@ -37,6 +37,8 @@
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 \DeclarePairedDelimiter{\angled}{\langle}{\rangle}
 
+\hyphenation{Conv-Net}
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -838,7 +840,7 @@ Table~\ref{table:layers_complexity}.
   false--sharing, a case where one CPU's cache is invalidated because
   multiple CPUs operate on adjacent memory).  It further improves the
   performances on multi--chip systems, by minimizing the data sharing
-  between cores on different chips. On a 4--way Intel Xeon E7--8890 v3
+  between cores on different chips. On a 4--way Intel Xeon E7 8890v3
   machine the task parallel algorithm is $10 \times$ faster than the
   data parallel one (for large enough $f' \cdot S$ and $f \cdot S$).
 
@@ -941,7 +943,7 @@ Table~\ref{table:layers_complexity}.
   $f'$ inverse FFT transforms at once (lines 13--16).
 
   In the final stage (lines 17 and 18) we compute the output images by
-  looping over the mini--batches and computing $f'$ inverse FFTs in
+  looping over the batches and computing $f'$ inverse FFTs in
   parallel.  Finally we free the memory of the output transforms and
   the scratch space.
 
@@ -990,7 +992,7 @@ Table~\ref{table:layers_complexity}.
   the cuDNN max-pooling primitive to compute the max-pooling of all
   input images at that offset.
 
-\section{Maximizing throughput using GPU-only or CPU-only primitives}
+\section{GPU-only or CPU-only inference}
 
 
   \begin{table}
@@ -1034,30 +1036,30 @@ Table~\ref{table:layers_complexity}.
 \subsection{Experimental setup}
 
   The benchmarks are performed on two machines.  The first machine is
-  a 4--way Intel Xeon E7--8890 v3 with total of $72$ cores ($144$
+  a 4-way Intel Xeon E7 8890v3 with total of $72$ cores ($144$
   hyper--threads), 256GB of RAM and a Titan X GPU (with 12GB on--board
   RAM).  The second machine is an Amazon EC2 instance with $32$
   virtual cores and 244GB of RAM (r3.8xlarge).  The second machine is
   included as it is more readily available.
 
-\subsection{Minimizing throughput}
+\subsection{Maximizing throughput}
 
   For a given ConvNet architecture with $L$ layers, we can create an
   implementation of the ConvNet by choosing a primitive for each of
   the $L$ layers.  Depending on whether we are using CPUs or the GPU,
   we will have a choice of different primitives for the convolutional
   layers.  Furthermore, each of the \emph{max--pooling} layers can be
-  replaced with a \emph{MFP} layer.
+  replaced with a \emph{MPF} layer.
 
   The result of a network applied to an input $I$ is obtained by
   sequentially applying each primitive.  The input the first layer's
   primitive is $I$, and the input to every subsequent primitive will
   be the output of the previous layer's primitive.  The output of the
-  last layer will be our desired result $I'$.  Note that if \emph{MFP}
+  last layer will be our desired result $I'$.  Note that if \emph{MPF}
   layers are used, the most significant dimension of the output can
   increase.  For an input shape of $(S,f,x,y,z)$ the output shape will
   be of the form $(\alpha S,f',x',y',z')$.  Where $\alpha$ value is
-  depends on the amount of \emph{MFP} layers used and their pooling
+  depends on the amount of \emph{MPF} layers used and their pooling
   window sizes.  This output represents $S$ sets, each having $\alpha$
   fragments which should be recombined to obtain the ... blah mention
   that~\cite{giusti2013fast,masci2013fast} explains how to recombine.
@@ -1090,20 +1092,20 @@ Table~\ref{table:layers_complexity}.
   \end{enumerate}
 
   This is possible because for fixed choice of \emph{max--pooling} or
-  \emph{MFP} of each pooling layer, and fixed input shape, the time
+  \emph{MPF} of each pooling layer, and fixed input shape, the time
   and space required for each convolutional layer is uniquely
   determined.  We pick the fastest one that satisfies the memory
   constrain.
 
   It turns out that for our networks, the highest throughput is
   obtained when all the \emph{max--pooling} layers are replaced with
-  \emph{MFP} layers, and when the input batch size is one
+  \emph{MPF} layers, and when the input batch size is one
   ($S = 1$).  Additionally higher throughput is achieved for larger input
   sizes.
 
-  The fact that \emph{MFP} layers outperform \emph{max--pooling
+  The fact that \emph{MPF} layers outperform \emph{max--pooling
     layers} is not surprising as it has been shown that using
-  \emph{MFP} layers reduces amount of operations required for
+  \emph{MPF} layers reduces amount of operations required for
   computing a single output pixel~\cite{giusti2013fast,masci2013fast}.
 
 
@@ -1139,11 +1141,11 @@ Table~\ref{table:layers_complexity}.
   required to compute a single output pixel of a naive approach
   (having input image equal to the field of view of the network --
   output equal to $1 \times 1 \times 1$, and a network using
-  \emph{MFP} with different input sizes.  Instead of having the input
+  \emph{MPF} with different input sizes.  Instead of having the input
   size on the $x$ axis we put the memory required for network as that
   will be the limiting factor.
 
-  We see that for a network we 2 pooling layers, having a mini--batch
+  We see that for a network we 2 pooling layers, having a batch
   size of $1$ can achieve the highest speedup.  Blah blah...
 
   %% Explain WHY!
@@ -1214,11 +1216,11 @@ Table~\ref{table:layers_complexity}.
       Input size & $152^3$ &  $56^3$  & $128^3$  & $100^3$ \\
       \midrule
       Layer $1$  &  CuDNN1  &  CuDNN1  & CuDNN1   & CuDNN1  \\
-      Layer $2$  &  MFP     &  MFP     & MFP      & MFP     \\
+      Layer $2$  &  MPF     &  MPF     & MPF      & MPF     \\
       Layer $3$  &  CuDNN2  &  FFT     & FFT      & CuDNN1  \\
-      Layer $4$  &  MFP     &  MFP     & MFP      & MFP     \\
+      Layer $4$  &  MPF     &  MPF     & MPF      & MPF     \\
       Layer $5$  &  CuDNN2  &  CuDNN2  & FFT      & FFT     \\
-      Layer $6$  &  MFP     &  MFP     & FFT      & FFT     \\
+      Layer $6$  &  MPF     &  MPF     & FFT      & FFT     \\
       Layer $7$  &  CuDNN2  &  CuDNN2  & FFT      & FFT     \\
       Layer $8$  &  CuDNN2  &  CuDNN2  & FFT      & FFT     \\
       Layer $9$  &  CuDNN2  &  CuDNN2  & & \\
@@ -1243,13 +1245,13 @@ Table~\ref{table:layers_complexity}.
   larger inputs.
 
 
-\section{GPU + host RAM and CPU--GPU ConvNets}
+\section{GPU + host RAM and CPU--GPU inference}
 
   We saw that the throughput can highly depend on the size of the
   input image we are able to process by the network.  For kernels of
-  size $5^3$ or more CPU seem to outperform the GPU due to these
+  size $5^3$ or more CPU seems to outperform GPU due to these
   limits.  For that reason we introduce another layer primitive, a
-  layer who's data is stored in host RAM, and is partially uploaded to
+  layer whose data is stored in host RAM, and is partially uploaded to
   the GPU where the computation is performed.
 
 \subsection{GPU + host RAM convolutional layer}
@@ -1275,10 +1277,10 @@ Table~\ref{table:layers_complexity}.
   GPU's on--board RAM.
 
   In such cases we can have the following two scenarios: (1) The
-  mini--batch size $S > 1$, and we can process at most $S' < S$ inputs
+  batch size $S > 1$, and we can process at most $S' < S$ inputs
   on the GPU, and (2) We can't process even a single input on the GPU.
 
-  In the first, case we upload and process a mini--batch of size $S'$
+  In the first case, we upload and process a batch of size $S'$
   at the time on the GPU, transferring the result back to the host.
   In the second case, we can still use the GPU by processing one input
   at the time and decomposing the convolutional layer into sub--layers
@@ -1310,7 +1312,7 @@ Table~\ref{table:layers_complexity}.
   and one output 3D image.
 
 \subsection{GPU + host RAM ConvNet execution}
-  For the input shape $I = (S,f,x,y,z)$ with $S > 1$, the mini--batch
+  For the input shape $I = (S,f,x,y,z)$ with $S > 1$, the batch
   size $S'$ of the output shape $I' = (S',f',x',y',z')$ will always be
   divisible by $S$.  The values $I'(\frac{S'}{S} i : \frac{S'}{S}
   (i+1),:,:,:,:)$ will only depend on $I(i,:,:,:,:)$.  This means that
@@ -1334,16 +1336,16 @@ Table~\ref{table:layers_complexity}.
 
   Originally we implemented similar GPU + host RAM layer for the MAX
   fragment pooling layers.  However, it turned out that it is better
-  to compute the MFP layers on the CPU, even when very few cores are
+  to compute the MPF layers on the CPU, even when very few cores are
   available. This is because of the expensive transfer to and from
   device.
 
   The simplest way to execute a network using the GPU for computation
   and host RAM for storage is to use individually optimized GPU + host
   RAM layer described above for each convolutional layer, and the CPU
-  implementation of a MFP layer for each pooling layer.
+  implementation of a MPF layer for each pooling layer.
 
-  Turns out that, when using MFP layers for evaluating a max--pooling
+  Turns out that, when using MPF layers for evaluating a max--pooling
   ConvNet we can achieve better performances by minimizing the data
   transferred to and from the GPU.  We illustrate the stragety through
   the follwing example.  Assume we are given a ConvNet architecture in
@@ -1351,16 +1353,16 @@ Table~\ref{table:layers_complexity}.
   images, except for the first layer that has 1 input
   image and the last that has 1 output image.  Let the
   sizes of the pooling window be $2 \times 1 \times 1$, this means
-  that when \emph{MFP} layers is used, for each input tuple a
-  \emph{MFP} layer will produce 2 fragments of the same size.  Mainly
+  that when \emph{MPF} layers is used, for each input tuple a
+  \emph{MPF} layer will produce 2 fragments of the same size.  Mainly
   the most significant dimension of the input tensor to the layer will
   double.  If the batch size $S$ of the network input was $1$, the
-  output of the second \emph{MFP} layer will have the batch size of
+  output of the second \emph{MPF} layer will have the batch size of
   $4$.  At this point we might be able to process the rest of the
   network for a single input tuple (or multiple) using the GPU--only
   approach, thus only having to upload the input to the GPU once, and
   fetch the final result once.  Processing the first four layers of
-  the network using the GPU + host RAM and MFP layers and the rest of
+  the network using the GPU + host RAM and MPF layers and the rest of
   the layers with the GPU--only approach for the rest of the ConvNet
   is illustrated in Figure~\ref{fig:layer-vs-batch}.  Here we process
   the first four layers, one layer at the time, and the last four
@@ -1371,7 +1373,7 @@ Table~\ref{table:layers_complexity}.
   $\theta$, $(0 \le \theta \le L)$, where $L$ is the number of layers
   of the given ConvNet.  This parameters represent the number of
   layers that will be processed one at the time using the GPU + host
-  RAM or CPU-MFP layer at the time.  The rest of the network is then
+  RAM or CPU-MPF layer at the time.  The rest of the network is then
   executed one (or more) batches at the time using the GPU--only
   primitives.
 
@@ -1385,7 +1387,7 @@ Table~\ref{table:layers_complexity}.
   section, we can limit the possible GPU--only convolutional layer
   implementations based on the kernel sizes.  For kernels of $5$ and
   smaller we shell use the direct convolution and for larger, the
-  FFT--based one.  Also, the use of MFP layers reduces the
+  FFT--based one.  Also, the use of MPF layers reduces the
   performances, and in this case is required, as it increases the
   batch size.
 
@@ -1417,39 +1419,30 @@ Table~\ref{table:layers_complexity}.
   \end{figure*}
 
 \subsection{CPU--GPU ConvNet execution}
+Finally, inference can be done by utilizing both CPU and GPU.  As in
+the GPU + host RAM approach, the network
+  layers are divided into two groups.  For the first $\theta$
+  layers, we use the optimal CPU implementation as defined in Section
+  VI, and for the rest of the layers we use the optimal GPU
+  implementation as defined in the previous section.
 
-  Finally, we want to propose a way to implement a ConvNet that
-  utilizes both the available CPUs and GPUs.
+  The CPU and the GPU form a producer--consumer pipeline.  The CPU
+  produces by computing the first $\theta$ layers for a given input
+  image, and queuing the result.  The GPU consumes the data on the
+  queue, taking as input the output of the $\theta$th layer, and
+  yields the final output of the last layer.
 
-  The idea behind the approach is very similar to the GPU + host RAM
-  ConvNet execution in the sense that the network will be divided into
-  two parts.  However, in this case the first $\theta$ layers will be
-  processed by the CPU, and the rest by the GPU.
-
-  Finding the optimal CPU implementation for the first $\theta$ layers
-  is equivalent to finding a CPU--only implementation of a network
-  that consists of exactly the first $\theta$ layers of the network.
-  Optimizing the GPU--only of the network is equivalent to the one in
-  the previous section.
-
-  The CPU and the GPU will form a producer--consumer pipeline.  The
-  CPU, as a producer applies the first $\theta$ layers for a given
-  network input and puts the result on the queue to be consumed.  The
-  GPU on the other side, consumes the data on the queue, taking the
-  output of the $\theta$th layer, and producing the final output of
-  the ConvNet.
-
-  This approach can yield to huge memory overhead if the CPU produces
+  This approach can generate huge memory overhead if the CPU produces
   data much faster than the GPU can consume.  For that reason, the CPU
   is not allowed to start working on the next input until the queue is
   empty -- until the GPU had picked up and started executing the rest
-  of the network for all the data on the queue.  This will essentially
-  limit the queue size to the maximal size of one.
+  of the network for all the data on the queue.  This essentially
+  limits the queue to a maximal size of one.
 
   For a given value of $\theta$ and a given input size the GPU will
   operate on the output of the $\theta$th layer producing the final
   output.  Hence the output of the $\theta$th layer has to be stored
-  in the host ram, along and memory allocated for the network output.
+  in the host RAM, along with memory allocated for the network output.
   As both the CPUs and GPUs can do work only when the queue is empty,
   the rest of the host RAM is available to the CPUs.
 
@@ -1457,7 +1450,7 @@ Table~\ref{table:layers_complexity}.
   resembles the one in the previous section.  For each valid input
   shape, we loop over all valid values of $\theta$, and for each such
   division of the ConvNet, we separately optimize the first $\theta$
-  CPU--only layers and the rest of the GPU--only layers, having the
+  CPU-only layers and the rest of the GPU-only layers, having the
   memory limitations in mind.
 
 \subsection{GPU--only and CPU--only benchmarks}
@@ -1487,12 +1480,12 @@ Table~\ref{table:layers_complexity}.
   and GPU--CPU) with other publicly available implementations and show
   the results in the Table~\ref{table:comparisons_to_others}.  The
   benchmarks are performed on the same hardware, the 4--way Intel Xeon
-  E7–8890 v3 machine with 256GB of RAM and a Titan X GPU.
+  E7–-8890 v3 machine with 256GB of RAM and a Titan X GPU.
 
   The results of our approaches are based on the optimizations
   described in the previous sections.  For the other approaches, we
   varied the input sizes and measured the throughput, we reported the
-  highest value of througput obtained, which was always correlated
+  highest value of throughput obtained, which was always correlated
   with the size of the input we were able to process.
 
   The baseline (cuDNN) approach consists of calling the
@@ -1515,7 +1508,7 @@ Table~\ref{table:layers_complexity}.
   naive approach, and call to the same cuDNN primitives.
 
   Caffe~\cite{jia2014caffe} is another GPU ConvNet framework.  We
-  benchmarked a version that can implements sliding window ConvNets
+  benchmarked a version that implements sliding window ConvNets
   using ``strided kernels''~\cite{tschopp2015efficient}.  The
   implementation is also optimized for training and seems to have a
   huge memory overhead, as we were only able to run the smallest of
@@ -1541,10 +1534,10 @@ Table~\ref{table:layers_complexity}.
   other frameworks?  Everyone can reproduce the results.
 
 \section{Acknowledgments}
-We are grateful to Intel Corporation for providing the 4–way Intel
-Xeon E7–8890 v3 machine, and for supporting the Intel Parallel
-Computing Center at Princeton University.
-
+We are grateful to Intel Corporation for providing the 4–-way Intel
+Xeon E7–-8890 v3 machine, and for supporting the Intel Parallel
+Computing Center at Princeton University.  We acknowledge support from
+IARPA award D16PC00005.  􀀄􀀁􀀅􀀆􀀇􀀈􀀈􀀈􀀈􀀉
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
