@@ -23,13 +23,13 @@
 \definecolor{zpurple}{HTML}{7E2F8E}
 \definecolor{zgreen}{HTML}{77AC30}
 
-%\linespread{0.9}
+\linespread{0.97}
 
 %\usepackage{etoolbox}
 % \AtBeginEnvironment{algorithmic}{\footnotesize}
 %\usepackage{subfig}
 % tricks for saving space
-\usepackage[font={small}]{caption,subfig}  % small fonts in captions
+\usepackage[font={footnotesize}]{caption,subfig}  % small fonts in captions
 \setlength{\abovecaptionskip}{1ex}
 \setlength{\belowcaptionskip}{1ex}
 \setlength{\floatsep}{1ex}
@@ -646,6 +646,7 @@
   Table~\ref{table:memory_requirements}.
 
   \begin{table}
+    {\footnotesize
     \centering
     \begin{tabular}{l >{$}l<{$}}
       \toprule
@@ -695,6 +696,7 @@
       and $T$ is the number of available cores for the CPU
       algorithms.}
     \label{table:memory_requirements}
+    }
   \end{table}
 
 \subsubsection{Data parallel FFT-based algorithm}
@@ -1027,6 +1029,7 @@
 \section{GPU-only or CPU-only inference}
 
   \begin{table}
+    {\footnotesize
     \centering
     \begin{tabular}{cccccc}
       \toprule
@@ -1046,6 +1049,7 @@
     \end{tabular}
     \caption{ConvNet architectures of the benchmarked networks.}
     \label{table:benchmarked_networks}
+    }
   \end{table}
 
   We expect that algorithm throughput will depend on ConvNet
@@ -1270,6 +1274,7 @@
   memory.. blah.... (do i repeat this)
 
   \begin{table}
+    {\footnotesize
     \centering
     \begin{tabular}{ccccc}
       \toprule
@@ -1291,6 +1296,7 @@
     \end{tabular}
     \caption{Optimal choice for different layers.}
     \label{table:gpu_optimal}
+    }
   \end{table}
 
   The optimal use of primitives for the GPU have higher dependence on
@@ -1523,6 +1529,7 @@ the GPU + host RAM approach, the network
 
 
   \begin{table*}[h!tbp]
+    { \footnotesize
     \centering
     \begin{tabular}{l|ccccccccc}
       \toprule
@@ -1536,6 +1543,7 @@ the GPU + host RAM approach, the network
     \end{tabular}
     \caption{Comparisons to other methods.}
     \label{table:comparisons_to_others}
+  }
   \end{table*}
 
   We compare our 4 approaches (GPU--only, CPU--only, GPU + host RAM
