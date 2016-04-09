@@ -23,7 +23,7 @@
 \definecolor{zpurple}{HTML}{7E2F8E}
 \definecolor{zgreen}{HTML}{77AC30}
 
-\linespread{0.97}
+\linespread{0.95}
 
 %\usepackage{etoolbox}
 % \AtBeginEnvironment{algorithmic}{\footnotesize}
@@ -403,12 +403,12 @@
   $n^2$ 1D FFTs along each dimension, which takes $C n^3 \log n^3$ we
   could first only do $k^2$ FFTs along one dimension, then $k \times
   x$ along then next, and finally $n^2$ along the last dimension, as
-  shown on Figure~\ref{fig:pruned_ffts}.  This approach reduces the
+  shown on Fig.~\ref{fig:pruned_ffts}.  This approach reduces the
   computational cost from $C n^3 \log n^3$ to $C n\log n[k^2 + k \cdot
-  n + n^2]$.  As most of the FFTs are performed on kernels, and as the
-  kernel sizes are usually much smaller compared to the image sizes
-  ($k \ll n$), we could reduce the computation cost by nearly two
-  thirds.
+    n + n^2]$.  As most of the FFTs are performed on kernels, and as
+  the kernel sizes are usually much smaller compared to the image
+  sizes ($k \ll n$), we could reduce the computation cost by nearly
+  two thirds.
 
   \subsection{CPU implementation}
 
@@ -794,8 +794,8 @@
   The task dependency graph of all the tasks required for computing
   the output images of a convolutional layer with four input and five
   output images for a batch size of four is shown on
-  Figure~\ref{fig:task_deps}.  The tasks are created and queued when
-  all their dependencies have been satisfied.  There are four {\bf
+  Fig.~\ref{fig:task_deps}.  The tasks are created and queued when all
+  their dependencies have been satisfied.  There are four {\bf
     synchronization} tasks effectively dividing the computation into
   three stages.  The layout of the {\bf kernel transform} tasks forms
   a grid, with the number of columns equal to the number of output
@@ -803,7 +803,7 @@
   The task of the $i^{th}$ column and $j^{th}$ row computes the
   transform of the kernel $w_{i,j}$.  Furthermore, each such task has
   $S$ dependent {\bf multiply-add} tasks, where $S$ is the batch size
-  of the input (equal to four in Figure~\ref{fig:task_deps}).  The
+  of the input (equal to four in Fig.~\ref{fig:task_deps}).  The
   $k^{th}$ dependent {\bf multiply-add} task of a {\bf kernel
     transform} task in column $i$ and row $j$ accumulates the product
   of the transforms of the $j^{th}$ input image of the $k^{th}$ batch
@@ -1173,15 +1173,15 @@
   our case, increasing the image size had a stronger effect, which is
   not always the case.
 
-  On Figure~\ref{fig:fftbatch} we show the theoretical speedup
-  achievable by using different batch sizes for two networks.
-  The theoretical speedup is defined as the ratio of operations
-  required to compute a single output pixel of a naive approach
-  (having input image equal to the field of view of the network --
-  output equal to $1 \times 1 \times 1$, and a network using
-  \emph{MPF} with different input sizes.  Instead of having the input
-  size on the $x$ axis we put the memory required for network as that
-  will be the limiting factor.
+  On Fig.~\ref{fig:fftbatch} we show the theoretical speedup
+  achievable by using different batch sizes for two networks.  The
+  theoretical speedup is defined as the ratio of operations required
+  to compute a single output pixel of a naive approach (having input
+  image equal to the field of view of the network -- output equal to
+  $1 \times 1 \times 1$, and a network using \emph{MPF} with different
+  input sizes.  Instead of having the input size on the $x$ axis we
+  put the memory required for network as that will be the limiting
+  factor.
 
   We see that for a network we 2 pooling layers, having a batch
   size of $1$ can achieve the highest speedup.  Blah blah...
@@ -1237,7 +1237,7 @@
   increasing the image size had a stronger effect, which is not always
   the case.
 
-  On Figure~\ref{fig:fftbatch} we show the theoretical speedup
+  On Fig.~\ref{fig:fftbatch} we show the theoretical speedup
   achievable by using different batch sizes for two networks, using
   the computational cost of an FFT--based layer shown in
   Table~\ref{table:layers_complexity}.  The theoretical speedup is
@@ -1257,7 +1257,7 @@
 
 \subsection{Optimization measurements}
 
-  Figure~\ref{fig:experiments1} shows the throughput achieved on the
+  Fig.~\ref{fig:experiments1} shows the throughput achieved on the
   four benchmarked networks (Table~\ref{table:benchmarked_networks})
   with the batch size $S=1$, and different image sizes.
 
@@ -1354,7 +1354,7 @@
   In the second case, we can still use the GPU by processing one input
   at the time and decomposing the convolutional layer into sub--layers
   (Fig~\ref{fig:partial_exec}). The convolutional layer in
-  Figure~\ref{fig:partial_execa} can be decomposed into 4 sub--layers
+  Fig.~\ref{fig:partial_execa} can be decomposed into 4 sub--layers
   that can fit on the GPU RAM (Fig~\ref{fig:partial_execb}). The
   sub--layers can be sequentially executed on the GPU using one of the
   algorithms described above.  The blue color represents the input
@@ -1418,24 +1418,24 @@
   ConvNet we can achieve better performances by minimizing the data
   transferred to and from the GPU.  We illustrate the stragety through
   the follwing example.  Assume we are given a ConvNet architecture in
-  the form CPCPCCCC, where each layer has 3 input and 3 output
-  images, except for the first layer that has 1 input
-  image and the last that has 1 output image.  Let the
-  sizes of the pooling window be $2 \times 1 \times 1$, this means
-  that when \emph{MPF} layers is used, for each input tuple a
-  \emph{MPF} layer will produce 2 fragments of the same size.  Mainly
-  the most significant dimension of the input tensor to the layer will
-  double.  If the batch size $S$ of the network input was $1$, the
-  output of the second \emph{MPF} layer will have the batch size of
-  $4$.  At this point we might be able to process the rest of the
-  network for a single input tuple (or multiple) using the GPU--only
-  approach, thus only having to upload the input to the GPU once, and
-  fetch the final result once.  Processing the first four layers of
-  the network using the GPU + host RAM and MPF layers and the rest of
-  the layers with the GPU--only approach for the rest of the ConvNet
-  is illustrated in Figure~\ref{fig:layer-vs-batch}.  Here we process
-  the first four layers, one layer at the time, and the last four
-  layers one batch at the time.
+  the form CPCPCCCC, where each layer has 3 input and 3 output images,
+  except for the first layer that has 1 input image and the last that
+  has 1 output image.  Let the sizes of the pooling window be $2
+  \times 1 \times 1$, this means that when \emph{MPF} layers is used,
+  for each input tuple a \emph{MPF} layer will produce 2 fragments of
+  the same size.  Mainly the most significant dimension of the input
+  tensor to the layer will double.  If the batch size $S$ of the
+  network input was $1$, the output of the second \emph{MPF} layer
+  will have the batch size of $4$.  At this point we might be able to
+  process the rest of the network for a single input tuple (or
+  multiple) using the GPU--only approach, thus only having to upload
+  the input to the GPU once, and fetch the final result once.
+  Processing the first four layers of the network using the GPU + host
+  RAM and MPF layers and the rest of the layers with the GPU--only
+  approach for the rest of the ConvNet is illustrated in
+  Fig.~\ref{fig:layer-vs-batch}.  Here we process the first four
+  layers, one layer at the time, and the last four layers one batch at
+  the time.
 
   Finding the optimal network execution strategy for such execution
   becomes more complex.  The first additional parameter we have is
