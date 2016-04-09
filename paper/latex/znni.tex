@@ -23,8 +23,10 @@
 \definecolor{zpurple}{HTML}{7E2F8E}
 \definecolor{zgreen}{HTML}{77AC30}
 
+%\linespread{0.9}
+
 %\usepackage{etoolbox}
-%\AtBeginEnvironment{algorithmic}{\footnotesize}
+% \AtBeginEnvironment{algorithmic}{\footnotesize}
 %\usepackage{subfig}
 % tricks for saving space
 \usepackage[font={small}]{caption,subfig}  % small fonts in captions
@@ -49,20 +51,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{ZNN\emph{i} -- Maximizing the Inference Throughput of 3D
-  Convolutional Networks on Multi-Core CPUs and GPUs}
+% \title{ZNN\emph{i} -- Maximizing the Inference Throughput of 3D
+%  Convolutional Networks on Multi-Core CPUs and GPUs}
 
-\author{\IEEEauthorblockN{Aleksandar Zlateski\IEEEauthorrefmark{1},
-    Kisuk Lee\IEEEauthorrefmark{2}}
-  \IEEEauthorblockA{\IEEEauthorrefmark{1}Electrical Engineering and
-    Computer Science Dept.\\ \IEEEauthorrefmark{2}Brain and
-    Cognitive Sciences Dept.\\ Massachusetts Institute of
-    Technology\\ Cambridge, MA 02139 USA\\ \IEEEauthorrefmark{1}{\tt
-      zlateski@mit.edu}, \IEEEauthorrefmark{2}{\tt kisuklee@mit.edu}}
-  \and \IEEEauthorblockN{H. Sebastian Seung}
-  \IEEEauthorblockA{Neuroscience Institute\\ and Computer
-    Science Dept.\\ Princeton University\\ Princeton, NJ 08540
-    USA\\ {\tt sseung@princeton.edu} }}
+
+\title{Maximizing the Inference Throughput of 3D Convolutional
+  Networks on Multi-Core CPUs and GPUs}
+
+% \author{\IEEEauthorblockN{Aleksandar Zlateski\IEEEauthorrefmark{1},
+%    Kisuk Lee\IEEEauthorrefmark{2}}
+%  \IEEEauthorblockA{\IEEEauthorrefmark{1}Electrical Engineering and
+%    Computer Science Dept.\\ \IEEEauthorrefmark{2}Brain and
+%    Cognitive Sciences Dept.\\ Massachusetts Institute of
+%    Technology\\ Cambridge, MA 02139 USA\\ \IEEEauthorrefmark{1}{\tt
+%      zlateski@mit.edu}, \IEEEauthorrefmark{2}{\tt kisuklee@mit.edu}}
+%  \and \IEEEauthorblockN{H. Sebastian Seung}
+%  \IEEEauthorblockA{Neuroscience Institute\\ and Computer
+%    Science Dept.\\ Princeton University\\ Princeton, NJ 08540
+%    USA\\ {\tt sseung@princeton.edu} }}
 
 
 \maketitle
@@ -79,29 +85,33 @@
 
 
 \begin{abstract}
-Sliding window convolutional networks (ConvNets) have become a popular
-approach to computer vision problems such as image segmentation, and
-object detection and localization. Here we consider the problem of
-inference, the application of a previously trained ConvNet, with
-emphasis on 3D images.  Our goal is to maximize throughput, defined as
-the number of output voxels computed per unit time.  Other things
-being equal, processing a larger image tends to increase throughput,
-because fractionally less computation is wasted on the borders of the
-image.  It follows that an apparently slower algorithm may end up
-having higher throughput if it can process a larger image within the
-constraint of the available RAM.  We introduce novel CPU and GPU
-primitives for convolutional and pooling layers, which are designed to
-minimize memory overhead. The primitives include convolution based on
-highly efficient pruned FFTs. Our theoretical analyses and empirical
-tests reveal a number of interesting findings.  For some ConvNet
-architectures, cuDNN is outperformed by our FFT-based GPU primitives,
-and these in turn can be outperformed by our CPU primitives. The CPU
-manages to achieve higher throughput because of its fast access to
-more RAM.  A novel primitive in which the GPU accesses host RAM can
-significantly increase GPU throughput.  Finally, a CPU-GPU algorithm
-achieves the greatest throughput of all, $10\times$ or more than other
-publicly available implementations of sliding window 3D ConvNets.  All
-of our code has been made available on github.
+
+  Sliding window convolutional networks (ConvNets) have become a
+  popular approach to computer vision problems such as image
+  segmentation, and object detection and localization. Here we
+  consider the problem of inference, the application of a previously
+  trained ConvNet, with emphasis on 3D images.  Our goal is to
+  maximize throughput, defined as the number of output voxels computed
+  per unit time.  Other things being equal, processing a larger image
+  tends to increase throughput, because fractionally less computation
+  is wasted on the borders of the image.  It follows that an
+  apparently slower algorithm may end up having higher throughput if
+  it can process a larger image within the constraint of the available
+  RAM.  We introduce novel CPU and GPU primitives for convolutional
+  and pooling layers, which are designed to minimize memory
+  overhead. The primitives include convolution based on highly
+  efficient pruned FFTs. Our theoretical analyses and empirical tests
+  reveal a number of interesting findings.  For some ConvNet
+  architectures, cuDNN is outperformed by our FFT-based GPU
+  primitives, and these in turn can be outperformed by our CPU
+  primitives. The CPU manages to achieve higher throughput because of
+  its fast access to more RAM.  A novel primitive in which the GPU
+  accesses host RAM can significantly increase GPU throughput.
+  Finally, a CPU-GPU algorithm achieves the greatest throughput of
+  all, $10\times$ or more than other publicly available
+  implementations of sliding window 3D ConvNets.  All of our code has
+  been made available on github.
+
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,61 +123,62 @@ of our code has been made available on github.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
-Waving the banner of ``deep learning,'' researchers have revived the
-use of convolutional networks (ConvNets) for computer vision.  The
-revival has been driven by increases in the speed of ConvNet
-training made possible by GPU implementations
-\cite{chellapilla2006high, scherer2010accelerating,
+
+  Waving the banner of ``deep learning,'' researchers have revived the
+  use of convolutional networks (ConvNets) for computer vision.  The
+  revival has been driven by increases in the speed of ConvNet
+  training made possible by GPU
+  implementations~\cite{chellapilla2006high, scherer2010accelerating,
   strigl2010performance, ciresan2011flexible}. Here we are concerned
-with the problem of inference, applying a previously trained ConvNet
-to a new image.  Fast inference is critical for big data applications
-involving large numbers of images and/or very large images. Billions
-of photos and millions of videos are shared online every
-day \cite{MeekerReport14, ReelSEO}.  Scientists are also generating
-large amounts of image data.  For example, high-speed electron
-microscopy can generate a petascale 3D image from a cubic millimeter
-of brain in a few weeks \cite{Lichtman2014big}.  We will focus on 3D
-ConvNets, which are relevant for both videos and 3D images.  2D
-ConvNets are regarded as a special case that is less computationally
-costly.
+  with the problem of inference, applying a previously trained ConvNet
+  to a new image.  Fast inference is critical for big data
+  applications involving large numbers of images and/or very large
+  images. Billions of photos and millions of videos are shared online
+  every day~\cite{MeekerReport14, ReelSEO}.  Scientists are also
+  generating large amounts of image data.  For example, high-speed
+  electron microscopy can generate a petascale 3D image from a cubic
+  millimeter of brain in a few weeks~\cite{Lichtman2014big}.  We will
+  focus on 3D ConvNets, which are relevant for both videos and 3D
+  images.  2D ConvNets are regarded as a special case that is less
+  computationally costly.
 
-In contemporary computer vision, researchers are most familiar with
-applying ConvNets to image-to-label transformations.  For example, in
-object recognition the input is an image of an object and the desired
-output is the class of the object.  However, ConvNets can also be used
-for image-to-image transformations.  In this context, a ConvNet acts
-like a more complex version of a typical filtering operation in image
-processing.  The ConvNet is applied to a window that slides over the
-input image.  For each location of the window, the ConvNet outputs a
-set of numbers, effectively producing a set of output images, each
-with the same resolution as the input image.
+  In contemporary computer vision, researchers are most familiar with
+  applying ConvNets to image-to-label transformations.  For example,
+  in object recognition the input is an image of an object and the
+  desired output is the class of the object.  However, ConvNets can
+  also be used for image-to-image transformations.  In this context, a
+  ConvNet acts like a more complex version of a typical filtering
+  operation in image processing.  The ConvNet is applied to a window
+  that slides over the input image.  For each location of the window,
+  the ConvNet outputs a set of numbers, effectively producing a set of
+  output images, each with the same resolution as the input image.
 
-Sliding window ConvNets were originally applied to detect and/or
-localize objects in a larger image \cite{matan1991multi}, and this
-usage has been revived \cite{sermanet2013overfeat}. Here each output
-image represents the probability that an object of a certain class is
-located at a voxel.  Sliding window ConvNets have also been applied to
-image segmentation, to produce an output image representing the
-probability that a voxel is a boundary between objects or
-not \cite{jain2007supervised}.  And they have been applied to semantic
-segmentation, the problem of labeling each voxel in an input image by
-the class of the object to which it belongs \cite{ning2005toward}.
-In general, sliding window ConvNets are increasing in popularity as
-they are applied to more and more problems in computer vision.
-However, transforming image-to-image is even more computationally
-costly than image-to-label, so the need for speeding up sliding window
-ConvNets is especially acute.
+  Sliding window ConvNets were originally applied to detect and/or
+  localize objects in a larger image~\cite{matan1991multi}, and this
+  usage has been revived~\cite{sermanet2013overfeat}. Here each output
+  image represents the probability that an object of a certain class
+  is located at a voxel.  Sliding window ConvNets have also been
+  applied to image segmentation, to produce an output image
+  representing the probability that a voxel is a boundary between
+  objects or not~\cite{jain2007supervised}.  And they have been
+  applied to semantic segmentation, the problem of labeling each voxel
+  in an input image by the class of the object to which it
+  belongs~\cite{ning2005toward}.  In general, sliding window ConvNets
+  are increasing in popularity as they are applied to more and more
+  problems in computer vision.  However, transforming image-to-image
+  is even more computationally costly than image-to-label, so the need
+  for speeding up sliding window ConvNets is especially acute.
 
-For speeding up ConvNet inference, a seemingly trivial detail about
-image borders turns out to matter. Because inference is less efficient
-at locations near image borders, it is advantageous to make the input
-image large so that border effects are proportionally smaller.  This
-means that efforts to maximize throughput tend to bump into the
-constraint of limited RAM.  (This is not the case for ConvNet
-training, where there is typically some range of input sizes that is
-optimal for training speed.)  It follows that an apparently slower
-algorithm may end up having higher throughput if it can process a
-larger image within the constraint of the available RAM.
+  For speeding up ConvNet inference, a seemingly trivial detail about
+  image borders turns out to matter. Because inference is less
+  efficient at locations near image borders, it is advantageous to
+  make the input image large so that border effects are proportionally
+  smaller.  This means that efforts to maximize throughput tend to
+  bump into the constraint of limited RAM.  (This is not the case for
+  ConvNet training, where there is typically some range of input sizes
+  that is optimal for training speed.)  It follows that an apparently
+  slower algorithm may end up having higher throughput if it can
+  process a larger image within the constraint of the available RAM.
 
   \begin{figure}
     \begin{center}
@@ -179,74 +190,76 @@ larger image within the constraint of the available RAM.
     \label{fig:layers}
   \end{figure}
 
-We consider ConvNet architectures that contain both convolutional and
-pooling layers.  GPU implementations such as cuDNN provide a number of
-primitives for both kinds of layers.  A particular architecture is
-implemented by combining primitives.  In line with this approach, we
-introduce a number of new layer primitives for the CPU and GPU
-(Fig. \ref{fig:layers}).  These are designed to have low memory
-overhead, which should be important for high throughput as mentioned
-above.
+  We consider ConvNet architectures that contain both convolutional
+  and pooling layers.  GPU implementations such as cuDNN provide a
+  number of primitives for both kinds of layers.  A particular
+  architecture is implemented by combining primitives.  In line with
+  this approach, we introduce a number of new layer primitives for the
+  CPU and GPU (Fig. \ref{fig:layers}).  These are designed to have low
+  memory overhead, which should be important for high throughput as
+  mentioned above.
 
-Our new convolutional primitives are either direct or FFT-based.  For
-the latter, we introduce new implementations of pruned FFTs that are
-faster (for kernels on average $5\times$ for CPU and $10\times$ for
-GPU) while using less memory.  Our FFT-based convolutional primitive
-for the GPU is designed to use much less memory than the algorithm
-proposed by \cite{mathieu-iclr-14,vasilache2014fast} and implemented
-in {\tt fbfft}.  We provide two new FFT-based convolutional primitives
-for the CPU. The task parallel version is more efficient if the number
-of input images and the number of output images are both large, but at
-the cost of more memory overhead than the data parallel version.  The
-task parallel algorithm is designed to use less memory than the one
-previously proposed for ConvNet training \cite{zlateski2015znn}.  To
-evaluate our novel primitives, we include comparisons with the direct
-convolutional primitives in cuDNN.  We also provide a new direct
-convolutional primitive for the CPU, but this turns out to be less
-useful than our FFT-based primitives in most circumstances.
+  Our new convolutional primitives are either direct or FFT-based.
+  For the latter, we introduce new implementations of pruned FFTs that
+  are faster (for kernels on average $5\times$ for CPU and $10\times$
+  for GPU) while using less memory.  Our FFT-based convolutional
+  primitive for the GPU is designed to use much less memory than the
+  algorithm proposed by~\cite{mathieu-iclr-14,vasilache2014fast} and
+  implemented in {\tt fbfft}.  We provide two new FFT-based
+  convolutional primitives for the CPU. The task parallel version is
+  more efficient if the number of input images and the number of
+  output images are both large, but at the cost of more memory
+  overhead than the data parallel version.  The task parallel
+  algorithm is designed to use less memory than the one previously
+  proposed for ConvNet training~\cite{zlateski2015znn}.  To evaluate
+  our novel primitives, we include comparisons with the direct
+  convolutional primitives in cuDNN.  We also provide a new direct
+  convolutional primitive for the CPU, but this turns out to be less
+  useful than our FFT-based primitives in most circumstances.
 
-In empirical tests, we combine the primitives to maximize throughput
-for CPU-only and GPU-only algorithms. In some cases, our FFT-based
-GPU primitives outperform the cuDNN primitives by a large margin.  The
-CPU-only algorithm may achieve higher throughput than the GPU-only
-algorithm because the CPU has fast access to more RAM, even if it is
-capable of fewer floating point operations (FLOPs) per second.
+  In empirical tests, we combine the primitives to maximize throughput
+  for CPU-only and GPU-only algorithms. In some cases, our FFT-based
+  GPU primitives outperform the cuDNN primitives by a large margin.
+  The CPU-only algorithm may achieve higher throughput than the
+  GPU-only algorithm because the CPU has fast access to more RAM, even
+  if it is capable of fewer floating point operations (FLOPs) per
+  second.
 
-To work around the limited onboard RAM of the GPU, we introduce a
-novel GPU + host RAM primitive.  We show that using this new primitive
-can lead to much higher throughput, in spite of the slower
-communication speed between GPU and host RAM.
+  To work around the limited onboard RAM of the GPU, we introduce a
+  novel GPU + host RAM primitive.  We show that using this new
+  primitive can lead to much higher throughput, in spite of the slower
+  communication speed between GPU and host RAM.
 
-Finally, we study a CPU-GPU algorithm, in which the first layers of
-the ConvNet are computed by the CPU and the later layers are computed
-by the GPU.  The algorithm is pipelined to utilize the CPU and GPU
-efficiently.  This yields the highest throughput of all the
-algorithms, sometimes even greater than the sum of throughputs of GPU +
-host RAM and CPU-only.
+  Finally, we study a CPU-GPU algorithm, in which the first layers of
+  the ConvNet are computed by the CPU and the later layers are
+  computed by the GPU.  The algorithm is pipelined to utilize the CPU
+  and GPU efficiently.  This yields the highest throughput of all the
+  algorithms, sometimes even greater than the sum of throughputs of
+  GPU + host RAM and CPU-only.
 
-We also compare with other 3D sliding window max-pooling ConvNet
-implementations.  To the best of our knowledge, the only publicly
-available ones are the Caffe implementation
-of \cite{tschopp2015efficient}, ZNN \cite{zlateski2015znn}, and
-ELEKTRONN \cite{ELEKTRONN2015}.  (The last is the only competitor that
-is specifically optimized for inference.) For comparison, we
-also include a baseline implementation that utilizes the simple
-pooling primitives of cuDNN to perform the naive algorithm of
-computing all subsamplings of the output.  For four representative
-ConvNet architectures running on a Titan X and/or a 4-way Intel Xeon
-E7 8890v3 machine with 256 GB RAM, our CPU-only, GPU-only, GPU + host
-RAM, and CPU-GPU implementations outperform all competitors.  In
-particular, our CPU-GPU implementation wins by a factor of roughly
-$10\times$ or more in all cases.
+  We also compare with other 3D sliding window max-pooling ConvNet
+  implementations.  To the best of our knowledge, the only publicly
+  available ones are the Caffe implementation
+  of~\cite{tschopp2015efficient}, ZNN~\cite{zlateski2015znn}, and
+  ELEKTRONN~\cite{ELEKTRONN2015}.  (The last is the only competitor
+  that is specifically optimized for inference.) For comparison, we
+  also include a baseline implementation that utilizes the simple
+  pooling primitives of cuDNN to perform the naive algorithm of
+  computing all subsamplings of the output.  For four representative
+  ConvNet architectures running on a Titan X and/or a 4-way Intel Xeon
+  E7 8890v3 machine with 256 GB RAM, our CPU-only, GPU-only, GPU +
+  host RAM, and CPU-GPU implementations outperform all competitors.
+  In particular, our CPU-GPU implementation wins by a factor of
+  roughly $10\times$ or more in all cases.
 
-We focus on throughput (number of output voxels per unit time) as the
-performance metric.  A related metric is energy consumed per voxel.
-For a given CPU or GPU, maximizing throughput is equivalent to
-minimizing energy consumption, assuming that the power consumption is
-roughly constant in time.  An interesting implication of our work is
-that in some situations the most economical way of increasing
-inference throughput may be to increase host RAM rather adding more
-GPUs or CPUs.
+  We focus on throughput (number of output voxels per unit time) as
+  the performance metric.  A related metric is energy consumed per
+  voxel.  For a given CPU or GPU, maximizing throughput is equivalent
+  to minimizing energy consumption, assuming that the power
+  consumption is roughly constant in time.  An interesting implication
+  of our work is that in some situations the most economical way of
+  increasing inference throughput may be to increase host RAM rather
+  adding more GPUs or CPUs.
 
 % cuDNN is described here~\cite{chetlur2014cudnn}
 %We do max fragment pooling as described here~\cite{giusti2013fast}.
@@ -266,74 +279,78 @@ GPUs or CPUs.
 %  of pixels computed at the time being irrelevant.
 
 \section{Throughput of sliding window inference}
-In large scale sliding window inference, the input image is divided
-into smaller input patches. These are transformed by the ConvNet into
-output patches, which are recombined to generate the output image.
-This divide-and-conquer approach is motivated by both time and space
-considerations.  The computation can be sped up by assigning the
-patches to multiple workers.  Also if the computation were not
-divided, it might not fit in the RAM available to a single worker.
 
-Each output patch is smaller than the input patch, because the sliding
-window is restricted to be entirely contained within the input image.
-(This is analogous to a ``valid'' convolution in MATLAB.)  Therefore
-the input patches are chosen to overlap so that the output patches
-exactly cover the output image without overlap. (This is analogous to
-the overlap-save or overlap-scrap method for computing a single
-convolution described in signal processing textbooks.)
+  In large scale sliding window inference, the input image is divided
+  into smaller input patches. These are transformed by the ConvNet
+  into output patches, which are recombined to generate the output
+  image.  This divide-and-conquer approach is motivated by both time
+  and space considerations.  The computation can be sped up by
+  assigning the patches to multiple workers.  Also if the computation
+  were not divided, it might not fit in the RAM available to a single
+  worker.
 
-We define the throughput of a single worker as the number of voxels in
-the output patch divided by the time required for the worker to
-process a single patch.  In this paper, a worker will be a single
-shared-memory machine, either CPU or GPU or combination of the two.
-Our goal is to maximize worker throughput.
+  Each output patch is smaller than the input patch, because the
+  sliding window is restricted to be entirely contained within the
+  input image.  (This is analogous to a ``valid'' convolution in
+  MATLAB.)  Therefore the input patches are chosen to overlap so that
+  the output patches exactly cover the output image without
+  overlap. (This is analogous to the overlap-save or overlap-scrap
+  method for computing a single convolution described in signal
+  processing textbooks.)
 
-When computing ConvNet outputs for nearby locations of the sliding
-window, some of the arithmetic operations are identical.  For
-efficiency it is important to reuse the results of these operations.
-For ConvNets with  convolutional layers only, this happens naturally
-as the output patch is the same resolution as the input patch.  If
-there are pooling layers, however, the output patch produced by a
-ConvNet is a subsampling of the output of a sliding window ConvNet.
-To obtain the entire output image, one must compute all subsamplings
-with different offsets separately, and then combine them.  This
-algorithm does not efficiently reuse computations for nearby output
-voxels.
+  We define the throughput of a single worker as the number of voxels
+  in the output patch divided by the time required for the worker to
+  process a single patch.  In this paper, a worker will be a single
+  shared-memory machine, either CPU or GPU or combination of the two.
+  Our goal is to maximize worker throughput.
 
-Here we instead provide pooling primitives that compute max-pooling
-fragments (MPF), a more efficient strategy for sliding window
-computations \cite{giusti2013fast, masci2013fast}.  ELEKTRONN is the
-only other publicly available package with MPF support known to us
-(\url{http://elektronn.org}).  The MPF algorithm computes the same
-results as the approach known as ``dilated
-convolution''\cite{yu2015multi}, ``strided
-kernels''\cite{tschopp2015efficient}, ``max
-filtering''\cite{zlateski2015znn}, or ``filter
-rarefaction''\cite{long2015fully}.
+  When computing ConvNet outputs for nearby locations of the sliding
+  window, some of the arithmetic operations are identical.  For
+  efficiency it is important to reuse the results of these operations.
+  For ConvNets with convolutional layers only, this happens naturally
+  as the output patch is the same resolution as the input patch.  If
+  there are pooling layers, however, the output patch produced by a
+  ConvNet is a subsampling of the output of a sliding window ConvNet.
+  To obtain the entire output image, one must compute all subsamplings
+  with different offsets separately, and then combine them.  This
+  algorithm does not efficiently reuse computations for nearby output
+  voxels.
 
-While MPF does efficiently reuse computation within a patch, the
-division into patches does itself incur a cost. Reuse cannot happen
-for nearby locations in different output patches, assuming the
-computations on the patches are done independently.  For example, it
-is highly inefficient to make the input patch the same size as the
-sliding window, which results in no reuse at all across different
-locations of the sliding window.  It is more efficient to increase the
-size of the input patch, to reduce the fraction of voxels near the
-border and thereby reduce inefficiency due to lack of reuse.
+  Here we instead provide pooling primitives that compute max-pooling
+  fragments (MPF), a more efficient strategy for sliding window
+  computations~\cite{giusti2013fast, masci2013fast}.  ELEKTRONN is the
+  only other publicly available package with MPF support known to us
+  (\url{http://elektronn.org}).  The MPF algorithm computes the same
+  results as the approach known as ``dilated
+  convolution''\cite{yu2015multi}, ``strided
+  kernels''\cite{tschopp2015efficient}, ``max
+  filtering''\cite{zlateski2015znn}, or ``filter
+  rarefaction''\cite{long2015fully}.
 
-Consequently memory overhead becomes important, if the goal is to
-maximize throughput.  An apparently faster algorithm may end up with
-inferior throughput if it cannot process a large input patch using the
-available RAM.  Later on, we will introduce a set of novel primitives
-for computing the layers of a ConvNet, which are designed to have low
-memory overhead as well as to be fast.  The primitives include
-convolutional and max-pooling layers.  (Our approach also can be
-extended to other kinds of pooling layers.)  As a prelude to the layer
-primitives, we first introduce lower-level FFT primitives which turn
-out to be important for efficient convolution.
+  While MPF does efficiently reuse computation within a patch, the
+  division into patches does itself incur a cost. Reuse cannot happen
+  for nearby locations in different output patches, assuming the
+  computations on the patches are done independently.  For example, it
+  is highly inefficient to make the input patch the same size as the
+  sliding window, which results in no reuse at all across different
+  locations of the sliding window.  It is more efficient to increase
+  the size of the input patch, to reduce the fraction of voxels near
+  the border and thereby reduce inefficiency due to lack of reuse.
+
+  Consequently memory overhead becomes important, if the goal is to
+  maximize throughput.  An apparently faster algorithm may end up with
+  inferior throughput if it cannot process a large input patch using
+  the available RAM.  Later on, we will introduce a set of novel
+  primitives for computing the layers of a ConvNet, which are designed
+  to have low memory overhead as well as to be fast.  The primitives
+  include convolutional and max-pooling layers.  (Our approach also
+  can be extended to other kinds of pooling layers.)  As a prelude to
+  the layer primitives, we first introduce lower-level FFT primitives
+  which turn out to be important for efficient convolution.
 
 \section{Pruned FFT}
-Improving the efficiency of convolution is crucial, because this
+
+  Improving the efficiency of convolution is crucial, because this
   computation is performed so many times in a ConvNet.  The advantages
   of FFT convolution have been shown for 2D ConvNets running on
   GPUs~\cite{mathieu-iclr-14,vasilache2014fast}, and 3D ConvNets
@@ -345,9 +362,7 @@ Improving the efficiency of convolution is crucial, because this
   zeros is known as FFT pruning, and can provide speedup.  We propose
   and implement such an algorithm, for both the CPU and GPU. Our
   approach achieves an average of $5 \times$ speedup over the naive
-  approach on the CPU and $10 \times$ speedup on the GPU.  It also
-  greatly reduces the memory overhead compared to the approaches
-  described in ~\cite{mathieu-iclr-14,vasilache2014fast}.
+  approach on the CPU and $10 \times$ speedup on the GPU.
 
   The speedup is expected to be large for a ConvNet, which typically
   contains many more kernel FFTs than image FFTs.  The speedup is more
@@ -364,11 +379,13 @@ Improving the efficiency of convolution is crucial, because this
     \begin{center}
       \includegraphics[width=0.55\columnwidth]{fig/pruned_ffts.pdf}
     \end{center}
-    \caption{Pruned FFTs. The dark blue voxels show the locations of the nonzero elements of the image after zero-padding. }
+    \caption{Pruned FFTs. The dark blue voxels show the locations of
+      the nonzero elements of the image after zero-padding. }
     \label{fig:pruned_ffts}
   \end{figure}
 
-\subsection{General algorithm}
+  \subsection{General algorithm}
+
   For 3D FFT-based convolution, the 3D images $x$ and $y$ are first
   zero-padded to the same size.  The inverse FFT of the point-wise
   product contains the result of the convolution.  The images $x$ and
@@ -392,7 +409,8 @@ Improving the efficiency of convolution is crucial, because this
   ($k \ll n$), we could reduce the computation cost by nearly two
   thirds.
 
-\subsection{CPU implementation}
+  \subsection{CPU implementation}
+
   Suppose we would like to compute the FFT of an $x \times y \times z$
   image zero-padded to an $x' \times y' \times z'$ image.
 
@@ -409,15 +427,18 @@ Improving the efficiency of convolution is crucial, because this
   order.  The 1D FFTs can either be done serially, or by $N$ workers
   in parallel (in a parallel for loop).
 
-% say smth about memory requirement?
+  This method induces a memory overhead of $x' \times y \times z$, a
+  space required for zero--padding the image along $x$ direction in
+  the first step of the algorithm.
 
-\subsection{GPU implementation}
+  %  Maybe say something about memory requirements
 
-\label{sec:gpu-fft-impl}
+  \subsection{GPU implementation}
 
-  On the GPU, we always perform FFTs on $b$ 3D images
-  simultaneously, in order to achieve high utilization of the many
-  GPU threads.
+  \label{sec:gpu-fft-impl}
+
+  On the GPU, we always perform FFTs on $b$ 3D images simultaneously,
+  in order to achieve high utilization of the many GPU threads.
 
   A set of $b$ 3D images can be represented as a 4D tensor.  We need
   to perform 1D FFTs along the three least significant dimensions.
@@ -430,9 +451,9 @@ Improving the efficiency of convolution is crucial, because this
   \times y \times z$ padded to $x' \times y' \times z'$, the size of
   the 4D input tensor $I$ is $b \times x \times y \times z$.  First,
   1D in--place real to complex 1D transforms along the $z$ direction
-  are performed. We prepare the input by extending the 4D tensor along
-  the $z$ direction to fit the result.  The transform will need to
-  contain $z'' = z' / 2 + 1$ complex numbers, and we need twice as
+  are performed.  We prepare the input by extending the 4D tensor
+  along the $z$ direction to fit the result.  The transform will need
+  to contain $z'' = z' / 2 + 1$ complex numbers, and we need twice as
   many reals.  A 4D tensor $I^1$ of size $b \times x \times y \times
   2z'')$ is first initialized to zero, and appropriate elements from
   the input are filled in (elements $I_{i,j,k,l}$ get mapped to
@@ -473,7 +494,7 @@ Improving the efficiency of convolution is crucial, because this
 
   \subsection{Implementation details}
 
-Our approach uses $3$rd party libraries to perform each batch of 1D
+  Our approach uses $3$rd party libraries to perform each batch of 1D
   FFTs.  Depending on the library implementation, the size to which we
   pad the 3D image can greatly influence the computational complexity.
 
@@ -485,21 +506,20 @@ Our approach uses $3$rd party libraries to perform each batch of 1D
   On the GPU we use cuFFT~\cite{nvidia2010cufft}, which has optimized
   algorithms only for sizes of the form $2^a3^b5^c7^d$.
 
-4D tensor permuting requires a lot of
-  indexing calculation, which can involve a lot expensive division and
-  modulus operations.  Sometimes these operations are more expensive
-  than the actual 1D FFT transforms performed.  We improve the
-  performances by only using multiplications by a pre--computed magic
-  numbers and shift operations as described in
-  ~\cite{warren2013hacker}.  Image reshaping is easily implemented
-  using the Thrust CUDA library~\cite{bell2011thrust}.
+  4D tensor permuting requires a lot of indexing calculation, which
+  can involve a lot expensive division and modulus operations.
+  Sometimes these operations are more expensive than the actual 1D FFT
+  transforms performed.  We improve the performances by only using
+  multiplications by a pre--computed magic numbers and shift
+  operations as described in ~\cite{warren2013hacker}.  Image
+  reshaping is easily implemented using the Thrust CUDA
+  library~\cite{bell2011thrust}.
 
   We limit the large cuFFT memory overhead for computing batches of 1D
   transforms by splitting the batch computation into sub--batches of
   1D transforms.  We make sure that the sub--batch size is still large
   enough to utilize all the computational power, but limit the size so
-  that we limit the memory overhead.  (Maybe mention that we have to
-  keep the pointers to texture alignment?)
+  that we limit the memory overhead.
 
   The memory overhead of the algorithm is due to the fact that we do
   out-of-place permuting of the 4D tensor, and requires space for $b
@@ -516,9 +536,9 @@ Our approach uses $3$rd party libraries to perform each batch of 1D
 
 
 \section{Convolutional layers}
-We begin with the
-primitives for the convolutional layers, which are the most
-computationally intensive.
+
+  We begin with the primitives for the convolutional layers, which are
+  the most computationally intensive.
 
   The input to a convolutional layer is a tuple of $f$ images, and the
   output a tuple of $f'$ images.  We want to process a batch of $S$
@@ -526,25 +546,24 @@ computationally intensive.
   \[
   O_{s,j} = \sum_{i=1}^f w_{ji}\ast I_{s,i}
   \]
-  for $1 \le s \le S$
-  and $1 \le j \le f'$.  Here $I_{s,i}$ is the $i^{th}$ image of the
-  $s^{th}$ input in the batch, and $O_{s,j}$ is the $j^{th}$ image of
-  the $s^{th}$ output in the batch, and $w_{ji}$ is the kernel from
-  the $i$th image in an input tuple to the $j$th image in an output
-  tuple.
+  for $1 \le s \le S$ and $1 \le j \le f'$.  Here $I_{s,i}$ is the
+  $i^{th}$ image of the $s^{th}$ input in the batch, and $O_{s,j}$ is
+  the $j^{th}$ image of the $s^{th}$ output in the batch, and $w_{ji}$
+  is the kernel from the $i^{th}$ image in an input tuple to the
+  $j^{th}$ image in an output tuple.
 
-We will assume 3D images and kernels.  If $I_{s,i}$ has size $\vec{n}
-= \angled{n_x, n_y, n_z}$ and $w_{ji}$ has size $\vec{k}
-= \angled{k_x,k_y,k_z}$, then we can regard $I$ as a 5D tensor of size
-$S \times f \times n_x \times n_y \times n_z$, $w$ as a 5D tensor of size
-$f' \times f \times k_x \times k_y \times k_z$, and $O$ as a 5D tensor of
-size $S \times f' \times n_x' \times n_y' \times n_z'$, where
-$\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
+  We will assume 3D images and kernels.  If $I_{s,i}$ has size
+  $\vec{n} = \angled{n_x, n_y, n_z}$ and $w_{ji}$ has size $\vec{k} =
+  \angled{k_x,k_y,k_z}$, then we can regard $I$ as a 5D tensor of size
+  $S \times f \times n_x \times n_y \times n_z$, $w$ as a 5D tensor of
+  size $f' \times f \times k_x \times k_y \times k_z$, and $O$ as a 5D
+  tensor of size $S \times f' \times n_x' \times n_y' \times n_z'$,
+  where $\vec{n}' = \vec{n} - \vec{k} + \vec{1}$.
 
-We will refer to the sizes of the 5D tensors $I$ and $O$ as input and
-output shape, respectively.  The relationship between input shape and
-output shape depends on kernel size as in
-Table~\ref{table:layers_complexity}.
+  We will refer to the sizes of the 5D tensors $I$ and $O$ as input
+  and output shape, respectively.  The relationship between input
+  shape and output shape depends on kernel size as in
+  Table~\ref{table:layers_complexity}.
 
   \begin{table*}[t]
     {\footnotesize
@@ -571,7 +590,13 @@ Table~\ref{table:layers_complexity}.
       $S \cdot f \cdot n^3 \cdot p^3$ \\
       \bottomrule
     \end{tabular}
-    \caption{Relation between input and output shapes for convolutional and pooling layers, along with computational complexities. Input shape is for a batch of $S$ inputs, each of which is an $f$-tuple of 3D images with size $n^3$, and output shape is analogous. The 3D kernel has size $k^3$. The pooling window has size $p^3$, and FFT complexity for an image of size $n^3$ is assumed to be $C n^3\log n^3$.}
+    \caption{Relation between input and output shapes for
+      convolutional and pooling layers, along with computational
+      complexities. Input shape is for a batch of $S$ inputs, each of
+      which is an $f$-tuple of 3D images with size $n^3$, and output
+      shape is analogous. The 3D kernel has size $k^3$. The pooling
+      window has size $p^3$, and the constant $C$ for the FFT
+      complexity depends on the FFT implementation.}
     \label{table:layers_complexity}
     }
   \end{table*}
@@ -610,9 +635,8 @@ Table~\ref{table:layers_complexity}.
   such that each image of each output in the batch is computed in
   parallel on a different working thread (see
   Algorithm~\ref{alg:cpu_direct}).  The $\kw{parallel for}$ loops are
-  implemented using Intel thread building
-  blocks such that the work is evenly divided over the available
-  cores.
+  implemented using Intel thread building blocks such that the work is
+  evenly divided over the available cores.
 
   We provide one implementation using naive convolution and the other
   using Intel MKL.  The latter is $2\times$ faster on average, but
@@ -653,7 +677,7 @@ Table~\ref{table:layers_complexity}.
       cuDNN (precomp) &
       2S \cdot f \cdot n + S \cdot f' \cdot n' \\
       FFT &
-      C + \max
+      K + \max
       \begin{cases}
         S \cdot f \cdot (n + \widetilde{n}) + f \cdot \widetilde{n} \\
         S \cdot (f + f') \cdot \widetilde{n} + 2f \cdot \widetilde{n} \\
@@ -662,11 +686,19 @@ Table~\ref{table:layers_complexity}.
       \bottomrule
     \end{tabular}
 
-    \caption{Memory required by different implementations.}
+    \caption{Memory required by different implementations.  $S$ is the
+      batch size, $f$ and $f'$ represent the number of input/output
+      images of the layer.  $n$ and $n'$ represent the number of
+      pixels in each input/output image, and $\widetilde{n}$
+      represents the number of elements in the transformed image.  $K$
+      is pre--defined constant amount of memory allocated for cuFFT,
+      and $T$ is the number of available cores for the CPU
+      algorithms.}
     \label{table:memory_requirements}
   \end{table}
 
 \subsubsection{Data parallel FFT-based algorithm}
+
   The computationally intensive operations are individually
   parallelized (see Algorithm~\ref{alg:cpu_fft_alg1}).  More
   specifically each FFT and inverse FFT transform is done in parallel
@@ -717,20 +749,14 @@ Table~\ref{table:layers_complexity}.
 
 \subsubsection{Task parallel FFT-based algorithm}
 
-  \begin{figure}
-    \begin{center}
-      \includegraphics[width=0.95\columnwidth]{fig/deps}
-    \end{center}
-    \caption{Task dependencies of a convolutional layer.}
-    \label{fig:task_deps}
-  \end{figure}
-
   The main quantities of the task parallel algorithm are: (1) breaking
   up the computation required by the convolutional layer into tasks
-  that operate on an independent chunk of memory, (2) creating a task
+  that operate on independent chunks of memory, (2) creating a task
   dependency graph, and (3) scheduling the tasks for execution.
 
   There are five different task types:
+
+  {\color{zblack}}
 
   \begin{itemize}
     \item {\color{zred}\bf Input image transform} task computes the
@@ -751,98 +777,104 @@ Table~\ref{table:layers_complexity}.
 
   {\color{zblack}}
 
+
+  \begin{figure}
+    \begin{center}
+      \includegraphics[width=0.95\columnwidth]{fig/deps}
+    \end{center}
+    \caption{Task dependency diagram of a task--based convolutional
+      layer.}
+    \label{fig:task_deps}
+  \end{figure}
+
+
   The task dependency graph of all the tasks required for computing
   the output images of a convolutional layer with four input and five
   output images for a batch size of four is shown on
   Figure~\ref{fig:task_deps}.  The tasks are created and queued when
-  all their dependencies have been satisfied.  There are four
-  {\color{zyellow}\bf synchronization} tasks effectively dividing the
-  computation into three stages.  The layout of the {\color{zblue}\bf
-    kernel transform} tasks forms a grid, with the number of columns
-  equal to the number of output images, and the number of rows
-  equal to the number of input images.  The task of the $i$th
-  column and $j$th row computes the transform of the kernel $w_{i,j}$.
-  Furthermore, each such task has $S$ dependent {\color{zgreen}\bf
-    multiply-add} tasks, where $S$ is the batch size of the input
-  (equal to four in Figure~\ref{fig:task_deps}).  The $k$th dependent
-  {\color{zgreen}\bf multiply-add} task of a {\color{zblue}\bf kernel
+  all their dependencies have been satisfied.  There are four {\bf
+    synchronization} tasks effectively dividing the computation into
+  three stages.  The layout of the {\bf kernel transform} tasks forms
+  a grid, with the number of columns equal to the number of output
+  images, and the number of rows equal to the number of input images.
+  The task of the $i^{th}$ column and $j^{th}$ row computes the
+  transform of the kernel $w_{i,j}$.  Furthermore, each such task has
+  $S$ dependent {\bf multiply-add} tasks, where $S$ is the batch size
+  of the input (equal to four in Figure~\ref{fig:task_deps}).  The
+  $k^{th}$ dependent {\bf multiply-add} task of a {\bf kernel
     transform} task in column $i$ and row $j$ accumulates the product
-  of the transforms of the $j$th input image of the $k$th batch and
-  the filter $w_{i,j}$ to the transform of the $i$th output image of
-  the $k$th batch.
+  of the transforms of the $j^{th}$ input image of the $k^{th}$ batch
+  and the filter $w_{i,j}$ to the transform of the $i^{th}$ output
+  image of the $k^{th}$ batch.
 
   The tasks are executed by $N$ worker threads, where $N$ equals the
   number of available cores (or virtual cores, when hyper--threading
   is enabled).  Each worker thread is {\bf pinned} to a single core.
   This means that there is 1--1 relation between the workers and the
-  available cores, where each worker can run only on a specific
+  available cores -- each worker is allowed to run only on a specific
   hardware core, as described in~\cite{jeffers2015high}.  For this
   reason, we will use ``worker thread'' and ``core'' interchangeably.
 
-  The first {\color{zyellow}\bf synchronization} task allocates memory
-  for the FFT transforms of the input images.  The number of dependent
-  {\color{zred}\bf input image transform} tasks equals the number of
-  input images times the batch size $S$.  They are then
-  executed by the $N$ worker threads, such that each worker picks up
-  an arbitrary task and executes it.
+  The first {\bf synchronization} task allocates memory for the FFT
+  transforms of the input images.  The number of dependent {\bf input
+    image transform} tasks equals the number of input images times the
+  batch size $S$.  They are then executed by the $N$ worker threads,
+  such that each worker picks up an arbitrary task and executes it.
 
-  The last thread to complete the execution of an {\color{zred}\bf
-    input image transform} task immediately executes the second
-  {\color{zyellow}\bf synchronization} task.  This tasks deallocates
-  the memory holding the input images, as their values are no longer
-  required. It then allocates memory for the transforms of the output
-  images.  At this point $M$ threads are chosen as \emph{primary}
-  threads, where $M$ is the maximum of $N$ -- total number of threads,
-  and the number of output images.  The \emph{primary} threads
-  are chosen so that they are evenly distributed over multiple
-  physical chips.  Each \emph{primary} thread is given a temporary
-  buffer equal to the size required to fit the transform of a padded
-  kernel for that layer.
+  The last thread to complete the execution of an {\bf input image
+    transform} task immediately executes the second {\bf
+    synchronization} task.  This tasks deallocates the memory holding
+  the input images, as their values are no longer required. It then
+  allocates memory for the transforms of the output images.  At this
+  point $M$ threads are chosen as \emph{primary} threads, where $M$ is
+  the maximum of $N$ -- total number of threads, and the number of
+  output images.  The \emph{primary} threads are chosen so that they
+  are evenly distributed over multiple physical chips.  Each
+  \emph{primary} thread is given a temporary buffer equal to the size
+  required to fit the transform of a padded kernel for that layer.
 
-  The {\color{zblue}\bf kernel transform} tasks and {\color{zgreen}\bf
-    multiply-add} tasks are then scheduled for execution based on
-  their distance to the sink node of the task dependency graph, such
-  that the more distant nodes get scheduled first.  The scheduling has
-  two additional constraints: (1) the {\color{zblue}\bf kernel
-    transform} tasks can only be executed by a \emph{primary} thread,
-  and (2) its dependent {\color{zgreen}\bf multiply-add} tasks can
-  only be executed by worker threads that are pinned to the same
-  physical chip.
+  The {\bf kernel transform} tasks and {\bf multiply-add} tasks are
+  then scheduled for execution based on their distance to the sink
+  node of the task dependency graph, such that the more distant nodes
+  get scheduled first.  The scheduling has two additional constraints:
+  (1) the {\bf kernel transform} tasks can only be executed by a
+  \emph{primary} thread, and (2) its dependent {\bf multiply-add}
+  tasks can only be executed by worker threads that are pinned to the
+  cores on the same physical chip.
 
   This strategy is chosen over the popular alternative approach to
   task scheduling based on work stealing~\cite{reinders2007intel,
     willhalm2008putting} because it divides the work more evenly over
-  multi-chip machines and further increase cache locality.  On a 4-way
-  machine it yields more deterministic results -- very little variance
-  in run-time and average of 20\% speed improvement over the
+  multi--chip machines and further increase cache locality.  On a
+  4-way machine it yields more deterministic results -- very little
+  variance in run-time and average of 20\% speed improvement over the
   alternative.
 
-  The last {\color{zgreen}\bf multiply-add} task to complete executes
-  the third {\color{zyellow}\bf synchronization} task.  This task
-  deallocates the memory buffers given to the primary threads as well
-  as the memory used to store the transforms of the input images.  It
-  also allocates the memory to store the final result -- the output
-  images.
+  The last {\bf multiply-add} task to complete executes the third {\bf
+    synchronization} task.  This task deallocates the memory buffers
+  given to the primary threads as well as the memory used to store the
+  transforms of the input images.  It also allocates the memory to
+  store the final result -- the output images.
 
-  The number of {\color{zpurple}\bf output image transform} tasks
-  equals the number of output images times the batch size.  The
-  tasks are executed by all $N$ workers, such that each worker picks
-  up an arbitrary task and executes it.  The last {\color{zpurple}\bf
-    output image transform} task to finish also executes the final
-  {\color{zyellow}\bf synchronization} task, which frees the memory
-  required for the output image transforms.
+  The number of {\bf output image transform} tasks equals the number
+  of output images times the batch size.  The tasks are executed by
+  all $N$ workers, such that each worker picks up an arbitrary task
+  and executes it.  The last {\bf output image transform} task to
+  finish also executes the final {\bf synchronization} task, which
+  frees the memory required for the output image transforms.
 
   The task parallel algorithm requires that both $f \cdot S$ and $f'
   \cdot S$ be large enough (at least the same size as the number of
   available cores) in order to efficiently utilize all the cores.  In
   such cases they can be much more efficient than the data parallel
   algorithm, as the tasks operate on independent data (thus reducing
-  false--sharing, a case where one CPU's cache is invalidated because
-  multiple CPUs operate on adjacent memory).  It further improves the
-  performances on multi--chip systems, by minimizing the data sharing
-  between cores on different chips. On a 4--way Intel Xeon E7 8890v3
-  machine the task parallel algorithm is $10 \times$ faster than the
-  data parallel one (for large enough $f' \cdot S$ and $f \cdot S$).
+  false--sharing~\footnote{A case where one CPU's cache is invalidated
+    because multiple CPUs operate on adjacent memory}).  It further
+  improves the performances on multi--chip systems, by minimizing the
+  data sharing between cores on different chips. On a 4--way Intel
+  Xeon E7--8890 v3 machine the task parallel algorithm is $10 \times$
+  faster than the data parallel one (for large enough $f' \cdot S$ and
+  $f \cdot S$).
 
   As shown later, this is the implementation that is optimal in most
   cases, even for very small kernel sizes; the only exception is the
@@ -858,10 +890,9 @@ Table~\ref{table:layers_complexity}.
 \subsection{GPU implementations}
 
   For the GPU, we propose three different algorithms.  Two of them use
-  based on cuDNN's 3D convolution that are based on implicit
-  matrix--matrix multiplication.  The third FFT--based implementation
-  is based on our, previously described, algorithm for pruned
-  FFTs.
+  cuDNN's 3D primitives that are based on implicit matrix--matrix
+  multiplication.  The third FFT--based implementation is based on
+  our, previously described, algorithm for pruned FFTs.
 
 \subsubsection{Direct convolution using cuDNN}
 
@@ -915,15 +946,16 @@ Table~\ref{table:layers_complexity}.
   \end{algorithm}
 
   The algorithm, given in Algorithm~\ref{alg:gpu_alg} resembles the
-  task based CPU algorithm in the sense that it has three main stages
-  with memory allocated/deallocated between the stages.  The lines 2
-  and 3 allocate memory required for the input image transforms and
-  the scratch space required by $\proc{GPU-Parallel-FFT}$ procedure
-  explained in Section~\ref{sec:gpu-fft-impl}.  The first stage (lines
-  4 and 5) computes the transforms of all the input images by
-  performing $f$ 3D FFTs in parallel.  The memory used by the input
-  images is then released, and memory for storing the FFTs of the
-  output images is allocated (lines 6 and 7).
+  task based CPU algorithm in the sense that it consists of three
+  stages with memory allocated/deallocated between the stages.  The
+  lines 2 and 3 allocate memory required for the input image
+  transforms and the scratch space required by
+  $\proc{GPU-Parallel-FFT}$ procedure (explained in
+  Section~\ref{sec:gpu-fft-impl}).  The first stage (lines 4 and 5)
+  computes the transforms of all the input images by performing $f$ 3D
+  FFTs in parallel.  The memory used by the input images is then
+  released, and memory for storing the FFTs of the output images is
+  allocated (lines 6 and 7).
 
   In the second stage (lines 8--12) we loop over the $f'$ output
   images.  For each output image we compute the transform
@@ -954,11 +986,11 @@ Table~\ref{table:layers_complexity}.
 \section{Max-pooling and max-pooling fragments}
 
   \emph{Max pooling} of an image of size $\vec{n}$ with the window
-  size of $\vec{p} = (p_x,p_y,p_z)$ divides an image into blocks of
-  size $\vec{p}$.  The maximum value is computed for each block,
-  yielding an image of size $(n_x/p_x,n_y/p_y,n_z/p_z)$.  The input
-  image size $\vec{n}$ is restriceted such that $n_x$, $n_y$ and $n_z$
-  are divisible by $p_x$, $p_y$ and $p_z$ respectively.
+  size of $\vec{p} = \angled{p_x,p_y,p_z}$ divides an image into
+  blocks of size $\vec{p}$.  The maximum value is computed for each
+  block, yielding an image of size $\angled{n_x/p_x,n_y/p_y,n_z/p_z}$.
+  The input image size $\vec{n}$ is restriceted such that $n_x$, $n_y$
+  and $n_z$ are divisible by $p_x$, $p_y$ and $p_z$ respectively.
 
   On the CPU, we implement the max-pooling layer so that the
   max-pooling of each image is performed in parallel (e.g. by using
@@ -993,7 +1025,6 @@ Table~\ref{table:layers_complexity}.
   input images at that offset.
 
 \section{GPU-only or CPU-only inference}
-
 
   \begin{table}
     \centering
@@ -1061,21 +1092,21 @@ Table~\ref{table:layers_complexity}.
   be of the form $(\alpha S,f',x',y',z')$.  Where $\alpha$ value is
   depends on the amount of \emph{MPF} layers used and their pooling
   window sizes.  This output represents $S$ sets, each having $\alpha$
-  fragments which should be recombined to obtain the ... blah mention
-  that~\cite{giusti2013fast,masci2013fast} explains how to recombine.
+  fragments which should be recombined to obtain the sliding--window
+  result.~\cite{giusti2013fast,masci2013fast}.
 
   The throughput of the network is defined as:
-
-  $$\frac{\proc{Size}(I')}{\sum_{1 \le i \le L}
-    \proc{Time}(\id{Primitive}_i,I_i)}$$
-
-  Where $I_i$ is the input of the $i$th layer's primitive.  The output
-  shape will depend on the shape of the input $I$ and the primitives
-  chosen for each \emph{max--pooling} layer.  As the input shapes to
-  each layer need to have integral sizes not every combination of
-  layer primitives and input shapes are allowed
-  (Table~\ref{table:layers_complexity}).  Additional constraint is
-  that the memory required for $i$th primitive to process input $I_i$
+  \[
+  \frac{\proc{Size}(I')}{\sum_{1 \le i \le L}
+    \proc{Time}(\id{Primitive}_i,I_i)}
+  \]
+  Where $I_i$ is the input of the $i^{th}$ layer's primitive.  The
+  output shape will depend on the shape of the input $I$ and the
+  primitives chosen for each \emph{max--pooling} layer.  As the input
+  shapes to each layer need to have integral sizes, not every
+  combination of layer primitives and input shapes are allowed (see
+  Table~\ref{table:layers_complexity}).  Additional constraint is that
+  the memory required for $i^{th}$ primitive to process input $I_i$
   has to be smaller than the memory available to the system (either
   the CPU or the GPU).
 
@@ -1099,27 +1130,29 @@ Table~\ref{table:layers_complexity}.
 
   It turns out that for our networks, the highest throughput is
   obtained when all the \emph{max--pooling} layers are replaced with
-  \emph{MPF} layers, and when the input batch size is one
-  ($S = 1$).  Additionally higher throughput is achieved for larger input
-  sizes.
+  \emph{MPF} layers, and when the input batch size is one ($S = 1$).
+  Additionally, higher throughput is achieved for larger input sizes.
 
   The fact that \emph{MPF} layers outperform \emph{max--pooling
-    layers} is not surprising as it has been shown that using
-  \emph{MPF} layers reduces amount of operations required for
-  computing a single output pixel~\cite{giusti2013fast,masci2013fast}.
-
+    layers} is not surprising as it has been shown that
+    using \emph{MPF} layers reduces amount of operations required for
+    computing a single output
+    pixel~\cite{giusti2013fast,masci2013fast}.
 
   \begin{figure}
     \centering
-    \subfloat[]{\protect\includegraphics[width=0.24\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 0mm 0mm 9mm 1mm, clip, width=0.5\columnwidth]
       {fig/batch1.eps}
       \label{fig:fftbatcha}
     }
-    \subfloat[]{\protect\includegraphics[width=0.24\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 0mm 0mm 9mm 1mm, clip, width=0.5\columnwidth]
       {fig/batch2.eps}
       \label{fig:fftbatchb}
     }
-    \caption{Batch FFT?.}
+    \caption{Theoretical speedup of pooling networks using FFT--based
+      convolution for different sizes of the inputs and different
+      batch sizes for a network with 1 pooling layer (a) and 2 pooling
+      layers (b).}
     \label{fig:fftbatch}
   \end{figure}
 
@@ -1187,11 +1220,41 @@ Table~\ref{table:layers_complexity}.
     \label{fig:experiments1}
   \end{figure*}
 
+  The fact that $S=1$ produces better results is more surprising.
+  Increasing the batch size can greatly reduce the computational cost
+  of FFT--based ConvNets by reusing the transforms of the
+  kernels~\cite{mathieu-iclr-14,vasilache2014fast}.  However, when the
+  batch size is larger, the memory requirement for each layer
+  increases, thus effectively limiting the maximal size of the input.
+  Increasing the batch size, as well as the input image size increase
+  the memory requirements of the algorithm and lower the computational
+  complexity when FFT based convolutions are used.  In our case,
+  increasing the image size had a stronger effect, which is not always
+  the case.
 
+  On Figure~\ref{fig:fftbatch} we show the theoretical speedup
+  achievable by using different batch sizes for two networks, using
+  the computational cost of an FFT--based layer shown in
+  Table~\ref{table:layers_complexity}.  The theoretical speedup is
+  defined as the ratio of operations required to compute a single
+  output pixel of a naive approach (having input image equal to the
+  field of view of the network -- output equal to $1 \times 1 \times
+  1$, and a network using \emph{MPF} with different input sizes.
+  Instead of having the input size on the $x$ axis we display the
+  memory required for such network.
+
+  We see that for a network with 2 pooling layers, having a batch size
+  of $1$ can achieve the highest theoretical speedup.  As the networks
+  we benchmark have 2 or more pooling layers our empirical results
+  agree with the theoretical estimate.  When optimizing the throughput
+  of networks with only 1 pooling layer, one should consider larger
+  batch sizes.
+
+\subsection{Optimization measurements}
 
   Figure~\ref{fig:experiments1} shows the throughput achieved on the
   four benchmarked networks (Table~\ref{table:benchmarked_networks})
-  for the batch size of $1$ and different image sizes.
+  with the batch size $S=1$, and different image sizes.
 
   Turns out that the optimal choice for primitives for the CPU is
   always the same regardless of the network choice.  In all cases the
@@ -1200,12 +1263,11 @@ Table~\ref{table:layers_complexity}.
   the task--based algorithm.  This is not unexpected for two
   reasons. (1) FFT based convolution uses our highly efficient FFT
   implementation which nearly always operate on contiguous chunks of
-  memory which is important for memory locality, on the other side,
-  the 3D direct convolution access the memory in a more scattered
-  fashion, producing a lot of cache misses -- and going to the main
-  memory is expensive. (2) In the task--based algorithm each core
-  operates on an independent chunk of memory.. blah.... (do i repeat
-  this)
+  memory. This greatly improves the memory locality, while on the
+  other side, the 3D direct convolution accesses the memory in a more
+  scattered fashion, producing a lot of cache misses.  (2) In the      %% TODO: BLAH
+  task--based algorithm each core operates on an independent chunk of
+  memory.. blah.... (do i repeat this)
 
   \begin{table}
     \centering
@@ -1231,19 +1293,19 @@ Table~\ref{table:layers_complexity}.
     \label{table:gpu_optimal}
   \end{table}
 
+  The optimal use of primitives for the GPU have higher dependence on
+  the ConvNet's architecture.  The optimal choice of primitives for
+  each network, as well as the optimal input image size is given in
+  Table~\ref{table:gpu_optimal}.  Interestingly, the implementation
+  for the first layer of all networks is the slower version of the
+  cuDNN's primitive.  Even though the primitive is slower, it is able
+  to process larger input image, as it has lower memory requirement.
+  There is a trade--off between the layer speed, and the maximal size
+  of the input that a layer can process.  In this case it was more
+  beneficial to be able to process larger inputs.
 
-  %% Maybe table showing optimal
 
-  The optimal use of primitives for the GPU vary much more.  The
-  optimal choice of primitives for each network, as well as the
-  optimal input image size is given in Table~\ref{table:gpu_optimal}.
-  Interestingly, the implementation for the first layer of all
-  networks is the slower version of the CuDNN.  However, this layer
-  has lower memory requirements.  There is a trade--off between the
-  layer speed, and the maximal size of the input that a layer can
-  process.  In this case it was more beneficial to be able to process
-  larger inputs.
-
+  %% HERE
 
 \section{GPU + host RAM and CPU--GPU inference}
 
@@ -1404,13 +1466,13 @@ Table~\ref{table:layers_complexity}.
 
   \begin{figure*}[!htbp]
     \centering
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 6mm 0mm 9mm 1mm, clip, width=0.25\textwidth]
       {fig/m36x.eps}}
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 6mm 0mm 9mm 1mm, clip, width=0.25\textwidth]
       {fig/m56x.eps}}
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 6mm 0mm 9mm 1mm, clip, width=0.25\textwidth]
       {fig/m76x.eps}}
-    \subfloat[]{\protect\includegraphics[trim= 10mm 2mm 15mm 5mm, clip, width=0.25\textwidth]
+    \subfloat[]{\protect\includegraphics[trim= 6mm 0mm 9mm 1mm, clip, width=0.25\textwidth]
       {fig/m96x.eps}}
 
     \caption{Throughput vs memory available
@@ -1462,14 +1524,14 @@ the GPU + host RAM approach, the network
 
   \begin{table*}[h!tbp]
     \centering
-    \begin{tabular}{l|cccccccc}
+    \begin{tabular}{l|ccccccccc}
       \toprule
-      Network  & Baseline (cuDNN)  & Theano      & Caffe    & ELEKTRONN   & ZNN         & GPU-Only    & CPU-Only    & GPU-CPU   \\
+      Network  & Baseline (cuDNN)  & Theano      & Caffe    & ELEKTRONN   & ZNN         & GPU-Only    & CPU-Only    & GPU + host RAM & GPU-CPU   \\
       \midrule
-      n337     & $22,934.8$        & $1,979.3$   & $1.348$  & $122,668$   & $34,334.8$  & $666,485$   & $262,131$   & $933,070$ \\
-      n537     & $1,048.68$        & --          & --       & --          & $9,494.5$   & $28,757.5$  & $194,683$   & $334,163$ \\
-      n726     & $13,520.4$        & $90.523$    & --       & $6,122$     & $31,354.8$  & $97,413.4$  & $300,312$   & $470,166$ \\
-      n926     & $2,667.86$        & --          & --       & --          & $20,908.6$  & $27,667.8$  & $249,190$   & $375,295$ \\
+      n337     & $22,934.8$        & $1,979.3$   & $1.348$  & $122,668$   & $34,334.8$  & $671,782$   & $262,131$   & $727,103$      & $1,059,910$ \\
+      n537     & $1,048.68$        & --          & --       & --          & $9,494.5$   & $29,352.1$  & $194,683$   & $147,965$      & $334,163$ \\
+      n726     & $13,520.4$        & $90.523$    & --       & $6,122$     & $31,354.8$  & $97,257.2$  & $300,312$   & $148,194$      & $470,166$ \\
+      n926     & $2,667.86$        & --          & --       & --          & $20,908.6$  & $35,051.3$  & $249,190$   & $104,946$      & $375,295$ \\
       \bottomrule
     \end{tabular}
     \caption{Comparisons to other methods.}
@@ -1533,11 +1595,11 @@ the GPU + host RAM approach, the network
   all the primitives.  In future we might want to make wrappers for
   other frameworks?  Everyone can reproduce the results.
 
-\section{Acknowledgments}
-We are grateful to Intel Corporation for providing the 4–-way Intel
-Xeon E7–-8890 v3 machine, and for supporting the Intel Parallel
-Computing Center at Princeton University.  We acknowledge support from
-IARPA award D16PC00005.  􀀄􀀁􀀅􀀆􀀇􀀈􀀈􀀈􀀈􀀉
+%\section{Acknowledgments}
+%We are grateful to Intel Corporation for providing the 4–-way Intel
+%Xeon E7–-8890 v3 machine, and for supporting the Intel Parallel
+%Computing Center at Princeton University.  We acknowledge support from
+%IARPA award D16PC00005.  􀀄􀀁􀀅􀀆􀀇􀀈􀀈􀀈􀀈􀀉
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

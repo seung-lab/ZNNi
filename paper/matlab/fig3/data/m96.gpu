@@ -20,3 +20,6 @@
 [network_throughput] m96 :: 80,80,80 :: 27994.7 10261644292
 [network_throughput] m96 :: 84,84,84 :: 31497.8 10261644292
 [network_throughput] m96 :: 88,88,88 :: 35051.3 10261644292
+[network_throughput] m96 :: 92,92,92 :: 8016.67 8758136012
+[network_throughput] m96 :: 96,96,96 :: 8706.58 9202361292
+[network_throughput] m96 :: 100,100,100 :: 9197.9 9661485772

@@ -1,0 +1,1839 @@
+--------------------------------------------
+
+### LOG[benchmark] :: m36 :: starting os :: 8,8,8
+### LOG[best_layer] :: find best conv layer: 1 1->80 92,92,92 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00870374
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00870374
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.0698037
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0063878
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0063878
+### LOG[best_layer] :: find best mfp layer: 1 80->80 91,91,91 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.00862364
+### LOG[best_layer] :: find best conv layer: 8 80->80 45,45,45 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0660047
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0660047
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.411524
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.168581
+### LOG[best_layer] :: find best mfp layer: 8 80->80 43,43,43 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0074005
+### LOG[best_layer] :: find best conv layer: 64 80->80 21,21,21 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0442295
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0442295
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.370378
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.116317
+### LOG[best_layer] :: find best mfp layer: 64 80->80 19,19,19 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.00537635
+### LOG[best_layer] :: find best conv layer: 512 80->80 9,9,9 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0184506
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0184506
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.714881
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0476839
+### LOG[best_layer] :: find best conv layer: 512 80->80 7,7,7 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00786788
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00786788
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.619316
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0183306
+### LOG[best_layer] :: find best conv layer: 512 80->80 5,5,5 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00199768
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00199768
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.581294
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00534324
+### LOG[best_layer] :: find best conv layer: 512 80->3 3,3,3 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.000469964
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.000469964
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.106202
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00110448
+[network_build] m36 :: 8,8,8 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 477909132
+[network_throughput] m36 :: 8,8,8 :: 3043.29 477909132
+### LOG[benchmark] :: m36 :: starting os :: 16,16,16
+### LOG[best_layer] :: find best conv layer: 1 1->80 100,100,100 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0105656
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0105656
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.0823729
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00760667
+### LOG[best_layer] :: cudnn_conv (best) time: 0.00760667
+### LOG[best_layer] :: find best mfp layer: 1 80->80 99,99,99 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0110338
+### LOG[best_layer] :: find best conv layer: 8 80->80 49,49,49 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0851388
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0851388
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.550683
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.2206
+### LOG[best_layer] :: find best mfp layer: 8 80->80 47,47,47 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.00978559
+### LOG[best_layer] :: find best conv layer: 64 80->80 23,23,23 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0595398
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0595398
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.489089
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.158335
+### LOG[best_layer] :: find best mfp layer: 64 80->80 21,21,21 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.00718728
+### LOG[best_layer] :: find best conv layer: 512 80->80 10,10,10 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0266945
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0266945
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.761067
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0700348
+### LOG[best_layer] :: find best conv layer: 512 80->80 8,8,8 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0115742
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0115742
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.676203
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0300569
+### LOG[best_layer] :: find best conv layer: 512 80->80 6,6,6 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00398447
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00398447
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.567457
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0102066
+### LOG[best_layer] :: find best conv layer: 512 80->3 4,4,4 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.000553706
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.000553706
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.104053
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00130681
+[network_build] m36 :: 16,16,16 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 615163532
+[network_throughput] m36 :: 16,16,16 :: 17790.5 615163532
+### LOG[benchmark] :: m36 :: starting os :: 24,24,24
+### LOG[best_layer] :: find best conv layer: 1 1->80 108,108,108 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0134075
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0134075
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.103632
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00936633
+### LOG[best_layer] :: cudnn_conv (best) time: 0.00936633
+### LOG[best_layer] :: find best mfp layer: 1 80->80 107,107,107 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0137688
+### LOG[best_layer] :: find best conv layer: 8 80->80 53,53,53 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.107132
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.107132
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.694679
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.28783
+### LOG[best_layer] :: find best mfp layer: 8 80->80 51,51,51 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0122764
+### LOG[best_layer] :: find best conv layer: 64 80->80 25,25,25 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0787472
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0787472
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.581238
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.210397
+### LOG[best_layer] :: find best mfp layer: 64 80->80 23,23,23 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.00895915
+### LOG[best_layer] :: find best conv layer: 512 80->80 11,11,11 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0383973
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0383973
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.977183
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.102021
+### LOG[best_layer] :: find best conv layer: 512 80->80 9,9,9 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.01843
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.01843
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.719635
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0483518
+### LOG[best_layer] :: find best conv layer: 512 80->80 7,7,7 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00721542
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00721542
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.626036
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0186203
+### LOG[best_layer] :: find best conv layer: 512 80->3 5,5,5 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.000910945
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.000910945
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.111409
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00197785
+[network_build] m36 :: 24,24,24 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 776625292
+[network_throughput] m36 :: 24,24,24 :: 45068.2 776625292
+### LOG[benchmark] :: m36 :: starting os :: 32,32,32
+### LOG[best_layer] :: find best conv layer: 1 1->80 116,116,116 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0164257
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0164257
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.137231
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0116365
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0116365
+### LOG[best_layer] :: find best mfp layer: 1 80->80 115,115,115 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0169633
+### LOG[best_layer] :: find best conv layer: 8 80->80 57,57,57 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.134406
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.134406
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.936663
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.359878
+### LOG[best_layer] :: find best mfp layer: 8 80->80 55,55,55 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0152751
+### LOG[best_layer] :: find best conv layer: 64 80->80 27,27,27 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.101231
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.101231
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.707838
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.270163
+### LOG[best_layer] :: find best mfp layer: 64 80->80 25,25,25 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0116274
+### LOG[best_layer] :: find best conv layer: 512 80->80 12,12,12 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0524783
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0524783
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.988676
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.138202
+### LOG[best_layer] :: find best conv layer: 512 80->80 10,10,10 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0280188
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0280188
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.765118
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0710587
+### LOG[best_layer] :: find best conv layer: 512 80->80 8,8,8 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0116882
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0116882
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.678843
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0315088
+### LOG[best_layer] :: find best conv layer: 512 80->3 6,6,6 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00169485
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00169485
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.091156
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.00452896
+[network_build] m36 :: 32,32,32 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 964260492
+[network_throughput] m36 :: 32,32,32 :: 81462.5 964260492
+### LOG[benchmark] :: m36 :: starting os :: 40,40,40
+### LOG[best_layer] :: find best conv layer: 1 1->80 124,124,124 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0203794
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0203794
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.189396
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0141465
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0141465
+### LOG[best_layer] :: find best mfp layer: 1 80->80 123,123,123 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0206219
+### LOG[best_layer] :: find best conv layer: 8 80->80 61,61,61 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.166695
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.166695
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.1063
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.444924
+### LOG[best_layer] :: find best mfp layer: 8 80->80 59,59,59 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0186584
+### LOG[best_layer] :: find best conv layer: 64 80->80 29,29,29 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.127413
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.127413
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.88974
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.337969
+### LOG[best_layer] :: find best mfp layer: 64 80->80 27,27,27 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0145466
+### LOG[best_layer] :: find best conv layer: 512 80->80 13,13,13 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0697404
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0697404
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.18465
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.183772
+### LOG[best_layer] :: find best conv layer: 512 80->80 11,11,11 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0384948
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0384948
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.976218
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.101261
+### LOG[best_layer] :: find best conv layer: 512 80->80 9,9,9 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0184716
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0184716
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.720721
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0484269
+### LOG[best_layer] :: find best conv layer: 512 80->3 7,7,7 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00272376
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00272376
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.109082
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0079556
+[network_build] m36 :: 40,40,40 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 1180035212
+[network_throughput] m36 :: 40,40,40 :: 121345 1180035212
+### LOG[benchmark] :: m36 :: starting os :: 48,48,48
+### LOG[best_layer] :: find best conv layer: 1 1->80 132,132,132 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0240985
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0240985
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.215083
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0171257
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0171257
+### LOG[best_layer] :: find best mfp layer: 1 80->80 131,131,131 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0246455
+### LOG[best_layer] :: find best conv layer: 8 80->80 65,65,65 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.204727
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.204727
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.49463
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.547634
+### LOG[best_layer] :: find best mfp layer: 8 80->80 63,63,63 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.022752
+### LOG[best_layer] :: find best conv layer: 64 80->80 31,31,31 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.159327
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.159327
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.06847
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.423099
+### LOG[best_layer] :: find best mfp layer: 64 80->80 29,29,29 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0186871
+### LOG[best_layer] :: find best conv layer: 512 80->80 14,14,14 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0907414
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0907414
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.15043
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.240078
+### LOG[best_layer] :: find best conv layer: 512 80->80 12,12,12 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0530305
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0530305
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.991015
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.139611
+### LOG[best_layer] :: find best conv layer: 512 80->80 10,10,10 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0272476
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0272476
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.768582
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0718131
+### LOG[best_layer] :: find best conv layer: 512 80->3 8,8,8 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00420852
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00420852
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.116381
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0128899
+[network_build] m36 :: 48,48,48 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 1425915532
+[network_throughput] m36 :: 48,48,48 :: 170373 1425915532
+### LOG[benchmark] :: m36 :: starting os :: 56,56,56
+### LOG[best_layer] :: find best conv layer: 1 1->80 140,140,140 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0286913
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0286913
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.219594
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0204795
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0204795
+### LOG[best_layer] :: find best mfp layer: 1 80->80 139,139,139 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0295745
+### LOG[best_layer] :: find best conv layer: 8 80->80 69,69,69 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.247091
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.247091
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.51734
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.65889
+### LOG[best_layer] :: find best mfp layer: 8 80->80 67,67,67 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0370619
+### LOG[best_layer] :: find best conv layer: 64 80->80 33,33,33 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.194395
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.194395
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.40124
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.518814
+### LOG[best_layer] :: find best mfp layer: 64 80->80 31,31,31 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0218478
+### LOG[best_layer] :: find best conv layer: 512 80->80 15,15,15 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.115359
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.115359
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.24349
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.306415
+### LOG[best_layer] :: find best conv layer: 512 80->80 13,13,13 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.117232
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.117232
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.15323
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.185648
+### LOG[best_layer] :: find best conv layer: 512 80->80 11,11,11 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0388415
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0388415
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.98856
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.102223
+### LOG[best_layer] :: find best conv layer: 512 80->3 9,9,9 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00629554
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00629554
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.131616
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.02026
+[network_build] m36 :: 56,56,56 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 1703867532
+[network_throughput] m36 :: 56,56,56 :: 217310 1703867532
+### LOG[benchmark] :: m36 :: starting os :: 64,64,64
+### LOG[best_layer] :: find best conv layer: 1 1->80 148,148,148 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.034859
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.034859
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.277145
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0243148
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0243148
+### LOG[best_layer] :: find best mfp layer: 1 80->80 147,147,147 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0350954
+### LOG[best_layer] :: find best conv layer: 8 80->80 73,73,73 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.296882
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.296882
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.06183
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.784471
+### LOG[best_layer] :: find best mfp layer: 8 80->80 71,71,71 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0318806
+### LOG[best_layer] :: find best conv layer: 64 80->80 35,35,35 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.237582
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.237582
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.42245
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.624507
+### LOG[best_layer] :: find best mfp layer: 64 80->80 33,33,33 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0245156
+### LOG[best_layer] :: find best conv layer: 512 80->80 16,16,16 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.143508
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.143508
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.38239
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.380188
+### LOG[best_layer] :: find best conv layer: 512 80->80 14,14,14 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.09071
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.09071
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.192
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.23989
+### LOG[best_layer] :: find best conv layer: 512 80->80 12,12,12 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0530248
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0530248
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.991642
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.13998
+### LOG[best_layer] :: find best conv layer: 512 80->3 10,10,10 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.00889874
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.00889874
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.145847
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0307028
+[network_build] m36 :: 64,64,64 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 2015857292
+[network_throughput] m36 :: 64,64,64 :: 264953 2015857292
+### LOG[benchmark] :: m36 :: starting os :: 72,72,72
+### LOG[best_layer] :: find best conv layer: 1 1->80 156,156,156 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0399889
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0399889
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.311249
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0284161
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0284161
+### LOG[best_layer] :: find best mfp layer: 1 80->80 155,155,155 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0408613
+### LOG[best_layer] :: find best conv layer: 8 80->80 77,77,77 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.355674
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.355674
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.26423
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.927374
+### LOG[best_layer] :: find best mfp layer: 8 80->80 75,75,75 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.042989
+### LOG[best_layer] :: find best conv layer: 64 80->80 37,37,37 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.283782
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.283782
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.00544
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.746275
+### LOG[best_layer] :: find best mfp layer: 64 80->80 35,35,35 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0318224
+### LOG[best_layer] :: find best conv layer: 512 80->80 17,17,17 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.177284
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.177284
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.71356
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.467722
+### LOG[best_layer] :: find best conv layer: 512 80->80 15,15,15 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.115424
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.115424
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.25275
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.306753
+### LOG[best_layer] :: find best conv layer: 512 80->80 13,13,13 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0704979
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0704979
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.15315
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.185778
+### LOG[best_layer] :: find best conv layer: 512 80->3 11,11,11 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.012439
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.012439
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.204537
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0422633
+[network_build] m36 :: 72,72,72 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 2363850892
+[network_throughput] m36 :: 72,72,72 :: 311263 2363850892
+### LOG[benchmark] :: m36 :: starting os :: 80,80,80
+### LOG[best_layer] :: find best conv layer: 1 1->80 164,164,164 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0459982
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0459982
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.358382
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0328374
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0328374
+### LOG[best_layer] :: find best mfp layer: 1 80->80 163,163,163 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0469762
+### LOG[best_layer] :: find best conv layer: 8 80->80 81,81,81 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.4248
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.4248
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.59994
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.0856
+### LOG[best_layer] :: find best mfp layer: 8 80->80 79,79,79 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0435452
+### LOG[best_layer] :: find best conv layer: 64 80->80 39,39,39 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.337712
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.337712
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.02827
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.882087
+### LOG[best_layer] :: find best mfp layer: 64 80->80 37,37,37 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0382501
+### LOG[best_layer] :: find best conv layer: 512 80->80 18,18,18 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.215017
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.215017
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.70788
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.56633
+### LOG[best_layer] :: find best conv layer: 512 80->80 16,16,16 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.143511
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.143511
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.3793
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.381038
+### LOG[best_layer] :: find best conv layer: 512 80->80 14,14,14 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0907413
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0907413
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.1974
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.239985
+### LOG[best_layer] :: find best conv layer: 512 80->3 12,12,12 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0169758
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0169758
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.204773
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0576478
+[network_build] m36 :: 80,80,80 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 2749814412
+[network_throughput] m36 :: 80,80,80 :: 357056 2749814412
+### LOG[benchmark] :: m36 :: starting os :: 88,88,88
+### LOG[best_layer] :: find best conv layer: 1 1->80 172,172,172 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.054092
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.054092
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.476659
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0379423
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0379423
+### LOG[best_layer] :: find best mfp layer: 1 80->80 171,171,171 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0545355
+### LOG[best_layer] :: find best conv layer: 8 80->80 85,85,85 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.493514
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.493514
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.25866
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.25796
+### LOG[best_layer] :: find best mfp layer: 8 80->80 83,83,83 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0510706
+### LOG[best_layer] :: find best conv layer: 64 80->80 41,41,41 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.401669
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.401669
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.35679
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.03352
+### LOG[best_layer] :: find best mfp layer: 64 80->80 39,39,39 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0438517
+### LOG[best_layer] :: find best conv layer: 512 80->80 19,19,19 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.258858
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.258858
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.48037
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.681654
+### LOG[best_layer] :: find best conv layer: 512 80->80 17,17,17 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.17724
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.17724
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.70125
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.469468
+### LOG[best_layer] :: find best conv layer: 512 80->80 15,15,15 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.115434
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.115434
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.25485
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.307072
+### LOG[best_layer] :: find best conv layer: 512 80->3 13,13,13 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0222908
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0222908
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.244958
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0763017
+[network_build] m36 :: 88,88,88 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 3175713932
+[network_throughput] m36 :: 88,88,88 :: 398720 3175713932
+### LOG[benchmark] :: m36 :: starting os :: 96,96,96
+### LOG[best_layer] :: find best conv layer: 1 1->80 180,180,180 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0626282
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0626282
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.563395
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0435029
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0435029
+### LOG[best_layer] :: find best mfp layer: 1 80->80 179,179,179 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0625162
+### LOG[best_layer] :: find best conv layer: 8 80->80 89,89,89 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.572797
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.572797
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.30623
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.44783
+### LOG[best_layer] :: find best mfp layer: 8 80->80 87,87,87 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0576032
+### LOG[best_layer] :: find best conv layer: 64 80->80 43,43,43 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.485112
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.485112
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.94356
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.20147
+### LOG[best_layer] :: find best mfp layer: 64 80->80 41,41,41 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0502189
+### LOG[best_layer] :: find best conv layer: 512 80->80 20,20,20 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.312301
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.312301
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.49965
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.808136
+### LOG[best_layer] :: find best conv layer: 512 80->80 18,18,18 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.21443
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.21443
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.71559
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.56621
+### LOG[best_layer] :: find best conv layer: 512 80->80 16,16,16 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.143507
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.143507
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.38733
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.380209
+### LOG[best_layer] :: find best conv layer: 512 80->3 14,14,14 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0286989
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0286989
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.245872
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0990687
+[network_build] m36 :: 96,96,96 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 3643515532
+[network_throughput] m36 :: 96,96,96 :: 440434 3643515532
+### LOG[benchmark] :: m36 :: starting os :: 104,104,104
+### LOG[best_layer] :: find best conv layer: 1 1->80 188,188,188 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0685257
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0685257
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.606466
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0507212
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0507212
+### LOG[best_layer] :: find best mfp layer: 1 80->80 187,187,187 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.07142
+### LOG[best_layer] :: find best conv layer: 8 80->80 93,93,93 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.657675
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.657675
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.95923
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.65709
+### LOG[best_layer] :: find best mfp layer: 8 80->80 91,91,91 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0664031
+### LOG[best_layer] :: find best conv layer: 64 80->80 45,45,45 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.549629
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.549629
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.97731
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.41082
+### LOG[best_layer] :: find best mfp layer: 64 80->80 43,43,43 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0572918
+### LOG[best_layer] :: find best conv layer: 512 80->80 21,21,21 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.371259
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.371259
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.87812
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.952946
+### LOG[best_layer] :: find best conv layer: 512 80->80 19,19,19 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.260764
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.260764
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.48091
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.683747
+### LOG[best_layer] :: find best conv layer: 512 80->80 17,17,17 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.176514
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.176514
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.71332
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.469929
+### LOG[best_layer] :: find best conv layer: 512 80->3 15,15,15 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0365697
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0365697
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.238167
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.125486
+[network_build] m36 :: 104,104,104 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 4155185292
+[network_throughput] m36 :: 104,104,104 :: 479627 4155185292
+### LOG[benchmark] :: m36 :: starting os :: 112,112,112
+### LOG[best_layer] :: find best conv layer: 1 1->80 196,196,196 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.079224
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.079224
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.689283
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.056142
+### LOG[best_layer] :: cudnn_conv (best) time: 0.056142
+### LOG[best_layer] :: find best mfp layer: 1 80->80 195,195,195 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0815005
+### LOG[best_layer] :: find best conv layer: 8 80->80 97,97,97 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.754419
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.754419
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 4.5727
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.88408
+### LOG[best_layer] :: find best mfp layer: 8 80->80 95,95,95 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0756282
+### LOG[best_layer] :: find best conv layer: 64 80->80 47,47,47 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.635065
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.635065
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.51233
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.59262
+### LOG[best_layer] :: find best mfp layer: 64 80->80 45,45,45 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0656602
+### LOG[best_layer] :: find best conv layer: 512 80->80 22,22,22 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.434805
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.434805
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.82767
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.10995
+### LOG[best_layer] :: find best conv layer: 512 80->80 20,20,20 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.309034
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.309034
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.49733
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.81038
+### LOG[best_layer] :: find best conv layer: 512 80->80 18,18,18 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.213273
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.213273
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 1.7171
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.567983
+### LOG[best_layer] :: find best conv layer: 512 80->3 16,16,16 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0453768
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0453768
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.246254
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.156493
+[network_build] m36 :: 112,112,112 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 4712689292
+[network_throughput] m36 :: 112,112,112 :: 517203 4712689292
+### LOG[benchmark] :: m36 :: starting os :: 120,120,120
+### LOG[best_layer] :: find best conv layer: 1 1->80 204,204,204 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0897073
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0897073
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.72907
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0632193
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0632193
+### LOG[best_layer] :: find best mfp layer: 1 80->80 203,203,203 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.09101
+### LOG[best_layer] :: find best conv layer: 8 80->80 101,101,101 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.859655
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.859655
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.49253
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.13463
+### LOG[best_layer] :: find best mfp layer: 8 80->80 99,99,99 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0847915
+### LOG[best_layer] :: find best conv layer: 64 80->80 49,49,49 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.723021
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.723021
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.88857
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.81295
+### LOG[best_layer] :: find best mfp layer: 64 80->80 47,47,47 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.075479
+### LOG[best_layer] :: find best conv layer: 512 80->80 23,23,23 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.508163
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.508163
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.90339
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.28529
+### LOG[best_layer] :: find best conv layer: 512 80->80 21,21,21 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.37115
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.37115
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.92871
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.951677
+### LOG[best_layer] :: find best conv layer: 512 80->80 19,19,19 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.258848
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.258848
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.52339
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.681709
+### LOG[best_layer] :: find best conv layer: 512 80->3 17,17,17 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0556841
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0556841
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.254463
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.192248
+[network_build] m36 :: 120,120,120 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 5317993612
+[network_throughput] m36 :: 120,120,120 :: 551218 5317993612
+### LOG[benchmark] :: m36 :: starting os :: 128,128,128
+### LOG[best_layer] :: find best conv layer: 1 1->80 212,212,212 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0998024
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0998024
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.802536
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0718288
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0718288
+### LOG[best_layer] :: find best mfp layer: 1 80->80 211,211,211 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.102083
+### LOG[best_layer] :: find best conv layer: 8 80->80 105,105,105 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.968494
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.968494
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.55175
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.40449
+### LOG[best_layer] :: find best mfp layer: 8 80->80 103,103,103 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0954575
+### LOG[best_layer] :: find best conv layer: 64 80->80 51,51,51 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.818917
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.818917
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 4.98812
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.05615
+### LOG[best_layer] :: find best mfp layer: 64 80->80 49,49,49 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0830693
+### LOG[best_layer] :: find best conv layer: 512 80->80 24,24,24 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.586335
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.586335
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.87915
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.47635
+### LOG[best_layer] :: find best conv layer: 512 80->80 22,22,22 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.429773
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.429773
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.85752
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.10852
+### LOG[best_layer] :: find best conv layer: 512 80->80 20,20,20 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.310522
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.310522
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.49282
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.808064
+### LOG[best_layer] :: find best conv layer: 512 80->3 18,18,18 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0672889
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0672889
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.25253
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.233021
+[network_build] m36 :: 128,128,128 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 5973064332
+[network_throughput] m36 :: 128,128,128 :: 585070 5973064332
+### LOG[benchmark] :: m36 :: starting os :: 136,136,136
+### LOG[best_layer] :: find best conv layer: 1 1->80 220,220,220 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.113319
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.113319
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.84155
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.079385
+### LOG[best_layer] :: cudnn_conv (best) time: 0.079385
+### LOG[best_layer] :: find best mfp layer: 1 80->80 219,219,219 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.114448
+### LOG[best_layer] :: find best conv layer: 8 80->80 109,109,109 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.08414
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.08414
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 6.37995
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.69462
+### LOG[best_layer] :: find best mfp layer: 8 80->80 107,107,107 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.106764
+### LOG[best_layer] :: find best conv layer: 64 80->80 53,53,53 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.924866
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.924866
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.03958
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.31768
+### LOG[best_layer] :: find best mfp layer: 64 80->80 51,51,51 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.0953985
+### LOG[best_layer] :: find best conv layer: 512 80->80 25,25,25 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.67468
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.67468
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 4.53298
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.68894
+### LOG[best_layer] :: find best conv layer: 512 80->80 23,23,23 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.509246
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.509246
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.87661
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.2845
+### LOG[best_layer] :: find best conv layer: 512 80->80 21,21,21 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.36944
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.36944
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 2.89003
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.951206
+### LOG[best_layer] :: find best conv layer: 512 80->3 19,19,19 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.080776
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.080776
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.318433
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.280127
+[network_build] m36 :: 136,136,136 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 6679867532
+[network_throughput] m36 :: 136,136,136 :: 615787 6679867532
+### LOG[benchmark] :: m36 :: starting os :: 144,144,144
+### LOG[best_layer] :: find best conv layer: 1 1->80 228,228,228 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.125347
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.125347
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0882217
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0882217
+### LOG[best_layer] :: find best mfp layer: 1 80->80 227,227,227 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.12743
+### LOG[best_layer] :: find best conv layer: 8 80->80 113,113,113 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.21464
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.21464
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 7.88307
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.01052
+### LOG[best_layer] :: find best mfp layer: 8 80->80 111,111,111 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.118269
+### LOG[best_layer] :: find best conv layer: 64 80->80 55,55,55 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.04604
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.04604
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.60402
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.60411
+### LOG[best_layer] :: find best mfp layer: 64 80->80 53,53,53 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.106422
+### LOG[best_layer] :: find best conv layer: 512 80->80 26,26,26 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.774298
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.774298
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.44163
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.91932
+### LOG[best_layer] :: find best conv layer: 512 80->80 24,24,24 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.588269
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.588269
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.87739
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.47526
+### LOG[best_layer] :: find best conv layer: 512 80->80 22,22,22 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.431418
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.431418
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.83444
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.10899
+### LOG[best_layer] :: find best conv layer: 512 80->3 20,20,20 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.0954765
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.0954765
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.326065
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.330767
+[network_build] m36 :: 144,144,144 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 7440369292
+[network_throughput] m36 :: 144,144,144 :: 645805 7440369292
+### LOG[benchmark] :: m36 :: starting os :: 152,152,152
+### LOG[best_layer] :: find best conv layer: 1 1->80 236,236,236 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.137397
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.137397
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.0978135
+### LOG[best_layer] :: cudnn_conv (best) time: 0.0978135
+### LOG[best_layer] :: find best mfp layer: 1 80->80 235,235,235 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.140695
+### LOG[best_layer] :: find best conv layer: 8 80->80 117,117,117 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.35509
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.35509
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 7.97394
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.34449
+### LOG[best_layer] :: find best mfp layer: 8 80->80 115,115,115 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.133093
+### LOG[best_layer] :: find best conv layer: 64 80->80 57,57,57 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.16937
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.16937
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 6.84046
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.90899
+### LOG[best_layer] :: find best mfp layer: 64 80->80 55,55,55 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.119681
+### LOG[best_layer] :: find best conv layer: 512 80->80 27,27,27 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.871892
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.871892
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.50398
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.16931
+### LOG[best_layer] :: find best conv layer: 512 80->80 25,25,25 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.676967
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.676967
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 4.54039
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.6876
+### LOG[best_layer] :: find best conv layer: 512 80->80 23,23,23 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.510515
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.510515
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.95365
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.28502
+### LOG[best_layer] :: find best conv layer: 512 80->3 21,21,21 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.112234
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.112234
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.450982
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.390972
+[network_build] m36 :: 152,152,152 :: full(1): {layers:  cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 8256535692
+[network_throughput] m36 :: 152,152,152 :: 671782 8256535692
+### LOG[benchmark] :: m36 :: starting os :: 160,160,160
+### LOG[best_layer] :: find best conv layer: 1 1->80 244,244,244 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.109308
+### LOG[best_layer] :: cudnn_conv (best) time: 0.109308
+### LOG[best_layer] :: find best mfp layer: 1 80->80 243,243,243 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.156667
+### LOG[best_layer] :: find best conv layer: 8 80->80 121,121,121 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 9.64839
+### LOG[best_layer] :: fft_conv (best) time: 9.64839
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.70768
+### LOG[best_layer] :: cudnn_conv (best) time: 3.70768
+### LOG[best_layer] :: find best mfp layer: 8 80->80 119,119,119 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.146233
+### LOG[best_layer] :: find best conv layer: 64 80->80 59,59,59 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.30094
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.30094
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 6.92183
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.23837
+### LOG[best_layer] :: find best mfp layer: 64 80->80 57,57,57 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.132
+### LOG[best_layer] :: find best conv layer: 512 80->80 28,28,28 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.982394
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.982394
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.9401
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.42002
+### LOG[best_layer] :: find best conv layer: 512 80->80 26,26,26 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.771585
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.771585
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.42824
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.90105
+### LOG[best_layer] :: find best conv layer: 512 80->80 24,24,24 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.58465
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.58465
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 3.88085
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.47736
+### LOG[best_layer] :: find best conv layer: 512 80->3 22,22,22 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.131584
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.131584
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.512596
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.456228
+[network_build] m36 :: 160,160,160 :: full(1): {layers:  cudnn_conv mfp cudnn_conv mfp cudnn_conv_precomp mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 9130332812
+[network_throughput] m36 :: 160,160,160 :: 505272 9130332812
+### LOG[benchmark] :: m36 :: starting os :: 168,168,168
+### LOG[best_layer] :: find best conv layer: 1 1->80 252,252,252 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.120304
+### LOG[best_layer] :: cudnn_conv (best) time: 0.120304
+### LOG[best_layer] :: find best mfp layer: 1 80->80 251,251,251 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.17126
+### LOG[best_layer] :: find best conv layer: 8 80->80 125,125,125 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 9.79249
+### LOG[best_layer] :: fft_conv (best) time: 9.79249
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 4.09156
+### LOG[best_layer] :: cudnn_conv (best) time: 4.09156
+### LOG[best_layer] :: find best mfp layer: 8 80->80 123,123,123 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.161682
+### LOG[best_layer] :: find best conv layer: 64 80->80 61,61,61 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 8.10584
+### LOG[best_layer] :: fft_conv (best) time: 8.10584
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.57845
+### LOG[best_layer] :: cudnn_conv (best) time: 3.57845
+### LOG[best_layer] :: find best mfp layer: 64 80->80 59,59,59 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.146758
+### LOG[best_layer] :: find best conv layer: 512 80->80 29,29,29 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 1.09741
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 1.09741
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 7.0145
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.71796
+### LOG[best_layer] :: find best conv layer: 512 80->80 27,27,27 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.87113
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.87113
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.5641
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.15868
+### LOG[best_layer] :: find best conv layer: 512 80->80 25,25,25 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.676853
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.676853
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 4.55423
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.6757
+### LOG[best_layer] :: find best conv layer: 512 80->3 23,23,23 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.150998
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.150998
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.456405
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.526598
+[network_build] m36 :: 168,168,168 :: full(1): {layers:  cudnn_conv mfp cudnn_conv mfp cudnn_conv mfp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 10063726732
+[network_throughput] m36 :: 168,168,168 :: 414036 10063726732
+### LOG[benchmark] :: m36 :: starting os :: 176,176,176
+### LOG[best_layer] :: find best conv layer: 1 1->80 260,260,260 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.138779
+### LOG[best_layer] :: cudnn_conv (best) time: 0.138779
+### LOG[best_layer] :: find best mfp layer: 1 80->80 259,259,259 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.210343
+### LOG[best_layer] :: find best conv layer: 8 80->80 129,129,129 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 4.47559
+### LOG[best_layer] :: cudnn_conv (best) time: 4.47559
+### LOG[best_layer] :: find best mfp layer: 8 80->80 127,127,127 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.177594
+### LOG[best_layer] :: find best conv layer: 64 80->80 63,63,63 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 8.18926
+### LOG[best_layer] :: fft_conv (best) time: 8.18926
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.95908
+### LOG[best_layer] :: cudnn_conv (best) time: 3.95908
+### LOG[best_layer] :: find best mfp layer: 64 80->80 61,61,61 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: trying mfp time: 0.163489
+### LOG[best_layer] :: find best conv layer: 512 80->80 30,30,30 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 7.06198
+### LOG[best_layer] :: fft_conv (best) time: 7.06198
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 3.03009
+### LOG[best_layer] :: cudnn_conv (best) time: 3.03009
+### LOG[best_layer] :: find best conv layer: 512 80->80 28,28,28 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.976083
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.976083
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.92698
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 2.4211
+### LOG[best_layer] :: find best conv layer: 512 80->80 26,26,26 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.768594
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.768594
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 5.4439
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 1.91885
+### LOG[best_layer] :: find best conv layer: 512 80->3 24,24,24 3,3,3
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp time: 0.173661
+### LOG[best_layer] :: cudnn_conv_precomp (best) time: 0.173661
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: fft_conv time: 0.457887
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.60577
+[network_build] m36 :: 176,176,176 :: full(1): {layers:  cudnn_conv mfp cudnn_conv mfp cudnn_conv mfp cudnn_conv cudnn_conv_precomp cudnn_conv_precomp cudnn_conv_precomp} 11058683532
+[network_throughput] m36 :: 176,176,176 :: 365974 11058683532
+### LOG[benchmark] :: m36 :: starting os :: 184,184,184
+### LOG[best_layer] :: find best conv layer: 1 1->80 268,268,268 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.150857
+### LOG[best_layer] :: cudnn_conv (best) time: 0.150857
+### LOG[best_layer] :: find best mfp layer: 1 80->80 267,267,267 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: mfp failed: std::bad_alloc
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 192,192,192
+### LOG[best_layer] :: find best conv layer: 1 1->80 276,276,276 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.156974
+### LOG[best_layer] :: cudnn_conv (best) time: 0.156974
+### LOG[best_layer] :: find best mfp layer: 1 80->80 275,275,275 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: mfp failed: std::bad_alloc
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 200,200,200
+### LOG[best_layer] :: find best conv layer: 1 1->80 284,284,284 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.171085
+### LOG[best_layer] :: cudnn_conv (best) time: 0.171085
+### LOG[best_layer] :: find best mfp layer: 1 80->80 283,283,283 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: mfp failed: std::bad_alloc
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 208,208,208
+### LOG[best_layer] :: find best conv layer: 1 1->80 292,292,292 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.184763
+### LOG[best_layer] :: cudnn_conv (best) time: 0.184763
+### LOG[best_layer] :: find best mfp layer: 1 80->80 291,291,291 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: mfp failed: std::bad_alloc
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 216,216,216
+### LOG[best_layer] :: find best conv layer: 1 1->80 300,300,300 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: in or out too big
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: std::bad_alloc
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv time: 0.201182
+### LOG[best_layer] :: cudnn_conv (best) time: 0.201182
+### LOG[best_layer] :: find best mfp layer: 1 80->80 299,299,299 2,2,2
+### LOG[best_layer] :: trying mfp
+### LOG[best_layer] :: mfp failed: std::bad_alloc
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 224,224,224
+### LOG[best_layer] :: find best conv layer: 1 1->80 308,308,308 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 232,232,232
+### LOG[best_layer] :: find best conv layer: 1 1->80 316,316,316 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 240,240,240
+### LOG[best_layer] :: find best conv layer: 1 1->80 324,324,324 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 248,248,248
+### LOG[best_layer] :: find best conv layer: 1 1->80 332,332,332 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 256,256,256
+### LOG[best_layer] :: find best conv layer: 1 1->80 340,340,340 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 264,264,264
+### LOG[best_layer] :: find best conv layer: 1 1->80 348,348,348 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 272,272,272
+### LOG[best_layer] :: find best conv layer: 1 1->80 356,356,356 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 280,280,280
+### LOG[best_layer] :: find best conv layer: 1 1->80 364,364,364 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 288,288,288
+### LOG[best_layer] :: find best conv layer: 1 1->80 372,372,372 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 296,296,296
+### LOG[best_layer] :: find best conv layer: 1 1->80 380,380,380 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 304,304,304
+### LOG[best_layer] :: find best conv layer: 1 1->80 388,388,388 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 312,312,312
+### LOG[best_layer] :: find best conv layer: 1 1->80 396,396,396 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 320,320,320
+### LOG[best_layer] :: find best conv layer: 1 1->80 404,404,404 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 328,328,328
+### LOG[best_layer] :: find best conv layer: 1 1->80 412,412,412 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 336,336,336
+### LOG[best_layer] :: find best conv layer: 1 1->80 420,420,420 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 344,344,344
+### LOG[best_layer] :: find best conv layer: 1 1->80 428,428,428 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 352,352,352
+### LOG[best_layer] :: find best conv layer: 1 1->80 436,436,436 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 360,360,360
+### LOG[best_layer] :: find best conv layer: 1 1->80 444,444,444 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 368,368,368
+### LOG[best_layer] :: find best conv layer: 1 1->80 452,452,452 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 376,376,376
+### LOG[best_layer] :: find best conv layer: 1 1->80 460,460,460 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 384,384,384
+### LOG[best_layer] :: find best conv layer: 1 1->80 468,468,468 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible
+### LOG[benchmark] :: m36 :: starting os :: 392,392,392
+### LOG[best_layer] :: find best conv layer: 1 1->80 476,476,476 2,2,2
+### LOG[best_layer] :: trying cudnn_conv_precomp
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying fft_conv
+### LOG[best_layer] :: cudnn_conv_precomp failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[best_layer] :: trying cudnn_conv
+### LOG[best_layer] :: cudnn_conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
+### LOG[benchmark] :: not possible

@@ -30,3 +30,7 @@
 [network_throughput] m76 :: 120,120,120 :: 88031.1 10221652612
 [network_throughput] m76 :: 124,124,124 :: 89825.1 10221652612
 [network_throughput] m76 :: 128,128,128 :: 97257.2 10221652612
+[network_throughput] m76 :: 132,132,132 :: 37877.2 9387489932
+[network_throughput] m76 :: 136,136,136 :: 39373.5 9621494092
+[network_throughput] m76 :: 140,140,140 :: 41462.5 10095763532
+[network_throughput] m76 :: 144,144,144 :: 43179.1 10585423692
