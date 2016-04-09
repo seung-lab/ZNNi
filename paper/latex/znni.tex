@@ -91,15 +91,15 @@
   segmentation, and object detection and localization. Here we
   consider the problem of inference, the application of a previously
   trained ConvNet, with emphasis on 3D images.  Our goal is to
-  maximize throughput, defined as the number of output voxels computed
-  per unit time.  Other things being equal, processing a larger image
-  tends to increase throughput, because fractionally less computation
-  is wasted on the borders of the image.  It follows that an
-  apparently slower algorithm may end up having higher throughput if
-  it can process a larger image within the constraint of the available
-  RAM.  We introduce novel CPU and GPU primitives for convolutional
-  and pooling layers, which are designed to minimize memory
-  overhead. The primitives include convolution based on highly
+  maximize throughput, defined as average number of output voxels
+  computed per unit time.  Other things being equal, processing a
+  larger image tends to increase throughput, because fractionally less
+  computation is wasted on the borders of the image.  It follows that
+  an apparently slower algorithm may end up having higher throughput
+  if it can process a larger image within the constraint of the
+  available RAM.  We introduce novel CPU and GPU primitives for
+  convolutional and pooling layers, which are designed to minimize
+  memory overhead. The primitives include convolution based on highly
   efficient pruned FFTs. Our theoretical analyses and empirical tests
   reveal a number of interesting findings.  For some ConvNet
   architectures, cuDNN is outperformed by our FFT-based GPU
@@ -110,7 +110,7 @@
   Finally, a CPU-GPU algorithm achieves the greatest throughput of
   all, $10\times$ or more than other publicly available
   implementations of sliding window 3D ConvNets.  All of our code has
-  been made available on github.
+  been made available as open source project.
 
 \end{abstract}
 
@@ -170,15 +170,16 @@
   for speeding up sliding window ConvNets is especially acute.
 
   For speeding up ConvNet inference, a seemingly trivial detail about
-  image borders turns out to matter. Because inference is less
-  efficient at locations near image borders, it is advantageous to
-  make the input image large so that border effects are proportionally
-  smaller.  This means that efforts to maximize throughput tend to
-  bump into the constraint of limited RAM.  (This is not the case for
-  ConvNet training, where there is typically some range of input sizes
-  that is optimal for training speed.)  It follows that an apparently
-  slower algorithm may end up having higher throughput if it can
-  process a larger image within the constraint of the available RAM.
+  image borders turns out to be a bottleneck. Because inference is
+  less efficient at locations near image borders, it is advantageous
+  to make the input image large so that border effects are
+  proportionally smaller.  This means that efforts to maximize
+  throughput tend to bump into the constraint of limited RAM.  (This
+  is not the case for ConvNet training, where there is typically some
+  range of input sizes that is optimal for training speed.)  It
+  follows that an apparently slower algorithm may end up having higher
+  throughput if it can process a larger image within the constraint of
+  the available RAM.
 
   \begin{figure}
     \begin{center}
