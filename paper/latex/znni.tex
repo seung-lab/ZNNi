@@ -1027,8 +1027,6 @@
   the cuDNN max-pooling primitive to compute the max-pooling of all
   input images at that offset.
 
-\section{GPU-only or CPU-only inference}
-
   \begin{table}
     {\footnotesize
     \centering
@@ -1053,42 +1051,20 @@
     }
   \end{table}
 
-  We expect that algorithm throughput will depend on ConvNet
-  architecture.  For benchmarking purposes, we chose to make the field
-  of view fairly large.  This was accomplished either by having more
-  pooling layers or larger filters. Two architectures had seven
-  convolutional and three pooling layers in the sequence CPCPCPCCCC.
-  The networks had kernel sizes of $3\times 3 \times 3$ and $5\times
-  5\times 5$.  Two other architectures had 6 convolutional and 2
-  pooling layers (CPCPCCCC) with larger filter sizes of $7 \times
-  7 \times 7$ and $9 \times 9 \times 9$.  The architectures of all
-  four benchmarked networks are shown in
-  Table~\ref{table:benchmarked_networks}.  A rectified linear transfer
-  function is applied after each convolutional layer.  The complexity
-  of the transfer function has little influence on computation
-  time as it represents only a small fraction of the overall
-  computation.
-
-\subsection{Experimental setup}
-
-  The benchmarks are performed on two machines.  The first machine is
-  a 4-way Intel Xeon E7 8890v3 with total of $72$ cores ($144$
-  hyper--threads), 256GB of RAM and a Titan X GPU (with 12GB on--board
-  RAM).  The second machine is an Amazon EC2 instance with $32$
-  virtual cores and 244GB of RAM (r3.8xlarge).  The second machine is
-  included as it is more readily available.
-
+\section{GPU-only or CPU-only inference}
+  By stringing together the CPU (or GPU) layer primitives defined
+  above, we can now construct CPU-only (or GPU-only) algorithms for
+  ConvNet inference.  For each layer, we have a choice between several
+  primitives.  Each \emph{max--pooling} layer can be replaced by
+  a \emph{MPF} layer.  The size of the input patch and the number of
+  inputs in the batch should be chosen.  These parameters and the
+  primitives should be chosen to maximize throughput.  Below we
+  describe some theoretical considerations and empirical data about
+  the optimal choice.
+  
 \subsection{Maximizing throughput}
-
-  For a given ConvNet architecture with $L$ layers, we can create an
-  implementation of the ConvNet by choosing a primitive for each of
-  the $L$ layers.  Depending on whether we are using CPUs or the GPU,
-  we will have a choice of different primitives for the convolutional
-  layers.  Furthermore, each of the \emph{max--pooling} layers can be
-  replaced with a \emph{MPF} layer.
-
   The result of a network applied to an input $I$ is obtained by
-  sequentially applying each primitive.  The input the first layer's
+  sequentially applying each primitive.  The input to the first layer's
   primitive is $I$, and the input to every subsequent primitive will
   be the output of the previous layer's primitive.  The output of the
   last layer will be our desired result $I'$.  Note that if \emph{MPF}
@@ -1133,10 +1109,11 @@
   determined.  We pick the fastest one that satisfies the memory
   constrain.
 
-  It turns out that for our networks, the highest throughput is
-  obtained when all the \emph{max--pooling} layers are replaced with
-  \emph{MPF} layers, and when the input batch size is one ($S = 1$).
-  Additionally, higher throughput is achieved for larger input sizes.
+  In the empirical measurements below, it will turn out that for our
+  networks, the highest throughput is obtained when all
+  the \emph{max--pooling} layers are replaced with \emph{MPF} layers,
+  and when the input batch size is one ($S = 1$).  Additionally,
+  higher throughput is achieved for larger input sizes.
 
   The fact that \emph{MPF} layers outperform \emph{max--pooling
     layers} is not surprising as it has been shown that
@@ -1160,36 +1137,6 @@
       layers (b).}
     \label{fig:fftbatch}
   \end{figure}
-
-  The fact that $S=1$ produces better results is more surprising.
-  Increasing the batch size can greatly reduce the computational cost
-  of FFT--based ConvNets by reusing the transforms of the
-  kernels~\cite{mathieu-iclr-14,vasilache2014fast}.  However, when the
-  batch size is larger the memory requirement for each layer
-  increases, thus effectively limiting the maximal size of the input
-  images.  Both increasing the batch size and image size
-  increase the memory requirements of the algorithm, and lower the
-  computational complexity when FFT based convolutions are used.  In
-  our case, increasing the image size had a stronger effect, which is
-  not always the case.
-
-  On Fig.~\ref{fig:fftbatch} we show the theoretical speedup
-  achievable by using different batch sizes for two networks.  The
-  theoretical speedup is defined as the ratio of operations required
-  to compute a single output pixel of a naive approach (having input
-  image equal to the field of view of the network -- output equal to
-  $1 \times 1 \times 1$, and a network using \emph{MPF} with different
-  input sizes.  Instead of having the input size on the $x$ axis we
-  put the memory required for network as that will be the limiting
-  factor.
-
-  We see that for a network we 2 pooling layers, having a batch
-  size of $1$ can achieve the highest speedup.  Blah blah...
-
-  %% Explain WHY!
-
-\subsection{Optimization measurements}
-
 
   %\begin{figure*}[h!t]
   %  \centering
@@ -1225,7 +1172,7 @@
     \label{fig:experiments1}
   \end{figure*}
 
-  The fact that $S=1$ produces better results is more surprising.
+  The fact that $S=1$ produces better results is more surprising, and we attempt to give some theoretical intuition here.
   Increasing the batch size can greatly reduce the computational cost
   of FFT--based ConvNets by reusing the transforms of the
   kernels~\cite{mathieu-iclr-14,vasilache2014fast}.  However, when the
@@ -1255,13 +1202,35 @@
   of networks with only 1 pooling layer, one should consider larger
   batch sizes.
 
-\subsection{Optimization measurements}
+\subsection{Empirical results}
+  We expect that algorithm throughput will depend on ConvNet
+  architecture.  For benchmarking purposes, we chose to make the field
+  of view fairly large.  This was accomplished either by having more
+  pooling layers or larger filters. Two architectures had seven
+  convolutional and three pooling layers in the sequence CPCPCPCCCC.
+  The networks had kernel sizes of $3\times 3 \times 3$ and $5\times
+  5\times 5$.  Two other architectures had 6 convolutional and 2
+  pooling layers (CPCPCCCC) with larger filter sizes of $7 \times
+  7 \times 7$ and $9 \times 9 \times 9$.  The architectures of all
+  four benchmarked networks are shown in
+  Table~\ref{table:benchmarked_networks}.  A rectified linear transfer
+  function is applied after each convolutional layer.  The complexity
+  of the transfer function has little influence on computation
+  time as it represents only a small fraction of the overall
+  computation.
+
+  The benchmarks are performed on two machines.  The first machine is
+  a 4-way Intel Xeon E7 8890v3 with total of $72$ cores ($144$
+  hyper--threads), 256GB of RAM and a Titan X GPU (with 12GB on--board
+  RAM).  The second machine is an Amazon EC2 instance with $32$
+  virtual cores and 244GB of RAM (r3.8xlarge).  The second machine is
+  included as it is more readily available.
 
   Fig.~\ref{fig:experiments1} shows the throughput achieved on the
   four benchmarked networks (Table~\ref{table:benchmarked_networks})
   with the batch size $S=1$, and different image sizes.
 
-  Turns out that the optimal choice for primitives for the CPU is
+  It turns out that the optimal choice for primitives for the CPU is
   always the same regardless of the network choice.  In all cases the
   first (convolutional) layer was optimized to data--parallel
   FFT--based algorithm, and the rest of the convolutional layers used
