@@ -153,31 +153,14 @@
   the ConvNet outputs a set of numbers, effectively producing a set of
   output images, each with the same resolution as the input image.
 
-  Sliding window ConvNets were originally applied to detect and/or
-  localize objects in a larger image~\cite{matan1991multi}, and this
-  usage has been revived~\cite{sermanet2013overfeat}. Here each output
-  image represents the probability that an object of a certain class
-  is located at a voxel.  Sliding window ConvNets have also been
-  applied to image segmentation, to produce an output image
-  representing the probability that a voxel is a boundary between
-  objects or not~\cite{jain2007supervised}.  And they have been
-  applied to semantic segmentation, the problem of labeling each voxel
-  in an input image by the class of the object to which it
-  belongs~\cite{ning2005toward}.  In general, sliding window ConvNets
-  are increasing in popularity as they are applied to more and more
-  problems in computer vision.  However, transforming image-to-image
-  is even more computationally costly than image-to-label, so the need
-  for speeding up sliding window ConvNets is especially acute.
-
-  For speeding up ConvNet inference, a seemingly trivial detail about
-  image borders turns out to be a bottleneck. Because inference is
-  less efficient at locations near image borders, it is advantageous
-  to make the input image large so that border effects are
-  proportionally smaller.  This means that efforts to maximize
+  For speeding up sliding window inference, a seemingly trivial detail
+  about image borders turns out to be a bottleneck.  Inference is less
+  efficient near the borders, and this inefficiency is proportionally
+  smaller for a larger input image.  So efforts to maximize
   throughput tend to bump into the constraint of limited RAM.  (This
   is not the case for ConvNet training, where there is typically some
-  range of input sizes that is optimal for training speed.)  It
-  follows that an apparently slower algorithm may end up having higher
+  range of input sizes that is optimal for training speed.)  
+  An apparently slower algorithm may end up having higher
   throughput if it can process a larger image within the constraint of
   the available RAM.
 
@@ -280,6 +263,21 @@
 %  of pixels computed at the time being irrelevant.
 
 \section{Throughput of sliding window inference}
+  Sliding window ConvNets were originally applied to detect and/or
+  localize objects in a larger image~\cite{matan1991multi}, and this
+  usage has been revived~\cite{sermanet2013overfeat}. Here each output
+  image represents the probability that an object of a certain class
+  is located at a voxel.  Sliding window ConvNets have also been
+  applied to image segmentation, to produce an output image
+  representing the probability that a voxel is a boundary between
+  objects or not~\cite{jain2007supervised}.  And they have been
+  applied to semantic segmentation, the problem of labeling each voxel
+  in an input image by the class of the object to which it
+  belongs~\cite{ning2005toward}.  In general, sliding window ConvNets
+  are increasing in popularity as they are applied to more and more
+  problems in computer vision.  However, transforming image-to-image
+  is even more computationally costly than image-to-label, so the need
+  for speeding up sliding window ConvNets is especially acute.
 
   In large scale sliding window inference, the input image is divided
   into smaller input patches. These are transformed by the ConvNet
