@@ -1583,9 +1583,12 @@ We illustrate the stragety through
   \times 5$ or larger.
 
   Our CPU-only, GPU-only, GPU + host RAM, and CPU-GPU implementations
-  outperform all competitors.  In particular, our CPU-GPU
-  implementation wins by a factor of roughly $10\times$ or more in all
-  cases.
+  outperform all competitors.  For the smallest ConvNet architecture,
+  {\tt 237} with the kernel sizes of $3^3$, the next best competitor
+  was ELEKTRONN with approximately a tenth of the speed of our
+  CPU--GPU approach. For all the other ConvNets, the next best
+  competitor was ZNN with approximately $15 \times$ smaller
+  throughput.
 
 %\section{Conclusions}
 
