@@ -1,0 +1,6 @@
+* Did anyone else try FFTs for convolution.
+* The intro is way too, long and our contribution is not stated clearly
+** A list like our contribution is:
+\item \item would be beneficial
+
+* Input size is actually output size in table IV (FIX IT!)
