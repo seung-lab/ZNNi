@@ -1010,7 +1010,7 @@
   $0 \le y < p_y$, and $0 \le z < p_z$.  When the image has size such
   that $\vec{n} + \vec{1}$ is divisible by $\vec{p}$, the sizes of all
   produced fragments will equal
-  $(\floor{n_x/p_x},\floor{n_y}{p_y},\floor{n_z}{p_z})$.
+  $\angled{\floor{n_x/p_x},\floor{n_y/p_y},\floor{n_z/p_z}}$.
 
   It is important to note that max-pooling fragmentation increases the
   batch size for subsequent layers.  For an MPF layer, the number of
