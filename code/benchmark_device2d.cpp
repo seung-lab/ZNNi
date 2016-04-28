@@ -175,9 +175,9 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network2d_descriptor nd(net_path);
 
-    for ( long_t i = 128; i < 400; i += 4 )
+    for ( long_t i = 760; i < 11400; i += 100 )
     {
-        os = vec2i(i,i,i);
+        os = vec2i(i,i);
         if ( os % nd.fragmentation() == vec2i::zero )
         {
             benchmark_network(nd, rounds, ofs);

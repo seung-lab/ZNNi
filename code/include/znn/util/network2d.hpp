@@ -242,7 +242,7 @@ public:
             }
             else if ( l.type == layer2d_type::pooling)
             {
-                long_t n = l.k_or_w_size[0]*l.k_or_w_size[1]*l.k_or_w_size[2];
+                long_t n = l.k_or_w_size[0]*l.k_or_w_size[1];
                 b *= n;
                 is /= l.k_or_w_size;
             }
