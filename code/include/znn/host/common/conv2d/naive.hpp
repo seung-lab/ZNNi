@@ -56,9 +56,9 @@ public:
 
     void convolve( real* in, real const* kernel, real* out ) const
     {
-        ref  a(ix[1], ix[2], in);
-        cref b(kx[1], kx[2], kernel);
-        ref  r(rx[1], rx[2], out);
+        ref  a(ix[1], in);
+        cref b(kx[1], kernel);
+        ref  r(rx[1], out);
 
         for ( long_t x = 0; x < rx[0]; ++x )
             for ( long_t y = 0; y < rx[1]; ++y )
@@ -73,9 +73,9 @@ public:
 
     void convolve_add( real* in, real const* kernel, real* out ) const
     {
-        ref  a(ix[1], ix[2], in);
-        cref b(kx[1], kx[2], kernel);
-        ref  r(rx[1], rx[2], out);
+        ref  a(ix[1], in);
+        cref b(kx[1], kernel);
+        ref  r(rx[1], out);
 
         for ( long_t x = 0; x < rx[0]; ++x )
             for ( long_t y = 0; y < rx[1]; ++y )
