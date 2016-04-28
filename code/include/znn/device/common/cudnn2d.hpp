@@ -37,7 +37,7 @@ public:
     {
         int dims[4] = {n,c,h,w};
         int stri[4] = {N,C,H,W};
-	std::cout << "SETTING: " << n << ' ' << c << ' ' << h << ' ' << w << '\n';
+	//std::cout << "SETTING: " << n << ' ' << c << ' ' << h << ' ' << w << '\n';
         tryCUDNN(cudnnSetTensorNdDescriptor(handle_,
                                             CUDNN_DATA_FLOAT,
                                             4, dims, stri));

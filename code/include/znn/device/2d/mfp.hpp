@@ -30,7 +30,10 @@ public:
 
     device_tensor<float,4> forward( device_tensor<float,4> in ) const override
     {
+	//std::cout << "MFP: " << output_shape << "\n";
         device_tensor<real,4> out(output_shape);
+
+	//return out;
 
         long_t delta = num_inputs * out_image_len;
 
