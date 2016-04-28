@@ -15,7 +15,7 @@ using namespace znn::fwd;
 std::string net_name;
 vec2i       os;
 long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
-long_t      batch_size = 8;
+long_t      batch_size = 1;
 
 inline void benchmark_network( network2d_descriptor & ndesc,
                                long_t rounds,
@@ -24,7 +24,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
     znni_network2d net(ndesc, batch_size, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
-         << os << std::endl;
+         << batch_size << " x " << os << std::endl;
 
     std::vector<std::unique_ptr<device::twod::device_layer2d>> layers;
 
@@ -76,13 +76,13 @@ inline void benchmark_network( network2d_descriptor & ndesc,
     catch ( std::exception & e )
     {
         rout << "[network_exception] " << net_name
-             << " :: " << os << " :: "
+             << " :: " << batch_size << " x " << os << " :: "
              << " threw an exception: " << e.what() << std::endl;
         return;
     }
 
     rout << "[network_requirements] " << net_name
-         << " :: " << os << " :: "
+         << " :: " << batch_size << " x " << os << " :: "
          << "RM: " << rm/1024/1024
          << " MB WM: " << wm/1024/1024 << " MB" << std::endl;
 
@@ -100,7 +100,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
     if ( !workable )
     {
         rout << "[network_information] " << net_name
-             << " :: " << os << " :: IS NOT WORKABLE!" << std::endl;
+             << " :: " << batch_size << " x " << os << " :: IS NOT WORKABLE!" << std::endl;
         return;
     }
 
@@ -116,18 +116,25 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             auto inh = net.get_random_sample();
 
             wtn.reset();
+	
+	    //std::cout << "here\n";
+	    //std::cout << "shape: " << net.in_shape() << "\n";
 
             device_tensor<float,4> in(net.in_shape());
             in = inh;
+	
+//            rout << "[2devi_measurement]: " << net_name 
+//		 << " :: " << os << " :: " << wtl.elapsed<double>() << std::endl;
 
             for ( auto & l: layers )
             {
                 wtl.reset();
                 in = l->forward(std::move(in));
+	        //in = std::move(zin);
                 double t = wtl.elapsed<double>();
 
                 rout << "[layer_measurement] " << net_name
-                     << " :: " << os << " :: " << lnum
+                     << " :: " << batch_size << " x " << os << " :: " << lnum
                      << " :: " << t << std::endl;
 
                 ++lnum;
@@ -140,7 +147,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             double t = wtn.elapsed<double>();
 
             rout << "[network_measurement] " << net_name
-                     << " :: " << os
+                     << " :: " << batch_size << " x " << os
                      << " :: " << t << std::endl;
 
             total += t;
@@ -151,12 +158,12 @@ inline void benchmark_network( network2d_descriptor & ndesc,
         total /= rounds;
 
         rout << "[network_average] " << net_name
-             << " :: " << os << " :: " << total << std::endl;
+             << " :: " << batch_size << " x " << os << " :: " << total << std::endl;
 
         double voxels = net.out_voxels();
 
         rout << "[network_throughput] " << net_name
-             << " :: " << os << " :: " << (voxels/total) << std::endl;
+             << " :: " << batch_size << " x " << os << " :: " << (voxels/total) << std::endl;
     }
 
 }
@@ -175,12 +182,13 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network2d_descriptor nd(net_path);
 
-    for ( long_t i = 760; i < 11400; i += 100 )
+    for ( long_t i = 512; i < 11400; i += 512 )
     {
         os = vec2i(i,i);
         if ( os % nd.fragmentation() == vec2i::zero )
         {
-            benchmark_network(nd, rounds, ofs);
+	    for ( batch_size = 1; batch_size <= 4; batch_size *=2 )
+            benchmark_network(nd, rounds, ofs);	
         }
     }
 }

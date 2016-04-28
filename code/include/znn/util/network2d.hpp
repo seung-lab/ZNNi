@@ -115,6 +115,7 @@ public:
                 std::cout << "MAXOUT LAYER: "
                           << " :: " << n_in << " -> " << (n_in/d) << "\n";
 
+		n_in /= d;
             }
             else
             {

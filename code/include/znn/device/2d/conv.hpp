@@ -50,7 +50,11 @@ public:
             throw std::logic_error("in or out too big");
         }
 
+	//std::cout << "Conv: " << output_shape << "\n";
+
         device_tensor<real,4> out(output_shape);
+
+	//return out;
 
         device_array<char> workspace(workspace_size_);
 
