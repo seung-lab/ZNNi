@@ -3,11 +3,11 @@
 #ifdef __unix__
 
 #ifndef ZNNI_NUM_CHIPS
-#  define ZNNI_NUM_CHIPS 4
+#  define ZNNI_NUM_CHIPS 1
 #endif
 
 #ifndef ZNNI_CORES_PER_CHIP
-#  define ZNNI_CORES_PER_CHIP 36
+#  define ZNNI_CORES_PER_CHIP 8
 #endif
 
 #ifndef ZNNI_HYPERTHREADING

@@ -94,4 +94,11 @@ inline vec3i get_optimal_size( vec3i const & s )
     return vec3i(getter(s[0]),getter(s[1]),getter(s[2]));
 }
 
+inline vec2i get_optimal_size( vec2i const & s )
+{
+    static optimal_radix getter;
+    return vec2i(getter(s[0]),getter(s[1]));
+}
+
+
 }}} // namespace znn::fwd::host

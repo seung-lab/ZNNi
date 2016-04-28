@@ -53,7 +53,9 @@ LD_OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
 
 OPT_FLAGS		=	$(COMMON_FLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
 
-COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
+#COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
+
+COMMON_LDFLAGS		=	-g -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f
 
 DBG_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS)
 OPT_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS) $(LD_OPTIMIZATION_FLAGS)
@@ -70,7 +72,8 @@ OBJS = test.o test_host.o test_device.o benchmark_device.o \
 	benchmark_host.o benchmark_baseline.o kernels.o \
 	benchmark_device_optimal.o benchmark_best_device.o \
 	benchmark_ram_a.o benchmark_ram_a.o benchmark_fusion_a.o \
-	benchmarks/host.o benchmark_device2d.o
+	benchmarks/host.o benchmark_device2d.o test_host2d.o \
+	benchmark_host2d.o
 
 DEPS = $(patsubst %.o,$(BINDIR)/%.d,$(OBJS))
 
@@ -120,6 +123,10 @@ $(BINDIR)/test_host: $(BINDIR)/kernels.o $(BINDIR)/test_host.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
+$(BINDIR)/test_host2d: $(BINDIR)/test_host2d.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
 $(BINDIR)/test_device: $(BINDIR)/kernels.o $(BINDIR)/test_device.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
@@ -137,6 +144,10 @@ $(BINDIR)/benchmark_device:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_device.o
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/benchmark_device2d:  $(BINDIR)/benchmark_device2d.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_host2d:  $(BINDIR)/benchmark_host2d.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
