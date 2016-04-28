@@ -14,5 +14,7 @@ void stage_1_gather( int, int, float*, float const*, long_t ) noexcept;
 void stage_2_scatter( int, int, int, cuComplex const*, cuComplex*, long_t ) noexcept;
 void stage_2_gather( int, int, int, cuComplex*, cuComplex const*, long_t ) noexcept;
 
+void max_out_transform( float*, float*, float*, float* ) noexcept;
+
 
 }}} // namespace znn::fwd::device

@@ -1,10 +1,8 @@
 #include "znn/util/network2d.hpp"
-#include "znn/util/network.hpp"
-#include "znn/device/v1/cudnn_conv.hpp"
-#include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
-#include "znn/device/v1/fft_conv.hpp"
-#include "znn/device/v1/cudnn_pool.hpp"
-#include "znn/device/v1/cudnn_mfp.hpp"
+//#include "znn/util/network.hpp"
+#include "znn/device/2d/conv.hpp"
+#include "znn/device/2d/mfp.hpp"
+#include "znn/device/2d/maxout.hpp"
 
 #include <zi/time.hpp>
 
@@ -12,30 +10,23 @@
 #include <fstream>
 #include <sstream>
 
-// RUN THE FOLLOWING
-// ./bin/benchmark_device m36 4
-// ./bin/benchmark_device m56 4
-// ./bin/benchmark_device m76 4
-// ./bin/benchmark_device m96 4
-
 using namespace znn::fwd;
 
 std::string net_name;
-vec3i       os;
+vec2i       os;
 long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
 long_t      batch_size = 8;
 
-template<typename Conv>
-inline void benchmark_network( network_descriptor & ndesc,
+inline void benchmark_network( network2d_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network net(ndesc, batch_size, os);
+    znni_network2d net(ndesc, batch_size, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
          << os << std::endl;
 
-    std::vector<std::unique_ptr<device::v1::device_layer>> layers;
+    std::vector<std::unique_ptr<device::twod::device_layer2d>> layers;
 
     long_t lnum = 0;
 
@@ -46,9 +37,9 @@ inline void benchmark_network( network_descriptor & ndesc,
     {
         for ( auto & l: net.layers() )
         {
-            if ( l.descriptor.type == layer_type::convolutional )
+            if ( l.descriptor.type == layer2d_type::convolutional )
             {
-                layers.push_back(make_unique<Conv>
+                layers.push_back(make_unique<device::twod::conv>
                               (l.batch_size,
                                l.descriptor.num_inputs,
                                l.descriptor.num_outputs,
@@ -58,13 +49,22 @@ inline void benchmark_network( network_descriptor & ndesc,
                                l.random_biases().data()));
 
             }
-            else
+            else if ( l.descriptor.type == layer2d_type::pooling )
             {
-                layers.push_back(make_unique<device::v1::cudnn_mfp>
+                layers.push_back(make_unique<device::twod::mfp>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.in_size,
                                   l.descriptor.k_or_w_size));
+            }
+            else
+            {
+                layers.push_back(make_unique<device::twod::maxout>
+                                 (l.batch_size,
+                                  l.descriptor.num_inputs,
+                                  l.descriptor.num_inputs
+                                  /l.descriptor.num_outputs,
+                                  l.in_size));
             }
 
             ++lnum;
@@ -117,7 +117,7 @@ inline void benchmark_network( network_descriptor & ndesc,
 
             wtn.reset();
 
-            device_tensor<float,5> in(net.in_shape());
+            device_tensor<float,4> in(net.in_shape());
             in = inh;
 
             for ( auto & l: layers )
@@ -133,9 +133,8 @@ inline void benchmark_network( network_descriptor & ndesc,
                 ++lnum;
             }
 
-            host_tensor<float,5> result(in.shape()[0], in.shape()[1],
-                                        in.shape()[2], in.shape()[3],
-                                        in.shape()[4]);
+            host_tensor<float,4> result(in.shape()[0], in.shape()[1],
+                                        in.shape()[2], in.shape()[3]);
 
             result = in;
             double t = wtn.elapsed<double>();
@@ -162,7 +161,6 @@ inline void benchmark_network( network_descriptor & ndesc,
 
 }
 
-template<class Conv>
 void benchmark( std::string const & rep, long_t rounds )
 {
     std::string net_path    = "../networks/" + net_name + ".znni";
@@ -175,14 +173,14 @@ void benchmark( std::string const & rep, long_t rounds )
 
     std::cout << net_path << "\n";
 
-    network_descriptor nd(net_path);
+    network2d_descriptor nd(net_path);
 
     for ( long_t i = 128; i < 400; i += 4 )
     {
-        os = vec3i(i,i,i);
-        if ( os % nd.fragmentation() == vec3i::zero )
+        os = vec2i(i,i,i);
+        if ( os % nd.fragmentation() == vec2i::zero )
         {
-            benchmark_network<Conv>(nd, rounds, ofs);
+            benchmark_network(nd, rounds, ofs);
         }
     }
 }
@@ -194,10 +192,5 @@ int main(int argc, char *argv[])
     long_t rounds = 4;
     if ( argc > 2 ) rounds = atoi(argv[2]);
 
-    //benchmark<device::v1::cudnn_conv>("cudnn", rounds);
-    benchmark<device::v1::fft_conv>("fft", rounds);
-
-    benchmark<device::v1::cudnn_no_precomp_gemm_conv>
-        ("cudnn_no_precomp_gemm_conv", rounds);
-
+    benchmark("2d", rounds);
 }

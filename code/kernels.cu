@@ -43,7 +43,13 @@ void mul_add( cuComplex* first1, cuComplex* last1,
 
 }
 
-
+void max_out_transform( float* first1, float* last1,
+                        float* first2, float* result ) noexcept
+{
+    thrust::maximum<float> op;
+    thrust::transform(thrust::device,
+                      first1, last1, first2, result, op);
+}
 
 /////////////////////////////////////////
 //

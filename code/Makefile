@@ -70,7 +70,7 @@ OBJS = test.o test_host.o test_device.o benchmark_device.o \
 	benchmark_host.o benchmark_baseline.o kernels.o \
 	benchmark_device_optimal.o benchmark_best_device.o \
 	benchmark_ram_a.o benchmark_ram_a.o benchmark_fusion_a.o \
-	benchmarks/host.o
+	benchmarks/host.o benchmark_device2d.o
 
 DEPS = $(patsubst %.o,$(BINDIR)/%.d,$(OBJS))
 
@@ -133,6 +133,10 @@ $(BINDIR)/benchmarks/host: $(BINDIR)/benchmarks/host.o
 	$(CXX) $< $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/benchmark_device:  $(BINDIR)/kernels.o $(BINDIR)/benchmark_device.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
+
+$(BINDIR)/benchmark_device2d:  $(BINDIR)/benchmark_device2d.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
