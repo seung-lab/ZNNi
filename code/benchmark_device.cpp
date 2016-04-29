@@ -4,6 +4,7 @@
 #include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
 #include "znn/device/v1/fft_conv.hpp"
 #include "znn/device/v1/cudnn_pool.hpp"
+#include "znn/device/v1/maxout.hpp"
 #include "znn/device/v1/cudnn_mfp.hpp"
 
 #include <zi/time.hpp>
@@ -58,13 +59,22 @@ inline void benchmark_network( network_descriptor & ndesc,
                                l.random_biases().data()));
 
             }
-            else
+            else if ( l.descriptor.type == layer_type::pooling )
             {
                 layers.push_back(make_unique<device::v1::cudnn_mfp>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.in_size,
                                   l.descriptor.k_or_w_size));
+            }
+            else
+            {
+                layers.push_back(make_unique<device::v1::maxout>
+                                 (l.batch_size,
+                                  l.descriptor.num_inputs,
+                                  l.descriptor.num_inputs
+                                  /l.descriptor.num_outputs,
+                                  l.in_size));
             }
 
             ++lnum;

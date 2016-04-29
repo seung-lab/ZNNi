@@ -30,10 +30,7 @@ public:
 
     device_tensor<float,4> forward( device_tensor<float,4> in ) const override
     {
-	//std::cout << "MAXOUT: " << output_shape << "\n";
         device_tensor<real,4> out(output_shape);
-
-	//return out;
 
         float alpha = 1;
         float beta  = 0;

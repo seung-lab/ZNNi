@@ -16,7 +16,7 @@ namespace znn { namespace fwd {
 
 enum struct layer_type
 {
-    convolutional, pooling
+    convolutional, pooling, maxout
 };
 
 struct layer_descriptor
@@ -72,15 +72,14 @@ public:
         for ( long_t i = 0; i < n_l; ++i )
         {
             char nt[1024];
-            long_t x, y, z;
-
-            STRONG_ASSERT( std::fscanf(f, "%s %ld,%ld,%ld",
-                                       nt, &x, &y, &z) == 4 );
-
-            vec3i k_or_w(x,y,z);
+            STRONG_ASSERT( std::fscanf(f, "%s", nt) == 1 );
 
             if ( std::string(nt) == "CONV" )
             {
+                long_t x, y, z;
+                STRONG_ASSERT( std::fscanf(f, "%ld,%ld,%ld", &x, &y, &z) == 3 );
+                vec3i k_or_w(x,y,z);
+
                 long_t w;
                 STRONG_ASSERT( std::fscanf(f, "%ld\n", &w) == 1 );
 
@@ -94,12 +93,30 @@ public:
             }
             else if ( std::string(nt) == "POOL" )
             {
+                long_t x, y, z;
+                STRONG_ASSERT( std::fscanf(f, "%ld,%ld,%ld", &x, &y, &z) == 3 );
+                vec3i k_or_w(x,y,z);
+
                 layers_.push_back({layer_type::pooling, n_in, n_in,
                             k_or_w, vec3i::zero});
 
                 std::cout << "POOL LAYER: " << k_or_w
                           << " :: " << n_in << " -> " << n_in << "\n";
 
+            }
+            else if ( std::string(nt) == "MAXOUT" )
+            {
+                long_t d;
+                STRONG_ASSERT( std::fscanf(f, "%ld", &d) == 1 );
+                vec3i k_or_w(0,0,0);
+
+                layers_.push_back({layer_type::maxout, n_in, n_in/d,
+                            k_or_w, vec3i::zero});
+
+                std::cout << "MAXOUT LAYER: "
+                          << " :: " << n_in << " -> " << (n_in/d) << "\n";
+
+                n_in /= d;
             }
             else
             {
