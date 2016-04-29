@@ -38,18 +38,18 @@ private:
 
 #if defined(ZNN_USE_MKL_CONVOLUTION)
     void do_single_output( real* input,
-                           real const * kernel
+                           real const * kernel,
                            real* out,
                            real  bias,
                            void* stack) const noexcept
     {
-        convolver_.convolve_add(input, kernel, out);
+        convolver_.convolve(input, kernel, out);
 
         real* tmp = reinterpret_cast<real*>(stack);
 
         for ( long_t i = 0; i < num_inputs; ++i )
         {
-            convolver_.convolve_add(input +  i * in_image_len,
+            convolver_.convolve(input +  i * in_image_len,
                                     kernel + i * kernel_len,
                                     tmp);
 
@@ -101,7 +101,7 @@ public:
 
         auto fn = [&, this]()
             {
-                host_tensor<real,3> scratch(this->out_image_size);
+                host_tensor<real,2> scratch(this->out_image_size);
 
                 std::pair<long_t,long_t>* which;
 
@@ -111,12 +111,13 @@ public:
                         ( in.data() + which->first * this->input_len,
                           kernels.data() + which->second * this->kernel_len * this->num_inputs,
                           out.data() + which->first * this->output_len + which->second * this->out_image_len,
+			  (this->biases).data()[which->second],
                           scratch.data() );
                 }
 
             };
 
-
+	tbb::task_group tg;
         long_t num_tasks = std::thread::hardware_concurrency();
         num_tasks = std::min(num_tasks, in_batch_size*num_outputs);
 

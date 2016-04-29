@@ -3,6 +3,10 @@
 #include "znn/host/2d/fft_conv.hpp"
 #include "znn/host/2d/mfp.hpp"
 #include "znn/host/2d/maxout.hpp"
+#include "znn/host/2d/direct_conv.hpp"
+#include "znn/host/2d/mfp_serial.hpp"
+#include "znn/host/2d/maxout_serial.hpp"
+#include "znn/host/2d/fft_conv_serial.hpp"
 
 #include <zi/time.hpp>
 
@@ -14,8 +18,9 @@ using namespace znn::fwd;
 
 std::string net_name;
 vec2i       os;
-long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
-long_t      batch_size = 8;
+long_t      max_memory = static_cast<long_t>(240) * 1024 * 1024 * 1024; // GB
+long_t      batch_size = 1;
+std::mutex  mtx;
 
 inline void benchmark_network( network2d_descriptor & ndesc,
                                long_t rounds,
@@ -24,7 +29,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
     znni_network2d net(ndesc, batch_size, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
-         << os << std::endl;
+         << os << ' ' << " BATCH: " << batch_size << std::endl;
 
     std::vector<std::unique_ptr<host::twod::host_layer2d>> layers;
 
@@ -39,7 +44,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
         {
             if ( l.descriptor.type == layer2d_type::convolutional )
             {
-                layers.push_back(make_unique<host::twod::fft_conv2d>
+                layers.push_back(make_unique<host::twod::fft_conv2d_serial>
                               (l.batch_size,
                                l.descriptor.num_inputs,
                                l.descriptor.num_outputs,
@@ -51,7 +56,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             }
             else if ( l.descriptor.type == layer2d_type::pooling )
             {
-                layers.push_back(make_unique<host::twod::mfp2d>
+                layers.push_back(make_unique<host::twod::mfp2d_serial>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.in_size,
@@ -59,7 +64,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             }
             else
             {
-                layers.push_back(make_unique<host::twod::maxout2d>
+                layers.push_back(make_unique<host::twod::maxout2d_serial>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.descriptor.num_inputs
@@ -134,6 +139,11 @@ inline void benchmark_network( network2d_descriptor & ndesc,
 
         rout << "[network_throughput] " << net_name
              << " :: " << os << " :: " << (voxels/total) << std::endl;
+
+        {
+	    guard g(mtx);
+	    std::cout << total << ' ' << (voxels/total) << std::endl;
+	}
     }
 
 }
@@ -152,12 +162,21 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network2d_descriptor nd(net_path);
 
-    for ( long_t i = 760; i < 11400; i += 100 )
+    for ( long_t i = 976; i < 11400; i += 512 )
     {
         os = vec2i(i,i);
         if ( os % nd.fragmentation() == vec2i::zero )
         {
-            benchmark_network(nd, rounds, ofs);
+	    for ( batch_size = 1; batch_size <= 32; batch_size *= 2 )
+	    {
+		std::cout << "A: " << batch_size << "\n";
+		host::thread_distributor td;
+		tbb::parallel_for( 0, 72, [&](int)
+			{
+				host::thread_pin pin(td);
+			        benchmark_network(nd, rounds, ofs);		
+			});
+            }
         }
     }
 }

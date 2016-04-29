@@ -3,11 +3,11 @@
 #ifdef __unix__
 
 #ifndef ZNNI_NUM_CHIPS
-#  define ZNNI_NUM_CHIPS 1
+#  define ZNNI_NUM_CHIPS 4
 #endif
 
 #ifndef ZNNI_CORES_PER_CHIP
-#  define ZNNI_CORES_PER_CHIP 8
+#  define ZNNI_CORES_PER_CHIP 36
 #endif
 
 #ifndef ZNNI_HYPERTHREADING
@@ -54,6 +54,7 @@ public:
             r = r % total;
             if ( r < (total / 2))
             {
+		return r;
                 int chip    = r % chips;
                 int on_chip = r / chips;
 

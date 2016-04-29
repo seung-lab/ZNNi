@@ -27,7 +27,7 @@ NVCC		=	$(AT)/usr/local/cuda/bin/nvcc
 ifneq ($(strip $(ICC)),)
 	CXX 			=	$(AT)icpc
 	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -ipo
-	CS_FLAGS		=	-DZNN_USE_MKL_FFT
+	CS_FLAGS		=	-DZNN_USE_MKL_FFT -DZNN_USE_MKL_CONVOLUTION
 	CS_LD_FLAGS		=	-static-intel -mkl=sequential
 else
 	CXX			=	$(AT)g++

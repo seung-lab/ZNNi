@@ -65,7 +65,7 @@ public:
                     output_len);
             }
 
-        tg.wait();
+        //tg.wait();
 
         return ret;
     }

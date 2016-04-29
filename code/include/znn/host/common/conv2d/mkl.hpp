@@ -12,10 +12,13 @@ class convolver2d
 private:
     VSLConvTaskPtr conv_;
 
+private:
+    vec2i ix,kx,rx;
+
 public:
     ~convolver2d()
     {
-        vlsConvDeleteTask(&conv_);
+    //    vlsConvDeleteTask(&conv_);
     }
 
     convolver2d( vec2i const & i, vec2i const & k )
