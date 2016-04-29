@@ -243,7 +243,7 @@ public:
             {
                 is = is - l.k_or_w_size + vec3i::one;
             }
-            else
+            else if ( l.type == layer_type::pooling )
             {
                 long_t n = l.k_or_w_size[0]*l.k_or_w_size[1]*l.k_or_w_size[2];
                 b *= n;
