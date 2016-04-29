@@ -35,10 +35,10 @@ public:
 #if defined(ZNN_USE_LONG_DOUBLE_PRECISION)
 
 #elif defined(ZNN_USE_DOUBLE_PRECISION)
-        status = vsldConvNewTask(&conv_,VSL_CONV_MODE_DIRECT,3,
+        status = vsldConvNewTask(&conv_,VSL_CONV_MODE_DIRECT,2,
                                  shape, bshape, rshape);
 #else
-        status = vslsConvNewTask(&conv_,VSL_CONV_MODE_DIRECT,3,
+        status = vslsConvNewTask(&conv_,VSL_CONV_MODE_DIRECT,2,
                                  shape, bshape, rshape);
 #endif
 

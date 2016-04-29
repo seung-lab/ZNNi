@@ -87,7 +87,45 @@ public:
 
 #if defined(ZNN_USE_MKL_CONVOLUTION)
 
-        UNIMPLEMENTED();
+        std::vector<std::pair<long_t, long_t>> all(in_batch_size*num_outputs);
+
+        tbb::concurrent_queue<std::pair<long_t, long_t>*> queue;
+
+        for ( long_t n = 0, l = 0; n < in_batch_size; ++n )
+            for ( long_t i = 0; i < num_outputs; ++i, ++l )
+            {
+                all[l].first  = n;
+                all[l].second = i;
+                queue.push(&all[l]);
+            }
+
+        auto fn = [&, this]()
+            {
+                host_tensor<real,3> scratch(this->out_image_size);
+
+                std::pair<long_t,long_t>* which;
+
+                while ( queue.try_pop(which) )
+                {
+                    this->do_single_output
+                        ( in.data() + which->first * this->input_len,
+                          kernels.data() + which->second * this->kernel_len * this->num_inputs,
+                          out.data() + which->first * this->output_len + which->second * this->out_image_len,
+                          scratch.data() );
+                }
+
+            };
+
+
+        long_t num_tasks = std::thread::hardware_concurrency();
+        num_tasks = std::min(num_tasks, in_batch_size*num_outputs);
+
+        for ( long_t i = 0; i < num_tasks - 1; ++i )
+        {
+            tg.run(fn);
+        }
+
+        tg.run_and_wait(fn);
 
 #else
         tbb::task_group tg;
