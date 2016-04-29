@@ -132,7 +132,7 @@ public:
             {
                 fov_ += l.k_or_w_size - vec3i::one;
             }
-            else
+            else if ( l.type == layer_type::pooling )
             {
                 fov_ *= l.k_or_w_size;
                 fragmentation_ *= l.k_or_w_size;
