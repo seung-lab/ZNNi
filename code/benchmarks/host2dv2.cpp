@@ -91,7 +91,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
         return;
     }
 
-    long_t nthreads = architectire::available_threads();
+    long_t nthreads = host::architectire::available_threads();
 
     long_t total_mem = nthreads * (2 * inout_size + workspace_size);
 
@@ -102,8 +102,8 @@ inline void benchmark_network( network2d_descriptor & ndesc,
 
     if ( rm + total_mem < max_memory )
     {
-        device_array<float> inout[nthreads][2];
-        device_array<float> wspace[nthreads];
+        host_array<float> inout[nthreads][2];
+        host_array<float> wspace[nthreads];
         host_tensor<float,4> results[nthreads];
 
         for ( long_t t = 0; t < nthreads; ++t )
@@ -117,7 +117,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
 
         auto fn = [&](float* in, float* out, long_t t)
             {
-                lnum = 0;
+                size_t lnum = 0;
                 for ( auto & l: layers )
                 {
                     if ( lnum == 0 )
@@ -159,7 +159,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             tbb::parallel_for( static_cast<long_t>(0), nthreads,
                                [&](long_t i)
                                {
-                                   fn(ins[t].data(), results[t].data(),i);
+                                   fn(ins[i].data(), results[i].data(),i);
                                });
 
             double t = wtn.elapsed<double>();
