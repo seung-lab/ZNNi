@@ -23,7 +23,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network2d net(ndesc, 1, os);
+    znni_network2d net(ndesc, batch_size, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
          << os << ' ' << " BATCH: " << batch_size << std::endl;
