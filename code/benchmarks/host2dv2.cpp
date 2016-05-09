@@ -1,8 +1,9 @@
+#include "znn/host/common/thread_pin.hpp"
 #include "znn/util/network2d.hpp"
 #include "znn/tensor/tensor.hpp"
-#include "znn/device/2dv2/conv.hpp"
-#include "znn/device/2dv2/mfp.hpp"
-#include "znn/device/2dv2/maxout.hpp"
+#include "znn/host/2dv2/mfp_serial.hpp"
+#include "znn/host/2dv2/maxout_serial.hpp"
+#include "znn/host/2dv2/fft_conv_serial.hpp"
 
 #include <zi/time.hpp>
 
@@ -14,19 +15,20 @@ using namespace znn::fwd;
 
 std::string net_name;
 vec2i       os;
-long_t      max_memory = static_cast<long_t>(11) * 1024 * 1024 * 1024; // GB
+long_t      max_memory = static_cast<long_t>(240) * 1024 * 1024 * 1024; // GB
 long_t      batch_size = 1;
+std::mutex  mtx;
 
 inline void benchmark_network( network2d_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network2d net(ndesc, batch_size, os);
+    znni_network2d net(ndesc, 1, os);
 
     rout << "## " << net_name << " :: starting benchmark for output size "
-         << batch_size << " x " << os << std::endl;
+         << os << ' ' << " BATCH: " << batch_size << std::endl;
 
-    std::vector<std::unique_ptr<device::twod::device_layer2d>> layers;
+    std::vector<std::unique_ptr<host::twod::host_layer2d>> layers;
 
     long_t lnum = 0;
 
@@ -42,7 +44,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
         {
             if ( l.descriptor.type == layer2d_type::convolutional )
             {
-                layers.push_back(make_unique<device::twod::conv>
+                layers.push_back(make_unique<host::twod::fft_conv2d_serial>
                               (l.batch_size,
                                l.descriptor.num_inputs,
                                l.descriptor.num_outputs,
@@ -54,7 +56,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             }
             else if ( l.descriptor.type == layer2d_type::pooling )
             {
-                layers.push_back(make_unique<device::twod::mfp>
+                layers.push_back(make_unique<host::twod::mfp2d_serial>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.in_size,
@@ -62,7 +64,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             }
             else
             {
-                layers.push_back(make_unique<device::twod::maxout>
+                layers.push_back(make_unique<host::twod::maxout2d_serial>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.descriptor.num_inputs
@@ -79,113 +81,113 @@ inline void benchmark_network( network2d_descriptor & ndesc,
             inout_size = std::max(inout_size, layers.back()->output_memory);
             workspace_size = std::max(workspace_size,
                                       layers.back()->workspace_size());
-
         }
     }
     catch ( std::exception & e )
     {
         rout << "[network_exception] " << net_name
-             << " :: " << batch_size << " x " << os << " :: "
+             << " :: " << os << " :: "
              << " threw an exception: " << e.what() << std::endl;
         return;
     }
 
+    long_t nthreads = architectire::available_threads();
+
+    long_t total_mem = nthreads * (2 * inout_size + workspace_size);
+
     rout << "[network_requirements] " << net_name
-         << " :: " << batch_size << " x " << os << " :: "
+         << " :: " << os << " :: "
          << "RM: " << rm/1024/1024
-         << " MB WM: " << wm/1024/1024 << " MB" << std::endl;
+         << " MB WM: " << total_mem/1024/1024 << " MB" << std::endl;
 
-
-    bool workable = true;
-    for ( auto & l: layers )
+    if ( rm + total_mem < max_memory )
     {
-        if ( workable )
+        device_array<float> inout[nthreads][2];
+        device_array<float> wspace[nthreads];
+        host_tensor<float,4> results[nthreads];
+
+        for ( long_t t = 0; t < nthreads; ++t )
         {
-            auto r = l->workable();
-            workable = workable && r.first;
+            inout[t][0] = host_array<float>(rand_init,inout_size/4);
+            inout[t][1] = host_array<float>(rand_init,inout_size/4);
+            wspace[t]   = host_array<float>(rand_init,workspace_size/4);
+            results[t]
+                = host_tensor<float,4>(rand_init,layers.back()->output_shape);
         }
-    }
 
-    if ( !workable )
-    {
-        rout << "[network_information] " << net_name
-             << " :: " << batch_size << " x " << os << " :: IS NOT WORKABLE!" << std::endl;
-        return;
-    }
+        auto fn = [&](float* in, float* out, long_t t)
+            {
+                lnum = 0;
+                for ( auto & l: layers )
+                {
+                    if ( lnum == 0 )
+                    {
+                        l->forward(in,
+                                   inout[t][(lnum+1)%2].data(),
+                                   wspace[t].data());
+                    }
+                    else if ( lnum == layers.size() - 1 )
+                    {
+                        l->forward(inout[t][lnum%2].data(),
+                                   out,
+                                   wspace[t].data());
+                    }
+                    else
+                    {
+                        l->forward(inout[t][lnum%2].data(),
+                                   inout[t][(lnum+1)%2].data(),
+                                   wspace[t].data());
+                    }
 
-    if ( rm + wm < max_memory )
-    {
+                    ++lnum;
+                }
+            };
+
         double total = 0;
         zi::wall_timer wtn;
-        zi::wall_timer wtl;
-
-        device_array<float> inout[2];
-        inout[0] = device_array<float>(rand_init,inout_size/4);
-        inout[1] = device_array<float>(rand_init,inout_size/4);
-        device_array<char> wspace(workspace_size);
-
-        host_tensor<float,4> result(rand_init,
-                                    layers.back()->output_shape);
-
 
         for ( long_t i = 0; i < rounds; ++i )
         {
-            auto inh = net.get_random_sample();
+            std::vector<host_tensor<float,4>> ins(nthreads);
+            for ( long_t t = 0; t < nthreads; ++t )
+            {
+                ins[t] = net.get_random_sample();
+            }
 
             wtn.reset();
 
-            inh.store(inout[0].data(), to_device);
-
-            rout << "[2devi_measurement]: " << net_name
-                 << " :: " << os << " :: " << wtl.elapsed<double>()
-                 << std::endl;
-
-            lnum = 0;
-            for ( auto & l: layers )
-            {
-                wtl.reset();
-                l->forward(inout[lnum%2].data(), inout[(lnum+1)%2].data(),
-                           wspace.data());
-
-                double t = wtl.elapsed<double>();
-
-                rout << "[layer_measurement] " << net_name
-                     << " :: " << batch_size << " x " << os << " :: " << lnum
-                     << " :: " << t << std::endl;
-
-                ++lnum;
-            }
-
-            result.load(inout[lnum%2].data(), from_device);
+            tbb::parallel_for( static_cast<long_t>(0), nthreads,
+                               [&](long_t i)
+                               {
+                                   fn(ins[t].data(), results[t].data(),i);
+                               });
 
             double t = wtn.elapsed<double>();
 
             rout << "[network_measurement] " << net_name
-                     << " :: " << batch_size << " x " << os
+                     << " :: " << os
                      << " :: " << t << std::endl;
 
             total += t;
-
-            ++lnum;
         }
 
         total /= rounds;
 
         rout << "[network_average] " << net_name
-             << " :: " << batch_size << " x " << os << " :: " << total << std::endl;
+             << " :: " << os << " :: " << total << std::endl;
 
         double voxels = net.out_voxels();
 
         rout << "[network_throughput] " << net_name
-             << " :: " << batch_size << " x " << os << " :: " << (voxels/total) << std::endl;
-    }
+             << " :: " << os << " :: " << (voxels/total/nthreads) << std::endl;
 
+    }
 }
 
 void benchmark( std::string const & rep, long_t rounds )
 {
     std::string net_path    = "../networks/" + net_name + ".znni";
-    std::string report_path = "../reports/" + net_name + ".device." + rep + ".report";
+    std::string report_path = "../reports/" + net_name + ".host." + rep + ".report";
 
     std::ofstream ofs;
     ofs.open (report_path.c_str(), std::ofstream::out | std::ofstream::app);
@@ -201,8 +203,11 @@ void benchmark( std::string const & rep, long_t rounds )
         os = vec2i(i-48,i-48);
         if ( os % nd.fragmentation() == vec2i::zero )
         {
-            for ( batch_size = 1; batch_size <= 64; batch_size *=2 )
-            benchmark_network(nd, rounds, ofs);
+            for ( batch_size = 1; batch_size <= 32; batch_size *= 2 )
+            {
+                for ( batch_size = 1; batch_size <= 64; batch_size *=2 )
+                    benchmark_network(nd, rounds, ofs);
+            }
         }
     }
 }
