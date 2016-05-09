@@ -5,7 +5,7 @@
 #include "znn/device/v1/device_layer.hpp"
 #include "znn/device/common/utils.hpp"
 #include "znn/device/common/handle.hpp"
-#include "znn/device/common/cudnn2d.hpp"
+#include "znn/device/common/cudnn.hpp"
 
 namespace znn { namespace fwd { namespace device { namespace v1 {
 
