@@ -179,7 +179,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
         double voxels = net.out_voxels();
 
         rout << "[network_throughput] " << net_name
-             << " :: " << os << " :: " << (voxels/total/nthreads) << std::endl;
+             << " :: " << os << " :: " << (nthreads*voxels/total) << std::endl;
 
     }
 }
