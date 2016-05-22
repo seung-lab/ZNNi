@@ -165,6 +165,19 @@ public:
                       3, window, padding, window ));
     }
 
+    void set( int px, int py, int pz,
+              int sx, int sy, int sz )
+    {
+        int window[3]  = { px, py, pz };
+        int padding[3] = {0,0,0};
+        int strides[3] = { sx, sy, sz };
+
+        tryCUDNN( cudnnSetPoolingNdDescriptor(
+                      handle_,
+                      CUDNN_POOLING_MAX,
+                      3, window, padding, strides ));
+    }
+
     pooling_descriptor(pooling_descriptor const &) = delete;
     pooling_descriptor& operator=(pooling_descriptor const &) = delete;
 

@@ -18,6 +18,8 @@ protected:
 
     real scale;
 
+    long_t padded_len;
+
 protected:
     padded_pruned_fft2d_transformer_base( vec2i const & is, vec2i const & ks )
         : isize(is)
@@ -31,9 +33,18 @@ protected:
         csize = asize;
         csize[0] /= 2; csize[0] += 1;
         scale = asize[0] * asize[1];
+
+        padded_len = csize[0] * csize[1];
+        padded_len += 7;
+        padded_len -= (padded_len % 8);
     }
 
 public:
+    long_t p_len() const
+    {
+        return padded_len;
+    }
+
     bool needs_padding() const
     {
         return isize != asize;

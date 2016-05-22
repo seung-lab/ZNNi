@@ -79,12 +79,12 @@ public:
                             out_desc.handle(), out) );
         beta = 0;
 
-        // checkCUDNN(
+        // tryCUDNN(
         //     cudnnActivationForward(
-        //         handle_,
+        //         handle.cudnn_handle,
         //         CUDNN_ACTIVATION_RELU,
-        //         &alpha, out_desc, out,
-        //         &beta, out_desc, out) );
+        //         &alpha, out_desc.handle(), out,
+        //         &beta, out_desc.handle(), out) );
 
         //return out;
     }

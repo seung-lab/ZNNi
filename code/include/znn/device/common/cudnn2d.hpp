@@ -120,8 +120,8 @@ public:
         tryCUDNN( cudnnSetConvolutionNdDescriptor(
                       handle_,
                       2, pad, ones, ones,
-                      CUDNN_CONVOLUTION,
-                      //CUDNN_CROSS_CORRELATION,
+                      //CUDNN_CONVOLUTION,
+                      CUDNN_CROSS_CORRELATION,
                       CUDNN_DATA_FLOAT) );
 
     }

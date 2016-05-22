@@ -95,11 +95,23 @@ public:
 
     host_array<real> deshuffle(host_array<real> in) const
     {
-        auto ret = get_array<real>(len);
+        host_array<real> ret(len);
 
         for ( long_t i = 0; i < len; ++i )
         {
             ret.data()[mappings.data()[i]] = in.data()[i];
+        }
+
+        return ret;
+    }
+
+    host_array<real> deshuffle(real* in) const
+    {
+        host_array<real> ret(len);
+
+        for ( long_t i = 0; i < len; ++i )
+        {
+            ret.data()[mappings.data()[i]] = in[i];
         }
 
         return ret;

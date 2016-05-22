@@ -102,6 +102,46 @@ public:
     pool_layer& operator=( pool_layer const & ) = default;
 };
 
+
+template<typename Base>
+class maxfilter_layer: public Base
+{
+public:
+    vec3i window_size;
+
+    maxfilter_layer() noexcept {}
+
+    maxfilter_layer( long_t n, long_t finout,
+                     vec3i const & is, vec3i const & ws ) noexcept
+        : Base(n, finout, is, n, finout, is - ws + vec3i::one)
+        , window_size(ws)
+    {
+        STRONG_ASSERT( is % ws == vec3i::zero );
+    }
+
+    maxfilter_layer& operator=( maxfilter_layer const & ) = default;
+};
+
+
+
+template<typename Base>
+class softmax_layer: public Base
+{
+public:
+    softmax_layer() noexcept {}
+
+    softmax_layer( long_t n, long_t finout,
+                   vec3i const & is ) noexcept
+        : Base(n, finout, is, n, finout, is)
+    {
+        STRONG_ASSERT( finout > 1 );
+    }
+
+    softmax_layer& operator=( softmax_layer const & ) = default;
+};
+
+
+
 template<typename Base>
 class mfp_layer: public Base
 {

@@ -19,74 +19,11 @@ long_t      max_memory = static_cast<long_t>(240) * 1024 * 1024 * 1024; // GB
 long_t      batch_size = 1;
 std::mutex  mtx;
 
-
-inline void extract_tile( float * const in,
-                          float * out,
-                          vec4i const & shape ) noexcept
-{
-    long_t ipos = shape[0]; // position of the first
-    long_t opos = 0;
-
-    for ( long_t i = 0; i < shape[2]; ++i ) // each row
-    {
-        std::copy_n(in + ipos, shape[3], out + opos);
-        ipos += shape[1];
-        opos += shape[3];
-    }
-}
-
 inline void benchmark_network( network2d_descriptor & ndesc,
                                long_t rounds,
                                std::ofstream & rout )
 {
-    znni_network2d orignet(ndesc, batch_size, os);
-
-    auto oinsize = os + ndesc.fov() - vec2i::one;
-
-    long_t nthreads = 1;
-    while ( nthreads <= host::architectire::available_threads() )
-    {
-        nthreads *= 2;
-    }
-    nthreads /= 2;
-
-
-    vec2i tiles(1,1);
-
-    for ( long_t i = nthreads;; )
-    {
-        if ( i == 1 ) break;
-        os[0] /= 2;
-        tiles[0] *= 2;
-        i /= 2;
-        if ( i == 1 ) break;
-        os[1] /= 2;
-        tiles[1] *= 2;
-        i /= 2;
-    }
-
-    auto insize = os + ndesc.fov() - vec2i::one;
-
-    std::vector<vec4i> subimages(tiles[0]*tiles[1]);
-
-    auto fov = ndesc.fov();
-
-
-    for ( long_t y = 0, i = 0; y < tiles[0]; ++y )
-        for ( long_t x = 0; x < tiles[1]; ++x, ++i )
-        {
-            subimages[i][0] = y * os[0] * oinsize[1] + x * os[1];
-            subimages[i][1] = oinsize[1];
-            subimages[i][2] = os[0] + fov[0] - 1;
-            subimages[i][3] = os[1] + fov[1] - 1;
-        }
-
     znni_network2d net(ndesc, batch_size, os);
-
-    long_t num_inputs = net.layers().front().descriptor.num_inputs;
-
-    long_t iistride = oinsize[0] * oinsize[1];
-    long_t oostride = insize[0] * insize[1];
 
     rout << "## " << net_name << " :: starting benchmark for output size "
          << os << ' ' << " BATCH: " << batch_size << std::endl;
@@ -154,6 +91,7 @@ inline void benchmark_network( network2d_descriptor & ndesc,
         return;
     }
 
+    long_t nthreads = 1; //host::architectire::available_threads();
 
     long_t total_mem = nthreads * (2 * inout_size + workspace_size);
 
@@ -179,17 +117,16 @@ inline void benchmark_network( network2d_descriptor & ndesc,
 
         auto fn = [&](float* in, float* out, long_t t)
             {
-                for ( long_t i = 0; i < num_inputs; ++i )
-                {
-                    extract_tile(in + iistride * i,
-                                 inout[t][0].data() + oostride * i,
-                                 subimages[t]);
-                }
-
                 size_t lnum = 0;
                 for ( auto & l: layers )
                 {
-                    if ( lnum == layers.size() - 1 )
+                    if ( lnum == 0 )
+                    {
+                        l->forward(in,
+                                   inout[t][(lnum+1)%2].data(),
+                                   wspace[t].data());
+                    }
+                    else if ( lnum == layers.size() - 1 )
                     {
                         l->forward(inout[t][lnum%2].data(),
                                    out,
@@ -211,19 +148,18 @@ inline void benchmark_network( network2d_descriptor & ndesc,
 
         for ( long_t i = 0; i < rounds; ++i )
         {
-            //std::vector<host_tensor<float,4>> ins(nthreads);
-            //for ( long_t t = 0; t < nthreads; ++t )
-            //{
-            //ins[t] = net.get_random_sample();
-            //}
-            auto in = orignet.get_random_sample();
+            std::vector<host_tensor<float,4>> ins(nthreads);
+            for ( long_t t = 0; t < nthreads; ++t )
+            {
+                ins[t] = net.get_random_sample();
+            }
 
             wtn.reset();
 
             tbb::parallel_for( static_cast<long_t>(0), nthreads,
                                [&](long_t i)
                                {
-                                   fn(in.data(), results[i].data(),i);
+                                   fn(ins[i].data(), results[i].data(),i);
                                });
 
             double t = wtn.elapsed<double>();
@@ -262,15 +198,18 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network2d_descriptor nd(net_path);
 
-    // for ( long_t i = 256; i < 1140; i *= 2 )
-    // {
-        os = vec2i(960,960);
-    //     if ( os % nd.fragmentation() == vec2i::zero )
+    for ( long_t i = 64; i < 1140; i *= 2 )
+    {
+        os = vec2i(i,i);
+        if ( os % nd.fragmentation() == vec2i::zero )
         {
-            batch_size = 1;
-            benchmark_network(nd, rounds, ofs);
+            for ( batch_size = 1; batch_size <= 2; batch_size *= 2 )
+            {
+                //for ( batch_size = 1; batch_size <= 64; batch_size *=2 )
+                    benchmark_network(nd, rounds, ofs);
+            }
         }
-    //}
+    }
 }
 
 int main(int argc, char *argv[])

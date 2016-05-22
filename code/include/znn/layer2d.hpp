@@ -103,6 +103,23 @@ public:
 };
 
 template<typename Base>
+class softmax_layer2d: public Base
+{
+public:
+    softmax_layer2d() noexcept {}
+
+    softmax_layer2d( long_t n, long_t finout,
+                     vec2i const & is ) noexcept
+        : Base(n, finout, is, n, finout, is)
+    {
+        STRONG_ASSERT( finout > 1 );
+    }
+
+    softmax_layer2d& operator=( softmax_layer2d const & ) = default;
+};
+
+
+template<typename Base>
 class mfp_layer2d: public Base
 {
 public:

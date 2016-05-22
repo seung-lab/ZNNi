@@ -14,7 +14,7 @@ namespace znn { namespace fwd { namespace detail { namespace tensor {
 
 inline void* malloc( size_t required_bytes, host_tag )
 {
-#if 0
+#if 1
     if ( required_bytes == 0 )
     {
         return nullptr;
@@ -23,7 +23,7 @@ inline void* malloc( size_t required_bytes, host_tag )
     void*  p1; // original block
     void** p2; // aligned block
 
-    size_t alignment = 64;
+    size_t alignment = 128;
 
     int offset = alignment - 1 + sizeof(void*);
 
@@ -47,7 +47,7 @@ inline void* malloc( size_t required_bytes, host_tag )
 
 inline void free( void* p, host_tag )
 {
-#if 0
+#if 1
     std::free(((void**)p)[-1]);
 #else
     std::free(p);
