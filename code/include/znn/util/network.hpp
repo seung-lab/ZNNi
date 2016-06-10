@@ -16,7 +16,7 @@ namespace znn { namespace fwd {
 
 enum struct layer_type
 {
-    convolutional, pooling, maxout
+    convolutional, pooling, maxout, maxfilter
 };
 
 struct layer_descriptor
@@ -118,6 +118,19 @@ public:
 
                 n_in /= d;
             }
+            else if ( std::string(nt) == "FOOL" )
+            {
+                long_t x, y, z;
+                STRONG_ASSERT( std::fscanf(f, "%ld,%ld,%ld", &x, &y, &z) == 3 );
+                vec3i k_or_w(x,y,z);
+
+                layers_.push_back({layer_type::maxfilter, n_in, n_in,
+                            k_or_w, vec3i::zero});
+
+                std::cout << "POOL LAYER: " << k_or_w
+                          << " :: " << n_in << " -> " << n_in << "\n";
+
+            }
             else
             {
                 DIE("UNKNOWN LAYER TYPE");
@@ -128,7 +141,8 @@ public:
 
         for ( auto & l: layers_ )
         {
-            if ( l.type == layer_type::convolutional )
+            if ( l.type == layer_type::convolutional ||
+                 l.type == layer_type::maxfilter )
             {
                 fov_ += l.k_or_w_size - vec3i::one;
             }
@@ -239,7 +253,8 @@ public:
         {
             znni_layer znnil(l,b,is);
 
-            if ( l.type == layer_type::convolutional )
+            if ( l.type == layer_type::convolutional ||
+                 l.type == layer_type::maxfilter )
             {
                 is = is - l.k_or_w_size + vec3i::one;
             }

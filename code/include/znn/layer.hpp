@@ -116,7 +116,7 @@ public:
         : Base(n, finout, is, n, finout, is - ws + vec3i::one)
         , window_size(ws)
     {
-        STRONG_ASSERT( is % ws == vec3i::zero );
+        //STRONG_ASSERT( is % ws == vec3i::zero );
     }
 
     maxfilter_layer& operator=( maxfilter_layer const & ) = default;

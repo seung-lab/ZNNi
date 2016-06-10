@@ -5,6 +5,7 @@
 #include "znn/device/v1/fft_conv.hpp"
 #include "znn/device/v1/cudnn_pool.hpp"
 #include "znn/device/v1/maxout.hpp"
+#include "znn/device/v1/cudnn_maxfilter.hpp"
 #include "znn/device/v1/cudnn_mfp.hpp"
 
 #include <zi/time.hpp>
@@ -62,6 +63,14 @@ inline void benchmark_network( network_descriptor & ndesc,
             else if ( l.descriptor.type == layer_type::pooling )
             {
                 layers.push_back(make_unique<device::v1::cudnn_mfp>
+                                 (l.batch_size,
+                                  l.descriptor.num_inputs,
+                                  l.in_size,
+                                  l.descriptor.k_or_w_size));
+            }
+            else if ( l.descriptor.type == layer_type::maxfilter )
+            {
+                layers.push_back(make_unique<device::v1::cudnn_maxfilter>
                                  (l.batch_size,
                                   l.descriptor.num_inputs,
                                   l.in_size,
@@ -187,9 +196,12 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network_descriptor nd(net_path);
 
-    for ( long_t i = 128; i < 400; i += 4 )
+    for ( long_t i = 4; i < 400; i += 4 )
     {
-        os = vec3i(i,i,i);
+        os = vec3i(i*8,i*8,i);
+        std::cout << "Testing: " << os << std::endl;
+        std::cout << "   frag: " << nd.fragmentation() << std::endl;
+        std::cout << "    mod: " << (os % nd.fragmentation()) << std::endl;
         if ( os % nd.fragmentation() == vec3i::zero )
         {
             benchmark_network<Conv>(nd, rounds, ofs);
@@ -205,7 +217,7 @@ int main(int argc, char *argv[])
     if ( argc > 2 ) rounds = atoi(argv[2]);
 
     //benchmark<device::v1::cudnn_conv>("cudnn", rounds);
-    benchmark<device::v1::fft_conv>("fft", rounds);
+    //benchmark<device::v1::fft_conv>("fft", rounds);
 
     benchmark<device::v1::cudnn_no_precomp_gemm_conv>
         ("cudnn_no_precomp_gemm_conv", rounds);
