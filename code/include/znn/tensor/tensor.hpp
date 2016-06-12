@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TENSOR_HPP
+#define TENSOR_HPP
 
 #include "znn/tensor/tensor_ref.hpp"
 
@@ -168,3 +169,4 @@ inline void ____use_tag_instances()
 }
 
 }} // namespace znn::fwd
+#endif
