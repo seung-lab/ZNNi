@@ -89,9 +89,12 @@ void xxxxx()
 
     long_t workspace_size = 0;
     long_t inout_size = 0;
-
-    workspace_size = std::max(workspace_size, l->total_memory());
-}
+    for ( auto & l: layers )
+    {
+      inout_size = std::max(inout_size, l->input_memory);
+      inout_size = std::max(inout_size, l->output_memory);
+      workspace_size = std::max(workspace_size, l->total_memory());
+    }
     host_array<float> inout[2];
     inout[0] = host_array<float>(rand_init,inout_size/4);
     inout[1] = host_array<float>(rand_init,inout_size/4);
