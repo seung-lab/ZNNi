@@ -53,7 +53,7 @@ LD_OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
 
 OPT_FLAGS		=	$(COMMON_FLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
 
-COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
+COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas -lhdf5 -lhdf5_cpp
 
 #COMMON_LDFLAGS		=	-g -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f
 
@@ -76,7 +76,8 @@ OBJS = test.o test_host.o test_device.o benchmark_device.o \
 	benchmark_host2d.o benchmarks/device2d.o \
 	benchmarks/device2dv2.o benchmarks/host2dv2.o \
 	benchmarks/host2dv2tiled.o benchmarks/device_test.o \
-	benchmarks/host2dv2serial.o
+	benchmarks/host2dv2serial.o \
+        dataprovider.o
 
 DEPS = $(patsubst %.o,$(BINDIR)/%.d,$(OBJS))
 
@@ -117,6 +118,10 @@ all:
 clean:
 	$(ECHO) Cleaning...
 	$(RM) -rf $(BINDIR)
+
+$(BINDIR)/dataprovider: $(BINDIR)/dataprovider.o
+	$(ECHO) "[CXX] linking $^"
+	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
 $(BINDIR)/test: $(BINDIR)/kernels.o $(BINDIR)/test.o
 	$(ECHO) "[CXX] linking $^"
