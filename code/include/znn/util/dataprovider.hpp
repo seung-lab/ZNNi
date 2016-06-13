@@ -7,6 +7,8 @@
 #include <memory>
 #include <unordered_map>
 
+namespace znn{ namespace fwd{
+
 typedef zi::vl::vec<hsize_t, 3>  h5vec3;
 typedef zi::vl::vec<hsize_t, 4>  h5vec4;
 
@@ -57,3 +59,4 @@ public:
 
 };
 
+  }} // namespace znn::fwd
