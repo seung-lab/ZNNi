@@ -1,6 +1,8 @@
 #include "dataprovider.hpp"
 
 #include <H5Exception.h>
+#include <iterator>
+
 
 
 using namespace H5;
@@ -28,10 +30,10 @@ DataProvider::~DataProvider()
   h5fileout_.close();
 }
 
-bool DataProvider::LoadHDF(const std::string filename, const std::string datasetname)
+bool DataProvider::LoadHDF(const std::string filename_input, const std::string filename_output, const std::string datasetname)
 {
   try {
-    h5filein_.openFile(filename.c_str(), H5F_ACC_RDONLY);
+    h5filein_.openFile(filename_input.c_str(), H5F_ACC_RDONLY);
     datasetin_ = h5filein_.openDataSet(datasetname);
 
     if (!VerifyDatasetInfo()) {
@@ -41,7 +43,7 @@ bool DataProvider::LoadHDF(const std::string filename, const std::string dataset
     }
 
 
-    h5fileout_.setId(H5Fcreate((std::string("result_") + filename).c_str(), H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT));
+    h5fileout_.setId(H5Fcreate(filename_output.c_str(), H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT));
     datasetout_ = h5fileout_.createDataSet(datasetname, PredType::IEEE_F32LE, DataSpace(4, h5vec4(3, world_).data()));
 
     CreateDataspaces();
@@ -58,7 +60,7 @@ bool DataProvider::LoadHDF(const std::string filename, const std::string dataset
   {
     datasetin_.close();
     h5filein_.close();
-    printf("Error: Unknown error while loading dataset '%s' in file '%s'.\n", datasetname.c_str(), filename.c_str());
+    printf("Error: Unknown error while loading dataset '%s' in file '%s'.\n", datasetname.c_str(), filename_input.c_str());
     return false;
   }
 }
@@ -74,10 +76,10 @@ bool DataProvider::VerifyDatasetInfo() {
 
   h5vec3 max_size;
   H5Sget_simple_extent_dims(dataspace.getId(), world_.data(), max_size.data());
-  printf("Dataset size:  [%5llu, %5llu, %5llu]\n", world_[0], world_[1], world_[2]);
+  printf("Dataset size : [%5llu, %5llu, %5llu]\n", world_[0], world_[1], world_[2]);
   printf("Field of view: [%5llu, %5llu, %5llu]\n", fov_[0], fov_[1], fov_[2]);
-  printf("Inner window:  [%5llu, %5llu, %5llu]\n", outputsize_[0], outputsize_[1], outputsize_[2]);
-  printf("Outer window:  [%5llu, %5llu, %5llu]\n", inputsize_[0], inputsize_[1], inputsize_[2]);
+  printf("Inner window : [%5llu, %5llu, %5llu]\n", outputsize_[0], outputsize_[1], outputsize_[2]);
+  printf("Outer window : [%5llu, %5llu, %5llu]\n", inputsize_[0], inputsize_[1], inputsize_[2]);
 
   if (world_.x() < outputsize_.x() || world_.y() < outputsize_.y() || world_.z() < outputsize_.z()) {
     printf("Error: Dataset is smaller than outer window size!\n");
@@ -95,7 +97,7 @@ bool DataProvider::VerifyDatasetInfo() {
   datasign_ = H5Tget_sign(datatype);
 
   hsize_t datasize = H5Tget_size(datatype);
-  printf("Datatype is %llu Byte ", datasize);
+  printf("Datatype     : %llu Byte ", datasize);
   switch (datasign_) {
     case H5T_SGN_NONE: printf("UNSIGNED "); break;
     case H5T_SGN_2:    printf("SIGNED "); break;
@@ -110,6 +112,12 @@ bool DataProvider::VerifyDatasetInfo() {
     case H5T_INTEGER: printf("INTEGER\n"); break;
     case H5T_FLOAT:   printf("FLOAT\n"); break;
     default:          printf("UNKNOWN\n"); break;
+  }
+
+  if (! (datasize == 4 && dataclass_ == H5T_FLOAT) &&
+      ! (datasize == 1 && datasign_ == H5T_SGN_NONE && dataclass_ == H5T_INTEGER )) {
+    printf("Error: Datatype should be float or unsigned char.");
+    return false;
   }
 
   dataspace.close();
@@ -174,6 +182,29 @@ std::unique_ptr<float[]> DataProvider::ReadWindowData(hid_t dataspaceid, h5vec3 
 
   std::unique_ptr<float[]> data_out(new float[inputsize_[0] * inputsize_[1] * inputsize_[2] * sizeof(float)]);
   H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.get());
+
+  if (dataclass_ == H5T_INTEGER) { // raw channel data (UINT8) needs to be normalized
+    hsize_t elementcnt = inputsize_[1] * inputsize_[2];
+
+    for (hsize_t z = 0; z < inputsize_[0]; ++z) {
+      auto begin = &(data_out.get()[ z * elementcnt ]);
+      auto end   = &(data_out.get()[ (z+1) * elementcnt ]);
+
+      double sum = std::accumulate(begin, end, 0.0);
+      double mean = sum / (double)elementcnt;
+
+      std::vector<double> diff(elementcnt);
+      std::transform(begin, end, diff.begin(), [mean](double x) { return x - mean; });
+
+      double sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
+      double stdev = std::sqrt(sq_sum / (double)elementcnt);
+
+      for (size_t i = 0; i < elementcnt; ++i) {
+          data_out.get()[z * elementcnt + i] = (data_out.get()[z * elementcnt + i] - (mean / stdev)) / 255.f;
+      }
+    }
+  }
+
   dimensions = inputsize_;
 
   H5Sclose(memspace);
@@ -192,53 +223,4 @@ void DataProvider::WriteWindowData(hid_t dataspaceid, const float * data)
   H5Dwrite(datasetout_.getId(), H5T_NATIVE_FLOAT, memspace, dataspace_out, H5P_DEFAULT, data);
 
   H5Sclose(memspace);
-}
-
-
-int main(int argc, char* argv[])
-{
-  h5vec3 fov(9, 109, 109);
-  h5vec3 output(16, 256, 256);
-
-  DataProvider dp(output, fov);
-  bool ok;
-  if (argc == 3)
-    ok = dp.LoadHDF(std::string(argv[1]), std::string(argv[2]));
-  else
-    ok = dp.LoadHDF("channel1.h5", "/main");
-
-  if (!ok) return -1;
-
-
-
-  // CRYPTIC TEST - Iterate over all windows, do some nonsense transformations and write it back to the new file.
-  for (auto it = dp.begin(); it != dp.end(); ++it) {
-    h5vec3 dimensions;
-    std::unique_ptr<float[]> data = dp.ReadWindowData(*it, dimensions);
-
-    hsize_t elcnt = output.x() * output.y() * output.z();
-    float * conv = new float[3 * elcnt];
-    h5vec3 halffov((fov - 1) / 2);
-    h5vec3 input(output + fov - 1);
-
-    hsize_t w, inz, iny, inx, outz, outy, outx;
-
-    for (w = 0; w < 3; ++w) {
-      for (inz = halffov.z(), outz = 0; inz + halffov.z() < input.z(); ++inz, ++outz) {
-        for (iny = halffov.y(), outy = 0; iny + halffov.y() < input.y(); ++iny, ++outy) {
-          for (inx = halffov.x(), outx = 0; inx + halffov.x() < input.x(); ++inx, ++outx) {
-            if (w == 0)      conv[0*elcnt + (outz + output.z() * (outy + output.y() * outx))] = 1.f - data.get()[(inz + input.z() * (iny + input.y() * inx))];
-            else if (w == 1) conv[1*elcnt + (outz + output.z() * (outy + output.y() * outx))] = std::max(0.f,std::min(1.f, 2.f * data.get()[(inz + input.z() * (iny + input.y() * inx))]));
-            else if (w == 2) conv[2*elcnt + (outz + output.z() * (outy + output.y() * outx))] = ((inx+iny+inz) % 2) ? 0.f : data.get()[(inz + input.z() * (iny + input.y() * inx))];
-          }
-        }
-      }
-    }
-
-    dp.WriteWindowData(*it, conv);
-    delete[] conv;
-    data.reset();
-  }
-
-  return 0;
 }

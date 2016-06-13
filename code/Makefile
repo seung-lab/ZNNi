@@ -119,7 +119,7 @@ clean:
 	$(ECHO) Cleaning...
 	$(RM) -rf $(BINDIR)
 
-$(BINDIR)/dataprovider: $(BINDIR)/dataprovider.o
+$(BINDIR)/dataprovider: $(BINDIR)/dataprovider.o $(BINDIR)/test_dataprovider.o 
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
