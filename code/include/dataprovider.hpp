@@ -49,7 +49,7 @@ public:
   const_iterator end()   const { return dshandles_.cend();   }
   size_t         size()  const { return dshandles_.size();   }
 
-  bool LoadHDF(const std::string filename, const std::string datasetname);
+  bool LoadHDF(const std::string filename_input, const std::string filename_output, const std::string datasetname);
   std::unique_ptr< float[] > ReadWindowData(hid_t dataspaceid, h5vec3 & dimensions);
   void WriteWindowData(hid_t ds, const float * data);
 
