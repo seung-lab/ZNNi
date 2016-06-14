@@ -10,34 +10,26 @@ using namespace znn::fwd;
 
 int main(int argc, char *argv[])
 {
-  vec3i outsz(1,100,100)
+  vec3i outsz(1,100,100);
   // create layers for n4 network
-  auto layers = create_n4();
+  auto layers = create_n4(outsz);
 
   // record time
   zi::wall_timer wt;
   wt.reset();
   // data provider here
-  h5vec3 fov(1, 89, 89);
-  h5vec3 output(1,100,100);
-  DataProvider dp(output, fov);
+  h5vec3 fov(1, 85, 85);
+  h5vec3 h5outsz(1,100,100);
+  DataProvider dp(h5outsz, fov);
   if (argc >= 4)
-    ok = dp.LoadHDF(std::string(argv[1], std::string(argv[2]), std::string(argv[3])));
-  else
+    dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
+  else{
     std::cout<< "Usage: znni inputfile.h5 outputfile.h5 datasetname\n";
-  if (!ok) return -1;
-
-  // prepare variables for iteration
-  h5vec3 dimensions;
-  hsize_t elcnt = output.x() * output.y() * output.z();
-  float * outpatch = new float[3*elcnt];
-  h5vec3 halffov((fov-1)/2);
-  h5vec3 input(output + fov - 1);
-  hsize_t w, inz, iny, inx, outz, outy, outx;
+    return -1;
+  }
 
   // run forward pass for one patch
-  tensor<float,5> in;
-  tensor<float,5> out;
+  host_tensor<float,5> out_patch(1,3,1,100,100);
 
   // shuffler
   deshuffler ds(vec3i(1,976,976));
@@ -47,24 +39,23 @@ int main(int argc, char *argv[])
 
   // iterate all the patches
   for (auto it = dp.begin(); it!=dp.end(); ++it){
-    std::unique_ptr<float[]> inpatch = dp.ReadWindowData(*it, dimensions);
-    outpatch = forward(layers, inpatch);
+    host_tensor<float, 5> in_patch = dp.ReadWindowData(*it);
     for (auto & l: layers){
-      auto out = l.forward(in);
-      in = out;
+      auto out = l->forward(std::move(in_patch));
+      in_patch = out;
     }
 
-    tensor<float, 5> hresult(256, 1, 1, 100, 100);
+    host_tensor<float, 5> hresult(256, 1, 1, 100, 100);
     for (long_t i=0; i<256; ++i){
-      hresult[i][0] = out[i][0]
+      hresult[i][0] = out_patch[i][0];
     }
     std::cout << "Processing took: " << wt. elapsed<double>() << "\n";
     wt.reset();
 
-    auto rr = ds.deshuffle(hresult.data());
+    host_array<real> rr = ds.deshuffle(hresult.data());
     wt.reset();
     // push to data provider
-    1;95;0c
+    dp.WriteWindowData(*it, rr.data());
     ////////
     std::cout << "push to data provider: " << wt.elapsed<double>() << "\n";
   }
