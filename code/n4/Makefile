@@ -2,11 +2,11 @@ ODIR		=	.
 SFL 		=	znni.cpp
 CPP 		=	g++
 CPP_FLAGS	= 	-g
-INC_FLAGS	=	-I./ -I../include -I../../ -I/usr/local/cuda-7.5/include -I/usr/local/cuda-7.0/include -I/opt/intel/tbb/include -I/usr/local/cudnn-6.5-linux-x64-v2/
+INC_FLAGS	=	-I./ -I../include -I../include/znn/util -I../../ -I/usr/local/cuda-7.5/include -I/usr/local/cuda-7.0/include -I/opt/intel/tbb/include -I/usr/local/cudnn-6.5-linux-x64-v2/
 LIB_FLAGS	=	-L./ -L/usr/local/cuda-7.0/lib64 -L/opt/intel/tbb/lib/intel64/gcc4.4 -L/usr/local/cudnn-6.5-linux-x64-v2/
-OPT_FLAGS	=	-O3 -std=c++1y
+OPT_FLAGS	=	-O0 -std=c++1y
 OTH_FLAGS	=	-Wall -Wno-unused-result -Wno-unused-local-typedefs
-LIBS		=	-lpthread -pthread -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas
+LIBS		=	-lpthread -pthread -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas -lhdf5_cpp -lhdf5
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)

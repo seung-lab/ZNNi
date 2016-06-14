@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
   }
 
   // run forward pass for one patch
+  host_tensor<float, 5> out;
   host_tensor<float,5> out_patch(1,3,1,100,100);
 
   // shuffler
@@ -41,21 +42,22 @@ int main(int argc, char *argv[])
   for (auto it = dp.begin(); it!=dp.end(); ++it){
     host_tensor<float, 5> in_patch = dp.ReadWindowData(*it);
     for (auto & l: layers){
-      auto out = l->forward(std::move(in_patch));
+      out = l->forward(std::move(in_patch));
       in_patch = out;
     }
 
     host_tensor<float, 5> hresult(256, 1, 1, 100, 100);
     for (long_t i=0; i<256; ++i){
-      hresult[i][0] = out_patch[i][0];
+      hresult[i][0] = out[i][0];
     }
     std::cout << "Processing took: " << wt. elapsed<double>() << "\n";
     wt.reset();
 
     host_array<real> rr = ds.deshuffle(hresult.data());
     wt.reset();
+    out_patch.load(rr.data(), from_host);
     // push to data provider
-    dp.WriteWindowData(*it, rr.data());
+    dp.WriteWindowData(*it, out_patch);
     ////////
     std::cout << "push to data provider: " << wt.elapsed<double>() << "\n";
   }
