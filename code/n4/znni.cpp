@@ -10,6 +10,7 @@ using namespace znn::fwd;
 
 int main(int argc, char *argv[])
 {
+  vec3i outsz(1,100,100)
   // create layers for n4 network
   auto layers = create_n4();
 
@@ -25,7 +26,6 @@ int main(int argc, char *argv[])
   else
     std::cout<< "Usage: znni inputfile.h5 outputfile.h5 datasetname\n";
   if (!ok) return -1;
-
 
   // prepare variables for iteration
   h5vec3 dimensions;
@@ -57,13 +57,14 @@ int main(int argc, char *argv[])
     tensor<float, 5> hresult(256, 1, 1, 100, 100);
     for (long_t i=0; i<256; ++i){
       hresult[i][0] = out[i][0]
-        }
+    }
     std::cout << "Processing took: " << wt. elapsed<double>() << "\n";
     wt.reset();
 
     auto rr = ds.deshuffle(hresult.data());
     wt.reset();
     // push to data provider
+    1;95;0c
     ////////
     std::cout << "push to data provider: " << wt.elapsed<double>() << "\n";
   }
