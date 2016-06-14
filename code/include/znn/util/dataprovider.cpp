@@ -2,8 +2,7 @@
 
 #include <H5Exception.h>
 #include <iterator>
-
-
+#include <numeric>
 
 using namespace H5;
 
@@ -176,19 +175,19 @@ void DataProvider::CreateDataspaces()
   }
 }
 
-std::unique_ptr<float[]> DataProvider::ReadWindowData(hid_t dataspaceid, h5vec3 & dimensions)
+znn::fwd::host_tensor<float, 5> DataProvider::ReadWindowData(hid_t dataspaceid)
 {
   hid_t memspace = H5Screate_simple(3, inputsize_.data(), NULL);
 
-  std::unique_ptr<float[]> data_out(new float[inputsize_[0] * inputsize_[1] * inputsize_[2] * sizeof(float)]);
-  H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.get());
+  znn::fwd::host_tensor<float, 5> data_out(1, 1, inputsize_.x(), inputsize_.y(), inputsize_.z());
+	H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.ptr().get());
 
   if (dataclass_ == H5T_INTEGER) { // raw channel data (UINT8) needs to be normalized
     hsize_t elementcnt = inputsize_[1] * inputsize_[2];
 
     for (hsize_t z = 0; z < inputsize_[0]; ++z) {
-      auto begin = &(data_out.get()[ z * elementcnt ]);
-      auto end   = &(data_out.get()[ (z+1) * elementcnt ]);
+      auto begin = data_out[0][0][z].begin();
+      auto end = data_out[0][0][z].end();
 
       double sum = std::accumulate(begin, end, 0.0);
       double mean = sum / (double)elementcnt;
@@ -197,21 +196,19 @@ std::unique_ptr<float[]> DataProvider::ReadWindowData(hid_t dataspaceid, h5vec3 
       std::transform(begin, end, diff.begin(), [mean](double x) { return x - mean; });
 
       double sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
-      double stdev = std::sqrt(sq_sum / (double)elementcnt);
+      double stddev = std::sqrt(sq_sum / (double)elementcnt);
 
-      for (size_t i = 0; i < elementcnt; ++i) {
-          data_out.get()[z * elementcnt + i] = (data_out.get()[z * elementcnt + i] - (mean / stdev)) / 255.f;
+      for (auto it = data_out[0][0][z].begin(); it != data_out[0][0][z].end(); ++it) {
+        *it = (*it - (mean / stddev)) / 255.f;
       }
     }
   }
-
-  dimensions = inputsize_;
 
   H5Sclose(memspace);
   return data_out;
 }
 
-void DataProvider::WriteWindowData(hid_t dataspaceid, const float * data)
+void DataProvider::WriteWindowData(hid_t dataspaceid, const znn::fwd::host_tensor<float, 5> & data)
 {
   hid_t memspace = H5Screate_simple(4, h5vec4(3, outputsize_).data(), NULL);
   hid_t dataspace_out = dsmap_[dataspaceid].second.getId();
@@ -220,7 +217,7 @@ void DataProvider::WriteWindowData(hid_t dataspaceid, const float * data)
   H5Sget_select_bounds(dataspace_out, start.data(), end.data());
   printf("Writing data between [%5llu, %5llu, %5llu, %5llu] and [%5llu, %5llu, %5llu, %5llu]\n", start.x(), start.y(), start.z(), start.w(), end.x(), end.y(), end.z(), end.w());
 
-  H5Dwrite(datasetout_.getId(), H5T_NATIVE_FLOAT, memspace, dataspace_out, H5P_DEFAULT, data);
+  H5Dwrite(datasetout_.getId(), H5T_NATIVE_FLOAT, memspace, dataspace_out, H5P_DEFAULT, data.ptr().get());
 
   H5Sclose(memspace);
 }
