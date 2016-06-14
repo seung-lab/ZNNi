@@ -1,10 +1,10 @@
 #pragma once
 
 #include <zi/vl/vl.hpp>
+#include <znn/tensor/tensor.hpp>
 #include <H5Cpp.h>
 #include <string>
 #include <vector>
-#include <memory>
 #include <unordered_map>
 
 typedef zi::vl::vec<hsize_t, 3>  h5vec3;
@@ -50,8 +50,8 @@ public:
   size_t         size()  const { return dshandles_.size();   }
 
   bool LoadHDF(const std::string filename_input, const std::string filename_output, const std::string datasetname);
-  std::unique_ptr< float[] > ReadWindowData(hid_t dataspaceid, h5vec3 & dimensions);
-  void WriteWindowData(hid_t ds, const float * data);
+  znn::fwd::host_tensor<float, 5> ReadWindowData(hid_t dataspaceid);
+  void WriteWindowData(hid_t ds, const znn::fwd::host_tensor<float, 5> & data);
 
 
 
