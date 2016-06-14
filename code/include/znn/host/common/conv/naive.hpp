@@ -77,11 +77,16 @@ public:
 
     void convolve_add( real* in, real const* kernel, real* out ) const
     {
+        static int fi=0;
+        ++fi;
+        std::cout<<"convolve_add function: "<<fi<<std::endl;
         ref  a(ix[1], ix[2], in);
         cref b(kx[1], kx[2], kernel);
         ref  r(rx[1], rx[2], out);
 
         for ( long_t x = 0; x < rx[0]; ++x )
+        {
+            std::cout<< "x: "<< x<<",";
             for ( long_t y = 0; y < rx[1]; ++y )
                 for ( long_t z = 0; z < rx[2]; ++z )
                 {
@@ -89,8 +94,13 @@ public:
                     for ( long_t dx = x, wx = kx[0] - 1; dx < kx[0] + x; ++dx, --wx )
                         for ( long_t dy = y, wy = kx[1] - 1; dy < kx[1] + y; ++dy, --wy )
                             for ( long_t dz = z, wz = kx[2] - 1; dz < kx[2] + z; ++dz, --wz )
+                            {
+                                //if (fi >= 226)
+                                  //  std::cout<<"a: "<< a(dx,dy,dz)<<", b: "<<b(wx,wy,wz)<<",";
                                 res += a(dx,dy,dz) * b(wx,wy,wz);
+                            }
                 }
+        }
     }
 };
 

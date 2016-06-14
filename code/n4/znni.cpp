@@ -13,12 +13,13 @@ int main(int argc, char *argv[])
   vec3i outsz(1,100,100);
   // create layers for n4 network
   auto layers = create_n4(outsz);
+  std::cout<<"layers created!"<<std::endl;
 
   // record time
   zi::wall_timer wt;
   wt.reset();
   // data provider here
-  h5vec3 fov(1, 85, 85);
+  h5vec3 fov(1, 95, 95);
   h5vec3 h5outsz(1,100,100);
   DataProvider dp(h5outsz, fov);
   if (argc >= 4)
@@ -28,27 +29,31 @@ int main(int argc, char *argv[])
     return -1;
   }
 
-  // run forward pass for one patch
-  host_tensor<float, 5> out;
-  host_tensor<float,5> out_patch(1,3,1,100,100);
-
   // shuffler
   deshuffler ds(vec3i(1,976,976));
   ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
 
+  // intermediate variables
+  host_tensor<float, 5> inout(1,3,1,194,194);
+  host_tensor<float,5> out_patch(1,3,1,100,100);
+
   // iterate all the patches
   for (auto it = dp.begin(); it!=dp.end(); ++it){
-    host_tensor<float, 5> in_patch = dp.ReadWindowData(*it);
+    inout = dp.ReadWindowData(*it);
+    //std::cout<<"shape of input patch: "<< inout.shape_vec()<<std::endl;
+    /*for (int i=0; i<184*184; i++)
+        std::cout<<in_patch.data()[i]<<", ";*/
+    int li = 0;
     for (auto & l: layers){
-      out = l->forward(std::move(in_patch));
-      in_patch = out;
+      std::cout<<"layer: "<< ++li<<std::endl;
+      inout = l->forward(std::move(inout));
     }
 
     host_tensor<float, 5> hresult(256, 1, 1, 100, 100);
     for (long_t i=0; i<256; ++i){
-      hresult[i][0] = out[i][0];
+      hresult[i][0] = inout[i][0];
     }
     std::cout << "Processing took: " << wt. elapsed<double>() << "\n";
     wt.reset();
