@@ -1,7 +1,7 @@
 #include "znn/util/deshuffler.hpp"
 #include "znn/util/network.hpp"
 
-#include "znn/network/n4.hpp"
+#include "znn/network/n4_cpu.hpp"
 #include "znn/util/dataprovider.hpp"
 
 #include <zi/time.hpp>
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
   ds.split(vec3i(1,2,2));
 
   // intermediate variables
-  host_tensor<float, 5> inout(1,3,1,194,194);
+  host_tensor<float, 5> inout(256,48,1,194,194);
   host_tensor<float,5> out_patch(1,3,1,100,100);
 
   // iterate all the patches

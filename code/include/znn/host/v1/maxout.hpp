@@ -22,6 +22,7 @@ private:
     {
         for ( long_t i = 0; i < out_image_len; ++i )
         {
+            //std::cout<< i<<", ";
             *(r+i) = std::max(*(a+i), *(a+out_image_len+i));
         }
 

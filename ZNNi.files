@@ -132,7 +132,7 @@ code/include/znn/host/v1/naive_mfp.hpp
 code/include/znn/host/v1/naive_pool.hpp
 code/include/znn/host/v1/network.hpp
 code/include/znn/host/v1/pool.hpp
-code/include/znn/network/n4.hpp
+code/include/znn/network/n4_cpu.hpp
 code/include/znn/tensor/base.hpp
 code/include/znn/tensor/device_reference.hpp
 code/include/znn/tensor/memory.hpp
@@ -156,7 +156,7 @@ code/include/znn/log.hpp
 code/include/znn/types.hpp
 code/multiscale/io.hpp
 code/multiscale/multiscale.cpp
-code/n4/znni.cpp
+code/n4/znni_gpu.cpp
 code/benchmark_baseline.cpp
 code/benchmark_best_device.cpp
 code/benchmark_device.cpp
@@ -1265,3 +1265,5 @@ zi/unittest.hpp
 zi/unordered_map.hpp
 zi/unordered_set.hpp
 code/n4/Makefile
+code/n4/znni_cpu.cpp
+code/include/znn/network/n4_gpu.hpp

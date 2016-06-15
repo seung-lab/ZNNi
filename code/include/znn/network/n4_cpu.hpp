@@ -30,11 +30,9 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
                     (1, 48, vec3i(1,92,92)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
-  layers.push_back(std::unique_ptr<host::v1::host_layer>
-                   (new host::v1::maxout(4, 48, 2, vec3i(1,46,46)+outsz-vec3i(1,1,1))));
 
   // conv2
-  float conv2_k[48*48*5*5];
+  float conv2_k[48*48*1*5*5];
   float conv2_b[48];
   read_from_file<float>("./zfish-N4_A/conv2/filters",conv2_k,48*48*1*5*5);
   read_from_file<float>("./zfish-N4_A/nconv2/biases",conv2_b,48);
@@ -48,9 +46,6 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
                     (4, 48, vec3i(1,42,42)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
-  layers.push_back(std::unique_ptr<host::v1::host_layer>
-                   (new host::v1::maxout
-                    (16, 48, 2, vec3i(1,21,21)+outsz-vec3i(1,1,1))));
 
   // conv3
   float conv3_k[48*48*1*4*4];
@@ -67,9 +62,6 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
                     (16, 48, vec3i(1,18,18)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
-  layers.push_back(std::unique_ptr<host::v1::host_layer>
-                   (new host::v1::maxout
-                    (64, 48, 2, vec3i(1,9,9)+outsz-vec3i(1,1,1))));
 
   // conv4
   float conv4_k[48*48*1*4*4];
@@ -86,9 +78,6 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
                     (64, 48, vec3i(1,6,6)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
-  layers.push_back(std::unique_ptr<host::v1::host_layer>
-                   (new host::v1::maxout
-                    (256, 48, 2, vec3i(1,3,3)+outsz-vec3i(1,1,1))));
 
   // conv5
   float conv5_k[48*200*1*3*3];
