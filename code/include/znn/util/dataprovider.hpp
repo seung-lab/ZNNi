@@ -11,8 +11,6 @@
 #include <iterator>
 #include <numeric>
 
-using namespace H5;
-
 namespace znn{ namespace fwd{
 
 typedef zi::vl::vec<hsize_t, 3>  h5vec3;
@@ -89,7 +87,7 @@ public:
 
 
       h5fileout_.setId(H5Fcreate(filename_output.c_str(), H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT));
-      datasetout_ = h5fileout_.createDataSet(datasetname, PredType::IEEE_F32LE, DataSpace(4, h5vec4(3, world_).data()));
+      datasetout_ = h5fileout_.createDataSet(datasetname, H5::PredType::IEEE_F32LE, H5::DataSpace(4, h5vec4(3, world_).data()));
 
       CreateDataspaces();
       return true;
@@ -111,7 +109,7 @@ public:
   }
 
   bool VerifyDatasetInfo() {
-    DataSpace dataspace = datasetin_.getSpace();
+    H5::DataSpace dataspace = datasetin_.getSpace();
     int dim_count = H5Sget_simple_extent_ndims(dataspace.getId());
 
     if (dim_count != 3) {
@@ -204,8 +202,8 @@ public:
             hitboundary_x = true;
           }
 
-          DataSpace dsInput = datasetin_.getSpace();
-          DataSpace dsOutput = datasetout_.getSpace();
+          H5::DataSpace dsInput = datasetin_.getSpace();
+          H5::DataSpace dsOutput = datasetout_.getSpace();
 
           H5Sselect_hyperslab(dsInput.getId(), H5S_SELECT_SET, start.data(), NULL, inputsize_.data(), NULL);
           H5Sselect_hyperslab(dsOutput.getId(), H5S_SELECT_SET, h5vec4(0, start + halffov).data(), NULL, h5vec4(3, outputsize_).data(), NULL);

@@ -9,11 +9,11 @@
 #endif
 
 #ifndef ZNNI_CORES_PER_CHIP
-#  define ZNNI_CORES_PER_CHIP 6
+#  define ZNNI_CORES_PER_CHIP 1
 #endif
 
 #ifndef ZNNI_THREADS_PER_CORE
-#  define ZNNI_THREADS_PER_CORE 2
+#  define ZNNI_THREADS_PER_CORE 1
 #endif
 
 // Resources available to ZNNi
@@ -23,11 +23,11 @@
 #endif
 
 #ifndef ZNNI_ALLOW_CORES_PER_CHIP
-#  define ZNNI_ALLOW_CORES_PER_CHIP 6
+#  define ZNNI_ALLOW_CORES_PER_CHIP 1
 #endif
 
 #ifndef ZNNI_ALLOW_THREADS_PER_CORE
-#  define ZNNI_ALLOW_THREADS_PER_CORE 2
+#  define ZNNI_ALLOW_THREADS_PER_CORE 1
 #endif
 
 

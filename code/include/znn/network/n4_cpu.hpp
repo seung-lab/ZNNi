@@ -1,3 +1,5 @@
+#pragma once
+
 #include "znn/util/io.hpp"
 #include "znn/host/v1/mfp.hpp"
 #include "znn/host/v1/fft_conv.hpp"
