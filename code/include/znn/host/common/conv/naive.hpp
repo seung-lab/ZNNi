@@ -81,7 +81,7 @@ public:
         cref b(kx[1], kx[2], kernel);
         ref  r(rx[1], rx[2], out);
 
-        std::cout<<" rx: "<<rx[0]<<", "<<rx[1]<<", "<<rx[2];
+        //std::cout<<" rx: "<<rx[0]<<", "<<rx[1]<<", "<<rx[2];
 
         for ( long_t x = 0; x < rx[0]; ++x )
         {
