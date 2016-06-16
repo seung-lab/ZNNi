@@ -77,7 +77,7 @@ public:
   {
     try {
       h5filein_.openFile(filename_input.c_str(), H5F_ACC_RDONLY);
-      datasetin_ = h5filein_.openDataSet(datasetname);
+      datasetin_ = h5filein_.openDataSet(datasetname.c_str());
 
       if (!VerifyDatasetInfo()) {
         datasetin_.close();
@@ -87,7 +87,7 @@ public:
 
 
       h5fileout_.setId(H5Fcreate(filename_output.c_str(), H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT));
-      datasetout_ = h5fileout_.createDataSet(datasetname, H5::PredType::IEEE_F32LE, H5::DataSpace(4, h5vec4(3, world_).data()));
+      datasetout_ = h5fileout_.createDataSet(datasetname.c_str(), H5::PredType::IEEE_F32LE, H5::DataSpace(4, h5vec4(3, world_).data()));
 
       CreateDataspaces();
       return true;
@@ -183,21 +183,21 @@ public:
 
     start.z() = 0; hitboundary_z = false;
     while (!hitboundary_z) {
-      if (start.z() > world_.z() - inputsize_.z()) {      // zBoundary special case
+      if (start.z() >= world_.z() - inputsize_.z()) {      // zBoundary special case
         start.z() = world_.z() - inputsize_.z();
         hitboundary_z = true;
       }
 
       start.y() = 0; hitboundary_y = false;
       while (!hitboundary_y) {
-        if (start.y() > world_.y() - inputsize_.y()) {    // yBoundary special case
+        if (start.y() >= world_.y() - inputsize_.y()) {    // yBoundary special case
           start.y() = world_.y() - inputsize_.y();
           hitboundary_y = true;
         }
 
         start.x() = 0; hitboundary_x = false;
         while (!hitboundary_x) {
-          if (start.x() > world_.x() - inputsize_.x()) {  // xBoundary special case
+          if (start.x() >= world_.x() - inputsize_.x()) {  // xBoundary special case
             start.x() = world_.x() - inputsize_.x();
             hitboundary_x = true;
           }
@@ -224,7 +224,7 @@ public:
     hid_t memspace = H5Screate_simple(3, inputsize_.data(), NULL);
 
     host_tensor<float, 5> data_out(1, 1, inputsize_.x(), inputsize_.y(), inputsize_.z());
-      H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.ptr().get());
+    H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.ptr().get());
 
     if (dataclass_ == H5T_INTEGER) { // raw channel data (UINT8) needs to be normalized
       hsize_t elementcnt = inputsize_[1] * inputsize_[2];
@@ -268,4 +268,4 @@ public:
 
 };
 
-  }} // namespace znn::fwd
+}} // namespace znn::fwd
