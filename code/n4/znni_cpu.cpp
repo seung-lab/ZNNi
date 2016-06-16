@@ -31,7 +31,8 @@ int main(int argc, char *argv[])
   }
 
   // shuffler
-  deshuffler ds(vec3i(1,976,976));
+  deshuffler ds(vec3i(1,16,16));
+  ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
@@ -43,16 +44,11 @@ int main(int argc, char *argv[])
   // iterate all the patches
   for (auto it = dp.begin(); it!=dp.end(); ++it){
     inout = dp.ReadWindowData(*it);
-    //std::cout<<"shape of input patch: "<< inout.shape_vec()<<std::endl;
-    /*for (int i=0; i<184*184; i++)
-        std::cout<<in_patch.data()[i]<<", ";*/
-    int li = 0;
     for (auto & l: layers){
-      std::cout<<"layer: "<< ++li<<std::endl;
       inout = l->forward(std::move(inout));
     }
 
-    host_tensor<float, 5> hresult(256, 1, outsz[0], outsz[1], outsz[2]); //host_tensor<float, 5> hresult(256, 1, 1, 100, 100);
+    host_tensor<float, 5> hresult(256, 1, 1, 1, 1);
     for (long_t i=0; i<256; ++i){
       hresult[i][0] = inout[i][0];
     }
