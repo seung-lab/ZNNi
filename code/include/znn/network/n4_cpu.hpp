@@ -30,7 +30,7 @@ create_n4(const vec3i outsz)
   // pool1 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
-                    (1, 48, vec3i(1,92,92)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
+                    (1, 48, vec3i(1,107,107), vec3i(1,2,2))));
 
   // conv2
   float conv2_k[48*48*1*5*5];
@@ -40,13 +40,13 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::direct_conv
                     (4, 48, 48,
-                     vec3i(1,46,46)+outsz-vec3i(1,1,1), vec3i(1,5,5),
+                     vec3i(1,53,53), vec3i(1,5,5),
                      conv2_k, conv2_b)));
 
   // pool2 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
-                    (4, 48, vec3i(1,42,42)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
+                    (4, 48, vec3i(1,49,49), vec3i(1,2,2))));
 
   // conv3
   float conv3_k[48*48*1*4*4];
@@ -56,13 +56,13 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                     (new host::v1::direct_conv
                      (16, 48, 48,
-                      vec3i(1,21,21)+outsz-vec3i(1,1,1), vec3i(1,4,4),
+                      vec3i(1,24,24), vec3i(1,4,4),
                       conv3_k, conv3_b)));
 
   // pool3 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
-                    (16, 48, vec3i(1,18,18)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
+                    (16, 48, vec3i(1,21,21), vec3i(1,2,2))));
 
   // conv4
   float conv4_k[48*48*1*4*4];
@@ -72,13 +72,13 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                     (new host::v1::direct_conv
                      (64, 48, 48,
-                      vec3i(1,9,9)+outsz-vec3i(1,1,1), vec3i(1,4,4),
+                      vec3i(1,10,10), vec3i(1,4,4),
                       conv4_k, conv4_b)));
 
   // pool4 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::mfp
-                    (64, 48, vec3i(1,6,6)+outsz-vec3i(1,1,1), vec3i(1,2,2))));
+                    (64, 48, vec3i(1,7,7), vec3i(1,2,2))));
 
   // conv5
   float conv5_k[48*200*1*3*3];
@@ -88,7 +88,7 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                     (new host::v1::direct_conv
                      (256, 48, 200,
-                      vec3i(1,3,3)+outsz-vec3i(1,1,1), vec3i(1,3,3),
+                      vec3i(1,3,3), vec3i(1,3,3),
                       conv5_k, conv5_b)));
 
   // conv6
@@ -99,7 +99,7 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                     (new host::v1::direct_conv
                      (256, 200, 3,
-                      vec3i(1,1,1)+outsz-vec3i(1,1,1), vec3i(1,1,1),
+                      vec3i(1,1,1), vec3i(1,1,1),
                       conv6_k, conv6_b)));
   std::cout<< "finish reading layers!"<< "\n";
   return layers;
