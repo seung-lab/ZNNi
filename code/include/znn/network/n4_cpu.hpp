@@ -23,7 +23,7 @@ create_n4(const vec3i outsz)
   read_from_file<float>("./zfish-N4_A/nconv1/biases",conv1_b,48);
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::direct_conv
-                    (1, 48, 48,
+                    (1, 1, 48,
                      vec3i(1,95,95)+outsz-vec3i(1,1,1), vec3i(1,4,4),
                      conv1_k, conv1_b)));
 
