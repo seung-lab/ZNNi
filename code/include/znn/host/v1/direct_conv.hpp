@@ -27,7 +27,7 @@ public:
     { }
 
 private:
-    void nonlinearity( real* out, real bias ) const noexcept
+    void add_bias( real* out, real bias ) const noexcept
     {
         for ( long_t i = 0; i < out_image_len; ++i )
         {
@@ -59,7 +59,7 @@ private:
             }
         }
 
-        nonlinearity(out, bias);
+        add_bias(out, bias);
     }
 #else
     void do_single_output( real* input ,
@@ -76,7 +76,7 @@ private:
                                     out);
         }
 
-        nonlinearity(out, bias);
+        add_bias(out, bias);
     }
 #endif
 
