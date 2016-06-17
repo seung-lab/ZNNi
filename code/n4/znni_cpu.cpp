@@ -47,17 +47,17 @@ int main(int argc, char *argv[])
       inout = l->forward(std::move(inout));
     }
 
-    host_tensor<float, 2> hresult(3, 256);
-    for (long_t i = 0; i < 256; ++i) { // TODO: Looks ugly and slow
-      hresult[0][i] = inout[i][0][0][0][0];
-      hresult[1][i] = inout[i][1][0][0][0];
-      hresult[2][i] = inout[i][2][0][0][0];
-    }
-
+    host_tensor<float, 5> single_output(256,1,outsz[0],outsz[1]/16,outsz[2]/16);
     host_tensor<float, 5> host_out_patch(1, 3, outsz[0], outsz[1], outsz[2]);
-    host_out_patch[0][0].load_n(ds.deshuffle(hresult[0].data()).data(), 256, from_host);
-    host_out_patch[0][1].load_n(ds.deshuffle(hresult[1].data()).data(), 256, from_host);
-    host_out_patch[0][2].load_n(ds.deshuffle(hresult[2].data()).data(), 256, from_host);
+
+    for (long_t outno = 0; outno < 3; ++outno)
+    {
+      for (long_t i = 0; i < 256; ++i) 
+      {
+        single_output[i][0] = inout[i][outno];
+      }
+      houst_out_patch[0][outno].load_n(ds.deshuffle(single_output.data()).data(), 256, from_host);
+    }
 
     std::cout << "Processing took: " << wt.elapsed<double>() << "\n";
     wt.reset();
