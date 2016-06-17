@@ -2,7 +2,6 @@
 
 #include "znn/util/io.hpp"
 #include "znn/host/v1/mfp.hpp"
-#include "znn/host/v1/dp_fft_conv.hpp"
 #include "znn/host/v1/direct_conv.hpp"
 #include "znn/host/v1/maxout.hpp"
 #include "znn/tensor/tensor.hpp"
@@ -24,7 +23,7 @@ create_n4(const vec3i outsz)
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::direct_conv
                     (1, 1, 48,
-                     vec3i(1,95,95)+outsz-vec3i(1,1,1), vec3i(1,4,4),
+                     vec3i(1,110,110), vec3i(1,4,4),
                      conv1_k, conv1_b)));
 
   // pool1 using mfp

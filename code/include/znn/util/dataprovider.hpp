@@ -157,9 +157,9 @@ public:
       default:          printf("UNKNOWN\n"); break;
     }
 
-    if (! (datasize == 4 && dataclass_ == H5T_FLOAT) &&
-        ! (datasize == 1 && datasign_ == H5T_SGN_NONE && dataclass_ == H5T_INTEGER )) {
-      printf("Error: Datatype should be float or unsigned char.");
+    if (! (datasize == 4 && dataclass_ == H5T_FLOAT)) { //&&
+      //  ! (datasize == 1 && datasign_ == H5T_SGN_NONE && dataclass_ == H5T_INTEGER )) {
+      printf("Error: Datatype should be float.");
       return false;
     }
 
@@ -219,14 +219,15 @@ public:
     }
   }
 
-  host_tensor<float, 5> ReadWindowData(hid_t dataspaceid)
+  host_tensor<float, 5> ReadWindowData(hid_t dataspaceid, detail::tensor::host_tag to_host)
   {
     hid_t memspace = H5Screate_simple(3, inputsize_.data(), NULL);
 
     host_tensor<float, 5> data_out(1, 1, inputsize_.x(), inputsize_.y(), inputsize_.z());
-    H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.ptr().get());
+    H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.ptr().get()); // Only works for Host->Host!
 
-    if (dataclass_ == H5T_INTEGER) { // raw channel data (UINT8) needs to be normalized
+    // Normalization should be done on a larger scope
+    /*if (dataclass_ == H5T_INTEGER) { // raw channel data (UINT8) needs to be normalized
       hsize_t elementcnt = inputsize_[1] * inputsize_[2];
 
       for (hsize_t z = 0; z < inputsize_[0]; ++z) {
@@ -246,9 +247,25 @@ public:
           *it = (*it - (mean / stddev)) / 255.f;
         }
       }
-    }
+    }*/
 
     H5Sclose(memspace);
+    return data_out;
+  }
+
+  device_tensor<float, 5> ReadWindowData(hid_t dataspaceid, detail::tensor::device_tag to_device)
+  {
+    hid_t memspace = H5Screate_simple(3, inputsize_.data(), NULL);
+
+    float * tmp = new float[inputsize_.x() * inputsize_.y() * inputsize_.z()];
+    device_tensor<float, 5> data_out(1, 1, inputsize_.x(), inputsize_.y(), inputsize_.z());
+
+    H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, tmp);
+    data_out.load(tmp, from_host);
+
+    delete[] tmp;
+    H5Sclose(memspace);
+
     return data_out;
   }
 
@@ -261,7 +278,7 @@ public:
     H5Sget_select_bounds(dataspace_out, start.data(), end.data());
     printf("Writing data between [%5llu, %5llu, %5llu, %5llu] and [%5llu, %5llu, %5llu, %5llu]\n", start.x(), start.y(), start.z(), start.w(), end.x(), end.y(), end.z(), end.w());
 
-    H5Dwrite(datasetout_.getId(), H5T_NATIVE_FLOAT, memspace, dataspace_out, H5P_DEFAULT, data.ptr().get());
+    H5Dwrite(datasetout_.getId(), H5T_NATIVE_FLOAT, memspace, dataspace_out, H5P_DEFAULT, data.ptr().get()); // Only works for Host->Host!
 
     H5Sclose(memspace);
   }

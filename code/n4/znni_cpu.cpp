@@ -10,8 +10,7 @@ using namespace znn::fwd;
 
 int main(int argc, char *argv[])
 {
-
-  vec3i outsz(1,16,16); //vec3i outsz(1,100,100);
+  vec3i outsz(1,16,16);
   // create layers for n4 network
   auto layers = create_n4(outsz);
   std::cout<<"layers created!"<<std::endl;
@@ -21,7 +20,7 @@ int main(int argc, char *argv[])
   wt.reset();
   // data provider here
   h5vec3 fov(1, 95, 95);
-  h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]); //h5vec3 h5outsz(1, 100, 100);
+  h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
   DataProvider dp(h5outsz, fov);
   if (argc >= 4)
     dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
@@ -38,12 +37,12 @@ int main(int argc, char *argv[])
   ds.split(vec3i(1,2,2));
 
   // intermediate variables
-	host_tensor<float, 5> inout;// (256, 48, 1, 194, 194);
-  host_tensor<float,5> out_patch(1,3, outsz[0], outsz[1], outsz[2]); //host_tensor<float, 5> out_patch(1, 3, 1, 100, 100);
+  host_tensor<float, 5> inout;
+  host_tensor<float,5> out_patch(1,3, outsz[0], outsz[1], outsz[2]);
 
   // iterate all the patches
   for (auto it = dp.begin(); it!=dp.end(); ++it){
-    inout = dp.ReadWindowData(*it);
+    inout = dp.ReadWindowData(*it, to_host);
     for (auto & l: layers){
       inout = l->forward(std::move(inout));
     }
@@ -52,11 +51,12 @@ int main(int argc, char *argv[])
     for (long_t i=0; i<256; ++i){
       hresult[i][0] = inout[i][0];
     }
-    std::cout << "Processing took: " << wt. elapsed<double>() << "\n";
+    std::cout << "Processing took: " << wt.elapsed<double>() << "\n";
     wt.reset();
 
     host_array<real> rr = ds.deshuffle(hresult.data());
     wt.reset();
+
     out_patch.load(rr.data(), from_host);
     // push to data provider
     dp.WriteWindowData(*it, out_patch);

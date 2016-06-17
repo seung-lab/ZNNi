@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
   ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
   ds.split(vec3i(1,2,2));
-	ds.split(vec3i(1,2,2));
+  ds.split(vec3i(1,2,2));
 
   // intermediate variables
   device_tensor<float, 5> inout;
@@ -42,10 +42,8 @@ int main(int argc, char *argv[])
 
   // iterate all the patches
   for (auto it = dp.begin(); it!=dp.end(); ++it){
-    inout = dp.ReadWindowData(*it);
-    int li = 0;
+    inout = dp.ReadWindowData(*it, to_device);
     for (auto & l: layers){
-      std::cout<<"layer: "<< ++li<<std::endl;
       inout = l->forward(std::move(inout));
     }
 
@@ -60,7 +58,7 @@ int main(int argc, char *argv[])
     wt.reset();
 
     host_tensor<float, 5> host_out_patch(1, 3, outsz[0], outsz[1], outsz[2]);
-    host_out_patch.load(rr.data(), from_device);
+    host_out_patch.load(rr.data(), from_host);
     // push to data provider
     dp.WriteWindowData(*it, host_out_patch);
     ////////
