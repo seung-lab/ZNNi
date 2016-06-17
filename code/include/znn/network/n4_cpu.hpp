@@ -24,7 +24,7 @@ create_n4(const vec3i outsz)
                    (new host::v1::direct_conv
                     (1, 1, 48,
                      vec3i(1,110,110), vec3i(1,4,4),
-                     conv1_k, conv1_b)));
+                     conv1_k, conv1_b, 1)));
 
   // pool1 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
@@ -40,7 +40,7 @@ create_n4(const vec3i outsz)
                    (new host::v1::direct_conv
                     (4, 48, 48,
                      vec3i(1,53,53), vec3i(1,5,5),
-                     conv2_k, conv2_b)));
+                     conv2_k, conv2_b, 1)));
 
   // pool2 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
@@ -56,7 +56,7 @@ create_n4(const vec3i outsz)
                     (new host::v1::direct_conv
                      (16, 48, 48,
                       vec3i(1,24,24), vec3i(1,4,4),
-                      conv3_k, conv3_b)));
+                      conv3_k, conv3_b, 1)));
 
   // pool3 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
@@ -72,7 +72,7 @@ create_n4(const vec3i outsz)
                     (new host::v1::direct_conv
                      (64, 48, 48,
                       vec3i(1,10,10), vec3i(1,4,4),
-                      conv4_k, conv4_b)));
+                      conv4_k, conv4_b, 1)));
 
   // pool4 using mfp
   layers.push_back(std::unique_ptr<host::v1::host_layer>
@@ -88,7 +88,7 @@ create_n4(const vec3i outsz)
                     (new host::v1::direct_conv
                      (256, 48, 200,
                       vec3i(1,3,3), vec3i(1,3,3),
-                      conv5_k, conv5_b)));
+                      conv5_k, conv5_b, 1)));
 
   // conv6
   float conv6_k[200*3*1*1*1];
@@ -99,7 +99,7 @@ create_n4(const vec3i outsz)
                     (new host::v1::direct_conv
                      (256, 200, 3,
                       vec3i(1,1,1), vec3i(1,1,1),
-                      conv6_k, conv6_b)));
+                      conv6_k, conv6_b, 2)));
   std::cout<< "finish reading layers!"<< "\n";
   return layers;
 }
