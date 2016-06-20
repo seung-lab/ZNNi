@@ -1,5 +1,6 @@
 #pragma once
 
+#include "znn/activation.hpp"
 #include "znn/types.hpp"
 #include "znn/tensor/tensor.hpp"
 #include "znn/device/v1/device_layer.hpp"
@@ -22,6 +23,8 @@ private:
     cudnn::convolution_descriptor conv_desc;
 
     size_t workspace_size_ = 0;
+
+    activation activation_ = activation::none;
 
 public:
     long_t resident_memory() const override
@@ -75,14 +78,38 @@ public:
                             bias_desc.handle(), biases.data(),
                             &beta,
                             out_desc.handle(), out.data()) );
-        beta = 0;
 
-        // checkCUDNN(
-        //     cudnnActivationForward(
-        //         handle_,
-        //         CUDNN_ACTIVATION_RELU,
-        //         &alpha, out_desc, out,
-        //         &beta, out_desc, out) );
+        if ( activation_ != activation::none )
+        {
+            beta = 0;
+
+            cudnnActivationMode_t act_type;
+
+            switch (activation_)
+            {
+            case activation::sigmoid:
+                act_type = CUDNN_ACTIVATION_SIGMOID;
+                break;
+            case activation::relu:
+                act_type = CUDNN_ACTIVATION_RELU;
+                break;
+            case activation::tanh:
+                act_type = CUDNN_ACTIVATION_TANH;
+                break;
+            case activation::clipped_relu:
+                act_type = CUDNN_ACTIVATION_CLIPPED_RELU;
+                break;
+            default:
+                DIE("unknown activation");
+            }
+
+            tryCUDNN(
+                cudnnActivationForward(
+                    handle.cudnn_handle,
+                    act_type,
+                    &alpha, out_desc.handle(), out.data(),
+                    &beta, out_desc.handle(), out.data()) );
+        }
 
         return out;
     }
@@ -90,9 +117,11 @@ public:
 public:
     cudnn_conv( long_t n, long_t fin, long_t fout,
                 vec3i const & is, vec3i const & ks,
-                float * km = nullptr, float* bs = nullptr )
+                float * km = nullptr, float* bs = nullptr,
+                activation act = activation::none )
         : conv_layer<device_layer>(n,fin,fout,is,ks)
         , conv_data(fin,fout,ks,km,bs)
+        , activation_(act)
     {
         vec3i os = out_image_size;
 

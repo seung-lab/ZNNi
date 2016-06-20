@@ -167,6 +167,48 @@ public:
 
 
 template<typename Base>
+class assemble_layer: public Base
+{
+public:
+    vec3i  window_size  ;
+    long_t num_fragments;
+
+    assemble_layer() noexcept {};
+
+    assemble_layer( long_t n, long_t finout,
+                    vec3i const & is, vec3i const & ws ) noexcept
+        : Base(n, finout, is, n/ws[0]/ws[1]/ws[2], finout, is * ws)
+        , window_size(ws)
+        , num_fragments(ws[0]*ws[1]*ws[2])
+    {
+        STRONG_ASSERT( n % (ws[0]*ws[1]*ws[2]) == 0 );
+    }
+
+    assemble_layer & operator=( assemble_layer const & ) = default;
+};
+
+
+
+template<typename Base>
+class crop_layer: public Base
+{
+public:
+    vec3i crop;
+
+    crop_layer() noexcept {};
+
+    crop_layer( long_t n, long_t fin,
+                vec3i const & is, vec3i const & c ) noexcept
+        : Base(n, fin, is, n, fin, is - c - c)
+        , crop(c)
+    {
+    }
+
+    crop_layer & operator=( crop_layer const & ) = default;
+};
+
+
+template<typename Base>
 class maxout_layer: public Base
 {
 public:
