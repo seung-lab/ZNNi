@@ -52,11 +52,11 @@ int main(int argc, char *argv[])
 
     for (long_t outno = 0; outno < 3; ++outno)
     {
-      for (long_t i = 0; i < 256; ++i) 
+      for (long_t i = 0; i < 256; ++i)
       {
         single_output[i][0] = inout[i][outno];
       }
-      houst_out_patch[0][outno].load_n(ds.deshuffle(single_output.data()).data(), 256, from_host);
+      host_out_patch[0][outno].load_n(ds.deshuffle(single_output.data()).data(), 256, from_host);
     }
 
     std::cout << "Processing took: " << wt.elapsed<double>() << "\n";

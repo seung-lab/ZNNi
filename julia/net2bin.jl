@@ -45,7 +45,14 @@ function readnet(fnet::AbstractString)
         net[Symbol(en)] = Dict{Symbol, Any}()
         # traverse the attributes
         for att in names(f[joinpath(pre, en)])
-            net[Symbol(en)][Symbol(att)] = read(f[joinpath(pre, en, att)])
+            obj = read(f[joinpath(pre, en, att)])
+            if contains(att, "filters")
+                # switch the input size and output size of kernel
+                # in ZNN we have tensor[n_input][n_output][x][y][z] and ZNNi tensor[n_output][n_input][x][y][z]
+                println("$en / $att : $(size(obj))")
+                obj = permutedims(obj, [1,2,3,5,4])
+            end
+            net[Symbol(en)][Symbol(att)] = obj
         end
     end
     close(f)

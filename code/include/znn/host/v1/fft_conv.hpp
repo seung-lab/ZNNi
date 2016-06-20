@@ -6,6 +6,7 @@
 #include "znn/host/v1/conv_data.hpp"
 #include "znn/host/common/fft/fft.hpp"
 #include "znn/host/common/thread_pin.hpp"
+#include "znn/host/common/activation_function.hpp"
 
 #include <atomic>
 #include <thread>
@@ -23,8 +24,8 @@ private:
 public:
     fft_conv( long_t n, long_t fin, long_t fout,
               vec3i const & is, vec3i const & ks,
-              float * km = nullptr, float* bs = nullptr )
-        : conv_layer<host_layer>(n,fin,fout,is,ks)
+              float * km = nullptr, float* bs = nullptr, long_t act_func_type = 0 )
+        : conv_layer<host_layer>(n,fin,fout,is,ks, act_func_type)
         , conv_data(fin,fout,ks,km,bs)
         , fft_(padded_pruned_fft_plans.get(is,ks))
     { }
@@ -62,6 +63,7 @@ private:
         {
             out[i] = out_scratch[i+off] / scale + bias;
         }
+        activation_function(out, out_image_len, act_func_type);
     }
 
     void mul_to( complex* a, complex* b, complex* r, long_t n ) const noexcept
