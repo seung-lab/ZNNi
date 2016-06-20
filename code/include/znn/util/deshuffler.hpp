@@ -46,6 +46,26 @@ private:
 
 public:
 
+    vec3i const & orig_size() const
+    {
+        return original_size;
+    }
+
+    vec3i const & curr_size() const
+    {
+        return current_size;
+    }
+
+    long_t length() const
+    {
+        return len;
+    }
+
+    long_t batch_size() const
+    {
+        return n;
+    }
+
     explicit deshuffler( vec3i const & s )
         : original_size(s)
         , current_size(s)
@@ -117,6 +137,36 @@ public:
         return ret;
     }
 
+    void deshuffle(uint32_t const * in, uint32_t * out) const
+    {
+        for ( long_t i = 0; i < len; ++i )
+        {
+            out[mappings.data()[i]] = in[i];
+        }
+    }
+
 };
+
+class multi_deshuffler
+{
+private:
+    long_t               len;
+    host_array<uint32_t> mappings;
+
+public:
+    multi_deshuffler( deshuffler const & ds, long_t n )
+        : len(ds.length() * n)
+        , mappings(len)
+    {
+        for ( long_t i = 0; i < len; ++i )
+        {
+            mappings.data()[i] = static_cast<uint32_t>(i);
+        }
+
+        host_array<uint32_t> new_mappings(len);
+    }
+
+};
+
 
 }} // namespace znn::fwd
