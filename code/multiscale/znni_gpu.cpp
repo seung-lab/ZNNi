@@ -1,13 +1,17 @@
 #include "znn/util/deshuffler.hpp"
 #include "znn/util/network.hpp"
+#include "znn/util/dataprovider.hpp"
 
 #include "znn/network/n4_gpu.hpp"
 #include "znn/network/multiscale_gpu_b1.hpp"
 #include "znn/network/multiscale_gpu_b2.hpp"
 #include "znn/network/multiscale_gpu_b3.hpp"
-#include "znn/util/dataprovider.hpp"
+
+#include "znn/device/v1/cudnn_softmax.hpp"
 
 #include <zi/time.hpp>
+
+#include <functional>
 
 using namespace znn::fwd;
 
@@ -25,10 +29,10 @@ int main(int argc, char *argv[])
   // The magnificent dataprovider
   DataProvider dp(h5outsz, fov);
   if (argc >= 4)
-	  dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
+    dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
   else {
-	  std::cout << "Usage: znni inputfile.h5 outputfile.h5 datasetname\n";
-	  return -1;
+    std::cout << "Usage: znni inputfile.h5 outputfile.h5 datasetname\n";
+    return -1;
   }
 
   // Create layers for all three multiscale branches
@@ -36,10 +40,22 @@ int main(int argc, char *argv[])
   auto layers_b2 = create_multiscale_b2(outsz);
   auto layers_b3 = create_multiscale_b3(outsz);
 
+  // Create final convolution layers
+  float convout_k[200 * 3 * 1 * 1 * 1];
+  float convout_b[3];
+  read_from_file<float>("./0421_VD2D3D-MS/convout/filters", convout_k, 200 * 3 * 1 * 1 * 1);
+  read_from_file<float>("./0421_VD2D3D-MS/output/biases", convout_b, 3);
+  device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, vec3i(1, 8, 8), vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
+
+  // Write sum of all three branches to b1 + BIAS
+  std::array<float, 200> convx_b;
+  read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases", convx_b.data(), 200);
+
+  // Create final softmax layer
+  //device::v1::cudnn_softmax final_softmax(1, 3, vec3i(1, 1, 1));
+
   // Everyday I'm shufflin'
   deshuffler deshuffler_b1(vec3i(1, 8, 8));
-  deshuffler_b1.split(vec3i(1, 2, 2));
-  deshuffler_b1.split(vec3i(1, 2, 2));
   deshuffler_b1.split(vec3i(1, 2, 2));
 
   deshuffler deshuffler_b2(vec3i(1, 8, 8));
@@ -47,6 +63,8 @@ int main(int argc, char *argv[])
   deshuffler_b2.split(vec3i(1, 2, 2));
 
   deshuffler deshuffler_b3(vec3i(1, 8, 8));
+  deshuffler_b3.split(vec3i(1, 2, 2));
+  deshuffler_b3.split(vec3i(1, 2, 2));
   deshuffler_b3.split(vec3i(1, 2, 2));
 
 
@@ -72,27 +90,61 @@ int main(int argc, char *argv[])
     }
 
     // Deshuffle
-    host_tensor<float, 5> output_b1(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
-    host_tensor<float, 5> output_b2(16, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
-    host_tensor<float, 5> output_b3(4, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
+    host_tensor<float, 5> output_b1(4, 200, outsz[0], outsz[1] / 2, outsz[2] / 2);
+    host_tensor<float, 5> output_b2(16, 200, outsz[0], outsz[1] / 4, outsz[2] / 4);
+    host_tensor<float, 5> output_b3(64, 200, outsz[0], outsz[1] / 8, outsz[2] / 8);
 
     output_b1.load(b1.data(), from_device);
     output_b2.load(b2.data(), from_device);
     output_b3.load(b3.data(), from_device);
 
-    host_array<real> deshuffled_b1 = deshuffler_b1.deshuffle(output_b1.data());
-    host_array<real> deshuffled_b2 = deshuffler_b2.deshuffle(output_b2.data());
-    host_array<real> deshuffled_b3 = deshuffler_b3.deshuffle(output_b3.data());
+    host_tensor<float, 5> single_output_b1(4, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
+    host_tensor<float, 5> single_output_b2(16, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
+    host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
 
-    std::transform(deshuffled_b1.begin(), deshuffled_b1.end(), deshuffled_b2.begin(), deshuffled_b1.begin(), std::plus<real>());
-    std::transform(deshuffled_b1.begin(), deshuffled_b1.end(), deshuffled_b3.begin(), deshuffled_b1.begin(), std::plus<real>());
+    host_tensor<float, 5> out_patch(1, 200, 1, 8, 8);
+    host_tensor<float, 5> out_patch_b2(1, 200, 1, 8, 8);
+    host_tensor<float, 5> out_patch_b3(1, 200, 1, 8, 8);
 
+    for (int ch = 0; ch < 200; ++ch) {
+      for (int n = 0; n < 4; ++n) {
+        single_output_b1[n][0] = output_b1[n][ch];
+      }
+      for (int n = 0; n < 16; ++n) {
+        single_output_b2[n][0] = output_b2[n][ch];
+      }
+      for (int n = 0; n < 64; ++n) {
+        single_output_b3[n][0] = output_b3[n][ch];
+      }
+      out_patch[0][ch].load(deshuffler_b1.deshuffle(single_output_b1.data()).data(), from_host);
+      out_patch_b2[0][ch].load(deshuffler_b2.deshuffle(single_output_b2.data()).data(), from_host);
+      out_patch_b3[0][ch].load(deshuffler_b3.deshuffle(single_output_b3.data()).data(), from_host);
+
+      std::transform(out_patch[0][ch].begin(), out_patch[0][ch].end(), out_patch_b2[0][ch].begin(), out_patch[0][ch].begin(), std::plus<real>());
+      std::transform(out_patch[0][ch].begin(), out_patch[0][ch].end(), out_patch_b3[0][ch].begin(), out_patch[0][ch].begin(), std::plus<real>());
+      std::for_each(out_patch[0][ch].begin(), out_patch[0][ch].end(), [&convx_b,ch](float& val) { val += convx_b[ch]; });
+
+    }
+
+    relu(out_patch.data(), 200*64);
+
+
+
+
+    device_tensor<float, 5> inout_conv(1, 200, 1, 8, 8); // FIXME: Either deshuffle on GPU, or conv and softmax on CPU, but now we are copying back and forth
+    inout_conv.load(out_patch.data(), from_host);
+
+    inout_conv = final_conv.forward(std::move(inout_conv));
+    //sum_result = final_softmax.forward(std::move(sum_result));
+
+    host_tensor<float, 5> affinity(1, 3, 1, 8, 8);
+    affinity.load(inout_conv.data(), from_device);
 
     std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
     timer.reset();
 
     // push to data provider
-    //dp.WriteWindowData(*it, host_out_patch);
+    dp.WriteWindowData(*it, affinity);
     std::cout << "push to data provider: " << timer.elapsed<double>() << "\n";
   }
 }

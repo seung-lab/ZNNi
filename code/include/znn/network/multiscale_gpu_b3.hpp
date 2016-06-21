@@ -19,7 +19,7 @@ create_multiscale_b3(const vec3i & outsz)
   // crop
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_crop
-                    (1, 24, vec3i(9,116,116), vec3i(2,0,0))));
+                    (1, 1, vec3i(9,116,116), vec3i(2,0,0))));
 
   // conv1a
   float conv1a_k[1*24*1*3*3];
@@ -161,13 +161,14 @@ create_multiscale_b3(const vec3i & outsz)
 // convx
   float convx_p3_k[60*200*1*1*1];
   float convx_p3_b[200];
+  memset(convx_p3_b, 0, 200 * sizeof(float));
   read_from_file<float>("./0421_VD2D3D-MS/convx-p3/filters",convx_p3_k,60*200*1*1*1);
-  read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases",convx_p3_b,200);
+  //read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases",convx_p3_b,200);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_no_precomp_gemm_conv
                     (64, 60, 200,
                      vec3i(1,1,1), vec3i(1,1,1),
-                     convx_p3_k, convx_p3_b, activation::relu)));
+                     convx_p3_k, convx_p3_b, activation::none)));
   return layers;
 }
 
