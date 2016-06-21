@@ -5,7 +5,7 @@
 #include "znn/host/v1/host_layer.hpp"
 #include "znn/host/v1/conv_data.hpp"
 #include "znn/host/common/conv/convolver.hpp"
-#include "znn/host/common/activation_function.hpp"
+#include "znn/activation.hpp"
 
 #include <tbb/tbb.h>
 
@@ -17,14 +17,16 @@ class direct_conv
 {
 private:
     convolver convolver_;
+    activation activation_ = activation::none;
 
 public:
     direct_conv( long_t n, long_t fin, long_t fout,
                  vec3i const & is, vec3i const & ks,
-                 float * km = nullptr, float* bs = nullptr, long_t act_func_type=0 )
-        : conv_layer<host_layer>(n,fin,fout,is,ks, act_func_type)
+                 float * km = nullptr, float* bs = nullptr, activation act = activation::none )
+        : conv_layer<host_layer>(n,fin,fout,is,ks)
         , conv_data(fin,fout,ks,km,bs)
         , convolver_(is,ks)
+        , activation_(act)
     { }
 
 private:
@@ -58,7 +60,8 @@ private:
         }
 
         add_bias(out, bias);
-        activation_function(out, out_image_len, act_func_type);
+
+        activation_function(out, out_image_len, activation_);
     }
 #else
     void do_single_output( real* input ,
@@ -76,7 +79,7 @@ private:
         }
 
         add_bias(out, bias);
-        activation_function(out, out_image_len, act_func_type);
+        activation_function(out, out_image_len, activation_);
     }
 #endif
 
