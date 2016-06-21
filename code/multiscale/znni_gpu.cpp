@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
   // settings
   vec3i outsz(1,8,8);
-  h5vec3 fov(1, 95, 95);
+  h5vec3 fov(9, 109, 109);
   h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
 
   // The magnificent dataprovider
@@ -71,35 +71,28 @@ int main(int argc, char *argv[])
       b3 = l->forward(std::move(b3));
     }
 
-	// Deshuffle
-    host_tensor<float, 5> single_output_b1(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
-    host_tensor<float, 5> single_output_b2(64, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
-	host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
-    host_tensor<float, 5> host_out_patch(1, 3, outsz[0], outsz[1], outsz[2]);
+    // Deshuffle
+    host_tensor<float, 5> output_b1(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
+    host_tensor<float, 5> output_b2(16, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
+    host_tensor<float, 5> output_b3(4, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
 
-    for (long_t outno = 0; outno < 3; ++outno)
-    {
-      for (long_t i = 0; i < 64; ++i)
-      {
-        single_output_b1[i][0] = b1[i][outno];
-        single_output_b2[i][0] = b2[i][outno];
-        single_output_b3[i][0] = b3[i][outno];
-      }
-      // TODO:
-      deshuffler_b1.deshuffle(single_output_b1.data());
-      deshuffler_b2.deshuffle(single_output_b2.data());
-      deshuffler_b3.deshuffle(single_output_b3.data());
+    output_b1.load(b1.data(), from_device);
+    output_b2.load(b2.data(), from_device);
+    output_b3.load(b3.data(), from_device);
 
-     // host_out_patch[0][outno].load_n(ds.deshuffle(single_output.data()).data(), 256, from_host);
-    }
+    host_array<real> deshuffled_b1 = deshuffler_b1.deshuffle(output_b1.data());
+    host_array<real> deshuffled_b2 = deshuffler_b2.deshuffle(output_b2.data());
+    host_array<real> deshuffled_b3 = deshuffler_b3.deshuffle(output_b3.data());
 
+    std::transform(deshuffled_b1.begin(), deshuffled_b1.end(), deshuffled_b2.begin(), deshuffled_b1.begin(), std::plus<real>());
+    std::transform(deshuffled_b1.begin(), deshuffled_b1.end(), deshuffled_b3.begin(), deshuffled_b1.begin(), std::plus<real>());
 
 
     std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
     timer.reset();
 
     // push to data provider
-    dp.WriteWindowData(*it, host_out_patch);
+    //dp.WriteWindowData(*it, host_out_patch);
     std::cout << "push to data provider: " << timer.elapsed<double>() << "\n";
   }
 }
