@@ -149,15 +149,25 @@ create_multiscale_b2(const vec3i & outsz)
                       conv5a_p2_k, conv5a_p2_b, activation::relu)));
 
   // conv5b-p2
-  float conv5b_p2_k[60*72*2*3*3];
-  float conv5b_p2_b[72];
-  read_from_file<float>("./0412_VD2D3D-MS/conv5b-p2/filters",conv5b_p2_k,60*72*2*3*3);
-  read_from_file<float>("./0412_VD2D3D-MS/nconv5b-p2/biases",conv5b_p2_b,72);
+  float conv5b_p2_k[60*60*2*3*3];
+  float conv5b_p2_b[60];
+  read_from_file<float>("./0412_VD2D3D-MS/conv5b-p2/filters",conv5b_p2_k,60*60*2*3*3);
+  read_from_file<float>("./0412_VD2D3D-MS/nconv5b-p2/biases",conv5b_p2_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_no_precomp_gemm_conv
-                     (16, 60, 72,
+                     (16, 60, 60,
                       vec3i(2,4,4), vec3i(2,3,3),
                       conv5b_p2_k, conv5b_p2_b, activation::relu)));
+// convx
+  float convx_k[60*200*1*1*1];
+  float convx_b[200];
+  read_from_file<float>("./0412_VD2D3D-MS/convx_p2/filters",convx_k,60*200*1*1*1);
+  read_from_file<float>("./0412_VD2D3D-MS/nconvx_p2/biases",convx_b,200);
+  layers.push_back(std::unique_ptr<device::v1::device_layer>
+                   (new device::v1::cudnn_no_precomp_gemm_conv
+                    (16, 60, 200,
+                     vec3i(1,2,2), vec3i(1,1,1),
+                     convx_k, convx_b, activation::relu)));
 
   return layers;
 }
