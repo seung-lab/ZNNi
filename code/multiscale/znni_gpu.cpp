@@ -1,0 +1,105 @@
+#include "znn/util/deshuffler.hpp"
+#include "znn/util/network.hpp"
+
+#include "znn/network/n4_gpu.hpp"
+#include "znn/network/multiscale_gpu_b1.hpp"
+#include "znn/network/multiscale_gpu_b2.hpp"
+#include "znn/network/multiscale_gpu_b3.hpp"
+#include "znn/util/dataprovider.hpp"
+
+#include <zi/time.hpp>
+
+using namespace znn::fwd;
+
+int main(int argc, char *argv[])
+{
+  // record time
+  zi::wall_timer timer;
+  timer.reset();
+
+  // settings
+  vec3i outsz(1,8,8);
+  h5vec3 fov(1, 95, 95);
+  h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
+
+  // The magnificent dataprovider
+  DataProvider dp(h5outsz, fov);
+  if (argc >= 4)
+	  dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
+  else {
+	  std::cout << "Usage: znni inputfile.h5 outputfile.h5 datasetname\n";
+	  return -1;
+  }
+
+  // Create layers for all three multiscale branches
+  auto layers_b1 = create_multiscale_b1(outsz);
+  auto layers_b2 = create_multiscale_b2(outsz);
+  auto layers_b3 = create_multiscale_b3(outsz);
+
+  // Everyday I'm shufflin'
+  deshuffler deshuffler_b1(vec3i(1, 8, 8));
+  deshuffler_b1.split(vec3i(1, 2, 2));
+  deshuffler_b1.split(vec3i(1, 2, 2));
+  deshuffler_b1.split(vec3i(1, 2, 2));
+
+  deshuffler deshuffler_b2(vec3i(1, 8, 8));
+  deshuffler_b2.split(vec3i(1, 2, 2));
+  deshuffler_b2.split(vec3i(1, 2, 2));
+
+  deshuffler deshuffler_b3(vec3i(1, 8, 8));
+  deshuffler_b3.split(vec3i(1, 2, 2));
+
+
+
+  // intermediate variables
+  device_tensor<float, 5> b1, b2, b3;
+  device_tensor<float, 5> out_patch(1, 3, outsz[0], outsz[1], outsz[2]);
+
+  // iterate all the patches
+  for (auto it = dp.begin(); it!=dp.end(); ++it) {
+    b1 = dp.ReadWindowData(*it, to_device);
+    b2 = dp.ReadWindowData(*it, to_device); // FIXME: Optimize with copy assignment for tensors?
+    b3 = dp.ReadWindowData(*it, to_device);
+
+    for (auto & l: layers_b1) {
+      b1 = l->forward(std::move(b1));
+    }
+    for (auto & l: layers_b2) {
+      b2 = l->forward(std::move(b2));
+    }
+    for (auto & l: layers_b3) {
+      b3 = l->forward(std::move(b3));
+    }
+
+	// Deshuffle
+    host_tensor<float, 5> single_output_b1(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
+    host_tensor<float, 5> single_output_b2(64, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
+	host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
+    host_tensor<float, 5> host_out_patch(1, 3, outsz[0], outsz[1], outsz[2]);
+
+    for (long_t outno = 0; outno < 3; ++outno)
+    {
+      for (long_t i = 0; i < 64; ++i)
+      {
+        single_output_b1[i][0] = b1[i][outno];
+        single_output_b2[i][0] = b2[i][outno];
+        single_output_b3[i][0] = b3[i][outno];
+      }
+      // TODO:
+      deshuffler_b1.deshuffle(single_output_b1.data());
+      deshuffler_b2.deshuffle(single_output_b2.data());
+      deshuffler_b3.deshuffle(single_output_b3.data());
+
+     // host_out_patch[0][outno].load_n(ds.deshuffle(single_output.data()).data(), 256, from_host);
+    }
+
+
+
+    std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
+    timer.reset();
+
+    // push to data provider
+    dp.WriteWindowData(*it, host_out_patch);
+    std::cout << "push to data provider: " << timer.elapsed<double>() << "\n";
+  }
+}
