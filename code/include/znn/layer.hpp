@@ -64,12 +64,11 @@ public:
     long_t bias_memory   ;
     long_t batch_size    ;
     vec5i  kernels_shape ;
-    long_t act_func_type ;
 
     conv_layer() noexcept {}
 
     conv_layer( long_t n, long_t fin, long_t fout,
-                vec3i const & is, vec3i const & ks, long_t act_func_type ) noexcept
+                vec3i const & is, vec3i const & ks ) noexcept
         : Base(n, fin, is, n, fout, is + vec3i::one - ks)
         , kernel_size(ks)
         , kernel_len(ks[0]*ks[1]*ks[2])
@@ -78,7 +77,6 @@ public:
         , bias_memory(fout*sizeof(float))
         , batch_size(n)
         , kernels_shape(fout,fin,ks[0],ks[1],ks[2])
-        , act_func_type( act_func_type )
     { }
 
     conv_layer& operator=( conv_layer const & ) = default;

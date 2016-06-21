@@ -2,6 +2,7 @@
 
 #include "znn/util/io.hpp"
 #include "znn/device/v1/cudnn_mfp.hpp"
+#include "znn/device/v1/cudnn_crop.hpp"
 #include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
 #include "znn/device/v1/cudnn_maxfilter.hpp"
 #include "znn/tensor/tensor.hpp"
@@ -11,9 +12,14 @@
 namespace znn {namespace fwd{
 
 std::vector<std::unique_ptr<device::v1::device_layer>>
-create_multiscale_b3(const vec3i outsz)
+create_multiscale_b3(const vec3i & outsz)
 {
   std::vector<std::unique_ptr<device::v1::device_layer>> layers;
+
+  // crop
+  layers.push_back(std::unique_ptr<device::v1::device_layer>
+                   (new device::v1::cudnn_crop
+                    (1, 24, vec3i(9,116,116), vec3i(0,32,32))));
 
   // conv1a
   float conv1a_k[1*24*1*3*3];
@@ -24,7 +30,7 @@ create_multiscale_b3(const vec3i outsz)
                    (new device::v1::cudnn_no_precomp_gemm_conv
                     (1, 1, 24,
                      vec3i(9,52,52), vec3i(1,3,3),
-                     conv1a_k, conv1a_b)));
+                     conv1a_k, conv1a_b, activation::relu)));
 
   // conv1b
   float conv1b_k[24*24*1*3*3];
@@ -35,7 +41,7 @@ create_multiscale_b3(const vec3i outsz)
                    (new device::v1::cudnn_no_precomp_gemm_conv
                     (1, 24, 24,
                      vec3i(9,50,50), vec3i(1,3,3),
-                     conv1b_k, conv1b_b)));
+                     conv1b_k, conv1b_b, activation::relu)));
 
   // conv1c
   float conv1c_k[24*24*1*2*2];
@@ -46,7 +52,7 @@ create_multiscale_b3(const vec3i outsz)
                    (new device::v1::cudnn_no_precomp_gemm_conv
                     (1, 24, 24,
                      vec3i(9,48,48), vec3i(1,2,2),
-                     conv1c_k, conv1c_b)));
+                     conv1c_k, conv1c_b, activation::relu)));
 
   // pool1 using mfp
   layers.push_back(std::unique_ptr<device::v1::device_layer>
@@ -62,7 +68,7 @@ create_multiscale_b3(const vec3i outsz)
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (4, 24, 36,
                       vec3i(9,23,23), vec3i(1,3,3),
-                      conv2a_k, conv2a_b)));
+                      conv2a_k, conv2a_b, activation::relu)));
 
   // conv2b
   float conv2b_k[36*36*1*3*3];
@@ -73,7 +79,7 @@ create_multiscale_b3(const vec3i outsz)
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (4, 36, 36,
                       vec3i(9,21,21), vec3i(1,3,3),
-                      conv2b_k, conv2b_b)));
+                      conv2b_k, conv2b_b, activation::relu)));
 
   // CROP 32x32
   // pool2 using maxfilter
@@ -90,7 +96,7 @@ create_multiscale_b3(const vec3i outsz)
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (4, 36, 36,
                       vec3i(9,18,18), vec3i(2,3,3),
-                      conv3a_k, conv3a_b)));
+                      conv3a_k, conv3a_b, activation::relu)));
   // conv3b
   float conv3b_k[36*36*2*3*3];
   float conv3b_b[36];
@@ -100,7 +106,7 @@ create_multiscale_b3(const vec3i outsz)
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (4, 36, 36,
                       vec3i(8,16,16), vec3i(2,3,3),
-                      conv3b_k, conv3b_b)));
+                      conv3b_k, conv3b_b, activation::relu)));
 
   // pool3 using maxfilter
   layers.push_back(std::unique_ptr<device::v1::device_layer>
@@ -116,7 +122,7 @@ create_multiscale_b3(const vec3i outsz)
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (4, 36, 48,
                       vec3i(6,13,13), vec3i(2,3,3),
-                      conv4a_k, conv4a_b)));
+                      conv4a_k, conv4a_b, activation::relu)));
 
   // conv4b
   float conv4b_k[48*48*2*3*3];
@@ -127,7 +133,7 @@ create_multiscale_b3(const vec3i outsz)
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (4, 48, 48,
                       vec3i(5,11,11), vec3i(2,3,3),
-                      conv4b_k, conv4b_b)));
+                      conv4b_k, conv4b_b, activation::relu)));
 
   // pool4 using maxfilter
   layers.push_back(std::unique_ptr<device::v1::device_layer>
@@ -143,7 +149,7 @@ create_multiscale_b3(const vec3i outsz)
                    (new device::v1::cudnn_no_precomp_gemm_conv
                     (4, 48, 60,
                      vec3i(3,8,8), vec3i(2,3,3),
-                     conv5a_k, conv5a_b)));
+                     conv5a_k, conv5a_b, activation::relu)));
 
   // conv5b
   float conv5b_k[60*72*2*3*3];
@@ -154,9 +160,8 @@ create_multiscale_b3(const vec3i outsz)
                    (new device::v1::cudnn_no_precomp_gemm_conv
                     (4, 60, 72,
                      vec3i(2,6,6), vec3i(2,3,3),
-                     conv5b_k, conv5b_b)));
+                     conv5b_k, conv5b_b, activation::relu)));
 
-  std::cout<< "finish reading layers!"<< "\n";
   return layers;
 }
 
