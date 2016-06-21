@@ -126,8 +126,8 @@ create_multiscale_b3(const vec3i & outsz)
   // conv4b-p1
   float conv4b_p3_k[60*60*2*3*3];
   float conv4b_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv4b-p1/filters",conv4b_p3_k,48*60*2*3*3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv4b-p1/biases",conv4b_p3_b,60);
+  read_from_file<float>("./0421_VD2D3D-MS/conv4b-p3/filters",conv4b_p3_k,48*60*2*3*3);
+  read_from_file<float>("./0421_VD2D3D-MS/nconv4b-p3/biases",conv4b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (64, 48, 60,
@@ -136,12 +136,12 @@ create_multiscale_b3(const vec3i & outsz)
   // pool4-p1 : maxfilter
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_maxfilter
-                    (64, 48, vec3i(4,6,6), vec3i(2,2,2))));
+                    (64, 60, vec3i(4,6,6), vec3i(2,2,2))));
   // conv5a-p1
   float conv5a_p3_k[60*60*2*3*3];
   float conv5a_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv5a-p1/filters",conv5a_p3_k,60*60*2*3*3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv5a-p1/biases",conv5a_p3_b,60);
+  read_from_file<float>("./0421_VD2D3D-MS/conv5a-p3/filters",conv5a_p3_k,60*60*2*3*3);
+  read_from_file<float>("./0421_VD2D3D-MS/nconv5a-p3/biases",conv5a_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (64, 60, 60,
@@ -151,8 +151,8 @@ create_multiscale_b3(const vec3i & outsz)
   /*// conv5b*/
   float conv5b_p3_k[60*60*2*3*3];
   float conv5b_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv5b-p1/filters",conv5b_p3_k,60*60*2*3*3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv5b-p1/biases",conv5b_p3_b,60);
+  read_from_file<float>("./0421_VD2D3D-MS/conv5b-p3/filters",conv5b_p3_k,60*60*2*3*3);
+  read_from_file<float>("./0421_VD2D3D-MS/nconv5b-p3/biases",conv5b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_no_precomp_gemm_conv
                      (64, 60, 60,
