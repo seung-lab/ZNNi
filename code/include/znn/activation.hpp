@@ -22,7 +22,7 @@ void relu(real* out, long_t out_image_len)
 void logistics(real* out, long_t out_image_len )
 {
     for ( long_t i = 0; i<out_image_len; ++i)
-        out[i] = static_cast<real>(1) / ((static_cast<real>(1)) + std::exp(-out[i]));
+        out[i] = static_cast<real>(1) / (static_cast<real>(1) + std::exp(-out[i]));
 }
 
 

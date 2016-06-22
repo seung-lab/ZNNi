@@ -130,7 +130,7 @@ create_multiscale_b3(const vec3i & outsz)
   read_from_file<float>("./0421_VD2D3D-MS/nconv4b-p3/biases",conv4b_p3_b,60);
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                     (new host::v1::direct_conv
-                     (64, 48, 60,
+                     (64, 60, 60,
                       vec3i(5,8,8), vec3i(2,3,3),
                       conv4b_p3_k, conv4b_p3_b, activation::relu)));
   // pool4-p3 : maxfilter
