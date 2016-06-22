@@ -33,6 +33,8 @@ void activation_function(  real* out
     // activation function
     switch (activation_)
     {
+    case activation::none:
+        break;
     case activation::sigmoid:
         logistics(out, out_image_len);
         break;

@@ -162,12 +162,12 @@ create_multiscale_b2(const vec3i & outsz)
   float convx_p2_k[60*200*1*1*1];
   float convx_p2_b[200];
   read_from_file<float>("./0421_VD2D3D-MS/convx-p2/filters",convx_p2_k,60*200*1*1*1);
-  read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases",convx_p2_b,200);
+  memset(convx_p2_b, 0, 200 * sizeof(float));
   layers.push_back(std::unique_ptr<host::v1::host_layer>
                    (new host::v1::direct_conv
                     (16, 60, 200,
                      vec3i(1,2,2), vec3i(1,1,1),
-                     convx_p2_k, convx_p2_b, activation::relu)));
+                     convx_p2_k, convx_p2_b, activation::none)));
   return layers;
 }
 
