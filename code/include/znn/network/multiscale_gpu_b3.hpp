@@ -126,11 +126,11 @@ create_multiscale_b3(const vec3i & outsz)
   // conv4b-p1
   float conv4b_p3_k[60*60*2*3*3];
   float conv4b_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv4b-p3/filters",conv4b_p3_k,48*60*2*3*3);
+  read_from_file<float>("./0421_VD2D3D-MS/conv4b-p3/filters",conv4b_p3_k,60*60*2*3*3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv4b-p3/biases",conv4b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_no_precomp_gemm_conv
-                     (64, 48, 60,
+                     (64, 60, 60,
                       vec3i(5,8,8), vec3i(2,3,3),
                       conv4b_p3_k, conv4b_p3_b, activation::relu)));
   // pool4-p1 : maxfilter

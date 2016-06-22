@@ -115,7 +115,7 @@ create_multiscale_b2(const vec3i & outsz)
   // conv4a-p2
   float conv4a_p2_k[48*48*2*3*3];
   float conv4a_p2_b[48];
-  read_from_file<float>("./0421_VD2D3D-MS/conv4a-p2/filters",conv4a_p2_k,48*60*2*3*3);
+  read_from_file<float>("./0421_VD2D3D-MS/conv4a-p2/filters",conv4a_p2_k,48*48*2*3*3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv4a-p2/biases",conv4a_p2_b,48);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_no_precomp_gemm_conv
