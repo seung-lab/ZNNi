@@ -135,7 +135,6 @@ int main(int argc, char *argv[])
     inout_conv.load(out_patch.data(), from_host);
 
     inout_conv = final_conv.forward(std::move(inout_conv));
-    //sum_result = final_softmax.forward(std::move(sum_result));
 
     host_tensor<float, 5> affinity(1, 3, 1, 8, 8);
     affinity.load(inout_conv.data(), from_device);
@@ -146,5 +145,9 @@ int main(int argc, char *argv[])
     // push to data provider
     dp.WriteWindowData(*it, affinity);
     std::cout << "push to data provider: " << timer.elapsed<double>() << "\n";
+
+    b1.reset();
+    b2.reset();
+    b3.reset();
   }
 }
