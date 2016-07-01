@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 
     auto affinity = final_conv.forward(std::move(out_patch));
 
-    //std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
+    std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
     timer.reset();
 
     dp.WriteWindowData(*it, affinity);
