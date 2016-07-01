@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   timer.reset();
 
   // settings
-  vec3i outsz(2,16,16); // must be multiple of 8!
+  vec3i outsz(17,136,136); // must be multiple of 8!
   h5vec3 fov(9, 109, 109);
   h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
 
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
   read_from_file<float>("./0421_VD2D3D-MS/convout/filters",convout_k,200*3*1*1*1);
   fix_dims(convout_k, 200, 3, 1, 1, 1);
   read_from_file<float>("./0421_VD2D3D-MS/output/biases", convout_b, 3);
-  device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, outsz, vec3i(outsz[0], outsz[1]/8, outsz[2]/8), convout_k, convout_b, activation::sigmoid);
+  device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, outsz, vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
 
   // Write sum of all three branches and biases to branch 1
   std::array<float, 200> convx_b;
