@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   timer.reset();
 
   // settings
-  vec3i outsz(1,8,8);
+  vec3i outsz(2,16,16); // must be multiple of 8!
   h5vec3 fov(9, 109, 109);
   h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
 
@@ -43,21 +43,21 @@ int main(int argc, char *argv[])
   read_from_file<float>("./0421_VD2D3D-MS/convout/filters",convout_k,200*3*1*1*1);
   fix_dims(convout_k, 200, 3, 1, 1, 1);
   read_from_file<float>("./0421_VD2D3D-MS/output/biases", convout_b, 3);
-  device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, vec3i(1, 8, 8), vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
+  device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, outsz, vec3i(outsz[0], outsz[1]/8, outsz[2]/8), convout_k, convout_b, activation::sigmoid);
 
   // Write sum of all three branches and biases to branch 1
   std::array<float, 200> convx_b;
   read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases", convx_b.data(), 200);
 
   // Everyday I'm shufflin'
-  deshuffler deshuffler_b1(vec3i(1, 8, 8));
+  deshuffler deshuffler_b1(outsz);
   deshuffler_b1.split(vec3i(1, 2, 2));
 
-  deshuffler deshuffler_b2(vec3i(1, 8, 8));
+  deshuffler deshuffler_b2(outsz);
   deshuffler_b2.split(vec3i(1, 2, 2));
   deshuffler_b2.split(vec3i(1, 2, 2));
 
-  deshuffler deshuffler_b3(vec3i(1, 8, 8));
+  deshuffler deshuffler_b3(outsz);
   deshuffler_b3.split(vec3i(1, 2, 2));
   deshuffler_b3.split(vec3i(1, 2, 2));
   deshuffler_b3.split(vec3i(1, 2, 2));
@@ -95,9 +95,9 @@ int main(int argc, char *argv[])
     host_tensor<float, 5> single_output_b2(16, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
     host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
 
-    host_tensor<float, 5> out_patch(1, 200, 1, 8, 8);
-    host_tensor<float, 5> out_patch_b2(1, 200, 1, 8, 8);
-    host_tensor<float, 5> out_patch_b3(1, 200, 1, 8, 8);
+    host_tensor<float, 5> out_patch(1, 200, outsz[0], outsz[1], outsz[2]);
+    host_tensor<float, 5> out_patch_b2(1, 200, outsz[0], outsz[1], outsz[2]);
+    host_tensor<float, 5> out_patch_b3(1, 200, outsz[0], outsz[1], outsz[2]);
 
     for (int ch = 0; ch < 200; ++ch) {
       for (int n = 0; n < 4; ++n) {
@@ -119,16 +119,16 @@ int main(int argc, char *argv[])
 
     }
 
-    relu(out_patch.data(), 200*64);
+    relu(out_patch.data(), 200 * outsz[0] * outsz[1] * outsz[2]);
 
 
 
-    device_tensor<float, 5> inout_conv(1, 200, 1, 8, 8); // FIXME: Either deshuffle on GPU, or conv and softmax on CPU, but now we are copying back and forth
+    device_tensor<float, 5> inout_conv(1, 200, outsz[0], outsz[1], outsz[2]); // FIXME: Either deshuffle on GPU, or conv and softmax on CPU, but now we are copying back and forth
     inout_conv.load(out_patch.data(), from_host);
 
     inout_conv = final_conv.forward(std::move(inout_conv));
 
-    host_tensor<float, 5> affinity(1, 3, 1, 8, 8);
+    host_tensor<float, 5> affinity(1, 3, outsz[0], outsz[1], outsz[2]);
     affinity.load(inout_conv.data(), from_device);
 
     std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
