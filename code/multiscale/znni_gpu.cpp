@@ -1,17 +1,14 @@
 #include "znn/util/deshuffler.hpp"
-#include "znn/util/network.hpp"
 #include "znn/util/dataprovider.hpp"
+#include "znn/util/znnhelper.hpp"
 
-#include "znn/network/n4_gpu.hpp"
 #include "znn/network/multiscale_gpu_b1.hpp"
 #include "znn/network/multiscale_gpu_b2.hpp"
 #include "znn/network/multiscale_gpu_b3.hpp"
 
-#include "znn/device/v1/cudnn_softmax.hpp"
-
 #include <zi/time.hpp>
 
-#include <functional>
+#include <functional> // for summation of final layers
 
 using namespace znn::fwd;
 
@@ -43,16 +40,14 @@ int main(int argc, char *argv[])
   // Create final convolution layers
   float convout_k[200 * 3 * 1 * 1 * 1];
   float convout_b[3];
-  read_from_file<float>("./0421_VD2D3D-MS/convout/filters", convout_k, 200 * 3 * 1 * 1 * 1);
+  read_from_file<float>("./0421_VD2D3D-MS/convout/filters",convout_k,200*3*1*1*1);
+  fix_dims(convout_k, 200, 3, 1, 1, 1);
   read_from_file<float>("./0421_VD2D3D-MS/output/biases", convout_b, 3);
   device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, vec3i(1, 8, 8), vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
 
-  // Write sum of all three branches to b1 + BIAS
+  // Write sum of all three branches and biases to branch 1
   std::array<float, 200> convx_b;
   read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases", convx_b.data(), 200);
-
-  // Create final softmax layer
-  //device::v1::cudnn_softmax final_softmax(1, 3, vec3i(1, 1, 1));
 
   // Everyday I'm shufflin'
   deshuffler deshuffler_b1(vec3i(1, 8, 8));
@@ -66,8 +61,6 @@ int main(int argc, char *argv[])
   deshuffler_b3.split(vec3i(1, 2, 2));
   deshuffler_b3.split(vec3i(1, 2, 2));
   deshuffler_b3.split(vec3i(1, 2, 2));
-
-
 
   // intermediate variables
   device_tensor<float, 5> b1, b2, b3;
@@ -127,7 +120,6 @@ int main(int argc, char *argv[])
     }
 
     relu(out_patch.data(), 200*64);
-
 
 
 
