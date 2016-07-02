@@ -4,7 +4,7 @@
 #include "znn/util/znnhelper.hpp"
 #include "znn/device/v1/cudnn_mfp.hpp"
 #include "znn/device/v1/cudnn_crop.hpp"
-#include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
+#include "znn/device/v1/cudnn_conv.hpp"
 #include "znn/device/v1/cudnn_maxfilter.hpp"
 #include "znn/tensor/tensor.hpp"
 
@@ -33,7 +33,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv1a_k, 1, 24, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv1a/biases",conv1a_b,24);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                   (new device::v1::cudnn_no_precomp_gemm_conv
+                   (new device::v1::cudnn_conv
                     (1, 1, 24,
                      insz, vec3i(1,3,3),
                      conv1a_k, conv1a_b, activation::relu)));
@@ -46,7 +46,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv1b_k, 24, 24, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv1b/biases",conv1b_b,24);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                   (new device::v1::cudnn_no_precomp_gemm_conv
+                   (new device::v1::cudnn_conv
                     (1, 24, 24,
                      insz, vec3i(1,3,3),
                      conv1b_k, conv1b_b, activation::relu)));
@@ -59,7 +59,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv1c_k, 24, 24, 1, 2, 2);
   read_from_file<float>("./0421_VD2D3D-MS/nconv1c/biases",conv1c_b,24);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                   (new device::v1::cudnn_no_precomp_gemm_conv
+                   (new device::v1::cudnn_conv
                     (1, 24, 24,
                      insz, vec3i(1,2,2),
                      conv1c_k, conv1c_b, activation::relu)));
@@ -78,7 +78,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv2a_k, 24, 36, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv2a/biases",conv2a_b,36);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (4, 24, 36,
                       insz, vec3i(1,3,3),
                       conv2a_k, conv2a_b, activation::relu)));
@@ -91,7 +91,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv2b_k, 36, 36, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv2b/biases",conv2b_b,36);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (4, 36, 36,
                       insz, vec3i(1,3,3),
                       conv2b_k, conv2b_b, activation::relu)));
@@ -110,7 +110,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv3a_k, 36, 48, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv3a/biases",conv3a_b,48);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (16, 36, 48,
                       insz, vec3i(1,3,3),
                       conv3a_k, conv3a_b, activation::relu)));
@@ -123,7 +123,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv3b_k, 48, 48, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv3b/biases",conv3b_b,48);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (16, 48, 48,
                       insz, vec3i(1,3,3),
                       conv3b_k, conv3b_b, activation::relu)));
@@ -142,7 +142,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv4a_k, 48, 60, 1, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv4a/biases",conv4a_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (64, 48, 60,
                       insz, vec3i(1,3,3),
                       conv4a_k, conv4a_b, activation::relu)));
@@ -155,7 +155,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv4b_p3_k, 60, 60, 2, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv4b-p3/biases",conv4b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (64, 60, 60,
                       insz, vec3i(2,3,3),
                       conv4b_p3_k, conv4b_p3_b, activation::relu)));
@@ -174,7 +174,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv5a_p3_k, 60, 60, 2, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv5a-p3/biases",conv5a_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (64, 60, 60,
                       insz, vec3i(2,3,3),
                       conv5a_p3_k, conv5a_p3_b, activation::relu)));
@@ -187,7 +187,7 @@ create_multiscale_b3(const vec3i & outsz)
   fix_dims(conv5b_p3_k, 60, 60, 2, 3, 3);
   read_from_file<float>("./0421_VD2D3D-MS/nconv5b-p3/biases",conv5b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                    (new device::v1::cudnn_no_precomp_gemm_conv
+                    (new device::v1::cudnn_conv
                      (64, 60, 60,
                       insz, vec3i(2,3,3),
                       conv5b_p3_k, conv5b_p3_b, activation::relu)));
@@ -200,7 +200,7 @@ create_multiscale_b3(const vec3i & outsz)
   read_from_file<float>("./0421_VD2D3D-MS/convx-p3/filters",convx_p3_k,60*200*1*1*1);
   fix_dims(convx_p3_k, 60, 200, 1, 1, 1);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
-                   (new device::v1::cudnn_no_precomp_gemm_conv
+                   (new device::v1::cudnn_conv
                     (64, 60, 200,
                      insz, vec3i(1,1,1),
                      convx_p3_k, convx_p3_b, activation::none)));

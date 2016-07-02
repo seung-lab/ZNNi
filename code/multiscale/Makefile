@@ -1,7 +1,7 @@
 ODIR		=	.
 CPP_FLAGS	= 	-g
 INC_FLAGS	=	-I./ -I../include -I../include/znn/util -I../../ -I/usr/local/cuda/include -I/opt/intel/tbb/include
-LIB_FLAGS	=	-L./ -L/usr/local/cuda/lib64 -L/opt/intel/tbb/lib/intel64/gcc4.4
+LIB_FLAGS	=	-L./ -L/usr/local/cuda/lib64 -L/opt/intel/tbb/lib/intel64/gcc4.4 -L/opt/intel/tbb/lib/intel64_lin/gcc4.4
 NVCC_FLAGS	= 	#-DNDEBUG
 OPT_FLAGS	=	-O3  -std=c++11
 CPU_FLAGS	=	-ffast-math -Wall -Wno-unused-result -Wno-unused-local-typedefs

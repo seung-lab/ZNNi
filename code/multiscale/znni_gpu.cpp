@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
   read_from_file<float>("./0421_VD2D3D-MS/convout/filters",convout_k,200*3*1*1*1);
   fix_dims(convout_k, 200, 3, 1, 1, 1);
   read_from_file<float>("./0421_VD2D3D-MS/output/biases", convout_b, 3);
-  device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, outsz, vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
+  device::v1::cudnn_conv final_conv(1, 200, 3, outsz, vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
 
   // Write sum of all three branches and biases to branch 1
   std::array<float, 200> convx_b;
