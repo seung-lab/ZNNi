@@ -1,0 +1,192 @@
+--------------------------------------------
+
+### LOG[benchmark] :: m76 :: starting os :: 16,16,16 memory required 1935772352
+### LOG[cpu_thread] :: 0.909635
+### LOG[cpu_thread] :: 0.810665
+### LOG[gpu_loop] :: Took time: 2.68242 :: 3.60638
+### LOG[cpu_thread] :: 0.822591
+### LOG[gpu_loop] :: Took time: 2.73372 :: 2.73374
+[network_round] m76 :: 16,16,16 :: 2.73377
+### LOG[gpu_loop] :: Took time: 2.59905 :: 2.59906
+[network_round] m76 :: 16,16,16 :: 2.5991
+[network_throughput] m76 :: 16,16,16 :: 1536.13
+### LOG[benchmark] :: m76 :: starting os :: 32,32,32 memory required 2768643776
+### LOG[cpu_thread] :: 0.97383
+### LOG[cpu_thread] :: 0.977336
+### LOG[gpu_loop] :: Took time: 3.92191 :: 4.92321
+### LOG[cpu_thread] :: 1.11838
+### LOG[gpu_loop] :: Took time: 4.27634 :: 4.27635
+[network_round] m76 :: 32,32,32 :: 4.27638
+### LOG[gpu_loop] :: Took time: 3.80572 :: 3.80574
+[network_round] m76 :: 32,32,32 :: 3.80616
+[network_throughput] m76 :: 32,32,32 :: 8108.34
+### LOG[benchmark] :: m76 :: starting os :: 48,48,48 memory required 3811984064
+### LOG[cpu_thread] :: 1.32566
+### LOG[cpu_thread] :: 1.18102
+### LOG[gpu_loop] :: Took time: 5.46421 :: 6.82734
+### LOG[cpu_thread] :: 1.20749
+### LOG[gpu_loop] :: Took time: 5.73028 :: 5.7303
+[network_round] m76 :: 48,48,48 :: 5.73064
+### LOG[gpu_loop] :: Took time: 5.3541 :: 5.35411
+[network_round] m76 :: 48,48,48 :: 5.35417
+[network_throughput] m76 :: 48,48,48 :: 19953.8
+### LOG[benchmark] :: m76 :: starting os :: 64,64,64 memory required 5089681088
+### LOG[cpu_thread] :: 1.52912
+### LOG[cpu_thread] :: 1.44686
+### LOG[gpu_loop] :: Took time: 7.83818 :: 9.41746
+### LOG[cpu_thread] :: 1.41371
+### LOG[gpu_loop] :: Took time: 8.33163 :: 8.33164
+[network_round] m76 :: 64,64,64 :: 8.33199
+### LOG[gpu_loop] :: Took time: 7.63399 :: 7.634
+[network_round] m76 :: 64,64,64 :: 7.63431
+[network_throughput] m76 :: 64,64,64 :: 32837.2
+### LOG[benchmark] :: m76 :: starting os :: 80,80,80 memory required 6625622720
+### LOG[cpu_thread] :: 1.74329
+### LOG[cpu_thread] :: 1.64301
+### LOG[gpu_loop] :: Took time: 10.5417 :: 12.3462
+### LOG[cpu_thread] :: 1.66238
+### LOG[gpu_loop] :: Took time: 10.5822 :: 10.5822
+[network_round] m76 :: 80,80,80 :: 10.5828
+### LOG[gpu_loop] :: Took time: 10.198 :: 10.198
+[network_round] m76 :: 80,80,80 :: 10.1984
+[network_throughput] m76 :: 80,80,80 :: 49275.5
+### LOG[benchmark] :: m76 :: starting os :: 96,96,96 memory required 8443696832
+### LOG[cpu_thread] :: 2.09349
+### LOG[cpu_thread] :: 2.16208
+### LOG[gpu_loop] :: Took time: 13.6492 :: 15.8199
+### LOG[cpu_thread] :: 2.06308
+### LOG[gpu_loop] :: Took time: 14.7381 :: 14.7381
+[network_round] m76 :: 96,96,96 :: 14.7392
+### LOG[gpu_loop] :: Took time: 13.0958 :: 13.0958
+[network_round] m76 :: 96,96,96 :: 13.0962
+[network_throughput] m76 :: 96,96,96 :: 63569.3
+### LOG[benchmark] :: m76 :: starting os :: 112,112,112 memory required 10567791296
+### LOG[cpu_thread] :: 2.31047
+### LOG[cpu_thread] :: 2.41246
+### LOG[gpu_loop] :: Took time: 17.6759 :: 20.0783
+### LOG[cpu_thread] :: 2.32656
+### LOG[gpu_loop] :: Took time: 17.8301 :: 17.8301
+[network_round] m76 :: 112,112,112 :: 17.8308
+### LOG[gpu_loop] :: Took time: 17.189 :: 17.189
+[network_round] m76 :: 112,112,112 :: 17.1893
+[network_throughput] m76 :: 112,112,112 :: 80235.3
+### LOG[benchmark] :: m76 :: starting os :: 128,128,128 memory required 13021793984
+### LOG[cpu_thread] :: 2.70622
+### LOG[cpu_thread] :: 2.70199
+### LOG[gpu_loop] :: Took time: 21.6083 :: 24.4326
+### LOG[cpu_thread] :: 2.65515
+### LOG[gpu_loop] :: Took time: 21.5662 :: 21.5663
+[network_round] m76 :: 128,128,128 :: 21.5672
+### LOG[gpu_loop] :: Took time: 20.9802 :: 20.9802
+[network_round] m76 :: 128,128,128 :: 20.9807
+[network_throughput] m76 :: 128,128,128 :: 98578.5
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[network] :: binary_search (5,7) :: 7
+### LOG[benchmark] :: m76 :: starting os :: 144,144,144 memory required 15829592768
+### LOG[cpu_thread] :: 2.84361
+### LOG[cpu_thread] :: 2.87802
+### LOG[gpu_loop] :: Took time: 27.3118 :: 30.267
+### LOG[cpu_thread] :: 3.0021
+### LOG[gpu_loop] :: Took time: 27.2108 :: 27.2108
+[network_round] m76 :: 144,144,144 :: 27.2128
+### LOG[gpu_loop] :: Took time: 26.7071 :: 26.7071
+[network_round] m76 :: 144,144,144 :: 26.7076
+[network_throughput] m76 :: 144,144,144 :: 110755
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[network] :: binary_search (5,7) :: 7
+### LOG[benchmark] :: m76 :: starting os :: 160,160,160 memory required 19015075520
+### LOG[cpu_thread] :: 3.41078
+### LOG[cpu_thread] :: 3.50792
+### LOG[gpu_loop] :: Took time: 34.8847 :: 38.4632
+### LOG[cpu_thread] :: 3.54627
+### LOG[gpu_loop] :: Took time: 35.0379 :: 35.0379
+[network_round] m76 :: 160,160,160 :: 35.0396
+### LOG[gpu_loop] :: Took time: 34.3532 :: 34.3532
+[network_round] m76 :: 160,160,160 :: 34.3536
+[network_throughput] m76 :: 160,160,160 :: 118052
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (4,5) :: 5
+### LOG[benchmark] :: m76 :: starting os :: 176,176,176 memory required 22602130112
+### LOG[cpu_thread] :: 3.99963
+### LOG[cpu_thread] :: 4.01623
+### LOG[gpu_loop] :: Took time: 41.4046 :: 45.6034
+### LOG[cpu_thread] :: 3.94884
+### LOG[gpu_loop] :: Took time: 41.6063 :: 41.6063
+[network_round] m76 :: 176,176,176 :: 41.6075
+### LOG[gpu_loop] :: Took time: 40.9247 :: 40.9247
+[network_round] m76 :: 176,176,176 :: 40.9251
+[network_throughput] m76 :: 176,176,176 :: 132112
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (3,4) :: 4
+### LOG[benchmark] :: m76 :: starting os :: 192,192,192 memory required 26614644416
+### LOG[cpu_thread] :: 4.48489
+### LOG[cpu_thread] :: 4.46283
+### LOG[gpu_loop] :: Took time: 54.235 :: 58.9519
+### LOG[cpu_thread] :: 4.57804
+### LOG[gpu_loop] :: Took time: 55.4081 :: 55.4081
+[network_round] m76 :: 192,192,192 :: 55.4093
+### LOG[gpu_loop] :: Took time: 53.9961 :: 53.9961
+[network_round] m76 :: 192,192,192 :: 53.9967
+[network_throughput] m76 :: 192,192,192 :: 129388
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m76 :: starting os :: 224,224,224 memory required 36011603648
+### LOG[cpu_thread] :: 5.8706
+### LOG[cpu_thread] :: 5.87616
+### LOG[gpu_loop] :: Took time: 83.0577 :: 89.2406
+### LOG[cpu_thread] :: 5.87819
+### LOG[gpu_loop] :: Took time: 83.8712 :: 83.8712
+[network_round] m76 :: 224,224,224 :: 83.8722
+### LOG[gpu_loop] :: Took time: 82.8608 :: 82.8608
+[network_round] m76 :: 224,224,224 :: 82.8621
+[network_throughput] m76 :: 224,224,224 :: 134818
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m76 :: starting os :: 256,256,256 memory required 47397056192
+### LOG[cpu_thread] :: 7.574
+### LOG[cpu_thread] :: 7.66778
+### LOG[gpu_loop] :: Took time: 118.391 :: 126.291
+### LOG[cpu_thread] :: 7.63541
+### LOG[gpu_loop] :: Took time: 119.207 :: 119.207
+[network_round] m76 :: 256,256,256 :: 119.208
+### LOG[gpu_loop] :: Took time: 118.516 :: 118.516
+[network_round] m76 :: 256,256,256 :: 118.518
+[network_throughput] m76 :: 256,256,256 :: 141148
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m76 :: starting os :: 288,288,288 memory required 60962105024
+### LOG[cpu_thread] :: 9.2806
+### LOG[cpu_thread] :: 9.70659
+### LOG[gpu_loop] :: Took time: 140.413 :: 150.213
+### LOG[cpu_thread] :: 9.40496
+### LOG[gpu_loop] :: Took time: 139.726 :: 139.726
+[network_round] m76 :: 288,288,288 :: 139.731
+### LOG[gpu_loop] :: Took time: 139.965 :: 139.965
+[network_round] m76 :: 288,288,288 :: 139.968
+[network_throughput] m76 :: 288,288,288 :: 170811
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network

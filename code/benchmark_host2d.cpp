@@ -162,20 +162,20 @@ void benchmark( std::string const & rep, long_t rounds )
 
     network2d_descriptor nd(net_path);
 
-    for ( long_t i = 976; i < 11400; i += 512 )
+    for ( long_t i = 118; i < 200; i += 100 )
     {
         os = vec2i(i,i);
         if ( os % nd.fragmentation() == vec2i::zero )
         {
-	    for ( batch_size = 1; batch_size <= 32; batch_size *= 2 )
+	    for ( batch_size = 128; batch_size <= 128; batch_size *= 2 )
 	    {
-		std::cout << "A: " << batch_size << "\n";
-		host::thread_distributor td;
-		tbb::parallel_for( 0, 72, [&](int)
-			{
-				host::thread_pin pin(td);
-			        benchmark_network(nd, rounds, ofs);		
-			});
+		// std::cout << "A: " << batch_size << "\n";
+		// host::thread_distributor td;
+		// tbb::parallel_for( 0, 72, [&](int)
+		// 	{
+		// 		host::thread_pin pin(td);
+                benchmark_network(nd, rounds, ofs);
+                                // });
             }
         }
     }

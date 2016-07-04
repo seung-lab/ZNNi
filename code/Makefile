@@ -31,7 +31,7 @@ ifneq ($(strip $(ICC)),)
 	CS_LD_FLAGS		=	-static-intel -mkl=sequential
 else
 	CXX			=	$(AT)g++
-	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -ffast-math
+	OPTIMIZATION_FLAGS	=	-DZNN_NO_CUDA -DNDEBUG -O3 -ffast-math
 	CS_FLAGS		=       -mavx2 -mfma -fabi-version=0
 	CS_LD_FLAGS		=       -mavx2 -mfma -fabi-version=0
 endif
@@ -53,9 +53,9 @@ LD_OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
 
 OPT_FLAGS		=	$(COMMON_FLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
 
-COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas -lhdf5 -lhdf5_cpp
+#COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas -lhdf5 -lhdf5_cpp
 
-#COMMON_LDFLAGS		=	-g -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f
+COMMON_LDFLAGS		=	-g -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f
 
 DBG_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS)
 OPT_LDFLAGS		=	$(COMMON_LDFLAGS) $(CS_LD_FLAGS) $(LD_OPTIMIZATION_FLAGS)
@@ -119,7 +119,7 @@ clean:
 	$(ECHO) Cleaning...
 	$(RM) -rf $(BINDIR)
 
-$(BINDIR)/dataprovider: $(BINDIR)/dataprovider.o $(BINDIR)/test_dataprovider.o 
+$(BINDIR)/dataprovider: $(BINDIR)/dataprovider.o $(BINDIR)/test_dataprovider.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 

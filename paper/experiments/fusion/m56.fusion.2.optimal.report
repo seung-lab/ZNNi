@@ -1,0 +1,308 @@
+--------------------------------------------
+
+### LOG[benchmark] :: m56 :: starting os :: 16,16,16 memory required 5086584512
+### LOG[cpu_thread] :: 1.60147
+### LOG[cpu_thread] :: 1.47755
+### LOG[gpu_loop] :: Took time: 4.56999 :: 6.21737
+### LOG[cpu_thread] :: 1.59736
+### LOG[gpu_loop] :: Took time: 5.14624 :: 5.14625
+[network_round] m56 :: 16,16,16 :: 5.14662
+### LOG[cpu_thread] :: 1.4758
+### LOG[gpu_loop] :: Took time: 5.25955 :: 5.25956
+[network_round] m56 :: 16,16,16 :: 5.25968
+### LOG[gpu_loop] :: Took time: 4.43257 :: 4.43258
+[network_round] m56 :: 16,16,16 :: 4.43261
+[network_throughput] m56 :: 16,16,16 :: 828.093
+### LOG[benchmark] :: m56 :: starting os :: 32,32,32 memory required 6619871936
+### LOG[cpu_thread] :: 1.75115
+### LOG[cpu_thread] :: 1.6758
+### LOG[gpu_loop] :: Took time: 6.37334 :: 8.19673
+### LOG[cpu_thread] :: 1.71923
+### LOG[gpu_loop] :: Took time: 6.88017 :: 6.88019
+[network_round] m56 :: 32,32,32 :: 6.88024
+### LOG[cpu_thread] :: 1.70413
+### LOG[gpu_loop] :: Took time: 6.48985 :: 6.48986
+[network_round] m56 :: 32,32,32 :: 6.49021
+### LOG[gpu_loop] :: Took time: 6.27656 :: 6.27657
+[network_round] m56 :: 32,32,32 :: 6.27685
+[network_throughput] m56 :: 32,32,32 :: 5003.44
+### LOG[benchmark] :: m56 :: starting os :: 48,48,48 memory required 8434407104
+### LOG[cpu_thread] :: 1.98399
+### LOG[cpu_thread] :: 1.90404
+### LOG[gpu_loop] :: Took time: 8.67835 :: 10.7567
+### LOG[cpu_thread] :: 1.95939
+### LOG[gpu_loop] :: Took time: 8.7746 :: 8.77461
+[network_round] m56 :: 48,48,48 :: 8.77464
+### LOG[cpu_thread] :: 1.97613
+### LOG[gpu_loop] :: Took time: 8.70315 :: 8.70317
+[network_round] m56 :: 48,48,48 :: 8.70321
+### LOG[gpu_loop] :: Took time: 8.37516 :: 8.37517
+[network_round] m56 :: 48,48,48 :: 8.3752
+[network_throughput] m56 :: 48,48,48 :: 12833.1
+### LOG[benchmark] :: m56 :: starting os :: 64,64,64 memory required 10554077888
+### LOG[cpu_thread] :: 2.26732
+### LOG[cpu_thread] :: 2.32112
+### LOG[gpu_loop] :: Took time: 11.6042 :: 13.9747
+### LOG[cpu_thread] :: 2.37103
+### LOG[gpu_loop] :: Took time: 11.5641 :: 11.5641
+[network_round] m56 :: 64,64,64 :: 11.5642
+### LOG[cpu_thread] :: 2.39368
+### LOG[gpu_loop] :: Took time: 11.672 :: 11.672
+[network_round] m56 :: 64,64,64 :: 11.6721
+### LOG[gpu_loop] :: Took time: 11.0536 :: 11.0536
+[network_round] m56 :: 64,64,64 :: 11.0537
+[network_throughput] m56 :: 64,64,64 :: 22934.8
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[network] :: binary_search (7,8) :: 8
+### LOG[benchmark] :: m56 :: starting os :: 80,80,80 memory required 13002772160
+### LOG[cpu_thread] :: 2.49875
+### LOG[cpu_thread] :: 2.53247
+### LOG[gpu_loop] :: Took time: 14.7229 :: 17.3509
+### LOG[cpu_thread] :: 2.63038
+### LOG[gpu_loop] :: Took time: 15.3005 :: 15.3006
+[network_round] m56 :: 80,80,80 :: 15.3009
+### LOG[cpu_thread] :: 2.58273
+### LOG[gpu_loop] :: Took time: 15.0408 :: 15.0408
+[network_round] m56 :: 80,80,80 :: 15.0409
+### LOG[gpu_loop] :: Took time: 14.298 :: 14.298
+[network_round] m56 :: 80,80,80 :: 14.2981
+[network_throughput] m56 :: 80,80,80 :: 34408.7
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (5,7) :: 7
+### LOG[benchmark] :: m56 :: starting os :: 96,96,96 memory required 15804377792
+### LOG[cpu_thread] :: 2.83625
+### LOG[cpu_thread] :: 2.8747
+### LOG[gpu_loop] :: Took time: 18.7105 :: 21.7005
+### LOG[cpu_thread] :: 2.96528
+### LOG[gpu_loop] :: Took time: 19.9368 :: 19.9368
+[network_round] m56 :: 96,96,96 :: 19.9381
+### LOG[cpu_thread] :: 3.08246
+### LOG[gpu_loop] :: Took time: 18.6191 :: 18.6191
+[network_round] m56 :: 96,96,96 :: 18.6193
+### LOG[gpu_loop] :: Took time: 18.3448 :: 18.3448
+[network_round] m56 :: 96,96,96 :: 18.3449
+[network_throughput] m56 :: 96,96,96 :: 46645.1
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (5,7) :: 7
+### LOG[benchmark] :: m56 :: starting os :: 112,112,112 memory required 18982782656
+### LOG[cpu_thread] :: 3.40845
+### LOG[cpu_thread] :: 3.42961
+### LOG[gpu_loop] :: Took time: 23.2686 :: 26.8551
+### LOG[cpu_thread] :: 3.68643
+### LOG[gpu_loop] :: Took time: 24.3601 :: 24.3602
+[network_round] m56 :: 112,112,112 :: 24.3612
+### LOG[cpu_thread] :: 3.50373
+### LOG[gpu_loop] :: Took time: 23.1678 :: 23.1678
+[network_round] m56 :: 112,112,112 :: 23.1683
+### LOG[gpu_loop] :: Took time: 22.9759 :: 22.9759
+[network_round] m56 :: 112,112,112 :: 22.9763
+[network_throughput] m56 :: 112,112,112 :: 59779.2
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (4,5) :: 5
+### LOG[benchmark] :: m56 :: starting os :: 128,128,128 memory required 22561874624
+### LOG[cpu_thread] :: 3.96803
+### LOG[cpu_thread] :: 4.03153
+### LOG[gpu_loop] :: Took time: 28.6868 :: 32.8627
+### LOG[cpu_thread] :: 4.07704
+### LOG[gpu_loop] :: Took time: 28.5764 :: 28.5764
+[network_round] m56 :: 128,128,128 :: 28.5801
+### LOG[cpu_thread] :: 4.29269
+### LOG[gpu_loop] :: Took time: 28.9367 :: 28.9367
+[network_round] m56 :: 128,128,128 :: 28.9371
+### LOG[gpu_loop] :: Took time: 28.1121 :: 28.1121
+[network_round] m56 :: 128,128,128 :: 28.1125
+[network_throughput] m56 :: 128,128,128 :: 73472.8
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (3,4) :: 4
+### LOG[benchmark] :: m56 :: starting os :: 144,144,144 memory required 26565541568
+### LOG[cpu_thread] :: 4.37698
+### LOG[cpu_thread] :: 4.6021
+### LOG[gpu_loop] :: Took time: 34.6913 :: 39.3079
+### LOG[cpu_thread] :: 4.56113
+### LOG[gpu_loop] :: Took time: 36.0747 :: 36.0747
+[network_round] m56 :: 144,144,144 :: 36.076
+### LOG[cpu_thread] :: 4.72347
+### LOG[gpu_loop] :: Took time: 35.3268 :: 35.3268
+[network_round] m56 :: 144,144,144 :: 35.3273
+### LOG[gpu_loop] :: Took time: 34.2211 :: 34.2211
+[network_round] m56 :: 144,144,144 :: 34.2212
+[network_throughput] m56 :: 144,144,144 :: 84809.4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (3,4) :: 4
+### LOG[benchmark] :: m56 :: starting os :: 160,160,160 memory required 31017671360
+### LOG[cpu_thread] :: 5.01224
+### LOG[cpu_thread] :: 5.18813
+### LOG[gpu_loop] :: Took time: 41.4939 :: 46.786
+### LOG[cpu_thread] :: 5.0865
+### LOG[gpu_loop] :: Took time: 41.7211 :: 41.7211
+[network_round] m56 :: 160,160,160 :: 41.7232
+### LOG[cpu_thread] :: 5.01583
+### LOG[gpu_loop] :: Took time: 41.6302 :: 41.6302
+[network_round] m56 :: 160,160,160 :: 41.6307
+### LOG[gpu_loop] :: Took time: 40.8663 :: 40.8663
+[network_round] m56 :: 160,160,160 :: 40.8667
+[network_throughput] m56 :: 160,160,160 :: 98920.8
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m56 :: starting os :: 176,176,176 memory required 35942151872
+### LOG[cpu_thread] :: 5.61237
+### LOG[cpu_thread] :: 5.61879
+### LOG[gpu_loop] :: Took time: 49.0794 :: 55.04
+### LOG[cpu_thread] :: 5.82406
+### LOG[gpu_loop] :: Took time: 49.9438 :: 49.9438
+[network_round] m56 :: 176,176,176 :: 49.9478
+### LOG[cpu_thread] :: 5.57416
+### LOG[gpu_loop] :: Took time: 49.888 :: 49.888
+[network_round] m56 :: 176,176,176 :: 49.8884
+### LOG[gpu_loop] :: Took time: 48.9067 :: 48.9067
+[network_round] m56 :: 176,176,176 :: 48.9072
+[network_throughput] m56 :: 176,176,176 :: 109957
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m56 :: starting os :: 192,192,192 memory required 41362870976
+### LOG[cpu_thread] :: 6.49406
+### LOG[cpu_thread] :: 6.58008
+### LOG[gpu_loop] :: Took time: 57.5396 :: 64.3931
+### LOG[cpu_thread] :: 6.58502
+### LOG[gpu_loop] :: Took time: 58.7597 :: 58.7597
+[network_round] m56 :: 192,192,192 :: 58.7608
+### LOG[cpu_thread] :: 6.39405
+### LOG[gpu_loop] :: Took time: 58.7587 :: 58.7587
+[network_round] m56 :: 192,192,192 :: 58.7597
+### LOG[gpu_loop] :: Took time: 57.938 :: 57.938
+[network_round] m56 :: 192,192,192 :: 57.9384
+[network_throughput] m56 :: 192,192,192 :: 121018
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m56 :: starting os :: 224,224,224 memory required 53788576448
+### LOG[cpu_thread] :: 8.14253
+### LOG[cpu_thread] :: 8.06408
+### LOG[gpu_loop] :: Took time: 79.0921 :: 87.7229
+### LOG[cpu_thread] :: 8.03601
+### LOG[gpu_loop] :: Took time: 78.325 :: 78.325
+[network_round] m56 :: 224,224,224 :: 78.3269
+### LOG[cpu_thread] :: 8.07379
+### LOG[gpu_loop] :: Took time: 78.3658 :: 78.3658
+[network_round] m56 :: 224,224,224 :: 78.3692
+### LOG[gpu_loop] :: Took time: 77.4059 :: 77.4059
+[network_round] m56 :: 224,224,224 :: 77.4076
+[network_throughput] m56 :: 224,224,224 :: 144031
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m56 :: starting os :: 256,256,256 memory required 68485890752
+### LOG[cpu_thread] :: 10.1238
+### LOG[cpu_thread] :: 10.3031
+### LOG[gpu_loop] :: Took time: 104.139 :: 114.846
+### LOG[cpu_thread] :: 10.0547
+### LOG[gpu_loop] :: Took time: 103.419 :: 103.419
+[network_round] m56 :: 256,256,256 :: 103.423
+### LOG[cpu_thread] :: 9.77431
+### LOG[gpu_loop] :: Took time: 103.726 :: 103.726
+[network_round] m56 :: 256,256,256 :: 103.727
+### LOG[gpu_loop] :: Took time: 103.116 :: 103.116
+[network_round] m56 :: 256,256,256 :: 103.118
+[network_throughput] m56 :: 256,256,256 :: 162220
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m56 :: starting os :: 288,288,288 memory required 85645916864
+### LOG[cpu_thread] :: 12.102
+### LOG[cpu_thread] :: 12.0418
+### LOG[gpu_loop] :: Took time: 134.086 :: 146.923
+### LOG[cpu_thread] :: 12.4484
+### LOG[gpu_loop] :: Took time: 135.45 :: 135.45
+[network_round] m56 :: 288,288,288 :: 135.455
+### LOG[cpu_thread] :: 12.2723
+### LOG[gpu_loop] :: Took time: 136.366 :: 136.366
+[network_round] m56 :: 288,288,288 :: 136.37
+### LOG[gpu_loop] :: Took time: 134.271 :: 134.271
+[network_round] m56 :: 288,288,288 :: 134.274
+[network_throughput] m56 :: 288,288,288 :: 176469
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[sub_network::get_layer] :: Conv failed: in or out too big
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network

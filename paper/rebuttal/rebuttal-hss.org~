@@ -1,0 +1,670 @@
+* Reviewer 1
+** Summary and High Level Discussion
+
+  new 'pruned' FFT algorithm, along with successful hybrid CPU+GPU
+  implementation for fast forward inference on convolutional neural
+  networks.
+
+  Good work, contributes to the timely deep learning and machine
+  learning field. Inference will be important for deployments, and
+  image and speech recognition are crucial applications for
+  convolutional nets.  Uses a relatively old cuDNN library for
+  comparision, at that point cuDNN didn't even have FFTs implemented.
+
+** Comments for Rebuttal
+
+  How would you compare to the recent cuDNN v4?
+
+  Could you have improved on this by using CUDA directly instead of
+  CUDA libraries?  Could you have written this in another way other
+  than using CUDA libraries?
+
+** Detailed Comments for Authors
+
+  Good insight into the structure of convolutional networks.  Look at
+  including results from cuDNN v4 also, FFTs have improved
+  dramatically in that version
+
+* Reviewer 2
+** Summary and High Level Discussion
+
+  This paper presents a method for addressing segmentation problems
+  for 3D-convnets.
+
+  Strengths:
+  - The authors present methods to overcome RAM limitations on GPUs,
+    and propose two hybrid CPU-GPU methods to address this problem
+    (RAM access and CPU+GPU).
+  - Authors offer a lot of results for RAM-limited 3D-convolutions.
+
+  Weaknesses:
+  - I am not sure if there is novelty in specific kernels or ideas
+  - The paper does not draw any conclusions, or provide guidelines
+    about how to tackle such problems. It presents a bunch of results
+    but the intuition and explanation of results, as well as
+    guidelines are missing. There is no theoretical results explaining
+    the impact of RAM/RAM-needs on performance.
+
+** Comments for Rebuttal
+
+  How is avoiding zeroes in FFT new? Methods like blocked FFT already
+  do it by default, and zero pruning is common in this space.
+
+  How is 5X speedup achieved? Some intuition with examples about sizes
+  can certainly help.
+
+  The CPU+GPU approach is well studied in CaffeConTroll, so is
+  pipeline parallelism or splitting work across CPU+GPU. So is the
+  claim to novelty only about managing RAM needs of 3D convolutions?
+
+  The authors present a task graph model of the convolutional layer
+  showing very fine grained synchronizations. The author then mention
+  performance gains over alternatives. Not sure what these
+  alternatives are and why and how the proposed method is better. Also
+  why do we need to allocate and de-allocate memory at many
+  synchronization points? Can’t two/more pre-allocated buffers be
+  (re-)used for this for the CPU side at least?
+
+** Detailed Comments for Authors
+
+  See above.
+
+* Reviewer 3
+** Summary and High Level Discussion
+
+  The paper presents novel CPU and GPU primitives for the execution of
+  convolutional neural networks for inference. The particular focus of
+  the paper is the throughput for a sliding window scenario on 3D
+  images, in which the authors explain that the sparseness of the
+  first layers is benefitting from architectures/setups with large
+  memory rather than high floating point performance. The authors test
+  difference scenarios (GPU-only, CPU-only, CPU-GPU). The CPU-GPU
+  algorithm achieves the highest throughput, which is an order of
+  magnitude increase over publicly available state-of-the art
+  implementations.
+
+  The authors present various building blocks that can be used on
+  different architectures and go through the effort of benchmarking
+  different combinations thereof. The result is that they find a
+  configuration in which their method shows an order of magnitude
+  performance increase over published methods, but it should also
+  allow them and other authors to leverage other combinations of the
+  same building blocks if the underlying hardware characteristics
+  change.
+
+  What is not clear to me is how relevant the benchmarked network
+  architectures are. They are listed without any further explanation
+  and it would be helpful for the reader to understand better what
+  they achieve and how representative those networks are.
+
+  Overall, the manuscript may profit from some additional iterations
+  of editorial attention and more attention would be spend on the
+  analysis of the results. Some of the sections are very technical and
+  difficult to digest (especially results). It would be helpful if the
+  key messages were made more clear. Also, the comparison to the state
+  of the art would profit from some more discusion.
+
+  Some specific questions that would be good to be answered: On Page
+  5: "To work around the limited onboard RAM of the GPU, we introduce
+  a novel GPU + host RAM primitive. We show that using this new
+  primitive can lead to much higher throughput, in spite of the slower
+  communication speed between GPU and host RAM.” => Any specific
+  techniques employed to hide communication? (multiple cuda steams
+  etc?)  Section 4A introduces task parallel FFT based algorithm. On
+  Page 6 "The task parallel algorithm requires that both f · S and f ′
+  · S be large enough (at least the same size as the number of
+  available cores) in order to efficiently utilize all the cores.” =>
+  In this case, how task based implementation improves the throughput?
+  by improving load balance or exposing extra parallelism?  Page 6 "In
+  such cases they can be much more efficient than the data parallel
+  algorithm, as the tasks operate on independent data (thus reducing
+  false–sharing 2).” => Can this be avoided by working on large data
+  blocks?  Page 6 "On a 4–way Intel Xeon E7–8890 v3 machine the task
+  parallel algorithm is 10× faster than the data parallel one” => More
+  detailed analysis would help readers to understand such significant
+  performance improvements.  Page 10 "The CPU and the GPU form a
+  producer–consumer pipeline. The CPU produces by computing the first
+  θ layers for a given input image, and queuing the result.” => How
+  this is implemented? data copies and transfer times?
+
+** Comments for Rebuttal
+
+  It would be helpful if the authors justified better their choice of
+  networks and gave an indication of how representative the tested
+  networks are.
+
+  The authors should propose how the analysis section can be improved.
+
+** Detailed Comments for Authors
+
+  Tables
+
+  Order of Table 1 and Table 2
+
+  Table V
+  - legend for Table V should mention the metric that is being
+    displayed
+  - is the entry for Caffe really 1.348 or rather 1,348?
+
+  Figures
+
+  figure legends are too short; they should explain the different
+  panels (e.g. legends for figures 5 & 7 do not explain what is shown
+  in the panels)
+
+  figure backgrounds should be made white (figures 4, 5 & 7)
+
+  Figure 4: two figures use different scale/format for Y axis
+
+  Figure 5:
+  -	a) starts with 0 on x axis but others with 100.
+  -	Y axis-scale is different
+  -	throughput drop for GPU after certain input size is not well
+        explained
+  -	Why GPU throughput is high compare to 72 core Xeon? (comparing
+        their peak performance). More performance analysis details
+        will help to understand this behavior.
+
+  Figure 7:
+  -	Y axis labels are partly overlapped with other plots,
+  -	Y-axis with different scales
+  -	Figure 5 uses input size on x-axis whereas Figure 7 uses
+        memory consumed
+
+  Text
+  On page 2: work around -> workaround
+
+  Hardware details could be removed from introduction section
+  (provided in Section VI B). Would be better to provide more details
+  (peak performance, flops, cpu speed etc.)
+
+  On page 4: Intel thread building blocks => Intel Threading Building
+  Blocks
+* Reviewer 4
+** Summary and High Level Discussion
+
+  This paper discusses techniques to maximize the inference throughput
+  of 3D CNN on multi-core CPUs and GPUs. Parallel CPU and GPU
+  primitives are introduced to improve the throughput while minimizing
+  memory overheads. The combined CPU-GPU algorithm outperforms other
+  publicly available implementations of sliding window 3D ConvNets by
+  a factor of 10.
+
+  Strengths: The outcome of the presented techniques is remarkable.
+
+  Weaknesses: I find the paper hard to read and appreciate. The key
+  challenges and the main ideas could be laid out more clearly to
+  better understand the contributions.
+
+** Comments for Rebuttal
+
+  - It is not clear what a "kernel" or a "kernel FFT" refers to. How
+    is this different than the image or image FFT?
+  - In terms of the pruned FFT, it is hard to understand if padding is
+    necessary or if it is helpful - and why.
+  - The data parallel or task-parallel algorithms are rather standard
+    techniques and the algorithmic descriptions read more like
+    implementation reports. How do they push the state-of-the-art for
+    CNN inference?
+  - What is max pooling? Is it a computational task arising naturally
+    by the design of CNNs? Or is it a technique introduced to speed up
+    the computations?
+  - It is not clear what bottleneck the GPU + host RAM convolution
+    addresses specifically.
+
+** Detailed Comments for Authors
+
+  Overall, the paper addresses an important problem and significant
+  effort has been spent on improving the inference performance for 3D
+  CNNs. But it is very hard to follow and understand.
+
+
+* Answers
+** To reviewer 1
+
+   Q: How would you compare to the recent cuDNN v4?
+
+   A: CuDNN v4 was indeed used.
+
+   Q: Could you have improved on this by using CUDA directly instead
+      of CUDA libraries?  Could you have written this in another way
+      other than using CUDA libraries?
+
+   A: CUDNN uses more than 50% utilization of the GPU.  Custom
+      primitives could have been implemented as well, however due to
+      high efficiency of CuDNN v4 for direct convolution we focus on
+      higher levels of computation and use CuDNN v4 for low level. We
+      can note that CuDNN doesn't offer FFT based layers for 3D.  And
+      also, for the 2D versions, their primitives have huge memory
+      overhead.
+
+** To reviewer 2
+
+   Q: How is avoiding zeroes in FFT new? Methods like blocked FFT
+      already do it by default, and zero pruning is common in this
+      space.
+
+   A: First of all, zero avoiding of blocked FFTs means avoiding zeros
+      in a single 1D FFT, where the whole block is zero.  This is not
+      the same as avoiding whole 1D FFTs for doing pruned 3D FFTs.
+      But whatever, this reviewer just wants to put us down.
+
+      We don't claim novelty of the approach, but rather an algorithm
+      to efficiently compute pruned FFTs.  Such that:
+
+      1. Novel application.  2. As far as we know first application.
+
+      1) For the CPU case, most of the FFTs are done along the least
+         significant dimension, thus maximizing cache locality.
+      2) For the GPU, a batch of 3D pruned FFTs is computed in order
+         to saaturate the GPU cores, while minimizing the memory
+         overhead.
+
+      This specific algorithm/implementation is the key to our fast
+      primitives for conv layers.
+
+   Q: How is 5X speedup achieved? Some intuition with examples about
+      sizes can certainly help.
+
+   A: 5x comes from:
+      - Approximatelly 3x reduction in computation
+      - Most of the FFTs are done along the least significant
+        dimension, thus improving cache locallity.  We designed the
+        algorithm to compute the least number of 1D FFTs along the
+        most significant, etc...
+
+
+   Q: The CPU+GPU approach is well studied in CaffeConTroll, so is
+      pipeline parallelism or splitting work across CPU+GPU. So is the
+      claim to novelty only about managing RAM needs of 3D
+      convolutions?
+
+   A: It's not okay to present a wrong fact, and then ask a question
+      that assumes the wrong fact is actually correct.  Also, WTF is
+      the problem you have with us?
+
+      - Only similarity is CPU+GPU
+      - Difference
+      1) Optimize for training assuming large batch sizes
+         We optimize for inference small batch sizes, large inputs
+      2)
+
+      1) Problem.  Training vs Inference, 3D, Sliding window
+      2) Approach is different.  Data parallelism.  Argument why our
+         approach is 10x faster for inference. (memory split)
+
+   vs. Caffe con Troll
+      - CcT is a training approach
+      - It assumes batch training, they don't do pipelining (I need to
+        make 100% sure this is true - YES THIS IS 100% CORRECT) but
+        rather compute some batches on the CPUs and some on the GPUs
+      - Quote from CcT: "We currently only consider data parallelism
+        within a layer (the model is shared). The key decision is what
+        fraction of the input to send to each device."
+
+   Q: The authors present a task graph model of the convolutional
+      layer showing very fine grained synchronizations. The author
+      then mention performance gains over alternatives. Not sure what
+      these alternatives are and why and how the proposed method is
+      better. Also why do we need to allocate and de-allocate memory
+      at many synchronization points? Can’t two/more pre-allocated
+      buffers be (re-)used for this for the CPU side at least?
+
+   A: Task model is compared to data parallel model.  Proposed task
+      model is better b/c each thread works on local data.  Re-mention
+      false sharing and NUMA.
+
+      As the convolutional layer "consumes" the input.  It is true
+      that some buffers can be re-used.  However, we'd like to have
+      minimal memory overhead, and for that reason minimal memory is
+      allocated before the input is released.  Releasing memory, and
+      then allocating memory of a different size, can also be
+      accomplished by using realloc, when available.  This is, in fact
+      how the algorithm is implemented, but for clarity.  We
+      considered this to be an implementation detail, but will include
+      it in the final draft.
+
+** To reviewer 3
+
+   Q: It would be helpful if the authors justified better their choice
+      of networks and gave an indication of how representative the
+      tested networks are.
+
+   A: I will need Kisuk's and Sebastian's help here...
+
+      Something along lines that 3D networks with large field of views
+      are relevant.  We can't cite in the rebuttal, but can probably
+      just mention VGG-16, VGG-19 nets, VD2D3D, AlexNet (has large
+      filters).  Our goal was to cover generic network with large
+      field of views.  Depending on the problem/application the
+      networks will reseble one of our tested nets.
+
+   Q: The authors should propose how the analysis section can be
+      improved.
+
+   A: Analysis & Conclusions section should be added.  Explain the
+      drop in throughput for the GPU-only implementations.  Explain
+      why Caffe and ZNN can't handle large inputs.  Draw conclusions?
+
+** To reviewer 4
+
+   Q: It is not clear what a "kernel" or a "kernel FFT" refers to. How
+      is this different than the image or image FFT?
+
+   A: Really :) This is pretty clear.
+
+   Q: In terms of the pruned FFT, it is hard to understand if padding
+      is necessary or if it is helpful - and why.
+
+   A: This is pretty clear as well.
+
+   Q: The data parallel or task-parallel algorithms are rather
+      standard techniques and the algorithmic descriptions read more
+      like implementation reports. How do they push the
+      state-of-the-art for CNN inference?
+
+   A: What's wrong with this reviewer?
+
+      Answer in his style: Data parallel and task-parallell are
+      algorithm design principles rather than actual algorithms.
+      Creating a data/task parallel algorithm that efficiently
+      utilizes all the computational resources (for a conv layer) is a
+      challenging problem.  This is what the paper attacks.  Our novel
+      task-based algorithm has very small memory footprint, and high
+      scalability, thus allowing for state-of-the-art throughput of
+      convnet inference.
+
+   Q: What is max pooling? Is it a computational task arising
+      naturally by the design of CNNs? Or is it a technique introduced
+      to speed up the computations?
+
+   A: Can't you loookup any of the references?
+
+   Q: It is not clear what bottleneck the GPU + host RAM convolution
+      addresses specifically.
+
+   A: Really? The RAM bottleneck you mor**
+
+
+Extra: We need to clarify the measured time (that it includes all data
+copy/transfer to and from the GPU)
+
+We don't use multiple streams b/c we want to maximize available
+memory.  We can't allow other streams to upload anything to the GPU,
+as the main stream needs the memory for computation.
+
+** To chairs
+
+Complain about reviewer 2?
+
+* Full answer
+
+The authors acknowledge that the follwing three issues should be
+addressed.  This can be achieved with little reorganization and a bit
+of addition to the text.
+
+1) Clear statement of novelty
+2) Relationship to Caffe con Trolls
+3) Improved Analysis and Conclusions
+
+We list all novel approaches and briefly discuss them
+
+1) Novelty & Contributions
+
+- Novel pruned 3D FFTs for CPUs and GPUs
+
+  Of course pruned FFTs are not novel, however, to our knowledge this
+  is the first application of pruned FFTs to deep learning.  It is
+  also a novel implementation for both the CPU and GPU, and they are
+  both designed to have small memory footprint.  The novelty in the
+  CPU approach is optimization for cache locallity, and for the GPU
+  approach optimization that allows us to saturate all GPU cores.
+
+- Novel parallel primitives for both the CPU and GPU that use FFT-based convolution.
+
+- Novel approach in using CPU+GPU using producer-consumer pipeline
+
+2) Relationship to Caffe con Trolls
+
+   Superficially, our approach might seem similar to the one of Caffe
+   con Trolls (CcT), however there are major differences in both
+
+   - The problem we are trying to solve
+   - The approach to parallelization and CPU+GPU utilization
+
+   CcT optimizes ConvNet training, whereas we focus on inference.  CcT
+   doesn't support 3D nor sliding window ConvNets.
+
+   CcT employs data parallelism to utilize available resources
+
+   Quote: "We currently only consider data parallelism within a layer
+   (the model is shared). The key decision is what fraction of the
+   input to send to each device."
+
+   Data parallelism assumes processing multiple inputs (batches) at
+   the same time, which limits the memory available to of each input.
+   For inference, it is important to have the input as large as
+   possible.  As CcT doens't support 3D nor sliding window ConvNets,
+   it is impossible to obtain empirical results, however, we can give
+   some theoretical arguments.  On our 72 core machine, CcT approach
+   would limit the memory per input to 256/72 = 3.5 GB, which would
+   yield significantly smaller throughput (10x or more) due to limited
+   size for each input.  This is an optimistic estimate, being
+   optimized for training CcT would keep all the intermediate results,
+   further limiting the maximal input size.
+
+   Efficiently using all available cores for batch size of 1 requires
+   much more sophisticated approach.  Our contribution include novel
+   parallel algorithms for convolutional layer primitives that
+   deal with such cases.
+
+   Furthermore, data parallelism for the fused CPU+GPU approach within
+   a layer introduces large overhead due to transfers to and from the
+   GPU in each layer.  Our novel pipeline approach minimizes that
+   overhead by having multiple consecutive layers processed on the
+   device. It allows for a single transfer to and from the device.
+
+3) Analysis and Conclusion section
+
+- The analysis of the results is spread throughout the text, this
+  should be moved to a separate section for clarity.  Additional
+  details should be provided on
+
+  - How are the measurements performed (time includes all the
+    transfers to and from the device, and is averaged over 20
+    iterations).
+  - Additional analysis of the measurements (e.g. why are the GPU
+    lines dropping)
+  - Provide intuition on why our approach greatly outperforms the
+    competitors.
+
+- Same goes for the conclusions which should drawn in a separate
+  section.  Which should include but not be limited to.
+
+  1) A guideline for choosing optimal hardware when optimizing for
+     inference.
+  2) List applications that can benefit from out approach.
+
+
+We proceed to answer the specific questions brought up by each of the
+reviewers.
+
+To reviewer 1:
+
+- TODO(lee): TABLE IV might be the source of confusion. CuDNN1 and
+  CuDNN2 in the table *DO NOT* refer to either cuDNNv1 or v2. They
+  refer to two different versions of GPU primitives based on cuDNNv4.
+  We should clarify this.
+- CuDNN v4 was indeed used, which was the latest version at the time
+  of submission.  This should be clearly specified in the text.  We
+  should also note that CuDNN v4 supports FFT convolution only for 2D,
+  while also having large memory footprint.  This could be beneficial
+  for training, but not for inference.
+- We could have implemented our own primitives instead of using CuDNN.
+  However, this would require a lot of time.  Also, we estimate that
+  CuDNN v4 is using more than 60% of the theoretical FLOPS of the GPU,
+  leaving very little space for improvement.
+
+To reviewer 2:
+
+- Apropos the summary provided by the reviewer 2, the authors should
+  clearly state which problem the proposed method is addressing.  The
+  proposed method improves the throughput of any sliding window
+  ConvNet, with image segmentation being one application along others
+  such as image recognition, localization, speech detection, etc...
+  TODO(lee): object detection, localization, speech recognition, etc...
+
+- Avoiding zeros in FFTs is not new.  Our claim of novelty is
+  described above.
+- The kernel sizes are typically 3^3 to 9^3 whereas image sizes are much
+  larger - (a few hundred)^3.  Theoretically this should yield
+  approximately 3x less FLOPS for a single 3D FFTs.  Additional
+  speedup (to 5x) is due to the fact that avoided 1D FFTs are the ones
+  with low memory locality.
+- The relationship between Caffe con Trolls that might superficially
+  seem similar to our approach is discussed above, and should be
+  included in the text.
+- ??? Comparison of our task model
+
+To reviewer 3:
+
+- We have spent a lot of time while deciding which networks to
+  benchmark.  We didn't want to focus on a single network but rather
+  on networks that resemble relevant networks such as VD2D3D, 3D
+  versions of VGG-16/19, AlexNet, GoogLeNet etc...  What these
+  networks have in common is that they have large field of view, and
+  some of them have more layers with smaller kernels, while others
+  have less layers and larger filters, and they all have at least 2
+  max-pooling layers.
+- TODO(lee): "...what they achieve and how representative those networks are"
+  We might need to mention that the benchmark networks were designed purely
+  for the purpose of benchmarking, and they were not used in any application.
+
+- Analysis and Conclusions should be improved as listed above.
+
+
+To reviewer 4:
+
+- Kernel refers to the convolution kernel.  Kernel FFT is the FFT
+  transform of such kernel.
+- When using FFT for convolutions, both the image and the kernel have
+  to be padded to a common size.  This is necessary
+- Our data parallel and task parallel algorithms are specifically
+  designed for optimal computation of CNN convolutional layers.  With
+  high utilization of the available computing power, and minimal
+  memory overhead they push the state-of-the-art inference by
+  achieving 10x throughput of other published approaches.
+- Max pooling is a standard technique in CNNs.  Nearly all modern CNNs
+  consist of both convolutional and max-pooling layers.
+- The GPU + host RAM convolution addresses the bottleneck induced by
+  the limited on-board RAM of the GPU.
+
+
+* Full answer version 2
+
+In our excitement to pack the paper with results, we evidently failed
+to explain novelty clearly, and present insufficient analysis of
+results.  We will revise the paper accordingly, and also attempt to
+clarify the issues here.
+
+The conceptual novelty of our paper is that we address the
+acceleration of ConvNet inference as distinct from training.  The
+distinction is especially important for sliding window ConvNets, which
+are popular for image-to-image transforms, or "dense prediction."  For
+inference, processing a large input patch is crucial to achieve high
+throughput, and this requires efficient use of RAM.
+
+Our system is the first application of pruned FFTs to any kind of deep
+learning.  Other elements are novel in that they are
+inference-optimized, and so designed to increase memory locality while
+minimizing memory overhead and maximizing utilization of cores.  These
+elements include 3D pruned FFTs, primitives for multicore CPU, GPU,
+and GPU+host RAM, and a pipelined implementation utilizing both CPU
+and GPU.  Our optimizations are specific to 3D but the general ideas
+may extend to other dimensions.
+
+The novelty of our work can be seen in comparison to Caffe con Troll
+(CcT), mentioned by R2.  CcT employs a simple kind of data
+parallelism, processing multiple input patches in parallel.  Such
+"batch parallelism" is reasonable for training, but suboptimal for
+inference because the input patches share RAM and are hence small when
+the batch size is large. On our 72 core machine, applying only
+CcT-style data parallelism would limit the memory per input patch to
+256/72 = 3.5 GB, which would reduce throughput by 10x or more
+(Fig. 4).  Our approach includes task-parallel primitives as well as
+more sophisticated data-parallel primitives, and can efficiently
+utilize all cores even if one input patch is processed at a time.
+(Note that CcT cannot be applied to our benchmark tasks because it
+handles neither 3D nor sliding window inference.)
+
+For CPU+GPU, CcT-style data parallelism has large communication
+overhead due to multiple transfers to and from the GPU for all the
+layers of the network.  Our novel approach minimizes that overhead by
+allowing a single "handoff" from CPU to GPU at an intermediate layer
+of the network.  Our approach is pipelined to keep both CPU and GPU
+working all the time.  (R2's remark that CcT is pipelined is
+incorrect.)
+
+Our analyses of results may have been difficult to understand because they were scattered throughout the text.  We will consolidate the analyses in a single section including details on:
+
+   - How are the measurements performed (time includes all the
+     transfers to and from the device, and is averaged over 20
+     iterations).
+   - Additional analysis of the measurements (e.g. why are the GPU
+     lines dropping)
+   - Provide intuition on why our approach greatly outperforms the
+     competition.
+
+We will improve the conclusion by adding
+
+   - A guideline for choosing optimal hardware when optimizing for
+     inference.
+   - List applications that can benefit from out approach.
+
+
+Answers to specific comments of reviewers:
+
+R1:
+
+- cuDNN v4 was indeed used for direct convolution.  We did not use
+  cuDNN for FFT convolution because only 2D is supported, and the
+  memory footprint is large.  Instead we built our own 3D FFT
+  convolution around the 1D FFT of cuFFT.
+- We could have implemented our own primitives instead of using cuDNN.
+  However, we estimate that cuDNN v4 is using more than 60% of the
+  theoretical maximum FLOPS, leaving very little room for
+  improvement.
+
+R2:
+
+- As far as we know, this is the first application of pruned FFTs to deep learning.
+- Pruning the FFT of a 3D kernel reduces the FLOPs by 3x. Additional
+  speedup (to 5x) is due to the fact that the pruned FFTs are the ones
+  with low memory locality.
+- ??? Comparison of our task model.  R2 seems concerned about synchronization
+
+- In our task-based primitive, the mention the perormance gain of our
+  problem-specific, NUMA aware, task scheduling compared to standard scheduling
+  strategies like "work stealing" (cited in the paper).
+- As the buffers have different sizes, in order to never use more
+  memory than needed, we need to de-allocate, and allocate memory at
+  different points.  This could be achieved with re-alloc when
+  available, and in specific cases with buffer reuse.  We consider
+  this an implementation detail.
+
+R3:
+
+- The benchmarked network architectures are representative of the state of the art in dense prediction tasks like image segmentation. The architectures use many convolution and pooling layers to achieve a large field of view.  The kernel size is varied.
+
+R4:
+
+- "Kernel" refers to the convolution kernel (also known as the
+  filter), and should not be confused with GPU kernel.  "Kernel FFT"
+  refers to the FFT of the kernel.
+- For FFT convolution, the image and kernel have to be padded to a
+  common size.  We choose this size to be a product of small primes, which speeds up the FFT.
+- Our data parallel and task parallel primitives are optimized for inference, and are not at all standard because previous efforts optimized for training.  They are designed to fully utilize cores with
+  minimal memory overhead, and advance the state-of-the-art in ConvNet inference by achieving 10x better throughput relative to other published approaches.
+- Max pooling is a standard type of nonlinearity used in ConvNets.
+- The GPU + host RAM convolution addresses the bottleneck induced by
+  the limited onboard RAM of the GPU.

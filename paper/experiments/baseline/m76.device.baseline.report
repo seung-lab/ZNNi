@@ -1,0 +1,2031 @@
+--------------------------------------------
+
+## m76 :: starting benchmark for output size 1,1,1
+[network_requirements] m76 :: 1,1,1 :: RM: 33 MB WM: 483 MB
+[layer_measurement] m76 :: 1,1,1 :: 0 :: 0.0321732
+[layer_measurement] m76 :: 1,1,1 :: 1 :: 0.0020931
+[layer_measurement] m76 :: 1,1,1 :: 2 :: 0.121518
+[layer_measurement] m76 :: 1,1,1 :: 3 :: 0.000364186
+[layer_measurement] m76 :: 1,1,1 :: 4 :: 0.00727578
+[layer_measurement] m76 :: 1,1,1 :: 5 :: 0.0027356
+[layer_measurement] m76 :: 1,1,1 :: 6 :: 0.000655494
+[layer_measurement] m76 :: 1,1,1 :: 7 :: 0.000682295
+[network_measurement] m76 :: 1,1,1 :: 0.168715
+[layer_measurement] m76 :: 1,1,1 :: 0 :: 0.0327535
+[layer_measurement] m76 :: 1,1,1 :: 1 :: 0.00208391
+[layer_measurement] m76 :: 1,1,1 :: 2 :: 0.127709
+[layer_measurement] m76 :: 1,1,1 :: 3 :: 0.000364772
+[layer_measurement] m76 :: 1,1,1 :: 4 :: 0.00780318
+[layer_measurement] m76 :: 1,1,1 :: 5 :: 0.00296456
+[layer_measurement] m76 :: 1,1,1 :: 6 :: 0.000703594
+[layer_measurement] m76 :: 1,1,1 :: 7 :: 0.000721172
+[network_measurement] m76 :: 1,1,1 :: 0.176264
+[layer_measurement] m76 :: 1,1,1 :: 0 :: 0.0334493
+[layer_measurement] m76 :: 1,1,1 :: 1 :: 0.0024691
+[layer_measurement] m76 :: 1,1,1 :: 2 :: 0.133334
+[layer_measurement] m76 :: 1,1,1 :: 3 :: 0.000442724
+[layer_measurement] m76 :: 1,1,1 :: 4 :: 0.00786437
+[layer_measurement] m76 :: 1,1,1 :: 5 :: 0.00305512
+[layer_measurement] m76 :: 1,1,1 :: 6 :: 0.000720623
+[layer_measurement] m76 :: 1,1,1 :: 7 :: 0.000792902
+[network_measurement] m76 :: 1,1,1 :: 0.183377
+[layer_measurement] m76 :: 1,1,1 :: 0 :: 0.0332699
+[layer_measurement] m76 :: 1,1,1 :: 1 :: 0.00214053
+[layer_measurement] m76 :: 1,1,1 :: 2 :: 0.130017
+[layer_measurement] m76 :: 1,1,1 :: 3 :: 0.000518119
+[layer_measurement] m76 :: 1,1,1 :: 4 :: 0.00766427
+[layer_measurement] m76 :: 1,1,1 :: 5 :: 0.0029285
+[layer_measurement] m76 :: 1,1,1 :: 6 :: 0.000717127
+[layer_measurement] m76 :: 1,1,1 :: 7 :: 0.000843711
+[network_measurement] m76 :: 1,1,1 :: 0.179413
+[network_average] m76 :: 1,1,1 :: 0.176942
+[network_throughput] m76 :: 1,1,1 :: 5.65156
+## m76 :: starting benchmark for output size 2,2,2
+[network_requirements] m76 :: 2,2,2 :: RM: 33 MB WM: 536 MB
+[layer_measurement] m76 :: 2,2,2 :: 0 :: 0.0365264
+[layer_measurement] m76 :: 2,2,2 :: 1 :: 0.00272884
+[layer_measurement] m76 :: 2,2,2 :: 2 :: 0.139293
+[layer_measurement] m76 :: 2,2,2 :: 3 :: 0.000424615
+[layer_measurement] m76 :: 2,2,2 :: 4 :: 0.00873132
+[layer_measurement] m76 :: 2,2,2 :: 5 :: 0.00319638
+[layer_measurement] m76 :: 2,2,2 :: 6 :: 0.000838723
+[layer_measurement] m76 :: 2,2,2 :: 7 :: 0.000751037
+[network_measurement] m76 :: 2,2,2 :: 0.194121
+[layer_measurement] m76 :: 2,2,2 :: 0 :: 0.0368144
+[layer_measurement] m76 :: 2,2,2 :: 1 :: 0.0023634
+[layer_measurement] m76 :: 2,2,2 :: 2 :: 0.14383
+[layer_measurement] m76 :: 2,2,2 :: 3 :: 0.0004182
+[layer_measurement] m76 :: 2,2,2 :: 4 :: 0.00902824
+[layer_measurement] m76 :: 2,2,2 :: 5 :: 0.00327722
+[layer_measurement] m76 :: 2,2,2 :: 6 :: 0.000864096
+[layer_measurement] m76 :: 2,2,2 :: 7 :: 0.000745132
+[network_measurement] m76 :: 2,2,2 :: 0.19865
+[layer_measurement] m76 :: 2,2,2 :: 0 :: 0.0371543
+[layer_measurement] m76 :: 2,2,2 :: 1 :: 0.00237256
+[layer_measurement] m76 :: 2,2,2 :: 2 :: 0.146025
+[layer_measurement] m76 :: 2,2,2 :: 3 :: 0.000418668
+[layer_measurement] m76 :: 2,2,2 :: 4 :: 0.00903364
+[layer_measurement] m76 :: 2,2,2 :: 5 :: 0.00328554
+[layer_measurement] m76 :: 2,2,2 :: 6 :: 0.00278612
+[layer_measurement] m76 :: 2,2,2 :: 7 :: 0.000843918
+[network_measurement] m76 :: 2,2,2 :: 0.203233
+[layer_measurement] m76 :: 2,2,2 :: 0 :: 0.0373028
+[layer_measurement] m76 :: 2,2,2 :: 1 :: 0.00237245
+[layer_measurement] m76 :: 2,2,2 :: 2 :: 0.146873
+[layer_measurement] m76 :: 2,2,2 :: 3 :: 0.000418852
+[layer_measurement] m76 :: 2,2,2 :: 4 :: 0.00916635
+[layer_measurement] m76 :: 2,2,2 :: 5 :: 0.00331714
+[layer_measurement] m76 :: 2,2,2 :: 6 :: 0.000854138
+[layer_measurement] m76 :: 2,2,2 :: 7 :: 0.000748992
+[network_measurement] m76 :: 2,2,2 :: 0.202352
+[network_average] m76 :: 2,2,2 :: 0.199589
+[network_throughput] m76 :: 2,2,2 :: 40.0823
+## m76 :: starting benchmark for output size 3,3,3
+[network_requirements] m76 :: 3,3,3 :: RM: 33 MB WM: 594 MB
+[layer_measurement] m76 :: 3,3,3 :: 0 :: 0.0403167
+[layer_measurement] m76 :: 3,3,3 :: 1 :: 0.00256482
+[layer_measurement] m76 :: 3,3,3 :: 2 :: 0.162114
+[layer_measurement] m76 :: 3,3,3 :: 3 :: 0.000414781
+[layer_measurement] m76 :: 3,3,3 :: 4 :: 0.0101418
+[layer_measurement] m76 :: 3,3,3 :: 5 :: 0.00396406
+[layer_measurement] m76 :: 3,3,3 :: 6 :: 0.0013957
+[layer_measurement] m76 :: 3,3,3 :: 7 :: 0.000710966
+[network_measurement] m76 :: 3,3,3 :: 0.223045
+[layer_measurement] m76 :: 3,3,3 :: 0 :: 0.0403097
+[layer_measurement] m76 :: 3,3,3 :: 1 :: 0.00255751
+[layer_measurement] m76 :: 3,3,3 :: 2 :: 0.163412
+[layer_measurement] m76 :: 3,3,3 :: 3 :: 0.000440322
+[layer_measurement] m76 :: 3,3,3 :: 4 :: 0.0102281
+[layer_measurement] m76 :: 3,3,3 :: 5 :: 0.00400058
+[layer_measurement] m76 :: 3,3,3 :: 6 :: 0.0024517
+[layer_measurement] m76 :: 3,3,3 :: 7 :: 0.000812772
+[network_measurement] m76 :: 3,3,3 :: 0.22561
+[layer_measurement] m76 :: 3,3,3 :: 0 :: 0.0407924
+[layer_measurement] m76 :: 3,3,3 :: 1 :: 0.00258557
+[layer_measurement] m76 :: 3,3,3 :: 2 :: 0.166999
+[layer_measurement] m76 :: 3,3,3 :: 3 :: 0.000412411
+[layer_measurement] m76 :: 3,3,3 :: 4 :: 0.0104279
+[layer_measurement] m76 :: 3,3,3 :: 5 :: 0.00408292
+[layer_measurement] m76 :: 3,3,3 :: 6 :: 0.00143188
+[layer_measurement] m76 :: 3,3,3 :: 7 :: 0.000724777
+[network_measurement] m76 :: 3,3,3 :: 0.228828
+[layer_measurement] m76 :: 3,3,3 :: 0 :: 0.0407934
+[layer_measurement] m76 :: 3,3,3 :: 1 :: 0.00257461
+[layer_measurement] m76 :: 3,3,3 :: 2 :: 0.167116
+[layer_measurement] m76 :: 3,3,3 :: 3 :: 0.000412869
+[layer_measurement] m76 :: 3,3,3 :: 4 :: 0.0103567
+[layer_measurement] m76 :: 3,3,3 :: 5 :: 0.00402052
+[layer_measurement] m76 :: 3,3,3 :: 6 :: 0.00142194
+[layer_measurement] m76 :: 3,3,3 :: 7 :: 0.000719284
+[network_measurement] m76 :: 3,3,3 :: 0.228782
+[network_average] m76 :: 3,3,3 :: 0.226566
+[network_throughput] m76 :: 3,3,3 :: 119.17
+## m76 :: starting benchmark for output size 4,4,4
+[network_requirements] m76 :: 4,4,4 :: RM: 33 MB WM: 655 MB
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.0441864
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.00280181
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.17535
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.000440147
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.0111792
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.00457669
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.00149764
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.000699815
+[network_measurement] m76 :: 4,4,4 :: 0.242324
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.0440697
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.00278966
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.18048
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.000438194
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.0119839
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.00488016
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.00159144
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.000727177
+[network_measurement] m76 :: 4,4,4 :: 0.248502
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.0452763
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.00279065
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.182833
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.000439597
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.0114965
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.00569623
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.00162066
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.000723096
+[network_measurement] m76 :: 4,4,4 :: 0.252434
+[layer_measurement] m76 :: 4,4,4 :: 0 :: 0.0448965
+[layer_measurement] m76 :: 4,4,4 :: 1 :: 0.0027987
+[layer_measurement] m76 :: 4,4,4 :: 2 :: 0.184362
+[layer_measurement] m76 :: 4,4,4 :: 3 :: 0.000461873
+[layer_measurement] m76 :: 4,4,4 :: 4 :: 0.0116054
+[layer_measurement] m76 :: 4,4,4 :: 5 :: 0.00473722
+[layer_measurement] m76 :: 4,4,4 :: 6 :: 0.00154613
+[layer_measurement] m76 :: 4,4,4 :: 7 :: 0.000718034
+[network_measurement] m76 :: 4,4,4 :: 0.252677
+[network_average] m76 :: 4,4,4 :: 0.248984
+[network_throughput] m76 :: 4,4,4 :: 257.044
+## m76 :: starting benchmark for output size 5,5,5
+[network_requirements] m76 :: 5,5,5 :: RM: 33 MB WM: 721 MB
+[layer_measurement] m76 :: 5,5,5 :: 0 :: 0.0490569
+[layer_measurement] m76 :: 5,5,5 :: 1 :: 0.00297832
+[layer_measurement] m76 :: 5,5,5 :: 2 :: 0.193272
+[layer_measurement] m76 :: 5,5,5 :: 3 :: 0.000459469
+[layer_measurement] m76 :: 5,5,5 :: 4 :: 0.0132615
+[layer_measurement] m76 :: 5,5,5 :: 5 :: 0.00547564
+[layer_measurement] m76 :: 5,5,5 :: 6 :: 0.00179937
+[layer_measurement] m76 :: 5,5,5 :: 7 :: 0.000862775
+[network_measurement] m76 :: 5,5,5 :: 0.268796
+[layer_measurement] m76 :: 5,5,5 :: 0 :: 0.0487542
+[layer_measurement] m76 :: 5,5,5 :: 1 :: 0.00297813
+[layer_measurement] m76 :: 5,5,5 :: 2 :: 0.20385
+[layer_measurement] m76 :: 5,5,5 :: 3 :: 0.000499259
+[layer_measurement] m76 :: 5,5,5 :: 4 :: 0.0137158
+[layer_measurement] m76 :: 5,5,5 :: 5 :: 0.00567426
+[layer_measurement] m76 :: 5,5,5 :: 6 :: 0.00183658
+[layer_measurement] m76 :: 5,5,5 :: 7 :: 0.000879555
+[network_measurement] m76 :: 5,5,5 :: 0.279785
+[layer_measurement] m76 :: 5,5,5 :: 0 :: 0.0494585
+[layer_measurement] m76 :: 5,5,5 :: 1 :: 0.00297326
+[layer_measurement] m76 :: 5,5,5 :: 2 :: 0.207679
+[layer_measurement] m76 :: 5,5,5 :: 3 :: 0.000458472
+[layer_measurement] m76 :: 5,5,5 :: 4 :: 0.0135189
+[layer_measurement] m76 :: 5,5,5 :: 5 :: 0.00560074
+[layer_measurement] m76 :: 5,5,5 :: 6 :: 0.00183797
+[layer_measurement] m76 :: 5,5,5 :: 7 :: 0.000876953
+[network_measurement] m76 :: 5,5,5 :: 0.283986
+[layer_measurement] m76 :: 5,5,5 :: 0 :: 0.0492306
+[layer_measurement] m76 :: 5,5,5 :: 1 :: 0.0029842
+[layer_measurement] m76 :: 5,5,5 :: 2 :: 0.206385
+[layer_measurement] m76 :: 5,5,5 :: 3 :: 0.000460564
+[layer_measurement] m76 :: 5,5,5 :: 4 :: 0.0135281
+[layer_measurement] m76 :: 5,5,5 :: 5 :: 0.00558266
+[layer_measurement] m76 :: 5,5,5 :: 6 :: 0.00182975
+[layer_measurement] m76 :: 5,5,5 :: 7 :: 0.000878065
+[network_measurement] m76 :: 5,5,5 :: 0.282458
+[network_average] m76 :: 5,5,5 :: 0.278756
+[network_throughput] m76 :: 5,5,5 :: 448.421
+## m76 :: starting benchmark for output size 6,6,6
+[network_requirements] m76 :: 6,6,6 :: RM: 33 MB WM: 790 MB
+[layer_measurement] m76 :: 6,6,6 :: 0 :: 0.054185
+[layer_measurement] m76 :: 6,6,6 :: 1 :: 0.00332705
+[layer_measurement] m76 :: 6,6,6 :: 2 :: 0.216923
+[layer_measurement] m76 :: 6,6,6 :: 3 :: 0.000523815
+[layer_measurement] m76 :: 6,6,6 :: 4 :: 0.0153465
+[layer_measurement] m76 :: 6,6,6 :: 5 :: 0.00692834
+[layer_measurement] m76 :: 6,6,6 :: 6 :: 0.00245492
+[layer_measurement] m76 :: 6,6,6 :: 7 :: 0.000871617
+[network_measurement] m76 :: 6,6,6 :: 0.302346
+[layer_measurement] m76 :: 6,6,6 :: 0 :: 0.0546275
+[layer_measurement] m76 :: 6,6,6 :: 1 :: 0.00331665
+[layer_measurement] m76 :: 6,6,6 :: 2 :: 0.226519
+[layer_measurement] m76 :: 6,6,6 :: 3 :: 0.000511826
+[layer_measurement] m76 :: 6,6,6 :: 4 :: 0.0151452
+[layer_measurement] m76 :: 6,6,6 :: 5 :: 0.00684495
+[layer_measurement] m76 :: 6,6,6 :: 6 :: 0.00242733
+[layer_measurement] m76 :: 6,6,6 :: 7 :: 0.000866683
+[network_measurement] m76 :: 6,6,6 :: 0.312008
+[layer_measurement] m76 :: 6,6,6 :: 0 :: 0.0543673
+[layer_measurement] m76 :: 6,6,6 :: 1 :: 0.00331976
+[layer_measurement] m76 :: 6,6,6 :: 2 :: 0.221964
+[layer_measurement] m76 :: 6,6,6 :: 3 :: 0.000520138
+[layer_measurement] m76 :: 6,6,6 :: 4 :: 0.0149037
+[layer_measurement] m76 :: 6,6,6 :: 5 :: 0.00668305
+[layer_measurement] m76 :: 6,6,6 :: 6 :: 0.00246245
+[layer_measurement] m76 :: 6,6,6 :: 7 :: 0.00086126
+[network_measurement] m76 :: 6,6,6 :: 0.306823
+[layer_measurement] m76 :: 6,6,6 :: 0 :: 0.0539374
+[layer_measurement] m76 :: 6,6,6 :: 1 :: 0.00331018
+[layer_measurement] m76 :: 6,6,6 :: 2 :: 0.22458
+[layer_measurement] m76 :: 6,6,6 :: 3 :: 0.000514461
+[layer_measurement] m76 :: 6,6,6 :: 4 :: 0.015042
+[layer_measurement] m76 :: 6,6,6 :: 5 :: 0.00732495
+[layer_measurement] m76 :: 6,6,6 :: 6 :: 0.00246082
+[layer_measurement] m76 :: 6,6,6 :: 7 :: 0.000871335
+[network_measurement] m76 :: 6,6,6 :: 0.309795
+[network_average] m76 :: 6,6,6 :: 0.307743
+[network_throughput] m76 :: 6,6,6 :: 701.885
+## m76 :: starting benchmark for output size 7,7,7
+[network_requirements] m76 :: 7,7,7 :: RM: 33 MB WM: 864 MB
+[layer_measurement] m76 :: 7,7,7 :: 0 :: 0.0589428
+[layer_measurement] m76 :: 7,7,7 :: 1 :: 0.00363474
+[layer_measurement] m76 :: 7,7,7 :: 2 :: 0.241218
+[layer_measurement] m76 :: 7,7,7 :: 3 :: 0.000532805
+[layer_measurement] m76 :: 7,7,7 :: 4 :: 0.0172633
+[layer_measurement] m76 :: 7,7,7 :: 5 :: 0.00790727
+[layer_measurement] m76 :: 7,7,7 :: 6 :: 0.0030424
+[layer_measurement] m76 :: 7,7,7 :: 7 :: 0.000667274
+[network_measurement] m76 :: 7,7,7 :: 0.335183
+[layer_measurement] m76 :: 7,7,7 :: 0 :: 0.0591288
+[layer_measurement] m76 :: 7,7,7 :: 1 :: 0.00362939
+[layer_measurement] m76 :: 7,7,7 :: 2 :: 0.248897
+[layer_measurement] m76 :: 7,7,7 :: 3 :: 0.000526128
+[layer_measurement] m76 :: 7,7,7 :: 4 :: 0.0172804
+[layer_measurement] m76 :: 7,7,7 :: 5 :: 0.00782065
+[layer_measurement] m76 :: 7,7,7 :: 6 :: 0.00299219
+[layer_measurement] m76 :: 7,7,7 :: 7 :: 0.000665036
+[network_measurement] m76 :: 7,7,7 :: 0.342848
+[layer_measurement] m76 :: 7,7,7 :: 0 :: 0.0591456
+[layer_measurement] m76 :: 7,7,7 :: 1 :: 0.00361734
+[layer_measurement] m76 :: 7,7,7 :: 2 :: 0.250018
+[layer_measurement] m76 :: 7,7,7 :: 3 :: 0.00052548
+[layer_measurement] m76 :: 7,7,7 :: 4 :: 0.0175116
+[layer_measurement] m76 :: 7,7,7 :: 5 :: 0.00794086
+[layer_measurement] m76 :: 7,7,7 :: 6 :: 0.00302824
+[layer_measurement] m76 :: 7,7,7 :: 7 :: 0.000672057
+[network_measurement] m76 :: 7,7,7 :: 0.344363
+[layer_measurement] m76 :: 7,7,7 :: 0 :: 0.0594678
+[layer_measurement] m76 :: 7,7,7 :: 1 :: 0.0036344
+[layer_measurement] m76 :: 7,7,7 :: 2 :: 0.246261
+[layer_measurement] m76 :: 7,7,7 :: 3 :: 0.000533273
+[layer_measurement] m76 :: 7,7,7 :: 4 :: 0.017286
+[layer_measurement] m76 :: 7,7,7 :: 5 :: 0.00843389
+[layer_measurement] m76 :: 7,7,7 :: 6 :: 0.00303921
+[layer_measurement] m76 :: 7,7,7 :: 7 :: 0.000673749
+[network_measurement] m76 :: 7,7,7 :: 0.341233
+[network_average] m76 :: 7,7,7 :: 0.340907
+[network_throughput] m76 :: 7,7,7 :: 1006.14
+## m76 :: starting benchmark for output size 8,8,8
+[network_requirements] m76 :: 8,8,8 :: RM: 33 MB WM: 943 MB
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.0639153
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.00394439
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.26541
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.000542229
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.0194147
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.00913428
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.00330202
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.000758215
+[network_measurement] m76 :: 8,8,8 :: 0.368826
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.0644732
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.0039259
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.274756
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.000538087
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.0198101
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.00931316
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.00336838
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.000748942
+[network_measurement] m76 :: 8,8,8 :: 0.379013
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.0655094
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.00392803
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.269545
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.000535689
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.0198933
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.00935856
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.00338191
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.00075966
+[network_measurement] m76 :: 8,8,8 :: 0.374985
+[layer_measurement] m76 :: 8,8,8 :: 0 :: 0.0652018
+[layer_measurement] m76 :: 8,8,8 :: 1 :: 0.00393045
+[layer_measurement] m76 :: 8,8,8 :: 2 :: 0.276396
+[layer_measurement] m76 :: 8,8,8 :: 3 :: 0.000538723
+[layer_measurement] m76 :: 8,8,8 :: 4 :: 0.0198028
+[layer_measurement] m76 :: 8,8,8 :: 5 :: 0.00931714
+[layer_measurement] m76 :: 8,8,8 :: 6 :: 0.00335826
+[layer_measurement] m76 :: 8,8,8 :: 7 :: 0.000753218
+[network_measurement] m76 :: 8,8,8 :: 0.381378
+[network_average] m76 :: 8,8,8 :: 0.376051
+[network_throughput] m76 :: 8,8,8 :: 1361.52
+## m76 :: starting benchmark for output size 9,9,9
+[network_requirements] m76 :: 9,9,9 :: RM: 33 MB WM: 1026 MB
+[layer_measurement] m76 :: 9,9,9 :: 0 :: 0.0721811
+[layer_measurement] m76 :: 9,9,9 :: 1 :: 0.00422954
+[layer_measurement] m76 :: 9,9,9 :: 2 :: 0.298132
+[layer_measurement] m76 :: 9,9,9 :: 3 :: 0.0019468
+[layer_measurement] m76 :: 9,9,9 :: 4 :: 0.0220883
+[layer_measurement] m76 :: 9,9,9 :: 5 :: 0.0104291
+[layer_measurement] m76 :: 9,9,9 :: 6 :: 0.00412279
+[layer_measurement] m76 :: 9,9,9 :: 7 :: 0.000823887
+[network_measurement] m76 :: 9,9,9 :: 0.41628
+[layer_measurement] m76 :: 9,9,9 :: 0 :: 0.0707687
+[layer_measurement] m76 :: 9,9,9 :: 1 :: 0.00421794
+[layer_measurement] m76 :: 9,9,9 :: 2 :: 0.301348
+[layer_measurement] m76 :: 9,9,9 :: 3 :: 0.000614698
+[layer_measurement] m76 :: 9,9,9 :: 4 :: 0.0223871
+[layer_measurement] m76 :: 9,9,9 :: 5 :: 0.0106179
+[layer_measurement] m76 :: 9,9,9 :: 6 :: 0.00413981
+[layer_measurement] m76 :: 9,9,9 :: 7 :: 0.000752735
+[network_measurement] m76 :: 9,9,9 :: 0.417102
+[layer_measurement] m76 :: 9,9,9 :: 0 :: 0.0713674
+[layer_measurement] m76 :: 9,9,9 :: 1 :: 0.00421752
+[layer_measurement] m76 :: 9,9,9 :: 2 :: 0.300663
+[layer_measurement] m76 :: 9,9,9 :: 3 :: 0.000610371
+[layer_measurement] m76 :: 9,9,9 :: 4 :: 0.021925
+[layer_measurement] m76 :: 9,9,9 :: 5 :: 0.0106063
+[layer_measurement] m76 :: 9,9,9 :: 6 :: 0.00413929
+[layer_measurement] m76 :: 9,9,9 :: 7 :: 0.000756604
+[network_measurement] m76 :: 9,9,9 :: 0.416539
+[layer_measurement] m76 :: 9,9,9 :: 0 :: 0.0712945
+[layer_measurement] m76 :: 9,9,9 :: 1 :: 0.00421653
+[layer_measurement] m76 :: 9,9,9 :: 2 :: 0.298454
+[layer_measurement] m76 :: 9,9,9 :: 3 :: 0.000616856
+[layer_measurement] m76 :: 9,9,9 :: 4 :: 0.021918
+[layer_measurement] m76 :: 9,9,9 :: 5 :: 0.0106208
+[layer_measurement] m76 :: 9,9,9 :: 6 :: 0.00413753
+[layer_measurement] m76 :: 9,9,9 :: 7 :: 0.000794241
+[network_measurement] m76 :: 9,9,9 :: 0.414306
+[network_average] m76 :: 9,9,9 :: 0.416057
+[network_throughput] m76 :: 9,9,9 :: 1752.17
+## m76 :: starting benchmark for output size 10,10,10
+[network_requirements] m76 :: 10,10,10 :: RM: 33 MB WM: 1114 MB
+[layer_measurement] m76 :: 10,10,10 :: 0 :: 0.0748544
+[layer_measurement] m76 :: 10,10,10 :: 1 :: 0.00461015
+[layer_measurement] m76 :: 10,10,10 :: 2 :: 0.321362
+[layer_measurement] m76 :: 10,10,10 :: 3 :: 0.000635743
+[layer_measurement] m76 :: 10,10,10 :: 4 :: 0.0248545
+[layer_measurement] m76 :: 10,10,10 :: 5 :: 0.0122607
+[layer_measurement] m76 :: 10,10,10 :: 6 :: 0.00499527
+[layer_measurement] m76 :: 10,10,10 :: 7 :: 0.000818386
+[network_measurement] m76 :: 10,10,10 :: 0.446861
+[layer_measurement] m76 :: 10,10,10 :: 0 :: 0.0777783
+[layer_measurement] m76 :: 10,10,10 :: 1 :: 0.00462544
+[layer_measurement] m76 :: 10,10,10 :: 2 :: 0.331448
+[layer_measurement] m76 :: 10,10,10 :: 3 :: 0.000664127
+[layer_measurement] m76 :: 10,10,10 :: 4 :: 0.0246102
+[layer_measurement] m76 :: 10,10,10 :: 5 :: 0.0120436
+[layer_measurement] m76 :: 10,10,10 :: 6 :: 0.00490692
+[layer_measurement] m76 :: 10,10,10 :: 7 :: 0.000794011
+[network_measurement] m76 :: 10,10,10 :: 0.459314
+[layer_measurement] m76 :: 10,10,10 :: 0 :: 0.0769918
+[layer_measurement] m76 :: 10,10,10 :: 1 :: 0.004609
+[layer_measurement] m76 :: 10,10,10 :: 2 :: 0.329777
+[layer_measurement] m76 :: 10,10,10 :: 3 :: 0.000629688
+[layer_measurement] m76 :: 10,10,10 :: 4 :: 0.0246525
+[layer_measurement] m76 :: 10,10,10 :: 5 :: 0.0120327
+[layer_measurement] m76 :: 10,10,10 :: 6 :: 0.00491383
+[layer_measurement] m76 :: 10,10,10 :: 7 :: 0.0008012
+[network_measurement] m76 :: 10,10,10 :: 0.456839
+[layer_measurement] m76 :: 10,10,10 :: 0 :: 0.076983
+[layer_measurement] m76 :: 10,10,10 :: 1 :: 0.0046197
+[layer_measurement] m76 :: 10,10,10 :: 2 :: 0.332408
+[layer_measurement] m76 :: 10,10,10 :: 3 :: 0.000629397
+[layer_measurement] m76 :: 10,10,10 :: 4 :: 0.0244403
+[layer_measurement] m76 :: 10,10,10 :: 5 :: 0.0119761
+[layer_measurement] m76 :: 10,10,10 :: 6 :: 0.00539329
+[layer_measurement] m76 :: 10,10,10 :: 7 :: 0.000795948
+[network_measurement] m76 :: 10,10,10 :: 0.459673
+[network_average] m76 :: 10,10,10 :: 0.455672
+[network_throughput] m76 :: 10,10,10 :: 2194.56
+## m76 :: starting benchmark for output size 11,11,11
+[network_requirements] m76 :: 11,11,11 :: RM: 33 MB WM: 1207 MB
+[layer_measurement] m76 :: 11,11,11 :: 0 :: 0.0849217
+[layer_measurement] m76 :: 11,11,11 :: 1 :: 0.00562448
+[layer_measurement] m76 :: 11,11,11 :: 2 :: 0.353404
+[layer_measurement] m76 :: 11,11,11 :: 3 :: 0.000703498
+[layer_measurement] m76 :: 11,11,11 :: 4 :: 0.0276342
+[layer_measurement] m76 :: 11,11,11 :: 5 :: 0.0141385
+[layer_measurement] m76 :: 11,11,11 :: 6 :: 0.00587509
+[layer_measurement] m76 :: 11,11,11 :: 7 :: 0.00097073
+[network_measurement] m76 :: 11,11,11 :: 0.496395
+[layer_measurement] m76 :: 11,11,11 :: 0 :: 0.0841075
+[layer_measurement] m76 :: 11,11,11 :: 1 :: 0.00506117
+[layer_measurement] m76 :: 11,11,11 :: 2 :: 0.364486
+[layer_measurement] m76 :: 11,11,11 :: 3 :: 0.000679359
+[layer_measurement] m76 :: 11,11,11 :: 4 :: 0.0275887
+[layer_measurement] m76 :: 11,11,11 :: 5 :: 0.0138041
+[layer_measurement] m76 :: 11,11,11 :: 6 :: 0.00572413
+[layer_measurement] m76 :: 11,11,11 :: 7 :: 0.000897367
+[network_measurement] m76 :: 11,11,11 :: 0.50505
+[layer_measurement] m76 :: 11,11,11 :: 0 :: 0.0832174
+[layer_measurement] m76 :: 11,11,11 :: 1 :: 0.00498522
+[layer_measurement] m76 :: 11,11,11 :: 2 :: 0.363851
+[layer_measurement] m76 :: 11,11,11 :: 3 :: 0.00066463
+[layer_measurement] m76 :: 11,11,11 :: 4 :: 0.027247
+[layer_measurement] m76 :: 11,11,11 :: 5 :: 0.0138442
+[layer_measurement] m76 :: 11,11,11 :: 6 :: 0.00571652
+[layer_measurement] m76 :: 11,11,11 :: 7 :: 0.000888
+[network_measurement] m76 :: 11,11,11 :: 0.503022
+[layer_measurement] m76 :: 11,11,11 :: 0 :: 0.083287
+[layer_measurement] m76 :: 11,11,11 :: 1 :: 0.0049701
+[layer_measurement] m76 :: 11,11,11 :: 2 :: 0.361083
+[layer_measurement] m76 :: 11,11,11 :: 3 :: 0.000663977
+[layer_measurement] m76 :: 11,11,11 :: 4 :: 0.0274603
+[layer_measurement] m76 :: 11,11,11 :: 5 :: 0.0139862
+[layer_measurement] m76 :: 11,11,11 :: 6 :: 0.00581237
+[layer_measurement] m76 :: 11,11,11 :: 7 :: 0.000897134
+[network_measurement] m76 :: 11,11,11 :: 0.500773
+[network_average] m76 :: 11,11,11 :: 0.50131
+[network_throughput] m76 :: 11,11,11 :: 2655.04
+## m76 :: starting benchmark for output size 12,12,12
+[network_requirements] m76 :: 12,12,12 :: RM: 33 MB WM: 1305 MB
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.0870157
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.00532785
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 0.390139
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.000713392
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.0311516
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.0157869
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.00721697
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.000934162
+[network_measurement] m76 :: 12,12,12 :: 0.541164
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.0911778
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.005602
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 0.389813
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.000732908
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.0304096
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.0158168
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.00721601
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.000936192
+[network_measurement] m76 :: 12,12,12 :: 0.544754
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.0913305
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.00535547
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 0.394772
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.000715792
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.0298959
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.0154832
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.00711261
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.000919545
+[network_measurement] m76 :: 12,12,12 :: 0.548397
+[layer_measurement] m76 :: 12,12,12 :: 0 :: 0.0902831
+[layer_measurement] m76 :: 12,12,12 :: 1 :: 0.00536174
+[layer_measurement] m76 :: 12,12,12 :: 2 :: 0.392513
+[layer_measurement] m76 :: 12,12,12 :: 3 :: 0.000723715
+[layer_measurement] m76 :: 12,12,12 :: 4 :: 0.0302017
+[layer_measurement] m76 :: 12,12,12 :: 5 :: 0.0156684
+[layer_measurement] m76 :: 12,12,12 :: 6 :: 0.00717311
+[layer_measurement] m76 :: 12,12,12 :: 7 :: 0.000927238
+[network_measurement] m76 :: 12,12,12 :: 0.545661
+[network_average] m76 :: 12,12,12 :: 0.544994
+[network_throughput] m76 :: 12,12,12 :: 3170.68
+## m76 :: starting benchmark for output size 13,13,13
+[network_requirements] m76 :: 13,13,13 :: RM: 33 MB WM: 1408 MB
+[layer_measurement] m76 :: 13,13,13 :: 0 :: 0.0955036
+[layer_measurement] m76 :: 13,13,13 :: 1 :: 0.00565149
+[layer_measurement] m76 :: 13,13,13 :: 2 :: 0.42488
+[layer_measurement] m76 :: 13,13,13 :: 3 :: 0.000743569
+[layer_measurement] m76 :: 13,13,13 :: 4 :: 0.0341043
+[layer_measurement] m76 :: 13,13,13 :: 5 :: 0.0182306
+[layer_measurement] m76 :: 13,13,13 :: 6 :: 0.00835621
+[layer_measurement] m76 :: 13,13,13 :: 7 :: 0.00138275
+[network_measurement] m76 :: 13,13,13 :: 0.592031
+[layer_measurement] m76 :: 13,13,13 :: 0 :: 0.096158
+[layer_measurement] m76 :: 13,13,13 :: 1 :: 0.00564478
+[layer_measurement] m76 :: 13,13,13 :: 2 :: 0.423722
+[layer_measurement] m76 :: 13,13,13 :: 3 :: 0.000741994
+[layer_measurement] m76 :: 13,13,13 :: 4 :: 0.0339609
+[layer_measurement] m76 :: 13,13,13 :: 5 :: 0.0182927
+[layer_measurement] m76 :: 13,13,13 :: 6 :: 0.00833661
+[layer_measurement] m76 :: 13,13,13 :: 7 :: 0.0013805
+[network_measurement] m76 :: 13,13,13 :: 0.591318
+[layer_measurement] m76 :: 13,13,13 :: 0 :: 0.0985114
+[layer_measurement] m76 :: 13,13,13 :: 1 :: 0.00564223
+[layer_measurement] m76 :: 13,13,13 :: 2 :: 0.427666
+[layer_measurement] m76 :: 13,13,13 :: 3 :: 0.000739334
+[layer_measurement] m76 :: 13,13,13 :: 4 :: 0.033258
+[layer_measurement] m76 :: 13,13,13 :: 5 :: 0.0178301
+[layer_measurement] m76 :: 13,13,13 :: 6 :: 0.0081179
+[layer_measurement] m76 :: 13,13,13 :: 7 :: 0.00134317
+[network_measurement] m76 :: 13,13,13 :: 0.596196
+[layer_measurement] m76 :: 13,13,13 :: 0 :: 0.09728
+[layer_measurement] m76 :: 13,13,13 :: 1 :: 0.00564655
+[layer_measurement] m76 :: 13,13,13 :: 2 :: 0.432204
+[layer_measurement] m76 :: 13,13,13 :: 3 :: 0.00215565
+[layer_measurement] m76 :: 13,13,13 :: 4 :: 0.0338998
+[layer_measurement] m76 :: 13,13,13 :: 5 :: 0.0178764
+[layer_measurement] m76 :: 13,13,13 :: 6 :: 0.00814943
+[layer_measurement] m76 :: 13,13,13 :: 7 :: 0.00143953
+[network_measurement] m76 :: 13,13,13 :: 0.60177
+[network_average] m76 :: 13,13,13 :: 0.595329
+[network_throughput] m76 :: 13,13,13 :: 3690.4
+## m76 :: starting benchmark for output size 14,14,14
+[network_requirements] m76 :: 14,14,14 :: RM: 33 MB WM: 1516 MB
+[layer_measurement] m76 :: 14,14,14 :: 0 :: 0.103557
+[layer_measurement] m76 :: 14,14,14 :: 1 :: 0.00620618
+[layer_measurement] m76 :: 14,14,14 :: 2 :: 0.466234
+[layer_measurement] m76 :: 14,14,14 :: 3 :: 0.000792518
+[layer_measurement] m76 :: 14,14,14 :: 4 :: 0.0375598
+[layer_measurement] m76 :: 14,14,14 :: 5 :: 0.0212639
+[layer_measurement] m76 :: 14,14,14 :: 6 :: 0.00969886
+[layer_measurement] m76 :: 14,14,14 :: 7 :: 0.00174524
+[network_measurement] m76 :: 14,14,14 :: 0.650429
+[layer_measurement] m76 :: 14,14,14 :: 0 :: 0.106625
+[layer_measurement] m76 :: 14,14,14 :: 1 :: 0.00617738
+[layer_measurement] m76 :: 14,14,14 :: 2 :: 0.464307
+[layer_measurement] m76 :: 14,14,14 :: 3 :: 0.00110712
+[layer_measurement] m76 :: 14,14,14 :: 4 :: 0.0372269
+[layer_measurement] m76 :: 14,14,14 :: 5 :: 0.0226541
+[layer_measurement] m76 :: 14,14,14 :: 6 :: 0.00970941
+[layer_measurement] m76 :: 14,14,14 :: 7 :: 0.00175905
+[network_measurement] m76 :: 14,14,14 :: 0.653176
+[layer_measurement] m76 :: 14,14,14 :: 0 :: 0.105805
+[layer_measurement] m76 :: 14,14,14 :: 1 :: 0.00627096
+[layer_measurement] m76 :: 14,14,14 :: 2 :: 0.46441
+[layer_measurement] m76 :: 14,14,14 :: 3 :: 0.000862621
+[layer_measurement] m76 :: 14,14,14 :: 4 :: 0.0369981
+[layer_measurement] m76 :: 14,14,14 :: 5 :: 0.0200195
+[layer_measurement] m76 :: 14,14,14 :: 6 :: 0.00943972
+[layer_measurement] m76 :: 14,14,14 :: 7 :: 0.00164837
+[network_measurement] m76 :: 14,14,14 :: 0.648888
+[layer_measurement] m76 :: 14,14,14 :: 0 :: 0.104367
+[layer_measurement] m76 :: 14,14,14 :: 1 :: 0.00616224
+[layer_measurement] m76 :: 14,14,14 :: 2 :: 0.466138
+[layer_measurement] m76 :: 14,14,14 :: 3 :: 0.000799476
+[layer_measurement] m76 :: 14,14,14 :: 4 :: 0.0368629
+[layer_measurement] m76 :: 14,14,14 :: 5 :: 0.0202329
+[layer_measurement] m76 :: 14,14,14 :: 6 :: 0.00953591
+[layer_measurement] m76 :: 14,14,14 :: 7 :: 0.00163628
+[network_measurement] m76 :: 14,14,14 :: 0.649068
+[network_average] m76 :: 14,14,14 :: 0.65039
+[network_throughput] m76 :: 14,14,14 :: 4219.01
+## m76 :: starting benchmark for output size 15,15,15
+[network_requirements] m76 :: 15,15,15 :: RM: 33 MB WM: 1629 MB
+[layer_measurement] m76 :: 15,15,15 :: 0 :: 0.111026
+[layer_measurement] m76 :: 15,15,15 :: 1 :: 0.00662923
+[layer_measurement] m76 :: 15,15,15 :: 2 :: 0.501834
+[layer_measurement] m76 :: 15,15,15 :: 3 :: 0.000870937
+[layer_measurement] m76 :: 15,15,15 :: 4 :: 0.0403084
+[layer_measurement] m76 :: 15,15,15 :: 5 :: 0.0223762
+[layer_measurement] m76 :: 15,15,15 :: 6 :: 0.0108182
+[layer_measurement] m76 :: 15,15,15 :: 7 :: 0.00185994
+[network_measurement] m76 :: 15,15,15 :: 0.699275
+[layer_measurement] m76 :: 15,15,15 :: 0 :: 0.112892
+[layer_measurement] m76 :: 15,15,15 :: 1 :: 0.00664896
+[layer_measurement] m76 :: 15,15,15 :: 2 :: 0.504259
+[layer_measurement] m76 :: 15,15,15 :: 3 :: 0.000870392
+[layer_measurement] m76 :: 15,15,15 :: 4 :: 0.0409816
+[layer_measurement] m76 :: 15,15,15 :: 5 :: 0.0228712
+[layer_measurement] m76 :: 15,15,15 :: 6 :: 0.0107396
+[layer_measurement] m76 :: 15,15,15 :: 7 :: 0.00185135
+[network_measurement] m76 :: 15,15,15 :: 0.704625
+[layer_measurement] m76 :: 15,15,15 :: 0 :: 0.112774
+[layer_measurement] m76 :: 15,15,15 :: 1 :: 0.00664078
+[layer_measurement] m76 :: 15,15,15 :: 2 :: 0.504468
+[layer_measurement] m76 :: 15,15,15 :: 3 :: 0.000875949
+[layer_measurement] m76 :: 15,15,15 :: 4 :: 0.0403529
+[layer_measurement] m76 :: 15,15,15 :: 5 :: 0.0224639
+[layer_measurement] m76 :: 15,15,15 :: 6 :: 0.0108257
+[layer_measurement] m76 :: 15,15,15 :: 7 :: 0.00175558
+[network_measurement] m76 :: 15,15,15 :: 0.70367
+[layer_measurement] m76 :: 15,15,15 :: 0 :: 0.113119
+[layer_measurement] m76 :: 15,15,15 :: 1 :: 0.00664546
+[layer_measurement] m76 :: 15,15,15 :: 2 :: 0.504315
+[layer_measurement] m76 :: 15,15,15 :: 3 :: 0.00125705
+[layer_measurement] m76 :: 15,15,15 :: 4 :: 0.0405682
+[layer_measurement] m76 :: 15,15,15 :: 5 :: 0.0226297
+[layer_measurement] m76 :: 15,15,15 :: 6 :: 0.0109373
+[layer_measurement] m76 :: 15,15,15 :: 7 :: 0.00196609
+[network_measurement] m76 :: 15,15,15 :: 0.705293
+[network_average] m76 :: 15,15,15 :: 0.703216
+[network_throughput] m76 :: 15,15,15 :: 4799.38
+## m76 :: starting benchmark for output size 16,16,16
+[network_requirements] m76 :: 16,16,16 :: RM: 33 MB WM: 1749 MB
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.118291
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.00774068
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 0.54697
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.000935296
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.0452074
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.0255553
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.0122567
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.00174762
+[network_measurement] m76 :: 16,16,16 :: 0.762901
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.121469
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.00709537
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 0.546497
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.00126844
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.044196
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.0249629
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.0127257
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.00170242
+[network_measurement] m76 :: 16,16,16 :: 0.763797
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.121356
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.00736461
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 0.546727
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.000885469
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.0440759
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.0249615
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.0123022
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.00174726
+[network_measurement] m76 :: 16,16,16 :: 0.763218
+[layer_measurement] m76 :: 16,16,16 :: 0 :: 0.121454
+[layer_measurement] m76 :: 16,16,16 :: 1 :: 0.00709666
+[layer_measurement] m76 :: 16,16,16 :: 2 :: 0.547761
+[layer_measurement] m76 :: 16,16,16 :: 3 :: 0.000887389
+[layer_measurement] m76 :: 16,16,16 :: 4 :: 0.043863
+[layer_measurement] m76 :: 16,16,16 :: 5 :: 0.0249143
+[layer_measurement] m76 :: 16,16,16 :: 6 :: 0.0121994
+[layer_measurement] m76 :: 16,16,16 :: 7 :: 0.00170479
+[network_measurement] m76 :: 16,16,16 :: 0.763668
+[network_average] m76 :: 16,16,16 :: 0.763396
+[network_throughput] m76 :: 16,16,16 :: 5365.5
+## m76 :: starting benchmark for output size 17,17,17
+[network_requirements] m76 :: 17,17,17 :: RM: 33 MB WM: 1874 MB
+[layer_measurement] m76 :: 17,17,17 :: 0 :: 0.124058
+[layer_measurement] m76 :: 17,17,17 :: 1 :: 0.00756611
+[layer_measurement] m76 :: 17,17,17 :: 2 :: 0.588967
+[layer_measurement] m76 :: 17,17,17 :: 3 :: 0.00095583
+[layer_measurement] m76 :: 17,17,17 :: 4 :: 0.0478604
+[layer_measurement] m76 :: 17,17,17 :: 5 :: 0.0274176
+[layer_measurement] m76 :: 17,17,17 :: 6 :: 0.0138604
+[layer_measurement] m76 :: 17,17,17 :: 7 :: 0.00227445
+[network_measurement] m76 :: 17,17,17 :: 0.817248
+[layer_measurement] m76 :: 17,17,17 :: 0 :: 0.126834
+[layer_measurement] m76 :: 17,17,17 :: 1 :: 0.0075413
+[layer_measurement] m76 :: 17,17,17 :: 2 :: 0.592229
+[layer_measurement] m76 :: 17,17,17 :: 3 :: 0.000959678
+[layer_measurement] m76 :: 17,17,17 :: 4 :: 0.0477097
+[layer_measurement] m76 :: 17,17,17 :: 5 :: 0.0274748
+[layer_measurement] m76 :: 17,17,17 :: 6 :: 0.0139981
+[layer_measurement] m76 :: 17,17,17 :: 7 :: 0.00228179
+[network_measurement] m76 :: 17,17,17 :: 0.82304
+[layer_measurement] m76 :: 17,17,17 :: 0 :: 0.129276
+[layer_measurement] m76 :: 17,17,17 :: 1 :: 0.00756887
+[layer_measurement] m76 :: 17,17,17 :: 2 :: 0.590761
+[layer_measurement] m76 :: 17,17,17 :: 3 :: 0.000951297
+[layer_measurement] m76 :: 17,17,17 :: 4 :: 0.0476429
+[layer_measurement] m76 :: 17,17,17 :: 5 :: 0.0275343
+[layer_measurement] m76 :: 17,17,17 :: 6 :: 0.0140243
+[layer_measurement] m76 :: 17,17,17 :: 7 :: 0.00235705
+[network_measurement] m76 :: 17,17,17 :: 0.824121
+[layer_measurement] m76 :: 17,17,17 :: 0 :: 0.125997
+[layer_measurement] m76 :: 17,17,17 :: 1 :: 0.0075546
+[layer_measurement] m76 :: 17,17,17 :: 2 :: 0.593247
+[layer_measurement] m76 :: 17,17,17 :: 3 :: 0.000952982
+[layer_measurement] m76 :: 17,17,17 :: 4 :: 0.048082
+[layer_measurement] m76 :: 17,17,17 :: 5 :: 0.0278046
+[layer_measurement] m76 :: 17,17,17 :: 6 :: 0.0141233
+[layer_measurement] m76 :: 17,17,17 :: 7 :: 0.00230616
+[network_measurement] m76 :: 17,17,17 :: 0.824067
+[network_average] m76 :: 17,17,17 :: 0.822119
+[network_throughput] m76 :: 17,17,17 :: 5976.02
+## m76 :: starting benchmark for output size 18,18,18
+[network_requirements] m76 :: 18,18,18 :: RM: 33 MB WM: 2004 MB
+[layer_measurement] m76 :: 18,18,18 :: 0 :: 0.135745
+[layer_measurement] m76 :: 18,18,18 :: 1 :: 0.0101436
+[layer_measurement] m76 :: 18,18,18 :: 2 :: 0.642418
+[layer_measurement] m76 :: 18,18,18 :: 3 :: 0.0010173
+[layer_measurement] m76 :: 18,18,18 :: 4 :: 0.0521559
+[layer_measurement] m76 :: 18,18,18 :: 5 :: 0.0308264
+[layer_measurement] m76 :: 18,18,18 :: 6 :: 0.0153949
+[layer_measurement] m76 :: 18,18,18 :: 7 :: 0.00250781
+[network_measurement] m76 :: 18,18,18 :: 0.894678
+[layer_measurement] m76 :: 18,18,18 :: 0 :: 0.137195
+[layer_measurement] m76 :: 18,18,18 :: 1 :: 0.00808483
+[layer_measurement] m76 :: 18,18,18 :: 2 :: 0.64057
+[layer_measurement] m76 :: 18,18,18 :: 3 :: 0.00101407
+[layer_measurement] m76 :: 18,18,18 :: 4 :: 0.0519623
+[layer_measurement] m76 :: 18,18,18 :: 5 :: 0.0303165
+[layer_measurement] m76 :: 18,18,18 :: 6 :: 0.015721
+[layer_measurement] m76 :: 18,18,18 :: 7 :: 0.00248888
+[network_measurement] m76 :: 18,18,18 :: 0.891697
+[layer_measurement] m76 :: 18,18,18 :: 0 :: 0.1386
+[layer_measurement] m76 :: 18,18,18 :: 1 :: 0.00811404
+[layer_measurement] m76 :: 18,18,18 :: 2 :: 0.637891
+[layer_measurement] m76 :: 18,18,18 :: 3 :: 0.00101723
+[layer_measurement] m76 :: 18,18,18 :: 4 :: 0.0536336
+[layer_measurement] m76 :: 18,18,18 :: 5 :: 0.0299852
+[layer_measurement] m76 :: 18,18,18 :: 6 :: 0.0155744
+[layer_measurement] m76 :: 18,18,18 :: 7 :: 0.00245692
+[network_measurement] m76 :: 18,18,18 :: 0.8916
+[layer_measurement] m76 :: 18,18,18 :: 0 :: 0.136971
+[layer_measurement] m76 :: 18,18,18 :: 1 :: 0.00808803
+[layer_measurement] m76 :: 18,18,18 :: 2 :: 0.640026
+[layer_measurement] m76 :: 18,18,18 :: 3 :: 0.00102103
+[layer_measurement] m76 :: 18,18,18 :: 4 :: 0.0519367
+[layer_measurement] m76 :: 18,18,18 :: 5 :: 0.030284
+[layer_measurement] m76 :: 18,18,18 :: 6 :: 0.0157643
+[layer_measurement] m76 :: 18,18,18 :: 7 :: 0.00249335
+[network_measurement] m76 :: 18,18,18 :: 0.89114
+[network_average] m76 :: 18,18,18 :: 0.892279
+[network_throughput] m76 :: 18,18,18 :: 6536.08
+## m76 :: starting benchmark for output size 19,19,19
+[network_requirements] m76 :: 19,19,19 :: RM: 33 MB WM: 2141 MB
+[layer_measurement] m76 :: 19,19,19 :: 0 :: 0.142301
+[layer_measurement] m76 :: 19,19,19 :: 1 :: 0.00876024
+[layer_measurement] m76 :: 19,19,19 :: 2 :: 0.688473
+[layer_measurement] m76 :: 19,19,19 :: 3 :: 0.00107469
+[layer_measurement] m76 :: 19,19,19 :: 4 :: 0.0562213
+[layer_measurement] m76 :: 19,19,19 :: 5 :: 0.0333966
+[layer_measurement] m76 :: 19,19,19 :: 6 :: 0.0179397
+[layer_measurement] m76 :: 19,19,19 :: 7 :: 0.00303785
+[network_measurement] m76 :: 19,19,19 :: 0.957347
+[layer_measurement] m76 :: 19,19,19 :: 0 :: 0.14547
+[layer_measurement] m76 :: 19,19,19 :: 1 :: 0.00877908
+[layer_measurement] m76 :: 19,19,19 :: 2 :: 0.689435
+[layer_measurement] m76 :: 19,19,19 :: 3 :: 0.00107799
+[layer_measurement] m76 :: 19,19,19 :: 4 :: 0.0562077
+[layer_measurement] m76 :: 19,19,19 :: 5 :: 0.0334352
+[layer_measurement] m76 :: 19,19,19 :: 6 :: 0.0178826
+[layer_measurement] m76 :: 19,19,19 :: 7 :: 0.00304648
+[network_measurement] m76 :: 19,19,19 :: 0.959895
+[layer_measurement] m76 :: 19,19,19 :: 0 :: 0.144206
+[layer_measurement] m76 :: 19,19,19 :: 1 :: 0.00876197
+[layer_measurement] m76 :: 19,19,19 :: 2 :: 0.692837
+[layer_measurement] m76 :: 19,19,19 :: 3 :: 0.00108268
+[layer_measurement] m76 :: 19,19,19 :: 4 :: 0.0562638
+[layer_measurement] m76 :: 19,19,19 :: 5 :: 0.0334289
+[layer_measurement] m76 :: 19,19,19 :: 6 :: 0.0178896
+[layer_measurement] m76 :: 19,19,19 :: 7 :: 0.00303555
+[network_measurement] m76 :: 19,19,19 :: 0.962073
+[layer_measurement] m76 :: 19,19,19 :: 0 :: 0.144412
+[layer_measurement] m76 :: 19,19,19 :: 1 :: 0.00877029
+[layer_measurement] m76 :: 19,19,19 :: 2 :: 0.692812
+[layer_measurement] m76 :: 19,19,19 :: 3 :: 0.00107509
+[layer_measurement] m76 :: 19,19,19 :: 4 :: 0.0562491
+[layer_measurement] m76 :: 19,19,19 :: 5 :: 0.0334509
+[layer_measurement] m76 :: 19,19,19 :: 6 :: 0.0178818
+[layer_measurement] m76 :: 19,19,19 :: 7 :: 0.003025
+[network_measurement] m76 :: 19,19,19 :: 0.962232
+[network_average] m76 :: 19,19,19 :: 0.960387
+[network_throughput] m76 :: 19,19,19 :: 7141.91
+## m76 :: starting benchmark for output size 20,20,20
+[network_requirements] m76 :: 20,20,20 :: RM: 33 MB WM: 2283 MB
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.15218
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.00918905
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 0.737531
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.00114819
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.0602207
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.0365599
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.019881
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.00323413
+[network_measurement] m76 :: 20,20,20 :: 1.02509
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.155722
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.00917291
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 0.738999
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.00114979
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.0614599
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.0366422
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.0201833
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.00327745
+[network_measurement] m76 :: 20,20,20 :: 1.03147
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.155675
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.00918462
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 0.736178
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.00119525
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.0608627
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.0367298
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.0206349
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.00326258
+[network_measurement] m76 :: 20,20,20 :: 1.0286
+[layer_measurement] m76 :: 20,20,20 :: 0 :: 0.157423
+[layer_measurement] m76 :: 20,20,20 :: 1 :: 0.00918807
+[layer_measurement] m76 :: 20,20,20 :: 2 :: 0.737294
+[layer_measurement] m76 :: 20,20,20 :: 3 :: 0.00115207
+[layer_measurement] m76 :: 20,20,20 :: 4 :: 0.0614281
+[layer_measurement] m76 :: 20,20,20 :: 5 :: 0.0361839
+[layer_measurement] m76 :: 20,20,20 :: 6 :: 0.0200156
+[layer_measurement] m76 :: 20,20,20 :: 7 :: 0.00324928
+[network_measurement] m76 :: 20,20,20 :: 1.03079
+[network_average] m76 :: 20,20,20 :: 1.02899
+[network_throughput] m76 :: 20,20,20 :: 7774.62
+## m76 :: starting benchmark for output size 21,21,21
+[network_requirements] m76 :: 21,21,21 :: RM: 33 MB WM: 2432 MB
+[layer_measurement] m76 :: 21,21,21 :: 0 :: 0.182571
+[layer_measurement] m76 :: 21,21,21 :: 1 :: 0.00962967
+[layer_measurement] m76 :: 21,21,21 :: 2 :: 0.787222
+[layer_measurement] m76 :: 21,21,21 :: 3 :: 0.00120832
+[layer_measurement] m76 :: 21,21,21 :: 4 :: 0.0650328
+[layer_measurement] m76 :: 21,21,21 :: 5 :: 0.0396544
+[layer_measurement] m76 :: 21,21,21 :: 6 :: 0.0220404
+[layer_measurement] m76 :: 21,21,21 :: 7 :: 0.0040516
+[network_measurement] m76 :: 21,21,21 :: 1.11688
+[layer_measurement] m76 :: 21,21,21 :: 0 :: 0.184571
+[layer_measurement] m76 :: 21,21,21 :: 1 :: 0.00961112
+[layer_measurement] m76 :: 21,21,21 :: 2 :: 0.790347
+[layer_measurement] m76 :: 21,21,21 :: 3 :: 0.00119962
+[layer_measurement] m76 :: 21,21,21 :: 4 :: 0.0650042
+[layer_measurement] m76 :: 21,21,21 :: 5 :: 0.0397323
+[layer_measurement] m76 :: 21,21,21 :: 6 :: 0.0220208
+[layer_measurement] m76 :: 21,21,21 :: 7 :: 0.00413743
+[network_measurement] m76 :: 21,21,21 :: 1.12182
+[layer_measurement] m76 :: 21,21,21 :: 0 :: 0.185047
+[layer_measurement] m76 :: 21,21,21 :: 1 :: 0.00960842
+[layer_measurement] m76 :: 21,21,21 :: 2 :: 0.787183
+[layer_measurement] m76 :: 21,21,21 :: 3 :: 0.00120067
+[layer_measurement] m76 :: 21,21,21 :: 4 :: 0.0656734
+[layer_measurement] m76 :: 21,21,21 :: 5 :: 0.0400645
+[layer_measurement] m76 :: 21,21,21 :: 6 :: 0.0223117
+[layer_measurement] m76 :: 21,21,21 :: 7 :: 0.00465953
+[network_measurement] m76 :: 21,21,21 :: 1.12093
+[layer_measurement] m76 :: 21,21,21 :: 0 :: 0.185013
+[layer_measurement] m76 :: 21,21,21 :: 1 :: 0.00961215
+[layer_measurement] m76 :: 21,21,21 :: 2 :: 0.791664
+[layer_measurement] m76 :: 21,21,21 :: 3 :: 0.00120858
+[layer_measurement] m76 :: 21,21,21 :: 4 :: 0.0659263
+[layer_measurement] m76 :: 21,21,21 :: 5 :: 0.0403466
+[layer_measurement] m76 :: 21,21,21 :: 6 :: 0.0225021
+[layer_measurement] m76 :: 21,21,21 :: 7 :: 0.00484199
+[network_measurement] m76 :: 21,21,21 :: 1.12637
+[network_average] m76 :: 21,21,21 :: 1.1215
+[network_throughput] m76 :: 21,21,21 :: 8257.7
+## m76 :: starting benchmark for output size 22,22,22
+[network_requirements] m76 :: 22,22,22 :: RM: 33 MB WM: 2587 MB
+[layer_measurement] m76 :: 22,22,22 :: 0 :: 0.173498
+[layer_measurement] m76 :: 22,22,22 :: 1 :: 0.0104498
+[layer_measurement] m76 :: 22,22,22 :: 2 :: 0.847463
+[layer_measurement] m76 :: 22,22,22 :: 3 :: 0.00127847
+[layer_measurement] m76 :: 22,22,22 :: 4 :: 0.0707562
+[layer_measurement] m76 :: 22,22,22 :: 5 :: 0.0440276
+[layer_measurement] m76 :: 22,22,22 :: 6 :: 0.024846
+[layer_measurement] m76 :: 22,22,22 :: 7 :: 0.00405634
+[network_measurement] m76 :: 22,22,22 :: 1.18185
+[layer_measurement] m76 :: 22,22,22 :: 0 :: 0.175646
+[layer_measurement] m76 :: 22,22,22 :: 1 :: 0.0104446
+[layer_measurement] m76 :: 22,22,22 :: 2 :: 0.845471
+[layer_measurement] m76 :: 22,22,22 :: 3 :: 0.00153206
+[layer_measurement] m76 :: 22,22,22 :: 4 :: 0.0710395
+[layer_measurement] m76 :: 22,22,22 :: 5 :: 0.0443861
+[layer_measurement] m76 :: 22,22,22 :: 6 :: 0.025092
+[layer_measurement] m76 :: 22,22,22 :: 7 :: 0.00413928
+[network_measurement] m76 :: 22,22,22 :: 1.18359
+[layer_measurement] m76 :: 22,22,22 :: 0 :: 0.175018
+[layer_measurement] m76 :: 22,22,22 :: 1 :: 0.0104436
+[layer_measurement] m76 :: 22,22,22 :: 2 :: 0.848784
+[layer_measurement] m76 :: 22,22,22 :: 3 :: 0.00127808
+[layer_measurement] m76 :: 22,22,22 :: 4 :: 0.0707483
+[layer_measurement] m76 :: 22,22,22 :: 5 :: 0.044443
+[layer_measurement] m76 :: 22,22,22 :: 6 :: 0.0247553
+[layer_measurement] m76 :: 22,22,22 :: 7 :: 0.00405222
+[network_measurement] m76 :: 22,22,22 :: 1.18503
+[layer_measurement] m76 :: 22,22,22 :: 0 :: 0.177008
+[layer_measurement] m76 :: 22,22,22 :: 1 :: 0.0104376
+[layer_measurement] m76 :: 22,22,22 :: 2 :: 0.846315
+[layer_measurement] m76 :: 22,22,22 :: 3 :: 0.00127523
+[layer_measurement] m76 :: 22,22,22 :: 4 :: 0.0711468
+[layer_measurement] m76 :: 22,22,22 :: 5 :: 0.0435388
+[layer_measurement] m76 :: 22,22,22 :: 6 :: 0.0247668
+[layer_measurement] m76 :: 22,22,22 :: 7 :: 0.00405638
+[network_measurement] m76 :: 22,22,22 :: 1.18398
+[network_average] m76 :: 22,22,22 :: 1.18361
+[network_throughput] m76 :: 22,22,22 :: 8996.2
+## m76 :: starting benchmark for output size 23,23,23
+[network_requirements] m76 :: 23,23,23 :: RM: 33 MB WM: 2749 MB
+[layer_measurement] m76 :: 23,23,23 :: 0 :: 0.182355
+[layer_measurement] m76 :: 23,23,23 :: 1 :: 0.01198
+[layer_measurement] m76 :: 23,23,23 :: 2 :: 0.902607
+[layer_measurement] m76 :: 23,23,23 :: 3 :: 0.00137162
+[layer_measurement] m76 :: 23,23,23 :: 4 :: 0.0760468
+[layer_measurement] m76 :: 23,23,23 :: 5 :: 0.0471081
+[layer_measurement] m76 :: 23,23,23 :: 6 :: 0.0273258
+[layer_measurement] m76 :: 23,23,23 :: 7 :: 0.00497505
+[network_measurement] m76 :: 23,23,23 :: 1.26065
+[layer_measurement] m76 :: 23,23,23 :: 0 :: 0.188209
+[layer_measurement] m76 :: 23,23,23 :: 1 :: 0.011041
+[layer_measurement] m76 :: 23,23,23 :: 2 :: 0.903508
+[layer_measurement] m76 :: 23,23,23 :: 3 :: 0.00136646
+[layer_measurement] m76 :: 23,23,23 :: 4 :: 0.0762291
+[layer_measurement] m76 :: 23,23,23 :: 5 :: 0.0471769
+[layer_measurement] m76 :: 23,23,23 :: 6 :: 0.0273404
+[layer_measurement] m76 :: 23,23,23 :: 7 :: 0.00495492
+[network_measurement] m76 :: 23,23,23 :: 1.26568
+[layer_measurement] m76 :: 23,23,23 :: 0 :: 0.182317
+[layer_measurement] m76 :: 23,23,23 :: 1 :: 0.011032
+[layer_measurement] m76 :: 23,23,23 :: 2 :: 0.904776
+[layer_measurement] m76 :: 23,23,23 :: 3 :: 0.0013733
+[layer_measurement] m76 :: 23,23,23 :: 4 :: 0.0761394
+[layer_measurement] m76 :: 23,23,23 :: 5 :: 0.047678
+[layer_measurement] m76 :: 23,23,23 :: 6 :: 0.027494
+[layer_measurement] m76 :: 23,23,23 :: 7 :: 0.00501439
+[network_measurement] m76 :: 23,23,23 :: 1.26162
+[layer_measurement] m76 :: 23,23,23 :: 0 :: 0.185321
+[layer_measurement] m76 :: 23,23,23 :: 1 :: 0.01105
+[layer_measurement] m76 :: 23,23,23 :: 2 :: 0.905313
+[layer_measurement] m76 :: 23,23,23 :: 3 :: 0.00135827
+[layer_measurement] m76 :: 23,23,23 :: 4 :: 0.0752995
+[layer_measurement] m76 :: 23,23,23 :: 5 :: 0.0471567
+[layer_measurement] m76 :: 23,23,23 :: 6 :: 0.0272988
+[layer_measurement] m76 :: 23,23,23 :: 7 :: 0.00501226
+[network_measurement] m76 :: 23,23,23 :: 1.26362
+[network_average] m76 :: 23,23,23 :: 1.26289
+[network_throughput] m76 :: 23,23,23 :: 9634.24
+## m76 :: starting benchmark for output size 24,24,24
+[network_requirements] m76 :: 24,24,24 :: RM: 33 MB WM: 2917 MB
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.195079
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.0116917
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 0.962985
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.00138157
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.0816439
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.0519195
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.03034
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.00577996
+[network_measurement] m76 :: 24,24,24 :: 1.34732
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.201273
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.0116832
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 0.961248
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.00138296
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.0817529
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.0523371
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.0299958
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.00572863
+[network_measurement] m76 :: 24,24,24 :: 1.35156
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.198099
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.011675
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 0.961674
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.00138152
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.081715
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.0519166
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.0303718
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.00567203
+[network_measurement] m76 :: 24,24,24 :: 1.34865
+[layer_measurement] m76 :: 24,24,24 :: 0 :: 0.202768
+[layer_measurement] m76 :: 24,24,24 :: 1 :: 0.0116924
+[layer_measurement] m76 :: 24,24,24 :: 2 :: 0.961383
+[layer_measurement] m76 :: 24,24,24 :: 3 :: 0.00140775
+[layer_measurement] m76 :: 24,24,24 :: 4 :: 0.0822335
+[layer_measurement] m76 :: 24,24,24 :: 5 :: 0.0522282
+[layer_measurement] m76 :: 24,24,24 :: 6 :: 0.0310509
+[layer_measurement] m76 :: 24,24,24 :: 7 :: 0.00567414
+[network_measurement] m76 :: 24,24,24 :: 1.35475
+[network_average] m76 :: 24,24,24 :: 1.35057
+[network_throughput] m76 :: 24,24,24 :: 10235.7
+## m76 :: starting benchmark for output size 25,25,25
+[network_requirements] m76 :: 25,25,25 :: RM: 33 MB WM: 3092 MB
+[layer_measurement] m76 :: 25,25,25 :: 0 :: 0.205524
+[layer_measurement] m76 :: 25,25,25 :: 1 :: 0.0123126
+[layer_measurement] m76 :: 25,25,25 :: 2 :: 1.02578
+[layer_measurement] m76 :: 25,25,25 :: 3 :: 0.00151768
+[layer_measurement] m76 :: 25,25,25 :: 4 :: 0.0878379
+[layer_measurement] m76 :: 25,25,25 :: 5 :: 0.055596
+[layer_measurement] m76 :: 25,25,25 :: 6 :: 0.0329816
+[layer_measurement] m76 :: 25,25,25 :: 7 :: 0.00620688
+[network_measurement] m76 :: 25,25,25 :: 1.43457
+[layer_measurement] m76 :: 25,25,25 :: 0 :: 0.209192
+[layer_measurement] m76 :: 25,25,25 :: 1 :: 0.0123024
+[layer_measurement] m76 :: 25,25,25 :: 2 :: 1.02703
+[layer_measurement] m76 :: 25,25,25 :: 3 :: 0.00157487
+[layer_measurement] m76 :: 25,25,25 :: 4 :: 0.0885113
+[layer_measurement] m76 :: 25,25,25 :: 5 :: 0.0558312
+[layer_measurement] m76 :: 25,25,25 :: 6 :: 0.0331802
+[layer_measurement] m76 :: 25,25,25 :: 7 :: 0.00627263
+[network_measurement] m76 :: 25,25,25 :: 1.44046
+[layer_measurement] m76 :: 25,25,25 :: 0 :: 0.208835
+[layer_measurement] m76 :: 25,25,25 :: 1 :: 0.0124825
+[layer_measurement] m76 :: 25,25,25 :: 2 :: 1.03137
+[layer_measurement] m76 :: 25,25,25 :: 3 :: 0.0018807
+[layer_measurement] m76 :: 25,25,25 :: 4 :: 0.0879412
+[layer_measurement] m76 :: 25,25,25 :: 5 :: 0.056329
+[layer_measurement] m76 :: 25,25,25 :: 6 :: 0.0334822
+[layer_measurement] m76 :: 25,25,25 :: 7 :: 0.00633631
+[network_measurement] m76 :: 25,25,25 :: 1.44584
+[layer_measurement] m76 :: 25,25,25 :: 0 :: 0.212347
+[layer_measurement] m76 :: 25,25,25 :: 1 :: 0.0130392
+[layer_measurement] m76 :: 25,25,25 :: 2 :: 1.02407
+[layer_measurement] m76 :: 25,25,25 :: 3 :: 0.00151853
+[layer_measurement] m76 :: 25,25,25 :: 4 :: 0.0883622
+[layer_measurement] m76 :: 25,25,25 :: 5 :: 0.0565319
+[layer_measurement] m76 :: 25,25,25 :: 6 :: 0.0336309
+[layer_measurement] m76 :: 25,25,25 :: 7 :: 0.00628776
+[network_measurement] m76 :: 25,25,25 :: 1.44243
+[network_average] m76 :: 25,25,25 :: 1.44083
+[network_throughput] m76 :: 25,25,25 :: 10844.5
+## m76 :: starting benchmark for output size 26,26,26
+[network_requirements] m76 :: 26,26,26 :: RM: 33 MB WM: 3274 MB
+[layer_measurement] m76 :: 26,26,26 :: 0 :: 0.219291
+[layer_measurement] m76 :: 26,26,26 :: 1 :: 0.0141337
+[layer_measurement] m76 :: 26,26,26 :: 2 :: 1.09063
+[layer_measurement] m76 :: 26,26,26 :: 3 :: 0.00158479
+[layer_measurement] m76 :: 26,26,26 :: 4 :: 0.0945266
+[layer_measurement] m76 :: 26,26,26 :: 5 :: 0.0616933
+[layer_measurement] m76 :: 26,26,26 :: 6 :: 0.0366296
+[layer_measurement] m76 :: 26,26,26 :: 7 :: 0.0070796
+[network_measurement] m76 :: 26,26,26 :: 1.53301
+[layer_measurement] m76 :: 26,26,26 :: 0 :: 0.221414
+[layer_measurement] m76 :: 26,26,26 :: 1 :: 0.0131357
+[layer_measurement] m76 :: 26,26,26 :: 2 :: 1.09365
+[layer_measurement] m76 :: 26,26,26 :: 3 :: 0.00156676
+[layer_measurement] m76 :: 26,26,26 :: 4 :: 0.0946511
+[layer_measurement] m76 :: 26,26,26 :: 5 :: 0.0609312
+[layer_measurement] m76 :: 26,26,26 :: 6 :: 0.0366472
+[layer_measurement] m76 :: 26,26,26 :: 7 :: 0.00712872
+[network_measurement] m76 :: 26,26,26 :: 1.53609
+[layer_measurement] m76 :: 26,26,26 :: 0 :: 0.223785
+[layer_measurement] m76 :: 26,26,26 :: 1 :: 0.0131343
+[layer_measurement] m76 :: 26,26,26 :: 2 :: 1.0927
+[layer_measurement] m76 :: 26,26,26 :: 3 :: 0.00157715
+[layer_measurement] m76 :: 26,26,26 :: 4 :: 0.0944993
+[layer_measurement] m76 :: 26,26,26 :: 5 :: 0.0614963
+[layer_measurement] m76 :: 26,26,26 :: 6 :: 0.0365711
+[layer_measurement] m76 :: 26,26,26 :: 7 :: 0.00712756
+[network_measurement] m76 :: 26,26,26 :: 1.5378
+[layer_measurement] m76 :: 26,26,26 :: 0 :: 0.22704
+[layer_measurement] m76 :: 26,26,26 :: 1 :: 0.0131364
+[layer_measurement] m76 :: 26,26,26 :: 2 :: 1.09067
+[layer_measurement] m76 :: 26,26,26 :: 3 :: 0.00185976
+[layer_measurement] m76 :: 26,26,26 :: 4 :: 0.0949486
+[layer_measurement] m76 :: 26,26,26 :: 5 :: 0.0610504
+[layer_measurement] m76 :: 26,26,26 :: 6 :: 0.0367205
+[layer_measurement] m76 :: 26,26,26 :: 7 :: 0.00760878
+[network_measurement] m76 :: 26,26,26 :: 1.53999
+[network_average] m76 :: 26,26,26 :: 1.53672
+[network_throughput] m76 :: 26,26,26 :: 11437.3
+## m76 :: starting benchmark for output size 27,27,27
+[network_requirements] m76 :: 27,27,27 :: RM: 33 MB WM: 3463 MB
+[layer_measurement] m76 :: 27,27,27 :: 0 :: 0.230564
+[layer_measurement] m76 :: 27,27,27 :: 1 :: 0.0148356
+[layer_measurement] m76 :: 27,27,27 :: 2 :: 1.15765
+[layer_measurement] m76 :: 27,27,27 :: 3 :: 0.00165204
+[layer_measurement] m76 :: 27,27,27 :: 4 :: 0.100902
+[layer_measurement] m76 :: 27,27,27 :: 5 :: 0.0665099
+[layer_measurement] m76 :: 27,27,27 :: 6 :: 0.0400801
+[layer_measurement] m76 :: 27,27,27 :: 7 :: 0.00761752
+[network_measurement] m76 :: 27,27,27 :: 1.62754
+[layer_measurement] m76 :: 27,27,27 :: 0 :: 0.232301
+[layer_measurement] m76 :: 27,27,27 :: 1 :: 0.0138368
+[layer_measurement] m76 :: 27,27,27 :: 2 :: 1.15847
+[layer_measurement] m76 :: 27,27,27 :: 3 :: 0.00167982
+[layer_measurement] m76 :: 27,27,27 :: 4 :: 0.1008
+[layer_measurement] m76 :: 27,27,27 :: 5 :: 0.0663531
+[layer_measurement] m76 :: 27,27,27 :: 6 :: 0.0401046
+[layer_measurement] m76 :: 27,27,27 :: 7 :: 0.00761602
+[network_measurement] m76 :: 27,27,27 :: 1.62861
+[layer_measurement] m76 :: 27,27,27 :: 0 :: 0.231763
+[layer_measurement] m76 :: 27,27,27 :: 1 :: 0.0138461
+[layer_measurement] m76 :: 27,27,27 :: 2 :: 1.17216
+[layer_measurement] m76 :: 27,27,27 :: 3 :: 0.00922585
+[layer_measurement] m76 :: 27,27,27 :: 4 :: 0.100783
+[layer_measurement] m76 :: 27,27,27 :: 5 :: 0.0640454
+[layer_measurement] m76 :: 27,27,27 :: 6 :: 0.0394079
+[layer_measurement] m76 :: 27,27,27 :: 7 :: 0.00746899
+[network_measurement] m76 :: 27,27,27 :: 1.64759
+[layer_measurement] m76 :: 27,27,27 :: 0 :: 0.234805
+[layer_measurement] m76 :: 27,27,27 :: 1 :: 0.0138394
+[layer_measurement] m76 :: 27,27,27 :: 2 :: 1.15716
+[layer_measurement] m76 :: 27,27,27 :: 3 :: 0.00164984
+[layer_measurement] m76 :: 27,27,27 :: 4 :: 0.100819
+[layer_measurement] m76 :: 27,27,27 :: 5 :: 0.0660606
+[layer_measurement] m76 :: 27,27,27 :: 6 :: 0.0403307
+[layer_measurement] m76 :: 27,27,27 :: 7 :: 0.00762778
+[network_measurement] m76 :: 27,27,27 :: 1.62974
+[network_average] m76 :: 27,27,27 :: 1.63337
+[network_throughput] m76 :: 27,27,27 :: 12050.5
+## m76 :: starting benchmark for output size 28,28,28
+[network_requirements] m76 :: 28,28,28 :: RM: 33 MB WM: 3659 MB
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.245437
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.0146241
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.22758
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.00175554
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 0.107908
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.0716042
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.0439398
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.00864003
+[network_measurement] m76 :: 28,28,28 :: 1.73013
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.246897
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.0146117
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.22854
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.00236573
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 0.107132
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.0699836
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.0439168
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.00864487
+[network_measurement] m76 :: 28,28,28 :: 1.72989
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.248351
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.0146254
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.22913
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.00174935
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 0.107348
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.0699446
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.0439201
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.00863539
+[network_measurement] m76 :: 28,28,28 :: 1.73152
+[layer_measurement] m76 :: 28,28,28 :: 0 :: 0.250018
+[layer_measurement] m76 :: 28,28,28 :: 1 :: 0.0146302
+[layer_measurement] m76 :: 28,28,28 :: 2 :: 1.23117
+[layer_measurement] m76 :: 28,28,28 :: 3 :: 0.00175279
+[layer_measurement] m76 :: 28,28,28 :: 4 :: 0.109199
+[layer_measurement] m76 :: 28,28,28 :: 5 :: 0.0712491
+[layer_measurement] m76 :: 28,28,28 :: 6 :: 0.0439024
+[layer_measurement] m76 :: 28,28,28 :: 7 :: 0.0086605
+[network_measurement] m76 :: 28,28,28 :: 1.73837
+[network_average] m76 :: 28,28,28 :: 1.73248
+[network_throughput] m76 :: 28,28,28 :: 12670.9
+## m76 :: starting benchmark for output size 29,29,29
+[network_requirements] m76 :: 29,29,29 :: RM: 33 MB WM: 3862 MB
+[layer_measurement] m76 :: 29,29,29 :: 0 :: 0.257839
+[layer_measurement] m76 :: 29,29,29 :: 1 :: 0.0158397
+[layer_measurement] m76 :: 29,29,29 :: 2 :: 1.30461
+[layer_measurement] m76 :: 29,29,29 :: 3 :: 0.00208982
+[layer_measurement] m76 :: 29,29,29 :: 4 :: 0.115029
+[layer_measurement] m76 :: 29,29,29 :: 5 :: 0.0754169
+[layer_measurement] m76 :: 29,29,29 :: 6 :: 0.0472805
+[layer_measurement] m76 :: 29,29,29 :: 7 :: 0.00953843
+[network_measurement] m76 :: 29,29,29 :: 1.83693
+[layer_measurement] m76 :: 29,29,29 :: 0 :: 0.265813
+[layer_measurement] m76 :: 29,29,29 :: 1 :: 0.0154172
+[layer_measurement] m76 :: 29,29,29 :: 2 :: 1.29795
+[layer_measurement] m76 :: 29,29,29 :: 3 :: 0.00186502
+[layer_measurement] m76 :: 29,29,29 :: 4 :: 0.114981
+[layer_measurement] m76 :: 29,29,29 :: 5 :: 0.0768146
+[layer_measurement] m76 :: 29,29,29 :: 6 :: 0.0475818
+[layer_measurement] m76 :: 29,29,29 :: 7 :: 0.00953141
+[network_measurement] m76 :: 29,29,29 :: 1.83828
+[layer_measurement] m76 :: 29,29,29 :: 0 :: 0.25715
+[layer_measurement] m76 :: 29,29,29 :: 1 :: 0.0152058
+[layer_measurement] m76 :: 29,29,29 :: 2 :: 1.30817
+[layer_measurement] m76 :: 29,29,29 :: 3 :: 0.00183995
+[layer_measurement] m76 :: 29,29,29 :: 4 :: 0.115241
+[layer_measurement] m76 :: 29,29,29 :: 5 :: 0.0761671
+[layer_measurement] m76 :: 29,29,29 :: 6 :: 0.048016
+[layer_measurement] m76 :: 29,29,29 :: 7 :: 0.00968074
+[network_measurement] m76 :: 29,29,29 :: 1.84004
+[layer_measurement] m76 :: 29,29,29 :: 0 :: 0.26674
+[layer_measurement] m76 :: 29,29,29 :: 1 :: 0.0154114
+[layer_measurement] m76 :: 29,29,29 :: 2 :: 1.29984
+[layer_measurement] m76 :: 29,29,29 :: 3 :: 0.00183774
+[layer_measurement] m76 :: 29,29,29 :: 4 :: 0.116443
+[layer_measurement] m76 :: 29,29,29 :: 5 :: 0.0762168
+[layer_measurement] m76 :: 29,29,29 :: 6 :: 0.0471589
+[layer_measurement] m76 :: 29,29,29 :: 7 :: 0.00943274
+[network_measurement] m76 :: 29,29,29 :: 1.84219
+[network_average] m76 :: 29,29,29 :: 1.83936
+[network_throughput] m76 :: 29,29,29 :: 13259.5
+## m76 :: starting benchmark for output size 30,30,30
+[network_requirements] m76 :: 30,30,30 :: RM: 33 MB WM: 4073 MB
+[layer_measurement] m76 :: 30,30,30 :: 0 :: 0.273679
+[layer_measurement] m76 :: 30,30,30 :: 1 :: 0.0163845
+[layer_measurement] m76 :: 30,30,30 :: 2 :: 1.37531
+[layer_measurement] m76 :: 30,30,30 :: 3 :: 0.00194339
+[layer_measurement] m76 :: 30,30,30 :: 4 :: 0.12194
+[layer_measurement] m76 :: 30,30,30 :: 5 :: 0.0815668
+[layer_measurement] m76 :: 30,30,30 :: 6 :: 0.0517383
+[layer_measurement] m76 :: 30,30,30 :: 7 :: 0.0104406
+[network_measurement] m76 :: 30,30,30 :: 1.94204
+[layer_measurement] m76 :: 30,30,30 :: 0 :: 0.275094
+[layer_measurement] m76 :: 30,30,30 :: 1 :: 0.0162379
+[layer_measurement] m76 :: 30,30,30 :: 2 :: 1.37623
+[layer_measurement] m76 :: 30,30,30 :: 3 :: 0.00194284
+[layer_measurement] m76 :: 30,30,30 :: 4 :: 0.12217
+[layer_measurement] m76 :: 30,30,30 :: 5 :: 0.0823388
+[layer_measurement] m76 :: 30,30,30 :: 6 :: 0.0517416
+[layer_measurement] m76 :: 30,30,30 :: 7 :: 0.0105137
+[network_measurement] m76 :: 30,30,30 :: 1.94495
+[layer_measurement] m76 :: 30,30,30 :: 0 :: 0.277674
+[layer_measurement] m76 :: 30,30,30 :: 1 :: 0.0162057
+[layer_measurement] m76 :: 30,30,30 :: 2 :: 1.37858
+[layer_measurement] m76 :: 30,30,30 :: 3 :: 0.00193627
+[layer_measurement] m76 :: 30,30,30 :: 4 :: 0.122143
+[layer_measurement] m76 :: 30,30,30 :: 5 :: 0.0822221
+[layer_measurement] m76 :: 30,30,30 :: 6 :: 0.0518168
+[layer_measurement] m76 :: 30,30,30 :: 7 :: 0.0104718
+[network_measurement] m76 :: 30,30,30 :: 1.94978
+[layer_measurement] m76 :: 30,30,30 :: 0 :: 0.279404
+[layer_measurement] m76 :: 30,30,30 :: 1 :: 0.0162061
+[layer_measurement] m76 :: 30,30,30 :: 2 :: 1.38093
+[layer_measurement] m76 :: 30,30,30 :: 3 :: 0.00193814
+[layer_measurement] m76 :: 30,30,30 :: 4 :: 0.123634
+[layer_measurement] m76 :: 30,30,30 :: 5 :: 0.0826013
+[layer_measurement] m76 :: 30,30,30 :: 6 :: 0.0517364
+[layer_measurement] m76 :: 30,30,30 :: 7 :: 0.0104284
+[network_measurement] m76 :: 30,30,30 :: 1.9556
+[network_average] m76 :: 30,30,30 :: 1.94809
+[network_throughput] m76 :: 30,30,30 :: 13859.7
+## m76 :: starting benchmark for output size 31,31,31
+[network_requirements] m76 :: 31,31,31 :: RM: 33 MB WM: 4291 MB
+[layer_measurement] m76 :: 31,31,31 :: 0 :: 0.285079
+[layer_measurement] m76 :: 31,31,31 :: 1 :: 0.017174
+[layer_measurement] m76 :: 31,31,31 :: 2 :: 1.4585
+[layer_measurement] m76 :: 31,31,31 :: 3 :: 0.00202043
+[layer_measurement] m76 :: 31,31,31 :: 4 :: 0.130013
+[layer_measurement] m76 :: 31,31,31 :: 5 :: 0.0882805
+[layer_measurement] m76 :: 31,31,31 :: 6 :: 0.0562131
+[layer_measurement] m76 :: 31,31,31 :: 7 :: 0.0112941
+[network_measurement] m76 :: 31,31,31 :: 2.05792
+[layer_measurement] m76 :: 31,31,31 :: 0 :: 0.289134
+[layer_measurement] m76 :: 31,31,31 :: 1 :: 0.0171529
+[layer_measurement] m76 :: 31,31,31 :: 2 :: 1.45369
+[layer_measurement] m76 :: 31,31,31 :: 3 :: 0.0020106
+[layer_measurement] m76 :: 31,31,31 :: 4 :: 0.130017
+[layer_measurement] m76 :: 31,31,31 :: 5 :: 0.0885019
+[layer_measurement] m76 :: 31,31,31 :: 6 :: 0.0562071
+[layer_measurement] m76 :: 31,31,31 :: 7 :: 0.0112908
+[network_measurement] m76 :: 31,31,31 :: 2.0571
+[layer_measurement] m76 :: 31,31,31 :: 0 :: 0.292241
+[layer_measurement] m76 :: 31,31,31 :: 1 :: 0.0171344
+[layer_measurement] m76 :: 31,31,31 :: 2 :: 1.47855
+[layer_measurement] m76 :: 31,31,31 :: 3 :: 0.00856068
+[layer_measurement] m76 :: 31,31,31 :: 4 :: 0.126363
+[layer_measurement] m76 :: 31,31,31 :: 5 :: 0.0861906
+[layer_measurement] m76 :: 31,31,31 :: 6 :: 0.0561561
+[layer_measurement] m76 :: 31,31,31 :: 7 :: 0.0118004
+[network_measurement] m76 :: 31,31,31 :: 2.0876
+[layer_measurement] m76 :: 31,31,31 :: 0 :: 0.291274
+[layer_measurement] m76 :: 31,31,31 :: 1 :: 0.0171725
+[layer_measurement] m76 :: 31,31,31 :: 2 :: 1.45797
+[layer_measurement] m76 :: 31,31,31 :: 3 :: 0.00201038
+[layer_measurement] m76 :: 31,31,31 :: 4 :: 0.130143
+[layer_measurement] m76 :: 31,31,31 :: 5 :: 0.0876908
+[layer_measurement] m76 :: 31,31,31 :: 6 :: 0.0561755
+[layer_measurement] m76 :: 31,31,31 :: 7 :: 0.0112705
+[network_measurement] m76 :: 31,31,31 :: 2.06293
+[network_average] m76 :: 31,31,31 :: 2.06639
+[network_throughput] m76 :: 31,31,31 :: 14416.9
+## m76 :: starting benchmark for output size 32,32,32
+[network_requirements] m76 :: 32,32,32 :: RM: 33 MB WM: 4517 MB
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.302494
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0191889
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.54139
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.00213229
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 0.138274
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.094647
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.0608211
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0123114
+[network_measurement] m76 :: 32,32,32 :: 2.18118
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.307115
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0180345
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.54001
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.00211499
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 0.137592
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.0929047
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.0612138
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0123101
+[network_measurement] m76 :: 32,32,32 :: 2.18087
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.305003
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0180609
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.54189
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.00211345
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 0.137288
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.0939038
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.0608508
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0122803
+[network_measurement] m76 :: 32,32,32 :: 2.18103
+[layer_measurement] m76 :: 32,32,32 :: 0 :: 0.305592
+[layer_measurement] m76 :: 32,32,32 :: 1 :: 0.0180482
+[layer_measurement] m76 :: 32,32,32 :: 2 :: 1.54652
+[layer_measurement] m76 :: 32,32,32 :: 3 :: 0.00213004
+[layer_measurement] m76 :: 32,32,32 :: 4 :: 0.137294
+[layer_measurement] m76 :: 32,32,32 :: 5 :: 0.0936386
+[layer_measurement] m76 :: 32,32,32 :: 6 :: 0.0608353
+[layer_measurement] m76 :: 32,32,32 :: 7 :: 0.0123226
+[network_measurement] m76 :: 32,32,32 :: 2.18626
+[network_average] m76 :: 32,32,32 :: 2.18233
+[network_throughput] m76 :: 32,32,32 :: 15015.1
+## m76 :: starting benchmark for output size 33,33,33
+[network_requirements] m76 :: 33,33,33 :: RM: 33 MB WM: 4750 MB
+[network_information] m76 :: 33,33,33 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 34,34,34
+[network_requirements] m76 :: 34,34,34 :: RM: 33 MB WM: 4992 MB
+[network_information] m76 :: 34,34,34 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 35,35,35
+[network_requirements] m76 :: 35,35,35 :: RM: 33 MB WM: 5241 MB
+[network_information] m76 :: 35,35,35 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 36,36,36
+[network_requirements] m76 :: 36,36,36 :: RM: 33 MB WM: 5499 MB
+[network_information] m76 :: 36,36,36 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 37,37,37
+[network_requirements] m76 :: 37,37,37 :: RM: 33 MB WM: 5765 MB
+[network_information] m76 :: 37,37,37 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 38,38,38
+[network_requirements] m76 :: 38,38,38 :: RM: 33 MB WM: 6039 MB
+[network_information] m76 :: 38,38,38 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 39,39,39
+[network_requirements] m76 :: 39,39,39 :: RM: 33 MB WM: 6322 MB
+[network_information] m76 :: 39,39,39 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 40,40,40
+[network_requirements] m76 :: 40,40,40 :: RM: 33 MB WM: 6614 MB
+[network_information] m76 :: 40,40,40 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 41,41,41
+[network_requirements] m76 :: 41,41,41 :: RM: 33 MB WM: 6915 MB
+[network_information] m76 :: 41,41,41 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 42,42,42
+[network_requirements] m76 :: 42,42,42 :: RM: 33 MB WM: 7224 MB
+[network_information] m76 :: 42,42,42 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 43,43,43
+[network_requirements] m76 :: 43,43,43 :: RM: 33 MB WM: 7543 MB
+[network_information] m76 :: 43,43,43 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 44,44,44
+[network_requirements] m76 :: 44,44,44 :: RM: 33 MB WM: 7871 MB
+[network_information] m76 :: 44,44,44 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 45,45,45
+[network_requirements] m76 :: 45,45,45 :: RM: 33 MB WM: 8208 MB
+[network_information] m76 :: 45,45,45 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 46,46,46
+[network_requirements] m76 :: 46,46,46 :: RM: 33 MB WM: 8554 MB
+[network_information] m76 :: 46,46,46 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 47,47,47
+[network_requirements] m76 :: 47,47,47 :: RM: 33 MB WM: 8911 MB
+[network_information] m76 :: 47,47,47 :: IS NOT WORKABLE!
+## m76 :: starting benchmark for output size 48,48,48
+[network_exception] m76 :: 48,48,48 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 49,49,49
+[network_exception] m76 :: 49,49,49 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 50,50,50
+[network_exception] m76 :: 50,50,50 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 51,51,51
+[network_exception] m76 :: 51,51,51 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 52,52,52
+[network_exception] m76 :: 52,52,52 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 53,53,53
+[network_exception] m76 :: 53,53,53 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 54,54,54
+[network_exception] m76 :: 54,54,54 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 55,55,55
+[network_exception] m76 :: 55,55,55 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 56,56,56
+[network_exception] m76 :: 56,56,56 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 57,57,57
+[network_exception] m76 :: 57,57,57 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 58,58,58
+[network_exception] m76 :: 58,58,58 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 59,59,59
+[network_exception] m76 :: 59,59,59 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 60,60,60
+[network_exception] m76 :: 60,60,60 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 61,61,61
+[network_exception] m76 :: 61,61,61 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 62,62,62
+[network_exception] m76 :: 62,62,62 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 63,63,63
+[network_exception] m76 :: 63,63,63 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 64,64,64
+[network_exception] m76 :: 64,64,64 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 65,65,65
+[network_exception] m76 :: 65,65,65 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 66,66,66
+[network_exception] m76 :: 66,66,66 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 67,67,67
+[network_exception] m76 :: 67,67,67 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 68,68,68
+[network_exception] m76 :: 68,68,68 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 69,69,69
+[network_exception] m76 :: 69,69,69 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 70,70,70
+[network_exception] m76 :: 70,70,70 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 71,71,71
+[network_exception] m76 :: 71,71,71 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 72,72,72
+[network_exception] m76 :: 72,72,72 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 73,73,73
+[network_exception] m76 :: 73,73,73 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 74,74,74
+[network_exception] m76 :: 74,74,74 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 75,75,75
+[network_exception] m76 :: 75,75,75 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 76,76,76
+[network_exception] m76 :: 76,76,76 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 77,77,77
+[network_exception] m76 :: 77,77,77 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 78,78,78
+[network_exception] m76 :: 78,78,78 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 79,79,79
+[network_exception] m76 :: 79,79,79 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 80,80,80
+[network_exception] m76 :: 80,80,80 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 81,81,81
+[network_exception] m76 :: 81,81,81 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 82,82,82
+[network_exception] m76 :: 82,82,82 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 83,83,83
+[network_exception] m76 :: 83,83,83 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 84,84,84
+[network_exception] m76 :: 84,84,84 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 85,85,85
+[network_exception] m76 :: 85,85,85 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 86,86,86
+[network_exception] m76 :: 86,86,86 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 87,87,87
+[network_exception] m76 :: 87,87,87 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 88,88,88
+[network_exception] m76 :: 88,88,88 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 89,89,89
+[network_exception] m76 :: 89,89,89 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 90,90,90
+[network_exception] m76 :: 90,90,90 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 91,91,91
+[network_exception] m76 :: 91,91,91 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 92,92,92
+[network_exception] m76 :: 92,92,92 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 93,93,93
+[network_exception] m76 :: 93,93,93 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 94,94,94
+[network_exception] m76 :: 94,94,94 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 95,95,95
+[network_exception] m76 :: 95,95,95 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 96,96,96
+[network_exception] m76 :: 96,96,96 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 97,97,97
+[network_exception] m76 :: 97,97,97 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 98,98,98
+[network_exception] m76 :: 98,98,98 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 99,99,99
+[network_exception] m76 :: 99,99,99 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 100,100,100
+[network_exception] m76 :: 100,100,100 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 101,101,101
+[network_exception] m76 :: 101,101,101 ::  threw an exception: File: ./include/znn/device/v1/cudnn_conv.hpp, Line: 116, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 102,102,102
+[network_exception] m76 :: 102,102,102 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 103,103,103
+[network_exception] m76 :: 103,103,103 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 104,104,104
+[network_exception] m76 :: 104,104,104 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 105,105,105
+[network_exception] m76 :: 105,105,105 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 106,106,106
+[network_exception] m76 :: 106,106,106 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 107,107,107
+[network_exception] m76 :: 107,107,107 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 108,108,108
+[network_exception] m76 :: 108,108,108 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 109,109,109
+[network_exception] m76 :: 109,109,109 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 110,110,110
+[network_exception] m76 :: 110,110,110 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 111,111,111
+[network_exception] m76 :: 111,111,111 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 112,112,112
+[network_exception] m76 :: 112,112,112 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 113,113,113
+[network_exception] m76 :: 113,113,113 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 114,114,114
+[network_exception] m76 :: 114,114,114 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 115,115,115
+[network_exception] m76 :: 115,115,115 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 116,116,116
+[network_exception] m76 :: 116,116,116 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 117,117,117
+[network_exception] m76 :: 117,117,117 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 118,118,118
+[network_exception] m76 :: 118,118,118 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 119,119,119
+[network_exception] m76 :: 119,119,119 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 120,120,120
+[network_exception] m76 :: 120,120,120 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 121,121,121
+[network_exception] m76 :: 121,121,121 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 122,122,122
+[network_exception] m76 :: 122,122,122 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 123,123,123
+[network_exception] m76 :: 123,123,123 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 124,124,124
+[network_exception] m76 :: 124,124,124 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 125,125,125
+[network_exception] m76 :: 125,125,125 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 126,126,126
+[network_exception] m76 :: 126,126,126 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 127,127,127
+[network_exception] m76 :: 127,127,127 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 128,128,128
+[network_exception] m76 :: 128,128,128 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 129,129,129
+[network_exception] m76 :: 129,129,129 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 130,130,130
+[network_exception] m76 :: 130,130,130 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 131,131,131
+[network_exception] m76 :: 131,131,131 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 132,132,132
+[network_exception] m76 :: 132,132,132 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 133,133,133
+[network_exception] m76 :: 133,133,133 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 134,134,134
+[network_exception] m76 :: 134,134,134 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 135,135,135
+[network_exception] m76 :: 135,135,135 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 136,136,136
+[network_exception] m76 :: 136,136,136 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 137,137,137
+[network_exception] m76 :: 137,137,137 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 138,138,138
+[network_exception] m76 :: 138,138,138 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 139,139,139
+[network_exception] m76 :: 139,139,139 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 140,140,140
+[network_exception] m76 :: 140,140,140 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 141,141,141
+[network_exception] m76 :: 141,141,141 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 142,142,142
+[network_exception] m76 :: 142,142,142 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 143,143,143
+[network_exception] m76 :: 143,143,143 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 144,144,144
+[network_exception] m76 :: 144,144,144 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 145,145,145
+[network_exception] m76 :: 145,145,145 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 146,146,146
+[network_exception] m76 :: 146,146,146 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 147,147,147
+[network_exception] m76 :: 147,147,147 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 148,148,148
+[network_exception] m76 :: 148,148,148 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 149,149,149
+[network_exception] m76 :: 149,149,149 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 150,150,150
+[network_exception] m76 :: 150,150,150 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 151,151,151
+[network_exception] m76 :: 151,151,151 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 152,152,152
+[network_exception] m76 :: 152,152,152 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 153,153,153
+[network_exception] m76 :: 153,153,153 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 154,154,154
+[network_exception] m76 :: 154,154,154 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 155,155,155
+[network_exception] m76 :: 155,155,155 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 156,156,156
+[network_exception] m76 :: 156,156,156 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 157,157,157
+[network_exception] m76 :: 157,157,157 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 158,158,158
+[network_exception] m76 :: 158,158,158 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 159,159,159
+[network_exception] m76 :: 159,159,159 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 160,160,160
+[network_exception] m76 :: 160,160,160 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 161,161,161
+[network_exception] m76 :: 161,161,161 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 162,162,162
+[network_exception] m76 :: 162,162,162 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 163,163,163
+[network_exception] m76 :: 163,163,163 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 164,164,164
+[network_exception] m76 :: 164,164,164 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 165,165,165
+[network_exception] m76 :: 165,165,165 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 166,166,166
+[network_exception] m76 :: 166,166,166 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 167,167,167
+[network_exception] m76 :: 167,167,167 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 168,168,168
+[network_exception] m76 :: 168,168,168 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 169,169,169
+[network_exception] m76 :: 169,169,169 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 170,170,170
+[network_exception] m76 :: 170,170,170 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 171,171,171
+[network_exception] m76 :: 171,171,171 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 172,172,172
+[network_exception] m76 :: 172,172,172 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 173,173,173
+[network_exception] m76 :: 173,173,173 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 174,174,174
+[network_exception] m76 :: 174,174,174 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 175,175,175
+[network_exception] m76 :: 175,175,175 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 176,176,176
+[network_exception] m76 :: 176,176,176 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 177,177,177
+[network_exception] m76 :: 177,177,177 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 178,178,178
+[network_exception] m76 :: 178,178,178 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 179,179,179
+[network_exception] m76 :: 179,179,179 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 180,180,180
+[network_exception] m76 :: 180,180,180 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 181,181,181
+[network_exception] m76 :: 181,181,181 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 182,182,182
+[network_exception] m76 :: 182,182,182 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 183,183,183
+[network_exception] m76 :: 183,183,183 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 184,184,184
+[network_exception] m76 :: 184,184,184 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 185,185,185
+[network_exception] m76 :: 185,185,185 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 186,186,186
+[network_exception] m76 :: 186,186,186 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 187,187,187
+[network_exception] m76 :: 187,187,187 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 188,188,188
+[network_exception] m76 :: 188,188,188 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 189,189,189
+[network_exception] m76 :: 189,189,189 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 190,190,190
+[network_exception] m76 :: 190,190,190 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 191,191,191
+[network_exception] m76 :: 191,191,191 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 192,192,192
+[network_exception] m76 :: 192,192,192 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 193,193,193
+[network_exception] m76 :: 193,193,193 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 194,194,194
+[network_exception] m76 :: 194,194,194 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 195,195,195
+[network_exception] m76 :: 195,195,195 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 196,196,196
+[network_exception] m76 :: 196,196,196 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 197,197,197
+[network_exception] m76 :: 197,197,197 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 198,198,198
+[network_exception] m76 :: 198,198,198 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 199,199,199
+[network_exception] m76 :: 199,199,199 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 200,200,200
+[network_exception] m76 :: 200,200,200 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 201,201,201
+[network_exception] m76 :: 201,201,201 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 202,202,202
+[network_exception] m76 :: 202,202,202 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 203,203,203
+[network_exception] m76 :: 203,203,203 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 204,204,204
+[network_exception] m76 :: 204,204,204 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 205,205,205
+[network_exception] m76 :: 205,205,205 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 206,206,206
+[network_exception] m76 :: 206,206,206 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 207,207,207
+[network_exception] m76 :: 207,207,207 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 208,208,208
+[network_exception] m76 :: 208,208,208 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 209,209,209
+[network_exception] m76 :: 209,209,209 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 210,210,210
+[network_exception] m76 :: 210,210,210 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 211,211,211
+[network_exception] m76 :: 211,211,211 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 212,212,212
+[network_exception] m76 :: 212,212,212 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 213,213,213
+[network_exception] m76 :: 213,213,213 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 214,214,214
+[network_exception] m76 :: 214,214,214 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 215,215,215
+[network_exception] m76 :: 215,215,215 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 216,216,216
+[network_exception] m76 :: 216,216,216 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 217,217,217
+[network_exception] m76 :: 217,217,217 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 218,218,218
+[network_exception] m76 :: 218,218,218 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 219,219,219
+[network_exception] m76 :: 219,219,219 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 220,220,220
+[network_exception] m76 :: 220,220,220 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 221,221,221
+[network_exception] m76 :: 221,221,221 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 222,222,222
+[network_exception] m76 :: 222,222,222 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 223,223,223
+[network_exception] m76 :: 223,223,223 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 224,224,224
+[network_exception] m76 :: 224,224,224 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 225,225,225
+[network_exception] m76 :: 225,225,225 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 226,226,226
+[network_exception] m76 :: 226,226,226 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 227,227,227
+[network_exception] m76 :: 227,227,227 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 228,228,228
+[network_exception] m76 :: 228,228,228 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 229,229,229
+[network_exception] m76 :: 229,229,229 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_BAD_PARAM
+## m76 :: starting benchmark for output size 230,230,230
+[network_exception] m76 :: 230,230,230 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 231,231,231
+[network_exception] m76 :: 231,231,231 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 232,232,232
+[network_exception] m76 :: 232,232,232 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 233,233,233
+[network_exception] m76 :: 233,233,233 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 234,234,234
+[network_exception] m76 :: 234,234,234 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 235,235,235
+[network_exception] m76 :: 235,235,235 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 236,236,236
+[network_exception] m76 :: 236,236,236 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 237,237,237
+[network_exception] m76 :: 237,237,237 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 238,238,238
+[network_exception] m76 :: 238,238,238 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 239,239,239
+[network_exception] m76 :: 239,239,239 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 240,240,240
+[network_exception] m76 :: 240,240,240 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 241,241,241
+[network_exception] m76 :: 241,241,241 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 242,242,242
+[network_exception] m76 :: 242,242,242 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 243,243,243
+[network_exception] m76 :: 243,243,243 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 244,244,244
+[network_exception] m76 :: 244,244,244 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 245,245,245
+[network_exception] m76 :: 245,245,245 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 246,246,246
+[network_exception] m76 :: 246,246,246 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 247,247,247
+[network_exception] m76 :: 247,247,247 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 248,248,248
+[network_exception] m76 :: 248,248,248 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 249,249,249
+[network_exception] m76 :: 249,249,249 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 250,250,250
+[network_exception] m76 :: 250,250,250 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 251,251,251
+[network_exception] m76 :: 251,251,251 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 252,252,252
+[network_exception] m76 :: 252,252,252 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 253,253,253
+[network_exception] m76 :: 253,253,253 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 254,254,254
+[network_exception] m76 :: 254,254,254 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 255,255,255
+[network_exception] m76 :: 255,255,255 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 256,256,256
+[network_exception] m76 :: 256,256,256 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 257,257,257
+[network_exception] m76 :: 257,257,257 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 258,258,258
+[network_exception] m76 :: 258,258,258 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 259,259,259
+[network_exception] m76 :: 259,259,259 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 260,260,260
+[network_exception] m76 :: 260,260,260 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 261,261,261
+[network_exception] m76 :: 261,261,261 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 262,262,262
+[network_exception] m76 :: 262,262,262 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 263,263,263
+[network_exception] m76 :: 263,263,263 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 264,264,264
+[network_exception] m76 :: 264,264,264 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 265,265,265
+[network_exception] m76 :: 265,265,265 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 266,266,266
+[network_exception] m76 :: 266,266,266 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 267,267,267
+[network_exception] m76 :: 267,267,267 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 268,268,268
+[network_exception] m76 :: 268,268,268 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 269,269,269
+[network_exception] m76 :: 269,269,269 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 270,270,270
+[network_exception] m76 :: 270,270,270 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 271,271,271
+[network_exception] m76 :: 271,271,271 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 272,272,272
+[network_exception] m76 :: 272,272,272 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 273,273,273
+[network_exception] m76 :: 273,273,273 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 274,274,274
+[network_exception] m76 :: 274,274,274 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 275,275,275
+[network_exception] m76 :: 275,275,275 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 276,276,276
+[network_exception] m76 :: 276,276,276 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 277,277,277
+[network_exception] m76 :: 277,277,277 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 278,278,278
+[network_exception] m76 :: 278,278,278 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 279,279,279
+[network_exception] m76 :: 279,279,279 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 280,280,280
+[network_exception] m76 :: 280,280,280 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 281,281,281
+[network_exception] m76 :: 281,281,281 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 282,282,282
+[network_exception] m76 :: 282,282,282 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 283,283,283
+[network_exception] m76 :: 283,283,283 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 284,284,284
+[network_exception] m76 :: 284,284,284 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 285,285,285
+[network_exception] m76 :: 285,285,285 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 286,286,286
+[network_exception] m76 :: 286,286,286 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 287,287,287
+[network_exception] m76 :: 287,287,287 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 288,288,288
+[network_exception] m76 :: 288,288,288 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 289,289,289
+[network_exception] m76 :: 289,289,289 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 290,290,290
+[network_exception] m76 :: 290,290,290 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 291,291,291
+[network_exception] m76 :: 291,291,291 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 292,292,292
+[network_exception] m76 :: 292,292,292 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 293,293,293
+[network_exception] m76 :: 293,293,293 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 294,294,294
+[network_exception] m76 :: 294,294,294 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 295,295,295
+[network_exception] m76 :: 295,295,295 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 296,296,296
+[network_exception] m76 :: 296,296,296 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 297,297,297
+[network_exception] m76 :: 297,297,297 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 298,298,298
+[network_exception] m76 :: 298,298,298 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 299,299,299
+[network_exception] m76 :: 299,299,299 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 300,300,300
+[network_exception] m76 :: 300,300,300 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 301,301,301
+[network_exception] m76 :: 301,301,301 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 302,302,302
+[network_exception] m76 :: 302,302,302 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 303,303,303
+[network_exception] m76 :: 303,303,303 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 304,304,304
+[network_exception] m76 :: 304,304,304 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 305,305,305
+[network_exception] m76 :: 305,305,305 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 306,306,306
+[network_exception] m76 :: 306,306,306 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 307,307,307
+[network_exception] m76 :: 307,307,307 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 308,308,308
+[network_exception] m76 :: 308,308,308 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 309,309,309
+[network_exception] m76 :: 309,309,309 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 310,310,310
+[network_exception] m76 :: 310,310,310 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 311,311,311
+[network_exception] m76 :: 311,311,311 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 312,312,312
+[network_exception] m76 :: 312,312,312 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 313,313,313
+[network_exception] m76 :: 313,313,313 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 314,314,314
+[network_exception] m76 :: 314,314,314 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 315,315,315
+[network_exception] m76 :: 315,315,315 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 316,316,316
+[network_exception] m76 :: 316,316,316 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 317,317,317
+[network_exception] m76 :: 317,317,317 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 318,318,318
+[network_exception] m76 :: 318,318,318 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 319,319,319
+[network_exception] m76 :: 319,319,319 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 320,320,320
+[network_exception] m76 :: 320,320,320 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 321,321,321
+[network_exception] m76 :: 321,321,321 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 322,322,322
+[network_exception] m76 :: 322,322,322 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 323,323,323
+[network_exception] m76 :: 323,323,323 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 324,324,324
+[network_exception] m76 :: 324,324,324 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 325,325,325
+[network_exception] m76 :: 325,325,325 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 326,326,326
+[network_exception] m76 :: 326,326,326 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 327,327,327
+[network_exception] m76 :: 327,327,327 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 328,328,328
+[network_exception] m76 :: 328,328,328 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 329,329,329
+[network_exception] m76 :: 329,329,329 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 330,330,330
+[network_exception] m76 :: 330,330,330 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 331,331,331
+[network_exception] m76 :: 331,331,331 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 332,332,332
+[network_exception] m76 :: 332,332,332 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 333,333,333
+[network_exception] m76 :: 333,333,333 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 334,334,334
+[network_exception] m76 :: 334,334,334 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 335,335,335
+[network_exception] m76 :: 335,335,335 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 336,336,336
+[network_exception] m76 :: 336,336,336 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 337,337,337
+[network_exception] m76 :: 337,337,337 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 338,338,338
+[network_exception] m76 :: 338,338,338 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 339,339,339
+[network_exception] m76 :: 339,339,339 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 340,340,340
+[network_exception] m76 :: 340,340,340 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 341,341,341
+[network_exception] m76 :: 341,341,341 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 342,342,342
+[network_exception] m76 :: 342,342,342 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 343,343,343
+[network_exception] m76 :: 343,343,343 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 344,344,344
+[network_exception] m76 :: 344,344,344 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 345,345,345
+[network_exception] m76 :: 345,345,345 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 346,346,346
+[network_exception] m76 :: 346,346,346 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 347,347,347
+[network_exception] m76 :: 347,347,347 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 348,348,348
+[network_exception] m76 :: 348,348,348 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 349,349,349
+[network_exception] m76 :: 349,349,349 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 350,350,350
+[network_exception] m76 :: 350,350,350 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 351,351,351
+[network_exception] m76 :: 351,351,351 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 352,352,352
+[network_exception] m76 :: 352,352,352 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 353,353,353
+[network_exception] m76 :: 353,353,353 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 354,354,354
+[network_exception] m76 :: 354,354,354 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 355,355,355
+[network_exception] m76 :: 355,355,355 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 356,356,356
+[network_exception] m76 :: 356,356,356 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 357,357,357
+[network_exception] m76 :: 357,357,357 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 358,358,358
+[network_exception] m76 :: 358,358,358 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 359,359,359
+[network_exception] m76 :: 359,359,359 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 360,360,360
+[network_exception] m76 :: 360,360,360 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 361,361,361
+[network_exception] m76 :: 361,361,361 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 362,362,362
+[network_exception] m76 :: 362,362,362 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 363,363,363
+[network_exception] m76 :: 363,363,363 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 364,364,364
+[network_exception] m76 :: 364,364,364 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 365,365,365
+[network_exception] m76 :: 365,365,365 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 366,366,366
+[network_exception] m76 :: 366,366,366 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 367,367,367
+[network_exception] m76 :: 367,367,367 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 368,368,368
+[network_exception] m76 :: 368,368,368 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 369,369,369
+[network_exception] m76 :: 369,369,369 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 370,370,370
+[network_exception] m76 :: 370,370,370 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 371,371,371
+[network_exception] m76 :: 371,371,371 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 372,372,372
+[network_exception] m76 :: 372,372,372 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 373,373,373
+[network_exception] m76 :: 373,373,373 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 374,374,374
+[network_exception] m76 :: 374,374,374 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 375,375,375
+[network_exception] m76 :: 375,375,375 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 376,376,376
+[network_exception] m76 :: 376,376,376 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 377,377,377
+[network_exception] m76 :: 377,377,377 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 378,378,378
+[network_exception] m76 :: 378,378,378 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 379,379,379
+[network_exception] m76 :: 379,379,379 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 380,380,380
+[network_exception] m76 :: 380,380,380 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 381,381,381
+[network_exception] m76 :: 381,381,381 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 382,382,382
+[network_exception] m76 :: 382,382,382 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 383,383,383
+[network_exception] m76 :: 383,383,383 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 384,384,384
+[network_exception] m76 :: 384,384,384 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 385,385,385
+[network_exception] m76 :: 385,385,385 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 386,386,386
+[network_exception] m76 :: 386,386,386 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 387,387,387
+[network_exception] m76 :: 387,387,387 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 388,388,388
+[network_exception] m76 :: 388,388,388 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 389,389,389
+[network_exception] m76 :: 389,389,389 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 390,390,390
+[network_exception] m76 :: 390,390,390 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 391,391,391
+[network_exception] m76 :: 391,391,391 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 392,392,392
+[network_exception] m76 :: 392,392,392 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 393,393,393
+[network_exception] m76 :: 393,393,393 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 394,394,394
+[network_exception] m76 :: 394,394,394 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 395,395,395
+[network_exception] m76 :: 395,395,395 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 396,396,396
+[network_exception] m76 :: 396,396,396 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 397,397,397
+[network_exception] m76 :: 397,397,397 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 398,398,398
+[network_exception] m76 :: 398,398,398 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+## m76 :: starting benchmark for output size 399,399,399
+[network_exception] m76 :: 399,399,399 ::  threw an exception: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED

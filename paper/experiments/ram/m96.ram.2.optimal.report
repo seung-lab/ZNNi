@@ -1,0 +1,80 @@
+--------------------------------------------
+
+### LOG[benchmark] :: m96 :: starting os :: 16,16,16 memory required 2746328000
+[network_round] m96 :: 16,16,16 :: 6.9482
+[network_throughput] m96 :: 16,16,16 :: 589.505
+### LOG[benchmark] :: m96 :: starting os :: 32,32,32 memory required 3640029120
+[network_round] m96 :: 32,32,32 :: 8.8459
+[network_throughput] m96 :: 32,32,32 :: 3704.32
+### LOG[benchmark] :: m96 :: starting os :: 48,48,48 memory required 4709202880
+[network_round] m96 :: 48,48,48 :: 12.2281
+[network_throughput] m96 :: 48,48,48 :: 9044.09
+### LOG[benchmark] :: m96 :: starting os :: 64,64,64 memory required 5969577920
+[network_round] m96 :: 64,64,64 :: 15.3031
+[network_throughput] m96 :: 64,64,64 :: 17130.2
+### LOG[benchmark] :: m96 :: starting os :: 80,80,80 memory required 7436882880
+[network_round] m96 :: 80,80,80 :: 20.937
+[network_throughput] m96 :: 80,80,80 :: 24454.3
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[network] :: binary_search (7,8) :: 8
+### LOG[benchmark] :: m96 :: starting os :: 96,96,96 memory required 9126846400
+[network_round] m96 :: 96,96,96 :: 26.6111
+[network_throughput] m96 :: 96,96,96 :: 33246.9
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (5,8) :: 7
+### LOG[network] :: binary_search (5,7) :: 7
+### LOG[benchmark] :: m96 :: starting os :: 112,112,112 memory required 11055197120
+[network_round] m96 :: 112,112,112 :: 33.1617
+[network_throughput] m96 :: 112,112,112 :: 42366
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (4,5) :: 5
+### LOG[benchmark] :: m96 :: starting os :: 128,128,128 memory required 13237663680
+[network_round] m96 :: 128,128,128 :: 38.5592
+[network_throughput] m96 :: 128,128,128 :: 54387.9
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (4,5) :: 5
+### LOG[benchmark] :: m96 :: starting os :: 144,144,144 memory required 15689974720
+[network_round] m96 :: 144,144,144 :: 49.8859
+[network_throughput] m96 :: 144,144,144 :: 59856.3
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m96 :: starting os :: 160,160,160 memory required 18427858880
+[network_round] m96 :: 160,160,160 :: 70.3593
+[network_throughput] m96 :: 160,160,160 :: 58215.4
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m96 :: starting os :: 176,176,176 memory required 21467044800
+[network_round] m96 :: 176,176,176 :: 81.0531
+[network_throughput] m96 :: 176,176,176 :: 67261.8
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m96 :: starting os :: 192,192,192 memory required 24823261120
+[network_round] m96 :: 192,192,192 :: 94.7684
+[network_throughput] m96 :: 192,192,192 :: 74686.1
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,8) :: 5
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: binary_search (1,5) :: 4
+### LOG[network] :: binary_search (1,4) :: 3
+### LOG[network] :: binary_search (1,3) :: 3
+### LOG[benchmark] :: m96 :: starting os :: 224,224,224 memory required 32549699520
+[network_round] m96 :: 224,224,224 :: 126.356
+[network_throughput] m96 :: 224,224,224 :: 88950.3
+### LOG[sub_network::get_layer] :: Conv failed: File: ./include/znn/device/common/cudnn.hpp, Line: 42, CUDNN failure, Error: CUDNN_STATUS_NOT_SUPPORTED
+### LOG[sub_network] :: failed to get sub_network: no feasable sub_network
+### LOG[network] :: failed to get network: no feasable network
