@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   timer.reset();
 
   // settings
-  vec3i outsz(17,136,136); // must be multiple of 8!
+  vec3i outsz(1,8,8); // must be multiple of 8!
   h5vec3 fov(9, 109, 109);
   h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
 
@@ -50,17 +50,17 @@ int main(int argc, char *argv[])
   read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases", convx_b.data(), 200);
 
   // Everyday I'm shufflin'
-  deshuffler deshuffler_b1(outsz);
-  deshuffler_b1.split(vec3i(1, 2, 2));
+  //deshuffler deshuffler_b1(outsz);
+  //deshuffler_b1.split(vec3i(1, 2, 2));
 
-  deshuffler deshuffler_b2(outsz);
-  deshuffler_b2.split(vec3i(1, 2, 2));
-  deshuffler_b2.split(vec3i(1, 2, 2));
+  //deshuffler deshuffler_b2(outsz);
+  //deshuffler_b2.split(vec3i(1, 2, 2));
+  //deshuffler_b2.split(vec3i(1, 2, 2));
 
-  deshuffler deshuffler_b3(outsz);
-  deshuffler_b3.split(vec3i(1, 2, 2));
-  deshuffler_b3.split(vec3i(1, 2, 2));
-  deshuffler_b3.split(vec3i(1, 2, 2));
+  //deshuffler deshuffler_b3(outsz);
+  //deshuffler_b3.split(vec3i(1, 2, 2));
+  //deshuffler_b3.split(vec3i(1, 2, 2));
+  //deshuffler_b3.split(vec3i(1, 2, 2));
 
   // intermediate variables
   device_tensor<float, 5> b1, b2, b3;
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
     }
 
     // Deshuffle
-    host_tensor<float, 5> output_b1(4, 200, outsz[0], outsz[1] / 2, outsz[2] / 2);
+    /*host_tensor<float, 5> output_b1(4, 200, outsz[0], outsz[1] / 2, outsz[2] / 2);
     host_tensor<float, 5> output_b2(16, 200, outsz[0], outsz[1] / 4, outsz[2] / 4);
     host_tensor<float, 5> output_b3(64, 200, outsz[0], outsz[1] / 8, outsz[2] / 8);
 
@@ -93,14 +93,17 @@ int main(int argc, char *argv[])
 
     host_tensor<float, 5> single_output_b1(4, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
     host_tensor<float, 5> single_output_b2(16, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
-    host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);
+    host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);*/
 
     host_tensor<float, 5> out_patch(1, 200, outsz[0], outsz[1], outsz[2]);
     host_tensor<float, 5> out_patch_b2(1, 200, outsz[0], outsz[1], outsz[2]);
     host_tensor<float, 5> out_patch_b3(1, 200, outsz[0], outsz[1], outsz[2]);
+    out_patch.load(b1.data(), from_device);
+    out_patch_b2.load(b2.data(), from_device);
+    out_patch_b3.load(b3.data(), from_device);
 
     for (int ch = 0; ch < 200; ++ch) {
-      for (int n = 0; n < 4; ++n) {
+      /*for (int n = 0; n < 4; ++n) {
         single_output_b1[n][0] = output_b1[n][ch];
       }
       for (int n = 0; n < 16; ++n) {
@@ -111,7 +114,7 @@ int main(int argc, char *argv[])
       }
       out_patch[0][ch].load(deshuffler_b1.deshuffle(single_output_b1.data()).data(), from_host);
       out_patch_b2[0][ch].load(deshuffler_b2.deshuffle(single_output_b2.data()).data(), from_host);
-      out_patch_b3[0][ch].load(deshuffler_b3.deshuffle(single_output_b3.data()).data(), from_host);
+      out_patch_b3[0][ch].load(deshuffler_b3.deshuffle(single_output_b3.data()).data(), from_host);*/
 
       std::transform(out_patch[0][ch].begin(), out_patch[0][ch].end(), out_patch_b2[0][ch].begin(), out_patch[0][ch].begin(), std::plus<real>());
       std::transform(out_patch[0][ch].begin(), out_patch[0][ch].end(), out_patch_b3[0][ch].begin(), out_patch[0][ch].begin(), std::plus<real>());

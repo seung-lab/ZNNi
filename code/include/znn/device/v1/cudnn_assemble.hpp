@@ -38,6 +38,7 @@ public:
         float beta  = 0;
 
         vec3i is = in_image_size;
+        vec3i os = in_image_size * window_size;
 
         float * in_ptr = in.data();
 

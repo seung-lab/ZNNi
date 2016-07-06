@@ -6,6 +6,7 @@
 #include "znn/device/v1/cudnn_crop.hpp"
 #include "znn/device/v1/cudnn_no_precomp_gemm_conv.hpp"
 #include "znn/device/v1/cudnn_maxfilter.hpp"
+#include "znn/device/v1/cudnn_assemble.hpp"
 #include "znn/tensor/tensor.hpp"
 
 #include <string>
@@ -204,6 +205,24 @@ create_multiscale_b3(const vec3i & outsz)
                     (64, 60, 200,
                      insz, vec3i(1,1,1),
                      convx_p3_k, convx_p3_b, activation::none)));
+
+  // deshuffler1-p3
+  layers.push_back(std::unique_ptr<device::v1::device_layer>
+                   (new device::v1::cudnn_assemble
+                    (64, 200, insz, vec3i(1, 8, 8))));
+  insz *= vec3i(1, 2, 2);
+
+  // deshuffler2-p3
+  layers.push_back(std::unique_ptr<device::v1::device_layer>
+                   (new device::v1::cudnn_assemble
+                    (16, 200, insz, vec3i(1, 4, 4))));
+  insz *= vec3i(1, 2, 2);
+
+  // deshuffler3-p3
+  layers.push_back(std::unique_ptr<device::v1::device_layer>
+                   (new device::v1::cudnn_assemble
+                    (4, 200, insz, vec3i(1, 2, 2))));
+
   return layers;
 }
 
