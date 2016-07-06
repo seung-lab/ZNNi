@@ -209,7 +209,7 @@ create_multiscale_b2(const vec3i & outsz)
   // deshuffler1-p2
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_assemble
-                    (16, 200, insz, vec3i(1, 4, 4))));
+                    (16, 200, insz, vec3i(1, 2, 2))));
   insz *= vec3i(1, 2, 2);
 
   // deshuffler2-p2
