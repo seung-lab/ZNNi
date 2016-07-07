@@ -31,7 +31,7 @@ ifneq ($(strip $(ICC)),)
 	CS_LD_FLAGS		=	-static-intel -mkl=sequential
 else
 	CXX			=	$(AT)g++
-	OPTIMIZATION_FLAGS	=	-DNDEBUG -O3 -ffast-math
+	OPTIMIZATION_FLAGS	=	-DZNN_NO_CUDA -DNDEBUG -O3 -ffast-math
 	CS_FLAGS		=       -mavx2 -mfma -fabi-version=0
 	CS_LD_FLAGS		=       -mavx2 -mfma -fabi-version=0
 endif
@@ -77,7 +77,7 @@ OBJS = test.o test_host.o test_device.o benchmark_device.o \
 	benchmarks/device2dv2.o benchmarks/host2dv2.o \
 	benchmarks/host2dv2tiled.o benchmarks/device_test.o \
 	benchmarks/host2dv2serial.o \
-        dataprovider.o
+	multiscale/znni_gpu.o
 
 DEPS = $(patsubst %.o,$(BINDIR)/%.d,$(OBJS))
 
@@ -119,7 +119,7 @@ clean:
 	$(ECHO) Cleaning...
 	$(RM) -rf $(BINDIR)
 
-$(BINDIR)/dataprovider: $(BINDIR)/dataprovider.o $(BINDIR)/test_dataprovider.o 
+$(BINDIR)/multiscale/znni_gpu: $(BINDIR)/kernels.o $(BINDIR)/multiscale/znni_gpu.o
 	$(ECHO) "[CXX] linking $^"
 	$(CXX) $^ $(CXXLDFLAGS) -o $@
 
