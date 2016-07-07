@@ -185,6 +185,24 @@ public:
     assemble_layer & operator=( assemble_layer const & ) = default;
 };
 
+template<typename Base>
+class activation_layer: public Base
+{
+public:
+    long_t bias_memory;
+
+    activation_layer() noexcept {};
+
+    activation_layer( long_t n, long_t finout,
+                      vec3i const & is ) noexcept
+        : Base(n, finout, is, n, finout, is)
+        , bias_memory(finout*sizeof(float))
+    {}
+
+    activation_layer & operator=( activation_layer const & ) = default;
+};
+
+
 
 
 template<typename Base>

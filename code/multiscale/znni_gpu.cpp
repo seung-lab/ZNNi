@@ -6,6 +6,9 @@
 #include "znn/network/multiscale_gpu_b2.hpp"
 #include "znn/network/multiscale_gpu_b3.hpp"
 
+#include "znn/device/common/kernels.hpp"
+#include "znn/device/v1/cudnn_activation.hpp"
+
 #include <zi/time.hpp>
 
 #include <functional> // for summation of final layers
@@ -15,11 +18,12 @@ using namespace znn::fwd;
 int main(int argc, char *argv[])
 {
   // record time
-  zi::wall_timer timer;
+  zi::wall_timer timer, timer_all;
+  timer_all.reset();
   timer.reset();
 
   // settings
-  vec3i outsz(1,8,8); // must be multiple of 8!
+  vec3i outsz(2,16,16); // must be multiple of 8!
   h5vec3 fov(9, 109, 109);
   h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
 
@@ -46,32 +50,25 @@ int main(int argc, char *argv[])
   device::v1::cudnn_no_precomp_gemm_conv final_conv(1, 200, 3, outsz, vec3i(1, 1, 1), convout_k, convout_b, activation::sigmoid);
 
   // Write sum of all three branches and biases to branch 1
-  std::array<float, 200> convx_b;
-  read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases", convx_b.data(), 200);
-
-  // Everyday I'm shufflin'
-  //deshuffler deshuffler_b1(outsz);
-  //deshuffler_b1.split(vec3i(1, 2, 2));
-
-  //deshuffler deshuffler_b2(outsz);
-  //deshuffler_b2.split(vec3i(1, 2, 2));
-  //deshuffler_b2.split(vec3i(1, 2, 2));
-
-  //deshuffler deshuffler_b3(outsz);
-  //deshuffler_b3.split(vec3i(1, 2, 2));
-  //deshuffler_b3.split(vec3i(1, 2, 2));
-  //deshuffler_b3.split(vec3i(1, 2, 2));
+  float convx_b[200];
+  read_from_file<float>("./0421_VD2D3D-MS/nconvx/biases", convx_b, 200);
+  device::v1::cudnn_activation relu(1, 200, outsz, convx_b, activation::relu);
 
   // intermediate variables
   device_tensor<float, 5> b1, b2, b3;
   device_tensor<float, 5> out_patch(1, 3, outsz[0], outsz[1], outsz[2]);
 
   // iterate all the patches
+  int active_patch = 1;
   for (auto it = dp.begin(); it!=dp.end(); ++it) {
+    timer_all.reset();
+    timer.reset();
     b1 = dp.ReadWindowData(*it, to_device);
     b2 = dp.ReadWindowData(*it, to_device); // FIXME: Optimize with copy assignment for tensors?
     b3 = dp.ReadWindowData(*it, to_device);
+    std::cout << timer.elapsed<double>() << "s for reading input from disk\n";
 
+    timer.reset();
     for (auto & l: layers_b1) {
       b1 = l->forward(std::move(b1));
     }
@@ -81,20 +78,14 @@ int main(int argc, char *argv[])
     for (auto & l: layers_b3) {
       b3 = l->forward(std::move(b3));
     }
+    std::cout << timer.elapsed<double>() << "s for main branches and GPU deshuffling\n";
 
-    // Deshuffle
-    /*host_tensor<float, 5> output_b1(4, 200, outsz[0], outsz[1] / 2, outsz[2] / 2);
-    host_tensor<float, 5> output_b2(16, 200, outsz[0], outsz[1] / 4, outsz[2] / 4);
-    host_tensor<float, 5> output_b3(64, 200, outsz[0], outsz[1] / 8, outsz[2] / 8);
-
-    output_b1.load(b1.data(), from_device);
-    output_b2.load(b2.data(), from_device);
-    output_b3.load(b3.data(), from_device);
-
-    host_tensor<float, 5> single_output_b1(4, 1, outsz[0], outsz[1] / 2, outsz[2] / 2);
-    host_tensor<float, 5> single_output_b2(16, 1, outsz[0], outsz[1] / 4, outsz[2] / 4);
-    host_tensor<float, 5> single_output_b3(64, 1, outsz[0], outsz[1] / 8, outsz[2] / 8);*/
-
+    timer.reset();
+#if 0
+    device::add_to(b1.data(), b1.data() + b1.num_elements(), b2.data(), 1.f); // Add B2 output to B1
+    device::add_to(b1.data(), b1.data() + b1.num_elements(), b3.data(), 1.f); // Add B3 output to B1
+    std::cout << timer.elapsed<double>() << "s for summation of branches (GPU side)\n";
+#else
     host_tensor<float, 5> out_patch(1, 200, outsz[0], outsz[1], outsz[2]);
     host_tensor<float, 5> out_patch_b2(1, 200, outsz[0], outsz[1], outsz[2]);
     host_tensor<float, 5> out_patch_b3(1, 200, outsz[0], outsz[1], outsz[2]);
@@ -103,46 +94,27 @@ int main(int argc, char *argv[])
     out_patch_b3.load(b3.data(), from_device);
 
     for (int ch = 0; ch < 200; ++ch) {
-      /*for (int n = 0; n < 4; ++n) {
-        single_output_b1[n][0] = output_b1[n][ch];
-      }
-      for (int n = 0; n < 16; ++n) {
-        single_output_b2[n][0] = output_b2[n][ch];
-      }
-      for (int n = 0; n < 64; ++n) {
-        single_output_b3[n][0] = output_b3[n][ch];
-      }
-      out_patch[0][ch].load(deshuffler_b1.deshuffle(single_output_b1.data()).data(), from_host);
-      out_patch_b2[0][ch].load(deshuffler_b2.deshuffle(single_output_b2.data()).data(), from_host);
-      out_patch_b3[0][ch].load(deshuffler_b3.deshuffle(single_output_b3.data()).data(), from_host);*/
-
       std::transform(out_patch[0][ch].begin(), out_patch[0][ch].end(), out_patch_b2[0][ch].begin(), out_patch[0][ch].begin(), std::plus<real>());
       std::transform(out_patch[0][ch].begin(), out_patch[0][ch].end(), out_patch_b3[0][ch].begin(), out_patch[0][ch].begin(), std::plus<real>());
-      std::for_each(out_patch[0][ch].begin(), out_patch[0][ch].end(), [&convx_b,ch](float& val) { val += convx_b[ch]; });
-
+      //std::for_each(out_patch[0][ch].begin(), out_patch[0][ch].end(), [&convx_b, ch](float& val) { val += convx_b[ch]; });
     }
-
-    relu(out_patch.data(), 200 * outsz[0] * outsz[1] * outsz[2]);
-
-
-
-    device_tensor<float, 5> inout_conv(1, 200, outsz[0], outsz[1], outsz[2]); // FIXME: Either deshuffle on GPU, or conv and softmax on CPU, but now we are copying back and forth
-    inout_conv.load(out_patch.data(), from_host);
-
-    inout_conv = final_conv.forward(std::move(inout_conv));
-
-    host_tensor<float, 5> affinity(1, 3, outsz[0], outsz[1], outsz[2]);
-    affinity.load(inout_conv.data(), from_device);
-
-    std::cout << "Processing took: " << timer.elapsed<double>() << "\n";
+    b1.load(out_patch.data(), from_host);
+    std::cout << timer.elapsed<double>() << "s for summation of branches (GPU->CPU->GPU)\n";
+#endif
     timer.reset();
+    b1 = relu.forward(std::move(b1)); // Relu Activation
+    b1 = final_conv.forward(std::move(b1));
+    std::cout << timer.elapsed<double>() << "s for relu activation function + final convolution\n";
 
-    // push to data provider
+    timer.reset();
+    host_tensor<float, 5> affinity(1, 3, outsz[0], outsz[1], outsz[2]);
+    affinity.load(b1.data(), from_device);
     dp.WriteWindowData(*it, affinity);
-    std::cout << "push to data provider: " << timer.elapsed<double>() << "\n";
+    std::cout << timer.elapsed<double>() << "s for loading result from GPU and writing to disk\n";
 
     b1.reset();
     b2.reset();
     b3.reset();
+    std::cout << timer_all.elapsed<double>() << "s in total for this patch!\n";
   }
 }
