@@ -124,13 +124,13 @@ public:
     printf("Inner window : [%5llu, %5llu, %5llu]\n", outputsize_[0], outputsize_[1], outputsize_[2]);
     printf("Outer window : [%5llu, %5llu, %5llu]\n", inputsize_[0], inputsize_[1], inputsize_[2]);
 
-    if (world_.x() < outputsize_.x() || world_.y() < outputsize_.y() || world_.z() < outputsize_.z()) {
-      printf("Error: Dataset is smaller than outer window size!\n");
+    if (world_.x() < inputsize_.x() || world_.y() < inputsize_.y() || world_.z() < inputsize_.z()) {
+      printf("Error: Dataset is smaller than calculated input window size! Reduce output size.\n"); // TODO: Or do it here...
       return false;
     }
 
     if ((fov_.x() % 2 == 0) || (fov_.y() % 2 == 0) || (fov_.z() % 2 == 0)) {
-      printf("Error: Field of view must have an uneven number for each dimension");
+      printf("Error: Field of view must have an uneven number for each dimension.\n");
       return false;
     }
 
@@ -159,7 +159,7 @@ public:
 
     if (! (datasize == 4 && dataclass_ == H5T_FLOAT)) { //&&
       //  ! (datasize == 1 && datasign_ == H5T_SGN_NONE && dataclass_ == H5T_INTEGER )) {
-      printf("Error: Datatype should be float.");
+      printf("Error: Datatype should be float.\n");
       return false;
     }
 
@@ -225,29 +225,6 @@ public:
 
     host_tensor<float, 5> data_out(1, 1, inputsize_.x(), inputsize_.y(), inputsize_.z());
     H5Dread(datasetin_.getId(), H5T_NATIVE_FLOAT, memspace, dataspaceid, H5P_DEFAULT, data_out.ptr().get()); // Only works for Host->Host!
-
-    // Normalization should be done on a larger scope
-    /*if (dataclass_ == H5T_INTEGER) { // raw channel data (UINT8) needs to be normalized
-      hsize_t elementcnt = inputsize_[1] * inputsize_[2];
-
-      for (hsize_t z = 0; z < inputsize_[0]; ++z) {
-        auto begin = data_out[0][0][z].begin();
-        auto end = data_out[0][0][z].end();
-
-        double sum = std::accumulate(begin, end, 0.0);
-        double mean = sum / (double)elementcnt;
-
-        std::vector<double> diff(elementcnt);
-        std::transform(begin, end, diff.begin(), [mean](double x) { return x - mean; });
-
-        double sq_sum = std::inner_product(diff.begin(), diff.end(), diff.begin(), 0.0);
-        double stddev = std::sqrt(sq_sum / (double)elementcnt);
-
-        for (auto it = data_out[0][0][z].begin(); it != data_out[0][0][z].end(); ++it) {
-          *it = (*it - (mean / stddev)) / 255.f;
-        }
-      }
-    }*/
 
     H5Sclose(memspace);
     return data_out;

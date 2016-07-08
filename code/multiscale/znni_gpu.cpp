@@ -39,8 +39,12 @@ int main(int argc, char *argv[])
 
   // The magnificent dataprovider
   DataProvider dp(h5outsz, fov);
-  if (argc >= 4)
-    dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
+  if (argc >= 4) {
+    if (!dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]))) {
+      std::cout << "Could not initialize dataprovider.\n";
+      return -1;
+    }
+  }
   else {
     std::cout << "Usage: znni inputfile.h5 outputfile.h5 datasetname [12 128 128]\n";
     return -1;
