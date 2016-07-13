@@ -76,7 +76,6 @@ int main(int argc, char *argv[])
   int active_patch = 1;
   int num_patches = dp.size();
   for (auto it = dp.begin(); it!=dp.end(); ++it) {
-    timer_all.reset();
     timer.reset();
     
     b1 = dp.ReadWindowData(*it, to_device);
@@ -89,22 +88,31 @@ int main(int argc, char *argv[])
     std::cout << timer.elapsed<double>() << "s for reading input from disk\n";
 
     timer.reset();
-    for (auto & l: layers_b1) {
-      b1 = l->forward(std::move(b1));
-    }
+    try { // if we run out of GPU memory during forward pass, then somewhere here
+      for (auto & l: layers_b1) {
+        b1 = l->forward(std::move(b1));
+      }
 
-    for (auto & l: layers_b2) {
-      b2 = l->forward(std::move(b2));
-    }
-    device::add_to(b1.data(), b1.data() + b1.num_elements(), b2.data(), 1.f); // Add B2 output to B1
-    b2.reset();
+      for (auto & l: layers_b2) {
+        b2 = l->forward(std::move(b2));
+      }
+      device::add_to(b2.data(), b2.data() + b2.num_elements(), b1.data(), 1.f); // Add B2 output to B1
+      b2.reset();
 
-    for (auto & l: layers_b3) {
-      b3 = l->forward(std::move(b3));
+      for (auto & l: layers_b3) {
+        b3 = l->forward(std::move(b3));
+      }
+      device::add_to(b3.data(), b3.data() + b3.num_elements(), b1.data(), 1.f); // Add B3 output to B1
+      b3.reset();
     }
-    device::add_to(b1.data(), b1.data() + b1.num_elements(), b3.data(), 1.f); // Add B3 output to B1
-    b3.reset();
-
+    catch (std::logic_error e) {
+      std::cout << "Error: " << e.what() << "\n Aborting program...\n";
+      return -2;
+    }
+    catch (...) {
+      std::cout << "Unknown Error during forward pass. Aborting program...\n";
+      return -3;
+    }
     std::cout << timer.elapsed<double>() << "s for main branches\n";
 
     timer.reset();
@@ -122,4 +130,7 @@ int main(int argc, char *argv[])
     b1.reset();
     std::cout << timer_all.elapsed<double>() << "s in total for patch " << active_patch++ << "/" << num_patches <<"!\n";
   }
+
+  std::cout << "Processing succesfully completed after " << timer_all << "s.\n"; 
+  return 0;
 }
