@@ -1,9 +1,0 @@
-[network_throughput] m56 :: 8,8,8 :: 144.918
-[network_throughput] m56 :: 16,16,16 :: 969.064
-[network_throughput] m56 :: 24,24,24 :: 2734.43
-[network_throughput] m56 :: 32,32,32 :: 5500
-[network_throughput] m56 :: 40,40,40 :: 9201.24
-[network_throughput] m56 :: 48,48,48 :: 13706.4
-[network_throughput] m56 :: 56,56,56 :: 18838.5
-[network_throughput] m56 :: 64,64,64 :: 24613
-[network_throughput] m56 :: 72,72,72 :: 30683.3
