@@ -1,3 +1,9 @@
+
+## Build
+- cd ..
+- make multiscale/znni_gpu
+
+## FAQ
 * Q: What version of CUDA and CUDNN do I need?
 * A: CUDA 7.5 and CUDNN 4 (for CUDA 7.0 and above)
 
@@ -9,3 +15,4 @@
 
 * Q: ZNNi crashes when creating a`cudnn_conv` layer.
 * A: `cudnn_conv` is not supported by your hardware. Try using the `cudnn_no_precomp_gemm_conv` primitive.
+
