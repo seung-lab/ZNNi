@@ -1,7 +1,7 @@
 
 ## Build
 - cd ..
-- make multiscale/znni_gpu
+- make bin/multiscale/znni_gpu
 
 ## FAQ
 * Q: What version of CUDA and CUDNN do I need?
