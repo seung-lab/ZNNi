@@ -131,6 +131,6 @@ int main(int argc, char *argv[])
     std::cout << timer_all.elapsed<double>() << "s in total for patch " << active_patch++ << "/" << num_patches <<"!\n";
   }
 
-  std::cout << "Processing succesfully completed after " << timer_all << "s.\n"; 
+  std::cout << "Processing succesfully completed after " << timer_all.elapsed<double>() << "s.\n"; 
   return 0;
 }
