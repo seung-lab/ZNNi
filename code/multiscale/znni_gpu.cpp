@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     try {
       outsz = vec3i(boost::lexical_cast<int>(argv[4]),
                     boost::lexical_cast<int>(argv[5]),
-                    boost::lexical_cast<int>(argv[6]));      
+                    boost::lexical_cast<int>(argv[6]));
     }
     catch(boost::bad_lexical_cast) {
       std::cout << "Can't read output size parameters.\n";
@@ -77,14 +77,14 @@ int main(int argc, char *argv[])
   int num_patches = dp.size();
   for (auto it = dp.begin(); it!=dp.end(); ++it) {
     timer.reset();
-    
+
     b1 = dp.ReadWindowData(*it, to_device);
-    
+
     device_tensor<float, 5> b2(1, 1, b1.shape()[2], b1.shape()[3], b1.shape()[4]);
     device_tensor<float, 5> b3(1, 1, b1.shape()[2], b1.shape()[3], b1.shape()[4]);
     b2.load(b1.data(), from_device); // faster than reading it from dp again
     b3.load(b1.data(), from_device);
-    
+
     std::cout << timer.elapsed<double>() << "s for reading input from disk\n";
 
     timer.reset();
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
     timer.reset();
     host_tensor<float, 5> affinity(1, 3, outsz[0], outsz[1], outsz[2]);
     affinity.load(b1.data(), from_device);
-    
+
     dp.WriteWindowData(*it, affinity);
     std::cout << timer.elapsed<double>() << "s for loading result from GPU and writing to disk\n";
 
@@ -131,6 +131,6 @@ int main(int argc, char *argv[])
     std::cout << timer_all.elapsed<double>() << "s in total for patch " << active_patch++ << "/" << num_patches <<"!\n";
   }
 
-  std::cout << "Processing succesfully completed after " << timer_all << "s.\n"; 
+  std::cout << "Processing succesfully completed after " << timer_all.elapsed<double>() << "s.\n"; 
   return 0;
 }
