@@ -1,6 +1,11 @@
 # ZNNi
 ZNNi - Maximizing 3D ConvNet Inference Throughput Using Multi-Core, Many-Core CPUs and GPUs
 
+## Installation
+
+### Nvidia docker
+We recommend to use nvidia-docker to install ZNNi. For the image, please contact Jingpeng Wu <jingpeng.wu@gmail.com>.
+
 ### dependency
 
 | Library       | Components    | Notes        |
