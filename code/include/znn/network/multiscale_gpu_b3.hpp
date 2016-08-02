@@ -30,9 +30,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv1a
   float conv1a_k[1*24*1*3*3];
   float conv1a_b[24];
-  read_from_file<float>("./0421_VD2D3D-MS/conv1a/filters",conv1a_k,1*24*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv1a/filters",conv1a_k,1*24*1*3*3);
   fix_dims(conv1a_k, 1, 24, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv1a/biases",conv1a_b,24);
+  read_from_file<float>("./VD2D3D-MS/nconv1a/biases",conv1a_b,24);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_conv
                     (1, 1, 24,
@@ -43,9 +43,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv1b
   float conv1b_k[24*24*3*3];
   float conv1b_b[24];
-  read_from_file<float>("./0421_VD2D3D-MS/conv1b/filters",conv1b_k,24*24*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv1b/filters",conv1b_k,24*24*1*3*3);
   fix_dims(conv1b_k, 24, 24, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv1b/biases",conv1b_b,24);
+  read_from_file<float>("./VD2D3D-MS/nconv1b/biases",conv1b_b,24);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_conv
                     (1, 24, 24,
@@ -56,9 +56,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv1c
   float conv1c_k[24*24*2*2];
   float conv1c_b[24];
-  read_from_file<float>("./0421_VD2D3D-MS/conv1c/filters",conv1c_k,24*24*1*2*2);
+  read_from_file<float>("./VD2D3D-MS/conv1c/filters",conv1c_k,24*24*1*2*2);
   fix_dims(conv1c_k, 24, 24, 1, 2, 2);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv1c/biases",conv1c_b,24);
+  read_from_file<float>("./VD2D3D-MS/nconv1c/biases",conv1c_b,24);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_conv
                     (1, 24, 24,
@@ -75,9 +75,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv2a
   float conv2a_k[24*36*1*3*3];
   float conv2a_b[36];
-  read_from_file<float>("./0421_VD2D3D-MS/conv2a/filters",conv2a_k,24*36*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv2a/filters",conv2a_k,24*36*1*3*3);
   fix_dims(conv2a_k, 24, 36, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv2a/biases",conv2a_b,36);
+  read_from_file<float>("./VD2D3D-MS/nconv2a/biases",conv2a_b,36);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (4, 24, 36,
@@ -88,9 +88,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv2b
   float conv2b_k[36*36*1*3*3];
   float conv2b_b[36];
-  read_from_file<float>("./0421_VD2D3D-MS/conv2b/filters",conv2b_k,36*36*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv2b/filters",conv2b_k,36*36*1*3*3);
   fix_dims(conv2b_k, 36, 36, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv2b/biases",conv2b_b,36);
+  read_from_file<float>("./VD2D3D-MS/nconv2b/biases",conv2b_b,36);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (4, 36, 36,
@@ -107,9 +107,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv3a
   float conv3a_k[36*48*1*3*3];
   float conv3a_b[48];
-  read_from_file<float>("./0421_VD2D3D-MS/conv3a/filters",conv3a_k,36*48*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv3a/filters",conv3a_k,36*48*1*3*3);
   fix_dims(conv3a_k, 36, 48, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv3a/biases",conv3a_b,48);
+  read_from_file<float>("./VD2D3D-MS/nconv3a/biases",conv3a_b,48);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (16, 36, 48,
@@ -120,9 +120,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv3b
   float conv3b_k[48*48*1*3*3];
   float conv3b_b[48];
-  read_from_file<float>("./0421_VD2D3D-MS/conv3b/filters",conv3b_k,48*48*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv3b/filters",conv3b_k,48*48*1*3*3);
   fix_dims(conv3b_k, 48, 48, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv3b/biases",conv3b_b,48);
+  read_from_file<float>("./VD2D3D-MS/nconv3b/biases",conv3b_b,48);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (16, 48, 48,
@@ -139,9 +139,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv4a
   float conv4a_k[48*60*1*3*3];
   float conv4a_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv4a/filters",conv4a_k,48*60*1*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv4a/filters",conv4a_k,48*60*1*3*3);
   fix_dims(conv4a_k, 48, 60, 1, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv4a/biases",conv4a_b,60);
+  read_from_file<float>("./VD2D3D-MS/nconv4a/biases",conv4a_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (64, 48, 60,
@@ -152,9 +152,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv4b-p3
   float conv4b_p3_k[60*60*2*3*3];
   float conv4b_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv4b-p3/filters",conv4b_p3_k,60*60*2*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv4b-p3/filters",conv4b_p3_k,60*60*2*3*3);
   fix_dims(conv4b_p3_k, 60, 60, 2, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv4b-p3/biases",conv4b_p3_b,60);
+  read_from_file<float>("./VD2D3D-MS/nconv4b-p3/biases",conv4b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (64, 60, 60,
@@ -171,9 +171,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv5a-p3
   float conv5a_p3_k[60*60*2*3*3];
   float conv5a_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv5a-p3/filters",conv5a_p3_k,60*60*2*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv5a-p3/filters",conv5a_p3_k,60*60*2*3*3);
   fix_dims(conv5a_p3_k, 60, 60, 2, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv5a-p3/biases",conv5a_p3_b,60);
+  read_from_file<float>("./VD2D3D-MS/nconv5a-p3/biases",conv5a_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (64, 60, 60,
@@ -184,9 +184,9 @@ create_multiscale_b3(const vec3i & outsz)
   // conv5b-p3
   float conv5b_p3_k[60*60*2*3*3];
   float conv5b_p3_b[60];
-  read_from_file<float>("./0421_VD2D3D-MS/conv5b-p3/filters",conv5b_p3_k,60*60*2*3*3);
+  read_from_file<float>("./VD2D3D-MS/conv5b-p3/filters",conv5b_p3_k,60*60*2*3*3);
   fix_dims(conv5b_p3_k, 60, 60, 2, 3, 3);
-  read_from_file<float>("./0421_VD2D3D-MS/nconv5b-p3/biases",conv5b_p3_b,60);
+  read_from_file<float>("./VD2D3D-MS/nconv5b-p3/biases",conv5b_p3_b,60);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                     (new device::v1::cudnn_conv
                      (64, 60, 60,
@@ -198,7 +198,7 @@ create_multiscale_b3(const vec3i & outsz)
   float convx_p3_k[60*200*1*1*1];
   float convx_p3_b[200];
   memset(convx_p3_b, 0, 200 * sizeof(float));
-  read_from_file<float>("./0421_VD2D3D-MS/convx-p3/filters",convx_p3_k,60*200*1*1*1);
+  read_from_file<float>("./VD2D3D-MS/convx-p3/filters",convx_p3_k,60*200*1*1*1);
   fix_dims(convx_p3_k, 60, 200, 1, 1, 1);
   layers.push_back(std::unique_ptr<device::v1::device_layer>
                    (new device::v1::cudnn_conv
