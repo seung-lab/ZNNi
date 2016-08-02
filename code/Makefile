@@ -38,7 +38,7 @@ endif
 
 FPIC	=	-fPIC
 
-CXXINCLUDES	=	-I$(HERE)/include -I$(HERE)/.. -I/usr/local/cuda/include
+CXXINCLUDES	=	-I$(HERE)/include -I$(HERE)/.. -I/usr/local/cuda/include -I/opt/intel/tbb/include
 CXXWARN		=	-Wall -Wextra -Wno-format
 
 NVCCFLAGS	=	-std=c++11 -O3 -DNDEBUG $(CXXINCLUDES)
@@ -53,7 +53,7 @@ LD_OPTIMIZATION_FLAGS	=	-DNDEBUG -O3
 
 OPT_FLAGS		=	$(COMMON_FLAGS) $(OPTIMIZATION_FLAGS) $(CS_FLAGS)
 
-COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas -lhdf5 -lhdf5_cpp
+COMMON_LDFLAGS		=	-g -L/usr/local/cuda/lib64 -L/opt/intel/tbb/lib/intel64/gcc4.4 -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f -lcudart -lcufft -lcudnn -lcublas -lhdf5 -lhdf5_cpp
 
 #COMMON_LDFLAGS		=	-g -ltbb -ltbbmalloc -ltbbmalloc_proxy -lfftw3f
 
