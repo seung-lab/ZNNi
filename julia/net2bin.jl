@@ -50,7 +50,8 @@ function readnet(fnet::AbstractString)
                 # switch the input size and output size of kernel
                 # in ZNN we have tensor[n_input][n_output][x][y][z] and ZNNi tensor[n_output][n_input][x][y][z]
                 println("$en / $att : $(size(obj))")
-                obj = permutedims(obj, [2,1,3,4,5])
+                # we have znnhelper to fix dims, so no need to permute here!
+                #obj = permutedims(obj, [2,1,3,4,5])
             end
             net[Symbol(en)][Symbol(att)] = obj
         end
