@@ -180,11 +180,13 @@ inline void print_descriptor( cudnnFilterDescriptor_t const & descriptor )
     cudnnDataType_t dataType;
     int nbDims;
     int dims[5];
+    cudnnTensorFormat_t tensor_format = CUDNN_TENSOR_NCHW;
 
     checkCUDNN(
         cudnnGetFilterNdDescriptor(
             descriptor,
             5, &dataType,
+            &tensor_format,
             &nbDims, dims));
 
     std::cout << "    Type   : " << dataType << '\n';

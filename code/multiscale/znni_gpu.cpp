@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
     b2.load(b1.data(), from_device); // faster than reading it from dp again
     b3.load(b1.data(), from_device);
 
-    std::cout << timer.elapsed<double>() << "s for reading input from disk\n";
+    //std::cout << timer.elapsed<double>() << "s for reading input from disk\n";
 
     timer.reset();
     try { // if we run out of GPU memory during forward pass, then somewhere here
@@ -113,24 +113,25 @@ int main(int argc, char *argv[])
       std::cout << "Unknown Error during forward pass. Aborting program...\n";
       return -3;
     }
-    std::cout << timer.elapsed<double>() << "s for main branches\n";
+    //std::cout << timer.elapsed<double>() << "s for main branches\n";
 
     timer.reset();
     b1 = relu.forward(std::move(b1)); // Relu Activation
     b1 = final_conv.forward(std::move(b1));
-    std::cout << timer.elapsed<double>() << "s for relu activation function + final convolution\n";
+    //std::cout << timer.elapsed<double>() << "s for relu activation function + final convolution\n";
 
     timer.reset();
     host_tensor<float, 5> affinity(1, 3, outsz[0], outsz[1], outsz[2]);
     affinity.load(b1.data(), from_device);
 
     dp.WriteWindowData(*it, affinity);
-    std::cout << timer.elapsed<double>() << "s for loading result from GPU and writing to disk\n";
+    //std::cout << timer.elapsed<double>() << "s for loading result from GPU and writing to disk\n";
 
     b1.reset();
+    //if( active_patch % 10 == 0 )
     std::cout << timer_all.elapsed<double>() << "s in total for patch " << active_patch++ << "/" << num_patches <<"!\n";
   }
 
-  std::cout << "Processing succesfully completed after " << timer_all.elapsed<double>() << "s.\n";
+  //std::cout << "Processing succesfully completed after " << timer_all.elapsed<double>() << "s.\n";
   return 0;
 }

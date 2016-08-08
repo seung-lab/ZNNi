@@ -253,7 +253,7 @@ public:
 
     h5vec4 start, end;
     H5Sget_select_bounds(dataspace_out, start.data(), end.data());
-    printf("Writing data between [%5llu, %5llu, %5llu, %5llu] and [%5llu, %5llu, %5llu, %5llu]\n", start.x(), start.y(), start.z(), start.w(), end.x(), end.y(), end.z(), end.w());
+    //printf("Writing data between [%5llu, %5llu, %5llu, %5llu] and [%5llu, %5llu, %5llu, %5llu]\n", start.x(), start.y(), start.z(), start.w(), end.x(), end.y(), end.z(), end.w());
 
     H5Dwrite(datasetout_.getId(), H5T_NATIVE_FLOAT, memspace, dataspace_out, H5P_DEFAULT, data.ptr().get()); // Only works for Host->Host!
 

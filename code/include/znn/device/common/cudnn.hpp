@@ -77,8 +77,10 @@ public:
     void set( int n, int c, int d, int h, int w )
     {
         int dims[5] = {n,c,d,h,w};
+        cudnnTensorFormat_t tensor_format = CUDNN_TENSOR_NCHW;
         tryCUDNN(cudnnSetFilterNdDescriptor(handle_,
                                             CUDNN_DATA_FLOAT,
+                                            tensor_format,
                                             5, dims));
 
     }
@@ -162,6 +164,7 @@ public:
         tryCUDNN( cudnnSetPoolingNdDescriptor(
                       handle_,
                       CUDNN_POOLING_MAX,
+                      CUDNN_NOT_PROPAGATE_NAN,
                       3, window, padding, window ));
     }
 
@@ -175,6 +178,7 @@ public:
         tryCUDNN( cudnnSetPoolingNdDescriptor(
                       handle_,
                       CUDNN_POOLING_MAX,
+                      CUDNN_NOT_PROPAGATE_NAN,
                       3, window, padding, strides ));
     }
 
