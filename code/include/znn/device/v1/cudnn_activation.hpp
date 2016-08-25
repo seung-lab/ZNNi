@@ -81,10 +81,16 @@ public:
                 DIE("unknown activation");
             }
 
+
+            // construct descriptor for cudnn v5
+            cudnnActivationDescriptor_t act_desc_type;
+            cudnnSetActivationDescriptor(act_desc_type, act_type, CUDNN_NOT_PROPAGATE_NAN, 0.0);
+            cudnnCreateActivationDescriptor( &act_desc_type );
+
             tryCUDNN(
                 cudnnActivationForward(
                     handle.cudnn_handle,
-                    act_type,
+                    act_desc_type,
                     &alpha, inout_desc.handle(), in.data(),
                     &beta, inout_desc.handle(), in.data()) );
         }
