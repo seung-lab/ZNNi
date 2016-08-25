@@ -21,6 +21,17 @@ private:
     cudnn::tensor_descriptor      inout_desc, bias_desc;
 
     activation activation_ = activation::none;
+    cudnnDataType_t dtype_;
+    cudnnActivationMode_t mode_;
+    cudnnTensorDescriptor_t shape_desc_;
+
+    #if CUDNN_MAJOR == 5
+      cudnnActivationDescriptor_t act_desc_;
+      cudnnNanPropagation_t nan_prop_;
+      double relu_ceil_;
+    #endif
+
+    //float alpha, beta;
 
 public:
     long_t resident_memory() const override
@@ -48,52 +59,23 @@ public:
             throw std::logic_error("in or out too big");
         }
 
-        float alpha = 1; float beta = 1;
+        float alpha = 1;
+        float beta = 1;
 
         tryCUDNN(
-            cudnnAddTensor( handle.cudnn_handle,
-                            &alpha,
-                            bias_desc.handle(), biases.data(),
-                            &beta,
-                            inout_desc.handle(), in.data()) );
+          cudnnAddTensor( handle.cudnn_handle,
+                          &alpha,
+                          bias_desc.handle(), biases.data(),
+                          &beta,
+                          inout_desc.handle(), in.data()) );
 
-        if ( activation_ != activation::none )
-        {
-            beta = 0;
-
-            cudnnActivationMode_t act_type;
-
-            switch (activation_)
-            {
-            case activation::sigmoid:
-                act_type = CUDNN_ACTIVATION_SIGMOID;
-                break;
-            case activation::relu:
-                act_type = CUDNN_ACTIVATION_RELU;
-                break;
-            case activation::tanh:
-                act_type = CUDNN_ACTIVATION_TANH;
-                break;
-            case activation::clipped_relu:
-                act_type = CUDNN_ACTIVATION_CLIPPED_RELU;
-                break;
-            default:
-                DIE("unknown activation");
-            }
-
-
-            // construct descriptor for cudnn v5
-            cudnnActivationDescriptor_t act_desc_type;
-            cudnnSetActivationDescriptor(act_desc_type, act_type, CUDNN_NOT_PROPAGATE_NAN, 0.0);
-            cudnnCreateActivationDescriptor( &act_desc_type );
-
-            tryCUDNN(
-                cudnnActivationForward(
-                    handle.cudnn_handle,
-                    act_desc_type,
-                    &alpha, inout_desc.handle(), in.data(),
-                    &beta, inout_desc.handle(), in.data()) );
-        }
+        beta = 0;
+        tryCUDNN(
+          cudnnActivationForward(
+              handle.cudnn_handle,
+              act_desc_,
+              &alpha, inout_desc.handle(), in.data(),
+              &beta, inout_desc.handle(), in.data()) );
 
         return in;
     }
@@ -108,9 +90,36 @@ public:
     {
         inout_desc.set(n,finout,is[0],is[1],is[2]);
         bias_desc.set(1,finout,1,1,1);
+
+        // float alpha = 1;  float beta = 1;
+
+        if ( activation_ != activation::none )
+        {
+          switch (activation_)
+          {
+          case activation::sigmoid:
+              mode_ = CUDNN_ACTIVATION_SIGMOID;
+              break;
+          case activation::relu:
+              mode_ = CUDNN_ACTIVATION_RELU;
+              break;
+          case activation::tanh:
+              mode_ = CUDNN_ACTIVATION_TANH;
+              break;
+          case activation::clipped_relu:
+              mode_ = CUDNN_ACTIVATION_CLIPPED_RELU;
+              break;
+          default:
+              DIE("unknown activation");
+          }
+
+          #if CUDNN_MAJOR == 5
+            nan_prop_ = CUDNN_NOT_PROPAGATE_NAN;
+            cudnnCreateActivationDescriptor( &act_desc_);
+            cudnnSetActivationDescriptor(act_desc_, mode_, nan_prop_, relu_ceil_);
+          #endif
+        }
     }
 };
-
-
 
 }}}} // namespace znn::fwd::device::v1

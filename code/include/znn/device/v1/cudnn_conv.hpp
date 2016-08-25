@@ -18,13 +18,28 @@ class cudnn_conv
     , public conv_data
 {
 private:
-    cudnn::tensor_descriptor      in_desc, out_desc, bias_desc;
-    cudnn::kernel_descriptor      kernel_desc;
-    cudnn::convolution_descriptor conv_desc;
+  cudnn::tensor_descriptor      in_desc, out_desc, bias_desc;
+  cudnn::kernel_descriptor      kernel_desc;
+  cudnn::convolution_descriptor conv_desc;
 
-    size_t workspace_size_ = 0;
+  cudnnDataType_t dtype_;
+  cudnnConvolutionFwdAlgo_t algo_;
+  #if CUDNN_MAJOR == 5
+  cudnnTensorFormat_t format_;
+  #endif
+  cudnnActivationMode_t act_mode_;
 
-    activation activation_ = activation::none;
+  #if CUDNN_MAJOR == 5
+    cudnnActivationDescriptor_t desc_;
+    cudnnNanPropagation_t nan_prop_;
+    double relu_ceil_;
+  #endif
+
+
+  size_t workspace_size_ = 0;
+  // float alpha, beta;
+
+  activation activation_ = activation::none;
 
 public:
     long_t resident_memory() const override
@@ -82,38 +97,12 @@ public:
         if ( activation_ != activation::none )
         {
             beta = 0;
-
-            cudnnActivationMode_t act_type;
-
-            switch (activation_)
-            {
-            case activation::sigmoid:
-                act_type = CUDNN_ACTIVATION_SIGMOID;
-                break;
-            case activation::relu:
-                act_type = CUDNN_ACTIVATION_RELU;
-                break;
-            case activation::tanh:
-                act_type = CUDNN_ACTIVATION_TANH;
-                break;
-            case activation::clipped_relu:
-                act_type = CUDNN_ACTIVATION_CLIPPED_RELU;
-                break;
-            default:
-                DIE("unknown activation");
-            }
-
-            // construct descriptor for cudnn v5
-            cudnnActivationDescriptor_t act_desc_type;
-            cudnnSetActivationDescriptor(act_desc_type, act_type, CUDNN_NOT_PROPAGATE_NAN, 0.0);
-            cudnnCreateActivationDescriptor( &act_desc_type );
-
             tryCUDNN(
-                cudnnActivationForward(
-                    handle.cudnn_handle,
-                    act_desc_type,
-                    &alpha, out_desc.handle(), out.data(),
-                    &beta, out_desc.handle(), out.data()) );
+              cudnnActivationForward(
+                  handle.cudnn_handle,
+                  desc_,
+                  &alpha, out_desc.handle(), out.data(),
+                  &beta, out_desc.handle(), out.data()) );
         }
 
         return out;
@@ -128,29 +117,53 @@ public:
         , conv_data(fin,fout,ks,km,bs)
         , activation_(act)
     {
-        vec3i os = out_image_size;
+      vec3i os = out_image_size;
 
-        in_desc.set(n,fin,is[0],is[1],is[2]);
-        out_desc.set(n,fout,os[0],os[1],os[2]);
-        bias_desc.set(1,fout,1,1,1);
+      in_desc.set(n,fin,is[0],is[1],is[2]);
+      out_desc.set(n,fout,os[0],os[1],os[2]);
+      bias_desc.set(1,fout,1,1,1);
 
-        kernel_desc.set(fout,fin,ks[0],ks[1],ks[2]);
-        conv_desc.set();
+      kernel_desc.set(fout,fin,ks[0],ks[1],ks[2]);
+      conv_desc.set();
 
-        {
-            size_t what_size;
-            tryCUDNN(
-                cudnnGetConvolutionForwardWorkspaceSize(
-                    handle.cudnn_handle,
-                    in_desc.handle(),
-                    kernel_desc.handle(),
-                    conv_desc.handle(),
-                    out_desc.handle(),
-                    CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
-                    &what_size));
+      {
+          size_t what_size;
+          tryCUDNN(
+              cudnnGetConvolutionForwardWorkspaceSize(
+                  handle.cudnn_handle,
+                  in_desc.handle(),
+                  kernel_desc.handle(),
+                  conv_desc.handle(),
+                  out_desc.handle(),
+                  CUDNN_CONVOLUTION_FWD_ALGO_IMPLICIT_PRECOMP_GEMM,
+                  &what_size));
 
-            workspace_size_ = std::max(workspace_size_, what_size);
-        }
+          workspace_size_ = std::max(workspace_size_, what_size);
+      }
+
+      switch (activation_)
+      {
+      case activation::sigmoid:
+          act_mode_ = CUDNN_ACTIVATION_SIGMOID;
+          break;
+      case activation::relu:
+          act_mode_ = CUDNN_ACTIVATION_RELU;
+          break;
+      case activation::tanh:
+          act_mode_ = CUDNN_ACTIVATION_TANH;
+          break;
+      case activation::clipped_relu:
+          act_mode_ = CUDNN_ACTIVATION_CLIPPED_RELU;
+          break;
+      default:
+          DIE("unknown activation");
+      }
+
+      #if CUDNN_MAJOR == 5
+        nan_prop_ = CUDNN_NOT_PROPAGATE_NAN;
+        cudnnCreateActivationDescriptor(&desc_);
+        cudnnSetActivationDescriptor(desc_, act_mode_, nan_prop_, relu_ceil_);
+      #endif
     }
 };
 
