@@ -1,13 +1,17 @@
 
 ## Build
-- cd ..
-- make bin/multiscale/znni_gpu
+    cd ..
+    make bin/multiscale/znni_gpu
+
+## Usage
+./znni_gpu device_id path/of/normalized/image path/of/output/affinity/map dataset_name [output patch size: z,y,x]
+    ./znni_gpu 0 ../../../data/raw.float.h5 out.h5 main 17 256 256
 
 ## FAQ
 * Q: What version of CUDA and CUDNN do I need?
-* A: CUDA 7.5 and CUDNN 4 (for CUDA 7.0 and above)
+* A: CUDA 8.0 and CUDNN 5 (for CUDA 8.0 and above)
 
-* Q: I get an `error while loading shared libraries: libcudart.so.7.5: cannot open shared object file: No such file or directory` when starting the executable
+* Q: I get an `error while loading shared libraries: libcudart.so.8.0: cannot open shared object file: No such file or directory` when starting the executable
 * A: Try `sudo ldconfig /usr/local/cuda/lib64`
 
 * Q: The output contains only NaN.
