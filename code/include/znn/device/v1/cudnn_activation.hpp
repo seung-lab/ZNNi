@@ -109,17 +109,8 @@ public:
         , bias_data(finout,bs)
         , activation_(act)
     {
-        inout_desc.set(n,finout,is[0],is[1],is[2]);
-        bias_desc.set(1,finout,1,1,1);
-
-        // float alpha = 1;  float beta = 1;
-
-
-          #if CUDNN_MAJOR == 5
-            nan_prop_ = CUDNN_NOT_PROPAGATE_NAN;
-            cudnnCreateActivationDescriptor( &act_desc_);
-            cudnnSetActivationDescriptor(act_desc_, mode_, nan_prop_, relu_ceil_);
-          #endif
+      inout_desc.set(n,finout,is[0],is[1],is[2]);
+      bias_desc.set(1,finout,1,1,1);
     }
 };
 

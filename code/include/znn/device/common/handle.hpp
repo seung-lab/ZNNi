@@ -31,9 +31,13 @@ struct handle_t
                COMPILER_VER);
         showCudaDevices();
 
+        // jingpeng <jingpeng@princeton.edu>
+        // did not find function to get current device
+        // warnning: use property of device 0, this might be problmatic
+        // for some machine with multiple different GPU devices
         int device = 0;
-        checkCudaErrors( cudaSetDevice(device) );
-        std::cout << "Using device " << device << std::endl;
+        // checkCudaErrors( cudaSetDevice(device) );
+        // std::cout << "Using device " << device << std::endl;
 
         struct cudaDeviceProp prop;
         checkCudaErrors(cudaGetDeviceProperties( &prop, device ));

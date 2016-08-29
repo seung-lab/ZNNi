@@ -22,31 +22,42 @@ int main(int argc, char *argv[])
   timer_all.reset();
   timer.reset();
 
-  // settings
+  int device = 0;
+  double device_memory;
+  if (argc >= 2)
+    device = atoi(argv[1]);
+  checkCudaErrors( cudaSetDevice(device) );
+  std::cout << "Using device " << device << std::endl;
+  struct cudaDeviceProp prop;
+  checkCudaErrors(cudaGetDeviceProperties( &prop, device ));
+  device_memory = prop.totalGlobalMem/double(1024*1024);
+  std::cout << "Memory: " << device_memory << std::endl;
+
+  // The magnificent dataprovider
   vec3i outsz(12,128,128); // must be multiple of 8!
-  if (argc == 7) {
+  // reset outsz
+  if (argc >= 8) {
     try {
-      outsz = vec3i(boost::lexical_cast<int>(argv[4]),
-                    boost::lexical_cast<int>(argv[5]),
-                    boost::lexical_cast<int>(argv[6]));
+      outsz = vec3i(boost::lexical_cast<int>(argv[5]),
+                    boost::lexical_cast<int>(argv[6]),
+                    boost::lexical_cast<int>(argv[7]));
     }
     catch(boost::bad_lexical_cast) {
       std::cout << "Can't read output size parameters.\n";
     }
   }
-  h5vec3 fov(9, 109, 109);
-  h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
 
-  // The magnificent dataprovider
+  h5vec3 h5outsz(outsz[0], outsz[1], outsz[2]);
+  h5vec3 fov(9, 109, 109);
   DataProvider dp(h5outsz, fov);
-  if (argc >= 4) {
-    if (!dp.LoadHDF(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]))) {
+  if (argc >= 5) {
+    if (!dp.LoadHDF(std::string(argv[2]), std::string(argv[3]), std::string(argv[4]))) {
       std::cout << "Could not initialize dataprovider.\n";
       return -1;
     }
   }
   else {
-    std::cout << "Usage: znni inputfile.h5 outputfile.h5 datasetname [12 128 128]\n";
+    std::cout << "Usage: znni device_id inputfile.h5 outputfile.h5 datasetname [12 128 128]\n";
     return -1;
   }
 
