@@ -24,18 +24,6 @@ private:
 
   cudnnDataType_t dtype_;
   cudnnConvolutionFwdAlgo_t algo_;
-  #if CUDNN_MAJOR == 5
-  cudnnTensorFormat_t format_;
-  #endif
-  cudnnActivationMode_t act_mode_;
-
-  #if CUDNN_MAJOR == 5
-    cudnnActivationDescriptor_t desc_;
-    cudnnNanPropagation_t nan_prop_;
-    double relu_ceil_;
-  #endif
-
-
   size_t workspace_size_ = 0;
   // float alpha, beta;
 
@@ -97,10 +85,29 @@ public:
         if ( activation_ != activation::none )
         {
             beta = 0;
+            cudnnActivationMode_t act_mode_;
+            switch (activation_)
+            {
+            case activation::sigmoid:
+                act_mode_ = CUDNN_ACTIVATION_SIGMOID;
+                break;
+            case activation::relu:
+                act_mode_ = CUDNN_ACTIVATION_RELU;
+                break;
+            case activation::tanh:
+                act_mode_ = CUDNN_ACTIVATION_TANH;
+                break;
+            case activation::clipped_relu:
+                act_mode_ = CUDNN_ACTIVATION_CLIPPED_RELU;
+                break;
+            default:
+                DIE("unknown activation");
+            }
+
             tryCUDNN(
-              cudnnActivationForward(
+              cudnnActivationForward_v3(
                   handle.cudnn_handle,
-                  desc_,
+                  act_mode_,
                   &alpha, out_desc.handle(), out.data(),
                   &beta, out_desc.handle(), out.data()) );
         }
@@ -140,30 +147,6 @@ public:
 
           workspace_size_ = std::max(workspace_size_, what_size);
       }
-
-      switch (activation_)
-      {
-      case activation::sigmoid:
-          act_mode_ = CUDNN_ACTIVATION_SIGMOID;
-          break;
-      case activation::relu:
-          act_mode_ = CUDNN_ACTIVATION_RELU;
-          break;
-      case activation::tanh:
-          act_mode_ = CUDNN_ACTIVATION_TANH;
-          break;
-      case activation::clipped_relu:
-          act_mode_ = CUDNN_ACTIVATION_CLIPPED_RELU;
-          break;
-      default:
-          DIE("unknown activation");
-      }
-
-      #if CUDNN_MAJOR == 5
-        nan_prop_ = CUDNN_NOT_PROPAGATE_NAN;
-        cudnnCreateActivationDescriptor(&desc_);
-        cudnnSetActivationDescriptor(desc_, act_mode_, nan_prop_, relu_ceil_);
-      #endif
     }
 };
 

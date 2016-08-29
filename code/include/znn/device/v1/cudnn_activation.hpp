@@ -70,31 +70,9 @@ public:
                           inout_desc.handle(), in.data()) );
 
         beta = 0;
-        tryCUDNN(
-          cudnnActivationForward(
-              handle.cudnn_handle,
-              act_desc_,
-              &alpha, inout_desc.handle(), in.data(),
-              &beta, inout_desc.handle(), in.data()) );
-
-        return in;
-    }
-
-public:
-    cudnn_activation( long_t n, long_t finout,
-                      vec3i const & is, float* bs = nullptr,
-                      activation act = activation::none )
-        : activation_layer<device_layer>(n,finout,is)
-        , bias_data(finout,bs)
-        , activation_(act)
-    {
-        inout_desc.set(n,finout,is[0],is[1],is[2]);
-        bias_desc.set(1,finout,1,1,1);
-
-        // float alpha = 1;  float beta = 1;
-
         if ( activation_ != activation::none )
         {
+          cudnnActivationMode_t mode_;
           switch (activation_)
           {
           case activation::sigmoid:
@@ -113,12 +91,35 @@ public:
               DIE("unknown activation");
           }
 
+          tryCUDNN(
+            cudnnActivationForward_v3(
+                handle.cudnn_handle,
+                mode_,
+                &alpha, inout_desc.handle(), in.data(),
+                &beta, inout_desc.handle(), in.data()) );
+        }
+        return in;
+    }
+
+public:
+    cudnn_activation( long_t n, long_t finout,
+                      vec3i const & is, float* bs = nullptr,
+                      activation act = activation::none )
+        : activation_layer<device_layer>(n,finout,is)
+        , bias_data(finout,bs)
+        , activation_(act)
+    {
+        inout_desc.set(n,finout,is[0],is[1],is[2]);
+        bias_desc.set(1,finout,1,1,1);
+
+        // float alpha = 1;  float beta = 1;
+
+
           #if CUDNN_MAJOR == 5
             nan_prop_ = CUDNN_NOT_PROPAGATE_NAN;
             cudnnCreateActivationDescriptor( &act_desc_);
             cudnnSetActivationDescriptor(act_desc_, mode_, nan_prop_, relu_ceil_);
           #endif
-        }
     }
 };
 
