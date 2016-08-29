@@ -4,7 +4,10 @@
     make bin/multiscale/znni_gpu
 
 ## Usage
-./znni_gpu device_id path/of/normalized/image path/of/output/affinity/map dataset_name [output patch size: z,y,x]
+    ./znni_gpu device_id path/of/normalized/image path/of/output/affinity/map dataset_name [output patch size: z,y,x]
+
+example:
+
     ./znni_gpu 0 ../../../data/raw.float.h5 out.h5 main 17 256 256
 
 ## FAQ
